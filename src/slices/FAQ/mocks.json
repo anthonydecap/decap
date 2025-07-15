@@ -1,0 +1,101 @@
+[
+  {
+    "variation": "default",
+    "name": "Default",
+    "slice_type": "faq",
+    "items": [
+      {
+        "question": "What makes your microphones different from others?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "text": "Our microphones are designed with premium components and advanced technology that delivers exceptional audio quality. Each microphone undergoes rigorous testing and quality control to ensure professional-grade performance."
+          }
+        ]
+      },
+      {
+        "question": "What is the warranty coverage for your microphones?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "text": "All our microphones come with a comprehensive 3-year warranty covering manufacturing defects and technical issues. We also offer extended warranty options for professional users."
+          }
+        ]
+      },
+      {
+        "question": "Are your microphones compatible with all recording software?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "text": "Yes, our microphones are designed to work seamlessly with all major recording software including Pro Tools, Logic Pro, Ableton Live, and many others. They use standard audio interfaces and protocols."
+          }
+        ]
+      },
+      {
+        "question": "Do you offer technical support and training?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "text": "We provide comprehensive technical support including:"
+          },
+          {
+            "type": "list-item",
+            "text": "24/7 customer support via phone and email"
+          },
+          {
+            "type": "list-item",
+            "text": "Online tutorials and documentation"
+          },
+          {
+            "type": "list-item",
+            "text": "Professional training sessions for enterprise customers"
+          }
+        ]
+      },
+      {
+        "question": "Can I try the microphone before purchasing?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "text": "We offer a 30-day money-back guarantee on all purchases. If you're not completely satisfied with your microphone, you can return it for a full refund within 30 days of purchase."
+          }
+        ]
+      },
+      {
+        "question": "What accessories are included with the microphone?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "text": "Each microphone comes with a complete professional package including:"
+          },
+          {
+            "type": "list-item",
+            "text": "Professional shock mount"
+          },
+          {
+            "type": "list-item",
+            "text": "Pop filter and windscreen"
+          },
+          {
+            "type": "list-item",
+            "text": "High-quality XLR cable"
+          },
+          {
+            "type": "list-item",
+            "text": "Protective carrying case"
+          }
+        ]
+      }
+    ],
+    "primary": {
+      "title": "Frequently Asked Questions",
+      "eyebrow": "Support",
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "Find answers to common questions about our premium microphones. Can't find what you're looking for? Contact our support team for personalized assistance."
+        }
+      ]
+    }
+  }
+] 

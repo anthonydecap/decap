@@ -1,0 +1,52 @@
+{
+  "id": "grid_list",
+  "type": "SharedSlice",
+  "name": "GridList",
+  "description": "Grid layout for displaying list items",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default GridList",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Section Title",
+            "placeholder": "Grid List Title"
+          }
+        },
+        "invert": {
+          "type": "Boolean",
+          "config": {
+            "label": "Invert Colors",
+            "default_value": false,
+            "placeholder_false": "Dark theme",
+            "placeholder_true": "Light theme"
+          }
+        }
+      },
+      "items": {
+        "item_title": {
+          "type": "Text",
+          "config": {
+            "label": "Item Title",
+            "placeholder": "Item title"
+          }
+        },
+        "item_description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Item Description",
+            "placeholder": "Item description...",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        }
+      }
+    }
+  ]
+} 

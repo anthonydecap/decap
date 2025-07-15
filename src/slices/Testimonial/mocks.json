@@ -1,0 +1,26 @@
+[
+  {
+    "variation": "default",
+    "name": "Default",
+    "slice_type": "testimonial",
+    "items": [],
+    "primary": {
+      "quote": [
+        {
+          "type": "paragraph",
+          "text": "Studio has completely transformed how we approach design. Their team's dedication to excellence and innovation has made them our go-to partner for all our design needs."
+        }
+      ],
+      "client_name": "Family Fund",
+      "client_logo": {
+        "dimensions": {
+          "width": 200,
+          "height": 100
+        },
+        "alt": "Family Fund",
+        "copyright": null,
+        "url": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=200&h=100&fit=crop"
+      }
+    }
+  }
+] 

@@ -1,0 +1,104 @@
+[
+  {
+    "variation": "default",
+    "name": "Default",
+    "slice_type": "feature",
+    "items": [
+      {
+        "feature_title": "Studio-Grade Quality",
+        "feature_description": [
+          {
+            "type": "paragraph",
+            "text": "Professional audio quality with crystal clear sound reproduction and exceptional dynamic range for the most demanding recordings."
+          }
+        ],
+        "feature_icon": "microphone",
+        "feature_link": {
+          "link_type": "Web",
+          "url": "/features/studio-quality"
+        }
+      },
+      {
+        "feature_title": "Advanced Noise Cancellation",
+        "feature_description": [
+          {
+            "type": "paragraph",
+            "text": "Built-in noise cancellation technology ensures your recordings are free from unwanted background noise and interference."
+          }
+        ],
+        "feature_icon": "shield",
+        "feature_link": {
+          "link_type": "Web",
+          "url": "/features/noise-cancellation"
+        }
+      },
+      {
+        "feature_title": "Customizable Settings",
+        "feature_description": [
+          {
+            "type": "paragraph",
+            "text": "Fine-tune your microphone settings with our advanced control software to achieve the perfect sound for your specific needs."
+          }
+        ],
+        "feature_icon": "settings",
+        "feature_link": {
+          "link_type": "Web",
+          "url": "/features/customization"
+        }
+      },
+      {
+        "feature_title": "Lightning-Fast Response",
+        "feature_description": [
+          {
+            "type": "paragraph",
+            "text": "Ultra-low latency ensures real-time monitoring and recording without any delay, perfect for live performances."
+          }
+        ],
+        "feature_icon": "lightning",
+        "feature_link": {
+          "link_type": "Web",
+          "url": "/features/low-latency"
+        }
+      },
+      {
+        "feature_title": "Award-Winning Design",
+        "feature_description": [
+          {
+            "type": "paragraph",
+            "text": "Recognized by industry professionals worldwide for exceptional build quality and innovative engineering."
+          }
+        ],
+        "feature_icon": "star",
+        "feature_link": {
+          "link_type": "Web",
+          "url": "/awards"
+        }
+      },
+      {
+        "feature_title": "Professional Monitoring",
+        "feature_description": [
+          {
+            "type": "paragraph",
+            "text": "Built-in headphone monitoring with zero-latency allows you to hear exactly what you're recording in real-time."
+          }
+        ],
+        "feature_icon": "headphones",
+        "feature_link": {
+          "link_type": "Web",
+          "url": "/features/monitoring"
+        }
+      }
+    ],
+    "primary": {
+      "title": "Why Choose Our Microphones",
+      "eyebrow": "Professional Features",
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "Discover what makes our microphones stand out in the professional audio industry. Each feature is designed to deliver exceptional performance for the most demanding applications."
+        }
+      ],
+      "invert": false
+    }
+  }
+] 

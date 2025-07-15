@@ -1,0 +1,60 @@
+{
+  "id": "section_intro",
+  "type": "SharedSlice",
+  "name": "SectionIntro",
+  "description": "Section introduction with eyebrow, title, and description",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default SectionIntro",
+      "imageUrl": "",
+      "primary": {
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": "Section Label"
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": "Section Title"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "Section description...",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "smaller": {
+          "type": "Boolean",
+          "config": {
+            "label": "Smaller",
+            "default_value": false,
+            "placeholder_false": "Large title",
+            "placeholder_true": "Small title"
+          }
+        },
+        "invert": {
+          "type": "Boolean",
+          "config": {
+            "label": "Invert",
+            "default_value": false,
+            "placeholder_false": "Dark theme",
+            "placeholder_true": "Light theme"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+} 

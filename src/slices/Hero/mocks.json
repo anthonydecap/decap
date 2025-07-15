@@ -1,0 +1,19 @@
+[
+  {
+    "variation": "default",
+    "name": "Default",
+    "slice_type": "hero",
+    "items": [],
+    "primary": {
+      "eyebrow": "Studio",
+      "title": "We help you build modern applications",
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "We build thoughtful, livable spaces. Our team of architects and designers work with you to create a home that's perfect for your family."
+        }
+      ],
+      "centered": false
+    }
+  }
+] 

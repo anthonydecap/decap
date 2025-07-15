@@ -1,0 +1,130 @@
+{
+  "id": "settings",
+  "label": "Settings",
+  "format": "page",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "site_name": {
+        "type": "Text",
+        "config": {
+          "label": "Site Name",
+          "placeholder": "Studio"
+        }
+      },
+      "logo": {
+        "type": "Image",
+        "config": {
+          "label": "Logo",
+          "constraint": {
+            "width": 400,
+            "height": 200
+          },
+          "thumbnails": []
+        }
+      },
+      "contact_button_text": {
+        "type": "Text",
+        "config": {
+          "label": "Contact Button Text",
+          "placeholder": "Contact us"
+        }
+      },
+      "contact_button_link": {
+        "type": "Link",
+        "config": {
+          "label": "Contact Button Link",
+          "placeholder": "/contact",
+          "select": null
+        }
+      }
+    },
+    "Navigation": {
+      "navigation": {
+        "type": "Group",
+        "config": {
+          "label": "Navigation Items",
+          "fields": {
+            "label": {
+              "type": "Text",
+              "config": {
+                "label": "Label",
+                "placeholder": "Work"
+              }
+            },
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "Link",
+                "placeholder": "/work",
+                "select": null
+              }
+            }
+          }
+        }
+      }
+    },
+    "Footer": {
+      "footer_sections": {
+        "type": "Group",
+        "config": {
+          "label": "Footer Sections",
+          "fields": {
+            "section_title": {
+              "type": "Text",
+              "config": {
+                "label": "Section Title",
+                "placeholder": "Work"
+              }
+            },
+            "section_links": {
+              "type": "Group",
+              "config": {
+                "label": "Section Links",
+                "fields": {
+                  "link_text": {
+                    "type": "Text",
+                    "config": {
+                      "label": "Link Text",
+                      "placeholder": "Our Work"
+                    }
+                  },
+                  "link_url": {
+                    "type": "Link",
+                    "config": {
+                      "label": "Link URL",
+                      "placeholder": "/work",
+                      "select": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "newsletter_title": {
+        "type": "Text",
+        "config": {
+          "label": "Newsletter Title",
+          "placeholder": "Newsletter"
+        }
+      },
+      "newsletter_description": {
+        "type": "Text",
+        "config": {
+          "label": "Newsletter Description",
+          "placeholder": "Subscribe to get the latest design news, articles, resources and inspiration."
+        }
+      },
+      "copyright_text": {
+        "type": "Text",
+        "config": {
+          "label": "Copyright Text",
+          "placeholder": "© Studio Agency Inc."
+        }
+      }
+    }
+  }
+}

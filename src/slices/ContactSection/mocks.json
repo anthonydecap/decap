@@ -1,0 +1,19 @@
+[
+  {
+    "variation": "default",
+    "name": "Default",
+    "slice_type": "contact_section",
+    "items": [],
+    "primary": {
+      "title": "Tell us about your project",
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "We'd love to hear from you. Send us a message and we'll respond as soon as possible."
+        }
+      ],
+      "email": "hello@studio.com",
+      "phone": "+1 (555) 123-4567"
+    }
+  }
+] 

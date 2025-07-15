@@ -1,0 +1,94 @@
+[
+  {
+    "variation": "default",
+    "name": "Default",
+    "slice_type": "bento_grid",
+    "items": [
+      {
+        "item_title": "B-6 Pro Microphone",
+        "item_description": [
+          {
+            "type": "paragraph",
+            "text": "Professional condenser microphone with studio-grade clarity and precision. Perfect for professional recordings and live performances."
+          }
+        ],
+        "item_image": {
+          "dimensions": {
+            "width": 800,
+            "height": 600
+          },
+          "alt": "B-6 Pro Microphone",
+          "copyright": null,
+          "url": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=800&h=600&fit=crop"
+        },
+        "item_price": "$2,999",
+        "item_badge": "New",
+        "item_link": {
+          "link_type": "Web",
+          "url": "/products/b-6-pro"
+        },
+        "item_size": "large"
+      },
+      {
+        "item_title": "B-8 Studio",
+        "item_description": [
+          {
+            "type": "paragraph",
+            "text": "High-end studio microphone with exceptional frequency response and low noise floor."
+          }
+        ],
+        "item_image": {
+          "dimensions": {
+            "width": 800,
+            "height": 600
+          },
+          "alt": "B-8 Studio Microphone",
+          "copyright": null,
+          "url": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=800&h=600&fit=crop"
+        },
+        "item_price": "$3,499",
+        "item_badge": "Best Seller",
+        "item_link": {
+          "link_type": "Web",
+          "url": "/products/b-8-studio"
+        },
+        "item_size": "medium"
+      },
+      {
+        "item_title": "B-4 Compact",
+        "item_description": [
+          {
+            "type": "paragraph",
+            "text": "Compact yet powerful microphone designed for mobile recording and podcasting."
+          }
+        ],
+        "item_image": {
+          "dimensions": {
+            "width": 800,
+            "height": 600
+          },
+          "alt": "B-4 Compact Microphone",
+          "copyright": null,
+          "url": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=800&h=600&fit=crop"
+        },
+        "item_price": "$1,299",
+        "item_badge": "",
+        "item_link": {
+          "link_type": "Web",
+          "url": "/products/b-4-compact"
+        },
+        "item_size": "small"
+      }
+    ],
+    "primary": {
+      "title": "Premium Microphone Collection",
+      "eyebrow": "Professional Audio",
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "Discover our range of professional-grade microphones designed for the most demanding audio professionals. Each microphone is crafted with precision and attention to detail."
+        }
+      ]
+    }
+  }
+] 

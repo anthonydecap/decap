@@ -1,0 +1,20 @@
+[
+  {
+    "variation": "default",
+    "name": "Default",
+    "slice_type": "section_intro",
+    "items": [],
+    "primary": {
+      "eyebrow": "Our Services",
+      "title": "We help you build better products",
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "We're a team of experienced designers and developers who are passionate about creating beautiful, functional websites and applications."
+        }
+      ],
+      "smaller": false,
+      "invert": false
+    }
+  }
+] 

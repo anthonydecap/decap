@@ -1,0 +1,32 @@
+[
+  {
+    "variation": "default",
+    "name": "Default",
+    "slice_type": "three_d",
+    "items": [],
+    "primary": {
+      "title": "Experience Our B-6 Pro in 3D",
+      "eyebrow": "Interactive",
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "Explore our flagship B-6 Pro microphone in stunning 3D detail. Rotate, zoom, and watch as it responds to your scroll with immersive animations."
+        }
+      ],
+      "model_file": {
+        "link_type": "Media",
+        "name": "b6-pro-microphone.fbx",
+        "kind": "document",
+        "url": "https://cdn.example.com/models/b6-pro-microphone.fbx",
+        "size": "2048000"
+      },
+      "animation_type": "float",
+      "animation_speed": "medium",
+      "background_color": "gradient",
+      "lighting": "studio",
+      "camera_angle": "angle",
+      "enable_auto_rotation": true,
+      "scroll_intensity": 1.5
+    }
+  }
+] 
