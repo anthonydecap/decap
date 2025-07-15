@@ -52,6 +52,7 @@ const Testimonial: FC<TestimonialProps> = ({ slice }) => {
                   <PrismicNextImage
                     field={client_logo}
                     className="h-8 w-auto"
+                    alt=""
                   />
                 )}
                 {client_name && !client_logo && (

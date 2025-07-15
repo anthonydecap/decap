@@ -67,6 +67,7 @@ const BentoGrid: FC<BentoGridProps> = ({ slice }) => {
                         field={item.item_image}
                         className="h-48 w-full rounded-2xl object-cover transition-transform duration-300 group-hover:scale-105"
                         priority={index < 2}
+                        alt=""
                       />
                       {item.item_badge && (
                         <div className="absolute left-4 top-4 rounded-full bg-neutral-950 px-3 py-1 text-xs font-semibold text-white">

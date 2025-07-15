@@ -16,4 +16,5 @@ export const components = {
   blog: dynamic(() => import("./Blog")),
   content: dynamic(() => import("./Content")),
   three_d: dynamic(() => import("./ThreeD")),
+  artists: dynamic(() => import("./Artists")),
 };

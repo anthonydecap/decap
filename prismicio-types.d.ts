@@ -70,6 +70,7 @@ type ContentRelationshipFieldWithData<
 }[Exclude<TCustomType[number], string>["id"]];
 
 type PageDocumentDataSlicesSlice =
+  | ArtistsSlice
   | ThreeDSlice
   | FaqSlice
   | FeatureSlice
@@ -444,6 +445,96 @@ export type AllDocumentTypes =
   | PageDocument
   | ProductDocument
   | SettingsDocument;
+
+/**
+ * Primary content in *Artists → Default → Primary*
+ */
+export interface ArtistsSliceDefaultPrimary {
+  /**
+   * Title field in *Artists → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Meet Our Artists
+   * - **API ID Path**: artists.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *Artists → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: A description of our talented artists...
+   * - **API ID Path**: artists.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Artists → Items*
+ */
+export interface ArtistsSliceDefaultItem {
+  /**
+   * Artist Name field in *Artists → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: John Doe
+   * - **API ID Path**: artists.items[].artist_name
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  artist_name: prismic.KeyTextField;
+
+  /**
+   * Artist Role field in *Artists → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Visual Artist
+   * - **API ID Path**: artists.items[].artist_role
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  artist_role: prismic.KeyTextField;
+
+  /**
+   * Artist Portrait field in *Artists → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: artists.items[].artist_portrait
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  artist_portrait: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for Artists Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default Artists
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ArtistsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ArtistsSliceDefaultPrimary>,
+  Simplify<ArtistsSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Artists*
+ */
+type ArtistsSliceVariation = ArtistsSliceDefault;
+
+/**
+ * Artists Shared Slice
+ *
+ * - **API ID**: `artists`
+ * - **Description**: Artists section with title, description, and artist cards
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ArtistsSlice = prismic.SharedSlice<
+  "artists",
+  ArtistsSliceVariation
+>;
 
 /**
  * Primary content in *BentoGrid → Default → Primary*
@@ -1768,6 +1859,11 @@ declare module "@prismicio/client" {
       SettingsDocumentDataFooterSectionsSectionLinksItem,
       SettingsDocumentDataFooterSectionsItem,
       AllDocumentTypes,
+      ArtistsSlice,
+      ArtistsSliceDefaultPrimary,
+      ArtistsSliceDefaultItem,
+      ArtistsSliceVariation,
+      ArtistsSliceDefault,
       BentoGridSlice,
       BentoGridSliceDefaultPrimary,
       BentoGridSliceDefaultItem,

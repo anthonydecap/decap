@@ -90,8 +90,9 @@ export function Footer({ settings }: { settings?: FooterSettings }) {
   // const siteName = settings?.data?.site_name || 'Studio'
 
   return (
-    <Container as="footer" className="mt-24 w-full sm:mt-32 lg:mt-40">
-      <FadeIn>
+    <footer className="mt-24 w-full sm:mt-32 lg:mt-40">
+      <Container>
+        <FadeIn>
         <div className="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2">
           <Navigation sections={footerSections} />
           <div className="flex lg:justify-end">
@@ -130,7 +131,8 @@ export function Footer({ settings }: { settings?: FooterSettings }) {
             {copyrightText} {new Date().getFullYear()}
           </p>
         </div>
-      </FadeIn>
-    </Container>
+        </FadeIn>
+      </Container>
+    </footer>
   );
 }

@@ -129,6 +129,7 @@ const ContentSlice: FC<ContentProps> = ({ slice }) => {
         <PrismicNextImage
           field={image}
           className="aspect-[3/2] w-full object-cover"
+          alt=""
         />
       </div>
     );

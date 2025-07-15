@@ -1,21 +1,28 @@
 'use client'
 
-import { useState, useRef, useId } from 'react'
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+} from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
-import { motion } from 'framer-motion'
+import { motion, MotionConfig, useReducedMotion } from 'framer-motion'
 import { PrismicNextImage } from '@prismicio/next'
 import { ImageField } from '@prismicio/client'
 import { Container } from './Container'
 import { Logo, Logomark } from './Logo'
+import { Offices } from './Offices'
+import { SocialMedia } from './SocialMedia'
 
-function MenuIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
-      <path d="M2 6h20v2H2zM2 16h20v2H2z" />
-    </svg>
-  )
-}
+const HeaderContext = createContext<{
+  logoHovered: boolean
+  setLogoHovered: React.Dispatch<React.SetStateAction<boolean>>
+} | null>(null)
 
 function XIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -26,66 +33,38 @@ function XIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   )
 }
 
-function Navigation({ items }: { items: Array<{ label: string; link: { url: string } }> }) {
+function MenuIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
-    <nav className="mt-px font-display text-5xl font-medium tracking-tight text-white">
-      <div className="even:mt-px sm:bg-neutral-950">
-        <Container>
-          <div className="grid grid-cols-1 sm:grid-cols-2">
-            {items.map((item, index) => (
-              <Link
-                key={index}
-                href={item.link.url}
-                className="group relative isolate -mx-6 bg-neutral-950 px-6 py-10 even:mt-px sm:mx-0 sm:px-0 sm:py-16 sm:odd:pr-16 sm:even:mt-0 sm:even:border-l sm:even:border-neutral-800 sm:even:pl-16"
-              >
-                <div className="flex">
-                  <div className="self-center">
-                    <div className="flex items-center">
-                      <span className="text-white hover:text-neutral-200 transition">
-                        {item.label}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <span className="absolute inset-y-0 -z-10 w-screen bg-neutral-900 opacity-0 transition group-odd:right-0 group-even:left-0 group-hover:opacity-100" />
-              </Link>
-            ))}
-          </div>
-        </Container>
-      </div>
-    </nav>
+    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
+      <path d="M2 6h20v2H2zM2 16h20v2H2z" />
+    </svg>
   )
 }
 
-interface Settings {
-  data?: {
-    navigation?: Array<{ label: string; link: { url: string } }>
-    contact_button_text?: string
-    contact_button_link?: { url: string }
-    logo?: ImageField
-    site_name?: string
-  }
-}
-
-export function Header({ settings }: { settings?: Settings }) {
-  const panelId = useId()
-  const [expanded, setExpanded] = useState(false)
-  const [logoHovered, setLogoHovered] = useState(false)
-  const openRef = useRef<HTMLButtonElement>(null)
-  const closeRef = useRef<HTMLButtonElement>(null)
-
-  const navigationItems = settings?.data?.navigation || [
-    { label: 'Work', link: { url: '/work' } },
-    { label: 'About', link: { url: '/about' } },
-    { label: 'Services', link: { url: '/services' } },
-    { label: 'Contact', link: { url: '/contact' } },
-  ]
+function HeaderContent({
+  panelId,
+  icon: Icon,
+  expanded,
+  onToggle,
+  toggleRef,
+  invert = false,
+  settings,
+}: {
+  panelId: string
+  icon: React.ComponentType<{ className?: string }>
+  expanded: boolean
+  onToggle: () => void
+  toggleRef: React.RefObject<HTMLButtonElement | null>
+  invert?: boolean
+  settings?: Settings
+}) {
+  const { logoHovered, setLogoHovered } = useContext(HeaderContext)!
 
   const contactButtonText = settings?.data?.contact_button_text || 'Contact us'
   const contactButtonUrl = settings?.data?.contact_button_link?.url || '/contact'
   const logo = settings?.data?.logo
 
-  const HeaderContent = ({ invert = false }: { invert?: boolean }) => (
+  return (
     <Container>
       <div className="flex items-center justify-between">
         <Link
@@ -98,7 +77,7 @@ export function Header({ settings }: { settings?: Settings }) {
             <PrismicNextImage
               field={logo}
               className="h-8 w-auto"
-                             alt=""
+              alt=""
             />
           ) : (
             <>
@@ -128,10 +107,10 @@ export function Header({ settings }: { settings?: Settings }) {
             <span className="relative top-px">{contactButtonText}</span>
           </Link>
           <button
-            ref={invert ? closeRef : openRef}
+            ref={toggleRef}
             type="button"
-            onClick={() => setExpanded(!expanded)}
-            aria-expanded={expanded}
+            onClick={onToggle}
+            aria-expanded={expanded ? 'true' : 'false'}
             aria-controls={panelId}
             className={clsx(
               'group -m-2.5 rounded-full p-2.5 transition',
@@ -139,54 +118,213 @@ export function Header({ settings }: { settings?: Settings }) {
             )}
             aria-label="Toggle navigation"
           >
-            {expanded ? (
-              <XIcon
-                className={clsx(
-                  'h-6 w-6',
-                  invert
-                    ? 'fill-white group-hover:fill-neutral-200'
-                    : 'fill-neutral-950 group-hover:fill-neutral-700',
-                )}
-              />
-            ) : (
-              <MenuIcon
-                className={clsx(
-                  'h-6 w-6',
-                  invert
-                    ? 'fill-white group-hover:fill-neutral-200'
-                    : 'fill-neutral-950 group-hover:fill-neutral-700',
-                )}
-              />
-            )}
+            <Icon
+              className={clsx(
+                'h-6 w-6',
+                invert
+                  ? 'fill-white group-hover:fill-neutral-200'
+                  : 'fill-neutral-950 group-hover:fill-neutral-700',
+              )}
+            />
           </button>
         </div>
       </div>
     </Container>
   )
+}
+
+function NavigationRow({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="even:mt-px sm:bg-neutral-950">
+      <Container>
+        <div className="grid grid-cols-1 sm:grid-cols-2">{children}</div>
+      </Container>
+    </div>
+  )
+}
+
+function NavigationItem({
+  href,
+  children,
+}: {
+  href: string
+  children: React.ReactNode
+}) {
+  return (
+    <Link
+      href={href}
+      className="group relative isolate -mx-6 bg-neutral-950 px-6 py-10 even:mt-px sm:mx-0 sm:px-0 sm:py-16 sm:odd:pr-16 sm:even:mt-0 sm:even:border-l sm:even:border-neutral-800 sm:even:pl-16"
+    >
+      <div className="flex">
+        <div className="self-center">
+          <div className="flex items-center">
+            <span className="text-white hover:text-neutral-200 transition">
+              {children}
+            </span>
+          </div>
+        </div>
+      </div>
+      <span className="absolute inset-y-0 -z-10 w-screen bg-neutral-900 opacity-0 transition group-odd:right-0 group-even:left-0 group-hover:opacity-100" />
+    </Link>
+  )
+}
+
+function Navigation({ items }: { items: Array<{ label: string; link: { url: string } }> }) {
+  // Organize items into rows of 2
+  const rows = []
+  for (let i = 0; i < items.length; i += 2) {
+    rows.push(items.slice(i, i + 2))
+  }
 
   return (
-    <header>
-      <div
-        className="absolute top-2 right-0 left-0 z-40 pt-14"
-        aria-hidden={expanded ? 'true' : undefined}
-      >
-        <HeaderContent />
-      </div>
+    <nav className="mt-px font-display text-5xl font-medium tracking-tight text-white">
+      {rows.map((row, rowIndex) => (
+        <NavigationRow key={rowIndex}>
+          {row.map((item, itemIndex) => (
+            <NavigationItem key={itemIndex} href={item.link.url}>
+              {item.label}
+            </NavigationItem>
+          ))}
+        </NavigationRow>
+      ))}
+    </nav>
+  )
+}
 
-      <motion.div
-        layout
-        id={panelId}
-        style={{ height: expanded ? 'auto' : '0.5rem' }}
-        className="relative z-50 overflow-hidden bg-neutral-950 pt-2"
-        aria-hidden={expanded ? undefined : 'true'}
-      >
-        <motion.div layout className="bg-neutral-800">
-          <div className="bg-neutral-950 pt-14 pb-16">
-            <HeaderContent invert />
-          </div>
-          <Navigation items={navigationItems} />
+interface Settings {
+  data?: {
+    navigation?: Array<{ label: string; link: { url: string } }>
+    contact_button_text?: string
+    contact_button_link?: { url: string }
+    logo?: ImageField
+    site_name?: string
+  }
+}
+
+function HeaderInner({ settings }: { settings?: Settings }) {
+  const panelId = useId()
+  const [expanded, setExpanded] = useState(false)
+  const [isTransitioning, setIsTransitioning] = useState(false)
+  const openRef = useRef<React.ElementRef<'button'>>(null)
+  const closeRef = useRef<React.ElementRef<'button'>>(null)
+  const navRef = useRef<React.ElementRef<'div'>>(null)
+  const shouldReduceMotion = useReducedMotion()
+
+  const navigationItems = settings?.data?.navigation || [
+    { label: 'Our Work', link: { url: '/work' } },
+    { label: 'About Us', link: { url: '/about' } },
+    { label: 'Our Process', link: { url: '/process' } },
+    { label: 'Blog', link: { url: '/blog' } },
+  ]
+
+  useEffect(() => {
+    function onClick(event: MouseEvent) {
+      if (
+        event.target instanceof HTMLElement &&
+        event.target.closest('a')?.href === window.location.href
+      ) {
+        setIsTransitioning(false)
+        setExpanded(false)
+      }
+    }
+
+    window.addEventListener('click', onClick)
+
+    return () => {
+      window.removeEventListener('click', onClick)
+    }
+  }, [])
+
+  return (
+    <MotionConfig
+      transition={
+        shouldReduceMotion || !isTransitioning ? { duration: 0 } : undefined
+      }
+    >
+      <header>
+        <div
+          className="absolute top-2 right-0 left-0 z-40 pt-14"
+          aria-hidden={expanded ? 'true' : undefined}
+          inert={expanded ? true : undefined}
+        >
+          <HeaderContent
+            panelId={panelId}
+            icon={MenuIcon}
+            toggleRef={openRef}
+            expanded={expanded}
+            settings={settings}
+            onToggle={() => {
+              setIsTransitioning(true)
+              setExpanded((expanded) => !expanded)
+              window.setTimeout(() =>
+                closeRef.current?.focus({ preventScroll: true }),
+              )
+            }}
+          />
+        </div>
+
+        <motion.div
+          layout
+          id={panelId}
+          style={{ height: expanded ? 'auto' : '0.5rem' }}
+          className="relative z-50 overflow-hidden bg-neutral-950 pt-2"
+          aria-hidden={expanded ? undefined : 'true'}
+          inert={expanded ? undefined : true}
+        >
+          <motion.div layout className="bg-neutral-800">
+            <div ref={navRef} className="bg-neutral-950 pt-14 pb-16">
+              <HeaderContent
+                invert
+                panelId={panelId}
+                icon={XIcon}
+                toggleRef={closeRef}
+                expanded={expanded}
+                settings={settings}
+                onToggle={() => {
+                  setIsTransitioning(true)
+                  setExpanded((expanded) => !expanded)
+                  window.setTimeout(() =>
+                    openRef.current?.focus({ preventScroll: true }),
+                  )
+                }}
+              />
+            </div>
+            <Navigation items={navigationItems} />
+            <div className="relative bg-neutral-950 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-neutral-800">
+              <Container>
+                <div className="grid grid-cols-1 gap-y-10 pt-10 pb-16 sm:grid-cols-2 sm:pt-16">
+                  <div>
+                    <h2 className="font-display text-base font-semibold text-white">
+                      Our offices
+                    </h2>
+                    <Offices
+                      invert
+                      className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2"
+                    />
+                  </div>
+                  <div className="sm:border-l sm:border-transparent sm:pl-16">
+                    <h2 className="font-display text-base font-semibold text-white">
+                      Follow us
+                    </h2>
+                    <SocialMedia className="mt-6" invert />
+                  </div>
+                </div>
+              </Container>
+            </div>
+          </motion.div>
         </motion.div>
-      </motion.div>
-    </header>
+      </header>
+    </MotionConfig>
+  )
+}
+
+export function Header({ settings }: { settings?: Settings }) {
+  const pathname = usePathname()
+  const [logoHovered, setLogoHovered] = useState(false)
+
+  return (
+    <HeaderContext.Provider value={{ logoHovered, setLogoHovered }}>
+      <HeaderInner key={pathname} settings={settings} />
+    </HeaderContext.Provider>
   )
 } 

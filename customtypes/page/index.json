@@ -27,6 +27,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "artists": {
+              "type": "SharedSlice"
+            },
             "three_d": {
               "type": "SharedSlice"
             },
