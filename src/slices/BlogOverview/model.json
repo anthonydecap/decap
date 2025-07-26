@@ -1,0 +1,35 @@
+{
+  "id": "blog_overview",
+  "type": "SharedSlice",
+  "name": "BlogOverview",
+  "description": "A slice for flexible content on the blog overview page.",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "",
+      "version": "1.0.0",
+      "description": "Default blog overview layout",
+      "primary": {
+        "section_title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Section Title",
+            "placeholder": "Section heading",
+            "single": "heading2"
+          }
+        },
+        "section_description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Section Description",
+            "placeholder": "Section description",
+            "single": "paragraph"
+          }
+        }
+      },
+      "items": {},
+      "imageUrl": ""
+    }
+  ]
+} 

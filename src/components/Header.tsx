@@ -191,7 +191,7 @@ function Navigation({ items }: { items: Array<{ label: string; link: { url: stri
   )
 }
 
-interface Settings {
+export interface Settings {
   data?: {
     navigation?: Array<{ label: string; link: { url: string } }>
     contact_button_text?: string

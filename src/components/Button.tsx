@@ -6,7 +6,7 @@ type ButtonProps = {
   invert?: boolean
   children: React.ReactNode
   className?: string
-  href?: LinkField
+  href?: LinkField | string
 } & Omit<React.ComponentPropsWithoutRef<'button'>, 'href'>
 
 export function Button({
@@ -27,6 +27,15 @@ export function Button({
   const inner = <span className="relative top-px">{children}</span>
 
   if (href) {
+    // If href is a string, render a regular <a> tag
+    if (typeof href === 'string') {
+      return (
+        <a href={href} className={buttonClasses}>
+          {inner}
+        </a>
+      )
+    }
+    // If href is a Prismic link object, render PrismicNextLink
     return (
       <PrismicNextLink field={href} className={buttonClasses}>
         {inner}

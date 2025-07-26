@@ -1,10 +1,12 @@
 import { createClient } from "@/prismicio";
 
-export async function getSettings() {
+export async function getSettings(lang?: string) {
   const client = createClient();
   
   try {
-    const settings = await client.getSingle("settings");
+    const settings = await client.getSingle("settings", {
+      lang: lang ? lang : undefined,
+    });
     return settings;
   } catch {
     console.warn("Settings document not found, using defaults");
@@ -22,6 +24,7 @@ export const defaultSettings = {
       { label: "Work", link: { url: "/work" } },
       { label: "About", link: { url: "/about" } },
       { label: "Services", link: { url: "/services" } },
+      { label: "Blog", link: { url: "/blog" } },
       { label: "Contact", link: { url: "/contact" } },
     ],
     footer_sections: [

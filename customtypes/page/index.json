@@ -45,6 +45,9 @@
             "blog": {
               "type": "SharedSlice"
             },
+            "blog_listing": {
+              "type": "SharedSlice"
+            },
             "bento_grid": {
               "type": "SharedSlice"
             },

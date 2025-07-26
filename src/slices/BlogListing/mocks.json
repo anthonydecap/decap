@@ -1,0 +1,28 @@
+[
+  {
+    "variation": "default",
+    "version": "sktwi1xtmkfgx8626",
+    "items": [],
+    "primary": {
+      "eyebrow": "Blog",
+      "title": [
+        {
+          "type": "heading2",
+          "text": "The latest articles and news",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "Stay up-to-date with the latest industry news as our marketing teams finds new ways to re-purpose old CSS tricks articles.",
+          "spans": []
+        }
+      ],
+      "posts_per_page": 6,
+      "show_featured": true
+    },
+    "slice_type": "blog_listing",
+    "id": "_Default"
+  }
+] 
