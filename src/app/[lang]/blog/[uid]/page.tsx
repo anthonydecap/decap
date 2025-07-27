@@ -2,6 +2,12 @@
 import { type Metadata } from "next";
 import { notFound } from "next/navigation";
 import { reverseLocaleLookup } from "@/i18n";
+
+// Import the LOCALES mapping for proper language conversion
+const LOCALES = {
+  "en-us": "en",
+  "fr-fr": "fr",
+} as const;
 import { createClient } from "@/prismicio";
 import { Container } from "@/components/Container";
 import { FadeIn } from "@/components/FadeIn";
@@ -204,10 +210,15 @@ export async function generateStaticParams() {
       lang: "*",
     });
     
-    return posts.map((post) => ({ 
-      lang: post.lang,
-      uid: post.uid 
-    }));
+    return posts.map((post) => {
+      // Convert Prismic locale to URL locale using the LOCALES mapping
+      const urlLocale = LOCALES[post.lang as keyof typeof LOCALES] || post.lang;
+      
+      return { 
+        lang: urlLocale,
+        uid: post.uid 
+      };
+    });
   } catch (error) {
     // Return empty array if blog custom type doesn't exist yet
     console.warn("Blog custom type not found - this is expected during initial setup", error);

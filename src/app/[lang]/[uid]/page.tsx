@@ -57,5 +57,10 @@ export async function generateStaticParams() {
     lang: "*",
   });
 
-  return pages.map((page) => ({ lang: page.lang, uid: page.uid }));
+  return pages.map((page) => {
+    // Convert Prismic locale to URL locale
+    const urlLocale = page.lang === "en-us" ? "en" : page.lang === "fr-fr" ? "fr" : page.lang;
+    
+    return { lang: urlLocale, uid: page.uid };
+  });
 }

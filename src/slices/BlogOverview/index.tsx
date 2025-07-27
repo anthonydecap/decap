@@ -1,5 +1,6 @@
 import React from "react";
 import { PrismicRichText } from "@prismicio/react";
+import { type Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 
 
@@ -7,7 +8,7 @@ import { SliceComponentProps } from "@prismicio/react";
 /**
  * BlogOverview slice component for Prismic.
  */
-const BlogOverview = ({ slice }: SliceComponentProps<>) => {
+const BlogOverview = ({ slice }: SliceComponentProps<Content.BlogOverviewSlice>) => {
   return (
     <section className="py-12 lg:py-20">
       <div className="container mx-auto px-4">
