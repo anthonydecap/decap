@@ -1,0 +1,30 @@
+{
+  "id": "product",
+  "slice_type": "product",
+  "slice_label": null,
+  "version": "initial",
+  "variation": "default",
+  "primary": {
+    "product_name": "Premium Wireless Headphones",
+    "product_description": [
+      {
+        "type": "paragraph",
+        "text": "Experience crystal-clear sound with our premium wireless headphones. Features include noise cancellation, 30-hour battery life, and premium comfort.",
+        "spans": []
+      }
+    ],
+    "product_price": 299.99,
+    "product_image": {
+      "dimensions": {
+        "width": 400,
+        "height": 400
+      },
+      "alt": "Premium Wireless Headphones",
+      "copyright": null,
+      "url": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop"
+    },
+    "currency": "USD",
+    "product_id": "headphones-001"
+  },
+  "items": []
+} 

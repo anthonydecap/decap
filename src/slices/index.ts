@@ -15,6 +15,7 @@ export const components = {
   feature: dynamic(() => import("./Feature")),
   grid_list: dynamic(() => import("./GridList")),
   hero: dynamic(() => import("./Hero")),
+  product: dynamic(() => import("./Product")),
   rich_text: dynamic(() => import("./RichText")),
   section_intro: dynamic(() => import("./SectionIntro")),
   stats: dynamic(() => import("./Stats")),

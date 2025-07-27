@@ -346,6 +346,7 @@ export type BlogOverviewDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | ProductSlice
   | ArtistsSlice
   | ThreeDSlice
   | FaqSlice
@@ -444,7 +445,8 @@ type ProductDocumentDataSlicesSlice =
   | BlogSlice
   | ContentSlice
   | FaqSlice
-  | BentoGridSlice;
+  | BentoGridSlice
+  | ProductSlice;
 
 /**
  * Content for Product documents
@@ -1998,6 +2000,102 @@ type HeroSliceVariation = HeroSliceDefault;
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
 /**
+ * Primary content in *Product → Default → Primary*
+ */
+export interface ProductSliceDefaultPrimary {
+  /**
+   * Product Name field in *Product → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Enter product name
+   * - **API ID Path**: product.default.primary.product_name
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  product_name: prismic.KeyTextField;
+
+  /**
+   * Product Description field in *Product → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Enter product description
+   * - **API ID Path**: product.default.primary.product_description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  product_description: prismic.RichTextField;
+
+  /**
+   * Product Price field in *Product → Default → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: Enter price (e.g., 29.99)
+   * - **API ID Path**: product.default.primary.product_price
+   * - **Documentation**: https://prismic.io/docs/fields/number
+   */
+  product_price: prismic.NumberField;
+
+  /**
+   * Product Image field in *Product → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product.default.primary.product_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  product_image: prismic.ImageField<never>;
+
+  /**
+   * Currency field in *Product → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Select currency
+   * - **Default Value**: USD
+   * - **API ID Path**: product.default.primary.currency
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  currency: prismic.SelectField<"USD" | "EUR" | "GBP", "filled">;
+
+  /**
+   * Product ID field in *Product → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Enter unique product ID
+   * - **API ID Path**: product.default.primary.product_id
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  product_id: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for Product Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ProductSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ProductSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Product*
+ */
+type ProductSliceVariation = ProductSliceDefault;
+
+/**
+ * Product Shared Slice
+ *
+ * - **API ID**: `product`
+ * - **Description**: Product slice with add to cart functionality
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ProductSlice = prismic.SharedSlice<
+  "product",
+  ProductSliceVariation
+>;
+
+/**
  * Primary content in *RichText → Default → Primary*
  */
 export interface RichTextSliceDefaultPrimary {
@@ -2504,6 +2602,10 @@ declare module "@prismicio/client" {
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
+      ProductSlice,
+      ProductSliceDefaultPrimary,
+      ProductSliceVariation,
+      ProductSliceDefault,
       RichTextSlice,
       RichTextSliceDefaultPrimary,
       RichTextSliceVariation,

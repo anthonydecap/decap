@@ -52,6 +52,9 @@
             },
             "bento_grid": {
               "type": "SharedSlice"
+            },
+            "product": {
+              "type": "SharedSlice"
             }
           }
         }

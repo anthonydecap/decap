@@ -18,6 +18,8 @@ import { Container } from './Container'
 import { Logo, Logomark } from './Logo'
 import { Offices } from './Offices'
 import { SocialMedia } from './SocialMedia'
+import { CartIcon } from './CartIcon'
+import { CartSidePanel } from './CartSidePanel'
 
 const HeaderContext = createContext<{
   logoHovered: boolean
@@ -49,6 +51,9 @@ function HeaderContent({
   toggleRef,
   invert = false,
   settings,
+  isCartOpen,
+  onOpenCart,
+  onCloseCart,
 }: {
   panelId: string
   icon: React.ComponentType<{ className?: string }>
@@ -57,6 +62,9 @@ function HeaderContent({
   toggleRef: React.RefObject<HTMLButtonElement | null>
   invert?: boolean
   settings?: Settings
+  isCartOpen: boolean
+  onOpenCart: () => void
+  onCloseCart: () => void
 }) {
   const { logoHovered, setLogoHovered } = useContext(HeaderContext)!
 
@@ -95,6 +103,7 @@ function HeaderContent({
           )}
         </Link>
         <div className="flex items-center gap-x-8">
+          <CartIcon onOpenCart={onOpenCart} />
           <Link
             href={contactButtonUrl}
             className={clsx(
@@ -129,6 +138,7 @@ function HeaderContent({
           </button>
         </div>
       </div>
+      <CartSidePanel isOpen={isCartOpen} onClose={onCloseCart} />
     </Container>
   )
 }
@@ -205,6 +215,7 @@ function HeaderInner({ settings }: { settings?: Settings }) {
   const panelId = useId()
   const [expanded, setExpanded] = useState(false)
   const [isTransitioning, setIsTransitioning] = useState(false)
+  const [isCartOpen, setIsCartOpen] = useState(false)
   const openRef = useRef<React.ElementRef<'button'>>(null)
   const closeRef = useRef<React.ElementRef<'button'>>(null)
   const navRef = useRef<React.ElementRef<'div'>>(null)
@@ -253,6 +264,9 @@ function HeaderInner({ settings }: { settings?: Settings }) {
             toggleRef={openRef}
             expanded={expanded}
             settings={settings}
+            isCartOpen={isCartOpen}
+            onOpenCart={() => setIsCartOpen(true)}
+            onCloseCart={() => setIsCartOpen(false)}
             onToggle={() => {
               setIsTransitioning(true)
               setExpanded((expanded) => !expanded)
@@ -280,6 +294,9 @@ function HeaderInner({ settings }: { settings?: Settings }) {
                 toggleRef={closeRef}
                 expanded={expanded}
                 settings={settings}
+                isCartOpen={isCartOpen}
+                onOpenCart={() => setIsCartOpen(true)}
+                onCloseCart={() => setIsCartOpen(false)}
                 onToggle={() => {
                   setIsTransitioning(true)
                   setExpanded((expanded) => !expanded)
