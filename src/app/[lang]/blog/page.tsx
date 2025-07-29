@@ -28,9 +28,8 @@ export default async function BlogPage({
   // Fetch the blog_overview singleton for the current language
   let overviewDoc = null;
   try {
-    const prismicLang = reverseLocaleLookup(lang) || "en-us";
     overviewDoc = await client.getSingle("blog_overview", {
-      lang: prismicLang,
+      lang: reverseLocaleLookup(lang),
     });
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {

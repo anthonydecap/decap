@@ -4,7 +4,7 @@ import { CartItem } from '@/lib/cart-store';
 
 export async function POST(request: NextRequest) {
   try {
-    const { items, currency } = await request.json();
+    const { items, currency, shippingCost = 0 } = await request.json();
 
     if (!items || !Array.isArray(items) || items.length === 0) {
       return NextResponse.json(
@@ -13,10 +13,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Calculate total amount in cents
-    const totalAmount = items.reduce((sum: number, item: CartItem) => {
+    // Calculate total amount in cents (including shipping)
+    const subtotal = items.reduce((sum: number, item: CartItem) => {
       return sum + (item.price * item.quantity * 100);
     }, 0);
+    const shippingAmount = Math.round(shippingCost * 100);
+    const totalAmount = subtotal + shippingAmount;
 
     // Create payment intent
     const paymentIntent = await stripe.paymentIntents.create({
@@ -26,7 +28,12 @@ export async function POST(request: NextRequest) {
         enabled: true,
       },
       metadata: {
-        items: JSON.stringify(items.map(item => ({ id: item.id, quantity: item.quantity }))),
+        items: JSON.stringify(items.map(item => ({
+          id: item.id,
+          quantity: item.quantity,
+          name: item.name,
+          price: item.price
+        }))),
       },
     });
 

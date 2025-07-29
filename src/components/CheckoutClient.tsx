@@ -22,7 +22,7 @@ interface CheckoutClientProps {
 }
 
 export function CheckoutClient({ checkoutContent, lang }: CheckoutClientProps) {
-  const { items, getTotal, clearCart, addItem } = useCartStore();
+  const { items, getTotal, getTotalWithShipping, selectedShippingMethod, clearCart, addItem } = useCartStore();
   const router = useRouter();
   const [clientSecret, setClientSecret] = useState<string>("");
   const [isLoading, setIsLoading] = useState(true);
@@ -40,6 +40,7 @@ export function CheckoutClient({ checkoutContent, lang }: CheckoutClientProps) {
           body: JSON.stringify({
             items,
             currency: items[0]?.currency || "USD",
+            shippingCost: selectedShippingMethod ? parseFloat(selectedShippingMethod.price) : 0,
           }),
         });
 
@@ -54,7 +55,7 @@ export function CheckoutClient({ checkoutContent, lang }: CheckoutClientProps) {
     };
 
     createPaymentIntent();
-  }, [items, router, lang, addItem]);
+  }, [items, router, lang, addItem, selectedShippingMethod]);
 
   if (items.length === 0) {
     return (
@@ -109,7 +110,6 @@ export function CheckoutClient({ checkoutContent, lang }: CheckoutClientProps) {
                 {clientSecret && (
                   <Elements stripe={stripePromise} options={{ clientSecret }}>
                     <CheckoutForm
-                      total={getTotal()}
                       onSuccess={() => {
                         clearCart();
                         router.push(`/${lang}/webshop/success`);
@@ -157,6 +157,23 @@ export function CheckoutClient({ checkoutContent, lang }: CheckoutClientProps) {
                   </div>
 
                   <div className="mt-6 space-y-4">
+                    <div className="flex items-center justify-between">
+                      <dt className="text-sm text-gray-600">Subtotal</dt>
+                      <dd className="text-sm text-gray-900">
+                        {getCurrencySymbol(items[0]?.currency || "USD")}
+                        {getTotal().toFixed(2)}
+                      </dd>
+                    </div>
+                    
+                    {selectedShippingMethod && (
+                      <div className="flex items-center justify-between">
+                        <dt className="text-sm text-gray-600">Shipping ({selectedShippingMethod.name})</dt>
+                        <dd className="text-sm text-gray-900">
+                          €{selectedShippingMethod.price}
+                        </dd>
+                      </div>
+                    )}
+                    
                     <div className="flex items-center justify-between border-t border-gray-200 pt-4">
                       <dt className="text-base font-medium text-gray-900">
                         {checkoutContent.data.slices?.[0]?.primary
@@ -164,7 +181,7 @@ export function CheckoutClient({ checkoutContent, lang }: CheckoutClientProps) {
                       </dt>
                       <dd className="text-base font-medium text-gray-900">
                         {getCurrencySymbol(items[0]?.currency || "USD")}
-                        {getTotal().toFixed(2)}
+                        {getTotalWithShipping().toFixed(2)}
                       </dd>
                     </div>
                   </div>
@@ -195,15 +212,14 @@ export function CheckoutClient({ checkoutContent, lang }: CheckoutClientProps) {
             {/* Checkout Form */}
             <div className="lg:col-span-1">
               {clientSecret && (
-                <Elements stripe={stripePromise} options={{ clientSecret }}>
-                  <CheckoutForm
-                    total={getTotal()}
-                    onSuccess={() => {
-                      clearCart();
-                      router.push(`/${lang}/webshop/success`);
-                    }}
-                  />
-                </Elements>
+                                  <Elements stripe={stripePromise} options={{ clientSecret }}>
+                    <CheckoutForm
+                      onSuccess={() => {
+                        clearCart();
+                        router.push(`/${lang}/webshop/success`);
+                      }}
+                    />
+                  </Elements>
               )}
             </div>
 
@@ -244,13 +260,30 @@ export function CheckoutClient({ checkoutContent, lang }: CheckoutClientProps) {
                 </div>
 
                 <div className="mt-6 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <dt className="text-sm text-gray-600">Subtotal</dt>
+                    <dd className="text-sm text-gray-900">
+                      {getCurrencySymbol(items[0]?.currency || "USD")}
+                      {getTotal().toFixed(2)}
+                    </dd>
+                  </div>
+                  
+                  {selectedShippingMethod && (
+                    <div className="flex items-center justify-between">
+                      <dt className="text-sm text-gray-600">Shipping ({selectedShippingMethod.name})</dt>
+                      <dd className="text-sm text-gray-900">
+                        €{selectedShippingMethod.price}
+                      </dd>
+                    </div>
+                  )}
+                  
                   <div className="flex items-center justify-between border-t border-gray-200 pt-4">
                     <dt className="text-base font-medium text-gray-900">
                       Total
                     </dt>
                     <dd className="text-base font-medium text-gray-900">
                       {getCurrencySymbol(items[0]?.currency || "USD")}
-                      {getTotal().toFixed(2)}
+                      {getTotalWithShipping().toFixed(2)}
                     </dd>
                   </div>
                 </div>

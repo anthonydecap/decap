@@ -33,6 +33,7 @@ type ProductProps = SliceComponentProps<{
     product_image: any;
     currency: string;
     product_id: string;
+    product_weight: number;
   };
   items: any[];
 }>;
@@ -48,6 +49,7 @@ export default function Product({ slice }: ProductProps) {
       price: slice.primary.product_price,
       currency: slice.primary.currency,
       image: slice.primary.product_image.url,
+      weight: slice.primary.product_weight || 1, // Default to 1kg if not set
     });
   };
 

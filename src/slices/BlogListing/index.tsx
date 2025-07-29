@@ -57,9 +57,8 @@ const BlogListing: FC<BlogListingProps> = async ({ slice, context }) => {
   let blogPosts: any[] = [];
   
   try {
-    const prismicLang = reverseLocaleLookup(lang) || "en-us";
     blogPosts = await client.getAllByType("blog" as any, {
-      lang: prismicLang,
+      lang: reverseLocaleLookup(lang),
       orderings: [
         { field: "my.blog.published_date", direction: "desc" },
         { field: "document.first_publication_date", direction: "desc" },

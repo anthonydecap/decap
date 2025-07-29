@@ -1,5 +1,5 @@
 import type { NextRequest } from "next/server";
-import { auth0 } from "./lib/auth0";
+import { auth0 } from "./auth0";
 import { createLocaleRedirect, pathnameHasLocale } from "@/i18n";
 
 export async function middleware(request: NextRequest) {

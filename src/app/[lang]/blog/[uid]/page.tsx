@@ -4,10 +4,10 @@ import { notFound } from "next/navigation";
 import { reverseLocaleLookup } from "@/i18n";
 
 // Import the LOCALES mapping for proper language conversion
-// const LOCALES = {
-//   "en-us": "en",
-//   "fr-fr": "fr",
-// } as const;
+const LOCALES = {
+  "en-us": "en",
+  "fr-fr": "fr",
+} as const;
 import { createClient } from "@/prismicio";
 import { Container } from "@/components/Container";
 import { FadeIn } from "@/components/FadeIn";
@@ -30,9 +30,8 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   
   try {
     // Check if blog custom type exists first
-    const prismicLang = reverseLocaleLookup(lang) || "en-us";
     const post = await client.getByUID("blog" as any, uid, {
-      lang: prismicLang,
+      lang: reverseLocaleLookup(lang),
     });
     
     const postData = post.data as any;
@@ -63,26 +62,18 @@ export default async function BlogPostPage({ params }: { params: Promise<Params>
   let allPosts: any[] = [];
   
   try {
-    const prismicLang = reverseLocaleLookup(lang) || "en-us";
-    
     post = await client.getByUID("blog" as any, uid, {
-      lang: prismicLang,
+      lang: reverseLocaleLookup(lang),
     });
     
     // Get all posts for related posts
-    allPosts = await getBlogPosts(prismicLang);
+    allPosts = await getBlogPosts(reverseLocaleLookup(lang) || "en-us");
   } catch (error) {
     console.warn(`Blog post not found or blog custom type not synced: ${uid}`, error);
     notFound();
   }
   
-  if (!post || !post.data) {
-    notFound();
-  }
-  
-  // Ensure post has required fields
-  if (!post.data.title || !post.uid) {
-    console.warn(`Blog post missing required fields: ${uid}`);
+  if (!post) {
     notFound();
   }
   
@@ -211,45 +202,26 @@ export default async function BlogPostPage({ params }: { params: Promise<Params>
   );
 }
 
-// Temporarily disabled due to build issues with specific blog posts
-// export async function generateStaticParams() {
-//   const client = createClient();
-//   
-//   try {
-//     const posts = await client.getAllByType("blog" as any, {
-//       lang: "*",
-//     });
-//     
-//     // Ensure posts is an array and filter out any malformed posts
-//     if (!Array.isArray(posts)) {
-//       console.warn("Blog posts is not an array, returning empty array");
-//       return [];
-//     }
-//     
-//     const validPosts = posts.filter((post: any) => {
-//       return post && 
-//              typeof post === 'object' &&
-//              post.uid && 
-//              typeof post.uid === 'string' &&
-//              post.lang && 
-//              typeof post.lang === 'string' &&
-//              post.data && 
-//              typeof post.data === 'object' &&
-//              post.data.title;
-//     });
-//     
-//     return validPosts.map((post) => {
-//       // Convert Prismic locale to URL locale using the LOCALES mapping
-//       const urlLocale = LOCALES[post.lang as keyof typeof LOCALES] || post.lang;
-//       
-//       return { 
-//         lang: urlLocale,
-//         uid: post.uid 
-//       };
-//     });
-//   } catch (error) {
-//     // Return empty array if blog custom type doesn't exist yet
-//     console.warn("Blog custom type not found - this is expected during initial setup", error);
-//     return [];
-//   }
-// } 
+export async function generateStaticParams() {
+  const client = createClient();
+  
+  try {
+    const posts = await client.getAllByType("blog" as any, {
+      lang: "*",
+    });
+    
+    return posts.map((post) => {
+      // Convert Prismic locale to URL locale using the LOCALES mapping
+      const urlLocale = LOCALES[post.lang as keyof typeof LOCALES] || post.lang;
+      
+      return { 
+        lang: urlLocale,
+        uid: post.uid 
+      };
+    });
+  } catch (error) {
+    // Return empty array if blog custom type doesn't exist yet
+    console.warn("Blog custom type not found - this is expected during initial setup", error);
+    return [];
+  }
+} 
