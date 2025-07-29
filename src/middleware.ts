@@ -3,12 +3,19 @@ import { auth0 } from "./lib/auth0";
 import { createLocaleRedirect, pathnameHasLocale } from "@/i18n";
 
 export async function middleware(request: NextRequest) {
-  // First handle Auth0 authentication
-  const authResult = await auth0.middleware(request);
-  
-  // If Auth0 returns a response (redirect, error, etc.), use it
-  if (authResult) {
-    return authResult;
+  try {
+    // First handle Auth0 authentication if available
+    if (auth0) {
+      const authResult = await auth0.middleware(request);
+      
+      // If Auth0 returns a response (redirect, error, etc.), use it
+      if (authResult) {
+        return authResult;
+      }
+    }
+  } catch (error) {
+    // If Auth0 fails, continue with internationalization
+    console.warn("Auth0 middleware failed:", error);
   }
   
   // Then handle internationalization

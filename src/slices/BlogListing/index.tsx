@@ -57,8 +57,9 @@ const BlogListing: FC<BlogListingProps> = async ({ slice, context }) => {
   let blogPosts: any[] = [];
   
   try {
+    const prismicLang = reverseLocaleLookup(lang) || "en-us";
     blogPosts = await client.getAllByType("blog" as any, {
-      lang: reverseLocaleLookup(lang),
+      lang: prismicLang,
       orderings: [
         { field: "my.blog.published_date", direction: "desc" },
         { field: "document.first_publication_date", direction: "desc" },
@@ -112,6 +113,11 @@ const BlogListing: FC<BlogListingProps> = async ({ slice, context }) => {
           <div className="space-y-24 lg:space-y-32">
             <FadeInStagger>
               {displayPosts.map((post) => {
+                // Skip posts that don't have the expected structure
+                if (!post || !post.data || !post.uid) {
+                  return null;
+                }
+                
                 const postTags = extractTagsFromPost(post);
                 
                 return (
