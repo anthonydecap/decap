@@ -12,7 +12,6 @@ interface CartSidePanelProps {
 
 export function CartSidePanel({ isOpen, onClose }: CartSidePanelProps) {
   const { items, removeItem, updateQuantity, clearCart, getTotal, getItemCount } = useCartStore();
-  const [isLoading, setIsLoading] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   // Fix hydration issue by only rendering after mount
@@ -23,30 +22,12 @@ export function CartSidePanel({ isOpen, onClose }: CartSidePanelProps) {
   const handleCheckout = async () => {
     if (items.length === 0) return;
 
-    setIsLoading(true);
-    try {
-      const response = await fetch('/api/create-checkout-session', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          items,
-          successUrl: `${window.location.origin}/success`,
-          cancelUrl: `${window.location.origin}`,
-        }),
-      });
-
-      const { url } = await response.json();
-      if (url) {
-        window.location.href = url;
-      }
-    } catch (error) {
-      console.error('Error creating checkout session:', error);
-      alert('Failed to create checkout session. Please try again.');
-    } finally {
-      setIsLoading(false);
-    }
+    // Get current language from URL
+    const pathSegments = window.location.pathname.split('/');
+    const currentLang = pathSegments[1] || 'en'; // Default to 'en' if no language found
+    
+    // Redirect to custom checkout page with language
+    window.location.href = `/${currentLang}/webshop/checkout`;
   };
 
   // Don't prevent body scroll - keep page visible
@@ -142,10 +123,9 @@ export function CartSidePanel({ isOpen, onClose }: CartSidePanelProps) {
               <div className="space-y-3">
                 <Button
                   onClick={handleCheckout}
-                  disabled={isLoading}
-                  className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50"
+                  className="w-full bg-blue-600 hover:bg-blue-700"
                 >
-                  {isLoading ? 'Processing...' : 'Proceed to Checkout'}
+                  Proceed to Checkout
                 </Button>
                 <Button
                   onClick={clearCart}

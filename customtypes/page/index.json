@@ -74,6 +74,12 @@
             },
             "rich_text": {
               "type": "SharedSlice"
+            },
+            "checkout": {
+              "type": "SharedSlice"
+            },
+            "success": {
+              "type": "SharedSlice"
             }
           }
         }

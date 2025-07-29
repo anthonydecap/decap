@@ -1,29 +1,34 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
-import { useCartStore } from '@/lib/cart-store';
 import { Container } from '@/components/Container';
 import { FadeIn } from '@/components/FadeIn';
 import { Button } from '@/components/Button';
 
-export default function SuccessPage() {
-  const searchParams = useSearchParams();
-  const { clearCart } = useCartStore();
-  const sessionId = searchParams.get('session_id');
+interface SuccessClientProps {
+  lang: string;
+  paymentIntent?: string;
+  sessionId?: string;
+}
 
+export function SuccessClient({ lang, paymentIntent, sessionId }: SuccessClientProps) {
   useEffect(() => {
-    // Clear the cart after successful checkout
-    clearCart();
-  }, [clearCart]);
+    // You can verify the payment here if needed
+    if (paymentIntent) {
+      console.log('Payment successful (Elements):', paymentIntent);
+    }
+    if (sessionId) {
+      console.log('Payment successful (Checkout Session):', sessionId);
+    }
+  }, [paymentIntent, sessionId]);
 
   return (
     <Container className="mt-24 sm:mt-32 lg:mt-40">
       <FadeIn>
         <div className="text-center">
-          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
             <svg
-              className="h-6 w-6 text-green-600"
+              className="h-8 w-8 text-green-600"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -36,19 +41,17 @@ export default function SuccessPage() {
               />
             </svg>
           </div>
+          
           <h1 className="mt-6 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Thank you for your order!
+            Payment Successful!
           </h1>
+          
           <p className="mt-4 text-lg leading-8 text-gray-600">
-            Your order has been successfully placed. You will receive a confirmation email shortly.
+            Thank you for your purchase. You will receive a confirmation email shortly.
           </p>
-          {sessionId && (
-            <p className="mt-2 text-sm text-gray-500">
-              Order ID: {sessionId}
-            </p>
-          )}
-          <div className="mt-8">
-            <Button href="/" className="bg-blue-600 hover:bg-blue-700">
+          
+          <div className="mt-8 flex justify-center space-x-4">
+            <Button href={`/${lang}`} className="bg-blue-600 hover:bg-blue-700">
               Continue Shopping
             </Button>
           </div>

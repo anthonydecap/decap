@@ -8,6 +8,7 @@ export const components = {
   blog: dynamic(() => import("./Blog")),
   blog_listing: dynamic(() => import("./BlogListing")),
   blog_overview: dynamic(() => import("./BlogOverview")),
+  checkout: dynamic(() => import("./Checkout")),
   contact_section: dynamic(() => import("./ContactSection")),
   content: dynamic(() => import("./Content")),
   customer_logos: dynamic(() => import("./CustomerLogos")),
@@ -19,6 +20,7 @@ export const components = {
   rich_text: dynamic(() => import("./RichText")),
   section_intro: dynamic(() => import("./SectionIntro")),
   stats: dynamic(() => import("./Stats")),
+  success: dynamic(() => import("./Success")),
   testimonial: dynamic(() => import("./Testimonial")),
   three_d: dynamic(() => import("./ThreeD")),
 };

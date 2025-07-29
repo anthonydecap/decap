@@ -7,7 +7,11 @@ import { Button } from '@/components/Button';
 import { Container } from '@/components/Container';
 import { FadeIn } from '@/components/FadeIn';
 
-export function ShoppingCart() {
+interface ShoppingCartProps {
+  lang: string;
+}
+
+export function ShoppingCart({ lang }: ShoppingCartProps) {
   const { items, removeItem, updateQuantity, clearCart, getTotal, getItemCount } = useCartStore();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -23,8 +27,8 @@ export function ShoppingCart() {
         },
         body: JSON.stringify({
           items,
-          successUrl: `${window.location.origin}/success`,
-          cancelUrl: `${window.location.origin}/cart`,
+          successUrl: `${window.location.origin}/${lang}/webshop/success?session_id={CHECKOUT_SESSION_ID}`,
+          cancelUrl: `${window.location.origin}/${lang}/cart`,
         }),
       });
 

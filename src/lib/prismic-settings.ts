@@ -1,11 +1,13 @@
+import { reverseLocaleLookup } from "@/i18n";
 import { createClient } from "@/prismicio";
+
 
 export async function getSettings(lang?: string) {
   const client = createClient();
   
   try {
     const settings = await client.getSingle("settings", {
-      lang: lang ? lang : undefined,
+      lang: lang ? reverseLocaleLookup(lang) : undefined,
     });
     return settings;
   } catch {

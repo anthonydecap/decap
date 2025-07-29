@@ -1,0 +1,15 @@
+[
+  {
+    "name": "Success",
+    "variation": "default",
+    "slice_type": "success",
+    "primary": {
+      "title": "Payment Successful!",
+      "subtitle": "Thank you for your purchase. You will receive a confirmation email shortly.",
+      "order_number": "ORD-123456",
+      "order_number_label": "Order Number:",
+      "continue_shopping_text": "Continue Shopping",
+      "view_orders_text": "View Orders"
+    }
+  }
+] 
