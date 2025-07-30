@@ -1,6 +1,5 @@
 'use client';
 
-
 import { ShippingMethod } from '@/lib/cart-store';
 
 interface ShippingMethodSelectorProps {
@@ -19,10 +18,9 @@ export function ShippingMethodSelector({
   if (isLoading) {
     return (
       <div className="space-y-4">
-        <h3 className="text-md font-medium text-gray-900">Shipping Method</h3>
-        <div className="animate-pulse space-y-3">
-          <div className="h-16 bg-gray-200 rounded-md"></div>
-          <div className="h-16 bg-gray-200 rounded-md"></div>
+        <div className="animate-pulse space-y-4">
+          <div className="h-20 bg-neutral-100 rounded-lg"></div>
+          <div className="h-20 bg-neutral-100 rounded-lg"></div>
         </div>
       </div>
     );
@@ -30,10 +28,10 @@ export function ShippingMethodSelector({
 
   if (shippingMethods.length === 0) {
     return (
-      <div className="space-y-4">
-        <h3 className="text-md font-medium text-gray-900">Shipping Method</h3>
-        <div className="text-sm text-gray-500">
-          No shipping methods available for this address.
+      <div className="text-center py-8">
+        <div className="text-neutral-500">
+          <p className="text-sm">No shipping methods available for this address.</p>
+          <p className="text-xs mt-1">Please try a different address or contact support.</p>
         </div>
       </div>
     );
@@ -41,45 +39,56 @@ export function ShippingMethodSelector({
 
   return (
     <div className="space-y-4">
-      <h3 className="text-md font-medium text-gray-900">Shipping Method</h3>
-      <div className="space-y-3">
-        {shippingMethods.map((method) => (
-          <label
-            key={method.id}
-            className={`relative flex cursor-pointer rounded-lg border p-4 shadow-sm focus:outline-none ${
-              selectedMethod?.id === method.id
-                ? 'border-blue-500 ring-2 ring-blue-500'
-                : 'border-gray-300'
-            }`}
-          >
-            <input
-              type="radio"
-              name="shipping-method"
-              className="sr-only"
-              checked={selectedMethod?.id === method.id}
-              onChange={() => onSelectMethod(method)}
-            />
-            <div className="flex flex-1">
-              <div className="flex flex-col">
-                <span className="block text-sm font-medium text-gray-900">
-                  {method.name}
-                </span>
-                <span className="mt-1 flex items-center text-sm text-gray-500">
-                  {method.min_delivery_time}-{method.max_delivery_time} business days
-                </span>
-                <span className="mt-1 text-sm text-gray-500">
-                  {method.carrier}
-                </span>
-              </div>
+      {shippingMethods.map((method) => (
+        <label
+          key={method.id}
+          className={`relative flex cursor-pointer rounded-lg border p-5 shadow-sm focus:outline-none transition-all duration-200 ${
+            selectedMethod?.id === method.id
+              ? 'border-neutral-950 ring-2 ring-neutral-950 bg-neutral-50'
+              : 'border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50'
+          }`}
+        >
+          <input
+            type="radio"
+            name="shipping-method"
+            className="sr-only"
+            checked={selectedMethod?.id === method.id}
+            onChange={() => onSelectMethod(method)}
+          />
+          
+          {/* Custom radio button */}
+          <div className="flex items-center mr-4">
+            <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+              selectedMethod?.id === method.id 
+                ? 'border-neutral-950 bg-neutral-950' 
+                : 'border-neutral-300'
+            }`}>
+              {selectedMethod?.id === method.id && (
+                <div className="w-2 h-2 rounded-full bg-white"></div>
+              )}
             </div>
-            <div className="ml-4 flex flex-shrink-0 items-center">
-              <span className="text-lg font-medium text-gray-900">
+          </div>
+          
+          <div className="flex flex-1 items-center justify-between">
+            <div className="flex flex-col">
+              <span className="text-base font-semibold text-neutral-950">
+                {method.name}
+              </span>
+              <span className="text-sm text-neutral-600 mt-1">
+                {method.min_delivery_time}-{method.max_delivery_time} business days
+              </span>
+              <span className="text-xs text-neutral-500 mt-1">
+                {method.carrier}
+              </span>
+            </div>
+            <div className="text-right">
+              <span className="text-xl font-bold text-neutral-950">
                 €{method.price}
               </span>
             </div>
-          </label>
-        ))}
-      </div>
+          </div>
+        </label>
+      ))}
     </div>
   );
 } 
