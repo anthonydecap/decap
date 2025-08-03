@@ -27,6 +27,33 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "trumpet_video": {
+              "type": "SharedSlice"
+            },
+            "three_d_model": {
+              "type": "SharedSlice"
+            },
+            "hero_image": {
+              "type": "SharedSlice"
+            },
+            "pipe_organ_image": {
+              "type": "SharedSlice"
+            },
+            "enhanced_bento_grid": {
+              "type": "SharedSlice"
+            },
+            "stylized_image": {
+              "type": "SharedSlice"
+            },
+            "image_showcase": {
+              "type": "SharedSlice"
+            },
+            "image_gallery": {
+              "type": "SharedSlice"
+            },
+            "blog_overview": {
+              "type": "SharedSlice"
+            },
             "product": {
               "type": "SharedSlice"
             },

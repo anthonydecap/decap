@@ -1,0 +1,129 @@
+{
+  "id": "three_d_model",
+  "type": "SharedSlice",
+  "name": "ThreeDModel",
+  "description": "3D model viewer with interactive controls",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default ThreeDModel",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": "3D Model Viewer"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "Description of the 3D model...",
+            "multi": "paragraph,strong,em"
+          }
+        },
+        "background_type": {
+          "type": "Select",
+          "config": {
+            "label": "Background Type",
+            "placeholder": "Select background type",
+            "options": [
+              "color",
+              "image"
+            ],
+            "default_value": "color"
+          }
+        },
+        "background_color": {
+          "type": "Color",
+          "config": {
+            "label": "Background Color",
+            "placeholder": "Select background color"
+          }
+        },
+        "background_image": {
+          "type": "Image",
+          "config": {
+            "label": "Background Image",
+            "placeholder": "Upload background image"
+          }
+        },
+        "camera_position_x": {
+          "type": "Number",
+          "config": {
+            "label": "Camera Position X",
+            "placeholder": "0"
+          }
+        },
+        "camera_position_y": {
+          "type": "Number",
+          "config": {
+            "label": "Camera Position Y",
+            "placeholder": "0"
+          }
+        },
+        "camera_position_z": {
+          "type": "Number",
+          "config": {
+            "label": "Camera Position Z",
+            "placeholder": "5"
+          }
+        },
+        "camera_zoom": {
+          "type": "Number",
+          "config": {
+            "label": "Camera Zoom",
+            "placeholder": "1"
+          }
+        },
+        "model_rotation_x": {
+          "type": "Number",
+          "config": {
+            "label": "Model Rotation X",
+            "placeholder": "0"
+          }
+        },
+        "model_rotation_y": {
+          "type": "Number",
+          "config": {
+            "label": "Model Rotation Y",
+            "placeholder": "0"
+          }
+        },
+        "model_rotation_z": {
+          "type": "Number",
+          "config": {
+            "label": "Model Rotation Z",
+            "placeholder": "0"
+          }
+        },
+        "enable_dragging": {
+          "type": "Boolean",
+          "config": {
+            "label": "Enable Dragging",
+            "placeholder": "Allow users to drag the model"
+          }
+        },
+        "enable_zoom": {
+          "type": "Boolean",
+          "config": {
+            "label": "Enable Zoom",
+            "placeholder": "Allow users to zoom the model"
+          }
+        },
+        "enable_rotation": {
+          "type": "Boolean",
+          "config": {
+            "label": "Enable Rotation",
+            "placeholder": "Allow users to rotate the model"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+} 

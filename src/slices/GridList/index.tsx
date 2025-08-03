@@ -34,7 +34,7 @@ const GridListSlice: FC<GridListProps> = ({ slice }) => {
   const { title, invert } = slice.primary;
 
   return (
-    <Container className="mt-24 sm:mt-32 lg:mt-40">
+    <Container className="mt-8 sm:mt-12 lg:mt-16">
       {title && (
         <SectionIntro title={title} invert={invert} />
       )}

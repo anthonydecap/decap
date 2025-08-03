@@ -91,7 +91,7 @@ const ContentSlice: FC<ContentProps> = ({ slice }) => {
   const isDark = bgColor === "dark";
 
   const containerClasses = clsx(
-    "mt-24 sm:mt-32 lg:mt-40 py-24 sm:py-32 lg:py-40",
+            "mt-8 sm:mt-12 lg:mt-16 py-8 sm:py-12 lg:py-16",
     backgroundClasses[bgColor as keyof typeof backgroundClasses]
   );
 

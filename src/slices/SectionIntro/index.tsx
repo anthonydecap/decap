@@ -33,7 +33,7 @@ const SectionIntro: FC<SectionIntroProps> = ({ slice }) => {
   const { eyebrow, title, description, smaller, invert } = slice.primary;
 
   return (
-    <Container className="mt-24 sm:mt-32 lg:mt-40">
+    <Container className="mt-8 sm:mt-12 lg:mt-16">
       <FadeIn className="max-w-2xl">
         <h2>
           {eyebrow && (

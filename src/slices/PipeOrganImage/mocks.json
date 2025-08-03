@@ -1,0 +1,93 @@
+{
+  "id": "pipe_organ_image",
+  "slice_type": "pipe_organ_image",
+  "slice_label": null,
+  "version": "initial",
+  "variation": "default",
+  "primary": {
+    "title": "Pipe Organ Collection",
+    "eyebrow": "Musical Instruments",
+    "description": [
+      {
+        "type": "paragraph",
+        "text": "Discover our stunning collection of pipe organ images, showcasing the beauty and craftsmanship of these magnificent musical instruments.",
+        "spans": []
+      }
+    ],
+    "invert": false
+  },
+  "items": [
+    {
+      "image": {
+        "dimensions": {
+          "width": 800,
+          "height": 1200
+        },
+        "alt": "Grand pipe organ in cathedral",
+        "copyright": null,
+        "url": "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800&h=1200&fit=crop"
+      },
+      "title": "Cathedral Grand Organ",
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "A magnificent pipe organ housed in a historic cathedral, featuring intricate carvings and exceptional acoustics.",
+          "spans": []
+        }
+      ],
+      "link": {
+        "link_type": "Web",
+        "url": "https://example.com/organ1"
+      },
+      "link_text": "View Details"
+    },
+    {
+      "image": {
+        "dimensions": {
+          "width": 800,
+          "height": 1200
+        },
+        "alt": "Modern pipe organ design",
+        "copyright": null,
+        "url": "https://images.unsplash.com/photo-1598653222000-6b7b7a552625?w=800&h=1200&fit=crop"
+      },
+      "title": "Modern Concert Hall Organ",
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "Contemporary pipe organ design in a state-of-the-art concert hall, combining tradition with modern technology.",
+          "spans": []
+        }
+      ],
+      "link": {
+        "link_type": "Web",
+        "url": "https://example.com/organ2"
+      },
+      "link_text": "Learn More"
+    },
+    {
+      "image": {
+        "dimensions": {
+          "width": 800,
+          "height": 1200
+        },
+        "alt": "Pipe organ pipes detail",
+        "copyright": null,
+        "url": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&h=1200&fit=crop"
+      },
+      "title": "Pipe Details",
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "Close-up view of intricately crafted pipe organ pipes, showcasing the precision and artistry of organ building.",
+          "spans": []
+        }
+      ],
+      "link": {
+        "link_type": "Web",
+        "url": "https://example.com/organ3"
+      },
+      "link_text": "Explore"
+    }
+  ]
+} 

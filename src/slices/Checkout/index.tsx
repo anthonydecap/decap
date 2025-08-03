@@ -14,7 +14,7 @@ export default function Checkout({ slice }: { slice: any }): React.JSX.Element {
       data-slice-variation={slice.variation}
       className="py-16"
     >
-      <Container className="mt-24 sm:mt-32 lg:mt-40">
+      <Container className="mt-8 sm:mt-12 lg:mt-16">
         <FadeIn>
           <div className="mx-auto max-w-4xl">
             <div className="text-center mb-12">

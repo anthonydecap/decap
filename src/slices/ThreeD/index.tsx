@@ -312,7 +312,7 @@ const ThreeD: FC<SliceComponentProps<any>> = ({ slice }) => {
 
   if (!modelUrl) {
     return (
-      <Container className="mt-24 sm:mt-32 lg:mt-40">
+      <Container className="mt-8 sm:mt-12 lg:mt-16">
         <FadeIn>
           <div className="text-center">
             <h2 className="font-display text-2xl font-semibold text-neutral-950">
@@ -332,7 +332,7 @@ const ThreeD: FC<SliceComponentProps<any>> = ({ slice }) => {
 
   return (
     <div className={clsx("relative", backgroundClasses[bgColor as keyof typeof backgroundClasses])}>
-      <Container className="mt-24 sm:mt-32 lg:mt-40">
+      <Container className="mt-8 sm:mt-12 lg:mt-16">
         <FadeIn>
           {(title || eyebrow || description) && (
             <div className="text-center mb-16">

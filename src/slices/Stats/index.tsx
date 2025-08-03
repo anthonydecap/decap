@@ -17,7 +17,7 @@ const Stats: FC<StatsProps> = ({ slice }) => {
   const { title } = slice.primary;
 
   return (
-    <Container className="mt-24 sm:mt-32 lg:mt-40">
+    <Container className="mt-8 sm:mt-12 lg:mt-16">
       <FadeIn className="max-w-2xl">
         {title && (
           <h2 className="font-display text-4xl font-medium tracking-tight text-neutral-950 sm:text-5xl">

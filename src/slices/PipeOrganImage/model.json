@@ -1,0 +1,98 @@
+{
+  "id": "pipe_organ_image",
+  "type": "SharedSlice",
+  "name": "PipeOrganImage",
+  "description": "Images with pipe organ shape",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default PipeOrganImage",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Section Title",
+            "placeholder": "Pipe Organ Collection"
+          }
+        },
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": "Musical Instruments"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "Explore our collection of pipe organ images...",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "invert": {
+          "type": "Boolean",
+          "config": {
+            "label": "Invert Colors",
+            "placeholder": "Invert the color scheme"
+          }
+        }
+      },
+      "items": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {
+              "width": 800,
+              "height": 1200
+            },
+            "thumbnails": [
+              {
+                "name": "thumbnail",
+                "width": 400,
+                "height": 600
+              }
+            ]
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": "Pipe Organ Title"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "Description of the pipe organ...",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "link": {
+          "type": "Link",
+          "config": {
+            "label": "Link",
+            "placeholder": "Link to details",
+            "allowTargetBlank": true
+          }
+        },
+        "link_text": {
+          "type": "Text",
+          "config": {
+            "label": "Link Text",
+            "placeholder": "View Details"
+          }
+        }
+      }
+    }
+  ]
+} 

@@ -48,7 +48,7 @@ const Blog: FC<BlogProps> = ({ slice }) => {
   const regularPosts = slice.items.filter((item: any) => !item.featured);
 
   return (
-    <Container className="mt-24 sm:mt-32 lg:mt-40">
+    <Container className="mt-8 sm:mt-12 lg:mt-16">
       <div className="flex items-center justify-between">
         <div className="max-w-2xl">
           {(title || eyebrow || description) && (

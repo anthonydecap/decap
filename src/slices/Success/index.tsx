@@ -13,7 +13,7 @@ export default function Success({ slice }: { slice: any }): React.JSX.Element {
       data-slice-variation={slice.variation}
       className="py-16"
     >
-      <Container className="mt-24 sm:mt-32 lg:mt-40">
+      <Container className="mt-8 sm:mt-12 lg:mt-16">
         <FadeIn>
           <div className="text-center">
             <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100">

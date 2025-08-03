@@ -35,7 +35,7 @@ const BentoGrid: FC<BentoGridProps> = ({ slice }) => {
   const { title, eyebrow, description } = slice.primary;
 
   return (
-    <Container className="mt-24 sm:mt-32 lg:mt-40">
+    <Container className="mt-8 sm:mt-12 lg:mt-16">
       {(title || eyebrow || description) && (
         <SectionIntro title={title || ""} eyebrow={eyebrow || ""}>
           {description && (

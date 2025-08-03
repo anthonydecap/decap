@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "../styles/image-shapes.css";
 
 @theme {
   --text-*: initial;

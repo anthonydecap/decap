@@ -1,0 +1,159 @@
+{
+  "id": "enhanced_bento_grid",
+  "slice_type": "enhanced_bento_grid",
+  "slice_label": null,
+  "version": "initial",
+  "variation": "default",
+  "primary": {
+    "title": "Featured Products",
+    "eyebrow": "Premium Collection",
+    "description": [
+      {
+        "type": "paragraph",
+        "text": "Discover our curated collection of premium products designed to enhance your lifestyle.",
+        "spans": []
+      }
+    ],
+    "invert": false
+  },
+  "items": [
+    {
+      "item_title": "Premium Microphone",
+      "item_description": [
+        {
+          "type": "paragraph",
+          "text": "Professional-grade microphone with crystal clear audio quality.",
+          "spans": []
+        }
+      ],
+      "background_image": {
+        "dimensions": {
+          "width": 1200,
+          "height": 800
+        },
+        "alt": "Professional microphone on stand",
+        "copyright": null,
+        "url": "https://images.unsplash.com/photo-1598653222000-6b7b7a552625?w=1200&h=800&fit=crop"
+      },
+      "item_price": "$299",
+      "item_badge": "New",
+      "item_size": "large",
+      "text_position": "bottom",
+      "link": {
+        "link_type": "Web",
+        "url": "https://example.com/product1"
+      },
+      "link_text": "Shop Now"
+    },
+    {
+      "item_title": "Wireless Headphones",
+      "item_description": [
+        {
+          "type": "paragraph",
+          "text": "Premium wireless headphones with noise cancellation technology.",
+          "spans": []
+        }
+      ],
+      "background_image": {
+        "dimensions": {
+          "width": 1200,
+          "height": 800
+        },
+        "alt": "Wireless headphones",
+        "copyright": null,
+        "url": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=1200&h=800&fit=crop"
+      },
+      "item_price": "$199",
+      "item_badge": "Popular",
+      "item_size": "medium",
+      "text_position": "center",
+      "link": {
+        "link_type": "Web",
+        "url": "https://example.com/product2"
+      },
+      "link_text": "Learn More"
+    },
+    {
+      "item_title": "Studio Monitors",
+      "item_description": [
+        {
+          "type": "paragraph",
+          "text": "Professional studio monitors for accurate sound reproduction.",
+          "spans": []
+        }
+      ],
+      "background_image": {
+        "dimensions": {
+          "width": 1200,
+          "height": 800
+        },
+        "alt": "Studio monitor speakers",
+        "copyright": null,
+        "url": "https://images.unsplash.com/photo-1545454675-3531b543be5d?w=1200&h=800&fit=crop"
+      },
+      "item_price": "$599",
+      "item_size": "small",
+      "text_position": "top",
+      "link": {
+        "link_type": "Web",
+        "url": "https://example.com/product3"
+      },
+      "link_text": "View Details"
+    },
+    {
+      "item_title": "Audio Interface",
+      "item_description": [
+        {
+          "type": "paragraph",
+          "text": "High-quality audio interface for professional recording.",
+          "spans": []
+        }
+      ],
+      "background_image": {
+        "dimensions": {
+          "width": 1200,
+          "height": 800
+        },
+        "alt": "Audio interface device",
+        "copyright": null,
+        "url": "https://images.unsplash.com/photo-1598520108910-85dee15f0e21?w=1200&h=800&fit=crop"
+      },
+      "item_price": "$399",
+      "item_badge": "Best Seller",
+      "item_size": "medium",
+      "text_position": "bottom",
+      "link": {
+        "link_type": "Web",
+        "url": "https://example.com/product4"
+      },
+      "link_text": "Buy Now"
+    },
+    {
+      "item_title": "DJ Controller",
+      "item_description": [
+        {
+          "type": "paragraph",
+          "text": "Professional DJ controller with advanced mixing capabilities.",
+          "spans": []
+        }
+      ],
+      "background_image": {
+        "dimensions": {
+          "width": 1200,
+          "height": 800
+        },
+        "alt": "DJ controller equipment",
+        "copyright": null,
+        "url": "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=1200&h=800&fit=crop"
+      },
+      "item_price": "$799",
+      "item_size": "xlarge",
+      "text_position": "center",
+      "link": {
+        "link_type": "Web",
+        "url": "https://example.com/product5"
+      },
+      "link_text": "Explore"
+    }
+  ]
+} 

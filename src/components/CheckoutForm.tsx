@@ -184,79 +184,77 @@ export function CheckoutForm({ onSuccess }: CheckoutFormProps) {
   };
 
   return (
-    <div className="max-w-2xl mx-auto">
+    <div className="bg-white rounded-lg border border-gray-200 p-6">
       {/* Progress Indicator */}
-      <div className="mb-12">
-        <div className="flex items-center justify-center space-x-8">
-          <div className={`flex items-center space-x-3 ${currentStep === 'shipping' ? 'text-neutral-950' : 'text-neutral-400'}`}>
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold ${
-              currentStep === 'shipping' ? 'bg-neutral-950 text-white' : 'bg-neutral-100 text-neutral-400'
+      <div className="mb-8">
+        <div className="flex items-center justify-between">
+          <div className={`flex items-center ${currentStep === 'shipping' ? 'text-blue-600' : 'text-gray-400'}`}>
+            <div className={`w-8 h-8 rounded-full flex items-center justify-center border-2 ${
+              currentStep === 'shipping' ? 'border-blue-600 bg-blue-600 text-white' : 'border-gray-300'
             }`}>
               1
             </div>
-            <span className="text-sm font-medium">Shipping</span>
+            <span className="ml-2 text-sm font-medium">Shipping Address</span>
           </div>
-          <div className={`flex items-center space-x-3 ${currentStep === 'shipping-method' ? 'text-neutral-950' : 'text-neutral-400'}`}>
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold ${
-              currentStep === 'shipping-method' ? 'bg-neutral-950 text-white' : 'bg-neutral-100 text-neutral-400'
+          <div className={`flex items-center ${currentStep === 'shipping-method' ? 'text-blue-600' : 'text-gray-400'}`}>
+            <div className={`w-8 h-8 rounded-full flex items-center justify-center border-2 ${
+              currentStep === 'shipping-method' ? 'border-blue-600 bg-blue-600 text-white' : 'border-gray-300'
             }`}>
               2
             </div>
-            <span className="text-sm font-medium">Shipping Method</span>
+            <span className="ml-2 text-sm font-medium">Shipping Method</span>
           </div>
-          <div className={`flex items-center space-x-3 ${currentStep === 'payment' ? 'text-neutral-950' : 'text-neutral-400'}`}>
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold ${
-              currentStep === 'payment' ? 'bg-neutral-950 text-white' : 'bg-neutral-100 text-neutral-400'
+          <div className={`flex items-center ${currentStep === 'payment' ? 'text-blue-600' : 'text-gray-400'}`}>
+            <div className={`w-8 h-8 rounded-full flex items-center justify-center border-2 ${
+              currentStep === 'payment' ? 'border-blue-600 bg-blue-600 text-white' : 'border-gray-300'
             }`}>
               3
             </div>
-            <span className="text-sm font-medium">Payment</span>
+            <span className="ml-2 text-sm font-medium">Payment</span>
           </div>
         </div>
       </div>
 
       {error && (
-        <div className="mb-8 bg-red-50 border border-red-200 rounded-lg p-4">
+        <div className="mb-6 bg-red-50 border border-red-200 rounded-md p-4">
           <p className="text-sm text-red-600">{error}</p>
         </div>
       )}
 
       {/* Step 1: Shipping Address */}
       {currentStep === 'shipping' && (
-        <div className="space-y-8">
+        <div className="space-y-6">
           <div>
-            <h2 className="text-2xl font-bold tracking-tight text-neutral-950 mb-2">Shipping Address</h2>
-            <p className="text-neutral-600">Enter your shipping address to calculate shipping costs.</p>
-          </div>
-          
-          <div className="bg-white rounded-lg border border-neutral-200 p-6">
-            <AddressElement
-              options={{
-                mode: 'shipping',
-                allowedCountries: ALLOWED_COUNTRIES,
-                defaultValues: {
-                  name: '',
-                  address: {
-                    country: 'US',
+            <h2 className="text-lg font-medium text-gray-900 mb-4">Shipping Address</h2>
+            <div className="border border-gray-200 rounded-md p-4">
+              <AddressElement
+                options={{
+                  mode: 'shipping',
+                  allowedCountries: ALLOWED_COUNTRIES,
+                  defaultValues: {
+                    name: '',
+                    address: {
+                      country: 'US',
+                    },
                   },
-                },
-                fields: {
-                  phone: 'always',
-                },
-                validation: {
-                  phone: {
-                    required: 'always',
+                  fields: {
+                    phone: 'always',
                   },
-                },
-              }}
-              onChange={handleShippingAddressChange}
-            />
+                  validation: {
+                    phone: {
+                      required: 'always',
+                    },
+                  },
+                }}
+                onChange={handleShippingAddressChange}
+              />
+            </div>
           </div>
           
           <Button
             type="button"
             onClick={handleShippingAddressComplete}
-            className="w-full bg-neutral-950 text-white hover:bg-neutral-800 transition-colors"
+            className="w-full bg-blue-600 hover:bg-blue-700"
           >
             Continue to Shipping Method
           </Button>
@@ -265,13 +263,9 @@ export function CheckoutForm({ onSuccess }: CheckoutFormProps) {
 
       {/* Step 2: Shipping Method */}
       {currentStep === 'shipping-method' && (
-        <div className="space-y-8">
+        <div className="space-y-6">
           <div>
-            <h2 className="text-2xl font-bold tracking-tight text-neutral-950 mb-2">Shipping Method</h2>
-            <p className="text-neutral-600">Choose your preferred shipping option.</p>
-          </div>
-          
-          <div className="bg-white rounded-lg border border-neutral-200 p-6">
+            <h2 className="text-lg font-medium text-gray-900 mb-4">Shipping Method</h2>
             <ShippingMethodSelector
               shippingMethods={shippingMethods}
               selectedMethod={selectedShippingMethod}
@@ -284,7 +278,7 @@ export function CheckoutForm({ onSuccess }: CheckoutFormProps) {
             <Button
               type="button"
               onClick={goBackToShipping}
-              className="flex-1 bg-neutral-100 text-neutral-950 hover:bg-neutral-200 transition-colors"
+              className="flex-1 bg-gray-200 text-gray-800 hover:bg-gray-300"
             >
               Back
             </Button>
@@ -292,7 +286,7 @@ export function CheckoutForm({ onSuccess }: CheckoutFormProps) {
               type="button"
               onClick={() => setCurrentStep('payment')}
               disabled={!selectedShippingMethod}
-              className="flex-1 bg-neutral-950 text-white hover:bg-neutral-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="flex-1 bg-blue-600 hover:bg-blue-700 disabled:opacity-50"
             >
               Continue to Payment
             </Button>
@@ -302,48 +296,46 @@ export function CheckoutForm({ onSuccess }: CheckoutFormProps) {
 
       {/* Step 3: Payment */}
       {currentStep === 'payment' && (
-        <form onSubmit={handleSubmit} className="space-y-8">
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <h2 className="text-2xl font-bold tracking-tight text-neutral-950 mb-2">Payment Information</h2>
-            <p className="text-neutral-600">Complete your purchase securely.</p>
-          </div>
-          
-          <div className="bg-white rounded-lg border border-neutral-200 p-6">
-            <PaymentElement 
-              options={{
-                layout: 'tabs',
-                fields: {
-                  billingDetails: {
-                    name: 'auto',
-                    email: 'auto',
-                    phone: 'auto',
-                    address: {
-                      country: 'auto',
-                      line1: 'auto',
-                      line2: 'auto',
-                      city: 'auto',
-                      state: 'auto',
-                      postalCode: 'auto',
+            <h2 className="text-lg font-medium text-gray-900 mb-4">Payment Information</h2>
+            <div className="border border-gray-200 rounded-md p-4">
+              <PaymentElement 
+                options={{
+                  layout: 'tabs',
+                  fields: {
+                    billingDetails: {
+                      name: 'auto',
+                      email: 'auto',
+                      phone: 'auto',
+                      address: {
+                        country: 'auto',
+                        line1: 'auto',
+                        line2: 'auto',
+                        city: 'auto',
+                        state: 'auto',
+                        postalCode: 'auto',
+                      },
                     },
                   },
-                },
-              }}
-            />
+                }}
+              />
+            </div>
           </div>
 
-          <div className="flex space-x-4">
-            <Button
-              type="button"
-              onClick={goBackToShippingMethod}
-              className="flex-1 bg-neutral-100 text-neutral-950 hover:bg-neutral-200 transition-colors"
-            >
-              Back
-            </Button>
+                     <div className="flex space-x-4">
+             <Button
+               type="button"
+               onClick={goBackToShippingMethod}
+               className="flex-1 bg-gray-200 text-gray-800 hover:bg-gray-300"
+             >
+               Back
+             </Button>
             
             <Button
               type="submit"
               disabled={!stripe || isProcessing}
-              className="flex-1 bg-neutral-950 text-white hover:bg-neutral-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="flex-1 bg-blue-600 hover:bg-blue-700 disabled:opacity-50"
             >
               {isProcessing ? 'Processing...' : `Pay €${getTotalWithShipping().toFixed(2)}`}
             </Button>
@@ -351,7 +343,7 @@ export function CheckoutForm({ onSuccess }: CheckoutFormProps) {
         </form>
       )}
 
-      <div className="mt-12 text-center text-sm text-neutral-500">
+      <div className="mt-6 text-xs text-gray-500">
         <p>Your payment is secured by Stripe. We never store your payment information.</p>
         <p className="mt-1">We currently ship to European countries, United States, and Canada only.</p>
       </div>

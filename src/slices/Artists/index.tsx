@@ -35,7 +35,7 @@ const Artists: FC<ArtistsProps> = ({ slice }) => {
   const artists = slice.items || [];
 
   return (
-    <Container className="mt-24 sm:mt-32 lg:mt-40">
+    <Container className="mt-8 sm:mt-12 lg:mt-16">
       <FadeIn className="-mx-6 rounded-4xl bg-neutral-950 px-6 py-20 sm:mx-0 sm:py-32 md:px-12">
         <div className="mx-auto max-w-6xl">
           <div className="max-w-2xl">
