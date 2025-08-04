@@ -8,27 +8,31 @@ export const components = {
   blog: dynamic(() => import("./Blog")),
   blog_listing: dynamic(() => import("./BlogListing")),
   blog_overview: dynamic(() => import("./BlogOverview")),
+
   checkout: dynamic(() => import("./Checkout")),
   contact_section: dynamic(() => import("./ContactSection")),
   content: dynamic(() => import("./Content")),
-  customer_logos: dynamic(() => import("./CustomerLogos")),
+
+
   enhanced_bento_grid: dynamic(() => import("./EnhancedBentoGrid")),
   faq: dynamic(() => import("./FAQ")),
   feature: dynamic(() => import("./Feature")),
-  grid_list: dynamic(() => import("./GridList")),
+
   hero: dynamic(() => import("./Hero")),
   hero_image: dynamic(() => import("./HeroImage")),
-  image_gallery: dynamic(() => import("./ImageGallery")),
-  image_showcase: dynamic(() => import("./ImageShowcase")),
-  pipe_organ_image: dynamic(() => import("./PipeOrganImage")),
+
+
   product: dynamic(() => import("./Product")),
-  rich_text: dynamic(() => import("./RichText")),
+
   section_intro: dynamic(() => import("./SectionIntro")),
-  stats: dynamic(() => import("./Stats")),
+
   stylized_image: dynamic(() => import("./StylizedImage")),
   success: dynamic(() => import("./Success")),
   testimonial: dynamic(() => import("./Testimonial")),
-  three_d: dynamic(() => import("./ThreeD")),
+  
+  technical_specifications: dynamic(() => import("./TechnicalSpecifications")),
+
+
   three_d_model: dynamic(() => import("./ThreeDModel")),
   trumpet_video: dynamic(() => import("./TrumpetVideo")),
 };

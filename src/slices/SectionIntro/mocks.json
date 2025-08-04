@@ -1,20 +1,43 @@
 [
-  {
-    "variation": "default",
-    "name": "Default",
-    "slice_type": "section_intro",
-    "items": [],
-    "primary": {
-      "eyebrow": "Our Services",
-      "title": "We help you build better products",
-      "description": [
-        {
-          "type": "paragraph",
-          "text": "We're a team of experienced designers and developers who are passionate about creating beautiful, functional websites and applications."
-        }
-      ],
-      "smaller": false,
-      "invert": false
-    }
-  }
-] 
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"eyebrow": {
+				"__TYPE__": "FieldContent",
+				"value": "somewhere",
+				"type": "Text"
+			},
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "fallen",
+				"type": "Text"
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Cupidatat dolor non eu ullamco sint eiusmod anim. In adipisicing magna do. Aute voluptate eiusmod sint."
+						}
+					}
+				]
+			},
+			"smaller": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			},
+			"invert": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	}
+]

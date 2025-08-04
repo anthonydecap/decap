@@ -20,9 +20,6 @@
             "section_intro": {
               "type": "SharedSlice"
             },
-            "rich_text": {
-              "type": "SharedSlice"
-            },
             "hero": {
               "type": "SharedSlice"
             },
@@ -32,13 +29,7 @@
             "contact_section": {
               "type": "SharedSlice"
             },
-            "grid_list": {
-              "type": "SharedSlice"
-            },
             "testimonial": {
-              "type": "SharedSlice"
-            },
-            "stats": {
               "type": "SharedSlice"
             },
             "blog": {

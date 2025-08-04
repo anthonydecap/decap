@@ -70,12 +70,9 @@ type ContentRelationshipFieldWithData<
 }[Exclude<TCustomType[number], string>["id"]];
 
 type BlogDocumentDataSlicesSlice =
-  | RichTextSlice
   | ContentSlice
   | FeatureSlice
   | TestimonialSlice
-  | StatsSlice
-  | GridListSlice
   | ContactSectionSlice;
 
 /**
@@ -422,18 +419,15 @@ export type CheckoutPageDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | TechnicalSpecificationsSlice
   | TrumpetVideoSlice
   | ThreeDModelSlice
   | HeroImageSlice
-  | PipeOrganImageSlice
   | EnhancedBentoGridSlice
   | StylizedImageSlice
-  | ImageShowcaseSlice
-  | ImageGallerySlice
   | BlogOverviewSlice
   | ProductSlice
   | ArtistsSlice
-  | ThreeDSlice
   | FaqSlice
   | FeatureSlice
   | ContentSlice
@@ -442,11 +436,8 @@ type PageDocumentDataSlicesSlice =
   | BentoGridSlice
   | SectionIntroSlice
   | TestimonialSlice
-  | StatsSlice
-  | GridListSlice
   | ContactSectionSlice
   | HeroSlice
-  | RichTextSlice
   | CheckoutSlice
   | SuccessSlice;
 
@@ -522,13 +513,10 @@ export type PageDocument<Lang extends string = string> =
 
 type ProductDocumentDataSlicesSlice =
   | SectionIntroSlice
-  | RichTextSlice
   | HeroSlice
   | FeatureSlice
   | ContactSectionSlice
-  | GridListSlice
   | TestimonialSlice
-  | StatsSlice
   | BlogSlice
   | ContentSlice
   | FaqSlice
@@ -883,7 +871,7 @@ export type SuccessPageDocument<Lang extends string = string> =
     Lang
   >;
 
-type TestDocumentDataSlicesSlice = CustomerLogosSlice;
+type TestDocumentDataSlicesSlice = never;
 
 /**
  * Content for Test documents
@@ -1858,104 +1846,6 @@ export type ContentSlice = prismic.SharedSlice<
 >;
 
 /**
- * Item in *CustomerLogos → Default → Primary → logos*
- */
-export interface CustomerLogosSliceDefaultPrimaryLogosItem {
-  /**
-   * image field in *CustomerLogos → Default → Primary → logos*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: customer_logos.default.primary.logos[].image
-   * - **Documentation**: https://prismic.io/docs/fields/image
-   */
-  image: prismic.ImageField<never>;
-
-  /**
-   * link field in *CustomerLogos → Default → Primary → logos*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: customer_logos.default.primary.logos[].link
-   * - **Documentation**: https://prismic.io/docs/fields/link
-   */
-  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
-}
-
-/**
- * Primary content in *CustomerLogos → Default → Primary*
- */
-export interface CustomerLogosSliceDefaultPrimary {
-  /**
-   * eyebrowHeadline field in *CustomerLogos → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: customer_logos.default.primary.eyebrowHeadline
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  eyebrowHeadline: prismic.RichTextField;
-
-  /**
-   * callToActionLink field in *CustomerLogos → Default → Primary*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: customer_logos.default.primary.callToActionLink
-   * - **Documentation**: https://prismic.io/docs/fields/link
-   */
-  callToActionLink: prismic.LinkField<
-    string,
-    string,
-    unknown,
-    prismic.FieldState,
-    never
-  >;
-
-  /**
-   * logos field in *CustomerLogos → Default → Primary*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: customer_logos.default.primary.logos[]
-   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
-   */
-  logos: prismic.GroupField<
-    Simplify<CustomerLogosSliceDefaultPrimaryLogosItem>
-  >;
-}
-
-/**
- * Default variation for CustomerLogos Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type CustomerLogosSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<CustomerLogosSliceDefaultPrimary>,
-  never
->;
-
-/**
- * Slice variation for *CustomerLogos*
- */
-type CustomerLogosSliceVariation = CustomerLogosSliceDefault;
-
-/**
- * CustomerLogos Shared Slice
- *
- * - **API ID**: `customer_logos`
- * - **Description**: CustomerLogos
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type CustomerLogosSlice = prismic.SharedSlice<
-  "customer_logos",
-  CustomerLogosSliceVariation
->;
-
-/**
  * Primary content in *EnhancedBentoGrid → Default → Primary*
  */
 export interface EnhancedBentoGridSliceDefaultPrimary {
@@ -2444,87 +2334,6 @@ export type FeatureSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *GridList → Default → Primary*
- */
-export interface GridListSliceDefaultPrimary {
-  /**
-   * Section Title field in *GridList → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Grid List Title
-   * - **API ID Path**: grid_list.default.primary.title
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  title: prismic.KeyTextField;
-
-  /**
-   * Invert Colors field in *GridList → Default → Primary*
-   *
-   * - **Field Type**: Boolean
-   * - **Placeholder**: *None*
-   * - **Default Value**: false
-   * - **API ID Path**: grid_list.default.primary.invert
-   * - **Documentation**: https://prismic.io/docs/fields/boolean
-   */
-  invert: prismic.BooleanField;
-}
-
-/**
- * Primary content in *GridList → Items*
- */
-export interface GridListSliceDefaultItem {
-  /**
-   * Item Title field in *GridList → Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Item title
-   * - **API ID Path**: grid_list.items[].item_title
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  item_title: prismic.KeyTextField;
-
-  /**
-   * Item Description field in *GridList → Items*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Item description...
-   * - **API ID Path**: grid_list.items[].item_description
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  item_description: prismic.RichTextField;
-}
-
-/**
- * Default variation for GridList Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default GridList
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type GridListSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<GridListSliceDefaultPrimary>,
-  Simplify<GridListSliceDefaultItem>
->;
-
-/**
- * Slice variation for *GridList*
- */
-type GridListSliceVariation = GridListSliceDefault;
-
-/**
- * GridList Shared Slice
- *
- * - **API ID**: `grid_list`
- * - **Description**: Grid layout for displaying list items
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type GridListSlice = prismic.SharedSlice<
-  "grid_list",
-  GridListSliceVariation
->;
-
-/**
  * Primary content in *Hero → Default → Primary*
  */
 export interface HeroSliceDefaultPrimary {
@@ -2818,458 +2627,6 @@ export type HeroImageSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *ImageGallery → Default → Primary*
- */
-export interface ImageGallerySliceDefaultPrimary {
-  /**
-   * Section Title field in *ImageGallery → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Our Gallery
-   * - **API ID Path**: image_gallery.default.primary.title
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  title: prismic.KeyTextField;
-
-  /**
-   * Eyebrow field in *ImageGallery → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Portfolio
-   * - **API ID Path**: image_gallery.default.primary.eyebrow
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  eyebrow: prismic.KeyTextField;
-
-  /**
-   * Description field in *ImageGallery → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Explore our collection of images...
-   * - **API ID Path**: image_gallery.default.primary.description
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  description: prismic.RichTextField;
-
-  /**
-   * Invert Colors field in *ImageGallery → Default → Primary*
-   *
-   * - **Field Type**: Boolean
-   * - **Placeholder**: Invert the color scheme
-   * - **API ID Path**: image_gallery.default.primary.invert
-   * - **Documentation**: https://prismic.io/docs/fields/boolean
-   */
-  invert: prismic.BooleanField;
-
-  /**
-   * Layout field in *ImageGallery → Default → Primary*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: Select layout
-   * - **API ID Path**: image_gallery.default.primary.layout
-   * - **Documentation**: https://prismic.io/docs/fields/select
-   */
-  layout: prismic.SelectField<"grid" | "masonry" | "carousel" | "mosaic">;
-
-  /**
-   * Columns field in *ImageGallery → Default → Primary*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: Select number of columns
-   * - **API ID Path**: image_gallery.default.primary.columns
-   * - **Documentation**: https://prismic.io/docs/fields/select
-   */
-  columns: prismic.SelectField<"2" | "3" | "4" | "5">;
-}
-
-/**
- * Primary content in *ImageGallery → Items*
- */
-export interface ImageGallerySliceDefaultItem {
-  /**
-   * Image field in *ImageGallery → Items*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: image_gallery.items[].image
-   * - **Documentation**: https://prismic.io/docs/fields/image
-   */
-  image: prismic.ImageField<"thumbnail">;
-
-  /**
-   * Title field in *ImageGallery → Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Image Title
-   * - **API ID Path**: image_gallery.items[].title
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  title: prismic.KeyTextField;
-
-  /**
-   * Description field in *ImageGallery → Items*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Image description...
-   * - **API ID Path**: image_gallery.items[].description
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  description: prismic.RichTextField;
-
-  /**
-   * Badge field in *ImageGallery → Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: New
-   * - **API ID Path**: image_gallery.items[].badge
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  badge: prismic.KeyTextField;
-
-  /**
-   * Link field in *ImageGallery → Items*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: Link to image
-   * - **API ID Path**: image_gallery.items[].link
-   * - **Documentation**: https://prismic.io/docs/fields/link
-   */
-  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
-
-  /**
-   * Link Text field in *ImageGallery → Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: View
-   * - **API ID Path**: image_gallery.items[].link_text
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  link_text: prismic.KeyTextField;
-}
-
-/**
- * Default variation for ImageGallery Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default ImageGallery
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type ImageGallerySliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<ImageGallerySliceDefaultPrimary>,
-  Simplify<ImageGallerySliceDefaultItem>
->;
-
-/**
- * Slice variation for *ImageGallery*
- */
-type ImageGallerySliceVariation = ImageGallerySliceDefault;
-
-/**
- * ImageGallery Shared Slice
- *
- * - **API ID**: `image_gallery`
- * - **Description**: Image gallery with different layout options
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type ImageGallerySlice = prismic.SharedSlice<
-  "image_gallery",
-  ImageGallerySliceVariation
->;
-
-/**
- * Primary content in *ImageShowcase → Default → Primary*
- */
-export interface ImageShowcaseSliceDefaultPrimary {
-  /**
-   * Section Title field in *ImageShowcase → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Our Work
-   * - **API ID Path**: image_showcase.default.primary.title
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  title: prismic.KeyTextField;
-
-  /**
-   * Eyebrow field in *ImageShowcase → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Portfolio
-   * - **API ID Path**: image_showcase.default.primary.eyebrow
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  eyebrow: prismic.KeyTextField;
-
-  /**
-   * Description field in *ImageShowcase → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Showcase your work with style...
-   * - **API ID Path**: image_showcase.default.primary.description
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  description: prismic.RichTextField;
-
-  /**
-   * Invert Colors field in *ImageShowcase → Default → Primary*
-   *
-   * - **Field Type**: Boolean
-   * - **Placeholder**: Invert the color scheme
-   * - **API ID Path**: image_showcase.default.primary.invert
-   * - **Documentation**: https://prismic.io/docs/fields/boolean
-   */
-  invert: prismic.BooleanField;
-
-  /**
-   * Layout field in *ImageShowcase → Default → Primary*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: Select layout
-   * - **API ID Path**: image_showcase.default.primary.layout
-   * - **Documentation**: https://prismic.io/docs/fields/select
-   */
-  layout: prismic.SelectField<"hero" | "showcase" | "zigzag">;
-
-  /**
-   * Style field in *ImageShowcase → Default → Primary*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: Select style
-   * - **API ID Path**: image_showcase.default.primary.style
-   * - **Documentation**: https://prismic.io/docs/fields/select
-   */
-  style: prismic.SelectField<"modern" | "classic" | "minimal">;
-}
-
-/**
- * Primary content in *ImageShowcase → Items*
- */
-export interface ImageShowcaseSliceDefaultItem {
-  /**
-   * Image field in *ImageShowcase → Items*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: image_showcase.items[].image
-   * - **Documentation**: https://prismic.io/docs/fields/image
-   */
-  image: prismic.ImageField<"thumbnail">;
-
-  /**
-   * Title field in *ImageShowcase → Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Project Title
-   * - **API ID Path**: image_showcase.items[].title
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  title: prismic.KeyTextField;
-
-  /**
-   * Description field in *ImageShowcase → Items*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Project description...
-   * - **API ID Path**: image_showcase.items[].description
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  description: prismic.RichTextField;
-
-  /**
-   * Image Shape field in *ImageShowcase → Items*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: Select shape
-   * - **API ID Path**: image_showcase.items[].image_shape
-   * - **Documentation**: https://prismic.io/docs/fields/select
-   */
-  image_shape: prismic.SelectField<
-    "rounded" | "circle" | "hexagon" | "diamond" | "wave" | "triangle"
-  >;
-
-  /**
-   * Link field in *ImageShowcase → Items*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: Link to project
-   * - **API ID Path**: image_showcase.items[].link
-   * - **Documentation**: https://prismic.io/docs/fields/link
-   */
-  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
-
-  /**
-   * Link Text field in *ImageShowcase → Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: View Project
-   * - **API ID Path**: image_showcase.items[].link_text
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  link_text: prismic.KeyTextField;
-}
-
-/**
- * Default variation for ImageShowcase Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default ImageShowcase
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type ImageShowcaseSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<ImageShowcaseSliceDefaultPrimary>,
-  Simplify<ImageShowcaseSliceDefaultItem>
->;
-
-/**
- * Slice variation for *ImageShowcase*
- */
-type ImageShowcaseSliceVariation = ImageShowcaseSliceDefault;
-
-/**
- * ImageShowcase Shared Slice
- *
- * - **API ID**: `image_showcase`
- * - **Description**: Image showcase with different layouts and shapes
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type ImageShowcaseSlice = prismic.SharedSlice<
-  "image_showcase",
-  ImageShowcaseSliceVariation
->;
-
-/**
- * Primary content in *PipeOrganImage → Default → Primary*
- */
-export interface PipeOrganImageSliceDefaultPrimary {
-  /**
-   * Section Title field in *PipeOrganImage → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Pipe Organ Collection
-   * - **API ID Path**: pipe_organ_image.default.primary.title
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  title: prismic.KeyTextField;
-
-  /**
-   * Eyebrow field in *PipeOrganImage → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Musical Instruments
-   * - **API ID Path**: pipe_organ_image.default.primary.eyebrow
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  eyebrow: prismic.KeyTextField;
-
-  /**
-   * Description field in *PipeOrganImage → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Explore our collection of pipe organ images...
-   * - **API ID Path**: pipe_organ_image.default.primary.description
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  description: prismic.RichTextField;
-
-  /**
-   * Invert Colors field in *PipeOrganImage → Default → Primary*
-   *
-   * - **Field Type**: Boolean
-   * - **Placeholder**: Invert the color scheme
-   * - **API ID Path**: pipe_organ_image.default.primary.invert
-   * - **Documentation**: https://prismic.io/docs/fields/boolean
-   */
-  invert: prismic.BooleanField;
-}
-
-/**
- * Primary content in *PipeOrganImage → Items*
- */
-export interface PipeOrganImageSliceDefaultItem {
-  /**
-   * Image field in *PipeOrganImage → Items*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: pipe_organ_image.items[].image
-   * - **Documentation**: https://prismic.io/docs/fields/image
-   */
-  image: prismic.ImageField<"thumbnail">;
-
-  /**
-   * Title field in *PipeOrganImage → Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Pipe Organ Title
-   * - **API ID Path**: pipe_organ_image.items[].title
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  title: prismic.KeyTextField;
-
-  /**
-   * Description field in *PipeOrganImage → Items*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Description of the pipe organ...
-   * - **API ID Path**: pipe_organ_image.items[].description
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  description: prismic.RichTextField;
-
-  /**
-   * Link field in *PipeOrganImage → Items*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: Link to details
-   * - **API ID Path**: pipe_organ_image.items[].link
-   * - **Documentation**: https://prismic.io/docs/fields/link
-   */
-  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
-
-  /**
-   * Link Text field in *PipeOrganImage → Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: View Details
-   * - **API ID Path**: pipe_organ_image.items[].link_text
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  link_text: prismic.KeyTextField;
-}
-
-/**
- * Default variation for PipeOrganImage Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default PipeOrganImage
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type PipeOrganImageSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<PipeOrganImageSliceDefaultPrimary>,
-  Simplify<PipeOrganImageSliceDefaultItem>
->;
-
-/**
- * Slice variation for *PipeOrganImage*
- */
-type PipeOrganImageSliceVariation = PipeOrganImageSliceDefault;
-
-/**
- * PipeOrganImage Shared Slice
- *
- * - **API ID**: `pipe_organ_image`
- * - **Description**: Images with pipe organ shape
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type PipeOrganImageSlice = prismic.SharedSlice<
-  "pipe_organ_image",
-  PipeOrganImageSliceVariation
->;
-
-/**
  * Primary content in *Product → Default → Primary*
  */
 export interface ProductSliceDefaultPrimary {
@@ -3376,51 +2733,6 @@ export type ProductSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *RichText → Default → Primary*
- */
-export interface RichTextSliceDefaultPrimary {
-  /**
-   * Content field in *RichText → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Lorem ipsum...
-   * - **API ID Path**: rich_text.default.primary.content
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  content: prismic.RichTextField;
-}
-
-/**
- * Default variation for RichText Slice
- *
- * - **API ID**: `default`
- * - **Description**: RichText
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type RichTextSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<RichTextSliceDefaultPrimary>,
-  never
->;
-
-/**
- * Slice variation for *RichText*
- */
-type RichTextSliceVariation = RichTextSliceDefault;
-
-/**
- * RichText Shared Slice
- *
- * - **API ID**: `rich_text`
- * - **Description**: RichText
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type RichTextSlice = prismic.SharedSlice<
-  "rich_text",
-  RichTextSliceVariation
->;
-
-/**
  * Primary content in *SectionIntro → Default → Primary*
  */
 export interface SectionIntroSliceDefaultPrimary {
@@ -3506,73 +2818,6 @@ export type SectionIntroSlice = prismic.SharedSlice<
   "section_intro",
   SectionIntroSliceVariation
 >;
-
-/**
- * Primary content in *Stats → Default → Primary*
- */
-export interface StatsSliceDefaultPrimary {
-  /**
-   * Title field in *Stats → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Our Impact
-   * - **API ID Path**: stats.default.primary.title
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  title: prismic.KeyTextField;
-}
-
-/**
- * Primary content in *Stats → Items*
- */
-export interface StatsSliceDefaultItem {
-  /**
-   * Stat Label field in *Stats → Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Stat label
-   * - **API ID Path**: stats.items[].label
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  label: prismic.KeyTextField;
-
-  /**
-   * Stat Value field in *Stats → Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: 100+
-   * - **API ID Path**: stats.items[].value
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  value: prismic.KeyTextField;
-}
-
-/**
- * Default variation for Stats Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default Stats
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type StatsSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<StatsSliceDefaultPrimary>,
-  Simplify<StatsSliceDefaultItem>
->;
-
-/**
- * Slice variation for *Stats*
- */
-type StatsSliceVariation = StatsSliceDefault;
-
-/**
- * Stats Shared Slice
- *
- * - **API ID**: `stats`
- * - **Description**: Statistics section with title and stats
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type StatsSlice = prismic.SharedSlice<"stats", StatsSliceVariation>;
 
 /**
  * Primary content in *StylizedImage → Default → Primary*
@@ -3810,6 +3055,181 @@ export type SuccessSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Technical Specifications → Default → Primary*
+ */
+export interface TechnicalSpecificationsSliceDefaultPrimary {
+  /**
+   * Section Title field in *Technical Specifications → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Technical Specifications
+   * - **API ID Path**: technical_specifications.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Eyebrow field in *Technical Specifications → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Product Details
+   * - **API ID Path**: technical_specifications.default.primary.eyebrow
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  eyebrow: prismic.KeyTextField;
+
+  /**
+   * Description field in *Technical Specifications → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Complete technical details and specifications...
+   * - **API ID Path**: technical_specifications.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Invert Colors field in *Technical Specifications → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: technical_specifications.default.primary.invert
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  invert: prismic.BooleanField;
+
+  /**
+   * Layout Style field in *Technical Specifications → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Choose layout style
+   * - **API ID Path**: technical_specifications.default.primary.layout
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  layout: prismic.SelectField<"grid" | "list" | "cards">;
+
+  /**
+   * Number of Columns field in *Technical Specifications → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Choose number of columns
+   * - **API ID Path**: technical_specifications.default.primary.columns
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  columns: prismic.SelectField<"1" | "2" | "3">;
+}
+
+/**
+ * Primary content in *Technical Specifications → Items*
+ */
+export interface TechnicalSpecificationsSliceDefaultItem {
+  /**
+   * Specification Category field in *Technical Specifications → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Power & Electrical
+   * - **API ID Path**: technical_specifications.items[].spec_category
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  spec_category: prismic.KeyTextField;
+
+  /**
+   * Specification Title field in *Technical Specifications → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Power Input
+   * - **API ID Path**: technical_specifications.items[].spec_title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  spec_title: prismic.KeyTextField;
+
+  /**
+   * Specification Value field in *Technical Specifications → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: 100-240V AC, 50-60Hz
+   * - **API ID Path**: technical_specifications.items[].spec_value
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  spec_value: prismic.KeyTextField;
+
+  /**
+   * Specification Description field in *Technical Specifications → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Optional additional details about this specification...
+   * - **API ID Path**: technical_specifications.items[].spec_description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  spec_description: prismic.RichTextField;
+
+  /**
+   * Specification Icon field in *Technical Specifications → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Select an icon
+   * - **API ID Path**: technical_specifications.items[].spec_icon
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  spec_icon: prismic.SelectField<
+    | "power"
+    | "dimensions"
+    | "weight"
+    | "frequency"
+    | "temperature"
+    | "humidity"
+    | "material"
+    | "connector"
+    | "battery"
+    | "certification"
+    | "none"
+  >;
+
+  /**
+   * Highlight Specification field in *Technical Specifications → Items*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: technical_specifications.items[].highlight
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  highlight: prismic.BooleanField;
+}
+
+/**
+ * Default variation for Technical Specifications Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default Technical Specifications Section
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TechnicalSpecificationsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TechnicalSpecificationsSliceDefaultPrimary>,
+  Simplify<TechnicalSpecificationsSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Technical Specifications*
+ */
+type TechnicalSpecificationsSliceVariation =
+  TechnicalSpecificationsSliceDefault;
+
+/**
+ * Technical Specifications Shared Slice
+ *
+ * - **API ID**: `technical_specifications`
+ * - **Description**: Technical specifications section with Apple-style design for displaying product specs
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TechnicalSpecificationsSlice = prismic.SharedSlice<
+  "technical_specifications",
+  TechnicalSpecificationsSliceVariation
+>;
+
+/**
  * Primary content in *Testimonial → Default → Primary*
  */
 export interface TestimonialSliceDefaultPrimary {
@@ -3873,151 +3293,6 @@ export type TestimonialSlice = prismic.SharedSlice<
   "testimonial",
   TestimonialSliceVariation
 >;
-
-/**
- * Primary content in *ThreeD → Default → Primary*
- */
-export interface ThreeDSliceDefaultPrimary {
-  /**
-   * Section Title field in *ThreeD → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Experience Our Microphones in 3D
-   * - **API ID Path**: three_d.default.primary.title
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  title: prismic.KeyTextField;
-
-  /**
-   * Eyebrow field in *ThreeD → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Interactive
-   * - **API ID Path**: three_d.default.primary.eyebrow
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  eyebrow: prismic.KeyTextField;
-
-  /**
-   * Description field in *ThreeD → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Explore our microphones in stunning 3D detail...
-   * - **API ID Path**: three_d.default.primary.description
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  description: prismic.RichTextField;
-
-  /**
-   * 3D Model File (FBX) field in *ThreeD → Default → Primary*
-   *
-   * - **Field Type**: Link to Media
-   * - **Placeholder**: Upload your FBX file
-   * - **API ID Path**: three_d.default.primary.model_file
-   * - **Documentation**: https://prismic.io/docs/fields/link-to-media
-   */
-  model_file: prismic.LinkToMediaField<prismic.FieldState, never>;
-
-  /**
-   * Animation Type field in *ThreeD → Default → Primary*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: Select animation style
-   * - **API ID Path**: three_d.default.primary.animation_type
-   * - **Documentation**: https://prismic.io/docs/fields/select
-   */
-  animation_type: prismic.SelectField<
-    "float" | "rotate_complex" | "wave" | "parallax" | "zoom_rotate" | "spiral"
-  >;
-
-  /**
-   * Animation Speed field in *ThreeD → Default → Primary*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: Select speed
-   * - **API ID Path**: three_d.default.primary.animation_speed
-   * - **Documentation**: https://prismic.io/docs/fields/select
-   */
-  animation_speed: prismic.SelectField<"slow" | "medium" | "fast">;
-
-  /**
-   * Background field in *ThreeD → Default → Primary*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: Select background
-   * - **API ID Path**: three_d.default.primary.background_color
-   * - **Documentation**: https://prismic.io/docs/fields/select
-   */
-  background_color: prismic.SelectField<"transparent" | "dark" | "gradient">;
-
-  /**
-   * Lighting Setup field in *ThreeD → Default → Primary*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: Select lighting
-   * - **API ID Path**: three_d.default.primary.lighting
-   * - **Documentation**: https://prismic.io/docs/fields/select
-   */
-  lighting: prismic.SelectField<"studio" | "dramatic" | "soft" | "environment">;
-
-  /**
-   * Camera Angle field in *ThreeD → Default → Primary*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: Select camera view
-   * - **API ID Path**: three_d.default.primary.camera_angle
-   * - **Documentation**: https://prismic.io/docs/fields/select
-   */
-  camera_angle: prismic.SelectField<"front" | "side" | "angle" | "top">;
-
-  /**
-   * Enable Auto Rotation field in *ThreeD → Default → Primary*
-   *
-   * - **Field Type**: Boolean
-   * - **Placeholder**: *None*
-   * - **Default Value**: true
-   * - **API ID Path**: three_d.default.primary.enable_auto_rotation
-   * - **Documentation**: https://prismic.io/docs/fields/boolean
-   */
-  enable_auto_rotation: prismic.BooleanField;
-
-  /**
-   * Scroll Animation Intensity field in *ThreeD → Default → Primary*
-   *
-   * - **Field Type**: Number
-   * - **Placeholder**: 1.0
-   * - **API ID Path**: three_d.default.primary.scroll_intensity
-   * - **Documentation**: https://prismic.io/docs/fields/number
-   */
-  scroll_intensity: prismic.NumberField;
-}
-
-/**
- * Default variation for ThreeD Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default 3D Model Section
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type ThreeDSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<ThreeDSliceDefaultPrimary>,
-  never
->;
-
-/**
- * Slice variation for *ThreeD*
- */
-type ThreeDSliceVariation = ThreeDSliceDefault;
-
-/**
- * ThreeD Shared Slice
- *
- * - **API ID**: `three_d`
- * - **Description**: 3D model display with scroll-based animations
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type ThreeDSlice = prismic.SharedSlice<"three_d", ThreeDSliceVariation>;
 
 /**
  * Primary content in *ThreeDModel → Default → Primary*
@@ -4429,11 +3704,6 @@ declare module "@prismicio/client" {
       ContentSliceDefaultPrimary,
       ContentSliceVariation,
       ContentSliceDefault,
-      CustomerLogosSlice,
-      CustomerLogosSliceDefaultPrimaryLogosItem,
-      CustomerLogosSliceDefaultPrimary,
-      CustomerLogosSliceVariation,
-      CustomerLogosSliceDefault,
       EnhancedBentoGridSlice,
       EnhancedBentoGridSliceDefaultPrimary,
       EnhancedBentoGridSliceDefaultItem,
@@ -4449,11 +3719,6 @@ declare module "@prismicio/client" {
       FeatureSliceDefaultItem,
       FeatureSliceVariation,
       FeatureSliceDefault,
-      GridListSlice,
-      GridListSliceDefaultPrimary,
-      GridListSliceDefaultItem,
-      GridListSliceVariation,
-      GridListSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
@@ -4462,38 +3727,14 @@ declare module "@prismicio/client" {
       HeroImageSliceDefaultPrimary,
       HeroImageSliceVariation,
       HeroImageSliceDefault,
-      ImageGallerySlice,
-      ImageGallerySliceDefaultPrimary,
-      ImageGallerySliceDefaultItem,
-      ImageGallerySliceVariation,
-      ImageGallerySliceDefault,
-      ImageShowcaseSlice,
-      ImageShowcaseSliceDefaultPrimary,
-      ImageShowcaseSliceDefaultItem,
-      ImageShowcaseSliceVariation,
-      ImageShowcaseSliceDefault,
-      PipeOrganImageSlice,
-      PipeOrganImageSliceDefaultPrimary,
-      PipeOrganImageSliceDefaultItem,
-      PipeOrganImageSliceVariation,
-      PipeOrganImageSliceDefault,
       ProductSlice,
       ProductSliceDefaultPrimary,
       ProductSliceVariation,
       ProductSliceDefault,
-      RichTextSlice,
-      RichTextSliceDefaultPrimary,
-      RichTextSliceVariation,
-      RichTextSliceDefault,
       SectionIntroSlice,
       SectionIntroSliceDefaultPrimary,
       SectionIntroSliceVariation,
       SectionIntroSliceDefault,
-      StatsSlice,
-      StatsSliceDefaultPrimary,
-      StatsSliceDefaultItem,
-      StatsSliceVariation,
-      StatsSliceDefault,
       StylizedImageSlice,
       StylizedImageSliceDefaultPrimary,
       StylizedImageSliceDefaultItem,
@@ -4503,14 +3744,15 @@ declare module "@prismicio/client" {
       SuccessSliceDefaultPrimary,
       SuccessSliceVariation,
       SuccessSliceDefault,
+      TechnicalSpecificationsSlice,
+      TechnicalSpecificationsSliceDefaultPrimary,
+      TechnicalSpecificationsSliceDefaultItem,
+      TechnicalSpecificationsSliceVariation,
+      TechnicalSpecificationsSliceDefault,
       TestimonialSlice,
       TestimonialSliceDefaultPrimary,
       TestimonialSliceVariation,
       TestimonialSliceDefault,
-      ThreeDSlice,
-      ThreeDSliceDefaultPrimary,
-      ThreeDSliceVariation,
-      ThreeDSliceDefault,
       ThreeDModelSlice,
       ThreeDModelSliceDefaultPrimary,
       ThreeDModelSliceVariation,

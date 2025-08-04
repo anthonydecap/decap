@@ -86,10 +86,11 @@
           "config": {
             "label": "Feature Link",
             "placeholder": "Optional link for more details",
-            "allowTargetBlank": true
+            "allowTargetBlank": true,
+            "select": null
           }
         }
       }
     }
   ]
-} 
+}

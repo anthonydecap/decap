@@ -27,6 +27,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "technical_specifications": {
+              "type": "SharedSlice"
+            },
             "trumpet_video": {
               "type": "SharedSlice"
             },
@@ -36,19 +39,10 @@
             "hero_image": {
               "type": "SharedSlice"
             },
-            "pipe_organ_image": {
-              "type": "SharedSlice"
-            },
             "enhanced_bento_grid": {
               "type": "SharedSlice"
             },
             "stylized_image": {
-              "type": "SharedSlice"
-            },
-            "image_showcase": {
-              "type": "SharedSlice"
-            },
-            "image_gallery": {
               "type": "SharedSlice"
             },
             "blog_overview": {
@@ -58,9 +52,6 @@
               "type": "SharedSlice"
             },
             "artists": {
-              "type": "SharedSlice"
-            },
-            "three_d": {
               "type": "SharedSlice"
             },
             "faq": {
@@ -87,19 +78,10 @@
             "testimonial": {
               "type": "SharedSlice"
             },
-            "stats": {
-              "type": "SharedSlice"
-            },
-            "grid_list": {
-              "type": "SharedSlice"
-            },
             "contact_section": {
               "type": "SharedSlice"
             },
             "hero": {
-              "type": "SharedSlice"
-            },
-            "rich_text": {
               "type": "SharedSlice"
             },
             "checkout": {
