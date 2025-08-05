@@ -1,0 +1,96 @@
+{
+  "id": "stylized_image",
+  "slice_type": "stylized_image",
+  "slice_label": null,
+  "version": "initial",
+  "variation": "default",
+  "primary": {
+    "title": "Our Creative Portfolio",
+    "eyebrow": "Featured Work",
+    "description": [
+      {
+        "type": "paragraph",
+        "text": "Explore our latest projects and creative work that showcases our expertise in design and development.",
+        "spans": []
+      }
+    ],
+    "invert": false
+  },
+  "items": [
+    {
+      "image": {
+        "dimensions": {
+          "width": 800,
+          "height": 600
+        },
+        "alt": "Modern web application interface",
+        "copyright": null,
+        "url": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop"
+      },
+      "title": "Modern Web Application",
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "A cutting-edge web application built with modern technologies and responsive design principles.",
+          "spans": []
+        }
+      ],
+      "image_shape": "0",
+      "link": {
+        "link_type": "Web",
+        "url": "https://example.com/project1"
+      },
+      "link_text": "View Project"
+    },
+    {
+      "image": {
+        "dimensions": {
+          "width": 800,
+          "height": 600
+        },
+        "alt": "Mobile app design mockup",
+        "copyright": null,
+        "url": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop"
+      },
+      "title": "Mobile App Design",
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "Intuitive mobile application design focused on user experience and accessibility.",
+          "spans": []
+        }
+      ],
+      "image_shape": "1",
+      "link": {
+        "link_type": "Web",
+        "url": "https://example.com/project2"
+      },
+      "link_text": "Learn More"
+    },
+    {
+      "image": {
+        "dimensions": {
+          "width": 800,
+          "height": 600
+        },
+        "alt": "E-commerce platform interface",
+        "copyright": null,
+        "url": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop"
+      },
+      "title": "E-commerce Platform",
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "Comprehensive e-commerce solution with advanced features and seamless user experience.",
+          "spans": []
+        }
+      ],
+      "image_shape": "2",
+      "link": {
+        "link_type": "Web",
+        "url": "https://example.com/project3"
+      },
+      "link_text": "Explore"
+    }
+  ]
+} 

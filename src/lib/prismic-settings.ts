@@ -4,8 +4,10 @@ export async function getSettings(lang?: string) {
   const client = createClient();
   
   try {
+    //this fails because we have not all settings configured in prismic
+    // so default settings are used for now
     const settings = await client.getSingle("settings", {
-      lang: lang ? lang : undefined,
+      lang: lang ? lang : undefined, 
     });
     return settings;
   } catch {

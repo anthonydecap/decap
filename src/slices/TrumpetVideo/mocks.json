@@ -1,0 +1,29 @@
+[
+  {
+    "id": "default-slice",
+    "name": "Default slice",
+    "docURL": "...",
+    "version": "initial",
+    "description": "TrumpetVideo",
+    "imageUrl": "",
+    "primary": {
+      "title": "Experience the Trumpet",
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "Immerse yourself in the rich, warm tones of the trumpet. This video showcases the incredible versatility and expressive power of this iconic brass instrument.",
+          "spans": []
+        }
+      ],
+      "background_type": "color",
+      "background_color": "#1a1a1a",
+      "background_image": null,
+      "video_url": "/videos/WhatsApp Video 2025-07-09 at 21.38.23.mp4",
+      "autoplay": false,
+      "loop": false,
+      "show_controls": true,
+      "poster_image": null
+    },
+    "items": []
+  }
+] 

@@ -42,7 +42,7 @@ const Testimonial: FC<TestimonialProps> = ({ slice }) => {
         <FadeIn>
           <figure className="mx-auto max-w-4xl">
             {quote && (
-              <blockquote className="relative font-display text-3xl font-medium tracking-tight text-neutral-950 sm:text-4xl">
+              <blockquote className="relative font-display text-3xl font-medium text-neutral-950 sm:text-4xl">
                 <PrismicRichText field={quote} components={components} />
               </blockquote>
             )}
@@ -55,9 +55,9 @@ const Testimonial: FC<TestimonialProps> = ({ slice }) => {
                     alt=""
                   />
                 )}
-                {client_name && !client_logo && (
+                {client_name && (
                   <div className="text-lg font-semibold text-neutral-950">
-                    {client_name}
+                   - {client_name}
                   </div>
                 )}
               </figcaption>
@@ -69,4 +69,4 @@ const Testimonial: FC<TestimonialProps> = ({ slice }) => {
   );
 };
 
-export default Testimonial; 
+export default Testimonial;

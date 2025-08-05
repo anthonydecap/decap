@@ -1,0 +1,28 @@
+{
+  "id": "accessories",
+  "slice_type": "accessories",
+  "slice_label": null,
+  "version": "initial",
+  "variation": "default",
+  "primary": {
+    "section_title": "Accessories",
+    "section_subtitle": "Complete your trumpet setup",
+    "main_product_id": "prod_Sl6YwTtMW5oaq7"
+  },
+  "items": [
+    {
+      "accessory_id": "trumpet-case-deluxe",
+      "custom_title": "Premium Trumpet Case",
+      "custom_price": 129.00,
+      "custom_description": "Luxurious protective case with premium materials"
+    },
+    {
+      "accessory_id": "trumpet-mouthpiece-7c",
+      "custom_title": "Professional 7C Mouthpiece"
+    },
+    {
+      "accessory_id": "trumpet-valve-oil",
+      "custom_price": 15.00
+    }
+  ]
+}

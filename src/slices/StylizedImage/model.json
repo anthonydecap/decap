@@ -1,0 +1,110 @@
+{
+  "id": "stylized_image",
+  "type": "SharedSlice",
+  "name": "StylizedImage",
+  "description": "Images with stylized shapes and overlays",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default StylizedImage",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Section Title",
+            "placeholder": "Our Creative Work"
+          }
+        },
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": "Portfolio"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "Explore our latest projects and creative work...",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "invert": {
+          "type": "Boolean",
+          "config": {
+            "label": "Invert Colors",
+            "placeholder": "Invert the color scheme"
+          }
+        }
+      },
+      "items": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {
+              "width": 800,
+              "height": 600
+            },
+            "thumbnails": [
+              {
+                "name": "thumbnail",
+                "width": 400,
+                "height": 300
+              }
+            ]
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": "Project Title"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "Project description...",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "image_shape": {
+          "type": "Select",
+          "config": {
+            "label": "Image Shape",
+            "placeholder": "Select shape",
+            "options": [
+              "0",
+              "1",
+              "2"
+            ]
+          }
+        },
+        "link": {
+          "type": "Link",
+          "config": {
+            "label": "Link",
+            "placeholder": "Link to project",
+            "allowTargetBlank": true
+          }
+        },
+        "link_text": {
+          "type": "Text",
+          "config": {
+            "label": "Link Text",
+            "placeholder": "View Project"
+          }
+        }
+      }
+    }
+  ]
+} 

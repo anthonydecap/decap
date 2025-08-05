@@ -1,104 +1,81 @@
 [
-  {
-    "variation": "default",
-    "name": "Default",
-    "slice_type": "feature",
-    "items": [
-      {
-        "feature_title": "Studio-Grade Quality",
-        "feature_description": [
-          {
-            "type": "paragraph",
-            "text": "Professional audio quality with crystal clear sound reproduction and exceptional dynamic range for the most demanding recordings."
-          }
-        ],
-        "feature_icon": "microphone",
-        "feature_link": {
-          "link_type": "Web",
-          "url": "/features/studio-quality"
-        }
-      },
-      {
-        "feature_title": "Advanced Noise Cancellation",
-        "feature_description": [
-          {
-            "type": "paragraph",
-            "text": "Built-in noise cancellation technology ensures your recordings are free from unwanted background noise and interference."
-          }
-        ],
-        "feature_icon": "shield",
-        "feature_link": {
-          "link_type": "Web",
-          "url": "/features/noise-cancellation"
-        }
-      },
-      {
-        "feature_title": "Customizable Settings",
-        "feature_description": [
-          {
-            "type": "paragraph",
-            "text": "Fine-tune your microphone settings with our advanced control software to achieve the perfect sound for your specific needs."
-          }
-        ],
-        "feature_icon": "settings",
-        "feature_link": {
-          "link_type": "Web",
-          "url": "/features/customization"
-        }
-      },
-      {
-        "feature_title": "Lightning-Fast Response",
-        "feature_description": [
-          {
-            "type": "paragraph",
-            "text": "Ultra-low latency ensures real-time monitoring and recording without any delay, perfect for live performances."
-          }
-        ],
-        "feature_icon": "lightning",
-        "feature_link": {
-          "link_type": "Web",
-          "url": "/features/low-latency"
-        }
-      },
-      {
-        "feature_title": "Award-Winning Design",
-        "feature_description": [
-          {
-            "type": "paragraph",
-            "text": "Recognized by industry professionals worldwide for exceptional build quality and innovative engineering."
-          }
-        ],
-        "feature_icon": "star",
-        "feature_link": {
-          "link_type": "Web",
-          "url": "/awards"
-        }
-      },
-      {
-        "feature_title": "Professional Monitoring",
-        "feature_description": [
-          {
-            "type": "paragraph",
-            "text": "Built-in headphone monitoring with zero-latency allows you to hear exactly what you're recording in real-time."
-          }
-        ],
-        "feature_icon": "headphones",
-        "feature_link": {
-          "link_type": "Web",
-          "url": "/features/monitoring"
-        }
-      }
-    ],
-    "primary": {
-      "title": "Why Choose Our Microphones",
-      "eyebrow": "Professional Features",
-      "description": [
-        {
-          "type": "paragraph",
-          "text": "Discover what makes our microphones stand out in the professional audio industry. Each feature is designed to deliver exceptional performance for the most demanding applications."
-        }
-      ],
-      "invert": false
-    }
-  }
-] 
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "represent",
+				"type": "Text"
+			},
+			"eyebrow": {
+				"__TYPE__": "FieldContent",
+				"value": "led",
+				"type": "Text"
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Et velit fugiat sint id velit veniam voluptate in mollit eu pariatur eu deserunt. Consequat Lorem enim irure fugiat duis ut in eu sunt dolore nulla. Ex elit ullamco cillum fugiat nulla labore minim."
+						}
+					}
+				]
+			},
+			"invert": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"feature_title",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "comfortable",
+							"type": "Text"
+						}
+					],
+					[
+						"feature_description",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Esse do voluptate enim esse aliqua eu dolor officia cupidatat commodo est exercitation."
+									}
+								}
+							]
+						}
+					],
+					[
+						"feature_icon",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "star",
+							"type": "Select"
+						}
+					],
+					[
+						"feature_link",
+						{
+							"__TYPE__": "LinkContent",
+							"key": "d061e34d-4576-4b2f-b188-c6e2b542207f",
+							"value": {
+								"__TYPE__": "ExternalLink",
+								"url": "https://slicemachine.dev"
+							}
+						}
+					]
+				]
+			}
+		]
+	}
+]

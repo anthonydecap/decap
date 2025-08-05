@@ -1,0 +1,103 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "clearly",
+				"type": "Text"
+			},
+			"eyebrow": {
+				"__TYPE__": "FieldContent",
+				"value": "guard",
+				"type": "Text"
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Dolore nisi excepteur reprehenderit esse voluptate excepteur magna nulla eiusmod est aliqua anim ut. Adipisicing ea fugiat eu culpa tempor tempor."
+						}
+					}
+				]
+			},
+			"invert": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			},
+			"layout": {
+				"__TYPE__": "FieldContent",
+				"value": "list",
+				"type": "Select"
+			},
+			"columns": {
+				"__TYPE__": "FieldContent",
+				"value": "3",
+				"type": "Select"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"spec_category",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "kill",
+							"type": "Text"
+						}
+					],
+					[
+						"spec_title",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "street",
+							"type": "Text"
+						}
+					],
+					[
+						"spec_value",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "breakfast",
+							"type": "Text"
+						}
+					],
+					[
+						"spec_description",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Pariatur irure reprehenderit sunt incididunt culpa nulla minim ipsum aliquip cupidatat nostrud mollit et est dolore. Aliquip dolore non ea eu anim nostrud est est dolor officia pariatur voluptate."
+									}
+								}
+							]
+						}
+					],
+					[
+						"spec_icon",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "humidity",
+							"type": "Select"
+						}
+					],
+					[
+						"highlight",
+						{
+							"__TYPE__": "BooleanContent",
+							"value": false
+						}
+					]
+				]
+			}
+		]
+	}
+]

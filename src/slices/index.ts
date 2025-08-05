@@ -3,22 +3,37 @@
 import dynamic from "next/dynamic";
 
 export const components = {
+  accessories: dynamic(() => import("./Accessories")),
   artists: dynamic(() => import("./Artists")),
   bento_grid: dynamic(() => import("./BentoGrid")),
   blog: dynamic(() => import("./Blog")),
   blog_listing: dynamic(() => import("./BlogListing")),
   blog_overview: dynamic(() => import("./BlogOverview")),
+
+  checkout: dynamic(() => import("./Checkout")),
   contact_section: dynamic(() => import("./ContactSection")),
   content: dynamic(() => import("./Content")),
-  customer_logos: dynamic(() => import("./CustomerLogos")),
+
+
+  enhanced_bento_grid: dynamic(() => import("./EnhancedBentoGrid")),
   faq: dynamic(() => import("./FAQ")),
   feature: dynamic(() => import("./Feature")),
-  grid_list: dynamic(() => import("./GridList")),
+
   hero: dynamic(() => import("./Hero")),
+  hero_image: dynamic(() => import("./HeroImage")),
+
+
   product: dynamic(() => import("./Product")),
-  rich_text: dynamic(() => import("./RichText")),
+
   section_intro: dynamic(() => import("./SectionIntro")),
-  stats: dynamic(() => import("./Stats")),
+
+  stylized_image: dynamic(() => import("./StylizedImage")),
+  success: dynamic(() => import("./Success")),
   testimonial: dynamic(() => import("./Testimonial")),
-  three_d: dynamic(() => import("./ThreeD")),
+  
+  technical_specifications: dynamic(() => import("./TechnicalSpecifications")),
+
+
+  three_d_model: dynamic(() => import("./ThreeDModel")),
+  trumpet_video: dynamic(() => import("./TrumpetVideo")),
 };

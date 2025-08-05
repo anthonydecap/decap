@@ -66,6 +66,11 @@
                 "name": "thumbnail",
                 "width": 400,
                 "height": 300
+              },
+              {
+                "name": "portrait",
+                "width": 750,
+                "height": 1700
               }
             ]
           }
@@ -89,7 +94,8 @@
           "config": {
             "label": "Product Link",
             "placeholder": "Link to product page",
-            "allowTargetBlank": true
+            "allowTargetBlank": true,
+            "select": null
           }
         },
         "item_size": {
@@ -107,4 +113,4 @@
       }
     }
   ]
-} 
+}

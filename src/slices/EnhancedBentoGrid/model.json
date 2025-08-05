@@ -1,0 +1,247 @@
+{
+  "id": "enhanced_bento_grid",
+  "type": "SharedSlice",
+  "name": "EnhancedBentoGrid",
+  "description": "Enhanced bento grid with background images and text overlays",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default EnhancedBentoGrid",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Section Title",
+            "placeholder": "Featured Products"
+          }
+        },
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": "Collection"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "Discover our latest collection...",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "invert": {
+          "type": "Boolean",
+          "config": {
+            "label": "Invert Colors",
+            "placeholder": "Invert the color scheme"
+          }
+        }
+      },
+      "items": {
+        "item_title": {
+          "type": "Text",
+          "config": {
+            "label": "Item Title",
+            "placeholder": "Product Name"
+          }
+        },
+        "item_description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Item Description",
+            "placeholder": "Product description...",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "item_image": {
+          "type": "Image",
+          "config": {
+            "label": "Item Image",
+            "constraint": {
+              "width": 800,
+              "height": 600
+            },
+            "thumbnails": [
+              {
+                "name": "thumbnail",
+                "width": 400,
+                "height": 300
+              },
+              {
+                "name": "portrait",
+                "width": 750,
+                "height": 1700
+              }
+            ]
+          }
+        },
+        "image_type": {
+          "type": "Select",
+          "config": {
+            "label": "Image Type",
+            "placeholder": "Select image source",
+            "options": [
+              "prismic",
+              "url"
+            ],
+            "default_value": "prismic"
+          }
+        },
+        "image_url": {
+          "type": "Text",
+          "config": {
+            "label": "Image URL",
+            "placeholder": "https://example.com/image.jpg"
+          }
+        },
+        "grow": {
+          "type": "Boolean",
+          "config": {
+            "label": "Grow Layout",
+            "placeholder": "Use special layout for this item"
+          }
+        },
+        "item_price": {
+          "type": "Text",
+          "config": {
+            "label": "Price",
+            "placeholder": "$299"
+          }
+        },
+        "item_badge": {
+          "type": "Text",
+          "config": {
+            "label": "Badge",
+            "placeholder": "New"
+          }
+        },
+        "item_link": {
+          "type": "Link",
+          "config": {
+            "label": "Item Link",
+            "placeholder": "Link to item",
+            "allowTargetBlank": true
+          }
+        },
+        "link_text": {
+          "type": "Text",
+          "config": {
+            "label": "Link Text",
+            "placeholder": "Shop Now"
+          }
+        },
+        "item_size": {
+          "type": "Select",
+          "config": {
+            "label": "Grid Size",
+            "placeholder": "Select grid size",
+            "options": [
+              "small",
+              "medium",
+              "large",
+              "xlarge",
+              "tall",
+              "wide",
+              "big"
+            ]
+          }
+        },
+        "item_width": {
+          "type": "Select",
+          "config": {
+            "label": "Item Width",
+            "placeholder": "Select width",
+            "options": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6"
+            ]
+          }
+        },
+        "item_height": {
+          "type": "Select",
+          "config": {
+            "label": "Item Height",
+            "placeholder": "Select height",
+            "options": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "tall"
+            ]
+          }
+        },
+        "text_position": {
+          "type": "Select",
+          "config": {
+            "label": "Text Position",
+            "placeholder": "Select text position",
+            "options": [
+              "top",
+              "center",
+              "bottom"
+            ]
+          }
+        },
+        "image_ratio": {
+          "type": "Select",
+          "config": {
+            "label": "Image Ratio",
+            "placeholder": "Select image ratio",
+            "options": [
+              "none",
+              "25",
+              "33",
+              "50",
+              "66",
+              "75",
+              "100"
+            ]
+          }
+        },
+        "image_fit": {
+          "type": "Select",
+          "config": {
+            "label": "Image Fit",
+            "placeholder": "Select how image should fit",
+            "options": [
+              "cover",
+              "contain",
+              "fit"
+            ]
+          }
+        },
+        "image_height": {
+          "type": "Select",
+          "config": {
+            "label": "Image Height",
+            "placeholder": "Select image height",
+            "options": [
+              "32",
+              "40",
+              "48",
+              "56",
+              "64",
+              "72",
+              "80",
+              "96",
+              "112",
+              "128"
+            ]
+          }
+        }
+      }
+    }
+  ]
+} 

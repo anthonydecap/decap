@@ -40,7 +40,12 @@ export async function getBlogPosts(lang: string = "en-us"): Promise<BlogPost[]> 
       ],
     });
     
-    return posts as unknown as BlogPost[];
+    // Ensure we return a valid array and filter out any malformed posts
+    if (Array.isArray(posts)) {
+      return posts.filter((post: any) => post && post.data && post.uid) as unknown as BlogPost[];
+    }
+    
+    return [];
   } catch (error) {
     console.warn("Blog posts not found:", error);
     return [];
@@ -160,13 +165,14 @@ export function calculateReadingTime(content: any): number {
  * Extract tags from a blog post
  */
 export function extractTagsFromPost(post: BlogPost): string[] {
-  if (!post.data.tags || !Array.isArray(post.data.tags)) {
+  if (!post?.data?.tags || !Array.isArray(post.data.tags)) {
     return [];
   }
   
   return post.data.tags
+    .filter((tagItem: any) => tagItem && typeof tagItem === 'object')
     .map((tagItem: any) => tagItem.tag)
-    .filter((tag: string) => tag && tag.trim() !== "");
+    .filter((tag: string) => tag && typeof tag === 'string' && tag.trim() !== "");
 }
 
 /**
@@ -175,11 +181,19 @@ export function extractTagsFromPost(post: BlogPost): string[] {
 export function getAllTagsWithCounts(posts: BlogPost[]): { tag: string; count: number }[] {
   const tagCounts = new Map<string, number>();
   
+  if (!Array.isArray(posts)) {
+    return [];
+  }
+  
   posts.forEach((post) => {
-    const tags = extractTagsFromPost(post);
-    tags.forEach((tag) => {
-      tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
-    });
+    if (post && typeof post === 'object') {
+      const tags = extractTagsFromPost(post);
+      tags.forEach((tag) => {
+        if (tag && typeof tag === 'string') {
+          tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
+        }
+      });
+    }
   });
   
   return Array.from(tagCounts.entries())
@@ -235,16 +249,20 @@ export function getRelatedPosts(
   allPosts: BlogPost[],
   limit: number = 3
 ): BlogPost[] {
+  if (!currentPost || !Array.isArray(allPosts)) {
+    return [];
+  }
+  
   const currentTags = extractTagsFromPost(currentPost);
   
   if (currentTags.length === 0) {
     return allPosts
-      .filter((post) => post.uid !== currentPost.uid)
+      .filter((post) => post && post.uid !== currentPost.uid)
       .slice(0, limit);
   }
   
   const relatedPosts = allPosts
-    .filter((post) => post.uid !== currentPost.uid)
+    .filter((post) => post && post.uid !== currentPost.uid)
     .map((post) => {
       const postTags = extractTagsFromPost(post);
       const commonTags = currentTags.filter((tag) => postTags.includes(tag));
@@ -262,7 +280,7 @@ export function getRelatedPosts(
   if (relatedPosts.length < limit) {
     const remainingPosts = allPosts
       .filter((post) => 
-        post.uid !== currentPost.uid && 
+        post && post.uid !== currentPost.uid && 
         !relatedPosts.some((related) => related.uid === post.uid)
       )
       .slice(0, limit - relatedPosts.length);

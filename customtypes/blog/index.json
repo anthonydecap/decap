@@ -63,9 +63,6 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "rich_text": {
-              "type": "SharedSlice"
-            },
             "content": {
               "type": "SharedSlice"
             },
@@ -73,12 +70,6 @@
               "type": "SharedSlice"
             },
             "testimonial": {
-              "type": "SharedSlice"
-            },
-            "stats": {
-              "type": "SharedSlice"
-            },
-            "grid_list": {
               "type": "SharedSlice"
             },
             "contact_section": {

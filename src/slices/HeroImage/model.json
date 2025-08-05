@@ -1,0 +1,184 @@
+{
+  "id": "hero_image",
+  "type": "SharedSlice",
+  "name": "HeroImage",
+  "description": "Hero section with image and optional SVG overlay",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default HeroImage",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Hero Title",
+            "placeholder": "Welcome to Our Studio"
+          }
+        },
+        "subtitle": {
+          "type": "Text",
+          "config": {
+            "label": "Subtitle/Eyebrow",
+            "placeholder": "Creative Excellence"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "We create amazing digital experiences...",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Hero Image",
+            "constraint": {
+              "width": 1200,
+              "height": 800
+            },
+            "thumbnails": [
+              {
+                "name": "thumbnail",
+                "width": 600,
+                "height": 400
+              },
+              {
+                "name": "portrait",
+                "width": 750,
+                "height": 1700
+              }
+            ]
+          }
+        },
+        "svg_overlay": {
+          "type": "Image",
+          "config": {
+            "label": "SVG Overlay (Optional)",
+            "constraint": {
+              "width": 800,
+              "height": 800
+            },
+            "thumbnails": [
+              {
+                "name": "thumbnail",
+                "width": 400,
+                "height": 400
+              }
+            ]
+          }
+        },
+        "text_position": {
+          "type": "Select",
+          "config": {
+            "label": "Text Position",
+            "placeholder": "Select text position",
+            "options": [
+              "left",
+              "center",
+              "right"
+            ],
+            "default_value": "center"
+          }
+        },
+        "invert_text": {
+          "type": "Boolean",
+          "config": {
+            "label": "Invert Text Colors",
+            "placeholder": "Invert text colors for better contrast"
+          }
+        },
+        "image_fit": {
+          "type": "Select",
+          "config": {
+            "label": "Image Fit",
+            "placeholder": "Select how image should fit",
+            "options": [
+              "cover",
+              "contain",
+              "fit"
+            ],
+            "default_value": "cover"
+          }
+        },
+        "primary_button_text": {
+          "type": "Text",
+          "config": {
+            "label": "Primary Button Text",
+            "placeholder": "Get Started"
+          }
+        },
+        "primary_button_link": {
+          "type": "Link",
+          "config": {
+            "label": "Primary Button Link",
+            "placeholder": "Link for primary button",
+            "allowTargetBlank": true
+          }
+        },
+        "secondary_button_text": {
+          "type": "Text",
+          "config": {
+            "label": "Secondary Button Text",
+            "placeholder": "Learn More"
+          }
+        },
+        "secondary_button_link": {
+          "type": "Link",
+          "config": {
+            "label": "Secondary Button Link",
+            "placeholder": "Link for secondary button",
+            "allowTargetBlank": true
+          }
+        },
+        "stripeid": {
+          "type": "Text",
+          "config": {
+            "label": "Stripe Product ID",
+            "placeholder": "Enter Stripe product ID to enable purchase functionality"
+          }
+        },
+        "product_price": {
+          "type": "Number",
+          "config": {
+            "label": "Product Price",
+            "placeholder": "Enter price (e.g., 29.99)"
+          }
+        },
+        "currency": {
+          "type": "Select",
+          "config": {
+            "label": "Currency",
+            "placeholder": "Select currency",
+            "options": [
+              "USD",
+              "EUR",
+              "GBP"
+            ],
+            "default_value": "USD"
+          }
+        },
+        "product_id": {
+          "type": "Text",
+          "config": {
+            "label": "Product ID",
+            "placeholder": "Enter unique product ID"
+          }
+        },
+        "product_weight": {
+          "type": "Number",
+          "config": {
+            "label": "Product Weight (kg)",
+            "placeholder": "Enter weight in kilograms (e.g., 0.5)"
+          }
+        }
+      }
+    }
+  ]
+} 

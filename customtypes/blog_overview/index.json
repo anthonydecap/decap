@@ -27,8 +27,12 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "blog_listing": { "type": "SharedSlice" },
-            "content": { "type": "SharedSlice" }
+            "blog_listing": {
+              "type": "SharedSlice"
+            },
+            "content": {
+              "type": "SharedSlice"
+            }
           }
         }
       }
@@ -52,10 +56,13 @@
         "type": "Image",
         "config": {
           "label": "Meta Image",
-          "constraint": { "width": 1200, "height": 630 },
+          "constraint": {
+            "width": 1200,
+            "height": 630
+          },
           "thumbnails": []
         }
       }
     }
   }
-} 
+}

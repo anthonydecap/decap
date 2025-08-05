@@ -1,0 +1,48 @@
+[
+  {
+    "name": "Checkout",
+    "variation": "default",
+    "slice_type": "checkout",
+    "items": [
+      {
+        "name": "Sample Product 1",
+        "price": "$29.99",
+        "quantity": 2,
+        "image": {
+          "dimensions": {
+            "width": 400,
+            "height": 400
+          },
+          "alt": "Sample Product 1",
+          "copyright": null,
+          "url": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop"
+        }
+      },
+      {
+        "name": "Sample Product 2",
+        "price": "$19.99",
+        "quantity": 1,
+        "image": {
+          "dimensions": {
+            "width": 400,
+            "height": 400
+          },
+          "alt": "Sample Product 2",
+          "copyright": null,
+          "url": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=400&fit=crop"
+        }
+      }
+    ],
+    "primary": {
+      "title": "Checkout",
+      "subtitle": "Complete your purchase securely",
+      "payment_title": "Payment Information",
+      "payment_description": "Payment form will be rendered here",
+      "total_label": "Total to pay",
+      "total_amount": "$79.97",
+      "pay_button_text": "Pay Now",
+      "summary_title": "Order Summary",
+      "security_text": "Your payment is secured by Stripe. We never store your payment information."
+    }
+  }
+] 

@@ -108,10 +108,15 @@ const BlogListing: FC<BlogListingProps> = async ({ slice, context }) => {
           </div>
         )}
 
-        <div className="mt-24 sm:mt-32 lg:mt-40">
+        <div className="mt-8 sm:mt-12 lg:mt-16">
           <div className="space-y-24 lg:space-y-32">
             <FadeInStagger>
               {displayPosts.map((post) => {
+                // Skip posts that don't have the expected structure
+                if (!post || !post.data || !post.uid) {
+                  return null;
+                }
+                
                 const postTags = extractTagsFromPost(post);
                 
                 return (

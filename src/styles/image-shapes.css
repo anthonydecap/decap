@@ -1,0 +1,45 @@
+/* Custom clip paths for image shapes */
+
+.clip-path-hexagon {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.clip-path-diamond {
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.clip-path-wave {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 25% 75%, 25% 100%, 0% 75%);
+}
+
+.clip-path-triangle {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+/* Additional creative shapes */
+.clip-path-star {
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.clip-path-cross {
+  clip-path: polygon(40% 0%, 60% 0%, 60% 40%, 100% 40%, 100% 60%, 60% 60%, 60% 100%, 40% 100%, 40% 60%, 0% 60%, 0% 40%, 40% 40%);
+}
+
+.clip-path-arrow {
+  clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .clip-path-hexagon,
+  .clip-path-diamond,
+  .clip-path-wave,
+  .clip-path-triangle,
+  .clip-path-star,
+  .clip-path-cross,
+  .clip-path-arrow {
+    /* Fallback to rounded on mobile for better performance */
+    clip-path: none;
+    border-radius: 1.5rem;
+  }
+} 

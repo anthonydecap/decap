@@ -65,6 +65,13 @@
             "label": "Product ID",
             "placeholder": "Enter unique product ID"
           }
+        },
+        "product_weight": {
+          "type": "Number",
+          "config": {
+            "label": "Product Weight (kg)",
+            "placeholder": "Enter weight in kilograms (e.g., 0.5)"
+          }
         }
       },
       "items": {}

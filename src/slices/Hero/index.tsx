@@ -34,7 +34,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
 
   return (
     <Container
-      className={clsx('mt-24 sm:mt-32 lg:mt-40', centered && 'text-center')}
+      className={clsx('mt-8 sm:mt-12 lg:mt-16', centered && 'text-center')}
     >
       <FadeIn>
         <h1>

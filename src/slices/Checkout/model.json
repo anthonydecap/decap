@@ -1,0 +1,112 @@
+{
+  "id": "checkout",
+  "type": "SharedSlice",
+  "name": "Checkout",
+  "description": "Checkout",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Checkout",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": "Checkout"
+          }
+        },
+        "subtitle": {
+          "type": "Text",
+          "config": {
+            "label": "Subtitle",
+            "placeholder": "Complete your purchase securely"
+          }
+        },
+        "payment_title": {
+          "type": "Text",
+          "config": {
+            "label": "Payment Title",
+            "placeholder": "Payment Information"
+          }
+        },
+        "payment_description": {
+          "type": "Text",
+          "config": {
+            "label": "Payment Description",
+            "placeholder": "Payment form will be rendered here"
+          }
+        },
+        "total_label": {
+          "type": "Text",
+          "config": {
+            "label": "Total Label",
+            "placeholder": "Total to pay"
+          }
+        },
+        "total_amount": {
+          "type": "Text",
+          "config": {
+            "label": "Total Amount",
+            "placeholder": "$0.00"
+          }
+        },
+        "pay_button_text": {
+          "type": "Text",
+          "config": {
+            "label": "Pay Button Text",
+            "placeholder": "Pay Now"
+          }
+        },
+        "summary_title": {
+          "type": "Text",
+          "config": {
+            "label": "Summary Title",
+            "placeholder": "Order Summary"
+          }
+        },
+        "security_text": {
+          "type": "Text",
+          "config": {
+            "label": "Security Text",
+            "placeholder": "Your payment is secured by Stripe. We never store your payment information."
+          }
+        }
+      },
+      "items": {
+        "name": {
+          "type": "Text",
+          "config": {
+            "label": "Product Name",
+            "placeholder": "Product Name"
+          }
+        },
+        "price": {
+          "type": "Text",
+          "config": {
+            "label": "Price",
+            "placeholder": "$0.00"
+          }
+        },
+        "quantity": {
+          "type": "Number",
+          "config": {
+            "label": "Quantity",
+            "placeholder": "1"
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Product Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      }
+    }
+  ]
+} 

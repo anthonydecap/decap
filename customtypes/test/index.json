@@ -10,11 +10,7 @@
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {
-            "customer_logos": {
-              "type": "SharedSlice"
-            }
-          }
+          "choices": {}
         }
       }
     },

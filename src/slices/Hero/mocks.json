@@ -1,19 +1,39 @@
 [
-  {
-    "variation": "default",
-    "name": "Default",
-    "slice_type": "hero",
-    "items": [],
-    "primary": {
-      "eyebrow": "Studio",
-      "title": "We help you build modern applications",
-      "description": [
-        {
-          "type": "paragraph",
-          "text": "We build thoughtful, livable spaces. Our team of architects and designers work with you to create a home that's perfect for your family."
-        }
-      ],
-      "centered": false
-    }
-  }
-] 
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"eyebrow": {
+				"__TYPE__": "FieldContent",
+				"value": "characteristic",
+				"type": "Text"
+			},
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "properly",
+				"type": "Text"
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Veniam aute mollit nulla minim do est magna Lorem. Irure adipisicing labore est quis fugiat pariatur id reprehenderit non sunt labore anim."
+						}
+					}
+				]
+			},
+			"centered": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	}
+]

@@ -1,0 +1,60 @@
+{
+  "id": "success",
+  "type": "SharedSlice",
+  "name": "Success",
+  "description": "Success",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Success",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": "Payment Successful!"
+          }
+        },
+        "subtitle": {
+          "type": "Text",
+          "config": {
+            "label": "Subtitle",
+            "placeholder": "Thank you for your purchase. You will receive a confirmation email shortly."
+          }
+        },
+        "order_number": {
+          "type": "Text",
+          "config": {
+            "label": "Order Number",
+            "placeholder": "ORD-123456"
+          }
+        },
+        "order_number_label": {
+          "type": "Text",
+          "config": {
+            "label": "Order Number Label",
+            "placeholder": "Order Number:"
+          }
+        },
+        "continue_shopping_text": {
+          "type": "Text",
+          "config": {
+            "label": "Continue Shopping Text",
+            "placeholder": "Continue Shopping"
+          }
+        },
+        "view_orders_text": {
+          "type": "Text",
+          "config": {
+            "label": "View Orders Text",
+            "placeholder": "View Orders"
+          }
+        }
+      }
+    }
+  ]
+} 
