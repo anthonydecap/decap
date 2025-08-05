@@ -27,6 +27,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "accessories": {
+              "type": "SharedSlice"
+            },
             "technical_specifications": {
               "type": "SharedSlice"
             },

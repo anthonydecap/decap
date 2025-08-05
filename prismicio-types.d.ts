@@ -419,6 +419,7 @@ export type CheckoutPageDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | AccessoriesSlice
   | TechnicalSpecificationsSlice
   | TrumpetVideoSlice
   | ThreeDModelSlice
@@ -941,6 +942,86 @@ export type AllDocumentTypes =
   | SettingsDocument
   | SuccessPageDocument
   | TestDocument;
+
+/**
+ * Primary content in *Accessories → Default → Primary*
+ */
+export interface AccessoriesSliceDefaultPrimary {
+  /**
+   * Section Title field in *Accessories → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Accessories
+   * - **API ID Path**: accessories.default.primary.section_title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  section_title: prismic.KeyTextField;
+
+  /**
+   * Section Subtitle field in *Accessories → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Complete your setup
+   * - **API ID Path**: accessories.default.primary.section_subtitle
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  section_subtitle: prismic.KeyTextField;
+
+  /**
+   * Main Product ID field in *Accessories → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Enter main product ID to show compatible accessories
+   * - **API ID Path**: accessories.default.primary.main_product_id
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  main_product_id: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *Accessories → Items*
+ */
+export interface AccessoriesSliceDefaultItem {
+  /**
+   * Accessory Product ID field in *Accessories → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Enter accessory product ID
+   * - **API ID Path**: accessories.items[].accessory_id
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  accessory_id: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for Accessories Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type AccessoriesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AccessoriesSliceDefaultPrimary>,
+  Simplify<AccessoriesSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Accessories*
+ */
+type AccessoriesSliceVariation = AccessoriesSliceDefault;
+
+/**
+ * Accessories Shared Slice
+ *
+ * - **API ID**: `accessories`
+ * - **Description**: Accessories section displaying product accessories in Apple-style grid
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type AccessoriesSlice = prismic.SharedSlice<
+  "accessories",
+  AccessoriesSliceVariation
+>;
 
 /**
  * Primary content in *Artists → Default → Primary*
@@ -3668,6 +3749,11 @@ declare module "@prismicio/client" {
       TestDocumentData,
       TestDocumentDataSlicesSlice,
       AllDocumentTypes,
+      AccessoriesSlice,
+      AccessoriesSliceDefaultPrimary,
+      AccessoriesSliceDefaultItem,
+      AccessoriesSliceVariation,
+      AccessoriesSliceDefault,
       ArtistsSlice,
       ArtistsSliceDefaultPrimary,
       ArtistsSliceDefaultItem,

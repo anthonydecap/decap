@@ -131,7 +131,7 @@ const TechnicalSpecifications: FC<TechnicalSpecificationsProps> = ({ slice }) =>
     const isHighlighted = spec.highlight;
 
     return (
-      <FadeIn key={index} delay={index * 0.1}>
+      <FadeIn key={index}>
         <div
           className={clsx(
             "group relative overflow-hidden rounded-2xl p-6 transition-all duration-300",
@@ -258,7 +258,7 @@ const TechnicalSpecifications: FC<TechnicalSpecificationsProps> = ({ slice }) =>
             )}
             <div className="space-y-3">
               {specs.map((spec, index) => (
-                <FadeIn key={index} delay={index * 0.05}>
+                <FadeIn key={index}>
                   <div
                     className={clsx(
                       "group flex items-center gap-4 p-4 rounded-xl transition-all duration-300",
@@ -327,7 +327,7 @@ const TechnicalSpecifications: FC<TechnicalSpecificationsProps> = ({ slice }) =>
   );
 
   const renderGridLayout = () => (
-    <div className={`grid gap-6 ${getColumnClasses(columns)}`}>
+    <div className={`grid gap-6 ${getColumnClasses(columns || "2")}`}>
       {slice.items.map((spec, index) => renderSpecItem(spec, index))}
     </div>
   );
@@ -347,7 +347,7 @@ const TechnicalSpecifications: FC<TechnicalSpecificationsProps> = ({ slice }) =>
                 {category}
               </h3>
             )}
-            <div className={`grid gap-6 ${getColumnClasses(columns)}`}>
+            <div className={`grid gap-6 ${getColumnClasses(columns || "2")}`}>
               {specs.map((spec, index) => renderSpecItem(spec, index))}
             </div>
           </div>

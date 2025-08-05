@@ -3,6 +3,7 @@
 A modern, Apple-inspired technical specifications slice for displaying product specifications with elegant design and smooth animations.
 
 ## Features
+
 - **Apple-Style Design**: Clean, modern interface with subtle shadows, rounded corners, and smooth transitions
 - **Multiple Layout Options**: Grid, List, and Cards layouts to suit different content needs
 - **Responsive Design**: Adapts beautifully across all device sizes

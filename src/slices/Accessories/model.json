@@ -1,0 +1,80 @@
+{
+  "id": "accessories",
+  "type": "SharedSlice",
+  "name": "Accessories",
+  "description": "Accessories section displaying product accessories in Apple-style grid",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "section_title": {
+          "type": "Text",
+          "config": {
+            "label": "Section Title",
+            "placeholder": "Accessories"
+          }
+        },
+        "section_subtitle": {
+          "type": "Text",
+          "config": {
+            "label": "Section Subtitle",
+            "placeholder": "Complete your setup"
+          }
+        },
+        "main_product_id": {
+          "type": "Text",
+          "config": {
+            "label": "Main Product ID",
+            "placeholder": "Enter main product ID to show compatible accessories"
+          }
+        }
+      },
+      "items": {
+        "accessory_id": {
+          "type": "Text",
+          "config": {
+            "label": "Accessory Product ID",
+            "placeholder": "Enter accessory product ID"
+          }
+        },
+        "custom_title": {
+          "type": "Text",
+          "config": {
+            "label": "Custom Title (optional)",
+            "placeholder": "Override product name"
+          }
+        },
+        "custom_price": {
+          "type": "Number",
+          "config": {
+            "label": "Custom Price (optional)",
+            "placeholder": "Override product price"
+          }
+        },
+        "custom_image": {
+          "type": "Image",
+          "config": {
+            "label": "Custom Image (optional)",
+            "constraint": {
+              "width": 400,
+              "height": 400
+            },
+            "thumbnails": []
+          }
+        },
+        "custom_description": {
+          "type": "Text",
+          "config": {
+            "label": "Custom Description (optional)",
+            "placeholder": "Override product description"
+          }
+        }
+      }
+    }
+  ]
+}

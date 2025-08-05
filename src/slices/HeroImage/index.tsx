@@ -13,6 +13,7 @@ import { Container } from "@/components/Container";
 import { FadeIn, FadeInStagger } from "@/components/FadeIn";
 import { useCartStore } from "@/lib/cart-store";
 import { getCurrencySymbol } from "@/lib/stripe-client";
+import { createCartItemFromProductId, getProductForSlice } from "@/lib/product-utils";
 import { Button } from "@/components/Button";
 import clsx from "clsx";
 
@@ -129,20 +130,36 @@ const HeroImageSlice: FC<HeroImageProps> = ({ slice }) => {
     product_weight
   } = slice.primary as any;
 
-  const currencySymbol = getCurrencySymbol(currency || 'USD');
+  // For DISPLAY: Use Prismic data first, fall back to database
+  const productData = getProductForSlice(product_id);
+  const displayName = title || productData?.name || 'Product';
+  const displayPrice = product_price || productData?.price;
+  const displayCurrency = currency || productData?.currency || 'USD';
+  const displayImage = image?.url || productData?.image || '';
+  
+  const currencySymbol = getCurrencySymbol(displayCurrency);
   const hasStripeId = stripeid && stripeid.trim() !== '';
-  const hasProductFields = product_price && product_id;
+  const hasProductFields = displayPrice && product_id;
 
   const handleAddToCart = () => {
     if (hasStripeId && hasProductFields) {
-      addItem({
-        id: product_id,
-        name: title || 'Product',
-        price: product_price,
-        currency: currency || 'USD',
-        image: image?.url || '',
-        weight: product_weight || 1,
-      });
+      // For CART: Always use database data for consistency
+      const cartItem = createCartItemFromProductId(product_id);
+      
+      if (cartItem) {
+        addItem(cartItem);
+      } else {
+        // Only as last resort if product not in database
+        console.warn(`Product ${product_id} not found in database, using slice data for cart`);
+        addItem({
+          id: product_id,
+          name: displayName,
+          price: displayPrice,
+          currency: displayCurrency,
+          image: displayImage,
+          weight: product_weight || 1,
+        });
+      }
     }
   };
 
@@ -215,16 +232,28 @@ const HeroImageSlice: FC<HeroImageProps> = ({ slice }) => {
             )}>
               
               {/* Hero Image */}
-              {image ? (
+              {(image || displayImage) ? (
                 <FadeIn className={getImagePositionClasses()}>
                   <div className="flex justify-center">
                     <div className="w-full max-w-lg sm:max-w-xl lg:max-w-2xl xl:max-w-3xl">
-                      <HeroImage
-                        image={image}
-                        svgOverlay={svg_overlay}
-                        className="w-full"
-                        imageFit={image_fit || 'cover'}
-                      />
+                      {image ? (
+                        <HeroImage
+                          image={image}
+                          svgOverlay={svg_overlay}
+                          className="w-full"
+                          imageFit={image_fit || 'cover'}
+                        />
+                      ) : displayImage ? (
+                        <div className="relative w-full aspect-[3/2]">
+                          <div className="group overflow-hidden rounded-2xl h-full w-full">
+                            <img
+                              src={displayImage}
+                              alt={displayName}
+                              className={`w-full h-full object-${image_fit === 'fit' ? 'contain' : (image_fit || 'cover')} transition duration-700 motion-safe:group-hover:scale-110`}
+                            />
+                          </div>
+                        </div>
+                      ) : null}
                     </div>
                   </div>
                 </FadeIn>
@@ -257,12 +286,12 @@ const HeroImageSlice: FC<HeroImageProps> = ({ slice }) => {
                   )}
                   
                   {/* Main Title */}
-                  {title && (
+                  {displayName && (
                     <h1 className={clsx(
                       "mt-6 font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl",
                       invert_text ? "text-neutral-950" : "text-neutral-950"
                     )}>
-                      {title}
+                      {displayName}
                     </h1>
                   )}
                   
@@ -285,11 +314,11 @@ const HeroImageSlice: FC<HeroImageProps> = ({ slice }) => {
                       {/* Price Display */}
                       <div className="flex items-baseline gap-2">
                         <span className="text-3xl font-bold text-neutral-900">
-                          {currencySymbol}{product_price}
+                          {currencySymbol}{displayPrice?.toFixed(2)}
                         </span>
-                        {currency && (
+                        {displayCurrency && (
                           <span className="text-sm text-neutral-500 uppercase tracking-wide">
-                            {currency}
+                            {displayCurrency}
                           </span>
                         )}
                       </div>
