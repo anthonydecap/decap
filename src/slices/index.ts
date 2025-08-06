@@ -18,6 +18,7 @@ export const components = {
   enhanced_bento_grid: dynamic(() => import("./EnhancedBentoGrid")),
   faq: dynamic(() => import("./FAQ")),
   feature: dynamic(() => import("./Feature")),
+  foundation: dynamic(() => import("./Foundation")),
 
   hero: dynamic(() => import("./Hero")),
   hero_image: dynamic(() => import("./HeroImage")),

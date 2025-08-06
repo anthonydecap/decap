@@ -419,6 +419,7 @@ export type CheckoutPageDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | FoundationSlice
   | AccessoriesSlice
   | TechnicalSpecificationsSlice
   | TrumpetVideoSlice
@@ -991,6 +992,46 @@ export interface AccessoriesSliceDefaultItem {
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
   accessory_id: prismic.KeyTextField;
+
+  /**
+   * Custom Title (optional) field in *Accessories → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Override product name
+   * - **API ID Path**: accessories.items[].custom_title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  custom_title: prismic.KeyTextField;
+
+  /**
+   * Custom Price (optional) field in *Accessories → Items*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: Override product price
+   * - **API ID Path**: accessories.items[].custom_price
+   * - **Documentation**: https://prismic.io/docs/fields/number
+   */
+  custom_price: prismic.NumberField;
+
+  /**
+   * Custom Image (optional) field in *Accessories → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: accessories.items[].custom_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  custom_image: prismic.ImageField<never>;
+
+  /**
+   * Custom Description (optional) field in *Accessories → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Override product description
+   * - **API ID Path**: accessories.items[].custom_description
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  custom_description: prismic.KeyTextField;
 }
 
 /**
@@ -2415,6 +2456,72 @@ export type FeatureSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Foundation → Default → Primary*
+ */
+export interface FoundationSliceDefaultPrimary {
+  /**
+   * Title field in *Foundation → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Built on a foundation of fast, production-grade tooling
+   * - **API ID Path**: foundation.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Subtitle field in *Foundation → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Everything you need to build great products on the web.
+   * - **API ID Path**: foundation.default.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  subtitle: prismic.RichTextField;
+
+  /**
+   * Show Animation field in *Foundation → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: true
+   * - **API ID Path**: foundation.default.primary.show_animation
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  show_animation: prismic.BooleanField;
+}
+
+/**
+ * Default variation for Foundation Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default Foundation Section with animated lines and CPU
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type FoundationSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<FoundationSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Foundation*
+ */
+type FoundationSliceVariation = FoundationSliceDefault;
+
+/**
+ * Foundation Shared Slice
+ *
+ * - **API ID**: `foundation`
+ * - **Description**: Foundation section with animated lines and CPU visualization - inspired by Next.js 'Built on a foundation of fast, production-grade tooling' section
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type FoundationSlice = prismic.SharedSlice<
+  "foundation",
+  FoundationSliceVariation
+>;
+
+/**
  * Primary content in *Hero → Default → Primary*
  */
 export interface HeroSliceDefaultPrimary {
@@ -3805,6 +3912,10 @@ declare module "@prismicio/client" {
       FeatureSliceDefaultItem,
       FeatureSliceVariation,
       FeatureSliceDefault,
+      FoundationSlice,
+      FoundationSliceDefaultPrimary,
+      FoundationSliceVariation,
+      FoundationSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,

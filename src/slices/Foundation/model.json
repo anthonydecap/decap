@@ -1,0 +1,46 @@
+{
+  "id": "foundation",
+  "type": "SharedSlice",
+  "name": "Foundation",
+  "description": "Foundation section with animated lines and CPU visualization - inspired by Next.js 'Built on a foundation of fast, production-grade tooling' section",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default Foundation Section with animated lines and CPU",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "Built on a foundation of fast, production-grade tooling",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink,heading1,heading2,heading3,heading4,heading5,heading6"
+          }
+        },
+        "subtitle": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Subtitle",
+            "placeholder": "Everything you need to build great products on the web.",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "show_animation": {
+          "type": "Boolean",
+          "config": {
+            "label": "Show Animation",
+            "default_value": true,
+            "placeholder_false": "Hide animated visualization",
+            "placeholder_true": "Show animated visualization"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

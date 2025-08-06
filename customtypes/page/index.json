@@ -27,6 +27,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "foundation": {
+              "type": "SharedSlice"
+            },
             "accessories": {
               "type": "SharedSlice"
             },

@@ -56,6 +56,20 @@ body {
   color: var(--color-neutral-950);
 }
 
+/* Geist CSS variables for SVG components */
+:root {
+  --geist-foreground: #171717;
+  --geist-background: #ffffff;
+}
+
+/* Dark mode support for geist variables */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --geist-foreground: #ffffff;
+    --geist-background: #171717;
+  }
+}
+
 .text-balance {
   text-wrap: balance;
 } 
