@@ -40,7 +40,46 @@
           }
         }
       },
-      "items": {}
+      "items": {
+        "card_title": {
+          "type": "Text",
+          "config": {
+            "label": "Card Title",
+            "placeholder": "Card title"
+          }
+        },
+        "card_description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Card Description",
+            "placeholder": "Card description",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "card_icon": {
+          "type": "Select",
+          "config": {
+            "label": "Card Icon",
+            "placeholder": "Select an icon",
+            "default_value": "lightning",
+            "options": [
+              "lightning",
+              "shield",
+              "star",
+              "settings",
+              "microphone",
+              "waveform",
+              "headphones",
+              "volume",
+              "music",
+              "record",
+              "chart",
+              "brain"
+            ]
+          }
+        }
+      }
     }
   ]
 }

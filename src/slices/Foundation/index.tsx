@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { type FC } from "react";
 import { type Content } from "@prismicio/client";
 import { PrismicNextLink } from "@prismicio/next";
+import Link from "next/link";
 import {
   PrismicRichText,
   type SliceComponentProps,
@@ -10,6 +12,75 @@ import {
 } from "@prismicio/react";
 import { Container } from "@/components/Container";
 import { FadeIn } from "@/components/FadeIn";
+import { GridList, GridListItem } from "@/components/GridList";
+import clsx from "clsx";
+
+// Icon components for Foundation cards
+const IconMap = {
+  microphone: (
+    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+    </svg>
+  ),
+  waveform: (
+    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19V6l3-3 3 3v13M9 19h6M9 19H4a1 1 0 01-1-1v-6a1 1 0 011-1h5M20 19h-1a1 1 0 01-1-1v-8a1 1 0 011-1h1a1 1 0 011 1v8a1 1 0 01-1 1z" />
+    </svg>
+  ),
+  settings: (
+    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+    </svg>
+  ),
+  shield: (
+    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+    </svg>
+  ),
+  star: (
+    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+    </svg>
+  ),
+  lightning: (
+    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+    </svg>
+  ),
+  headphones: (
+    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+    </svg>
+  ),
+  volume: (
+    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728m-9.9-2.828a5 5 0 010-7.072m0 0L7.05 8.464M5.636 18.364L12 12m0 0l6.364 6.364M12 12L5.636 5.636M12 12l6.364-6.364" />
+    </svg>
+  ),
+  music: (
+    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19V6l3-3 3 3v13m-3-13l-3 3m3-3l3 3M9 19a3 3 0 103 3 3 3 0 00-3-3zm9-10a3 3 0 11-6 0 3 3 0 016 0z" />
+    </svg>
+  ),
+  record: (
+    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" />
+    </svg>
+  ),
+  chart: (
+    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+    </svg>
+  ),
+  brain: (
+    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+    </svg>
+  ),
+};
 
 const components: JSXMapSerializer = {
   hyperlink: ({ node, children }) => {
@@ -31,29 +102,41 @@ type FoundationProps = SliceComponentProps<Content.FoundationSlice>;
  * Component for "Foundation" Slices.
  */
 const Foundation: FC<FoundationProps> = ({ slice }) => {
-  const { title, subtitle, show_animation } = slice.primary;
+  const { title, subtitle } = slice.primary;
+
+  const containerClasses =
+    "mt-8 sm:mt-12 lg:mt-16 pt-8 sm:pt-12 lg:pt-16 bg-neutral-950";
+  const textColor = "text-white";
 
   return (
-    <section className="mt-24 sm:mt-32 lg:mt-40 bg-neutral-950">
+    <div className={containerClasses}>
       <Container>
         <FadeIn>
-          <div className="mx-auto max-w-2xl lg:max-w-none">
-            {/* Title and subtitle */}
-            <div className="max-w-3xl">
-              {title && (
-                <h2 className="block font-display text-4xl font-medium tracking-tight text-balance sm:text-5xl text-white">
-                  <PrismicRichText field={title} components={components} />
-                </h2>
-              )}
-              {subtitle && (
-                <div className="mt-6 text-xl text-neutral-300">
-                  <PrismicRichText field={subtitle} components={components} />
-                </div>
-              )}
-            </div>
-
-            <hr className="text-white" />
-
+          {/* Title and subtitle */}
+          <div
+            className={clsx("max-w-3xl", textColor)}
+            style={{ position: "relative", zIndex: 2 }}
+          >
+            {title && (
+              <h2 className="block font-display text-4xl font-medium tracking-tight text-balance sm:text-5xl text-white">
+                <PrismicRichText field={title} components={components} />
+              </h2>
+            )}
+            {subtitle && (
+              <div className="mt-6 text-xl text-neutral-300">
+                <PrismicRichText field={subtitle} components={components} />
+              </div>
+            )}
+          </div>
+          <div
+            className="mx-auto max-w-2xl lg:max-w-none relative pb-8 sm:pb-12 lg:pt-16"
+            style={{
+              backgroundImage: "url(/images/valvetop.png)",
+              backgroundSize: "cover",
+              backgroundPosition: "center top",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
             {/* CPU and Connection Layout */}
             <div
               style={{
@@ -69,130 +152,287 @@ const Foundation: FC<FoundationProps> = ({ slice }) => {
                 boxSizing: "border-box",
               }}
             >
-
               <svg
                 fill="none"
                 role="img"
                 viewBox="0 0 891 264"
                 width="100%"
                 height="100%"
-                style={{ 
-                  position: 'absolute',
+                style={{
+                  position: "absolute",
                   top: 0,
                   left: 0,
-                  minWidth: '100%', 
-                  minHeight: '100%' 
+                  minWidth: "100%",
+                  minHeight: "100%",
                 }}
                 data-lines="true"
                 aria-label="A bunch of connecting lines that form into the CPU, with the text Powered By on top of the the CPU. Gradient lines are animating along the drawn lines, dissolving into the CPU in the center."
               >
                 <defs>
-                  <linearGradient gradientUnits="userSpaceOnUse" id="blue-pulse-1" x1="400" y1="83" x2="350" y2="133.75">
+                  <linearGradient
+                    gradientUnits="userSpaceOnUse"
+                    id="blue-pulse-1"
+                    x1="400"
+                    y1="83"
+                    x2="350"
+                    y2="133.75"
+                  >
                     <stop stopColor="#2EB9DF" stopOpacity="0"></stop>
                     <stop offset="0.05" stopColor="#2EB9DF"></stop>
                     <stop offset="1" stopColor="#2EB9DF" stopOpacity="0"></stop>
                   </linearGradient>
-                  <linearGradient gradientUnits="userSpaceOnUse" id="blue-pulse-2" x1="400" y1="83" x2="350" y2="133.75">
+                  <linearGradient
+                    gradientUnits="userSpaceOnUse"
+                    id="blue-pulse-2"
+                    x1="400"
+                    y1="83"
+                    x2="350"
+                    y2="133.75"
+                  >
                     <stop stopColor="#2EB9DF" stopOpacity="0"></stop>
                     <stop offset="0.05" stopColor="#2EB9DF"></stop>
                     <stop offset="1" stopColor="#2EB9DF" stopOpacity="0"></stop>
                   </linearGradient>
-                  <linearGradient gradientUnits="userSpaceOnUse" id="pink-pulse-1" x1="400" y1="83" x2="350" y2="133.75">
+                  <linearGradient
+                    gradientUnits="userSpaceOnUse"
+                    id="pink-pulse-1"
+                    x1="400"
+                    y1="83"
+                    x2="350"
+                    y2="133.75"
+                  >
                     <stop stopColor="#FF4A81" stopOpacity="0"></stop>
                     <stop offset="0.030" stopColor="#FF4A81"></stop>
                     <stop offset="0.27" stopColor="#DF6CF6"></stop>
                     <stop offset="1" stopColor="#0196FF" stopOpacity="0"></stop>
                   </linearGradient>
-                  <linearGradient gradientUnits="userSpaceOnUse" id="pink-pulse-2" x1="476.1975344235252" y1="124.92036448494764" x2="486.9210970677959" y2="154.51595096563688">
+                  <linearGradient
+                    gradientUnits="userSpaceOnUse"
+                    id="pink-pulse-2"
+                    x1="476.1975344235252"
+                    y1="124.92036448494764"
+                    x2="486.9210970677959"
+                    y2="154.51595096563688"
+                  >
                     <stop stopColor="#FF4A81" stopOpacity="0"></stop>
                     <stop offset="0.0564843" stopColor="#FF4A81"></stop>
                     <stop offset="0.4616" stopColor="#DF6CF6"></stop>
                     <stop offset="1" stopColor="#0196FF" stopOpacity="0"></stop>
                   </linearGradient>
-                  <linearGradient gradientUnits="userSpaceOnUse" id="orange-pulse-1" x1="360" y1="130" x2="400" y2="170">
+                  <linearGradient
+                    gradientUnits="userSpaceOnUse"
+                    id="orange-pulse-1"
+                    x1="360"
+                    y1="130"
+                    x2="400"
+                    y2="170"
+                  >
                     <stop stopColor="#FF7432" stopOpacity="0"></stop>
                     <stop offset="0.0550784" stopColor="#FF7432"></stop>
                     <stop offset="0.373284" stopColor="#F7CC4B"></stop>
                     <stop offset="1" stopColor="#F7CC4B" stopOpacity="0"></stop>
                   </linearGradient>
-                  <linearGradient gradientUnits="userSpaceOnUse" id="orange-pulse-2" x1="300" y1="140" x2="400" y2="180">
+                  <linearGradient
+                    gradientUnits="userSpaceOnUse"
+                    id="orange-pulse-2"
+                    x1="300"
+                    y1="140"
+                    x2="400"
+                    y2="180"
+                  >
                     <stop stopColor="#FF7432" stopOpacity="0"></stop>
                     <stop offset="0.0531089" stopColor="#FF7432"></stop>
                     <stop offset="0.415114" stopColor="#F7CC4B"></stop>
                     <stop offset="1" stopColor="#F7CC4B" stopOpacity="0"></stop>
                   </linearGradient>
-                  
+
+                  {/* Traveling light gradients with fade-out effect */}
+                  <linearGradient
+                    id="traveling-orange-gradient"
+                    gradientUnits="userSpaceOnUse"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="0%"
+                  >
+                    <stop
+                      offset="0%"
+                      stopColor="#FF7432"
+                      stopOpacity="0"
+                    ></stop>
+                    <stop
+                      offset="10%"
+                      stopColor="#FF7432"
+                      stopOpacity="0.3"
+                    ></stop>
+                    <stop
+                      offset="30%"
+                      stopColor="#FF7432"
+                      stopOpacity="1"
+                    ></stop>
+                    <stop
+                      offset="70%"
+                      stopColor="#FF7432"
+                      stopOpacity="1"
+                    ></stop>
+                    <stop
+                      offset="90%"
+                      stopColor="#FF7432"
+                      stopOpacity="0.3"
+                    ></stop>
+                    <stop
+                      offset="100%"
+                      stopColor="#FF7432"
+                      stopOpacity="0"
+                    ></stop>
+                  </linearGradient>
+
+                  <linearGradient
+                    id="traveling-blue-gradient"
+                    gradientUnits="userSpaceOnUse"
+                    x1="349"
+                    y1="130"
+                    x2="1"
+                    y2="264"
+                  >
+                    <stop offset="0" stopColor="#2EB9DF" stopOpacity="0"></stop>
+                    <stop
+                      offset="0.1"
+                      stopColor="#2EB9DF"
+                      stopOpacity="0.3"
+                    ></stop>
+                    <stop
+                      offset="0.3"
+                      stopColor="#2EB9DF"
+                      stopOpacity="1"
+                    ></stop>
+                    <stop
+                      offset="0.7"
+                      stopColor="#2EB9DF"
+                      stopOpacity="1"
+                    ></stop>
+                    <stop
+                      offset="0.9"
+                      stopColor="#2EB9DF"
+                      stopOpacity="0.3"
+                    ></stop>
+                    <stop offset="1" stopColor="#2EB9DF" stopOpacity="0"></stop>
+                  </linearGradient>
+
+                  <linearGradient
+                    id="traveling-pink-gradient"
+                    gradientUnits="userSpaceOnUse"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="0%"
+                  >
+                    <stop
+                      offset="0%"
+                      stopColor="#FF4A81"
+                      stopOpacity="0"
+                    ></stop>
+                    <stop
+                      offset="10%"
+                      stopColor="#FF4A81"
+                      stopOpacity="0.3"
+                    ></stop>
+                    <stop
+                      offset="30%"
+                      stopColor="#FF4A81"
+                      stopOpacity="1"
+                    ></stop>
+                    <stop
+                      offset="70%"
+                      stopColor="#FF4A81"
+                      stopOpacity="1"
+                    ></stop>
+                    <stop
+                      offset="90%"
+                      stopColor="#FF4A81"
+                      stopOpacity="0.3"
+                    ></stop>
+                    <stop
+                      offset="100%"
+                      stopColor="#FF4A81"
+                      stopOpacity="0"
+                    ></stop>
+                  </linearGradient>
+
+                  {/* Glow filters for enhanced traveling light effect */}
+                  <filter
+                    id="glow-orange"
+                    x="-50%"
+                    y="-50%"
+                    width="200%"
+                    height="200%"
+                  >
+                    <feGaussianBlur
+                      stdDeviation="3"
+                      result="coloredBlur"
+                    ></feGaussianBlur>
+                    <feMerge>
+                      <feMergeNode in="coloredBlur"></feMergeNode>
+                      <feMergeNode in="SourceGraphic"></feMergeNode>
+                    </feMerge>
+                  </filter>
+
+                  <filter
+                    id="glow-blue"
+                    x="-50%"
+                    y="-50%"
+                    width="200%"
+                    height="200%"
+                  >
+                    <feGaussianBlur
+                      stdDeviation="3"
+                      result="coloredBlur"
+                    ></feGaussianBlur>
+                    <feMerge>
+                      <feMergeNode in="coloredBlur"></feMergeNode>
+                      <feMergeNode in="SourceGraphic"></feMergeNode>
+                    </feMerge>
+                  </filter>
+
+                  <filter
+                    id="glow-pink"
+                    x="-50%"
+                    y="-50%"
+                    width="200%"
+                    height="200%"
+                  >
+                    <feGaussianBlur
+                      stdDeviation="3"
+                      result="coloredBlur"
+                    ></feGaussianBlur>
+                    <feMerge>
+                      <feMergeNode in="coloredBlur"></feMergeNode>
+                      <feMergeNode in="SourceGraphic"></feMergeNode>
+                    </feMerge>
+                  </filter>
+
                   {/* Path definitions for animated circles */}
-                  <path id="path1" d="M547 130L822 130C824.209 130 826 131.791 826 134L826 264" />
-                  <path id="path2" d="M349 130L5.00002 130C2.79088 130 1.00001 131.791 1.00001 134L1.00001 264" />
-                  <path id="path3" d="M547 150L633 150C635.209 150 637 151.791 637 154L637 236C637 238.209 635.209 240 633 240L488 240C485.791 240 484 241.791 484 244L484 264" />
-                  <path id="path4" d="M388 184L388 194C388 196.209 386.209 198 384 198L77 198C74.7909 198 73 199.791 73 202L73 264" />
+                  <path
+                    id="path1"
+                    d="M547 130L822 130C824.209 130 826 131.791 826 134L826 264"
+                  />
+                  <path
+                    id="path2"
+                    d="M349 130L5.00002 130C2.79088 130 1.00001 131.791 1.00001 134L1.00001 264"
+                  />
+                  <path
+                    id="path3"
+                    d="M547 150L633 150C635.209 150 637 151.791 637 154L637 236C637 238.209 635.209 240 633 240L488 240C485.791 240 484 241.791 484 244L484 264"
+                  />
+                  <path
+                    id="path4"
+                    d="M388 184L388 194C388 196.209 386.209 198 384 198L77 198C74.7909 198 73 199.791 73 202L73 264"
+                  />
                   <path id="path5" d="M412 263.5L412 184" />
-                  <path id="path6" d="M508 96L508 88C508 85.7909 509.791 84 512 84L886 84C888.209 84 890 85.7909 890 88L890 264" />
-                  
-                  {/* Animated gradient definitions for traveling light pulses */}
-                  <linearGradient id="animated-orange-gradient" x1="0%" y1="0%" x2="100%" y2="0%" gradientUnits="userSpaceOnUse" gradientTransform="rotate(0)">
-                    <stop offset="0%" stopColor="var(--geist-foreground)" stopOpacity="0.1">
-                      <animate attributeName="stop-opacity" values="0.1;0.2;0.1" dur="2s" repeatCount="indefinite" begin="0s"/>
-                    </stop>
-                    <stop offset="5%" stopColor="#FF7432" stopOpacity="0">
-                      <animate attributeName="stop-opacity" values="0;0.8;0" dur="2s" repeatCount="indefinite" begin="0.1s"/>
-                    </stop>
-                    <stop offset="15%" stopColor="#F7CC4B" stopOpacity="0">
-                      <animate attributeName="stop-opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="0.2s"/>
-                    </stop>
-                    <stop offset="25%" stopColor="#F7CC4B" stopOpacity="0">
-                      <animate attributeName="stop-opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="0.3s"/>
-                    </stop>
-                    <stop offset="35%" stopColor="#FF7432" stopOpacity="0">
-                      <animate attributeName="stop-opacity" values="0;0.8;0" dur="2s" repeatCount="indefinite" begin="0.4s"/>
-                    </stop>
-                    <stop offset="100%" stopColor="var(--geist-foreground)" stopOpacity="0.1">
-                      <animate attributeName="stop-opacity" values="0.1;0.2;0.1" dur="2s" repeatCount="indefinite" begin="0.5s"/>
-                    </stop>
-                  </linearGradient>
-                  
-                  <linearGradient id="animated-blue-gradient" x1="0%" y1="0%" x2="100%" y2="0%" gradientUnits="objectBoundingBox">
-                    <stop offset="0%" stopColor="var(--geist-foreground)" stopOpacity="0.1">
-                      <animate attributeName="stop-opacity" values="0.1;0.2;0.1" dur="2s" repeatCount="indefinite" begin="0.7s"/>
-                    </stop>
-                    <stop offset="5%" stopColor="#2EB9DF" stopOpacity="0">
-                      <animate attributeName="stop-opacity" values="0;0.8;0" dur="2s" repeatCount="indefinite" begin="0.8s"/>
-                    </stop>
-                    <stop offset="15%" stopColor="#0196FF" stopOpacity="0">
-                      <animate attributeName="stop-opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="0.9s"/>
-                    </stop>
-                    <stop offset="25%" stopColor="#0196FF" stopOpacity="0">
-                      <animate attributeName="stop-opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="1s"/>
-                    </stop>
-                    <stop offset="35%" stopColor="#2EB9DF" stopOpacity="0">
-                      <animate attributeName="stop-opacity" values="0;0.8;0" dur="2s" repeatCount="indefinite" begin="1.1s"/>
-                    </stop>
-                    <stop offset="100%" stopColor="var(--geist-foreground)" stopOpacity="0.1">
-                      <animate attributeName="stop-opacity" values="0.1;0.2;0.1" dur="2s" repeatCount="indefinite" begin="1.2s"/>
-                    </stop>
-                  </linearGradient>
-                  
-                  <linearGradient id="animated-pink-gradient" x1="0%" y1="0%" x2="100%" y2="0%" gradientUnits="objectBoundingBox">
-                    <stop offset="0%" stopColor="var(--geist-foreground)" stopOpacity="0.1">
-                      <animate attributeName="stop-opacity" values="0.1;0.2;0.1" dur="2s" repeatCount="indefinite" begin="1.4s"/>
-                    </stop>
-                    <stop offset="5%" stopColor="#FF4A81" stopOpacity="0">
-                      <animate attributeName="stop-opacity" values="0;0.8;0" dur="2s" repeatCount="indefinite" begin="1.5s"/>
-                    </stop>
-                    <stop offset="15%" stopColor="#DF6CF6" stopOpacity="0">
-                      <animate attributeName="stop-opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="1.6s"/>
-                    </stop>
-                    <stop offset="25%" stopColor="#DF6CF6" stopOpacity="0">
-                      <animate attributeName="stop-opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="1.7s"/>
-                    </stop>
-                    <stop offset="35%" stopColor="#FF4A81" stopOpacity="0">
-                      <animate attributeName="stop-opacity" values="0;0.8;0" dur="2s" repeatCount="indefinite" begin="1.8s"/>
-                    </stop>
-                    <stop offset="100%" stopColor="var(--geist-foreground)" stopOpacity="0.1">
-                      <animate attributeName="stop-opacity" values="0.1;0.2;0.1" dur="2s" repeatCount="indefinite" begin="1.9s"/>
-                    </stop>
-                  </linearGradient>
+                  <path
+                    id="path6"
+                    d="M508 96L508 88C508 85.7909 509.791 84 512 84L886 84C888.209 84 890 85.7909 890 88L890 264"
+                  />
                 </defs>
 
                 <path
@@ -275,64 +515,65 @@ const Foundation: FC<FoundationProps> = ({ slice }) => {
                     strokeWidth="2"
                   ></path>
                 </g>
-                
-
 
                 {/* Complete network paths with traveling light animation */}
                 <path
                   d="M547 130L822 130C824.209 130 826 131.791 826 134L826 264"
-                  stroke="#FF7432"
-                  strokeWidth="3"
+                  stroke="url(#traveling-orange-gradient)"
+                  strokeWidth="4"
                   strokeLinecap="round"
                   fill="none"
-                  strokeDasharray="20 1000"
+                  strokeDasharray="60 1000"
                   strokeDashoffset="0"
+                  filter="url(#glow-orange)"
                 >
                   <animate
                     attributeName="stroke-dashoffset"
-                    values="0;-1020"
-                    dur="2s"
+                    values="0;-1060"
+                    dur="2.5s"
                     repeatCount="indefinite"
                     begin="0s"
                   />
                 </path>
-                
+
                 <path
                   d="M349 130L5.00002 130C2.79088 130 1.00001 131.791 1.00001 134L1.00001 264"
-                  stroke="#2EB9DF"
-                  strokeWidth="3"
+                  stroke="url(#traveling-blue-gradient)"
+                  strokeWidth="4"
                   strokeLinecap="round"
                   fill="none"
-                  strokeDasharray="20 1000"
+                  strokeDasharray="80 1000"
                   strokeDashoffset="0"
+                  filter="url(#glow-blue)"
                 >
                   <animate
                     attributeName="stroke-dashoffset"
-                    values="0;-1020"
-                    dur="2s"
+                    values="0;-1080"
+                    dur="3s"
                     repeatCount="indefinite"
                     begin="0.7s"
                   />
                 </path>
-                
+
                 <path
                   d="M547 150L633 150C635.209 150 637 151.791 637 154L637 236C637 238.209 635.209 240 633 240L488 240C485.791 240 484 241.791 484 244L484 264"
-                  stroke="#FF4A81"
-                  strokeWidth="3"
+                  stroke="url(#traveling-pink-gradient)"
+                  strokeWidth="4"
                   strokeLinecap="round"
                   fill="none"
-                  strokeDasharray="20 1000"
+                  strokeDasharray="60 1000"
                   strokeDashoffset="0"
+                  filter="url(#glow-pink)"
                 >
                   <animate
                     attributeName="stroke-dashoffset"
-                    values="0;-1020"
-                    dur="2s"
+                    values="0;-1060"
+                    dur="2.5s"
                     repeatCount="indefinite"
                     begin="1.4s"
                   />
                 </path>
-                
+
                 <path
                   d="M412 96L412 0"
                   stroke="url(#paint0_linear_341_27683)"
@@ -349,7 +590,11 @@ const Foundation: FC<FoundationProps> = ({ slice }) => {
                     pathLength="1"
                     strokeDashoffset="0px"
                     strokeDasharray="1px 1px"
-                    style={{transform: 'scale(-1)', transformOrigin: '50% 50%', transformBox: 'fill-box'}}
+                    style={{
+                      transform: "scale(-1)",
+                      transformOrigin: "50% 50%",
+                      transformBox: "fill-box",
+                    }}
                   ></path>
                   <path
                     d="M412 263.5L412 184"
@@ -358,6 +603,7 @@ const Foundation: FC<FoundationProps> = ({ slice }) => {
                     strokeWidth="2"
                   ></path>
                 </g>
+                {/* TOP RIGHT */}
                 <g>
                   <path
                     d="M508 96L508 88C508 85.7909 509.791 84 512 84L886 84C888.209 84 890 85.7909 890 88L890 264"
@@ -370,7 +616,7 @@ const Foundation: FC<FoundationProps> = ({ slice }) => {
                   <path
                     d="M508 96L508 88C508 85.7909 509.791 84 512 84L886 84C888.209 84 890 85.7909 890 88L890 264"
                     stroke="url(#animated-orange-gradient)"
-                    strokeWidth="2"
+                    strokeWidth=""
                   ></path>
                 </g>
                 <path
@@ -381,6 +627,8 @@ const Foundation: FC<FoundationProps> = ({ slice }) => {
                   strokeDashoffset="0px"
                   strokeDasharray="1px 1px"
                 ></path>
+
+                {/* Todo Move up 5px */}
                 <path
                   d="M436 214L436 184"
                   stroke="var(--geist-foreground)"
@@ -388,7 +636,11 @@ const Foundation: FC<FoundationProps> = ({ slice }) => {
                   pathLength="1"
                   strokeDashoffset="0px"
                   strokeDasharray="1px 1px"
-                  style={{transform: 'scale(-1)', transformOrigin: '50% 50%', transformBox: 'fill-box'}}
+                  style={{
+                    transform: "scale(-1)",
+                    transformOrigin: "50% 50%",
+                    transformBox: "fill-box",
+                  }}
                 ></path>
                 <path
                   d="M460 96L460 64"
@@ -405,7 +657,11 @@ const Foundation: FC<FoundationProps> = ({ slice }) => {
                   pathLength="1"
                   strokeDashoffset="0px"
                   strokeDasharray="1px 1px"
-                  style={{transform: 'scale(-1)', transformOrigin: '50% 50%', transformBox: 'fill-box'}}
+                  style={{
+                    transform: "scale(-1)",
+                    transformOrigin: "50% 50%",
+                    transformBox: "fill-box",
+                  }}
                 ></path>
                 <path
                   d="M484 96L484 24C484 21.7909 485.791 20 488 20L554 20"
@@ -536,144 +792,9 @@ const Foundation: FC<FoundationProps> = ({ slice }) => {
                   strokeOpacity="0.1"
                   opacity="1"
                 ></circle>
-                <defs>
-                  <linearGradient
-                    gradientUnits="userSpaceOnUse"
-                    id="paint0_linear_341_27683"
-                    x1="412.5"
-                    x2="412.5"
-                    y1="-3.27835e-08"
-                    y2="96"
-                  >
-                    <stop stopOpacity="0"></stop>
-                    <stop offset="1"></stop>
-                  </linearGradient>
-                  <linearGradient
-                    gradientUnits="userSpaceOnUse"
-                    id="paint1_linear_341_27683"
-                    x1="436.5"
-                    x2="436.5"
-                    y1="-3.27835e-08"
-                    y2="96"
-                  >
-                    <stop stopOpacity="0"></stop>
-                    <stop offset="1"></stop>
-                  </linearGradient>
-                  <linearGradient
-                    gradientUnits="userSpaceOnUse"
-                    id="paint2_linear_341_27683"
-                    x1="554"
-                    x2="484"
-                    y1="20"
-                    y2="96"
-                  >
-                    <stop stopOpacity="0"></stop>
-                    <stop offset="1"></stop>
-                  </linearGradient>
-                  <linearGradient
-                    gradientUnits="userSpaceOnUse"
-                    id="blue-pulse-1"
-                    x1="400"
-                    y1="83"
-                    x2="350"
-                    y2="133.75"
-                  >
-                    <stop stopColor="#2EB9DF" stopOpacity="0"></stop>
-                    <stop offset="0.05" stopColor="#2EB9DF"></stop>
-                    <stop
-                      offset="1"
-                      stopColor="#2EB9DF"
-                      stopOpacity="0"
-                    ></stop>
-                  </linearGradient>
-                  <linearGradient
-                    gradientUnits="userSpaceOnUse"
-                    id="blue-pulse-2"
-                    x1="400"
-                    y1="83"
-                    x2="350"
-                    y2="133.75"
-                  >
-                    <stop stopColor="#2EB9DF" stopOpacity="0"></stop>
-                    <stop offset="0.05" stopColor="#2EB9DF"></stop>
-                    <stop
-                      offset="1"
-                      stopColor="#2EB9DF"
-                      stopOpacity="0"
-                    ></stop>
-                  </linearGradient>
-                  <linearGradient
-                    gradientUnits="userSpaceOnUse"
-                    id="pink-pulse-1"
-                    x1="400"
-                    y1="83"
-                    x2="350"
-                    y2="133.75"
-                  >
-                    <stop stopColor="#FF4A81" stopOpacity="0"></stop>
-                    <stop offset="0.030" stopColor="#FF4A81"></stop>
-                    <stop offset="0.27" stopColor="#DF6CF6"></stop>
-                    <stop
-                      offset="1"
-                      stopColor="#0196FF"
-                      stopOpacity="0"
-                    ></stop>
-                  </linearGradient>
-                  <linearGradient
-                    gradientUnits="userSpaceOnUse"
-                    id="pink-pulse-2"
-                    x1="477.58522599513526"
-                    y1="131.60900575079722"
-                    x2="485.5615039500699"
-                    y2="160.65484089456731"
-                  >
-                    <stop stopColor="#FF4A81" stopOpacity="0"></stop>
-                    <stop offset="0.0564843" stopColor="#FF4A81"></stop>
-                    <stop offset="0.4616" stopColor="#DF6CF6"></stop>
-                    <stop
-                      offset="1"
-                      stopColor="#0196FF"
-                      stopOpacity="0"
-                    ></stop>
-                  </linearGradient>
-                  <linearGradient
-                    gradientUnits="userSpaceOnUse"
-                    id="orange-pulse-1"
-                    x1="752.2895280746161"
-                    y1="247.8552230267087"
-                    x2="758.6166072098422"
-                    y2="313.10991367528914"
-                  >
-                    <stop stopColor="#FF7432" stopOpacity="0"></stop>
-                    <stop offset="0.0550784" stopColor="#FF7432"></stop>
-                    <stop offset="0.373284" stopColor="#F7CC4B"></stop>
-                    <stop
-                      offset="1"
-                      stopColor="#F7CC4B"
-                      stopOpacity="0"
-                    ></stop>
-                  </linearGradient>
-                  <linearGradient
-                    gradientUnits="userSpaceOnUse"
-                    id="orange-pulse-2"
-                    x1="300"
-                    y1="140"
-                    x2="400"
-                    y2="180"
-                  >
-                    <stop stopColor="#FF7432" stopOpacity="0"></stop>
-                    <stop offset="0.0531089" stopColor="#FF7432"></stop>
-                    <stop offset="0.415114" stopColor="#F7CC4B"></stop>
-                    <stop
-                      offset="1"
-                      stopColor="#F7CC4B"
-                      stopOpacity="0"
-                    ></stop>
-                  </linearGradient>
-                </defs>
               </svg>
               {/* CPU Component - Made with divs */}
-              <div className="relative z-10 flex justify-center mb-32">
+              <div className="relative z-10 flex justify-center">
                 <div className="relative" aria-hidden="true">
                   {/* Top connection pins - 8 pins */}
                   <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 flex gap-3">
@@ -714,11 +835,12 @@ const Foundation: FC<FoundationProps> = ({ slice }) => {
                   </div>
 
                   {/* CPU Core - Exact Next.js styling */}
+
                   <div
-                    className="relative select-none text-white text-2xl font-bold leading-tight rounded-lg px-6 py-5"
+                    className="relative select-none text-white text-2xl font-bold leading-tight rounded-lg px-6 p-5 overflow-hidden"
                     style={{
                       background:
-                        "linear-gradient(180deg, #374151 0%, #1f2937 100%), linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.1) 26.56%, rgba(0,0,0,0.1) 51.56%, rgba(0,0,0,0.1) 100%)",
+                        "linear-gradient(#161616 0%,#222 100%),linear-gradient(#ffffff0d 0% 26.56%,#0000000d 51.56% 100%)",
                       boxShadow:
                         "0 2px 4px rgba(0,0,0,0.1), 0 6px 4px -2px rgba(0,0,0,0.15), inset 0 -3px 1px -1px rgba(0,0,0,0.25)",
                       letterSpacing: "0.025em",
@@ -726,97 +848,62 @@ const Foundation: FC<FoundationProps> = ({ slice }) => {
                   >
                     {/* CPU Shine Effect */}
                     <div
-                      className="absolute inset-0 overflow-hidden"
+                      className="absolute inset-0"
                       style={{
                         background:
-                          "linear-gradient(90deg, transparent 20% 40%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.15) 55%, transparent 70% 100%)",
-                        backgroundSize: "200% 100%",
-                        animation: "shine 5s infinite",
-                        mixBlendMode: "plus-lighter",
-                        opacity: 0.6,
+                          "linear-gradient(90deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%)",
+                        backgroundSize: "150% 100%",
+                        animation: "shine 4s ease-in-out infinite",
+                        mixBlendMode: "soft-light",
+                        opacity: 0.4,
                         zIndex: 2,
                       }}
                     ></div>
 
                     {/* "Powered By" text */}
-                    <div className="relative z-10">Powered By</div>
+                    <div className="relative z-10 px-7 py-1">smART</div>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Foundation Cards - positioned to align with connection lines */}
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-3 relative z-10">
-              {/* React Card */}
-              <a
-                href="https://react.dev"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative flex flex-col items-start p-6 rounded-3xl bg-white shadow-sm ring-1 ring-neutral-950/5 transition-all hover:shadow-md hover:ring-neutral-950/10"
-              >
-                <div className="flex h-7 w-7 items-center justify-center rounded-full bg-blue-600/10 ring-1 ring-blue-600/25 group-hover:bg-blue-600/15 transition-colors">
-                  <svg
-                    className="h-4 w-4 text-blue-600"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38-.318-.184-.688-.277-1.092-.278zm-.005 1.09v.006c.225 0 .406.044.558.127.666.382.955 1.835.73 3.704-.054.46-.142.945-.25 1.44-.96-.236-2.006-.417-3.107-.534-.66-.905-1.345-1.727-2.035-2.447 1.592-1.48 3.087-2.292 4.105-2.295zm-9.77.02c1.012 0 2.514.808 4.11 2.28-.686.72-1.37 1.537-2.02 2.442-1.107.117-2.154.298-3.113.538-.112-.49-.195-.964-.254-1.42-.23-1.868.054-3.32.714-3.707.19-.09.4-.127.563-.132zm4.882 3.05c.455.468.91.992 1.36 1.564-.44-.02-.89-.034-1.345-.034-.46 0-.915.01-1.36.034.44-.572.895-1.096 1.345-1.565zM12 8.1c.74 0 1.477.034 2.202.093.406.582.802 1.203 1.183 1.86.372.64.71 1.29 1.018 1.946-.308.655-.646 1.31-1.013 1.95-.38.66-.773 1.288-1.18 1.87-.728.063-1.466.098-2.21.098-.74 0-1.477-.035-2.202-.093-.406-.582-.802-1.204-1.183-1.86-.372-.64-.71-1.29-1.018-1.946.303-.657.646-1.313 1.013-1.954.38-.66.773-1.286 1.18-1.867.728-.064 1.466-.098 2.21-.098zm-3.635.254c-.24.377-.48.763-.704 1.16-.225.39-.435.782-.635 1.174-.265-.656-.49-1.31-.676-1.947.64-.15 1.315-.283 2.015-.386zm7.26 0c.695.103 1.365.23 2.006.387-.18.632-.405 1.282-.66 1.933-.2-.39-.41-.783-.64-1.174-.225-.392-.465-.774-.705-1.146zm3.063.675c.484.15.944.317 1.375.498 1.732.74 2.852 1.708 2.852 2.476-.005.768-1.125 1.74-2.857 2.475-.42.18-.88.342-1.355.493-.28-.958-.646-1.956-1.1-2.98.45-1.017.81-2.01 1.085-2.964zm-13.395.004c.278.96.645 1.957 1.1 2.98-.45 1.017-.812 2.01-1.086 2.964-.484-.15-.944-.318-1.37-.5-1.732-.737-2.852-1.706-2.852-2.474 0-.768 1.12-1.742 2.852-2.476.42-.18.88-.342 1.356-.494zm11.678 4.28c.265.657.49 1.312.676 1.948-.64.157-1.316.29-2.016.39.24-.375.48-.762.705-1.158.225-.39.435-.788.636-1.18zm-9.945.02c.2.392.41.783.64 1.175.23.39.465.772.705 1.143-.695-.102-1.365-.23-2.006-.386.18-.63.406-1.282.66-1.933zM17.92 16.32c.112.493.2.968.254 1.423.23 1.868-.054 3.32-.714 3.708-.147.09-.338.128-.563.128-1.012 0-2.514-.807-4.11-2.28.686-.72 1.37-1.536 2.02-2.44 1.107-.118 2.154-.3 3.113-.54zm-11.83.01c.96.234 2.006.415 3.107.532.66.905 1.345 1.727 2.035 2.446-1.595 1.483-3.092 2.295-4.11 2.295-.22-.005-.406-.05-.553-.132-.666-.38-.955-1.834-.73-3.703.054-.46.142-.944.25-1.438zm4.56.64c.44.02.89.034 1.345.034.46 0 .915-.01 1.36-.034-.44.572-.895 1.095-1.345 1.565-.455-.47-.91-.993-1.36-1.565z" />
-                  </svg>
-                </div>
-                <h3 className="mt-6 text-base font-display font-semibold text-neutral-950">
-                  React
-                </h3>
-                <p className="mt-2 text-sm text-neutral-600">
-                  The library for web and native user interfaces. Next.js is
-                  built on the latest React features, including Server
-                  Components and Actions.
-                </p>
-              </a>
-
-              {/* Turbopack Card */}
-              <a
-                href="https://nextjs.org/docs/app/api-reference/turbopack"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative flex flex-col items-start p-6 rounded-3xl bg-white shadow-sm ring-1 ring-neutral-950/5 transition-all hover:shadow-md hover:ring-neutral-950/10"
-              >
-                <div className="flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-blue-500/10 to-purple-500/10 ring-1 ring-blue-500/25 group-hover:from-blue-500/15 group-hover:to-purple-500/15 transition-all">
-                  <div className="w-3 h-3 bg-gradient-to-br from-blue-500 to-purple-500 rounded-sm"></div>
-                </div>
-                <h3 className="mt-6 text-base font-display font-semibold text-neutral-950">
-                  Turbopack
-                </h3>
-                <p className="mt-2 text-sm text-neutral-600">
-                  An incremental bundler optimized for JavaScript and
-                  TypeScript, written in Rust, and built into Next.js.
-                </p>
-              </a>
-
-              {/* SWC Card */}
-              <a
-                href="https://swc.rs"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative flex flex-col items-start p-6 rounded-3xl bg-white shadow-sm ring-1 ring-neutral-950/5 transition-all hover:shadow-md hover:ring-neutral-950/10"
-              >
-                <div className="flex h-7 w-7 items-center justify-center rounded-full bg-orange-500/10 ring-1 ring-orange-500/25 group-hover:bg-orange-500/15 transition-colors">
-                  <svg
-                    className="h-4 w-4 text-orange-600"
-                    fill="currentColor"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M2.795 3.272h1.963c1.208 0 1.208 1.208 0 1.208H2.795V3.272ZM0 8.457h6.04V6.85H2.795V5.662h1.51c1.66 0 .754 2.867 2.112 2.867h3.774V5.662H9.43v.302c0 1.208-1.359 1.057-1.51.302-.15-.755-.754-1.359-.905-1.359 2.264-1.208.905-3.62-.905-3.62H0v1.66h1.51v3.925H0v1.66Z" />
-                  </svg>
-                </div>
-                <h3 className="mt-6 text-base font-display font-semibold text-neutral-950">
-                  Speedy Web Compiler
-                </h3>
-                <p className="mt-2 text-sm text-neutral-600">
-                  An extensible Rust-based platform for the next generation of
-                  fast developer tools, and can be used for both compilation and
-                  minification.
-                </p>
-              </a>
+            <div className="" style={{ zIndex: 2 }}>
+              <GridList>
+                {slice.items.map((item: {
+                  card_title?: string;
+                  card_description?: any;
+                  card_icon?: string;
+                }, index: number) => {
+                  const iconKey = item.card_icon as keyof typeof IconMap;
+                  const icon = IconMap[iconKey] || IconMap.lightning;
+                  
+                  return (
+                    <GridListItem 
+                      key={index} 
+                      title={
+                        <div className="flex items-center gap-3">
+                          <div className="flex-shrink-0 rounded-lg p-2 bg-white/10">
+                            <div className="h-6 w-6 text-white">
+                              {icon}
+                            </div>
+                          </div>
+                          <span>{item.card_title || ""}</span>
+                        </div>
+                      } 
+                      invert={true} 
+                      className="bg-neutral-900/50 backdrop-blur-sm border border-neutral-800 rounded-xl p-6 hover:bg-neutral-900/70 transition-all duration-300 hover:border-neutral-700"
+                    >
+                      {item.card_description && (
+                        <PrismicRichText
+                          field={item.card_description}
+                          components={components}
+                        />
+                      )}
+                    </GridListItem>
+                  );
+                })}
+              </GridList>
             </div>
           </div>
         </FadeIn>
@@ -871,7 +958,7 @@ const Foundation: FC<FoundationProps> = ({ slice }) => {
           border: 0 solid #e5e7eb;
         }
       `}</style>
-    </section>
+    </div>
   );
 };
 
