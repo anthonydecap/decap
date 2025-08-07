@@ -1,0 +1,35 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "title": [
+        {
+          "type": "heading2",
+          "text": "Built on a foundation of fast, production-grade tooling",
+          "spans": [
+            {
+              "start": 26,
+              "end": 30,
+              "type": "strong"
+            },
+            {
+              "start": 32,
+              "end": 49,
+              "type": "strong"
+            }
+          ]
+        }
+      ],
+      "subtitle": [
+        {
+          "type": "paragraph",
+          "text": "Everything you need to build great products on the web.",
+          "spans": []
+        }
+      ],
+      "show_animation": true
+    },
+    "items": []
+  }
+]

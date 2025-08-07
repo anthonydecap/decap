@@ -30,7 +30,7 @@ export function GridListItem({
   className,
   invert = false,
 }: {
-  title: string
+  title: string | React.ReactNode
   children: React.ReactNode
   className?: string
   invert?: boolean
