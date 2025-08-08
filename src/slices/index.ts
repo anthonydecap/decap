@@ -22,6 +22,7 @@ export const components = {
 
   hero: dynamic(() => import("./Hero")),
   hero_image: dynamic(() => import("./HeroImage")),
+  valve_hero: dynamic(() => import("./valveHero")),
 
 
   product: dynamic(() => import("./Product")),

@@ -27,6 +27,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "valve_hero": {
+              "type": "SharedSlice"
+            },
             "foundation": {
               "type": "SharedSlice"
             },
