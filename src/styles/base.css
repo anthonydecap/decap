@@ -6,3 +6,24 @@
   font-stretch: 75% 125%;
   src: url('../fonts/Mona-Sans.var.woff2') format('woff2');
 }
+
+/* Apple-style hero animation for valve hero background */
+@keyframes apple-hero {
+  0% {
+    transform: translateY(30%) scale(1.2);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-apple-hero {
+  animation: apple-hero 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation-delay: 0.2s;
+  animation-fill-mode: both;
+}

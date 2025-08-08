@@ -419,6 +419,7 @@ export type CheckoutPageDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | ValveHeroSlice
   | FoundationSlice
   | AccessoriesSlice
   | TechnicalSpecificationsSlice
@@ -2492,6 +2493,56 @@ export interface FoundationSliceDefaultPrimary {
 }
 
 /**
+ * Primary content in *Foundation → Items*
+ */
+export interface FoundationSliceDefaultItem {
+  /**
+   * Card Title field in *Foundation → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Card title
+   * - **API ID Path**: foundation.items[].card_title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  card_title: prismic.KeyTextField;
+
+  /**
+   * Card Description field in *Foundation → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Card description
+   * - **API ID Path**: foundation.items[].card_description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  card_description: prismic.RichTextField;
+
+  /**
+   * Card Icon field in *Foundation → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Select an icon
+   * - **Default Value**: lightning
+   * - **API ID Path**: foundation.items[].card_icon
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  card_icon: prismic.SelectField<
+    | "lightning"
+    | "shield"
+    | "star"
+    | "settings"
+    | "microphone"
+    | "waveform"
+    | "headphones"
+    | "volume"
+    | "music"
+    | "record"
+    | "chart"
+    | "brain",
+    "filled"
+  >;
+}
+
+/**
  * Default variation for Foundation Slice
  *
  * - **API ID**: `default`
@@ -2501,7 +2552,7 @@ export interface FoundationSliceDefaultPrimary {
 export type FoundationSliceDefault = prismic.SharedSliceVariation<
   "default",
   Simplify<FoundationSliceDefaultPrimary>,
-  never
+  Simplify<FoundationSliceDefaultItem>
 >;
 
 /**
@@ -3807,6 +3858,122 @@ export type TrumpetVideoSlice = prismic.SharedSlice<
   TrumpetVideoSliceVariation
 >;
 
+/**
+ * Primary content in *ValveHero → Default → Primary*
+ */
+export interface ValveHeroSliceDefaultPrimary {
+  /**
+   * Hero Title field in *ValveHero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Premium Valve Product
+   * - **API ID Path**: valve_hero.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Subtitle field in *ValveHero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Professional Quality
+   * - **API ID Path**: valve_hero.default.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  subtitle: prismic.KeyTextField;
+
+  /**
+   * Buy Button Text field in *ValveHero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Buy Now
+   * - **API ID Path**: valve_hero.default.primary.buy_button_text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  buy_button_text: prismic.KeyTextField;
+
+  /**
+   * Stripe Product ID field in *ValveHero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Enter Stripe product ID to enable purchase functionality
+   * - **API ID Path**: valve_hero.default.primary.stripeid
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  stripeid: prismic.KeyTextField;
+
+  /**
+   * Product Price field in *ValveHero → Default → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: Enter price (e.g., 29.99)
+   * - **API ID Path**: valve_hero.default.primary.product_price
+   * - **Documentation**: https://prismic.io/docs/fields/number
+   */
+  product_price: prismic.NumberField;
+
+  /**
+   * Currency field in *ValveHero → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Select currency
+   * - **Default Value**: USD
+   * - **API ID Path**: valve_hero.default.primary.currency
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  currency: prismic.SelectField<"USD" | "EUR" | "GBP", "filled">;
+
+  /**
+   * Product ID field in *ValveHero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Enter unique product ID
+   * - **API ID Path**: valve_hero.default.primary.product_id
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  product_id: prismic.KeyTextField;
+
+  /**
+   * Product Weight (kg) field in *ValveHero → Default → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: Enter weight in kilograms (e.g., 0.5)
+   * - **API ID Path**: valve_hero.default.primary.product_weight
+   * - **Documentation**: https://prismic.io/docs/fields/number
+   */
+  product_weight: prismic.NumberField;
+}
+
+/**
+ * Default variation for ValveHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default ValveHero
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ValveHeroSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ValveHeroSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ValveHero*
+ */
+type ValveHeroSliceVariation = ValveHeroSliceDefault;
+
+/**
+ * ValveHero Shared Slice
+ *
+ * - **API ID**: `valve_hero`
+ * - **Description**: Simple hero section with title, subtitle, and buy button - center aligned
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ValveHeroSlice = prismic.SharedSlice<
+  "valve_hero",
+  ValveHeroSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -3914,6 +4081,7 @@ declare module "@prismicio/client" {
       FeatureSliceDefault,
       FoundationSlice,
       FoundationSliceDefaultPrimary,
+      FoundationSliceDefaultItem,
       FoundationSliceVariation,
       FoundationSliceDefault,
       HeroSlice,
@@ -3958,6 +4126,10 @@ declare module "@prismicio/client" {
       TrumpetVideoSliceDefaultSlicePrimary,
       TrumpetVideoSliceVariation,
       TrumpetVideoSliceDefaultSlice,
+      ValveHeroSlice,
+      ValveHeroSliceDefaultPrimary,
+      ValveHeroSliceVariation,
+      ValveHeroSliceDefault,
     };
   }
 }

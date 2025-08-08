@@ -1,0 +1,82 @@
+{
+  "id": "valve_hero",
+  "type": "SharedSlice",
+  "name": "ValveHero",
+  "description": "Simple hero section with title, subtitle, and buy button - center aligned",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default ValveHero",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Hero Title",
+            "placeholder": "Premium Valve Product"
+          }
+        },
+        "subtitle": {
+          "type": "Text",
+          "config": {
+            "label": "Subtitle",
+            "placeholder": "Professional Quality"
+          }
+        },
+        "buy_button_text": {
+          "type": "Text",
+          "config": {
+            "label": "Buy Button Text",
+            "placeholder": "Buy Now"
+          }
+        },
+        "stripeid": {
+          "type": "Text",
+          "config": {
+            "label": "Stripe Product ID",
+            "placeholder": "Enter Stripe product ID to enable purchase functionality"
+          }
+        },
+        "product_price": {
+          "type": "Number",
+          "config": {
+            "label": "Product Price",
+            "placeholder": "Enter price (e.g., 29.99)"
+          }
+        },
+        "currency": {
+          "type": "Select",
+          "config": {
+            "label": "Currency",
+            "placeholder": "Select currency",
+            "options": [
+              "USD",
+              "EUR",
+              "GBP"
+            ],
+            "default_value": "USD"
+          }
+        },
+        "product_id": {
+          "type": "Text",
+          "config": {
+            "label": "Product ID",
+            "placeholder": "Enter unique product ID"
+          }
+        },
+        "product_weight": {
+          "type": "Number",
+          "config": {
+            "label": "Product Weight (kg)",
+            "placeholder": "Enter weight in kilograms (e.g., 0.5)"
+          }
+        }
+      }
+    }
+  ]
+}
+
+
