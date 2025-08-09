@@ -76,7 +76,7 @@ const ValveHeroSlice: FC<ValveHeroProps> = ({ slice }) => {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat max-w-4xl mx-auto animate-apple-hero"
           style={{
             backgroundImage: 'url(/images/cantedvalve.png)',
-            backgroundPosition: 'center 190px', // X first, then Y
+            backgroundPosition: 'center 150px', // X first, then Y
           }}
         />
       </div>
@@ -90,7 +90,7 @@ const ValveHeroSlice: FC<ValveHeroProps> = ({ slice }) => {
               {/* Subtitle */}
               {subtitle && (
                 <FadeIn>
-                  <p className="text-lg font-semibold tracking-wide sm:text-xl text-black/90 mb-4 drop-shadow-lg">
+                  <p className="text-xl font-semibold tracking-wide sm:text-2xl text-black/90 mb-4 drop-shadow-lg">
                     {subtitle}
                   </p>
                 </FadeIn>
@@ -105,13 +105,8 @@ const ValveHeroSlice: FC<ValveHeroProps> = ({ slice }) => {
                 </FadeIn>
               )}
 
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
+  
+       
               
               {/* Buy Button Section */}
               {hasStripeId && hasProductFields && (

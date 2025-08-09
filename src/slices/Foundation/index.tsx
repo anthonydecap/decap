@@ -1,10 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { type FC } from "react";
 import { type Content } from "@prismicio/client";
 import { PrismicNextLink } from "@prismicio/next";
-import Link from "next/link";
 import {
   PrismicRichText,
   type SliceComponentProps,
@@ -12,72 +10,206 @@ import {
 } from "@prismicio/react";
 import { Container } from "@/components/Container";
 import { FadeIn } from "@/components/FadeIn";
-import { GridList, GridListItem } from "@/components/GridList";
 import clsx from "clsx";
 
 // Icon components for Foundation cards
 const IconMap = {
   microphone: (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+    <svg
+      className="h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"
+      />
     </svg>
   ),
   waveform: (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19V6l3-3 3 3v13M9 19h6M9 19H4a1 1 0 01-1-1v-6a1 1 0 011-1h5M20 19h-1a1 1 0 01-1-1v-8a1 1 0 011-1h1a1 1 0 011 1v8a1 1 0 01-1 1z" />
+    <svg
+      className="h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M9 19V6l3-3 3 3v13M9 19h6M9 19H4a1 1 0 01-1-1v-6a1 1 0 011-1h5M20 19h-1a1 1 0 01-1-1v-8a1 1 0 011-1h1a1 1 0 011 1v8a1 1 0 01-1 1z"
+      />
     </svg>
   ),
   settings: (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+    <svg
+      className="h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+      />
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+      />
     </svg>
   ),
   shield: (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+    <svg
+      className="h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+      />
     </svg>
   ),
   star: (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+    <svg
+      className="h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+      />
     </svg>
   ),
   lightning: (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+    <svg
+      className="h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M13 10V3L4 14h7v7l9-11h-7z"
+      />
     </svg>
   ),
   headphones: (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+    <svg
+      className="h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
+      />
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"
+      />
     </svg>
   ),
   volume: (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728m-9.9-2.828a5 5 0 010-7.072m0 0L7.05 8.464M5.636 18.364L12 12m0 0l6.364 6.364M12 12L5.636 5.636M12 12l6.364-6.364" />
+    <svg
+      className="h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728m-9.9-2.828a5 5 0 010-7.072m0 0L7.05 8.464M5.636 18.364L12 12m0 0l6.364 6.364M12 12L5.636 5.636M12 12l6.364-6.364"
+      />
     </svg>
   ),
   music: (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19V6l3-3 3 3v13m-3-13l-3 3m3-3l3 3M9 19a3 3 0 103 3 3 3 0 00-3-3zm9-10a3 3 0 11-6 0 3 3 0 016 0z" />
+    <svg
+      className="h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M9 19V6l3-3 3 3v13m-3-13l-3 3m3-3l3 3M9 19a3 3 0 103 3 3 3 0 00-3-3zm9-10a3 3 0 11-6 0 3 3 0 016 0z"
+      />
     </svg>
   ),
   record: (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" />
+    <svg
+      className="h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+      />
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"
+      />
     </svg>
   ),
   chart: (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+    <svg
+      className="h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+      />
     </svg>
   ),
   brain: (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+    <svg
+      className="h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+      />
     </svg>
   ),
 };
@@ -104,17 +236,16 @@ type FoundationProps = SliceComponentProps<Content.FoundationSlice>;
 const Foundation: FC<FoundationProps> = ({ slice }) => {
   const { title, subtitle } = slice.primary;
 
-  const containerClasses =
-    "mt-8 sm:mt-12 lg:mt-16 pt-8 sm:pt-12 lg:pt-16 bg-neutral-950";
+  const containerClasses = "pt-8 sm:pt-12 lg:pt-16 bg-neutral-950";
   const textColor = "text-white";
 
   return (
     <div className={containerClasses}>
-      <Container>
+      <Container className="">
         <FadeIn>
           {/* Title and subtitle */}
           <div
-            className={clsx("max-w-3xl", textColor)}
+            className={clsx("text-center mb-16", textColor)}
             style={{ position: "relative", zIndex: 2 }}
           >
             {title && (
@@ -169,84 +300,7 @@ const Foundation: FC<FoundationProps> = ({ slice }) => {
                 aria-label="A bunch of connecting lines that form into the CPU, with the text Powered By on top of the the CPU. Gradient lines are animating along the drawn lines, dissolving into the CPU in the center."
               >
                 <defs>
-                  <linearGradient
-                    gradientUnits="userSpaceOnUse"
-                    id="blue-pulse-1"
-                    x1="400"
-                    y1="83"
-                    x2="350"
-                    y2="133.75"
-                  >
-                    <stop stopColor="#2EB9DF" stopOpacity="0"></stop>
-                    <stop offset="0.05" stopColor="#2EB9DF"></stop>
-                    <stop offset="1" stopColor="#2EB9DF" stopOpacity="0"></stop>
-                  </linearGradient>
-                  <linearGradient
-                    gradientUnits="userSpaceOnUse"
-                    id="blue-pulse-2"
-                    x1="400"
-                    y1="83"
-                    x2="350"
-                    y2="133.75"
-                  >
-                    <stop stopColor="#2EB9DF" stopOpacity="0"></stop>
-                    <stop offset="0.05" stopColor="#2EB9DF"></stop>
-                    <stop offset="1" stopColor="#2EB9DF" stopOpacity="0"></stop>
-                  </linearGradient>
-                  <linearGradient
-                    gradientUnits="userSpaceOnUse"
-                    id="pink-pulse-1"
-                    x1="400"
-                    y1="83"
-                    x2="350"
-                    y2="133.75"
-                  >
-                    <stop stopColor="#FF4A81" stopOpacity="0"></stop>
-                    <stop offset="0.030" stopColor="#FF4A81"></stop>
-                    <stop offset="0.27" stopColor="#DF6CF6"></stop>
-                    <stop offset="1" stopColor="#0196FF" stopOpacity="0"></stop>
-                  </linearGradient>
-                  <linearGradient
-                    gradientUnits="userSpaceOnUse"
-                    id="pink-pulse-2"
-                    x1="476.1975344235252"
-                    y1="124.92036448494764"
-                    x2="486.9210970677959"
-                    y2="154.51595096563688"
-                  >
-                    <stop stopColor="#FF4A81" stopOpacity="0"></stop>
-                    <stop offset="0.0564843" stopColor="#FF4A81"></stop>
-                    <stop offset="0.4616" stopColor="#DF6CF6"></stop>
-                    <stop offset="1" stopColor="#0196FF" stopOpacity="0"></stop>
-                  </linearGradient>
-                  <linearGradient
-                    gradientUnits="userSpaceOnUse"
-                    id="orange-pulse-1"
-                    x1="360"
-                    y1="130"
-                    x2="400"
-                    y2="170"
-                  >
-                    <stop stopColor="#FF7432" stopOpacity="0"></stop>
-                    <stop offset="0.0550784" stopColor="#FF7432"></stop>
-                    <stop offset="0.373284" stopColor="#F7CC4B"></stop>
-                    <stop offset="1" stopColor="#F7CC4B" stopOpacity="0"></stop>
-                  </linearGradient>
-                  <linearGradient
-                    gradientUnits="userSpaceOnUse"
-                    id="orange-pulse-2"
-                    x1="300"
-                    y1="140"
-                    x2="400"
-                    y2="180"
-                  >
-                    <stop stopColor="#FF7432" stopOpacity="0"></stop>
-                    <stop offset="0.0531089" stopColor="#FF7432"></stop>
-                    <stop offset="0.415114" stopColor="#F7CC4B"></stop>
-                    <stop offset="1" stopColor="#F7CC4B" stopOpacity="0"></stop>
-                  </linearGradient>
-
-                  {/* Traveling light gradients with fade-out effect */}
+                  {/* Laser bullet gradients with #cca483 - much more tapered */}
                   <linearGradient
                     id="traveling-orange-gradient"
                     gradientUnits="userSpaceOnUse"
@@ -257,32 +311,42 @@ const Foundation: FC<FoundationProps> = ({ slice }) => {
                   >
                     <stop
                       offset="0%"
-                      stopColor="#FF7432"
+                      stopColor="#cca483"
                       stopOpacity="0"
                     ></stop>
                     <stop
                       offset="10%"
-                      stopColor="#FF7432"
-                      stopOpacity="0.3"
+                      stopColor="#cca483"
+                      stopOpacity="0.4"
+                    ></stop>
+                    <stop
+                      offset="20%"
+                      stopColor="#cca483"
+                      stopOpacity="0.9"
                     ></stop>
                     <stop
                       offset="30%"
-                      stopColor="#FF7432"
+                      stopColor="#cca483"
                       stopOpacity="1"
                     ></stop>
                     <stop
-                      offset="70%"
-                      stopColor="#FF7432"
-                      stopOpacity="1"
+                      offset="45%"
+                      stopColor="#cca483"
+                      stopOpacity="0.7"
                     ></stop>
                     <stop
-                      offset="90%"
-                      stopColor="#FF7432"
+                      offset="65%"
+                      stopColor="#cca483"
                       stopOpacity="0.3"
                     ></stop>
                     <stop
+                      offset="85%"
+                      stopColor="#cca483"
+                      stopOpacity="0.1"
+                    ></stop>
+                    <stop
                       offset="100%"
-                      stopColor="#FF7432"
+                      stopColor="#cca483"
                       stopOpacity="0"
                     ></stop>
                   </linearGradient>
@@ -295,28 +359,38 @@ const Foundation: FC<FoundationProps> = ({ slice }) => {
                     x2="1"
                     y2="264"
                   >
-                    <stop offset="0" stopColor="#2EB9DF" stopOpacity="0"></stop>
+                    <stop offset="0" stopColor="#cca483" stopOpacity="0"></stop>
                     <stop
                       offset="0.1"
-                      stopColor="#2EB9DF"
-                      stopOpacity="0.3"
+                      stopColor="#cca483"
+                      stopOpacity="0.4"
+                    ></stop>
+                    <stop
+                      offset="0.2"
+                      stopColor="#cca483"
+                      stopOpacity="0.9"
                     ></stop>
                     <stop
                       offset="0.3"
-                      stopColor="#2EB9DF"
+                      stopColor="#cca483"
                       stopOpacity="1"
                     ></stop>
                     <stop
-                      offset="0.7"
-                      stopColor="#2EB9DF"
-                      stopOpacity="1"
+                      offset="0.45"
+                      stopColor="#cca483"
+                      stopOpacity="0.7"
                     ></stop>
                     <stop
-                      offset="0.9"
-                      stopColor="#2EB9DF"
+                      offset="0.65"
+                      stopColor="#cca483"
                       stopOpacity="0.3"
                     ></stop>
-                    <stop offset="1" stopColor="#2EB9DF" stopOpacity="0"></stop>
+                    <stop
+                      offset="0.85"
+                      stopColor="#cca483"
+                      stopOpacity="0.1"
+                    ></stop>
+                    <stop offset="1" stopColor="#cca483" stopOpacity="0"></stop>
                   </linearGradient>
 
                   <linearGradient
@@ -329,37 +403,47 @@ const Foundation: FC<FoundationProps> = ({ slice }) => {
                   >
                     <stop
                       offset="0%"
-                      stopColor="#FF4A81"
+                      stopColor="#cca483"
                       stopOpacity="0"
                     ></stop>
                     <stop
                       offset="10%"
-                      stopColor="#FF4A81"
-                      stopOpacity="0.3"
+                      stopColor="#cca483"
+                      stopOpacity="0.4"
+                    ></stop>
+                    <stop
+                      offset="20%"
+                      stopColor="#cca483"
+                      stopOpacity="0.9"
                     ></stop>
                     <stop
                       offset="30%"
-                      stopColor="#FF4A81"
+                      stopColor="#cca483"
                       stopOpacity="1"
                     ></stop>
                     <stop
-                      offset="70%"
-                      stopColor="#FF4A81"
-                      stopOpacity="1"
+                      offset="45%"
+                      stopColor="#cca483"
+                      stopOpacity="0.7"
                     ></stop>
                     <stop
-                      offset="90%"
-                      stopColor="#FF4A81"
+                      offset="65%"
+                      stopColor="#cca483"
                       stopOpacity="0.3"
                     ></stop>
                     <stop
+                      offset="85%"
+                      stopColor="#cca483"
+                      stopOpacity="0.1"
+                    ></stop>
+                    <stop
                       offset="100%"
-                      stopColor="#FF4A81"
+                      stopColor="#cca483"
                       stopOpacity="0"
                     ></stop>
                   </linearGradient>
 
-                  {/* Glow filters for enhanced traveling light effect */}
+                  {/* Glow filters for laser bullet effect */}
                   <filter
                     id="glow-orange"
                     x="-50%"
@@ -368,7 +452,7 @@ const Foundation: FC<FoundationProps> = ({ slice }) => {
                     height="200%"
                   >
                     <feGaussianBlur
-                      stdDeviation="3"
+                      stdDeviation="4"
                       result="coloredBlur"
                     ></feGaussianBlur>
                     <feMerge>
@@ -385,7 +469,7 @@ const Foundation: FC<FoundationProps> = ({ slice }) => {
                     height="200%"
                   >
                     <feGaussianBlur
-                      stdDeviation="3"
+                      stdDeviation="4"
                       result="coloredBlur"
                     ></feGaussianBlur>
                     <feMerge>
@@ -402,7 +486,7 @@ const Foundation: FC<FoundationProps> = ({ slice }) => {
                     height="200%"
                   >
                     <feGaussianBlur
-                      stdDeviation="3"
+                      stdDeviation="4"
                       result="coloredBlur"
                     ></feGaussianBlur>
                     <feMerge>
@@ -520,7 +604,7 @@ const Foundation: FC<FoundationProps> = ({ slice }) => {
                 <path
                   d="M547 130L822 130C824.209 130 826 131.791 826 134L826 264"
                   stroke="url(#traveling-orange-gradient)"
-                  strokeWidth="4"
+                  strokeWidth="6"
                   strokeLinecap="round"
                   fill="none"
                   strokeDasharray="60 1000"
@@ -530,7 +614,14 @@ const Foundation: FC<FoundationProps> = ({ slice }) => {
                   <animate
                     attributeName="stroke-dashoffset"
                     values="0;-1060"
-                    dur="2.5s"
+                    dur="1.8s"
+                    repeatCount="indefinite"
+                    begin="0s"
+                  />
+                  <animate
+                    attributeName="stroke-width"
+                    values="6;6;2"
+                    dur="1.8s"
                     repeatCount="indefinite"
                     begin="0s"
                   />
@@ -539,7 +630,7 @@ const Foundation: FC<FoundationProps> = ({ slice }) => {
                 <path
                   d="M349 130L5.00002 130C2.79088 130 1.00001 131.791 1.00001 134L1.00001 264"
                   stroke="url(#traveling-blue-gradient)"
-                  strokeWidth="4"
+                  strokeWidth="6"
                   strokeLinecap="round"
                   fill="none"
                   strokeDasharray="80 1000"
@@ -549,16 +640,23 @@ const Foundation: FC<FoundationProps> = ({ slice }) => {
                   <animate
                     attributeName="stroke-dashoffset"
                     values="0;-1080"
-                    dur="3s"
+                    dur="2.2s"
                     repeatCount="indefinite"
-                    begin="0.7s"
+                    begin="0.5s"
+                  />
+                  <animate
+                    attributeName="stroke-width"
+                    values="6;6;2"
+                    dur="2.2s"
+                    repeatCount="indefinite"
+                    begin="0.5s"
                   />
                 </path>
 
                 <path
                   d="M547 150L633 150C635.209 150 637 151.791 637 154L637 236C637 238.209 635.209 240 633 240L488 240C485.791 240 484 241.791 484 244L484 264"
                   stroke="url(#traveling-pink-gradient)"
-                  strokeWidth="4"
+                  strokeWidth="6"
                   strokeLinecap="round"
                   fill="none"
                   strokeDasharray="60 1000"
@@ -568,9 +666,16 @@ const Foundation: FC<FoundationProps> = ({ slice }) => {
                   <animate
                     attributeName="stroke-dashoffset"
                     values="0;-1060"
-                    dur="2.5s"
+                    dur="1.8s"
                     repeatCount="indefinite"
-                    begin="1.4s"
+                    begin="1.1s"
+                  />
+                  <animate
+                    attributeName="stroke-width"
+                    values="6;6;2"
+                    dur="1.8s"
+                    repeatCount="indefinite"
+                    begin="1.1s"
                   />
                 </path>
 
@@ -867,43 +972,45 @@ const Foundation: FC<FoundationProps> = ({ slice }) => {
               </div>
             </div>
 
-            {/* Foundation Cards - positioned to align with connection lines */}
-            <div className="" style={{ zIndex: 2 }}>
-              <GridList>
-                {slice.items.map((item: {
-                  card_title?: string;
-                  card_description?: any;
-                  card_icon?: string;
-                }, index: number) => {
+            {/* Foundation Cards - Apple-style design */}
+            <div className="mb-16" style={{ zIndex: 2 }}>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {slice.items.map((item, index) => {
                   const iconKey = item.card_icon as keyof typeof IconMap;
                   const icon = IconMap[iconKey] || IconMap.lightning;
-                  
+
                   return (
-                    <GridListItem 
-                      key={index} 
-                      title={
-                        <div className="flex items-center gap-3">
-                          <div className="flex-shrink-0 rounded-lg p-2 bg-white/10">
-                            <div className="h-6 w-6 text-white">
-                              {icon}
-                            </div>
-                          </div>
-                          <span>{item.card_title || ""}</span>
-                        </div>
-                      } 
-                      invert={true} 
-                      className="bg-neutral-900/50 backdrop-blur-sm border border-neutral-800 rounded-xl p-6 hover:bg-neutral-900/70 transition-all duration-300 hover:border-neutral-700"
+                    <div
+                      key={index}
+                      className="group relative bg-neutral-900 rounded-3xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
                     >
+                      {/* Icon */}
+                      <div className="mb-6">
+                        <div className="w-16 h-16 rounded-2xl bg-neutral-800 flex items-center justify-center group-hover:bg-neutral-700 transition-colors duration-300">
+                          <div className="flex items-center justify-center h-8 w-8 text-neutral-300 group-hover:text-white transition-colors duration-300">
+                            {icon}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Title */}
+                      <h3 className="text-xl font-semibold text-white mb-4 leading-tight">
+                        {item.card_title || ""}
+                      </h3>
+
+                      {/* Description */}
                       {item.card_description && (
-                        <PrismicRichText
-                          field={item.card_description}
-                          components={components}
-                        />
+                        <div className="text-neutral-400 leading-relaxed">
+                          <PrismicRichText
+                            field={item.card_description}
+                            components={components}
+                          />
+                        </div>
                       )}
-                    </GridListItem>
+                    </div>
                   );
                 })}
-              </GridList>
+              </div>
             </div>
           </div>
         </FadeIn>
