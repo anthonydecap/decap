@@ -236,7 +236,7 @@ type FoundationProps = SliceComponentProps<Content.FoundationSlice>;
 const Foundation: FC<FoundationProps> = ({ slice }) => {
   const { title, subtitle } = slice.primary;
 
-  const containerClasses = "pt-8 sm:pt-12 lg:pt-16 bg-neutral-950";
+  const containerClasses = "py-8 sm:py-12 lg:py-38 bg-neutral-950";
   const textColor = "text-white";
 
   return (

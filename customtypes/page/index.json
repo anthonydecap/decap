@@ -27,6 +27,24 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "possibilities": {
+              "type": "SharedSlice"
+            },
+            "youtube_video": {
+              "type": "SharedSlice"
+            },
+            "feature_blocks": {
+              "type": "SharedSlice"
+            },
+            "video_hero": {
+              "type": "SharedSlice"
+            },
+            "modal_blocks": {
+              "type": "SharedSlice"
+            },
+            "split_feature": {
+              "type": "SharedSlice"
+            },
             "valve_hero": {
               "type": "SharedSlice"
             },

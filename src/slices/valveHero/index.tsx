@@ -73,10 +73,11 @@ const ValveHeroSlice: FC<ValveHeroProps> = ({ slice }) => {
       {/* Background Image with Apple-style animation */}
       <div className="absolute inset-0 mx-auto">
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat max-w-4xl mx-auto animate-apple-hero"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat max-w-6xl mx-auto animate-apple-hero "
           style={{
             backgroundImage: 'url(/images/cantedvalve.png)',
             backgroundPosition: 'center 150px', // X first, then Y
+            backgroundSize: 'cover',
           }}
         />
       </div>

@@ -1,0 +1,51 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "title": {
+        "__TYPE__": "FieldContent",
+        "value": "Innovation Meets Precision",
+        "type": "Text"
+      },
+      "subtitle": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Discover our cutting-edge valve technology that combines advanced engineering with intelligent control systems for optimal performance in any environment."
+            }
+          }
+        ]
+      },
+      "button_text": {
+        "__TYPE__": "FieldContent",
+        "value": "Explore Our Technology",
+        "type": "Text"
+      },
+      "button_link": {
+        "__TYPE__": "LinkContent",
+        "type": "Link.web",
+        "value": {
+          "url": "https://example.com/technology",
+          "target": "_blank"
+        }
+      },
+      "background_video": {
+        "__TYPE__": "LinkContent",
+        "type": "Link.media",
+        "value": {
+          "url": "https://example.com/sample-video.mp4",
+          "target": "_blank"
+        }
+      },
+      "overlay_opacity": {
+        "__TYPE__": "FieldContent",
+        "value": "medium",
+        "type": "Select"
+      }
+    },
+    "items": []
+  }
+]

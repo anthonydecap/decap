@@ -1,0 +1,137 @@
+{
+  "id": "modal_blocks",
+  "type": "SharedSlice",
+  "name": "ModalBlocks",
+  "description": "Blocks with background images and titles that open modals with detailed descriptions",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default ModalBlocks",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Section Title",
+            "placeholder": "Our Features"
+          }
+        },
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": "Discover"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "Explore our features and learn more about each one...",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        }
+      },
+      "items": {
+        "block_title": {
+          "type": "Text",
+          "config": {
+            "label": "Block Title",
+            "placeholder": "Feature Name"
+          }
+        },
+        "block_subtitle": {
+          "type": "Text",
+          "config": {
+            "label": "Block Subtitle",
+            "placeholder": "Brief description"
+          }
+        },
+        "background_image": {
+          "type": "Image",
+          "config": {
+            "label": "Background Image",
+            "constraint": {
+              "width": 800,
+              "height": 600
+            },
+            "thumbnails": [
+              {
+                "name": "thumbnail",
+                "width": 400,
+                "height": 300
+              },
+              {
+                "name": "portrait",
+                "width": 750,
+                "height": 1700
+              }
+            ]
+          }
+        },
+        "modal_title": {
+          "type": "Text",
+          "config": {
+            "label": "Modal Title",
+            "placeholder": "Detailed Feature Title"
+          }
+        },
+        "modal_description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Modal Description",
+            "placeholder": "Detailed description that appears in the modal...",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink,list-item,o-list-item"
+          }
+        },
+        "modal_image": {
+          "type": "Image",
+          "config": {
+            "label": "Modal Image",
+            "constraint": {
+              "width": 800,
+              "height": 600
+            },
+            "thumbnails": [
+              {
+                "name": "thumbnail",
+                "width": 400,
+                "height": 300
+              }
+            ]
+          }
+        },
+        "block_size": {
+          "type": "Select",
+          "config": {
+            "label": "Block Size",
+            "placeholder": "Select block size",
+            "options": [
+              "small",
+              "medium",
+              "large"
+            ]
+          }
+        },
+        "block_height": {
+          "type": "Select",
+          "config": {
+            "label": "Block Height",
+            "placeholder": "Select block height",
+            "options": [
+              "small",
+              "medium",
+              "large",
+              "xlarge"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

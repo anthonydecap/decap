@@ -419,6 +419,12 @@ export type CheckoutPageDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | PossibilitiesSlice
+  | YoutubeVideoSlice
+  | FeatureBlocksSlice
+  | VideoHeroSlice
+  | ModalBlocksSlice
+  | SplitFeatureSlice
   | ValveHeroSlice
   | FoundationSlice
   | AccessoriesSlice
@@ -2457,6 +2463,106 @@ export type FeatureSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *FeatureBlocks → Default → Primary*
+ */
+export interface FeatureBlocksSliceDefaultPrimary {
+  /**
+   * Title field in *FeatureBlocks → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Section title
+   * - **API ID Path**: feature_blocks.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Subtitle field in *FeatureBlocks → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Section subtitle
+   * - **API ID Path**: feature_blocks.default.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  subtitle: prismic.RichTextField;
+
+  /**
+   * Background Image field in *FeatureBlocks → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature_blocks.default.primary.background_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  background_image: prismic.ImageField<"thumbnail">;
+}
+
+/**
+ * Primary content in *FeatureBlocks → Items*
+ */
+export interface FeatureBlocksSliceDefaultItem {
+  /**
+   * Feature Title field in *FeatureBlocks → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Feature title
+   * - **API ID Path**: feature_blocks.items[].feature_title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  feature_title: prismic.KeyTextField;
+
+  /**
+   * Feature Description field in *FeatureBlocks → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Feature description
+   * - **API ID Path**: feature_blocks.items[].feature_description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  feature_description: prismic.RichTextField;
+
+  /**
+   * Feature Icon field in *FeatureBlocks → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Icon symbol or emoji
+   * - **API ID Path**: feature_blocks.items[].feature_icon
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  feature_icon: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for FeatureBlocks Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type FeatureBlocksSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<FeatureBlocksSliceDefaultPrimary>,
+  Simplify<FeatureBlocksSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *FeatureBlocks*
+ */
+type FeatureBlocksSliceVariation = FeatureBlocksSliceDefault;
+
+/**
+ * FeatureBlocks Shared Slice
+ *
+ * - **API ID**: `feature_blocks`
+ * - **Description**: Split feature section with background image on left and feature blocks on right
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type FeatureBlocksSlice = prismic.SharedSlice<
+  "feature_blocks",
+  FeatureBlocksSliceVariation
+>;
+
+/**
  * Primary content in *Foundation → Default → Primary*
  */
 export interface FoundationSliceDefaultPrimary {
@@ -2866,6 +2972,278 @@ export type HeroImageSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *ModalBlocks → Default → Primary*
+ */
+export interface ModalBlocksSliceDefaultPrimary {
+  /**
+   * Section Title field in *ModalBlocks → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Our Features
+   * - **API ID Path**: modal_blocks.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Eyebrow field in *ModalBlocks → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Discover
+   * - **API ID Path**: modal_blocks.default.primary.eyebrow
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  eyebrow: prismic.KeyTextField;
+
+  /**
+   * Description field in *ModalBlocks → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Explore our features and learn more about each one...
+   * - **API ID Path**: modal_blocks.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *ModalBlocks → Items*
+ */
+export interface ModalBlocksSliceDefaultItem {
+  /**
+   * Block Title field in *ModalBlocks → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Feature Name
+   * - **API ID Path**: modal_blocks.items[].block_title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  block_title: prismic.KeyTextField;
+
+  /**
+   * Block Subtitle field in *ModalBlocks → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Brief description
+   * - **API ID Path**: modal_blocks.items[].block_subtitle
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  block_subtitle: prismic.KeyTextField;
+
+  /**
+   * Background Image field in *ModalBlocks → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: modal_blocks.items[].background_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  background_image: prismic.ImageField<"thumbnail" | "portrait">;
+
+  /**
+   * Modal Title field in *ModalBlocks → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Detailed Feature Title
+   * - **API ID Path**: modal_blocks.items[].modal_title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  modal_title: prismic.KeyTextField;
+
+  /**
+   * Modal Description field in *ModalBlocks → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Detailed description that appears in the modal...
+   * - **API ID Path**: modal_blocks.items[].modal_description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  modal_description: prismic.RichTextField;
+
+  /**
+   * Modal Image field in *ModalBlocks → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: modal_blocks.items[].modal_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  modal_image: prismic.ImageField<"thumbnail">;
+
+  /**
+   * Block Size field in *ModalBlocks → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Select block size
+   * - **API ID Path**: modal_blocks.items[].block_size
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  block_size: prismic.SelectField<"small" | "medium" | "large">;
+
+  /**
+   * Block Height field in *ModalBlocks → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Select block height
+   * - **API ID Path**: modal_blocks.items[].block_height
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  block_height: prismic.SelectField<"small" | "medium" | "large" | "xlarge">;
+}
+
+/**
+ * Default variation for ModalBlocks Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default ModalBlocks
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ModalBlocksSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ModalBlocksSliceDefaultPrimary>,
+  Simplify<ModalBlocksSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *ModalBlocks*
+ */
+type ModalBlocksSliceVariation = ModalBlocksSliceDefault;
+
+/**
+ * ModalBlocks Shared Slice
+ *
+ * - **API ID**: `modal_blocks`
+ * - **Description**: Blocks with background images and titles that open modals with detailed descriptions
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ModalBlocksSlice = prismic.SharedSlice<
+  "modal_blocks",
+  ModalBlocksSliceVariation
+>;
+
+/**
+ * Primary content in *Possibilities → Default → Primary*
+ */
+export interface PossibilitiesSliceDefaultPrimary {
+  /**
+   * Section Title field in *Possibilities → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Main section title
+   * - **API ID Path**: possibilities.default.primary.section_title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  section_title: prismic.RichTextField;
+
+  /**
+   * Section Subtitle field in *Possibilities → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Section subtitle or description
+   * - **API ID Path**: possibilities.default.primary.section_subtitle
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  section_subtitle: prismic.RichTextField;
+
+  /**
+   * Layout Style field in *Possibilities → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Select layout style
+   * - **API ID Path**: possibilities.default.primary.layout_style
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  layout_style: prismic.SelectField<"grid" | "masonry" | "stacked">;
+
+  /**
+   * Background Color field in *Possibilities → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Select background color
+   * - **API ID Path**: possibilities.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  background_color: prismic.SelectField<"white" | "light" | "dark">;
+}
+
+/**
+ * Primary content in *Possibilities → Items*
+ */
+export interface PossibilitiesSliceDefaultItem {
+  /**
+   * Possibility Title field in *Possibilities → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Big, creative title
+   * - **API ID Path**: possibilities.items[].possibility_title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  possibility_title: prismic.KeyTextField;
+
+  /**
+   * Possibility Description field in *Possibilities → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Description of this possibility
+   * - **API ID Path**: possibilities.items[].possibility_description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  possibility_description: prismic.RichTextField;
+
+  /**
+   * Accent Color field in *Possibilities → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Select accent color
+   * - **API ID Path**: possibilities.items[].accent_color
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  accent_color: prismic.SelectField<
+    "blue" | "green" | "purple" | "orange" | "red" | "yellow"
+  >;
+
+  /**
+   * Icon field in *Possibilities → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Emoji or symbol
+   * - **API ID Path**: possibilities.items[].icon
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  icon: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for Possibilities Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default Possibilities
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type PossibilitiesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<PossibilitiesSliceDefaultPrimary>,
+  Simplify<PossibilitiesSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Possibilities*
+ */
+type PossibilitiesSliceVariation = PossibilitiesSliceDefault;
+
+/**
+ * Possibilities Shared Slice
+ *
+ * - **API ID**: `possibilities`
+ * - **Description**: Creative blocks showcasing different possibilities with big titles and descriptions
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type PossibilitiesSlice = prismic.SharedSlice<
+  "possibilities",
+  PossibilitiesSliceVariation
+>;
+
+/**
  * Primary content in *Product → Default → Primary*
  */
 export interface ProductSliceDefaultPrimary {
@@ -3056,6 +3434,96 @@ type SectionIntroSliceVariation = SectionIntroSliceDefault;
 export type SectionIntroSlice = prismic.SharedSlice<
   "section_intro",
   SectionIntroSliceVariation
+>;
+
+/**
+ * Primary content in *SplitFeature → Default → Primary*
+ */
+export interface SplitFeatureSliceDefaultPrimary {
+  /**
+   * Title field in *SplitFeature → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Section title
+   * - **API ID Path**: split_feature.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Subtitle field in *SplitFeature → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Section subtitle
+   * - **API ID Path**: split_feature.default.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  subtitle: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *SplitFeature → Items*
+ */
+export interface SplitFeatureSliceDefaultItem {
+  /**
+   * Feature Title field in *SplitFeature → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Feature title
+   * - **API ID Path**: split_feature.items[].feature_title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  feature_title: prismic.KeyTextField;
+
+  /**
+   * Feature Description field in *SplitFeature → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Feature description
+   * - **API ID Path**: split_feature.items[].feature_description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  feature_description: prismic.RichTextField;
+
+  /**
+   * Feature Icon field in *SplitFeature → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Icon symbol or emoji
+   * - **API ID Path**: split_feature.items[].feature_icon
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  feature_icon: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for SplitFeature Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SplitFeatureSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SplitFeatureSliceDefaultPrimary>,
+  Simplify<SplitFeatureSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *SplitFeature*
+ */
+type SplitFeatureSliceVariation = SplitFeatureSliceDefault;
+
+/**
+ * SplitFeature Shared Slice
+ *
+ * - **API ID**: `split_feature`
+ * - **Description**: Split feature section with background image on left and feature blocks on right
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SplitFeatureSlice = prismic.SharedSlice<
+  "split_feature",
+  SplitFeatureSliceVariation
 >;
 
 /**
@@ -3974,6 +4442,198 @@ export type ValveHeroSlice = prismic.SharedSlice<
   ValveHeroSliceVariation
 >;
 
+/**
+ * Primary content in *VideoHero → Default → Primary*
+ */
+export interface VideoHeroSliceDefaultPrimary {
+  /**
+   * Main Title field in *VideoHero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Your Main Title Here
+   * - **API ID Path**: video_hero.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Subtitle field in *VideoHero → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Your subtitle or description...
+   * - **API ID Path**: video_hero.default.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  subtitle: prismic.RichTextField;
+
+  /**
+   * Button Text field in *VideoHero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Get Started
+   * - **API ID Path**: video_hero.default.primary.button_text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  button_text: prismic.KeyTextField;
+
+  /**
+   * Button Link field in *VideoHero → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Where should the button link to?
+   * - **API ID Path**: video_hero.default.primary.button_link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  button_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Background Video field in *VideoHero → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Upload or link to a video file
+   * - **API ID Path**: video_hero.default.primary.background_video
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  background_video: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Overlay Opacity field in *VideoHero → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Select overlay darkness
+   * - **API ID Path**: video_hero.default.primary.overlay_opacity
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  overlay_opacity: prismic.SelectField<"light" | "medium" | "dark">;
+}
+
+/**
+ * Default variation for VideoHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default VideoHero
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type VideoHeroSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<VideoHeroSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *VideoHero*
+ */
+type VideoHeroSliceVariation = VideoHeroSliceDefault;
+
+/**
+ * VideoHero Shared Slice
+ *
+ * - **API ID**: `video_hero`
+ * - **Description**: Hero section with looping video background, title, subtitle, and centered button
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type VideoHeroSlice = prismic.SharedSlice<
+  "video_hero",
+  VideoHeroSliceVariation
+>;
+
+/**
+ * Primary content in *YouTubeVideo → Default → Primary*
+ */
+export interface YoutubeVideoSliceDefaultPrimary {
+  /**
+   * Title field in *YouTubeVideo → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Video title
+   * - **API ID Path**: youtube_video.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Description field in *YouTubeVideo → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Video description
+   * - **API ID Path**: youtube_video.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * YouTube URL field in *YouTubeVideo → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: https://www.youtube.com/watch?v=...
+   * - **API ID Path**: youtube_video.default.primary.youtube_url
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  youtube_url: prismic.KeyTextField;
+
+  /**
+   * Video Position field in *YouTubeVideo → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Select video position
+   * - **API ID Path**: youtube_video.default.primary.video_position
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  video_position: prismic.SelectField<"left" | "right">;
+
+  /**
+   * Video Size field in *YouTubeVideo → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Select video size
+   * - **API ID Path**: youtube_video.default.primary.video_size
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  video_size: prismic.SelectField<"small" | "medium" | "large">;
+}
+
+/**
+ * Default variation for YouTubeVideo Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default YouTubeVideo
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type YoutubeVideoSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<YoutubeVideoSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *YouTubeVideo*
+ */
+type YoutubeVideoSliceVariation = YoutubeVideoSliceDefault;
+
+/**
+ * YouTubeVideo Shared Slice
+ *
+ * - **API ID**: `youtube_video`
+ * - **Description**: YouTube video with title and description in a split layout
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type YoutubeVideoSlice = prismic.SharedSlice<
+  "youtube_video",
+  YoutubeVideoSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -4079,6 +4739,11 @@ declare module "@prismicio/client" {
       FeatureSliceDefaultItem,
       FeatureSliceVariation,
       FeatureSliceDefault,
+      FeatureBlocksSlice,
+      FeatureBlocksSliceDefaultPrimary,
+      FeatureBlocksSliceDefaultItem,
+      FeatureBlocksSliceVariation,
+      FeatureBlocksSliceDefault,
       FoundationSlice,
       FoundationSliceDefaultPrimary,
       FoundationSliceDefaultItem,
@@ -4092,6 +4757,16 @@ declare module "@prismicio/client" {
       HeroImageSliceDefaultPrimary,
       HeroImageSliceVariation,
       HeroImageSliceDefault,
+      ModalBlocksSlice,
+      ModalBlocksSliceDefaultPrimary,
+      ModalBlocksSliceDefaultItem,
+      ModalBlocksSliceVariation,
+      ModalBlocksSliceDefault,
+      PossibilitiesSlice,
+      PossibilitiesSliceDefaultPrimary,
+      PossibilitiesSliceDefaultItem,
+      PossibilitiesSliceVariation,
+      PossibilitiesSliceDefault,
       ProductSlice,
       ProductSliceDefaultPrimary,
       ProductSliceVariation,
@@ -4100,6 +4775,11 @@ declare module "@prismicio/client" {
       SectionIntroSliceDefaultPrimary,
       SectionIntroSliceVariation,
       SectionIntroSliceDefault,
+      SplitFeatureSlice,
+      SplitFeatureSliceDefaultPrimary,
+      SplitFeatureSliceDefaultItem,
+      SplitFeatureSliceVariation,
+      SplitFeatureSliceDefault,
       StylizedImageSlice,
       StylizedImageSliceDefaultPrimary,
       StylizedImageSliceDefaultItem,
@@ -4130,6 +4810,14 @@ declare module "@prismicio/client" {
       ValveHeroSliceDefaultPrimary,
       ValveHeroSliceVariation,
       ValveHeroSliceDefault,
+      VideoHeroSlice,
+      VideoHeroSliceDefaultPrimary,
+      VideoHeroSliceVariation,
+      VideoHeroSliceDefault,
+      YoutubeVideoSlice,
+      YoutubeVideoSliceDefaultPrimary,
+      YoutubeVideoSliceVariation,
+      YoutubeVideoSliceDefault,
     };
   }
 }
