@@ -10,7 +10,6 @@ import {
 } from "@prismicio/react";
 import { Container } from "@/components/Container";
 import { FadeIn, FadeInStagger } from "@/components/FadeIn";
-import clsx from "clsx";
 import { useState } from "react";
 
 const components: JSXMapSerializer = {

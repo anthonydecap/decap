@@ -1,0 +1,140 @@
+{
+  "id": "gradient_bento_grid",
+  "slice_type": "gradient_bento_grid",
+  "slice_label": null,
+  "version": "initial",
+  "variation": "default",
+  "name": "GradientBentoGrid",
+  "description": "Simple bento grid with gradient functionalities, supporting icons, images, or text-only items",
+  "primary": {
+    "section_title": [
+      {
+        "type": "heading1",
+        "text": "Our Amazing Features",
+        "spans": []
+      }
+    ],
+    "section_subtitle": [
+      {
+        "type": "paragraph",
+        "text": "Discover the incredible possibilities with our gradient-powered bento grid",
+        "spans": []
+      }
+    ],
+    "background_color": "dark"
+  },
+  "items": [
+    {
+      "item_title": "Lightning Fast",
+      "item_description": [
+        {
+          "type": "paragraph",
+          "text": "Experience blazing fast performance with our optimized system",
+          "spans": []
+        }
+      ],
+      "icon": "⚡",
+      "accent_color": "yellow",
+      "item_size": "small",
+      "item_image": null
+    },
+    {
+      "item_title": "Creative Design",
+      "item_description": [
+        {
+          "type": "paragraph",
+          "text": "Beautiful and modern design that adapts to your needs",
+          "spans": []
+        }
+      ],
+      "icon": "🎨",
+      "accent_color": "purple",
+      "item_size": "medium",
+      "item_image": null
+    },
+    {
+      "item_title": "Smart Technology",
+      "item_description": [
+        {
+          "type": "paragraph",
+          "text": "Advanced AI-powered features that learn and adapt",
+          "spans": []
+        }
+      ],
+      "icon": "🤖",
+      "accent_color": "blue",
+      "item_size": "xlarge",
+      "item_image": null
+    },
+    {
+      "item_title": "Secure & Reliable",
+      "item_description": [
+        {
+          "type": "paragraph",
+          "text": "Enterprise-grade security with 99.9% uptime guarantee",
+          "spans": []
+        }
+      ],
+      "icon": "🔒",
+      "accent_color": "green",
+      "item_size": "small",
+      "item_image": null
+    },
+    {
+      "item_title": "Global Reach",
+      "item_description": [
+        {
+          "type": "paragraph",
+          "text": "Connect with users worldwide through our global network",
+          "spans": []
+        }
+      ],
+      "icon": "🌍",
+      "accent_color": "orange",
+      "item_size": "tall",
+      "item_image": null
+    },
+    {
+      "item_title": "Innovation Hub",
+      "item_description": [
+        {
+          "type": "paragraph",
+          "text": "Cutting-edge features that push the boundaries of what's possible",
+          "spans": []
+        }
+      ],
+      "icon": "🚀",
+      "accent_color": "red",
+      "item_size": "big",
+      "item_image": null
+    },
+    {
+      "item_title": "User Experience",
+      "item_description": [
+        {
+          "type": "paragraph",
+          "text": "Intuitive interface designed with users in mind",
+          "spans": []
+        }
+      ],
+      "icon": "👥",
+      "accent_color": "blue",
+      "item_size": "small",
+      "item_image": null
+    },
+    {
+      "item_title": "Data Analytics",
+      "item_description": [
+        {
+          "type": "paragraph",
+          "text": "Powerful insights and analytics to drive your decisions",
+          "spans": []
+        }
+      ],
+      "icon": "📊",
+      "accent_color": "green",
+      "item_size": "large",
+      "item_image": null
+    }
+  ]
+}

@@ -16,11 +16,14 @@ export const components = {
 
 
   enhanced_bento_grid: dynamic(() => import("./EnhancedBentoGrid")),
+  gradient_bento_grid: dynamic(() => import("./GradientBentoGrid")),
+  optical_midi: dynamic(() => import("./opticalMidi")),
   faq: dynamic(() => import("./FAQ")),
   feature: dynamic(() => import("./Feature")),
   feature_blocks: dynamic(() => import("./FeatureBlocks")),
   foundation: dynamic(() => import("./Foundation")),
   modal_blocks: dynamic(() => import("./ModalBlocks")),
+  midi: dynamic(() => import("./Midi")),
 
   hero: dynamic(() => import("./Hero")),
   split_feature: dynamic(() => import("./SplitFeature")),
@@ -34,14 +37,14 @@ export const components = {
 
   section_intro: dynamic(() => import("./SectionIntro")),
 
+  story: dynamic(() => import("./Story")),
   stylized_image: dynamic(() => import("./StylizedImage")),
   success: dynamic(() => import("./Success")),
   testimonial: dynamic(() => import("./Testimonial")),
   
   technical_specifications: dynamic(() => import("./TechnicalSpecifications")),
-
+  valve_tech_description: dynamic(() => import("./valveTechDescription")),
 
   three_d_model: dynamic(() => import("./ThreeDModel")),
   trumpet_video: dynamic(() => import("./TrumpetVideo")),
-  youtube_video: dynamic(() => import("./YouTubeVideo")),
 };

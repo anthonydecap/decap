@@ -1,7 +1,7 @@
 "use client";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { type FC } from "react";
+import { type FC, useState, useRef, useEffect, useCallback } from "react";
 import { PrismicNextLink } from "@prismicio/next";
 import {
   PrismicRichText,
@@ -36,12 +36,106 @@ const Possibilities: FC<PossibilitiesProps> = ({ slice }) => {
   const { 
     section_title, 
     section_subtitle, 
-    layout_style, 
     background_color 
   } = slice.primary;
 
-  const layout = layout_style || "grid";
   const bgColor = background_color || "white";
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [itemsPerView, setItemsPerView] = useState(1);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  
+  // Determine how many items to show based on screen size
+  const getItemsPerView = () => {
+    if (typeof window === 'undefined') return 1;
+    const width = window.innerWidth;
+    if (width < 768) return 1; // mobile: 1 item
+    if (width < 1024) return 2; // tablet: 2 items
+    return 3; // desktop: 3 items
+  };
+
+  const maxIndex = Math.max(0, slice.items.length - itemsPerView);
+
+  const nextSlide = useCallback(() => {
+    setCurrentIndex((prev) => Math.min(prev + 1, maxIndex));
+  }, [maxIndex]);
+
+  const prevSlide = useCallback(() => {
+    setCurrentIndex((prev) => Math.max(prev - 1, 0));
+  }, []);
+
+  // Handle touch gestures
+  const handleTouchStart = useRef({ x: 0, y: 0 });
+
+  // Update itemsPerView on resize
+  useEffect(() => {
+    const updateItemsPerView = () => {
+      setItemsPerView(getItemsPerView());
+    };
+    
+    updateItemsPerView();
+    window.addEventListener('resize', updateItemsPerView);
+    
+    return () => window.removeEventListener('resize', updateItemsPerView);
+  }, []);
+
+  // Add scroll event listeners
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+
+    // Handle scroll/trackpad gestures
+    const handleWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      if (e.deltaX !== 0) {
+        if (e.deltaX > 0) {
+          nextSlide();
+        } else {
+          prevSlide();
+        }
+      }
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      e.preventDefault();
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      const touch = e.changedTouches[0];
+      const deltaX = touch.clientX - handleTouchStart.current.x;
+      const deltaY = touch.clientY - handleTouchStart.current.y;
+      
+      // Only handle horizontal swipes (ignore vertical scrolling)
+      if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
+        if (deltaX > 0) {
+          prevSlide();
+        } else {
+          nextSlide();
+        }
+      }
+    };
+
+    carousel.addEventListener('wheel', handleWheel, { passive: false });
+    carousel.addEventListener('touchstart', (e) => {
+      handleTouchStart.current = {
+        x: e.touches[0].clientX,
+        y: e.touches[0].clientY
+      };
+    });
+    carousel.addEventListener('touchmove', handleTouchMove, { passive: false });
+    carousel.addEventListener('touchend', handleTouchEnd);
+
+    return () => {
+      carousel.removeEventListener('wheel', handleWheel);
+      carousel.removeEventListener('touchstart', (e) => {
+        handleTouchStart.current = {
+          x: e.touches[0].clientX,
+          y: e.touches[0].clientY
+        };
+      });
+      carousel.removeEventListener('touchmove', handleTouchMove);
+      carousel.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [maxIndex, nextSlide, prevSlide]);
 
   const backgroundClasses = {
     white: "bg-neutral-950",
@@ -132,42 +226,102 @@ const Possibilities: FC<PossibilitiesProps> = ({ slice }) => {
     );
   };
 
-  const renderLayout = () => {
-    switch (layout) {
-      case "masonry":
-        return (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
-            {slice.items.map((item: any, index: number) => 
-              renderPossibilityBlock(item, index)
-            )}
-          </div>
-        );
-      
-      case "stacked":
-        return (
-          <div className="space-y-8">
+  const renderCarousel = () => {
+    const showNavigation = slice.items.length > itemsPerView;
+
+    return (
+      <div className="relative overflow-visible">
+        {/* Carousel Container */}
+        <div ref={carouselRef} className="overflow-visible px-8 -mx-8">
+          <div 
+            className="flex gap-8 transition-transform duration-500 ease-in-out"
+            style={{
+              transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)`,
+              width: `${(slice.items.length * 100) / itemsPerView}%`
+            }}
+          >
             {slice.items.map((item: any, index: number) => (
-              <div key={index} className="max-w-4xl mx-auto">
+              <div 
+                key={index} 
+                className="flex-shrink-0"
+                style={{ 
+                  width: `${100 / slice.items.length}%`,
+                  padding: '0 0.5rem' // Add small padding to prevent hover clipping
+                }}
+              >
                 {renderPossibilityBlock(item, index)}
               </div>
             ))}
           </div>
-        );
-      
-      default: // grid
-        return (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
-            {slice.items.map((item: any, index: number) => 
-              renderPossibilityBlock(item, index)
-            )}
+        </div>
+
+        {/* Navigation Controls */}
+        {showNavigation && (
+          <div className="flex items-center justify-between mt-8">
+            {/* Dots Indicator */}
+            <div className="flex space-x-2">
+              {Array.from({ length: maxIndex + 1 }).map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={clsx(
+                    "w-3 h-3 rounded-full transition-all duration-200",
+                    index === currentIndex 
+                      ? "bg-white scale-125" 
+                      : "bg-neutral-600 hover:bg-neutral-500"
+                  )}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+
+            {/* Dual Control Buttons */}
+            <div className="flex items-center space-x-2">
+              {/* Previous Button */}
+              <button
+                onClick={prevSlide}
+                disabled={currentIndex === 0}
+                className={clsx(
+                  "w-10 h-10 rounded-full bg-neutral-800 border border-neutral-700",
+                  "flex items-center justify-center text-white",
+                  "hover:bg-neutral-700 hover:border-neutral-600 transition-all duration-200",
+                  "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-neutral-800",
+                  "shadow-lg hover:shadow-xl"
+                )}
+                aria-label="Previous items"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+
+              {/* Next Button */}
+              <button
+                onClick={nextSlide}
+                disabled={currentIndex >= maxIndex}
+                className={clsx(
+                  "w-10 h-10 rounded-full bg-neutral-800 border border-neutral-700",
+                  "flex items-center justify-center text-white",
+                  "hover:bg-neutral-700 hover:border-neutral-600 transition-all duration-200",
+                  "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-neutral-800",
+                  "shadow-lg hover:shadow-xl"
+                )}
+                aria-label="Next items"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
           </div>
-        );
-    }
+        )}
+      </div>
+    );
   };
 
   return (
     <div className={clsx("py-16 sm:py-24 lg:py-32", backgroundClasses[bgColor as keyof typeof backgroundClasses])}>
-      <Container>
+      <Container className="overflow-visible">
         {/* Section Header */}
         {(section_title || section_subtitle) && (
           <div className="text-center mb-16">
@@ -192,9 +346,9 @@ const Possibilities: FC<PossibilitiesProps> = ({ slice }) => {
           </div>
         )}
         
-        {/* Possibilities Grid */}
+        {/* Possibilities Carousel */}
         <FadeInStagger faster>
-          {renderLayout()}
+          {renderCarousel()}
         </FadeInStagger>
       </Container>
     </div>

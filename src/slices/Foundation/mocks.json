@@ -1,35 +1,71 @@
 [
-  {
-    "__TYPE__": "SharedSliceContent",
-    "variation": "default",
-    "primary": {
-      "title": [
-        {
-          "type": "heading2",
-          "text": "Built on a foundation of fast, production-grade tooling",
-          "spans": [
-            {
-              "start": 26,
-              "end": 30,
-              "type": "strong"
-            },
-            {
-              "start": 32,
-              "end": 49,
-              "type": "strong"
-            }
-          ]
-        }
-      ],
-      "subtitle": [
-        {
-          "type": "paragraph",
-          "text": "Everything you need to build great products on the web.",
-          "spans": []
-        }
-      ],
-      "show_animation": true
-    },
-    "items": []
-  }
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Mollit minim non esse dolor occaecat fugiat veniam elit veniam quis nulla consequat aliquip cupidatat. Ipsum eu magna in pariatur commodo incididunt incididunt minim id incididunt est fugiat minim amet incididunt. Ea nulla quis laboris."
+						}
+					}
+				]
+			},
+			"subtitle": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Excepteur deserunt incididunt exercitation pariatur. Quis elit enim aliquip minim ut tempor officia consequat ut do. Duis mollit laboris deserunt eiusmod fugiat aliqua id do occaecat proident laboris ea dolor."
+						}
+					}
+				]
+			},
+			"show_animation": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"card_title",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "pick",
+							"type": "Text"
+						}
+					],
+					[
+						"card_description",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Consequat velit reprehenderit non fugiat voluptate deserunt et."
+									}
+								}
+							]
+						}
+					],
+					[
+						"card_icon",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "lightning",
+							"type": "Select"
+						}
+					]
+				]
+			}
+		]
+	}
 ]

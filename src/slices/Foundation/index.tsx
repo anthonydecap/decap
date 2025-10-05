@@ -249,12 +249,12 @@ const Foundation: FC<FoundationProps> = ({ slice }) => {
             style={{ position: "relative", zIndex: 2 }}
           >
             {title && (
-              <h2 className="block font-display text-4xl font-medium tracking-tight text-balance sm:text-5xl text-white">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-tight text-white">
                 <PrismicRichText field={title} components={components} />
               </h2>
             )}
             {subtitle && (
-              <div className="mt-6 text-xl text-neutral-300">
+              <div className="mt-6 text-xl leading-relaxed text-neutral-300">
                 <PrismicRichText field={subtitle} components={components} />
               </div>
             )}
@@ -300,7 +300,7 @@ const Foundation: FC<FoundationProps> = ({ slice }) => {
                 aria-label="A bunch of connecting lines that form into the CPU, with the text Powered By on top of the the CPU. Gradient lines are animating along the drawn lines, dissolving into the CPU in the center."
               >
                 <defs>
-                  {/* Laser bullet gradients with #cca483 - much more tapered */}
+                  {/* Laser bullet gradients with rainbow colors */}
                   <linearGradient
                     id="traveling-orange-gradient"
                     gradientUnits="userSpaceOnUse"
@@ -311,42 +311,42 @@ const Foundation: FC<FoundationProps> = ({ slice }) => {
                   >
                     <stop
                       offset="0%"
-                      stopColor="#cca483"
+                      stopColor="#3b82f6"
                       stopOpacity="0"
                     ></stop>
                     <stop
                       offset="10%"
-                      stopColor="#cca483"
+                      stopColor="#a855f7"
                       stopOpacity="0.4"
                     ></stop>
                     <stop
                       offset="20%"
-                      stopColor="#cca483"
+                      stopColor="#ec4899"
                       stopOpacity="0.9"
                     ></stop>
                     <stop
                       offset="30%"
-                      stopColor="#cca483"
+                      stopColor="#ef4444"
                       stopOpacity="1"
                     ></stop>
                     <stop
                       offset="45%"
-                      stopColor="#cca483"
+                      stopColor="#f97316"
                       stopOpacity="0.7"
                     ></stop>
                     <stop
                       offset="65%"
-                      stopColor="#cca483"
+                      stopColor="#eab308"
                       stopOpacity="0.3"
                     ></stop>
                     <stop
                       offset="85%"
-                      stopColor="#cca483"
+                      stopColor="#3b82f6"
                       stopOpacity="0.1"
                     ></stop>
                     <stop
                       offset="100%"
-                      stopColor="#cca483"
+                      stopColor="#a855f7"
                       stopOpacity="0"
                     ></stop>
                   </linearGradient>
@@ -359,38 +359,38 @@ const Foundation: FC<FoundationProps> = ({ slice }) => {
                     x2="1"
                     y2="264"
                   >
-                    <stop offset="0" stopColor="#cca483" stopOpacity="0"></stop>
+                    <stop offset="0" stopColor="#3b82f6" stopOpacity="0"></stop>
                     <stop
                       offset="0.1"
-                      stopColor="#cca483"
+                      stopColor="#a855f7"
                       stopOpacity="0.4"
                     ></stop>
                     <stop
                       offset="0.2"
-                      stopColor="#cca483"
+                      stopColor="#ec4899"
                       stopOpacity="0.9"
                     ></stop>
                     <stop
                       offset="0.3"
-                      stopColor="#cca483"
+                      stopColor="#ef4444"
                       stopOpacity="1"
                     ></stop>
                     <stop
                       offset="0.45"
-                      stopColor="#cca483"
+                      stopColor="#f97316"
                       stopOpacity="0.7"
                     ></stop>
                     <stop
                       offset="0.65"
-                      stopColor="#cca483"
+                      stopColor="#eab308"
                       stopOpacity="0.3"
                     ></stop>
                     <stop
                       offset="0.85"
-                      stopColor="#cca483"
+                      stopColor="#3b82f6"
                       stopOpacity="0.1"
                     ></stop>
-                    <stop offset="1" stopColor="#cca483" stopOpacity="0"></stop>
+                    <stop offset="1" stopColor="#a855f7" stopOpacity="0"></stop>
                   </linearGradient>
 
                   <linearGradient
@@ -403,42 +403,42 @@ const Foundation: FC<FoundationProps> = ({ slice }) => {
                   >
                     <stop
                       offset="0%"
-                      stopColor="#cca483"
+                      stopColor="#ec4899"
                       stopOpacity="0"
                     ></stop>
                     <stop
                       offset="10%"
-                      stopColor="#cca483"
+                      stopColor="#ef4444"
                       stopOpacity="0.4"
                     ></stop>
                     <stop
                       offset="20%"
-                      stopColor="#cca483"
+                      stopColor="#f97316"
                       stopOpacity="0.9"
                     ></stop>
                     <stop
                       offset="30%"
-                      stopColor="#cca483"
+                      stopColor="#eab308"
                       stopOpacity="1"
                     ></stop>
                     <stop
                       offset="45%"
-                      stopColor="#cca483"
+                      stopColor="#3b82f6"
                       stopOpacity="0.7"
                     ></stop>
                     <stop
                       offset="65%"
-                      stopColor="#cca483"
+                      stopColor="#a855f7"
                       stopOpacity="0.3"
                     ></stop>
                     <stop
                       offset="85%"
-                      stopColor="#cca483"
+                      stopColor="#ec4899"
                       stopOpacity="0.1"
                     ></stop>
                     <stop
                       offset="100%"
-                      stopColor="#cca483"
+                      stopColor="#ef4444"
                       stopOpacity="0"
                     ></stop>
                   </linearGradient>
@@ -966,7 +966,7 @@ const Foundation: FC<FoundationProps> = ({ slice }) => {
                     ></div>
 
                     {/* "Powered By" text */}
-                    <div className="relative z-10 px-7 py-1">smART</div>
+                    <div className="relative z-10 px-7 py-1 text-transparent bg-clip-text" style={{ backgroundImage: 'linear-gradient(to right, #3b82f6, #a855f7, #ec4899, #ef4444, #f97316, #eab308)' }}>smART</div>
                   </div>
                 </div>
               </div>
@@ -994,13 +994,13 @@ const Foundation: FC<FoundationProps> = ({ slice }) => {
                       </div>
 
                       {/* Title */}
-                      <h3 className="text-xl font-semibold text-white mb-4 leading-tight">
+                      <h3 className="text-2xl sm:text-3xl font-display font-bold leading-tight text-white mb-4">
                         {item.card_title || ""}
                       </h3>
 
                       {/* Description */}
                       {item.card_description && (
-                        <div className="text-neutral-400 leading-relaxed">
+                        <div className="text-lg leading-relaxed text-neutral-400">
                           <PrismicRichText
                             field={item.card_description}
                             components={components}

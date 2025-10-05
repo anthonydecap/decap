@@ -27,10 +27,16 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "possibilities": {
+            "story": {
               "type": "SharedSlice"
             },
-            "youtube_video": {
+            "optical_midi": {
+              "type": "SharedSlice"
+            },
+            "valve_tech_description": {
+              "type": "SharedSlice"
+            },
+            "possibilities": {
               "type": "SharedSlice"
             },
             "feature_blocks": {

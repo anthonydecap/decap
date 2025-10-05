@@ -1,0 +1,103 @@
+[
+  {
+    "variation": "default",
+    "name": "Default",
+    "slice_type": "valve_tech_description",
+    "items": [
+      {
+        "property_category": "SmartValve mechanical properties",
+        "property_name": "Weight",
+        "property_value": "0.1 kg",
+        "property_description": null,
+        "property_icon": "weight",
+        "highlight": false
+      },
+      {
+        "property_category": "SmartValve mechanical properties",
+        "property_name": "Footprint",
+        "property_value": "53 × 53 mm",
+        "property_description": null,
+        "property_icon": "dimensions",
+        "highlight": false
+      },
+      {
+        "property_category": "SmartValve mechanical properties",
+        "property_name": "Height",
+        "property_value": "approx. 35 mm",
+        "property_description": null,
+        "property_icon": "height",
+        "highlight": false
+      },
+      {
+        "property_category": "SmartValve mechanical properties",
+        "property_name": "Minimum needed inside chest height",
+        "property_value": "80 mm",
+        "property_description": null,
+        "property_icon": "height",
+        "highlight": true
+      },
+      {
+        "property_category": "SmartValve electrical properties",
+        "property_name": "Motor coil Ohms",
+        "property_value": "8Ω",
+        "property_description": null,
+        "property_icon": "resistance",
+        "highlight": false
+      },
+      {
+        "property_category": "SmartValve electrical properties",
+        "property_name": "Motor supplied voltage",
+        "property_value": "12v DC",
+        "property_description": null,
+        "property_icon": "voltage",
+        "highlight": false
+      },
+      {
+        "property_category": "SmartValve electrical properties",
+        "property_name": "Motor max theoretical current",
+        "property_value": "1.5A/18W",
+        "property_description": null,
+        "property_icon": "current",
+        "highlight": false
+      },
+      {
+        "property_category": "SmartValve electrical properties",
+        "property_name": "Max Motor current during use",
+        "property_value": "0.5A/6W",
+        "property_description": null,
+        "property_icon": "current",
+        "highlight": false
+      },
+      {
+        "property_category": "SmartValve electrical properties",
+        "property_name": "Electronics supplied voltage",
+        "property_value": "7.5v (5 to max 18v)",
+        "property_description": null,
+        "property_icon": "voltage",
+        "highlight": false
+      },
+      {
+        "property_category": "SmartValve electrical properties",
+        "property_name": "Max Electronics current during use",
+        "property_value": "20mA",
+        "property_description": null,
+        "property_icon": "electronics",
+        "highlight": false
+      }
+    ],
+    "primary": {
+      "title": "SmartValve Specifications",
+      "eyebrow": "Technical Properties",
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "Complete technical specifications for the SmartValve system, including mechanical and electrical properties designed for precision control and reliability.",
+          "spans": []
+        }
+      ],
+      "invert": false,
+      "layout_style": "two_column"
+    }
+  }
+]
+

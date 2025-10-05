@@ -1,15 +1,15 @@
 {
-  "id": "possibilities",
+  "id": "gradient_bento_grid",
   "type": "SharedSlice",
-  "name": "Possibilities",
-  "description": "Creative blocks showcasing different possibilities with big titles and descriptions",
+  "name": "GradientBentoGrid",
+  "description": "Simple bento grid with gradient functionalities, supporting icons, images, or text-only items",
   "variations": [
     {
       "id": "default",
       "name": "Default",
       "docURL": "...",
       "version": "initial",
-      "description": "Default Possibilities",
+      "description": "Default GradientBentoGrid",
       "imageUrl": "",
       "primary": {
         "section_title": {
@@ -39,32 +39,62 @@
               "white",
               "light",
               "dark"
-            ]
+            ],
+            "default_value": "dark"
           }
         }
       },
       "items": {
-        "possibility_title": {
+        "item_title": {
           "type": "Text",
           "config": {
-            "label": "Possibility Title",
-            "placeholder": "Big, creative title"
+            "label": "Item Title",
+            "placeholder": "Item title"
           }
         },
-        "possibility_description": {
+        "item_description": {
           "type": "StructuredText",
           "config": {
-            "label": "Possibility Description",
-            "placeholder": "Description of this possibility",
+            "label": "Item Description",
+            "placeholder": "Item description",
             "allowTargetBlank": true,
             "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "icon": {
+          "type": "Text",
+          "config": {
+            "label": "Icon",
+            "placeholder": "Emoji or symbol (e.g., 🚀, ⚡, 💡)"
+          }
+        },
+        "item_image": {
+          "type": "Image",
+          "config": {
+            "label": "Item Image",
+            "constraint": {
+              "width": 800,
+              "height": 600
+            },
+            "thumbnails": [
+              {
+                "name": "thumbnail",
+                "width": 400,
+                "height": 300
+              },
+              {
+                "name": "portrait",
+                "width": 750,
+                "height": 1700
+              }
+            ]
           }
         },
         "accent_color": {
           "type": "Select",
           "config": {
             "label": "Accent Color",
-            "placeholder": "Select accent color",
+            "placeholder": "Select accent color for gradients",
             "options": [
               "blue",
               "green",
@@ -72,14 +102,25 @@
               "orange",
               "red",
               "yellow"
-            ]
+            ],
+            "default_value": "blue"
           }
         },
-        "icon": {
-          "type": "Text",
+        "item_size": {
+          "type": "Select",
           "config": {
-            "label": "Icon",
-            "placeholder": "Emoji or symbol"
+            "label": "Item Size",
+            "placeholder": "Select item size",
+            "options": [
+              "small",
+              "medium",
+              "large",
+              "xlarge",
+              "wide",
+              "tall",
+              "big"
+            ],
+            "default_value": "medium"
           }
         }
       }

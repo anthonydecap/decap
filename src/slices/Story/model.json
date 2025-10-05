@@ -1,0 +1,82 @@
+{
+  "id": "story",
+  "type": "SharedSlice",
+  "name": "Story",
+  "description": "Scroll-based storytelling slice that explains 'How It Works' in four immersive steps",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default Story",
+      "imageUrl": "",
+      "primary": {
+        "section_title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Section Title",
+            "placeholder": "How It Works",
+            "allowTargetBlank": true,
+            "single": "heading1,heading2,heading3,heading4,heading5,heading6"
+          }
+        },
+        "section_subtitle": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Section Subtitle",
+            "placeholder": "SmartValve doesn't open air — it sculpts it.",
+            "allowTargetBlank": true,
+            "single": "paragraph,strong,em"
+          }
+        },
+        "background_color": {
+          "type": "Color",
+          "config": {
+            "label": "Background Color",
+            "placeholder": "#0a0a0a"
+          }
+        }
+      },
+      "items": {
+        "step_headline": {
+          "type": "Text",
+          "config": {
+            "label": "Step Headline",
+            "placeholder": "MIDI command → target pressure"
+          }
+        },
+        "step_subline": {
+          "type": "Text",
+          "config": {
+            "label": "Step Subline",
+            "placeholder": "Every note begins as a pressure curve — attack, decay, sustain, release — not an on/off."
+          }
+        },
+        "step_number": {
+          "type": "Number",
+          "config": {
+            "label": "Step Number",
+            "placeholder": "1"
+          }
+        },
+        "step_video": {
+          "type": "Link",
+          "config": {
+            "label": "Step Video",
+            "placeholder": "Upload video (auto-plays when step is active)",
+            "select": "media"
+          }
+        },
+        "step_image": {
+          "type": "Image",
+          "config": {
+            "label": "Step Image (fallback if no video)",
+            "placeholder": "Upload image"
+          }
+        }
+      }
+    }
+  ]
+}
+

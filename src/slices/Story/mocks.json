@@ -1,0 +1,218 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "section_title": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "heading1",
+            "content": {
+              "text": "How It Works"
+            }
+          }
+        ]
+      },
+      "section_subtitle": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "SmartValve doesn't open air — it sculpts it."
+            }
+          }
+        ]
+      },
+      "background_color": {
+        "__TYPE__": "FieldContent",
+        "value": "#0a0a0a",
+        "type": "Color"
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "step_headline",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "MIDI command → target pressure",
+              "type": "Text"
+            }
+          ],
+          [
+            "step_subline",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "Every note begins as a pressure curve — attack, decay, sustain, release — not an on/off.",
+              "type": "Text"
+            }
+          ],
+          [
+            "step_number",
+            {
+              "__TYPE__": "FieldContent",
+              "value": 1,
+              "type": "Number"
+            }
+          ],
+          [
+            "step_video",
+            {
+              "__TYPE__": "LinkContent",
+              "value": {
+                "link_type": "Media"
+              }
+            }
+          ],
+          [
+            "step_image",
+            {
+              "__TYPE__": "ImageContent",
+              "value": {}
+            }
+          ]
+        ]
+      },
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "step_headline",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "Voice-coil motor → ultra-fast control",
+              "type": "Text"
+            }
+          ],
+          [
+            "step_subline",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "A loudspeaker-like motor moves a featherweight piston to shape airflow continuously.",
+              "type": "Text"
+            }
+          ],
+          [
+            "step_number",
+            {
+              "__TYPE__": "FieldContent",
+              "value": 2,
+              "type": "Number"
+            }
+          ],
+          [
+            "step_video",
+            {
+              "__TYPE__": "LinkContent",
+              "value": {
+                "link_type": "Media"
+              }
+            }
+          ],
+          [
+            "step_image",
+            {
+              "__TYPE__": "ImageContent",
+              "value": {}
+            }
+          ]
+        ]
+      },
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "step_headline",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "Pressure sensor → real-time regulation",
+              "type": "Text"
+            }
+          ],
+          [
+            "step_subline",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "Wind is measured 9,000×/s and corrected 2,000×/s so actual pressure follows the curve exactly.",
+              "type": "Text"
+            }
+          ],
+          [
+            "step_number",
+            {
+              "__TYPE__": "FieldContent",
+              "value": 3,
+              "type": "Number"
+            }
+          ],
+          [
+            "step_video",
+            {
+              "__TYPE__": "LinkContent",
+              "value": {
+                "link_type": "Media"
+              }
+            }
+          ],
+          [
+            "step_image",
+            {
+              "__TYPE__": "ImageContent",
+              "value": {}
+            }
+          ]
+        ]
+      },
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "step_headline",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "Real wind control → living sound",
+              "type": "Text"
+            }
+          ],
+          [
+            "step_subline",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "Because SmartValve regulates pressure, pipes breathe, swell and speak with natural expression.",
+              "type": "Text"
+            }
+          ],
+          [
+            "step_number",
+            {
+              "__TYPE__": "FieldContent",
+              "value": 4,
+              "type": "Number"
+            }
+          ],
+          [
+            "step_video",
+            {
+              "__TYPE__": "LinkContent",
+              "value": {
+                "link_type": "Media"
+              }
+            }
+          ],
+          [
+            "step_image",
+            {
+              "__TYPE__": "ImageContent",
+              "value": {}
+            }
+          ]
+        ]
+      }
+    ]
+  }
+]
+

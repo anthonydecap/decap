@@ -1,0 +1,157 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "appearance",
+				"type": "Text"
+			},
+			"eyebrow": {
+				"__TYPE__": "FieldContent",
+				"value": "imagine",
+				"type": "Text"
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Nulla eu ex in est ex cillum et ipsum elit do fugiat."
+						}
+					}
+				]
+			},
+			"main_image": {
+				"__TYPE__": "ImageContent",
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1551739440-5dd934d3a94a",
+					"width": 3456,
+					"height": 4320
+				},
+				"url": "https://images.unsplash.com/photo-1551739440-5dd934d3a94a?rect=0%2C1008%2C3456%2C2304&w=1200&h=800",
+				"width": 1200,
+				"height": 800,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 1008
+					},
+					"background": "transparent"
+				},
+				"alt": "face",
+				"thumbnails": {
+					"medium": {
+						"origin": {
+							"id": "medium",
+							"url": "https://images.unsplash.com/photo-1576662712957-9c79ae1280f8",
+							"width": 3456,
+							"height": 3456
+						},
+						"url": "https://images.unsplash.com/photo-1576662712957-9c79ae1280f8?rect=0%2C576%2C3456%2C2304&w=600&h=400",
+						"width": 600,
+						"height": 400,
+						"edit": {
+							"zoom": 1,
+							"crop": {
+								"x": 0,
+								"y": 576
+							},
+							"background": "transparent"
+						},
+						"alt": "globe"
+					}
+				}
+			},
+			"invert": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"stats": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"stat_value",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "solar",
+									"type": "Text"
+								}
+							],
+							[
+								"stat_label",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "adventure",
+									"type": "Text"
+								}
+							],
+							[
+								"stat_description",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "strange",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			},
+			"subscript": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Enim irure et incididunt reprehenderit ea culpa nostrud ipsum veniam sint cillum aliquip magna sint."
+						}
+					}
+				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"feature_title",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "adjective",
+							"type": "Text"
+						}
+					],
+					[
+						"feature_description",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Esse est ipsum sint cupidatat occaecat dolore enim consequat ea labore. Aliquip duis tempor velit."
+									}
+								}
+							]
+						}
+					],
+					[
+						"feature_icon",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "speed",
+							"type": "Select"
+						}
+					]
+				]
+			}
+		]
+	}
