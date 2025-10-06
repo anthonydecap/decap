@@ -113,7 +113,7 @@ const ValveHeroSlice: FC<ValveHeroProps> = ({ slice }) => {
               {hasStripeId && hasProductFields && (
                 <FadeIn>
                   <div className="flex flex-col items-center gap-6">
-                    {/* Price Display */}
+                    {/* Price Display d*/}
                     <div className="flex items-baseline gap-2">
                       <span className="text-4xl sm:text-5xl font-bold text-white drop-shadow-lg">
                         {currencySymbol}{displayPrice?.toFixed(2)}
