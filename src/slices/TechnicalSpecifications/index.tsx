@@ -197,9 +197,9 @@ const TechnicalSpecifications: FC<TechnicalSpecificationsProps> = ({ slice }) =>
 
             {/* Specification value */}
             {spec.spec_value && (
-              <div
-                className={clsx(
-                  "text-2xl font-display font-medium mb-3",
+                  <div
+                    className={clsx(
+                      "font-display text-2xl font-medium mb-3",
                   isHighlighted
                     ? invert
                       ? "text-white"
@@ -247,9 +247,9 @@ const TechnicalSpecifications: FC<TechnicalSpecificationsProps> = ({ slice }) =>
         <FadeIn key={category}>
           <div className="space-y-4">
             {category !== "General" && (
-              <h3
-                className={clsx(
-                  "font-display text-xl font-semibold tracking-tight",
+                <h3
+                  className={clsx(
+                    "font-display text-xl font-semibold tracking-tight leading-tight",
                   invert ? "text-white" : "text-neutral-900"
                 )}
               >
@@ -285,7 +285,7 @@ const TechnicalSpecifications: FC<TechnicalSpecificationsProps> = ({ slice }) =>
                       <div className="flex items-center justify-between gap-4">
                         <h4
                           className={clsx(
-                            "font-display text-base font-medium",
+                            "font-display text-lg font-semibold leading-tight",
                             invert ? "text-white" : "text-neutral-900"
                           )}
                         >
@@ -340,7 +340,7 @@ const TechnicalSpecifications: FC<TechnicalSpecificationsProps> = ({ slice }) =>
             {category !== "General" && (
               <h3
                 className={clsx(
-                  "font-display text-2xl font-semibold tracking-tight",
+                  "font-display text-2xl font-semibold tracking-tight leading-tight",
                   invert ? "text-white" : "text-neutral-900"
                 )}
               >

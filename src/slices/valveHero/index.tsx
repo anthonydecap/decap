@@ -73,10 +73,11 @@ const ValveHeroSlice: FC<ValveHeroProps> = ({ slice }) => {
       {/* Background Image with Apple-style animation */}
       <div className="absolute inset-0 mx-auto">
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat max-w-4xl mx-auto animate-apple-hero"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat max-w-6xl mx-auto animate-apple-hero "
           style={{
             backgroundImage: 'url(/images/cantedvalve.png)',
-            backgroundPosition: 'center 190px', // X first, then Y
+            backgroundPosition: 'center 150px', // X first, then Y
+            backgroundSize: 'cover',
           }}
         />
       </div>
@@ -90,7 +91,7 @@ const ValveHeroSlice: FC<ValveHeroProps> = ({ slice }) => {
               {/* Subtitle */}
               {subtitle && (
                 <FadeIn>
-                  <p className="text-lg font-semibold tracking-wide sm:text-xl text-black/90 mb-4 drop-shadow-lg">
+                  <p className="text-2xl sm:text-3xl lg:text-4xl font-semibold leading-relaxed text-transparent bg-clip-text mb-6 drop-shadow-lg" style={{ backgroundImage: 'linear-gradient(to right, #3b82f6, #a855f7, #ec4899, #ef4444, #f97316, #eab308)' }}>
                     {subtitle}
                   </p>
                 </FadeIn>
@@ -99,19 +100,14 @@ const ValveHeroSlice: FC<ValveHeroProps> = ({ slice }) => {
               {/* Main Title */}
               {displayName && (
                 <FadeIn>
-                  <h1 className="font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl text-black mb-8 drop-shadow-xl">
+                  <h1 className="text-5xl font-bold sm:text-6xl lg:text-7xl xl:text-8xl font-display leading-tight text-black mb-8">
                     {displayName}
                   </h1>
                 </FadeIn>
               )}
 
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
+  
+       
               
               {/* Buy Button Section */}
               {hasStripeId && hasProductFields && (
@@ -119,11 +115,11 @@ const ValveHeroSlice: FC<ValveHeroProps> = ({ slice }) => {
                   <div className="flex flex-col items-center gap-6">
                     {/* Price Display */}
                     <div className="flex items-baseline gap-2">
-                      <span className="text-3xl font-bold text-white drop-shadow-lg">
+                      <span className="text-4xl sm:text-5xl font-bold text-white drop-shadow-lg">
                         {currencySymbol}{displayPrice?.toFixed(2)}
                       </span>
                       {displayCurrency && (
-                        <span className="text-sm text-white/80 uppercase tracking-wide drop-shadow-md">
+                        <span className="text-base sm:text-lg text-white/80 uppercase tracking-wide drop-shadow-md">
                           {displayCurrency}
                         </span>
                       )}
@@ -132,7 +128,7 @@ const ValveHeroSlice: FC<ValveHeroProps> = ({ slice }) => {
                     {/* Buy Button */}
                     <Button 
                       onClick={handleAddToCart}
-                      className="inline-flex items-center justify-center rounded-full bg-neutral-900 px-8 py-3 text-base font-semibold text-white transition-all duration-300 hover:bg-neutral-800 hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
+                      className="inline-flex items-center justify-center rounded-full bg-neutral-900 px-10 py-4 text-lg font-semibold text-white transition-all duration-300 hover:bg-neutral-800 hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
                     >
                       {buy_button_text || 'Buy Now'}
                     </Button>
@@ -145,7 +141,7 @@ const ValveHeroSlice: FC<ValveHeroProps> = ({ slice }) => {
                 <FadeIn>
                   <PrismicNextLink
                     href="#"
-                    className="inline-flex items-center justify-center rounded-full bg-neutral-900 px-8 py-3 text-base font-semibold text-white transition-all duration-300 hover:bg-neutral-800 hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
+                    className="inline-flex items-center justify-center rounded-full bg-neutral-900 px-10 py-4 text-lg font-semibold text-white transition-all duration-300 hover:bg-neutral-800 hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
                   >
                     {buy_button_text}
                   </PrismicNextLink>

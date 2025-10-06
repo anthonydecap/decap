@@ -419,6 +419,14 @@ export type CheckoutPageDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | StorySlice
+  | OpticalMidiSlice
+  | ValveTechDescriptionSlice
+  | PossibilitiesSlice
+  | FeatureBlocksSlice
+  | VideoHeroSlice
+  | ModalBlocksSlice
+  | SplitFeatureSlice
   | ValveHeroSlice
   | FoundationSlice
   | AccessoriesSlice
@@ -2457,6 +2465,106 @@ export type FeatureSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *FeatureBlocks → Default → Primary*
+ */
+export interface FeatureBlocksSliceDefaultPrimary {
+  /**
+   * Title field in *FeatureBlocks → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Section title
+   * - **API ID Path**: feature_blocks.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Subtitle field in *FeatureBlocks → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Section subtitle
+   * - **API ID Path**: feature_blocks.default.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  subtitle: prismic.RichTextField;
+
+  /**
+   * Background Image field in *FeatureBlocks → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature_blocks.default.primary.background_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  background_image: prismic.ImageField<"thumbnail">;
+}
+
+/**
+ * Primary content in *FeatureBlocks → Items*
+ */
+export interface FeatureBlocksSliceDefaultItem {
+  /**
+   * Feature Title field in *FeatureBlocks → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Feature title
+   * - **API ID Path**: feature_blocks.items[].feature_title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  feature_title: prismic.KeyTextField;
+
+  /**
+   * Feature Description field in *FeatureBlocks → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Feature description
+   * - **API ID Path**: feature_blocks.items[].feature_description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  feature_description: prismic.RichTextField;
+
+  /**
+   * Feature Icon field in *FeatureBlocks → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Icon symbol or emoji
+   * - **API ID Path**: feature_blocks.items[].feature_icon
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  feature_icon: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for FeatureBlocks Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type FeatureBlocksSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<FeatureBlocksSliceDefaultPrimary>,
+  Simplify<FeatureBlocksSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *FeatureBlocks*
+ */
+type FeatureBlocksSliceVariation = FeatureBlocksSliceDefault;
+
+/**
+ * FeatureBlocks Shared Slice
+ *
+ * - **API ID**: `feature_blocks`
+ * - **Description**: Split feature section with background image on left and feature blocks on right
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type FeatureBlocksSlice = prismic.SharedSlice<
+  "feature_blocks",
+  FeatureBlocksSliceVariation
+>;
+
+/**
  * Primary content in *Foundation → Default → Primary*
  */
 export interface FoundationSliceDefaultPrimary {
@@ -2570,6 +2678,145 @@ type FoundationSliceVariation = FoundationSliceDefault;
 export type FoundationSlice = prismic.SharedSlice<
   "foundation",
   FoundationSliceVariation
+>;
+
+/**
+ * Primary content in *GradientBentoGrid → Default → Primary*
+ */
+export interface GradientBentoGridSliceDefaultPrimary {
+  /**
+   * Section Title field in *GradientBentoGrid → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Main section title
+   * - **API ID Path**: gradient_bento_grid.default.primary.section_title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  section_title: prismic.RichTextField;
+
+  /**
+   * Section Subtitle field in *GradientBentoGrid → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Section subtitle or description
+   * - **API ID Path**: gradient_bento_grid.default.primary.section_subtitle
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  section_subtitle: prismic.RichTextField;
+
+  /**
+   * Background Color field in *GradientBentoGrid → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Select background color
+   * - **Default Value**: dark
+   * - **API ID Path**: gradient_bento_grid.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  background_color: prismic.SelectField<"white" | "light" | "dark", "filled">;
+}
+
+/**
+ * Primary content in *GradientBentoGrid → Items*
+ */
+export interface GradientBentoGridSliceDefaultItem {
+  /**
+   * Item Title field in *GradientBentoGrid → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Item title
+   * - **API ID Path**: gradient_bento_grid.items[].item_title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  item_title: prismic.KeyTextField;
+
+  /**
+   * Item Description field in *GradientBentoGrid → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Item description
+   * - **API ID Path**: gradient_bento_grid.items[].item_description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  item_description: prismic.RichTextField;
+
+  /**
+   * Icon field in *GradientBentoGrid → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Emoji or symbol (e.g., 🚀, ⚡, 💡)
+   * - **API ID Path**: gradient_bento_grid.items[].icon
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  icon: prismic.KeyTextField;
+
+  /**
+   * Item Image field in *GradientBentoGrid → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gradient_bento_grid.items[].item_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  item_image: prismic.ImageField<"thumbnail" | "portrait">;
+
+  /**
+   * Accent Color field in *GradientBentoGrid → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Select accent color for gradients
+   * - **Default Value**: blue
+   * - **API ID Path**: gradient_bento_grid.items[].accent_color
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  accent_color: prismic.SelectField<
+    "blue" | "green" | "purple" | "orange" | "red" | "yellow",
+    "filled"
+  >;
+
+  /**
+   * Item Size field in *GradientBentoGrid → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Select item size
+   * - **Default Value**: medium
+   * - **API ID Path**: gradient_bento_grid.items[].item_size
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  item_size: prismic.SelectField<
+    "small" | "medium" | "large" | "xlarge" | "wide" | "tall" | "big",
+    "filled"
+  >;
+}
+
+/**
+ * Default variation for GradientBentoGrid Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default GradientBentoGrid
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type GradientBentoGridSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<GradientBentoGridSliceDefaultPrimary>,
+  Simplify<GradientBentoGridSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *GradientBentoGrid*
+ */
+type GradientBentoGridSliceVariation = GradientBentoGridSliceDefault;
+
+/**
+ * GradientBentoGrid Shared Slice
+ *
+ * - **API ID**: `gradient_bento_grid`
+ * - **Description**: Simple bento grid with gradient functionalities, supporting icons, images, or text-only items
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type GradientBentoGridSlice = prismic.SharedSlice<
+  "gradient_bento_grid",
+  GradientBentoGridSliceVariation
 >;
 
 /**
@@ -2866,6 +3113,631 @@ export type HeroImageSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *Midi → Default → Primary → Statistics*
+ */
+export interface MidiSliceDefaultPrimaryStatsItem {
+  /**
+   * Stat Value field in *Midi → Default → Primary → Statistics*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: 300,000
+   * - **API ID Path**: midi.default.primary.stats[].stat_value
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  stat_value: prismic.KeyTextField;
+
+  /**
+   * Stat Label field in *Midi → Default → Primary → Statistics*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: bytes/sec
+   * - **API ID Path**: midi.default.primary.stats[].stat_label
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  stat_label: prismic.KeyTextField;
+
+  /**
+   * Stat Description field in *Midi → Default → Primary → Statistics*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Link speed
+   * - **API ID Path**: midi.default.primary.stats[].stat_description
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  stat_description: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *Midi → Default → Primary*
+ */
+export interface MidiSliceDefaultPrimary {
+  /**
+   * Section Title field in *Midi → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: High-speed Optical MIDI
+   * - **API ID Path**: midi.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Eyebrow field in *Midi → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Technology
+   * - **API ID Path**: midi.default.primary.eyebrow
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  eyebrow: prismic.KeyTextField;
+
+  /**
+   * Description field in *Midi → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Precision you can hear. A minimal connector. Massive bandwidth. Designed for modern, per-note control.
+   * - **API ID Path**: midi.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Main Image field in *Midi → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: midi.default.primary.main_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  main_image: prismic.ImageField<"medium">;
+
+  /**
+   * Invert Colors field in *Midi → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: midi.default.primary.invert
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  invert: prismic.BooleanField;
+
+  /**
+   * Statistics field in *Midi → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: midi.default.primary.stats[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  stats: prismic.GroupField<Simplify<MidiSliceDefaultPrimaryStatsItem>>;
+
+  /**
+   * Subscript field in *Midi → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Each MIDI 1.0 command uses 3 bytes. At 300,000 bytes/sec → 100,000 commands/sec (up to 150,000 with MIDI running state). With regular DIN MIDI, switching 1,000 pipes ON would take 1 second. With optical MIDI, it's ~1 millisecond. This bandwidth isn't overkill — continuous wind control can increase data needs dramatically.
+   * - **API ID Path**: midi.default.primary.subscript
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  subscript: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Midi → Items*
+ */
+export interface MidiSliceDefaultItem {
+  /**
+   * Feature Title field in *Midi → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: MIDI Compatibility
+   * - **API ID Path**: midi.items[].feature_title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  feature_title: prismic.KeyTextField;
+
+  /**
+   * Feature Description field in *Midi → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Uses MIDI 1.0 as extensive as possible (MIDI 2.0 can be implemented when it matures).
+   * - **API ID Path**: midi.items[].feature_description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  feature_description: prismic.RichTextField;
+
+  /**
+   * Feature Icon field in *Midi → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Select an icon
+   * - **API ID Path**: midi.items[].feature_icon
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  feature_icon: prismic.SelectField<
+    | "speed"
+    | "bandwidth"
+    | "connector"
+    | "precision"
+    | "compatibility"
+    | "control"
+    | "protocol"
+    | "none"
+  >;
+}
+
+/**
+ * Default variation for Midi Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default MIDI Section
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type MidiSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<MidiSliceDefaultPrimary>,
+  Simplify<MidiSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Midi*
+ */
+type MidiSliceVariation = MidiSliceDefault;
+
+/**
+ * Midi Shared Slice
+ *
+ * - **API ID**: `midi`
+ * - **Description**: MIDI technology showcase with features, stats, and technical specifications
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type MidiSlice = prismic.SharedSlice<"midi", MidiSliceVariation>;
+
+/**
+ * Primary content in *ModalBlocks → Default → Primary*
+ */
+export interface ModalBlocksSliceDefaultPrimary {
+  /**
+   * Section Title field in *ModalBlocks → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Our Features
+   * - **API ID Path**: modal_blocks.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Eyebrow field in *ModalBlocks → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Discover
+   * - **API ID Path**: modal_blocks.default.primary.eyebrow
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  eyebrow: prismic.KeyTextField;
+
+  /**
+   * Description field in *ModalBlocks → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Explore our features and learn more about each one...
+   * - **API ID Path**: modal_blocks.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *ModalBlocks → Items*
+ */
+export interface ModalBlocksSliceDefaultItem {
+  /**
+   * Block Title field in *ModalBlocks → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Feature Name
+   * - **API ID Path**: modal_blocks.items[].block_title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  block_title: prismic.KeyTextField;
+
+  /**
+   * Block Subtitle field in *ModalBlocks → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Brief description
+   * - **API ID Path**: modal_blocks.items[].block_subtitle
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  block_subtitle: prismic.KeyTextField;
+
+  /**
+   * Background Image field in *ModalBlocks → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: modal_blocks.items[].background_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  background_image: prismic.ImageField<"thumbnail" | "portrait">;
+
+  /**
+   * Modal Title field in *ModalBlocks → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Detailed Feature Title
+   * - **API ID Path**: modal_blocks.items[].modal_title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  modal_title: prismic.KeyTextField;
+
+  /**
+   * Modal Description field in *ModalBlocks → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Detailed description that appears in the modal...
+   * - **API ID Path**: modal_blocks.items[].modal_description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  modal_description: prismic.RichTextField;
+
+  /**
+   * Modal Image field in *ModalBlocks → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: modal_blocks.items[].modal_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  modal_image: prismic.ImageField<"thumbnail">;
+
+  /**
+   * Block Size field in *ModalBlocks → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Select block size
+   * - **API ID Path**: modal_blocks.items[].block_size
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  block_size: prismic.SelectField<"small" | "medium" | "large">;
+
+  /**
+   * Block Height field in *ModalBlocks → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Select block height
+   * - **API ID Path**: modal_blocks.items[].block_height
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  block_height: prismic.SelectField<"small" | "medium" | "large" | "xlarge">;
+}
+
+/**
+ * Default variation for ModalBlocks Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default ModalBlocks
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ModalBlocksSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ModalBlocksSliceDefaultPrimary>,
+  Simplify<ModalBlocksSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *ModalBlocks*
+ */
+type ModalBlocksSliceVariation = ModalBlocksSliceDefault;
+
+/**
+ * ModalBlocks Shared Slice
+ *
+ * - **API ID**: `modal_blocks`
+ * - **Description**: Blocks with background images and titles that open modals with detailed descriptions
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ModalBlocksSlice = prismic.SharedSlice<
+  "modal_blocks",
+  ModalBlocksSliceVariation
+>;
+
+/**
+ * Primary content in *Optical MIDI → Default → Primary*
+ */
+export interface OpticalMidiSliceDefaultPrimary {
+  /**
+   * Left Eyebrow Badge field in *Optical MIDI → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: SmARTvalve
+   * - **API ID Path**: optical_midi.default.primary.eyebrow_left
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  eyebrow_left: prismic.KeyTextField;
+
+  /**
+   * Right Eyebrow Badge field in *Optical MIDI → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Optical MIDI
+   * - **API ID Path**: optical_midi.default.primary.eyebrow_right
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  eyebrow_right: prismic.KeyTextField;
+
+  /**
+   * Main Headline field in *Optical MIDI → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: High-speed Optical MIDI. Precision you can hear.
+   * - **API ID Path**: optical_midi.default.primary.headline
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  headline: prismic.KeyTextField;
+
+  /**
+   * Subheadline field in *Optical MIDI → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A minimal connector. Massive bandwidth. Designed for modern, per-note control.
+   * - **API ID Path**: optical_midi.default.primary.subheadline
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  subheadline: prismic.KeyTextField;
+
+  /**
+   * Product Image field in *Optical MIDI → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: optical_midi.default.primary.product_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  product_image: prismic.ImageField<never>;
+
+  /**
+   * Footnote field in *Optical MIDI → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Explanation text below stats...
+   * - **API ID Path**: optical_midi.default.primary.footnote
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  footnote: prismic.RichTextField;
+
+  /**
+   * Invert Colors field in *Optical MIDI → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: optical_midi.default.primary.invert
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  invert: prismic.BooleanField;
+}
+
+/**
+ * Primary content in *Optical MIDI → Items*
+ */
+export interface OpticalMidiSliceDefaultItem {
+  /**
+   * Content Type field in *Optical MIDI → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Select content type
+   * - **API ID Path**: optical_midi.items[].content_type
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  content_type: prismic.SelectField<"feature" | "bullet" | "stat">;
+
+  /**
+   * Feature Title field in *Optical MIDI → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: MIDI Compatibility
+   * - **API ID Path**: optical_midi.items[].feature_title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  feature_title: prismic.KeyTextField;
+
+  /**
+   * Feature Description field in *Optical MIDI → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Uses MIDI 1.0 as extensive as possible...
+   * - **API ID Path**: optical_midi.items[].feature_description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  feature_description: prismic.RichTextField;
+
+  /**
+   * Bullet Point field in *Optical MIDI → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Bullet point text...
+   * - **API ID Path**: optical_midi.items[].bullet_text
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  bullet_text: prismic.RichTextField;
+
+  /**
+   * Stat Kicker field in *Optical MIDI → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Link speed
+   * - **API ID Path**: optical_midi.items[].stat_kicker
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  stat_kicker: prismic.KeyTextField;
+
+  /**
+   * Stat Value field in *Optical MIDI → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: 300,000
+   * - **API ID Path**: optical_midi.items[].stat_value
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  stat_value: prismic.KeyTextField;
+
+  /**
+   * Stat Unit field in *Optical MIDI → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: bytes/sec
+   * - **API ID Path**: optical_midi.items[].stat_unit
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  stat_unit: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for Optical MIDI Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default Optical MIDI Section
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type OpticalMidiSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<OpticalMidiSliceDefaultPrimary>,
+  Simplify<OpticalMidiSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Optical MIDI*
+ */
+type OpticalMidiSliceVariation = OpticalMidiSliceDefault;
+
+/**
+ * Optical MIDI Shared Slice
+ *
+ * - **API ID**: `optical_midi`
+ * - **Description**: Apple-style product section for Optical MIDI cable with two-column layout, features, stats, and product image
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type OpticalMidiSlice = prismic.SharedSlice<
+  "optical_midi",
+  OpticalMidiSliceVariation
+>;
+
+/**
+ * Primary content in *Possibilities → Default → Primary*
+ */
+export interface PossibilitiesSliceDefaultPrimary {
+  /**
+   * Section Title field in *Possibilities → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Main section title
+   * - **API ID Path**: possibilities.default.primary.section_title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  section_title: prismic.RichTextField;
+
+  /**
+   * Section Subtitle field in *Possibilities → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Section subtitle or description
+   * - **API ID Path**: possibilities.default.primary.section_subtitle
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  section_subtitle: prismic.RichTextField;
+
+  /**
+   * Background Color field in *Possibilities → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Select background color
+   * - **API ID Path**: possibilities.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  background_color: prismic.SelectField<"white" | "light" | "dark">;
+}
+
+/**
+ * Primary content in *Possibilities → Items*
+ */
+export interface PossibilitiesSliceDefaultItem {
+  /**
+   * Possibility Title field in *Possibilities → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Big, creative title
+   * - **API ID Path**: possibilities.items[].possibility_title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  possibility_title: prismic.KeyTextField;
+
+  /**
+   * Possibility Description field in *Possibilities → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Description of this possibility
+   * - **API ID Path**: possibilities.items[].possibility_description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  possibility_description: prismic.RichTextField;
+
+  /**
+   * Accent Color field in *Possibilities → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Select accent color
+   * - **API ID Path**: possibilities.items[].accent_color
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  accent_color: prismic.SelectField<
+    "blue" | "green" | "purple" | "orange" | "red" | "yellow"
+  >;
+
+  /**
+   * Icon field in *Possibilities → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Emoji or symbol
+   * - **API ID Path**: possibilities.items[].icon
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  icon: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for Possibilities Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default Possibilities
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type PossibilitiesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<PossibilitiesSliceDefaultPrimary>,
+  Simplify<PossibilitiesSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Possibilities*
+ */
+type PossibilitiesSliceVariation = PossibilitiesSliceDefault;
+
+/**
+ * Possibilities Shared Slice
+ *
+ * - **API ID**: `possibilities`
+ * - **Description**: Creative blocks showcasing different possibilities with big titles and descriptions
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type PossibilitiesSlice = prismic.SharedSlice<
+  "possibilities",
+  PossibilitiesSliceVariation
+>;
+
+/**
  * Primary content in *Product → Default → Primary*
  */
 export interface ProductSliceDefaultPrimary {
@@ -3057,6 +3929,183 @@ export type SectionIntroSlice = prismic.SharedSlice<
   "section_intro",
   SectionIntroSliceVariation
 >;
+
+/**
+ * Primary content in *SplitFeature → Default → Primary*
+ */
+export interface SplitFeatureSliceDefaultPrimary {
+  /**
+   * Title field in *SplitFeature → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Section title
+   * - **API ID Path**: split_feature.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Subtitle field in *SplitFeature → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Section subtitle
+   * - **API ID Path**: split_feature.default.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  subtitle: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *SplitFeature → Items*
+ */
+export interface SplitFeatureSliceDefaultItem {
+  /**
+   * Feature Title field in *SplitFeature → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Feature title
+   * - **API ID Path**: split_feature.items[].feature_title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  feature_title: prismic.KeyTextField;
+
+  /**
+   * Feature Description field in *SplitFeature → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Feature description
+   * - **API ID Path**: split_feature.items[].feature_description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  feature_description: prismic.RichTextField;
+
+  /**
+   * Feature Icon field in *SplitFeature → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Icon symbol or emoji
+   * - **API ID Path**: split_feature.items[].feature_icon
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  feature_icon: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for SplitFeature Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SplitFeatureSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SplitFeatureSliceDefaultPrimary>,
+  Simplify<SplitFeatureSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *SplitFeature*
+ */
+type SplitFeatureSliceVariation = SplitFeatureSliceDefault;
+
+/**
+ * SplitFeature Shared Slice
+ *
+ * - **API ID**: `split_feature`
+ * - **Description**: Split feature section with background image on left and feature blocks on right
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SplitFeatureSlice = prismic.SharedSlice<
+  "split_feature",
+  SplitFeatureSliceVariation
+>;
+
+/**
+ * Primary content in *Story → Default → Primary*
+ */
+export interface StorySliceDefaultPrimary {
+  /**
+   * Section Title field in *Story → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: How It Works
+   * - **API ID Path**: story.default.primary.section_title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  section_title: prismic.RichTextField;
+
+  /**
+   * Section Subtitle field in *Story → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: SmartValve doesn't open air — it sculpts it.
+   * - **API ID Path**: story.default.primary.section_subtitle
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  section_subtitle: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Story → Items*
+ */
+export interface StorySliceDefaultItem {
+  /**
+   * Step Headline field in *Story → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: MIDI command → target pressure
+   * - **API ID Path**: story.items[].step_headline
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  step_headline: prismic.KeyTextField;
+
+  /**
+   * Step Subline field in *Story → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Every note begins as a pressure curve — attack, decay, sustain, release — not an on/off.
+   * - **API ID Path**: story.items[].step_subline
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  step_subline: prismic.KeyTextField;
+
+  /**
+   * Step Number field in *Story → Items*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: 1
+   * - **API ID Path**: story.items[].step_number
+   * - **Documentation**: https://prismic.io/docs/fields/number
+   */
+  step_number: prismic.NumberField;
+}
+
+/**
+ * Default variation for Story Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default Story
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type StorySliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<StorySliceDefaultPrimary>,
+  Simplify<StorySliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Story*
+ */
+type StorySliceVariation = StorySliceDefault;
+
+/**
+ * Story Shared Slice
+ *
+ * - **API ID**: `story`
+ * - **Description**: Scroll-based storytelling slice that explains 'How It Works' in four immersive steps
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type StorySlice = prismic.SharedSlice<"story", StorySliceVariation>;
 
 /**
  * Primary content in *StylizedImage → Default → Primary*
@@ -3974,6 +5023,276 @@ export type ValveHeroSlice = prismic.SharedSlice<
   ValveHeroSliceVariation
 >;
 
+/**
+ * Primary content in *Valve Tech Description → Default → Primary*
+ */
+export interface ValveTechDescriptionSliceDefaultPrimary {
+  /**
+   * Section Title field in *Valve Tech Description → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: SmartValve Specifications
+   * - **API ID Path**: valve_tech_description.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Eyebrow field in *Valve Tech Description → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Technical Properties
+   * - **API ID Path**: valve_tech_description.default.primary.eyebrow
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  eyebrow: prismic.KeyTextField;
+
+  /**
+   * Description field in *Valve Tech Description → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Complete technical specifications for the SmartValve system...
+   * - **API ID Path**: valve_tech_description.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Invert Colors field in *Valve Tech Description → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: valve_tech_description.default.primary.invert
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  invert: prismic.BooleanField;
+
+  /**
+   * Layout Style field in *Valve Tech Description → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Choose layout style
+   * - **API ID Path**: valve_tech_description.default.primary.layout_style
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  layout_style: prismic.SelectField<"two_column" | "single_column" | "cards">;
+}
+
+/**
+ * Primary content in *Valve Tech Description → Items*
+ */
+export interface ValveTechDescriptionSliceDefaultItem {
+  /**
+   * Property Category field in *Valve Tech Description → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Mechanical Properties
+   * - **API ID Path**: valve_tech_description.items[].property_category
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  property_category: prismic.KeyTextField;
+
+  /**
+   * Property Name field in *Valve Tech Description → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Weight
+   * - **API ID Path**: valve_tech_description.items[].property_name
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  property_name: prismic.KeyTextField;
+
+  /**
+   * Property Value field in *Valve Tech Description → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: 0.1 kg
+   * - **API ID Path**: valve_tech_description.items[].property_value
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  property_value: prismic.KeyTextField;
+
+  /**
+   * Property Description field in *Valve Tech Description → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Optional additional details about this property...
+   * - **API ID Path**: valve_tech_description.items[].property_description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  property_description: prismic.RichTextField;
+
+  /**
+   * Property Icon field in *Valve Tech Description → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Select an icon
+   * - **API ID Path**: valve_tech_description.items[].property_icon
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  property_icon: prismic.SelectField<
+    | "weight"
+    | "dimensions"
+    | "height"
+    | "power"
+    | "voltage"
+    | "current"
+    | "resistance"
+    | "electronics"
+    | "motor"
+    | "none"
+  >;
+
+  /**
+   * Highlight Property field in *Valve Tech Description → Items*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: valve_tech_description.items[].highlight
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  highlight: prismic.BooleanField;
+}
+
+/**
+ * Default variation for Valve Tech Description Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default Valve Tech Description Section
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ValveTechDescriptionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ValveTechDescriptionSliceDefaultPrimary>,
+  Simplify<ValveTechDescriptionSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Valve Tech Description*
+ */
+type ValveTechDescriptionSliceVariation = ValveTechDescriptionSliceDefault;
+
+/**
+ * Valve Tech Description Shared Slice
+ *
+ * - **API ID**: `valve_tech_description`
+ * - **Description**: SmartValve technical specifications with Apple-style design for displaying mechanical and electrical properties
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ValveTechDescriptionSlice = prismic.SharedSlice<
+  "valve_tech_description",
+  ValveTechDescriptionSliceVariation
+>;
+
+/**
+ * Primary content in *VideoHero → Default → Primary*
+ */
+export interface VideoHeroSliceDefaultPrimary {
+  /**
+   * Main Title field in *VideoHero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Your Main Title Here
+   * - **API ID Path**: video_hero.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Subtitle field in *VideoHero → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Your subtitle or description...
+   * - **API ID Path**: video_hero.default.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  subtitle: prismic.RichTextField;
+
+  /**
+   * Button Text field in *VideoHero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Get Started
+   * - **API ID Path**: video_hero.default.primary.button_text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  button_text: prismic.KeyTextField;
+
+  /**
+   * Button Link field in *VideoHero → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Where should the button link to?
+   * - **API ID Path**: video_hero.default.primary.button_link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  button_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Background Video field in *VideoHero → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Upload or link to a video file
+   * - **API ID Path**: video_hero.default.primary.background_video
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  background_video: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Overlay Opacity field in *VideoHero → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Select overlay darkness
+   * - **API ID Path**: video_hero.default.primary.overlay_opacity
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  overlay_opacity: prismic.SelectField<"light" | "medium" | "dark">;
+}
+
+/**
+ * Default variation for VideoHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default VideoHero
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type VideoHeroSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<VideoHeroSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *VideoHero*
+ */
+type VideoHeroSliceVariation = VideoHeroSliceDefault;
+
+/**
+ * VideoHero Shared Slice
+ *
+ * - **API ID**: `video_hero`
+ * - **Description**: Hero section with looping video background, title, subtitle, and centered button
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type VideoHeroSlice = prismic.SharedSlice<
+  "video_hero",
+  VideoHeroSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -4079,11 +5398,21 @@ declare module "@prismicio/client" {
       FeatureSliceDefaultItem,
       FeatureSliceVariation,
       FeatureSliceDefault,
+      FeatureBlocksSlice,
+      FeatureBlocksSliceDefaultPrimary,
+      FeatureBlocksSliceDefaultItem,
+      FeatureBlocksSliceVariation,
+      FeatureBlocksSliceDefault,
       FoundationSlice,
       FoundationSliceDefaultPrimary,
       FoundationSliceDefaultItem,
       FoundationSliceVariation,
       FoundationSliceDefault,
+      GradientBentoGridSlice,
+      GradientBentoGridSliceDefaultPrimary,
+      GradientBentoGridSliceDefaultItem,
+      GradientBentoGridSliceVariation,
+      GradientBentoGridSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
@@ -4092,6 +5421,27 @@ declare module "@prismicio/client" {
       HeroImageSliceDefaultPrimary,
       HeroImageSliceVariation,
       HeroImageSliceDefault,
+      MidiSlice,
+      MidiSliceDefaultPrimaryStatsItem,
+      MidiSliceDefaultPrimary,
+      MidiSliceDefaultItem,
+      MidiSliceVariation,
+      MidiSliceDefault,
+      ModalBlocksSlice,
+      ModalBlocksSliceDefaultPrimary,
+      ModalBlocksSliceDefaultItem,
+      ModalBlocksSliceVariation,
+      ModalBlocksSliceDefault,
+      OpticalMidiSlice,
+      OpticalMidiSliceDefaultPrimary,
+      OpticalMidiSliceDefaultItem,
+      OpticalMidiSliceVariation,
+      OpticalMidiSliceDefault,
+      PossibilitiesSlice,
+      PossibilitiesSliceDefaultPrimary,
+      PossibilitiesSliceDefaultItem,
+      PossibilitiesSliceVariation,
+      PossibilitiesSliceDefault,
       ProductSlice,
       ProductSliceDefaultPrimary,
       ProductSliceVariation,
@@ -4100,6 +5450,16 @@ declare module "@prismicio/client" {
       SectionIntroSliceDefaultPrimary,
       SectionIntroSliceVariation,
       SectionIntroSliceDefault,
+      SplitFeatureSlice,
+      SplitFeatureSliceDefaultPrimary,
+      SplitFeatureSliceDefaultItem,
+      SplitFeatureSliceVariation,
+      SplitFeatureSliceDefault,
+      StorySlice,
+      StorySliceDefaultPrimary,
+      StorySliceDefaultItem,
+      StorySliceVariation,
+      StorySliceDefault,
       StylizedImageSlice,
       StylizedImageSliceDefaultPrimary,
       StylizedImageSliceDefaultItem,
@@ -4130,6 +5490,15 @@ declare module "@prismicio/client" {
       ValveHeroSliceDefaultPrimary,
       ValveHeroSliceVariation,
       ValveHeroSliceDefault,
+      ValveTechDescriptionSlice,
+      ValveTechDescriptionSliceDefaultPrimary,
+      ValveTechDescriptionSliceDefaultItem,
+      ValveTechDescriptionSliceVariation,
+      ValveTechDescriptionSliceDefault,
+      VideoHeroSlice,
+      VideoHeroSliceDefaultPrimary,
+      VideoHeroSliceVariation,
+      VideoHeroSliceDefault,
     };
   }
 }

@@ -1,0 +1,182 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Advanced Valve Technology"
+						}
+					}
+				]
+			},
+			"subtitle": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Discover our cutting-edge valve systems designed for precision control and optimal performance in any environment."
+						}
+					}
+				]
+			},
+			"background_image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
+					"width": 800,
+					"height": 600
+				},
+				"url": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop",
+				"width": 800,
+				"height": 600,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"alt": "Valve technology background",
+				"credits": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {
+					"thumbnail": {
+						"origin": {
+							"id": "thumbnail",
+							"url": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
+							"width": 800,
+							"height": 600
+						},
+						"url": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=300&fit=crop",
+						"width": 400,
+						"height": 300,
+						"edit": {
+							"zoom": 1,
+							"crop": {
+								"x": 0,
+								"y": 0
+							},
+							"background": "transparent"
+						},
+						"alt": "Valve technology thumbnail",
+						"credits": null
+					}
+				}
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"feature_title",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "Precision Control",
+							"type": "Text"
+						}
+					],
+					[
+						"feature_description",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Advanced sensors and microprocessors provide real-time monitoring and precise control over flow rates, pressure, and temperature."
+									}
+								}
+							]
+						}
+					],
+					[
+						"feature_icon",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "⚙️",
+							"type": "Text"
+						}
+					]
+				]
+			},
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"feature_title",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "Smart Integration",
+							"type": "Text"
+						}
+					],
+					[
+						"feature_description",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Seamless integration with IoT systems and predictive maintenance capabilities for optimal operational efficiency."
+									}
+								}
+							]
+						}
+					],
+					[
+						"feature_icon",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "🔗",
+							"type": "Text"
+						}
+					]
+				]
+			},
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"feature_title",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "Energy Efficient",
+							"type": "Text"
+						}
+					],
+					[
+						"feature_description",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Optimized design reduces energy consumption while maintaining peak performance and reliability standards."
+									}
+								}
+							]
+						}
+					],
+					[
+						"feature_icon",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "⚡",
+							"type": "Text"
+						}
+					]
+				]
+			}
+		]
+	}
+]

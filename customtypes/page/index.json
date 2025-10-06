@@ -27,6 +27,30 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "story": {
+              "type": "SharedSlice"
+            },
+            "optical_midi": {
+              "type": "SharedSlice"
+            },
+            "valve_tech_description": {
+              "type": "SharedSlice"
+            },
+            "possibilities": {
+              "type": "SharedSlice"
+            },
+            "feature_blocks": {
+              "type": "SharedSlice"
+            },
+            "video_hero": {
+              "type": "SharedSlice"
+            },
+            "modal_blocks": {
+              "type": "SharedSlice"
+            },
+            "split_feature": {
+              "type": "SharedSlice"
+            },
             "valve_hero": {
               "type": "SharedSlice"
             },

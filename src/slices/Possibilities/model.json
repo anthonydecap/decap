@@ -1,0 +1,88 @@
+{
+  "id": "possibilities",
+  "type": "SharedSlice",
+  "name": "Possibilities",
+  "description": "Creative blocks showcasing different possibilities with big titles and descriptions",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default Possibilities",
+      "imageUrl": "",
+      "primary": {
+        "section_title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Section Title",
+            "placeholder": "Main section title",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink,heading1,heading2,heading3,heading4,heading5,heading6"
+          }
+        },
+        "section_subtitle": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Section Subtitle",
+            "placeholder": "Section subtitle or description",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "background_color": {
+          "type": "Select",
+          "config": {
+            "label": "Background Color",
+            "placeholder": "Select background color",
+            "options": [
+              "white",
+              "light",
+              "dark"
+            ]
+          }
+        }
+      },
+      "items": {
+        "possibility_title": {
+          "type": "Text",
+          "config": {
+            "label": "Possibility Title",
+            "placeholder": "Big, creative title"
+          }
+        },
+        "possibility_description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Possibility Description",
+            "placeholder": "Description of this possibility",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "accent_color": {
+          "type": "Select",
+          "config": {
+            "label": "Accent Color",
+            "placeholder": "Select accent color",
+            "options": [
+              "blue",
+              "green",
+              "purple",
+              "orange",
+              "red",
+              "yellow"
+            ]
+          }
+        },
+        "icon": {
+          "type": "Text",
+          "config": {
+            "label": "Icon",
+            "placeholder": "Emoji or symbol"
+          }
+        }
+      }
+    }
+  ]
+}

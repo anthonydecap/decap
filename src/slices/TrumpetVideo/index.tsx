@@ -13,7 +13,7 @@ import { FadeIn } from "@/components/FadeIn";
 import clsx from "clsx";
 
 const components: JSXMapSerializer = {
-  hyperlink: ({ node, children }) => {
+  hyperlink: ({ children }) => {
     return (
       <span className="text-blue-500 underline decoration-blue-300/50 underline-offset-2">
         {children}
@@ -62,7 +62,6 @@ const TrumpetVideo: FC<TrumpetVideoProps> = ({ slice }) => {
     video_url = "/videos/WhatsApp Video 2025-07-09 at 21.38.23.mp4",
     autoplay = false,
     loop = false,
-    show_controls = true,
     poster_image
   } = slice.primary as any;
 
