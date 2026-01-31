@@ -1,179 +1,140 @@
 [
-  {
-    "variation": "default",
-    "name": "Default",
-    "slice_type": "optical_midi",
-    "items": [
-      {
-        "content_type": "feature",
-        "feature_title": "MIDI Compatibility",
-        "feature_description": [
-          {
-            "type": "paragraph",
-            "text": "Uses MIDI 1.0 as extensive as possible (MIDI 2.0 can be implemented when it matures).",
-            "spans": []
-          }
-        ],
-        "bullet_text": null,
-        "stat_kicker": null,
-        "stat_value": null,
-        "stat_unit": null
-      },
-      {
-        "content_type": "feature",
-        "feature_title": "Polyphonic Aftertouch",
-        "feature_description": [
-          {
-            "type": "paragraph",
-            "text": "Per-note continuous wind control.",
-            "spans": []
-          }
-        ],
-        "bullet_text": null,
-        "stat_kicker": null,
-        "stat_value": null,
-        "stat_unit": null
-      },
-      {
-        "content_type": "feature",
-        "feature_title": "LFO and ADSR Control",
-        "feature_description": [
-          {
-            "type": "paragraph",
-            "text": "Parameters controlled via MIDI Control Change (CC).",
-            "spans": []
-          }
-        ],
-        "bullet_text": null,
-        "stat_kicker": null,
-        "stat_value": null,
-        "stat_unit": null
-      },
-      {
-        "content_type": "feature",
-        "feature_title": "Plug & Play",
-        "feature_description": [
-          {
-            "type": "paragraph",
-            "text": "Standard MIDI protocol ensures compatibility with any sequencer or controller.",
-            "spans": []
-          }
-        ],
-        "bullet_text": null,
-        "stat_kicker": null,
-        "stat_value": null,
-        "stat_unit": null
-      },
-      {
-        "content_type": "bullet",
-        "feature_title": null,
-        "feature_description": null,
-        "bullet_text": [
-          {
-            "type": "paragraph",
-            "text": "Ultra-low latency for real-time performance",
-            "spans": []
-          }
-        ],
-        "stat_kicker": null,
-        "stat_value": null,
-        "stat_unit": null
-      },
-      {
-        "content_type": "bullet",
-        "feature_title": null,
-        "feature_description": null,
-        "bullet_text": [
-          {
-            "type": "paragraph",
-            "text": "Immune to electromagnetic interference",
-            "spans": []
-          }
-        ],
-        "stat_kicker": null,
-        "stat_value": null,
-        "stat_unit": null
-      },
-      {
-        "content_type": "bullet",
-        "feature_title": null,
-        "feature_description": null,
-        "bullet_text": [
-          {
-            "type": "paragraph",
-            "text": "Compact design with robust construction",
-            "spans": []
-          }
-        ],
-        "stat_kicker": null,
-        "stat_value": null,
-        "stat_unit": null
-      },
-      {
-        "content_type": "bullet",
-        "feature_title": null,
-        "feature_description": null,
-        "bullet_text": [
-          {
-            "type": "paragraph",
-            "text": "Future-proof optical technology",
-            "spans": []
-          }
-        ],
-        "stat_kicker": null,
-        "stat_value": null,
-        "stat_unit": null
-      },
-      {
-        "content_type": "stat",
-        "feature_title": null,
-        "feature_description": null,
-        "bullet_text": null,
-        "stat_kicker": "Link speed",
-        "stat_value": "300,000",
-        "stat_unit": "bytes/sec"
-      },
-      {
-        "content_type": "stat",
-        "feature_title": null,
-        "feature_description": null,
-        "bullet_text": null,
-        "stat_kicker": "Throughput",
-        "stat_value": "100,000",
-        "stat_unit": "commands/sec*"
-      },
-      {
-        "content_type": "stat",
-        "feature_title": null,
-        "feature_description": null,
-        "bullet_text": null,
-        "stat_kicker": "1,000 pipes ON",
-        "stat_value": "1",
-        "stat_unit": "millisecond"
-      }
-    ],
-    "primary": {
-      "eyebrow_left": "SmARTvalve",
-      "eyebrow_right": "Optical MIDI",
-      "headline": "High-speed Optical MIDI. Precision you can hear.",
-      "subheadline": "A minimal connector. Massive bandwidth. Designed for modern, per-note control.",
-      "product_image": {
-        "url": "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&h=600&fit=crop",
-        "alt": "Optical MIDI Cable",
-        "copyright": null,
-        "dimensions": {
-          "width": 800,
-          "height": 600
-        }
-      },
-      "footnote": [
-        {
-          "type": "paragraph",
-          "text": "*Each MIDI 1.0 command uses 3 bytes. At 300,000 bytes/sec → 100,000 commands/sec (up to 150,000 with MIDI running state). With regular DIN MIDI, switching 1,000 pipes ON would take 1 second. With optical MIDI, it's ~1 millisecond. This bandwidth isn't overkill — continuous wind control can increase data needs dramatically.",
-          "spans": []
-        }
-      ],
-      "invert": false
-    }
-  }
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"eyebrow_left": {
+				"__TYPE__": "FieldContent",
+				"value": "picture",
+				"type": "Text"
+			},
+			"eyebrow_right": {
+				"__TYPE__": "FieldContent",
+				"value": "suppose",
+				"type": "Text"
+			},
+			"headline": {
+				"__TYPE__": "FieldContent",
+				"value": "highest",
+				"type": "Text"
+			},
+			"subheadline": {
+				"__TYPE__": "FieldContent",
+				"value": "alike",
+				"type": "Text"
+			},
+			"product_image": {
+				"__TYPE__": "ImageContent",
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1579931794097-0ad001e51edb",
+					"width": 3958,
+					"height": 3958
+				},
+				"url": "https://images.unsplash.com/photo-1579931794097-0ad001e51edb",
+				"width": 3958,
+				"height": 3958,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"alt": "great",
+				"thumbnails": {}
+			},
+			"footnote": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Eu ipsum tempor tempor proident deserunt ad proident officia esse aute."
+						}
+					}
+				]
+			},
+			"invert": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"content_type",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "bullet",
+							"type": "Select"
+						}
+					],
+					[
+						"feature_title",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "theory",
+							"type": "Text"
+						}
+					],
+					[
+						"feature_description",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Non aute ea excepteur commodo cillum sit nulla."
+									}
+								}
+							]
+						}
+					],
+					[
+						"bullet_text",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Minim quis nostrud fugiat esse exercitation qui nostrud anim. Eu est mollit aliqua laboris reprehenderit excepteur qui commodo nisi commodo culpa esse Lorem. Commodo exercitation aliquip est adipisicing ex sit excepteur veniam culpa labore do."
+									}
+								}
+							]
+						}
+					],
+					[
+						"stat_kicker",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "knew",
+							"type": "Text"
+						}
+					],
+					[
+						"stat_value",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "secret",
+							"type": "Text"
+						}
+					],
+					[
+						"stat_unit",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "broken",
+							"type": "Text"
+						}
+					]
+				]
+			}
+		]
+	}
 ]

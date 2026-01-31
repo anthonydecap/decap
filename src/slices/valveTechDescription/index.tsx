@@ -81,14 +81,14 @@ const ValveTechDescription: FC<ValveTechDescriptionProps> = ({ slice }) => {
   return (
     <Container className="py-16 sm:py-20">
       {title && (
-        <h2
+        <div
           className={clsx(
-            "text-2xl font-semibold tracking-tight mb-8 text-center",
+            "mb-8 text-center text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-tight",
             invert ? "text-white" : "text-neutral-900"
           )}
         >
           {title}
-        </h2>
+        </div>
       )}
 
       <div className="space-y-8">

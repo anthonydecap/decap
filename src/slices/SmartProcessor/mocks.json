@@ -1,0 +1,81 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "title": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Powered by SmartProcessor"
+            }
+          }
+        ]
+      },
+      "subtitle": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Everything you need for intelligent organ control."
+            }
+          }
+        ]
+      },
+      "show_animation": {
+        "__TYPE__": "BooleanContent",
+        "value": true
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          ["card_title", { "__TYPE__": "FieldContent", "value": "Organ Stops", "type": "Text" }],
+          [
+            "card_description",
+            {
+              "__TYPE__": "StructuredTextContent",
+              "value": [{ "type": "paragraph", "content": { "text": "Control and manage organ stops with precision." } }]
+            }
+          ],
+          ["card_icon", { "__TYPE__": "FieldContent", "value": "organ_stops", "type": "Select" }],
+          ["accent_color", { "__TYPE__": "FieldContent", "value": "blue", "type": "Select" }]
+        ]
+      },
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          ["card_title", { "__TYPE__": "FieldContent", "value": "Update", "type": "Text" }],
+          [
+            "card_description",
+            {
+              "__TYPE__": "StructuredTextContent",
+              "value": [{ "type": "paragraph", "content": { "text": "Keep your system up to date with the latest firmware." } }]
+            }
+          ],
+          ["card_icon", { "__TYPE__": "FieldContent", "value": "update", "type": "Select" }],
+          ["accent_color", { "__TYPE__": "FieldContent", "value": "purple", "type": "Select" }]
+        ]
+      },
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          ["card_title", { "__TYPE__": "FieldContent", "value": "ID", "type": "Text" }],
+          [
+            "card_description",
+            {
+              "__TYPE__": "StructuredTextContent",
+              "value": [{ "type": "paragraph", "content": { "text": "Unique identification and device management." } }]
+            }
+          ],
+          ["card_icon", { "__TYPE__": "FieldContent", "value": "id", "type": "Select" }],
+          ["accent_color", { "__TYPE__": "FieldContent", "value": "green", "type": "Select" }]
+        ]
+      }
+    ]
+  }
+]

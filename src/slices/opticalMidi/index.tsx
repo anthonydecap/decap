@@ -99,7 +99,7 @@ const OpticalMidi: FC<OpticalMidiProps> = ({ slice }) => {
               <FadeIn>
                 <h2
                   className={clsx(
-                    "font-display text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-balance",
+                    "text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-tight",
                     invert ? "text-white" : "text-neutral-900"
                   )}
                 >
@@ -109,14 +109,14 @@ const OpticalMidi: FC<OpticalMidiProps> = ({ slice }) => {
             )}
             {subheadline && (
               <FadeIn>
-                <p
+                <div
                   className={clsx(
-                    "text-xl leading-relaxed",
-                    invert ? "text-white/70" : "text-neutral-600"
+                    "text-xl",
+                    invert ? "text-neutral-400" : "text-neutral-600"
                   )}
                 >
                   {subheadline}
-                </p>
+                </div>
               </FadeIn>
             )}
           </div>
@@ -140,7 +140,7 @@ const OpticalMidi: FC<OpticalMidiProps> = ({ slice }) => {
                     <div className="flex-1 min-w-0">
                       <h3
                         className={clsx(
-                          "font-display text-lg font-semibold mb-1 leading-tight",
+                          "text-3xl sm:text-4xl lg:text-5xl font-display font-bold leading-tight mb-1",
                           invert ? "text-white" : "text-neutral-900"
                         )}
                       >

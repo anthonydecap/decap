@@ -419,6 +419,7 @@ export type CheckoutPageDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | SmartValveChest3DSlice
   | StorySlice
   | OpticalMidiSlice
   | ValveTechDescriptionSlice
@@ -426,9 +427,9 @@ type PageDocumentDataSlicesSlice =
   | FeatureBlocksSlice
   | VideoHeroSlice
   | ModalBlocksSlice
-  | SplitFeatureSlice
+  | SmartValvePipeAnimationSlice
   | ValveHeroSlice
-  | FoundationSlice
+  | SmartProcessorSlice
   | AccessoriesSlice
   | TechnicalSpecificationsSlice
   | TrumpetVideoSlice
@@ -3931,93 +3932,359 @@ export type SectionIntroSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *SplitFeature → Default → Primary*
+ * Primary content in *SmartProcessor → Default → Primary*
  */
-export interface SplitFeatureSliceDefaultPrimary {
+export interface SmartProcessorSliceDefaultPrimary {
   /**
-   * Title field in *SplitFeature → Default → Primary*
+   * Title field in *SmartProcessor → Default → Primary*
    *
    * - **Field Type**: Rich Text
-   * - **Placeholder**: Section title
-   * - **API ID Path**: split_feature.default.primary.title
+   * - **Placeholder**: Powered by SmartProcessor
+   * - **API ID Path**: smart_processor.default.primary.title
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   title: prismic.RichTextField;
 
   /**
-   * Subtitle field in *SplitFeature → Default → Primary*
+   * Subtitle field in *SmartProcessor → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Everything you need for intelligent organ control.
+   * - **API ID Path**: smart_processor.default.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  subtitle: prismic.RichTextField;
+
+  /**
+   * Show Animation field in *SmartProcessor → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: true
+   * - **API ID Path**: smart_processor.default.primary.show_animation
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  show_animation: prismic.BooleanField;
+}
+
+/**
+ * Primary content in *SmartProcessor → Items*
+ */
+export interface SmartProcessorSliceDefaultItem {
+  /**
+   * Card Title field in *SmartProcessor → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Card title
+   * - **API ID Path**: smart_processor.items[].card_title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  card_title: prismic.KeyTextField;
+
+  /**
+   * Card Description field in *SmartProcessor → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Card description
+   * - **API ID Path**: smart_processor.items[].card_description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  card_description: prismic.RichTextField;
+
+  /**
+   * Card Icon field in *SmartProcessor → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Select an icon
+   * - **Default Value**: organ_stops
+   * - **API ID Path**: smart_processor.items[].card_icon
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  card_icon: prismic.SelectField<"organ_stops" | "update" | "id", "filled">;
+
+  /**
+   * Accent Color field in *SmartProcessor → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Select accent color
+   * - **API ID Path**: smart_processor.items[].accent_color
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  accent_color: prismic.SelectField<
+    "blue" | "green" | "purple" | "orange" | "red" | "yellow"
+  >;
+}
+
+/**
+ * Default variation for SmartProcessor Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default SmartProcessor section with animated lines and CPU
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SmartProcessorSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SmartProcessorSliceDefaultPrimary>,
+  Simplify<SmartProcessorSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *SmartProcessor*
+ */
+type SmartProcessorSliceVariation = SmartProcessorSliceDefault;
+
+/**
+ * SmartProcessor Shared Slice
+ *
+ * - **API ID**: `smart_processor`
+ * - **Description**: SmartProcessor section with animated CPU visualization and feature cards
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SmartProcessorSlice = prismic.SharedSlice<
+  "smart_processor",
+  SmartProcessorSliceVariation
+>;
+
+/**
+ * Primary content in *SmartValveChest3D → Default → Primary*
+ */
+export interface SmartValveChest3DSliceDefaultPrimary {
+  /**
+   * Title field in *SmartValveChest3D → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: 3D Model Viewer
+   * - **API ID Path**: smart_valve_chest_3_d.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *SmartValveChest3D → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Description of the 3D model...
+   * - **API ID Path**: smart_valve_chest_3_d.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Background Type field in *SmartValveChest3D → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Select background type
+   * - **Default Value**: color
+   * - **API ID Path**: smart_valve_chest_3_d.default.primary.background_type
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  background_type: prismic.SelectField<"color" | "image", "filled">;
+
+  /**
+   * Background Color field in *SmartValveChest3D → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: Select background color
+   * - **API ID Path**: smart_valve_chest_3_d.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
+
+  /**
+   * Background Image field in *SmartValveChest3D → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: Upload background image
+   * - **API ID Path**: smart_valve_chest_3_d.default.primary.background_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  background_image: prismic.ImageField<never>;
+
+  /**
+   * Camera Position X field in *SmartValveChest3D → Default → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: 0
+   * - **API ID Path**: smart_valve_chest_3_d.default.primary.camera_position_x
+   * - **Documentation**: https://prismic.io/docs/fields/number
+   */
+  camera_position_x: prismic.NumberField;
+
+  /**
+   * Camera Position Y field in *SmartValveChest3D → Default → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: 0
+   * - **API ID Path**: smart_valve_chest_3_d.default.primary.camera_position_y
+   * - **Documentation**: https://prismic.io/docs/fields/number
+   */
+  camera_position_y: prismic.NumberField;
+
+  /**
+   * Camera Position Z field in *SmartValveChest3D → Default → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: 5
+   * - **API ID Path**: smart_valve_chest_3_d.default.primary.camera_position_z
+   * - **Documentation**: https://prismic.io/docs/fields/number
+   */
+  camera_position_z: prismic.NumberField;
+
+  /**
+   * Camera Zoom field in *SmartValveChest3D → Default → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: 1
+   * - **API ID Path**: smart_valve_chest_3_d.default.primary.camera_zoom
+   * - **Documentation**: https://prismic.io/docs/fields/number
+   */
+  camera_zoom: prismic.NumberField;
+
+  /**
+   * Model Rotation X field in *SmartValveChest3D → Default → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: 0
+   * - **API ID Path**: smart_valve_chest_3_d.default.primary.model_rotation_x
+   * - **Documentation**: https://prismic.io/docs/fields/number
+   */
+  model_rotation_x: prismic.NumberField;
+
+  /**
+   * Model Rotation Y field in *SmartValveChest3D → Default → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: 0
+   * - **API ID Path**: smart_valve_chest_3_d.default.primary.model_rotation_y
+   * - **Documentation**: https://prismic.io/docs/fields/number
+   */
+  model_rotation_y: prismic.NumberField;
+
+  /**
+   * Model Rotation Z field in *SmartValveChest3D → Default → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: 0
+   * - **API ID Path**: smart_valve_chest_3_d.default.primary.model_rotation_z
+   * - **Documentation**: https://prismic.io/docs/fields/number
+   */
+  model_rotation_z: prismic.NumberField;
+
+  /**
+   * Enable Dragging field in *SmartValveChest3D → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: Allow users to drag the model
+   * - **API ID Path**: smart_valve_chest_3_d.default.primary.enable_dragging
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  enable_dragging: prismic.BooleanField;
+
+  /**
+   * Enable Zoom field in *SmartValveChest3D → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: Allow users to zoom the model
+   * - **API ID Path**: smart_valve_chest_3_d.default.primary.enable_zoom
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  enable_zoom: prismic.BooleanField;
+
+  /**
+   * Enable Rotation field in *SmartValveChest3D → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: Allow users to rotate the model
+   * - **API ID Path**: smart_valve_chest_3_d.default.primary.enable_rotation
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  enable_rotation: prismic.BooleanField;
+}
+
+/**
+ * Default variation for SmartValveChest3D Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default SmartValveChest3D
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SmartValveChest3DSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SmartValveChest3DSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *SmartValveChest3D*
+ */
+type SmartValveChest3DSliceVariation = SmartValveChest3DSliceDefault;
+
+/**
+ * SmartValveChest3D Shared Slice
+ *
+ * - **API ID**: `smart_valve_chest_3_d`
+ * - **Description**: Smart valve chest 3D model viewer with interactive controls
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SmartValveChest3DSlice = prismic.SharedSlice<
+  "smart_valve_chest_3_d",
+  SmartValveChest3DSliceVariation
+>;
+
+/**
+ * Primary content in *SmartValvePipeAnimation → Default → Primary*
+ */
+export interface SmartValvePipeAnimationSliceDefaultPrimary {
+  /**
+   * Title field in *SmartValvePipeAnimation → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Section title
+   * - **API ID Path**: smart_valve_pipe_animation.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Subtitle field in *SmartValvePipeAnimation → Default → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: Section subtitle
-   * - **API ID Path**: split_feature.default.primary.subtitle
+   * - **API ID Path**: smart_valve_pipe_animation.default.primary.subtitle
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   subtitle: prismic.RichTextField;
 }
 
 /**
- * Primary content in *SplitFeature → Items*
- */
-export interface SplitFeatureSliceDefaultItem {
-  /**
-   * Feature Title field in *SplitFeature → Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Feature title
-   * - **API ID Path**: split_feature.items[].feature_title
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  feature_title: prismic.KeyTextField;
-
-  /**
-   * Feature Description field in *SplitFeature → Items*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Feature description
-   * - **API ID Path**: split_feature.items[].feature_description
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  feature_description: prismic.RichTextField;
-
-  /**
-   * Feature Icon field in *SplitFeature → Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Icon symbol or emoji
-   * - **API ID Path**: split_feature.items[].feature_icon
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  feature_icon: prismic.KeyTextField;
-}
-
-/**
- * Default variation for SplitFeature Slice
+ * Default variation for SmartValvePipeAnimation Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slices
  */
-export type SplitFeatureSliceDefault = prismic.SharedSliceVariation<
+export type SmartValvePipeAnimationSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Simplify<SplitFeatureSliceDefaultPrimary>,
-  Simplify<SplitFeatureSliceDefaultItem>
+  Simplify<SmartValvePipeAnimationSliceDefaultPrimary>,
+  never
 >;
 
 /**
- * Slice variation for *SplitFeature*
+ * Slice variation for *SmartValvePipeAnimation*
  */
-type SplitFeatureSliceVariation = SplitFeatureSliceDefault;
+type SmartValvePipeAnimationSliceVariation =
+  SmartValvePipeAnimationSliceDefault;
 
 /**
- * SplitFeature Shared Slice
+ * SmartValvePipeAnimation Shared Slice
  *
- * - **API ID**: `split_feature`
- * - **Description**: Split feature section with background image on left and feature blocks on right
+ * - **API ID**: `smart_valve_pipe_animation`
+ * - **Description**: Smart valve pipe animation section with pipe on left and title/subtitle on right
  * - **Documentation**: https://prismic.io/docs/slices
  */
-export type SplitFeatureSlice = prismic.SharedSlice<
-  "split_feature",
-  SplitFeatureSliceVariation
+export type SmartValvePipeAnimationSlice = prismic.SharedSlice<
+  "smart_valve_pipe_animation",
+  SmartValvePipeAnimationSliceVariation
 >;
 
 /**
@@ -4043,6 +4310,36 @@ export interface StorySliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   section_subtitle: prismic.RichTextField;
+
+  /**
+   * Background Color field in *Story → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: story.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
+
+  /**
+   * Background Image field in *Story → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: Upload background image (parallax effect)
+   * - **API ID Path**: story.default.primary.background_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  background_image: prismic.ImageField<never>;
+
+  /**
+   * Background Video field in *Story → Default → Primary*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: Upload background video (parallax effect, loops automatically)
+   * - **API ID Path**: story.default.primary.background_video
+   * - **Documentation**: https://prismic.io/docs/fields/link-to-media
+   */
+  background_video: prismic.LinkToMediaField<prismic.FieldState, never>;
 }
 
 /**
@@ -4078,6 +4375,26 @@ export interface StorySliceDefaultItem {
    * - **Documentation**: https://prismic.io/docs/fields/number
    */
   step_number: prismic.NumberField;
+
+  /**
+   * Step Video field in *Story → Items*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: Upload video (auto-plays when step is active)
+   * - **API ID Path**: story.items[].step_video
+   * - **Documentation**: https://prismic.io/docs/fields/link-to-media
+   */
+  step_video: prismic.LinkToMediaField<prismic.FieldState, never>;
+
+  /**
+   * Step Image (fallback if no video) field in *Story → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: Upload image
+   * - **API ID Path**: story.items[].step_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  step_image: prismic.ImageField<never>;
 }
 
 /**
@@ -5450,11 +5767,19 @@ declare module "@prismicio/client" {
       SectionIntroSliceDefaultPrimary,
       SectionIntroSliceVariation,
       SectionIntroSliceDefault,
-      SplitFeatureSlice,
-      SplitFeatureSliceDefaultPrimary,
-      SplitFeatureSliceDefaultItem,
-      SplitFeatureSliceVariation,
-      SplitFeatureSliceDefault,
+      SmartProcessorSlice,
+      SmartProcessorSliceDefaultPrimary,
+      SmartProcessorSliceDefaultItem,
+      SmartProcessorSliceVariation,
+      SmartProcessorSliceDefault,
+      SmartValveChest3DSlice,
+      SmartValveChest3DSliceDefaultPrimary,
+      SmartValveChest3DSliceVariation,
+      SmartValveChest3DSliceDefault,
+      SmartValvePipeAnimationSlice,
+      SmartValvePipeAnimationSliceDefaultPrimary,
+      SmartValvePipeAnimationSliceVariation,
+      SmartValvePipeAnimationSliceDefault,
       StorySlice,
       StorySliceDefaultPrimary,
       StorySliceDefaultItem,
