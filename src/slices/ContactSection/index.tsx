@@ -33,12 +33,12 @@ const ContactSection: FC<ContactSectionProps> = ({ slice }) => {
         <div className="mx-auto max-w-4xl">
           <div className="max-w-xl">
             {title && (
-              <h2 className="font-display text-3xl font-medium text-white sm:text-4xl">
+              <div className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-tight text-white">
                 {title}
-              </h2>
+              </div>
             )}
             {description && (
-              <div className="mt-6 text-base text-neutral-300">
+              <div className="mt-6 text-xl text-neutral-400">
                 <PrismicRichText field={description} components={components} />
               </div>
             )}

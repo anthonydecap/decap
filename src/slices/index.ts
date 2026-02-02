@@ -21,12 +21,12 @@ export const components = {
   faq: dynamic(() => import("./FAQ")),
   feature: dynamic(() => import("./Feature")),
   feature_blocks: dynamic(() => import("./FeatureBlocks")),
-  foundation: dynamic(() => import("./Foundation")),
+  smart_processor: dynamic(() => import("./SmartProcessor")),
   modal_blocks: dynamic(() => import("./ModalBlocks")),
   midi: dynamic(() => import("./Midi")),
 
   hero: dynamic(() => import("./Hero")),
-  split_feature: dynamic(() => import("./SplitFeature")),
+  smart_valve_pipe_animation: dynamic(() => import("./smartValvePipeAnimation")),
   hero_image: dynamic(() => import("./HeroImage")),
   valve_hero: dynamic(() => import("./valveHero")),
   video_hero: dynamic(() => import("./VideoHero")),
@@ -46,5 +46,6 @@ export const components = {
   valve_tech_description: dynamic(() => import("./valveTechDescription")),
 
   three_d_model: dynamic(() => import("./ThreeDModel")),
+  smart_valve_chest_3_d: dynamic(() => import("./smartValveChest3D")),
   trumpet_video: dynamic(() => import("./TrumpetVideo")),
 };

@@ -42,7 +42,7 @@ const Testimonial: FC<TestimonialProps> = ({ slice }) => {
         <FadeIn>
           <figure className="mx-auto max-w-4xl">
             {quote && (
-              <blockquote className="relative font-display text-3xl font-medium text-neutral-950 sm:text-4xl">
+              <blockquote className="relative text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-tight text-neutral-950">
                 <PrismicRichText field={quote} components={components} />
               </blockquote>
             )}

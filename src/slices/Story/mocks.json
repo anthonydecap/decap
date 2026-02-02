@@ -1,218 +1,140 @@
 [
-  {
-    "__TYPE__": "SharedSliceContent",
-    "variation": "default",
-    "primary": {
-      "section_title": {
-        "__TYPE__": "StructuredTextContent",
-        "value": [
-          {
-            "type": "heading1",
-            "content": {
-              "text": "How It Works"
-            }
-          }
-        ]
-      },
-      "section_subtitle": {
-        "__TYPE__": "StructuredTextContent",
-        "value": [
-          {
-            "type": "paragraph",
-            "content": {
-              "text": "SmartValve doesn't open air — it sculpts it."
-            }
-          }
-        ]
-      },
-      "background_color": {
-        "__TYPE__": "FieldContent",
-        "value": "#0a0a0a",
-        "type": "Color"
-      }
-    },
-    "items": [
-      {
-        "__TYPE__": "GroupItemContent",
-        "value": [
-          [
-            "step_headline",
-            {
-              "__TYPE__": "FieldContent",
-              "value": "MIDI command → target pressure",
-              "type": "Text"
-            }
-          ],
-          [
-            "step_subline",
-            {
-              "__TYPE__": "FieldContent",
-              "value": "Every note begins as a pressure curve — attack, decay, sustain, release — not an on/off.",
-              "type": "Text"
-            }
-          ],
-          [
-            "step_number",
-            {
-              "__TYPE__": "FieldContent",
-              "value": 1,
-              "type": "Number"
-            }
-          ],
-          [
-            "step_video",
-            {
-              "__TYPE__": "LinkContent",
-              "value": {
-                "link_type": "Media"
-              }
-            }
-          ],
-          [
-            "step_image",
-            {
-              "__TYPE__": "ImageContent",
-              "value": {}
-            }
-          ]
-        ]
-      },
-      {
-        "__TYPE__": "GroupItemContent",
-        "value": [
-          [
-            "step_headline",
-            {
-              "__TYPE__": "FieldContent",
-              "value": "Voice-coil motor → ultra-fast control",
-              "type": "Text"
-            }
-          ],
-          [
-            "step_subline",
-            {
-              "__TYPE__": "FieldContent",
-              "value": "A loudspeaker-like motor moves a featherweight piston to shape airflow continuously.",
-              "type": "Text"
-            }
-          ],
-          [
-            "step_number",
-            {
-              "__TYPE__": "FieldContent",
-              "value": 2,
-              "type": "Number"
-            }
-          ],
-          [
-            "step_video",
-            {
-              "__TYPE__": "LinkContent",
-              "value": {
-                "link_type": "Media"
-              }
-            }
-          ],
-          [
-            "step_image",
-            {
-              "__TYPE__": "ImageContent",
-              "value": {}
-            }
-          ]
-        ]
-      },
-      {
-        "__TYPE__": "GroupItemContent",
-        "value": [
-          [
-            "step_headline",
-            {
-              "__TYPE__": "FieldContent",
-              "value": "Pressure sensor → real-time regulation",
-              "type": "Text"
-            }
-          ],
-          [
-            "step_subline",
-            {
-              "__TYPE__": "FieldContent",
-              "value": "Wind is measured 9,000×/s and corrected 2,000×/s so actual pressure follows the curve exactly.",
-              "type": "Text"
-            }
-          ],
-          [
-            "step_number",
-            {
-              "__TYPE__": "FieldContent",
-              "value": 3,
-              "type": "Number"
-            }
-          ],
-          [
-            "step_video",
-            {
-              "__TYPE__": "LinkContent",
-              "value": {
-                "link_type": "Media"
-              }
-            }
-          ],
-          [
-            "step_image",
-            {
-              "__TYPE__": "ImageContent",
-              "value": {}
-            }
-          ]
-        ]
-      },
-      {
-        "__TYPE__": "GroupItemContent",
-        "value": [
-          [
-            "step_headline",
-            {
-              "__TYPE__": "FieldContent",
-              "value": "Real wind control → living sound",
-              "type": "Text"
-            }
-          ],
-          [
-            "step_subline",
-            {
-              "__TYPE__": "FieldContent",
-              "value": "Because SmartValve regulates pressure, pipes breathe, swell and speak with natural expression.",
-              "type": "Text"
-            }
-          ],
-          [
-            "step_number",
-            {
-              "__TYPE__": "FieldContent",
-              "value": 4,
-              "type": "Number"
-            }
-          ],
-          [
-            "step_video",
-            {
-              "__TYPE__": "LinkContent",
-              "value": {
-                "link_type": "Media"
-              }
-            }
-          ],
-          [
-            "step_image",
-            {
-              "__TYPE__": "ImageContent",
-              "value": {}
-            }
-          ]
-        ]
-      }
-    ]
-  }
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"section_title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Blood"
+						}
+					}
+				]
+			},
+			"section_subtitle": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Excepteur aliquip exercitation mollit ad duis Lorem proident in pariatur duis excepteur elit occaecat. Lorem consectetur adipisicing cillum culpa fugiat velit do Lorem ut reprehenderit do et."
+						}
+					}
+				]
+			},
+			"background_color": {
+				"__TYPE__": "FieldContent",
+				"value": "#cb873d",
+				"type": "Color"
+			},
+			"background_image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5",
+					"width": 5848,
+					"height": 3899
+				},
+				"url": "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5",
+				"width": 5848,
+				"height": 3899,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"alt": "angry",
+				"credits": null,
+				"__TYPE__": "ImageContent"
+			},
+			"background_video": {
+				"key": "25ad6463-106d-4829-8c5a-6fa41432e045",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "FileLink",
+					"id": "mock_Media_link",
+					"kind": "file",
+					"name": "mock_name",
+					"url": "https://source.unsplash.com/daily",
+					"size": "0"
+				}
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"step_headline",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "contain",
+							"type": "Text"
+						}
+					],
+					[
+						"step_subline",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "influence",
+							"type": "Text"
+						}
+					],
+					[
+						"step_number",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "81",
+							"type": "Number"
+						}
+					],
+					[
+						"step_video",
+						{
+							"key": "c1467362-092c-416c-85da-e8e605921c32",
+							"__TYPE__": "LinkContent",
+							"value": {
+								"__TYPE__": "FileLink",
+								"id": "mock_Media_link",
+								"kind": "file",
+								"name": "mock_name",
+								"url": "https://source.unsplash.com/daily",
+								"size": "0"
+							}
+						}
+					],
+					[
+						"step_image",
+						{
+							"origin": {
+								"id": "main",
+								"url": "https://images.unsplash.com/photo-1491975474562-1f4e30bc9468",
+								"width": 4000,
+								"height": 6000
+							},
+							"url": "https://images.unsplash.com/photo-1491975474562-1f4e30bc9468",
+							"width": 4000,
+							"height": 6000,
+							"edit": {
+								"zoom": 1,
+								"crop": {
+									"x": 0,
+									"y": 0
+								},
+								"background": "transparent"
+							},
+							"alt": "lift",
+							"credits": null,
+							"__TYPE__": "ImageContent"
+						}
+					]
+				]
+			}
+		]
+	}
 ]
-

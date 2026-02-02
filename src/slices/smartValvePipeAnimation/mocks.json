@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Default",
+    "slice_type": "smart_valve_pipe_animation",
+    "primary": {
+      "title": [
+        {
+          "type": "heading2",
+          "text": "Why Choose Our Solution",
+          "spans": []
+        }
+      ],
+      "subtitle": [
+        {
+          "type": "paragraph",
+          "text": "Discover the features that set our product apart from the competition and deliver exceptional value.",
+          "spans": []
+        }
+      ]
+    }
+  }
+]

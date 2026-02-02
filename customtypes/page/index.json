@@ -27,6 +27,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "smart_valve_chest_3_d": {
+              "type": "SharedSlice"
+            },
             "story": {
               "type": "SharedSlice"
             },
@@ -48,13 +51,13 @@
             "modal_blocks": {
               "type": "SharedSlice"
             },
-            "split_feature": {
+            "smart_valve_pipe_animation": {
               "type": "SharedSlice"
             },
             "valve_hero": {
               "type": "SharedSlice"
             },
-            "foundation": {
+            "smart_processor": {
               "type": "SharedSlice"
             },
             "accessories": {

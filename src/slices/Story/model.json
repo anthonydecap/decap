@@ -36,6 +36,21 @@
             "label": "Background Color",
             "placeholder": "#0a0a0a"
           }
+        },
+        "background_image": {
+          "type": "Image",
+          "config": {
+            "label": "Background Image",
+            "placeholder": "Upload background image (parallax effect)"
+          }
+        },
+        "background_video": {
+          "type": "Link",
+          "config": {
+            "label": "Background Video",
+            "placeholder": "Upload background video (parallax effect, loops automatically)",
+            "select": "media"
+          }
         }
       },
       "items": {
@@ -79,4 +94,3 @@
     }
   ]
 }
-

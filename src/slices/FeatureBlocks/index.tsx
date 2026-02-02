@@ -69,12 +69,12 @@ const FeatureBlocks: FC<FeatureBlocksProps> = ({ slice }) => {
               {/* Title and subtitle */}
               <div className="mb-12">
                 {title && (
-                  <h2 className="block font-display text-4xl font-medium tracking-tight text-balance sm:text-5xl text-white mb-6">
+                  <div className="mb-6 text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-tight text-white">
                     <PrismicRichText field={title} components={components} />
-                  </h2>
+                  </div>
                 )}
                 {subtitle && (
-                  <div className="text-xl text-neutral-300">
+                  <div className="text-xl text-neutral-400">
                     <PrismicRichText field={subtitle} components={components} />
                   </div>
                 )}
@@ -104,7 +104,7 @@ const FeatureBlocks: FC<FeatureBlocksProps> = ({ slice }) => {
                         {/* Feature content */}
                         <div className="flex-1 min-w-0">
                           {item.feature_title && (
-                            <h3 className="text-lg font-semibold text-white mb-2 leading-tight">
+                            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold leading-tight text-white mb-2">
                               {item.feature_title}
                             </h3>
                           )}
