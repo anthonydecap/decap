@@ -1,286 +1,218 @@
+"use client";
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { type FC } from "react";
-import type { Content } from "@prismicio/client";
-import { PrismicImage, PrismicRichText, type SliceComponentProps, type JSXMapSerializer } from "@prismicio/react";
+import { PrismicNextLink } from "@prismicio/next";
+import {
+  PrismicRichText,
+  PrismicImage,
+  type SliceComponentProps,
+  type JSXMapSerializer,
+} from "@prismicio/react";
 import { Container } from "@/components/Container";
-import { FadeIn, FadeInStagger } from "@/components/FadeIn";
 import clsx from "clsx";
 
 const components: JSXMapSerializer = {
-  hyperlink: ({ children }) => {
-    return (
-      <span className="text-blue-500 underline decoration-blue-300/50 underline-offset-2">
-        {children}
-      </span>
-    );
+  hyperlink: ({ node, children }) => {
+    return <PrismicNextLink field={node.data}>{children}</PrismicNextLink>;
   },
   label: ({ node, children }) => {
     if (node.data.label === "codespan") {
-      return (
-        <code className="rounded bg-neutral-100 px-1 py-0.5 text-sm font-mono text-neutral-700">
-          {children}
-        </code>
-      );
+      return <code className="rounded bg-neutral-800 px-1 py-0.5 text-sm font-mono text-neutral-400">{children}</code>;
     }
   },
 };
 
-// Checkmark icon for features
 const CheckIcon = (
-  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <svg className="h-4 w-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
   </svg>
 );
 
-/**
- * Props for `OpticalMidi`.
- */
-type OpticalMidiProps = SliceComponentProps<Content.OpticalMidiSlice>;
+type OpticalMidiProps = SliceComponentProps<any>;
 
-/**
- * Component for "OpticalMidi" Slices.
- */
 const OpticalMidi: FC<OpticalMidiProps> = ({ slice }) => {
-  const { 
-    eyebrow_left, 
-    eyebrow_right, 
-    headline, 
-    subheadline, 
-    product_image, 
-    footnote, 
-    invert 
+  const {
+    eyebrow_left,
+    eyebrow_right,
+    headline,
+    subheadline,
+    product_image,
+    footnote,
+    invert,
   } = slice.primary;
 
-  // Filter items by content type
   const features = slice.items?.filter((item: any) => item.content_type === "feature") || [];
   const bullets = slice.items?.filter((item: any) => item.content_type === "bullet") || [];
   const stats = slice.items?.filter((item: any) => item.content_type === "stat") || [];
 
+  const isDark = invert !== true;
+
   return (
-    <Container className="py-24 sm:py-32">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        {/* Left Column - Text Content */}
-        <div className="space-y-8">
-          {/* Eyebrow Row */}
-          <div className="flex gap-3">
+    <div className={clsx("py-8 sm:py-12 lg:py-24", isDark ? "bg-neutral-950" : "bg-neutral-100")}>
+      <Container>
+        {/* Section header - SmartValve style */}
+        <div className="text-center mb-16">
+          <div className="flex flex-wrap justify-center gap-3 mb-6">
             {eyebrow_left && (
-              <FadeIn>
-                <span
-                  className={clsx(
-                    "inline-flex items-center px-3 py-1 rounded-full text-xs font-medium",
-                    invert
-                      ? "bg-white/10 text-white/90 border border-white/20"
-                      : "bg-neutral-100 text-neutral-700 border border-neutral-200"
-                  )}
-                >
-                  {eyebrow_left}
-                </span>
-              </FadeIn>
-            )}
-            {eyebrow_right && (
-              <FadeIn>
-                <span
-                  className={clsx(
-                    "inline-flex items-center px-3 py-1 rounded-full text-xs font-medium",
-                    invert
-                      ? "bg-white/10 text-white/90 border border-white/20"
-                      : "bg-neutral-100 text-neutral-700 border border-neutral-200"
-                  )}
-                >
-                  {eyebrow_right}
-                </span>
-              </FadeIn>
-            )}
-          </div>
-
-          {/* Main Heading + Subheading */}
-          <div className="space-y-4">
-            {headline && (
-              <FadeIn>
-                <h2
-                  className={clsx(
-                    "text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-tight",
-                    invert ? "text-white" : "text-neutral-900"
-                  )}
-                >
-                  {headline}
-                </h2>
-              </FadeIn>
-            )}
-            {subheadline && (
-              <FadeIn>
-                <div
-                  className={clsx(
-                    "text-xl",
-                    invert ? "text-neutral-400" : "text-neutral-600"
-                  )}
-                >
-                  {subheadline}
-                </div>
-              </FadeIn>
-            )}
-          </div>
-
-          {/* Feature List */}
-          {features.length > 0 && (
-            <FadeInStagger className="space-y-4">
-              {features.map((feature: any, index: number) => (
-                <FadeIn key={index}>
-                  <div className="flex items-start gap-4">
-                    <div
-                      className={clsx(
-                        "flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center",
-                        invert
-                          ? "bg-white/10 text-white"
-                          : "bg-neutral-900 text-white"
-                      )}
-                    >
-                      {CheckIcon}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3
-                        className={clsx(
-                          "text-3xl sm:text-4xl lg:text-5xl font-display font-bold leading-tight mb-1",
-                          invert ? "text-white" : "text-neutral-900"
-                        )}
-                      >
-                        {feature.feature_title}
-                      </h3>
-                      {feature.feature_description && (
-                        <div
-                          className={clsx(
-                            "text-sm leading-relaxed",
-                            invert ? "text-white/70" : "text-neutral-600"
-                          )}
-                        >
-                          <PrismicRichText
-                            field={feature.feature_description}
-                            components={components}
-                          />
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </FadeIn>
-              ))}
-            </FadeInStagger>
-          )}
-
-          {/* Bullet List */}
-          {bullets.length > 0 && (
-            <FadeInStagger className="space-y-3 pt-8">
-              {bullets.map((bullet: any, index: number) => (
-                <FadeIn key={index}>
-                  <div className="flex items-start gap-3">
-                    <div
-                      className={clsx(
-                        "flex-shrink-0 w-2 h-2 rounded-full mt-2",
-                        invert ? "bg-white/60" : "bg-neutral-400"
-                      )}
-                    />
-                    <div
-                      className={clsx(
-                        "text-sm leading-relaxed",
-                        invert ? "text-white/70" : "text-neutral-600"
-                      )}
-                    >
-                      <PrismicRichText
-                        field={bullet.bullet_text}
-                        components={components}
-                      />
-                    </div>
-                  </div>
-                </FadeIn>
-              ))}
-            </FadeInStagger>
-          )}
-
-        </div>
-
-        {/* Right Column - Product Image */}
-        {product_image && (
-          <FadeIn>
-            <div className="relative">
-              <div
+              <span
                 className={clsx(
-                  "relative overflow-hidden rounded-2xl",
-                  invert
-                    ? "bg-white/5 border border-white/10"
-                    : "bg-neutral-100/50 border border-neutral-200/50"
+                  "inline-flex items-center px-3 py-1 rounded-full text-xs font-medium",
+                  isDark ? "bg-neutral-800 text-neutral-400 border border-neutral-700" : "bg-neutral-200 text-neutral-600 border border-neutral-300"
                 )}
               >
-                <PrismicImage
-                  field={product_image}
-                  className="w-full h-auto"
-                  alt=""
-                />
-                {/* Optional gradient overlay for light beam effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
-              </div>
+                {eyebrow_left}
+              </span>
+            )}
+            {eyebrow_right && (
+              <span
+                className={clsx(
+                  "inline-flex items-center px-3 py-1 rounded-full text-xs font-medium",
+                  isDark ? "bg-neutral-800 text-neutral-400 border border-neutral-700" : "bg-neutral-200 text-neutral-600 border border-neutral-300"
+                )}
+              >
+                {eyebrow_right}
+              </span>
+            )}
+          </div>
+          {headline && (
+            <h2
+              className={clsx(
+                "text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-tight",
+                isDark ? "text-white" : "text-neutral-900"
+              )}
+            >
+              {headline}
+            </h2>
+          )}
+          {subheadline && (
+            <div className={clsx("mt-6 text-xl max-w-3xl mx-auto", isDark ? "text-neutral-400" : "text-neutral-600")}>
+              {subheadline}
             </div>
-          </FadeIn>
-        )}
-      </div>
+          )}
+        </div>
 
-      {/* Stats Section - Below main content */}
-      {stats.length > 0 && (
-        <FadeInStagger className="mt-16">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        {/* Two-column: content + image */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          <div className="space-y-8">
+            {features.length > 0 && (
+              <div
+                className={clsx(
+                  "rounded-3xl p-8 border",
+                  isDark ? "bg-neutral-900 border-neutral-800" : "bg-white border-neutral-200 shadow-sm"
+                )}
+              >
+                <div className="space-y-6">
+                  {features.map((feature: any, index: number) => (
+                    <div key={index} className="flex items-start gap-4">
+                      <div
+                        className={clsx(
+                          "flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center",
+                          isDark ? "bg-neutral-700 text-white" : "bg-neutral-900 text-white"
+                        )}
+                      >
+                        {CheckIcon}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3
+                          className={clsx(
+                            "text-xl font-display font-bold leading-tight mb-1",
+                            isDark ? "text-white" : "text-neutral-900"
+                          )}
+                        >
+                          {feature.feature_title}
+                        </h3>
+                        {feature.feature_description && (
+                          <div className={clsx("text-sm leading-relaxed", isDark ? "text-neutral-400" : "text-neutral-600")}>
+                            <PrismicRichText field={feature.feature_description} components={components} />
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {bullets.length > 0 && (
+              <div
+                className={clsx(
+                  "rounded-3xl p-8 border",
+                  isDark ? "bg-neutral-900 border-neutral-800" : "bg-white border-neutral-200 shadow-sm"
+                )}
+              >
+                <ul className="space-y-3">
+                  {bullets.map((bullet: any, index: number) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <span
+                        className={clsx("flex-shrink-0 w-2 h-2 rounded-full mt-2", isDark ? "bg-neutral-500" : "bg-neutral-400")}
+                      />
+                      <div className={clsx("text-sm leading-relaxed", isDark ? "text-neutral-400" : "text-neutral-600")}>
+                        <PrismicRichText field={bullet.bullet_text} components={components} />
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+
+          {product_image?.url && (
+            <div
+              className={clsx(
+                "relative rounded-2xl overflow-hidden border",
+                isDark ? "bg-neutral-900 border-neutral-800" : "bg-neutral-100 border-neutral-200"
+              )}
+            >
+              <PrismicImage field={product_image} className="w-full h-auto" alt="" />
+            </div>
+          )}
+        </div>
+
+        {/* Stats - SmartValve card grid */}
+        {stats.length > 0 && (
+          <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6">
             {stats.map((stat: any, index: number) => (
-              <FadeIn key={index}>
-                <div
-                  className={clsx(
-                    "text-center p-6 rounded-xl",
-                    invert
-                      ? "bg-white/5 border border-white/10"
-                      : "bg-neutral-50/50 border border-neutral-200/50"
+              <div
+                key={index}
+                className={clsx(
+                  "relative rounded-3xl p-8 border overflow-hidden",
+                  isDark ? "bg-neutral-900 border-neutral-800" : "bg-white border-neutral-200 shadow-sm"
+                )}
+              >
+                <div className={clsx("absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-indigo-600 via-blue-500 to-cyan-400")} />
+                <div className="text-center pt-2">
+                  {stat.stat_kicker && (
+                    <div className={clsx("text-xs font-medium mb-2", isDark ? "text-neutral-500" : "text-neutral-500")}>
+                      {stat.stat_kicker}
+                    </div>
                   )}
-                >
-                  <div
-                    className={clsx(
-                      "text-xs font-medium mb-2",
-                      invert ? "text-white/60" : "text-neutral-500"
-                    )}
-                  >
-                    {stat.stat_kicker}
-                  </div>
-                  <div
-                    className={clsx(
-                      "font-display text-3xl sm:text-4xl font-bold mb-1",
-                      invert ? "text-white" : "text-neutral-900"
-                    )}
-                  >
+                  <div className={clsx("font-display text-3xl sm:text-4xl font-bold", isDark ? "text-white" : "text-neutral-900")}>
                     {stat.stat_value}
                   </div>
-                  <div
-                    className={clsx(
-                      "text-sm",
-                      invert ? "text-white/70" : "text-neutral-600"
-                    )}
-                  >
-                    {stat.stat_unit}
-                  </div>
+                  {stat.stat_unit && (
+                    <div className={clsx("text-sm mt-1", isDark ? "text-neutral-400" : "text-neutral-600")}>
+                      {stat.stat_unit}
+                    </div>
+                  )}
                 </div>
-              </FadeIn>
+              </div>
             ))}
           </div>
-        </FadeInStagger>
-      )}
+        )}
 
-      {/* Footnote - Below stats */}
-      {footnote && (
-        <FadeIn>
+        {footnote && (
           <div
             className={clsx(
-              "text-sm leading-relaxed mt-8 max-w-4xl mx-auto",
-              invert ? "text-white/60" : "text-neutral-500"
+              "text-sm leading-relaxed mt-12 max-w-4xl mx-auto text-center",
+              isDark ? "text-neutral-500" : "text-neutral-500"
             )}
           >
             <PrismicRichText field={footnote} components={components} />
           </div>
-        </FadeIn>
-      )}
-    </Container>
+        )}
+      </Container>
+    </div>
   );
 };
 

@@ -1,12 +1,28 @@
+"use client";
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { type FC } from "react";
-import type { Content } from "@prismicio/client";
-import { type SliceComponentProps } from "@prismicio/react";
+import { PrismicNextLink } from "@prismicio/next";
+import {
+  PrismicRichText,
+  type SliceComponentProps,
+  type JSXMapSerializer,
+} from "@prismicio/react";
 import { Container } from "@/components/Container";
 import clsx from "clsx";
 
-// SmartValve specific icons
-const PropertyIconMap = {
+const components: JSXMapSerializer = {
+  hyperlink: ({ node, children }) => {
+    return <PrismicNextLink field={node.data}>{children}</PrismicNextLink>;
+  },
+  label: ({ node, children }) => {
+    if (node.data.label === "codespan") {
+      return <code className="rounded bg-neutral-800 px-1 py-0.5 text-sm font-mono text-neutral-400">{children}</code>;
+    }
+  },
+};
+
+const PropertyIconMap: Record<string, JSX.Element | null> = {
   weight: (
     <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
@@ -56,19 +72,24 @@ const PropertyIconMap = {
   none: null,
 };
 
-/**
- * Props for `ValveTechDescription`.
- */
-type ValveTechDescriptionProps =
-  SliceComponentProps<Content.ValveTechDescriptionSlice>;
+const accentGradients: Record<string, string> = {
+  blue: "from-indigo-600 via-blue-500 to-cyan-400",
+  green: "from-teal-600 via-green-500 to-emerald-400",
+  purple: "from-indigo-600 via-purple-500 to-violet-400",
+  orange: "from-pink-600 via-red-500 to-orange-400",
+  red: "from-purple-600 via-pink-500 to-red-400",
+  yellow: "from-red-600 via-orange-500 to-yellow-400",
+};
 
-/**
- * Component for "ValveTechDescription" Slices.
- */
+const gradientOrder = ["blue", "purple", "green", "orange", "red", "yellow"];
+
+type ValveTechDescriptionProps = SliceComponentProps<any>;
+
 const ValveTechDescription: FC<ValveTechDescriptionProps> = ({ slice }) => {
-  const { title, invert } = slice.primary;
+  const { title, eyebrow, description, invert } = slice.primary;
 
-  // Group properties by category
+  const isDark = invert !== true;
+
   const groupedProperties: { [key: string]: any[] } = {};
   slice.items.forEach((property) => {
     const category = property.property_category || "General";
@@ -78,83 +99,123 @@ const ValveTechDescription: FC<ValveTechDescriptionProps> = ({ slice }) => {
     groupedProperties[category].push(property);
   });
 
-  return (
-    <Container className="py-16 sm:py-20">
-      {title && (
-        <div
-          className={clsx(
-            "mb-8 text-center text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-tight",
-            invert ? "text-white" : "text-neutral-900"
-          )}
-        >
-          {title}
-        </div>
-      )}
+  const categories = Object.entries(groupedProperties);
 
-      <div className="space-y-8">
-        {Object.entries(groupedProperties).map(([category, properties]) => (
-          <div key={category} className="space-y-4">
-            <h3
+  return (
+    <div className={clsx("py-8 sm:py-12 lg:py-24", isDark ? "bg-neutral-950" : "bg-neutral-100")}>
+      <Container>
+        {/* Section header - SmartValve style */}
+        <div className="text-center mb-16">
+          {eyebrow && (
+            <span
               className={clsx(
-                "text-lg font-medium mb-4 pb-2 border-b",
-                invert ? "text-white/80 border-white/20" : "text-neutral-700 border-neutral-200"
+                "inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-6",
+                isDark ? "bg-neutral-800 text-neutral-400 border border-neutral-700" : "bg-neutral-200 text-neutral-600 border border-neutral-300"
               )}
             >
-              {category}
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {properties.map((property, index) => {
-                const iconKey = property.property_icon as keyof typeof PropertyIconMap;
-                const icon = PropertyIconMap[iconKey] || PropertyIconMap.none;
-                
-                return (
-                  <div
-                    key={index}
+              {eyebrow}
+            </span>
+          )}
+          {title && (
+            <h2
+              className={clsx(
+                "text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-tight",
+                isDark ? "text-white" : "text-neutral-900"
+              )}
+            >
+              {title}
+            </h2>
+          )}
+          {description && (
+            <div className={clsx("mt-6 text-xl max-w-3xl mx-auto", isDark ? "text-neutral-400" : "text-neutral-600")}>
+              <PrismicRichText field={description} components={components} />
+            </div>
+          )}
+        </div>
+
+        {/* Category cards - SmartValve style */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {categories.map(([category, properties], categoryIndex) => {
+            const gradientKey = gradientOrder[categoryIndex % gradientOrder.length];
+            const gradient = accentGradients[gradientKey] || accentGradients.blue;
+
+            return (
+              <div
+                key={category}
+                className={clsx(
+                  "relative rounded-3xl border overflow-hidden",
+                  isDark ? "bg-neutral-900 border-neutral-800" : "bg-white border-neutral-200 shadow-sm"
+                )}
+              >
+                <div className={clsx("absolute top-0 left-0 right-0 h-1 bg-gradient-to-r", gradient)} />
+                <div className="p-8 pt-10">
+                  <h3
                     className={clsx(
-                      "group flex items-center gap-3 p-3 rounded-lg transition-all duration-200",
-                      invert
-                        ? "bg-white/5 hover:bg-white/10 border border-white/10"
-                        : "bg-neutral-50/50 hover:bg-neutral-100/50 border border-neutral-200/50"
+                      "text-xl font-display font-bold mb-6",
+                      isDark ? "text-white" : "text-neutral-900"
                     )}
                   >
-                    {icon && (
-                      <div
-                        className={clsx(
-                          "flex-shrink-0 p-1.5 rounded-md",
-                          invert
-                            ? "bg-white/10 text-white/70 group-hover:bg-white/20 group-hover:text-white"
-                            : "bg-neutral-200/50 text-neutral-600 group-hover:bg-neutral-300/50 group-hover:text-neutral-800"
-                        )}
-                      >
-                        {icon}
-                      </div>
-                    )}
-                    <div className="flex-1 flex justify-between items-center min-w-0">
-                      <span
-                        className={clsx(
-                          "text-sm font-medium truncate",
-                          invert ? "text-white/80" : "text-neutral-700"
-                        )}
-                      >
-                        {property.property_name}
-                      </span>
-                      <span
-                        className={clsx(
-                          "text-sm font-semibold ml-2 flex-shrink-0",
-                          invert ? "text-white" : "text-neutral-900"
-                        )}
-                      >
-                        {property.property_value}
-                      </span>
-                    </div>
+                    {category}
+                  </h3>
+                  <div className="space-y-3">
+                    {properties.map((property: any, index: number) => {
+                      const iconKey = (property.property_icon as string) || "none";
+                      const icon = PropertyIconMap[iconKey] ?? PropertyIconMap.none;
+                      const isHighlight = property.highlight === true;
+
+                      return (
+                        <div
+                          key={index}
+                          className={clsx(
+                            "flex items-center gap-3 p-3 rounded-xl",
+                            isHighlight
+                              ? isDark
+                                ? "bg-neutral-800/80 border border-neutral-700"
+                                : "bg-neutral-100 border border-neutral-200"
+                              : isDark
+                                ? "bg-neutral-800/40 border border-neutral-800"
+                                : "bg-neutral-50 border border-neutral-100"
+                          )}
+                        >
+                          {icon && (
+                            <div
+                              className={clsx(
+                                "flex-shrink-0 p-1.5 rounded-lg",
+                                isDark ? "bg-neutral-700 text-neutral-400" : "bg-neutral-200 text-neutral-600"
+                              )}
+                            >
+                              {icon}
+                            </div>
+                          )}
+                          <div className="flex-1 flex justify-between items-center min-w-0 gap-4">
+                            <span
+                              className={clsx(
+                                "text-sm font-medium truncate",
+                                isDark ? "text-neutral-300" : "text-neutral-700"
+                              )}
+                            >
+                              {property.property_name}
+                            </span>
+                            <span
+                              className={clsx(
+                                "text-sm font-semibold flex-shrink-0",
+                                isDark ? "text-white" : "text-neutral-900"
+                              )}
+                            >
+                              {property.property_value}
+                            </span>
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
-                );
-              })}
-            </div>
-          </div>
-        ))}
-      </div>
-    </Container>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </Container>
+    </div>
   );
 };
 

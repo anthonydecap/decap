@@ -30,7 +30,7 @@
             "smart_valve_chest_3_d": {
               "type": "SharedSlice"
             },
-            "story": {
+            "smart_valve_story": {
               "type": "SharedSlice"
             },
             "optical_midi": {
@@ -45,7 +45,7 @@
             "feature_blocks": {
               "type": "SharedSlice"
             },
-            "video_hero": {
+            "smart_valve_video_hero": {
               "type": "SharedSlice"
             },
             "modal_blocks": {
@@ -58,6 +58,9 @@
               "type": "SharedSlice"
             },
             "smart_processor": {
+              "type": "SharedSlice"
+            },
+            "smart_valve_transport": {
               "type": "SharedSlice"
             },
             "accessories": {

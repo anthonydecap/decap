@@ -16,13 +16,11 @@
         "spans": []
       }
     ],
-    "background_type": "color",
-    "background_color": "#1a1a1a",
+    "background_color": "#0a0a0a",
     "background_image": null,
     "camera_position_x": 0,
     "camera_position_y": 0,
-    "camera_position_z": 5,
-    "camera_zoom": 1,
+    "camera_position_z": 26,
     "model_rotation_x": 0,
     "model_rotation_y": 0,
     "model_rotation_z": 0,
