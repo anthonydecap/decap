@@ -2,6 +2,7 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { type FC, useState, useEffect, useRef } from "react";
+import Hls from "hls.js";
 import { PrismicNextLink, PrismicNextImage } from "@prismicio/next";
 import {
   PrismicRichText,
@@ -11,6 +12,9 @@ import {
 import { Container } from "@/components/Container";
 import { FadeIn } from "@/components/FadeIn";
 import clsx from "clsx";
+
+const isHlsUrl = (url: string) =>
+  typeof url === "string" && url.includes(".m3u8");
 
 const components: JSXMapSerializer = {
   hyperlink: ({ node, children }) => {
@@ -24,34 +28,49 @@ const components: JSXMapSerializer = {
 };
 
 /**
- * Props for `Story`.
+ * Props for `SmartValveStory`.
  */
-type StoryProps = SliceComponentProps<any>;
+type SmartValveStoryProps = SliceComponentProps<any>;
 
 /**
- * Step Visual Component - Handles video or image display
+ * Step Visual Component - Handles video or image display ,
  */
 const StepVisual: FC<{ step: any; isActive: boolean }> = ({
   step,
   isActive,
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const hlsRef = useRef<Hls | null>(null);
+  const videoUrl = step.step_video?.url;
+  const useHls = videoUrl && isHlsUrl(videoUrl);
 
-  // Control video playback based on active state
+  // HLS: attach hls.js so .m3u8 plays in Chrome/Firefox (native <video> only supports HLS in Safari)
+  useEffect(() => {
+    if (!useHls || !videoUrl || !videoRef.current) return;
+    if (!Hls.isSupported()) return;
+
+    const hls = new Hls();
+    hlsRef.current = hls;
+    hls.loadSource(videoUrl);
+    hls.attachMedia(videoRef.current);
+
+    return () => {
+      hls.destroy();
+      hlsRef.current = null;
+    };
+  }, [useHls, videoUrl]);
+
   useEffect(() => {
     if (videoRef.current) {
       if (isActive) {
-        videoRef.current.play().catch(() => {
-          // Autoplay failed, video will show paused
-        });
+        videoRef.current.play().catch(() => {});
       } else {
         videoRef.current.pause();
       }
     }
   }, [isActive]);
 
-  // Render video if available, otherwise image
-  if (step.step_video?.url) {
+  if (videoUrl) {
     return (
       <div className="relative w-full max-w-2xl aspect-[4/3] rounded-2xl overflow-hidden bg-neutral-900">
         <video
@@ -62,13 +81,16 @@ const StepVisual: FC<{ step: any; isActive: boolean }> = ({
           playsInline
           poster={step.step_image?.url}
         >
-          <source src={step.step_video.url} type="video/mp4" />
+          {useHls ? (
+            <source src={videoUrl} type="application/vnd.apple.mpegurl" />
+          ) : (
+            <source src={videoUrl} type="video/mp4" />
+          )}
         </video>
       </div>
     );
   }
 
-  // Fallback to image
   if (step.step_image?.url) {
     return (
       <div className="relative w-full max-w-2xl aspect-[4/3] rounded-2xl overflow-hidden bg-neutral-900">
@@ -81,7 +103,6 @@ const StepVisual: FC<{ step: any; isActive: boolean }> = ({
     );
   }
 
-  // No media provided
   return (
     <div className="relative w-full max-w-2xl aspect-[4/3] rounded-2xl bg-neutral-900 flex items-center justify-center border border-neutral-800">
       <p className="text-neutral-600 text-sm">No media provided</p>
@@ -90,18 +111,16 @@ const StepVisual: FC<{ step: any; isActive: boolean }> = ({
 };
 
 /**
- * Component for "Story" Slices - How It Works scroll storytelling
+ * Component for "SmartValveStory" Slices - How It Works scroll storytelling
  */
-const Story: FC<StoryProps> = ({ slice }) => {
+const SmartValveStory: FC<SmartValveStoryProps> = ({ slice }) => {
   const { section_title, section_subtitle, background_color } = slice.primary;
   const [currentStep, setCurrentStep] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
   const stepsRef = useRef<HTMLDivElement>(null);
 
-  // Use custom hex color or default to dark
   const bgColor = background_color || "#0a0a0a";
 
-  // Get steps from items (or use default if empty)
   const steps =
     slice.items.length > 0
       ? slice.items
@@ -132,20 +151,17 @@ const Story: FC<StoryProps> = ({ slice }) => {
           },
         ];
 
-  // Handle scroll-based step detection (tight, connected flow)
   useEffect(() => {
     const handleScroll = () => {
       if (!stepsRef.current) return;
 
       const stepElements = stepsRef.current.querySelectorAll(".story-step");
       const viewportHeight = window.innerHeight;
-      const centerPoint = viewportHeight * 0.4; // Center focus
+      const centerPoint = viewportHeight * 0.4;
 
       stepElements.forEach((element, index) => {
         const rect = element.getBoundingClientRect();
         const elementCenter = rect.top + rect.height / 2;
-
-        // Find closest step to center
         const distanceFromCenter = Math.abs(elementCenter - centerPoint);
 
         if (distanceFromCenter < viewportHeight * 0.5) {
@@ -154,9 +170,8 @@ const Story: FC<StoryProps> = ({ slice }) => {
       });
     };
 
-    // Use passive listener for better scroll performance
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // Initial check
+    handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -167,7 +182,6 @@ const Story: FC<StoryProps> = ({ slice }) => {
       className="relative overflow-hidden py-16 sm:py-24 lg:py-32 text-white"
       style={{ backgroundColor: bgColor }}
     >
-      {/* Section Header */}
       <Container>
         <div className="relative z-10 text-center mb-16">
           <FadeIn>
@@ -191,7 +205,6 @@ const Story: FC<StoryProps> = ({ slice }) => {
         </div>
       </Container>
 
-      {/* Steps Container - Good spacing between steps */}
       <div
         ref={stepsRef}
         className="relative z-10 space-y-20 sm:space-y-24 lg:space-y-32"
@@ -208,7 +221,6 @@ const Story: FC<StoryProps> = ({ slice }) => {
           >
             <Container>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center">
-                {/* Text Content */}
                 <div className="space-y-4 sm:space-y-6">
                   <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-neutral-800/50 border border-neutral-700/50">
                     <span className="text-lg font-bold text-neutral-500">
@@ -229,7 +241,6 @@ const Story: FC<StoryProps> = ({ slice }) => {
                   )}
                 </div>
 
-                {/* Visual - Aligned right to touch container edge */}
                 <div className="flex items-center justify-end mt-8 lg:mt-0">
                   <StepVisual step={step} isActive={currentStep === index} />
                 </div>
@@ -238,10 +249,8 @@ const Story: FC<StoryProps> = ({ slice }) => {
           </div>
         ))}
       </div>
-
-      {/* Closing Line */}
     </div>
   );
 };
 
-export default Story;
+export default SmartValveStory;

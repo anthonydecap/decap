@@ -2,14 +2,14 @@
   "id": "smart_valve_chest_3_d",
   "type": "SharedSlice",
   "name": "SmartValveChest3D",
-  "description": "Smart valve chest 3D model viewer with interactive controls",
+  "description": "Smart valve chest 3D model viewer",
   "variations": [
     {
       "id": "default",
       "name": "Default",
       "docURL": "...",
       "version": "initial",
-      "description": "Default SmartValveChest3D",
+      "description": "Default",
       "primary": {
         "title": {
           "type": "Text",
@@ -26,30 +26,25 @@
             "multi": "paragraph,strong,em"
           }
         },
-        "background_type": {
-          "type": "Select",
-          "config": {
-            "label": "Background Type",
-            "placeholder": "Select background type",
-            "options": [
-              "color",
-              "image"
-            ],
-            "default_value": "color"
-          }
-        },
         "background_color": {
           "type": "Color",
           "config": {
             "label": "Background Color",
-            "placeholder": "Select background color"
+            "placeholder": "Section background (optional)"
           }
         },
         "background_image": {
           "type": "Image",
           "config": {
             "label": "Background Image",
-            "placeholder": "Upload background image"
+            "placeholder": "Optional section background image"
+          }
+        },
+        "fallback_image": {
+          "type": "Image",
+          "config": {
+            "label": "Fallback Image",
+            "placeholder": "Shown when WebGL is unavailable (optional)"
           }
         },
         "camera_position_x": {
@@ -70,14 +65,7 @@
           "type": "Number",
           "config": {
             "label": "Camera Position Z",
-            "placeholder": "5"
-          }
-        },
-        "camera_zoom": {
-          "type": "Number",
-          "config": {
-            "label": "Camera Zoom",
-            "placeholder": "1"
+            "placeholder": "26"
           }
         },
         "model_rotation_x": {
@@ -105,28 +93,28 @@
           "type": "Boolean",
           "config": {
             "label": "Enable Dragging",
-            "placeholder": "Allow users to drag the model"
+            "placeholder": "Allow pan/drag"
           }
         },
         "enable_zoom": {
           "type": "Boolean",
           "config": {
             "label": "Enable Zoom",
-            "placeholder": "Allow users to zoom the model"
+            "placeholder": "Allow zoom"
           }
         },
         "enable_rotation": {
           "type": "Boolean",
           "config": {
             "label": "Enable Rotation",
-            "placeholder": "Allow users to rotate the model"
+            "placeholder": "Allow rotate"
           }
         },
         "show_controls": {
           "type": "Boolean",
           "config": {
             "label": "Show control inputs",
-            "placeholder": "Show Camera & Model input controls (default: off)"
+            "placeholder": "Show Camera & Model number inputs (for finding defaults)"
           }
         }
       },

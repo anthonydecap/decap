@@ -7,6 +7,7 @@ import {
   type SliceComponentProps,
   type JSXMapSerializer,
 } from "@prismicio/react";
+import { PrismicNextImage } from "@prismicio/next";
 import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
 import { OrbitControls, Environment } from "@react-three/drei";
 import { FBXLoader } from "three/addons/loaders/FBXLoader.js";
@@ -15,26 +16,20 @@ import { FadeIn } from "@/components/FadeIn";
 import * as THREE from "three";
 
 const components: JSXMapSerializer = {
-  hyperlink: ({ node, children }) => {
-    return <span className="text-blue-600 underline">{children}</span>;
-  },
+  hyperlink: ({ children }) => (
+    <span className="text-blue-600 underline">{children}</span>
+  ),
 };
 
-// Apple-Level Interaction Elegance
-const AppleInteractionElegance = ({
-  isVisible,
-  hasInteracted,
-}: {
-  isVisible: boolean;
-  hasInteracted: boolean;
-}) => {
+// Interaction hint overlay (hidden when loading)
+const AppleInteractionElegance = ({ isVisible }: { isVisible: boolean }) => {
   if (!isVisible) return null;
 
   return (
     <div className="absolute inset-0 pointer-events-none z-10">
       {/* Apple-style precision ring - barely visible but perfect */}
-      <div className="absolute inset-4">
-        <div className="w-full h-full rounded-full border border-black/30 relative">
+      <div className="absolute inset-0">
+        <div className="w-full h-full rounded-full border border-neutral-400 relative">
           <div
             className="absolute inset-0 rounded-full border border-black/30 animate-pulse"
             style={{ animationDuration: "8s" }}
@@ -47,7 +42,7 @@ const AppleInteractionElegance = ({
         {/* Top arrow */}
         <div className="absolute top-8 left-1/2 transform -translate-x-1/2">
           <svg
-            className="w-6 h-6 text-black/30 animate-pulse"
+            className="w-6 h-6 text-neutral-400 animate-pulse"
             style={{ animationDuration: "2s", animationDelay: "0s" }}
             viewBox="0 0 24 24"
             fill="none"
@@ -65,7 +60,7 @@ const AppleInteractionElegance = ({
         {/* Left arrow */}
         <div className="absolute left-8 top-1/2 transform -translate-y-1/2">
           <svg
-            className="w-6 h-6 text-black/30 transform rotate-90 animate-pulse"
+            className="w-6 h-6 text-neutral-400 transform rotate-90 animate-pulse"
             style={{ animationDuration: "2s", animationDelay: "1s" }}
             viewBox="0 0 24 24"
             fill="none"
@@ -83,7 +78,7 @@ const AppleInteractionElegance = ({
         {/* Right arrow */}
         <div className="absolute right-8 top-1/2 transform -translate-y-1/2">
           <svg
-            className="w-6 h-6 text-black/30 transform -rotate-90 animate-pulse"
+            className="w-6 h-6 text-neutral-400 transform -rotate-90 animate-pulse"
             style={{ animationDuration: "2s", animationDelay: "2s" }}
             viewBox="0 0 24 24"
             fill="none"
@@ -101,7 +96,7 @@ const AppleInteractionElegance = ({
         {/* Bottom arrow */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
           <svg
-            className="w-6 h-6 text-black/30 transform rotate-180 animate-pulse"
+            className="w-6 h-6 text-neutral-400 transform rotate-180 animate-pulse"
             style={{ animationDuration: "2s", animationDelay: "3s" }}
             viewBox="0 0 24 24"
             fill="none"
@@ -125,19 +120,17 @@ const AppleInteractionElegance = ({
   );
 };
 
-// 3D Model Component
+// 3D Model Component – rotation from Prismic; materials/lighting unchanged
 const Model = ({
   modelPath,
   rotation,
   onLoad,
-  onMeshNames,
   metallicMeshes,
 }: {
   modelPath: string;
   rotation: [number, number, number];
   onLoad?: () => void;
-  onMeshNames?: (names: string[]) => void;
-  metallicMeshes?: Set<string>;
+  metallicMeshes: Set<string>;
 }) => {
   const fbx = useLoader(FBXLoader, modelPath);
   const meshRef = useRef<THREE.Group>(null);
@@ -152,13 +145,10 @@ const Model = ({
 
   React.useEffect(() => {
     if (fbx) {
-      const meshNames: string[] = [];
-
       const applyMaterials = (obj: THREE.Object3D) => {
         obj.traverse((child) => {
           if (child instanceof THREE.Mesh && child.material) {
             const meshName = child.name || "unnamed_mesh";
-            meshNames.push(meshName);
 
             const material = child.material as THREE.Material;
             let newMaterial: THREE.MeshStandardMaterial;
@@ -199,11 +189,9 @@ const Model = ({
       };
 
       applyMaterials(fbx);
-
-      if (onMeshNames) onMeshNames(meshNames);
       if (onLoad) onLoad();
     }
-  }, [fbx, onLoad, onMeshNames, metallicMeshes]);
+  }, [fbx, onLoad, metallicMeshes]);
 
   return (
     <primitive
@@ -216,7 +204,13 @@ const Model = ({
 };
 
 // Error Boundary for 3D Model
-const ModelErrorBoundary = ({ children }: { children: React.ReactNode }) => {
+const ModelErrorBoundary = ({
+  children,
+  onWebGLError,
+}: {
+  children: React.ReactNode;
+  onWebGLError?: () => void;
+}) => {
   const [hasError, setHasError] = useState(false);
 
   if (hasError) {
@@ -231,16 +225,36 @@ const ModelErrorBoundary = ({ children }: { children: React.ReactNode }) => {
   }
 
   return (
-    <ErrorBoundary onError={() => setHasError(true)}>{children}</ErrorBoundary>
+    <ErrorBoundary
+      onError={(error) => {
+        setHasError(true);
+        // Check if it's a WebGL error
+        if (
+          error?.message?.includes("WebGL") ||
+          error?.message?.includes("webgl") ||
+          error?.message?.includes("context")
+        ) {
+          onWebGLError?.();
+        }
+      }}
+    >
+      {children}
+    </ErrorBoundary>
   );
 };
 
 // Simple Error Boundary Component
 class ErrorBoundary extends React.Component<
-  { children: React.ReactNode; onError: () => void },
+  {
+    children: React.ReactNode;
+    onError: (error?: Error) => void;
+  },
   { hasError: boolean }
 > {
-  constructor(props: { children: React.ReactNode; onError: () => void }) {
+  constructor(props: {
+    children: React.ReactNode;
+    onError: (error?: Error) => void;
+  }) {
     super(props);
     this.state = { hasError: false };
   }
@@ -249,8 +263,8 @@ class ErrorBoundary extends React.Component<
     return { hasError: true };
   }
 
-  componentDidCatch() {
-    this.props.onError();
+  componentDidCatch(error: Error) {
+    this.props.onError(error);
   }
 
   render() {
@@ -279,38 +293,33 @@ const CameraSync = ({
   return null;
 };
 
-// Scene Component
+// Scene: lights, model, orbit. No rendering/lighting/texture changes.
 const Scene = ({
   cameraPosition,
   modelRotation,
   enableDragging,
+  enableZoom,
   enableRotation,
   onLoad,
-  onMeshNames,
   metallicMeshes,
-  onCameraChange,
   cameraPosRef,
   applyCameraFromControlsRef,
 }: {
   cameraPosition: [number, number, number];
-  cameraZoom: number;
   modelRotation: [number, number, number];
   enableDragging: boolean;
   enableZoom: boolean;
   enableRotation: boolean;
   onLoad: () => void;
-  onMeshNames?: (names: string[]) => void;
-  metallicMeshes?: Set<string>;
-  onCameraChange?: (position: [number, number, number]) => void;
-  onModelRotationChange?: (rotation: [number, number, number]) => void;
-  cameraPosRef?: React.MutableRefObject<{ x: number; y: number; z: number }>;
-  applyCameraFromControlsRef?: React.MutableRefObject<boolean>;
+  metallicMeshes: Set<string>;
+  cameraPosRef: React.MutableRefObject<{ x: number; y: number; z: number }>;
+  applyCameraFromControlsRef: React.MutableRefObject<boolean>;
 }) => {
   return (
     <>
       <CameraSync
         position={cameraPosition}
-        applyOnceRef={applyCameraFromControlsRef ?? { current: false }}
+        applyOnceRef={applyCameraFromControlsRef}
       />
       <ambientLight intensity={0.5} />
       <directionalLight position={[10, 10, 5]} intensity={1} />
@@ -320,17 +329,16 @@ const Scene = ({
         modelPath="/models/StoppedFlute_Square_64.fbx"
         rotation={modelRotation}
         onLoad={onLoad}
-        onMeshNames={onMeshNames}
         metallicMeshes={metallicMeshes}
       />
 
       <OrbitControls
         enablePan={enableDragging}
-        enableZoom={true}
+        enableZoom={enableZoom}
         enableRotate={enableRotation}
-        minDistance={3}
-        maxDistance={50}
-        target={[0, 0, 0]}
+        minDistance={5}
+        maxDistance={60}
+        target={[0, 16.5, 0]}
         onChange={(e) => {
           if (e?.target?.object && cameraPosRef) {
             const pos = e.target.object.position;
@@ -352,52 +360,120 @@ type SmartValveChest3DProps = SliceComponentProps<any>;
 /**
  * Component for "SmartValveChest3D" Slices.
  */
+// Meshes that get metallic material (rest stay matte) – used by Model only
+const METALLIC_MESHES = new Set(["Body1"]);
+
+// Check WebGL availability (does not retain a context – we create and release immediately)
+const checkWebGLAvailability = (): boolean => {
+  if (typeof window === "undefined") return false;
+  try {
+    const canvas = document.createElement("canvas");
+    const gl = (canvas.getContext("webgl") || canvas.getContext("experimental-webgl")) as WebGLRenderingContext | null;
+    if (!gl) return false;
+    const ext = gl.getExtension("WEBGL_lose_context");
+    if (ext) ext.loseContext();
+    return true;
+  } catch {
+    return false;
+  }
+};
+
+// Releases WebGL context when Canvas unmounts so the browser can reuse it (avoids "no WebGL" after many reloads)
+const WebGLContextReleaser = () => {
+  const { gl: renderer } = useThree();
+  React.useEffect(() => {
+    return () => {
+      try {
+        const ctx = renderer.getContext?.() as WebGLRenderingContext | undefined;
+        if (ctx) {
+          const ext = ctx.getExtension("WEBGL_lose_context");
+          if (ext) ext.loseContext();
+        }
+      } catch {
+        // ignore
+      }
+      if (typeof renderer.dispose === "function") renderer.dispose();
+    };
+  }, [renderer]);
+  return null;
+};
+
 const SmartValveChest3D: FC<SmartValveChest3DProps> = ({ slice }) => {
   const primary = slice.primary as any;
   const [isLoading, setIsLoading] = useState(true);
-  const [meshNames, setMeshNames] = useState<string[]>([]);
-  const [metallicMeshes, setMetallicMeshes] = useState<Set<string>>(
-    new Set(["Body1"]),
-  );
+  const [webglError, setWebglError] = useState(false);
+  const [webglAvailable, setWebglAvailable] = useState<boolean | null>(null);
+
+  React.useEffect(() => {
+    setWebglAvailable(checkWebGLAvailability());
+
+    // Listen for WebGL context lost events
+    const handleWebGLContextLost = (event: Event) => {
+      event.preventDefault();
+      setWebglError(true);
+      setIsLoading(false);
+    };
+
+    const handleWebGLContextRestored = () => {
+      setWebglError(false);
+      setWebglAvailable(checkWebGLAvailability());
+    };
+
+    // Add global error handler for WebGL errors
+    const handleError = (event: ErrorEvent) => {
+      if (
+        event.message?.includes("WebGL") ||
+        event.message?.includes("webgl") ||
+        event.message?.includes("context") ||
+        event.message?.includes("BindToCurrentSequence")
+      ) {
+        setWebglError(true);
+        setIsLoading(false);
+      }
+    };
+
+    window.addEventListener("webglcontextlost", handleWebGLContextLost);
+    window.addEventListener("webglcontextrestored", handleWebGLContextRestored);
+    window.addEventListener("error", handleError);
+
+    return () => {
+      window.removeEventListener("webglcontextlost", handleWebGLContextLost);
+      window.removeEventListener(
+        "webglcontextrestored",
+        handleWebGLContextRestored
+      );
+      window.removeEventListener("error", handleError);
+    };
+  }, []);
+
   const initialCamera = {
-    x: primary.camera_position_x ?? 0,
-    y: primary.camera_position_y ?? 0,
-    z: primary.camera_position_z ?? 0,
+    x: Number(primary.camera_position_x) || 0,
+    y: Number(primary.camera_position_y) || 0,
+    z: Number(primary.camera_position_z) || 26,
   };
   const [cameraPos, setCameraPos] = useState(initialCamera);
   const cameraPosRef = React.useRef(initialCamera);
   const applyCameraFromControlsRef = React.useRef(false);
+
   const [modelRot, setModelRot] = useState(() => ({
-    x: primary.model_rotation_x ?? 1,
-    y: primary.model_rotation_y ?? 0,
-    z: primary.model_rotation_z ?? 0,
+    x: Number(primary.model_rotation_x) || 0,
+    y: Number(primary.model_rotation_y) || 0,
+    z: Number(primary.model_rotation_z) || 0,
   }));
-  const [hasInteracted, setHasInteracted] = useState(false);
 
-  const {
-    title,
-    description,
-    background_type,
-    background_color,
-    background_image,
-    camera_position_x = 0,
-    camera_position_y = 0,
-    camera_position_z = 18,
-    camera_zoom = 1,
-    model_rotation_x = 0,
-    model_rotation_y = 0,
-    model_rotation_z = 0,
-    enable_dragging = true,
-    enable_zoom = true,
-    enable_rotation = true,
-    show_controls = false,
-  } = primary;
+  const title = primary.title;
+  const description = primary.description;
+  const background_color = primary.background_color;
+  const background_image = primary.background_image;
+  const fallback_image = primary.fallback_image;
+  const enable_dragging = primary.enable_dragging !== false;
+  const enable_zoom = primary.enable_zoom !== false;
+  const enable_rotation = primary.enable_rotation !== false;
+  const show_controls = false;
 
-  // Section background (matches Story / pipe: optional color or image)
-  const sectionStyle =
-    background_type === "image" && background_image?.url
-      ? { backgroundImage: `url(${background_image.url})` }
-      : { backgroundColor: background_color || undefined };
+  const sectionStyle = background_image?.url
+    ? { backgroundImage: `url(${background_image.url})` }
+    : { backgroundColor: background_color || undefined };
 
   return (
     <div
@@ -423,53 +499,113 @@ const SmartValveChest3D: FC<SmartValveChest3DProps> = ({ slice }) => {
             )}
           </div>
 
-          {/* 3D Model Viewer – onPointerUp syncs camera to state so we don't setState during drag (avoids stutter) */}
+          {/* 3D Model Viewer – clipped to rounded frame so model stays inside borders */}
           <div
             className="relative h-96 w-full rounded-2xl overflow-hidden bg-neutral-900 sm:h-[500px] lg:h-[600px]"
-              onPointerUp={() => {
-                setCameraPos({ ...cameraPosRef.current });
-                setHasInteracted(true);
-              }}
-              onPointerLeave={() => setCameraPos({ ...cameraPosRef.current })}
-            >
-              <Canvas
-                camera={{
-                  position: [cameraPos.x, cameraPos.y, cameraPos.z],
-                  fov: 75,
-                  near: 0.1,
-                  far: 1000,
-                }}
-                style={{ background: "transparent" }}
-                onPointerDown={() => setHasInteracted(true)}
-                onWheel={() => setHasInteracted(true)}
-              >
-                <Suspense fallback={null}>
-                  <ModelErrorBoundary>
-                    <Scene
-                      cameraPosition={[cameraPos.x, cameraPos.y, cameraPos.z]}
-                      cameraZoom={camera_zoom}
-                      modelRotation={[modelRot.x, modelRot.y, modelRot.z]}
-                      enableDragging={enable_dragging}
-                      enableZoom={enable_zoom}
-                      enableRotation={enable_rotation}
-                      onLoad={() => setIsLoading(false)}
-                      onMeshNames={setMeshNames}
-                      metallicMeshes={metallicMeshes}
-                      cameraPosRef={cameraPosRef}
-                      applyCameraFromControlsRef={applyCameraFromControlsRef}
-                    />
-                  </ModelErrorBoundary>
-                </Suspense>
-              </Canvas>
+            onPointerUp={() => setCameraPos({ ...cameraPosRef.current })}
+            onPointerLeave={() => setCameraPos({ ...cameraPosRef.current })}
+          >
+            {/* Clipping wrapper: forces canvas (and overlays) to respect rounded corners */}
+            <div className="absolute inset-0 overflow-hidden rounded-2xl [isolation:isolate] ">
+              {webglAvailable === true && !webglError ? (
+                <Canvas
+                  camera={{
+                    position: [cameraPos.x, cameraPos.y, cameraPos.z],
+                    fov: 75,
+                    near: 0.1,
+                    far: 1000,
+                  }}
+                  style={{
+                    background: "transparent",
+                    borderRadius: "1rem",
+                    display: "block",
+                  }}
+                  onPointerDown={() => {}}
+                  onWheel={() => {}}
+                  onCreated={({ gl }) => {
+                    // Check if WebGL context was created successfully
+                    if (!gl.getContext()) {
+                      setWebglError(true);
+                      setIsLoading(false);
+                    }
+                  }}
+                  gl={{
+                    antialias: true,
+                    alpha: true,
+                    powerPreference: "high-performance",
+                    failIfMajorPerformanceCaveat: false,
+                  }}
+                  onError={(error) => {
+                    console.error("Canvas error:", error);
+                    setWebglError(true);
+                    setIsLoading(false);
+                  }}
+                >
+                  <WebGLContextReleaser />
+                  <Suspense fallback={null}>
+                    <ModelErrorBoundary
+                      onWebGLError={() => {
+                        setWebglError(true);
+                        setIsLoading(false);
+                      }}
+                    >
+                      <Scene
+                        cameraPosition={[cameraPos.x, cameraPos.y, cameraPos.z]}
+                        modelRotation={[modelRot.x, modelRot.y, modelRot.z]}
+                        enableDragging={enable_dragging}
+                        enableZoom={enable_zoom}
+                        enableRotation={enable_rotation}
+                        onLoad={() => setIsLoading(false)}
+                        metallicMeshes={METALLIC_MESHES}
+                        cameraPosRef={cameraPosRef}
+                        applyCameraFromControlsRef={applyCameraFromControlsRef}
+                      />
+                    </ModelErrorBoundary>
+                  </Suspense>
+                </Canvas>
+              ) : (
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-white bg-neutral-900">
+                  {fallback_image?.url ? (
+                    <>
+                      <PrismicNextImage
+                        field={fallback_image}
+                        className="w-full h-full object-contain"
+                      />
+                      <p className="absolute bottom-4 left-4 right-4 text-center text-xs text-neutral-500">
+                        3D viewer unavailable — showing image
+                      </p>
+                    </>
+                  ) : background_image?.url ? (
+                    <>
+                      <PrismicNextImage
+                        field={background_image}
+                        className="w-full h-full object-cover"
+                      />
+                      <p className="absolute bottom-4 left-4 right-4 text-center text-xs text-neutral-500">
+                        3D viewer unavailable — showing image
+                      </p>
+                    </>
+                  ) : (
+                    <div className="text-center px-6">
+                      <div className="mb-3 text-4xl opacity-60">◇</div>
+                      <div className="text-sm font-medium text-neutral-300">
+                        3D viewer unavailable
+                      </div>
+                      <div className="mt-2 text-xs text-neutral-500 max-w-xs">
+                        WebGL is disabled or not supported. The rest of this page works normally — try enabling WebGL or use another browser for the 3D model.
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
 
-              {/* Apple-Level Interaction Elegance */}
-              <AppleInteractionElegance
-                isVisible={!isLoading}
-                hasInteracted={hasInteracted}
-              />
+            {webglAvailable === true && !webglError && (
+              <AppleInteractionElegance isVisible={!isLoading} />
+            )}
 
               {/* Loading overlay */}
-              {isLoading && (
+              {webglAvailable === true && !webglError && isLoading && (
                 <div className="absolute inset-0 flex items-center justify-center  text-white pointer-events-none">
                   <div className="text-center">
                     <div className="mb-2 text-sm">Loading 3D Model...</div>

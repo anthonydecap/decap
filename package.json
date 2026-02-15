@@ -15,6 +15,8 @@
   "dependencies": {
     "@auth0/nextjs-auth0": "^4.8.0",
     "@formatjs/intl-localematcher": "^0.6.1",
+    "@mux/mux-player": "^3.11.4",
+    "@mux/mux-player-react": "^3.11.4",
     "@prisma/client": "^6.11.1",
     "@prisma/extension-accelerate": "^2.0.2",
     "@prismicio/client": "^7.18.2",
@@ -30,6 +32,7 @@
     "@tailwindcss/typography": "^0.5.16",
     "clsx": "^2.1.0",
     "framer-motion": "^11.18.2",
+    "hls.js": "^1.6.15",
     "negotiator": "^1.0.0",
     "next": "15.4.10",
     "postcss": "^8.5.6",

@@ -1,7 +1,7 @@
 {
-  "id": "video_hero",
+  "id": "smart_valve_video_hero",
   "type": "SharedSlice",
-  "name": "VideoHero",
+  "name": "SmartValveVideoHero",
   "description": "Hero section with looping video background, title, subtitle, and centered button",
   "variations": [
     {
@@ -9,7 +9,7 @@
       "name": "Default",
       "docURL": "...",
       "version": "initial",
-      "description": "Default VideoHero",
+      "description": "Default SmartValveVideoHero",
       "imageUrl": "",
       "primary": {
         "title": {
@@ -58,11 +58,7 @@
           "config": {
             "label": "Overlay Opacity",
             "placeholder": "Select overlay darkness",
-            "options": [
-              "light",
-              "medium",
-              "dark"
-            ]
+            "options": ["light", "medium", "dark"]
           }
         }
       },
