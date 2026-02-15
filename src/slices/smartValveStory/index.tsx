@@ -33,7 +33,7 @@ const components: JSXMapSerializer = {
 type SmartValveStoryProps = SliceComponentProps<any>;
 
 /**
- * Step Visual Component - Handles video or image display
+ * Step Visual Component - Handles video or image display ,
  */
 const StepVisual: FC<{ step: any; isActive: boolean }> = ({
   step,
