@@ -13,6 +13,21 @@ import { FadeIn, FadeInStagger } from "@/components/FadeIn";
 
 import clsx from "clsx";
 
+/** SmartValve gradient — distributed across cards so together they form the complete gradient */
+const SMARTVALVE_GRADIENT = ["#3b82f6", "#a855f7", "#ec4899", "#ef4444", "#f97316", "#eab308"];
+
+function getGradientForCard(index: number, total: number): string {
+  if (total <= 0) return `linear-gradient(to right, ${SMARTVALVE_GRADIENT[0]}, ${SMARTVALVE_GRADIENT[1]})`;
+  const start = index / total;
+  const end = (index + 1) / total;
+  const fromIdx = Math.min(4, Math.floor(start * 6));
+  let toIdx = Math.min(5, Math.floor(end * 6));
+  if (toIdx <= fromIdx) toIdx = Math.min(5, fromIdx + 1);
+  const from = SMARTVALVE_GRADIENT[fromIdx];
+  const to = SMARTVALVE_GRADIENT[toIdx];
+  return `linear-gradient(to right, ${from}, ${to})`;
+}
+
 const components: JSXMapSerializer = {
   hyperlink: ({ node, children }) => {
     return <PrismicNextLink field={node.data}>{children}</PrismicNextLink>;
@@ -143,17 +158,9 @@ const Possibilities: FC<PossibilitiesProps> = ({ slice }) => {
     dark: "bg-neutral-950 text-white"
   };
 
-  const accentColors = {
-    blue: "from-cyan-400 via-blue-500 to-indigo-600",
-    green: "from-emerald-400 via-green-500 to-teal-600",
-    purple: "from-violet-400 via-purple-500 to-indigo-600",
-    orange: "from-orange-400 via-red-500 to-pink-600",
-    red: "from-red-400 via-pink-500 to-purple-600",
-    yellow: "from-yellow-400 via-orange-500 to-red-600"
-  };
-
   const renderPossibilityBlock = (item: any, index: number) => {
-    const accentColor = accentColors[item.accent_color as keyof typeof accentColors] || "from-blue-500 to-blue-600";
+    const total = slice.items.length;
+    const accentGradient = getGradientForCard(index, total);
     const isDark = bgColor === "dark";
     
     return (
@@ -164,24 +171,23 @@ const Possibilities: FC<PossibilitiesProps> = ({ slice }) => {
             ? "bg-neutral-900 border border-neutral-800 hover:border-neutral-700 shadow-2xl hover:shadow-3xl" 
             : "bg-neutral-900 border border-neutral-700 hover:border-neutral-600 shadow-2xl hover:shadow-3xl"
         )}>
-          {/* Neon gradient accent line */}
-          <div className={clsx(
-            "absolute top-0 left-0 right-0 h-1 bg-gradient-to-r shadow-lg",
-            accentColor
-          )} />
-          {/* Neon glow effect */}
-          <div className={clsx(
-            "absolute top-0 left-0 right-0 h-1 bg-gradient-to-r opacity-50 blur-sm",
-            accentColor
-          )} />
+          {/* SmartValve gradient accent line — each card = segment of full gradient */}
+          <div
+            className="absolute top-0 left-0 right-0 h-1 shadow-lg"
+            style={{ background: accentGradient }}
+          />
+          <div
+            className="absolute top-0 left-0 right-0 h-1 opacity-50 blur-sm"
+            style={{ background: accentGradient }}
+          />
           
           {/* Icon */}
           {item.icon && (
             <div className="mb-6">
-              <div className={clsx(
-                "inline-flex items-center justify-center w-16 h-16 rounded-2xl text-2xl bg-gradient-to-br text-white",
-                accentColor
-              )}>
+              <div
+                className="inline-flex items-center justify-center w-16 h-16 rounded-2xl text-2xl text-white"
+                style={{ background: accentGradient }}
+              >
                 {item.icon}
               </div>
             </div>
@@ -189,20 +195,20 @@ const Possibilities: FC<PossibilitiesProps> = ({ slice }) => {
           
           {/* Title */}
           {item.possibility_title && (
-            <div className="mb-6">
-              <h3 className={clsx(
-                "text-3xl sm:text-4xl lg:text-5xl font-display font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r",
-                accentColor
-              )}>
-                {item.possibility_title}
-              </h3>
-              {/* Text glow effect */}
-              <div className={clsx(
-                "absolute inset-0 text-3xl sm:text-4xl lg:text-5xl font-display font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r opacity-30 blur-sm",
-                accentColor
-              )}>
+            <div className="relative mb-6">
+              <div
+                className="absolute inset-0 text-3xl sm:text-4xl lg:text-5xl font-display font-bold leading-tight text-transparent bg-clip-text opacity-30 blur-sm pointer-events-none -z-10"
+                style={{ backgroundImage: accentGradient }}
+                aria-hidden
+              >
                 {item.possibility_title}
               </div>
+              <h3
+                className="relative text-3xl sm:text-4xl lg:text-5xl font-display font-bold leading-tight text-transparent bg-clip-text"
+                style={{ backgroundImage: accentGradient }}
+              >
+                {item.possibility_title}
+              </h3>
             </div>
           )}
           
@@ -216,11 +222,11 @@ const Possibilities: FC<PossibilitiesProps> = ({ slice }) => {
             </div>
           )}
           
-          {/* Neon hover effect overlay */}
-          <div className={clsx(
-            "absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-sm",
-            accentColor
-          )} />
+          {/* Hover effect overlay */}
+          <div
+            className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-sm pointer-events-none"
+            style={{ background: accentGradient }}
+          />
         </div>
       </FadeIn>
     );

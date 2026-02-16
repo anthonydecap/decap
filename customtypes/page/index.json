@@ -48,6 +48,9 @@
             "smart_valve_video_hero": {
               "type": "SharedSlice"
             },
+            "smart_valve_video": {
+              "type": "SharedSlice"
+            },
             "modal_blocks": {
               "type": "SharedSlice"
             },
