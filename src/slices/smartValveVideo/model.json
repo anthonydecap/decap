@@ -1,0 +1,44 @@
+{
+  "id": "smart_valve_video",
+  "type": "SharedSlice",
+  "name": "SmartValveVideo",
+  "description": "Highlighted YouTube video with title and description",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default SmartValveVideo",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "Video title",
+            "allowTargetBlank": true,
+            "single": "heading1,heading2,heading3"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "Video description...",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "youtube_url": {
+          "type": "Text",
+          "config": {
+            "label": "YouTube URL or Video ID",
+            "placeholder": "https://www.youtube.com/watch?v=... or video ID"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

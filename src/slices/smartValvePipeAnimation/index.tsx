@@ -1,6 +1,6 @@
 "use client";
 
-import { type FC } from "react";
+import { type FC, useEffect, useRef, useState } from "react";
 import { PrismicNextLink } from "@prismicio/next";
 import {
   PrismicRichText,
@@ -24,11 +24,61 @@ const components: JSXMapSerializer = {
 /* eslint-disable @typescript-eslint/no-explicit-any */
 type SmartValvePipeAnimationProps = SliceComponentProps<any>;
 
+/** Random SmartValve curve shapes — each page load picks one to show that valves can be shaped (ADSR, pluck, swell, etc.) */
+const SMARTVALVE_CURVES = [
+  "M 0 65 C 25 65 45 25 60 15 L 140 15 C 155 25 175 65 200 65",
+  "M 0 65 C 15 65 35 15 55 15 L 145 15 C 165 15 185 65 200 65",
+  "M 0 65 Q 50 65 80 20 T 160 20 T 200 65",
+  "M 0 65 C 40 65 60 20 80 15 L 120 15 C 140 20 160 65 200 65",
+  "M 0 65 C 20 65 50 10 100 10 L 150 10 C 180 10 190 65 200 65",
+  "M 0 65 C 30 65 55 25 70 15 L 130 15 C 145 25 170 65 200 65",
+  "M 0 65 Q 40 65 80 12 Q 120 12 160 45 Q 180 65 200 65",
+];
+
 const SmartValvePipeAnimation: FC<SmartValvePipeAnimationProps> = ({ slice }) => {
   const { title, subtitle } = slice.primary;
+  const containerRef = useRef<HTMLDivElement>(null);
+  const curveSvgRef = useRef<SVGSVGElement>(null);
+  const [isInView, setIsInView] = useState(true);
+  const [smartValvePath, setSmartValvePath] = useState(
+    () => SMARTVALVE_CURVES[Math.floor(Math.random() * SMARTVALVE_CURVES.length)]
+  );
+
+  // Pick a different random curve after each animation cycle (event bubbles from path to SVG)
+  useEffect(() => {
+    const svg = curveSvgRef.current;
+    if (!svg) return;
+    const handler = (e: AnimationEvent) => {
+      if (e.animationName?.includes("valve-curve-draw")) {
+        setSmartValvePath((prev) => {
+          const others = SMARTVALVE_CURVES.filter((p) => p !== prev);
+          return others[Math.floor(Math.random() * others.length)] ?? prev;
+        });
+      }
+    };
+    svg.addEventListener("animationiteration", handler);
+    return () => svg.removeEventListener("animationiteration", handler);
+  }, []);
+
+  // Pause CSS animations when slice is off-screen to save CPU/GPU
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => setIsInView(entry.isIntersecting));
+      },
+      { rootMargin: "100px", threshold: 0 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   return (
-    <div className="relative py-16 sm:py-24 lg:py-32 bg-neutral-950 text-white overflow-hidden">
+    <div
+      ref={containerRef}
+      className={`relative py-16 sm:py-24 lg:py-32 bg-neutral-950 text-white overflow-hidden ${!isInView ? "pipe-animation-paused" : ""}`}
+    >
       <Container className="relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 min-h-[600px] items-center">
           {/* Left side - Pipe + permanently animated wind */}
@@ -78,8 +128,8 @@ const SmartValvePipeAnimation: FC<SmartValvePipeAnimationProps> = ({ slice }) =>
             </FadeIn>
           </div>
 
-          {/* Right side - Title and description */}
-          <div className="flex flex-col justify-center order-1 lg:order-2">
+          {/* Right side - Title, description + Traditional vs SmartValve comparison */}
+          <div className="flex flex-col justify-center order-1 lg:order-2 gap-10">
             <FadeIn>
               {title && (
                 <div className="mb-6 text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-tight text-white">
@@ -91,6 +141,56 @@ const SmartValvePipeAnimation: FC<SmartValvePipeAnimationProps> = ({ slice }) =>
                   <PrismicRichText field={subtitle} components={components} />
                 </div>
               )}
+            </FadeIn>
+
+            {/* Traditional (step curve) vs SmartValve (smooth curve) comparison */}
+            <FadeIn>
+              <div className="valve-curve-comparison">
+                {/* Traditional: step curve */}
+                <div className="valve-curve-panel valve-curve-panel-binary">
+                  <p className="valve-curve-label">Traditional valve</p>
+                  <p className="valve-curve-sublabel">Binary — open or closed</p>
+                  <div className="valve-curve-chart">
+                    <svg className="valve-curve-svg" viewBox="-8 -12 216 104" fill="none" aria-hidden>
+                      <path
+                        className="valve-curve-binary"
+                        d="M 0 65 L 45 65 L 45 15 L 155 15 L 155 65 L 200 65"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <div className="valve-curve-divider" aria-hidden />
+                {/* SmartValve: smooth curve — valveHero gradient */}
+                <div className="valve-curve-panel valve-curve-panel-smooth">
+                  <p className="valve-curve-label">SmartValve</p>
+                  <p className="valve-curve-sublabel">Curve — shape the response</p>
+                  <div className="valve-curve-chart">
+                    <svg ref={curveSvgRef} className="valve-curve-svg" viewBox="-8 -12 216 104" fill="none" aria-hidden>
+                      <defs>
+                        <linearGradient id="valve-hero-gradient" x1="0" y1="0" x2="200" y2="0" gradientUnits="userSpaceOnUse">
+                          <stop offset="0%" stopColor="#3b82f6" />
+                          <stop offset="25%" stopColor="#a855f7" />
+                          <stop offset="50%" stopColor="#ec4899" />
+                          <stop offset="70%" stopColor="#ef4444" />
+                          <stop offset="85%" stopColor="#f97316" />
+                          <stop offset="100%" stopColor="#eab308" />
+                        </linearGradient>
+                      </defs>
+                      <path
+                        className="valve-curve-line valve-curve-smooth"
+                        d={smartValvePath}
+                        stroke="url(#valve-hero-gradient)"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
             </FadeIn>
           </div>
         </div>
@@ -306,6 +406,127 @@ const SmartValvePipeAnimation: FC<SmartValvePipeAnimationProps> = ({ slice }) =>
             transform: translateX(-50%) translateY(-100px) scaleY(1);
             opacity: 0;
           }
+        }
+
+        .pipe-animation-paused .wind-stream,
+        .pipe-animation-paused .particle-stream {
+          animation-play-state: paused;
+        }
+
+        /* Traditional vs SmartValve — curves (valveHero gradient on SmartValve) */
+        .valve-curve-comparison {
+          display: grid;
+          grid-template-columns: 1fr auto 1fr;
+          gap: 0;
+          align-items: stretch;
+          border-radius: 1.5rem;
+          background: rgba(23, 23, 23, 0.8);
+          border: 1px solid rgba(255, 255, 255, 0.06);
+          overflow: hidden;
+        }
+
+        @media (max-width: 639px) {
+          .valve-curve-comparison {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto auto auto;
+          }
+        }
+
+        .valve-curve-panel {
+          padding: 1.5rem 1.75rem;
+        }
+
+        .valve-curve-panel-binary {
+          padding-right: 1rem;
+        }
+
+        .valve-curve-panel-smooth {
+          padding-left: 1rem;
+        }
+
+        @media (max-width: 639px) {
+          .valve-curve-panel-binary {
+            padding-right: 1.75rem;
+          }
+          .valve-curve-panel-smooth {
+            padding-left: 1.75rem;
+          }
+        }
+
+        .valve-curve-divider {
+          width: 1px;
+          background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.08), transparent);
+          align-self: stretch;
+        }
+
+        @media (max-width: 639px) {
+          .valve-curve-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.08), transparent);
+          }
+        }
+
+        .valve-curve-label {
+          font-size: 0.7rem;
+          font-weight: 600;
+          letter-spacing: 0.15em;
+          text-transform: uppercase;
+          color: rgba(255, 255, 255, 0.45);
+          margin-bottom: 0.25rem;
+        }
+
+        .valve-curve-sublabel {
+          font-size: 0.8rem;
+          color: rgba(255, 255, 255, 0.35);
+          margin-bottom: 1rem;
+        }
+
+        .valve-curve-chart {
+          width: 100%;
+          min-height: 90px;
+        }
+
+        .valve-curve-svg {
+          width: 100%;
+          height: auto;
+          display: block;
+        }
+
+        .valve-curve-line {
+          fill: none;
+          stroke-dasharray: 520;
+          stroke-dashoffset: 520;
+          animation: valve-curve-draw 3.5s ease-in-out infinite;
+        }
+
+        .valve-curve-binary {
+          fill: none;
+          stroke: rgba(161, 161, 170, 0.7);
+        }
+
+        .valve-curve-smooth {
+          stroke-linecap: round;
+          stroke-linejoin: round;
+        }
+
+        @keyframes valve-curve-draw {
+          0% {
+            stroke-dashoffset: 520;
+          }
+          38% {
+            stroke-dashoffset: 0;
+          }
+          62% {
+            stroke-dashoffset: 0;
+          }
+          100% {
+            stroke-dashoffset: 520;
+          }
+        }
+
+        .pipe-animation-paused .valve-curve-line {
+          animation-play-state: paused;
         }
       `}</style>
     </div>
