@@ -75,21 +75,27 @@ const components: JSXMapSerializer = {
 
 type SmartProcessorProps = SliceComponentProps<any>;
 
-// Reversed gradients: e.g. orange goes pink → orange
-const accentGradients: Record<string, string> = {
-  blue: "from-indigo-600 via-blue-500 to-cyan-400",
-  green: "from-teal-600 via-green-500 to-emerald-400",
-  purple: "from-indigo-600 via-purple-500 to-violet-400",
-  orange: "from-pink-600 via-red-500 to-orange-400",
-  red: "from-purple-600 via-pink-500 to-red-400",
-  yellow: "from-red-600 via-orange-500 to-yellow-400",
-};
+/** SmartValve gradient — distributed across cards so together they form the complete gradient */
+const SMARTVALVE_GRADIENT = ["#3b82f6", "#a855f7", "#ec4899", "#ef4444", "#f97316", "#eab308"];
+
+function getGradientForCard(index: number, total: number): string {
+  if (total <= 0) return `linear-gradient(to right, ${SMARTVALVE_GRADIENT[0]}, ${SMARTVALVE_GRADIENT[1]})`;
+  const start = index / total;
+  const end = (index + 1) / total;
+  const fromIdx = Math.min(4, Math.floor(start * 6));
+  let toIdx = Math.min(5, Math.floor(end * 6));
+  if (toIdx <= fromIdx) toIdx = Math.min(5, fromIdx + 1);
+  const from = SMARTVALVE_GRADIENT[fromIdx];
+  const to = SMARTVALVE_GRADIENT[toIdx];
+  return `linear-gradient(to right, ${from}, ${to})`;
+}
 
 const SmartProcessor: FC<SmartProcessorProps> = ({ slice }) => {
-  const { title, subtitle } = slice.primary;
+  const { title, subtitle, background_color } = slice.primary;
+  const bgColor = background_color || "#0a0a0a";
 
   return (
-    <div className="py-8 sm:py-12 lg:py-38 bg-neutral-950">
+    <div className="py-8 sm:py-12 lg:py-38" style={{ backgroundColor: bgColor }}>
       <Container>
         <FadeIn>
           <div
@@ -407,17 +413,15 @@ const SmartProcessor: FC<SmartProcessorProps> = ({ slice }) => {
               </div>
             </div>
 
-            {/* SmartProcessor cards - Possibilities-style */}
+            {/* SmartProcessor cards - Possibilities-style with SmartValve gradient */}
             <div className="mb-16" style={{ zIndex: 2 }}>
               <FadeInStagger faster>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {slice.items.map((item: any, index: number) => {
                     const iconKey = (item.card_icon || "organ_stops") as keyof typeof IconMap;
                     const icon = IconMap[iconKey] ?? IconMap.organ_stops;
-                    const accentColor = (item.accent_color as string) || "blue";
-                    const gradient =
-                      accentGradients[accentColor] ||
-                      "from-indigo-600 via-blue-500 to-cyan-400";
+                    const total = slice.items.length;
+                    const accentGradient = getGradientForCard(index, total);
 
                     return (
                       <FadeIn key={index}>
@@ -427,26 +431,20 @@ const SmartProcessor: FC<SmartProcessorProps> = ({ slice }) => {
                             "bg-neutral-900 border border-neutral-800 hover:border-neutral-700 shadow-2xl hover:shadow-3xl"
                           )}
                         >
-                          {/* Accent line */}
+                          {/* SmartValve gradient accent line — each card = segment of full gradient */}
                           <div
-                            className={clsx(
-                              "absolute top-0 left-0 right-0 h-1 bg-gradient-to-r shadow-lg",
-                              gradient
-                            )}
+                            className="absolute top-0 left-0 right-0 h-1 shadow-lg"
+                            style={{ background: accentGradient }}
                           />
                           <div
-                            className={clsx(
-                              "absolute top-0 left-0 right-0 h-1 bg-gradient-to-r opacity-50 blur-sm",
-                              gradient
-                            )}
+                            className="absolute top-0 left-0 right-0 h-1 opacity-50 blur-sm"
+                            style={{ background: accentGradient }}
                           />
                           {/* Icon - gradient border, no fill */}
                           <div className="mb-6">
                             <div
-                              className={clsx(
-                                "inline-flex p-[2px] rounded-2xl bg-gradient-to-br",
-                                gradient
-                              )}
+                              className="inline-flex p-[2px] rounded-2xl"
+                              style={{ background: accentGradient }}
                             >
                               <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-neutral-900 text-white">
                                 {icon}
@@ -455,10 +453,8 @@ const SmartProcessor: FC<SmartProcessorProps> = ({ slice }) => {
                           </div>
                           {/* Title */}
                           <h3
-                            className={clsx(
-                              "text-3xl sm:text-4xl lg:text-5xl font-display font-bold leading-tight mb-4 text-transparent bg-clip-text bg-gradient-to-r",
-                              gradient
-                            )}
+                            className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold leading-tight mb-4 text-transparent bg-clip-text"
+                            style={{ backgroundImage: accentGradient }}
                           >
                             {item.card_title || ""}
                           </h3>
@@ -473,10 +469,8 @@ const SmartProcessor: FC<SmartProcessorProps> = ({ slice }) => {
                           )}
                           {/* Hover overlay */}
                           <div
-                            className={clsx(
-                              "absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-sm pointer-events-none",
-                              gradient
-                            )}
+                            className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-sm pointer-events-none"
+                            style={{ background: accentGradient }}
                           />
                         </div>
                       </FadeIn>

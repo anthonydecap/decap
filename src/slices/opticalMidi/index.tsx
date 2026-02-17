@@ -40,6 +40,7 @@ const OpticalMidi: FC<OpticalMidiProps> = ({ slice }) => {
     product_image,
     footnote,
     invert,
+    background_color,
   } = slice.primary;
 
   const features = slice.items?.filter((item: any) => item.content_type === "feature") || [];
@@ -47,9 +48,20 @@ const OpticalMidi: FC<OpticalMidiProps> = ({ slice }) => {
   const stats = slice.items?.filter((item: any) => item.content_type === "stat") || [];
 
   const isDark = invert !== true;
+  const bgColor = background_color || (isDark ? "#0a0a0a" : "#f5f5f5");
+  const effectiveIsDark = background_color
+    ? (() => {
+        const hex = (background_color as string).replace("#", "");
+        const r = parseInt(hex.slice(0, 2), 16) / 255;
+        const g = parseInt(hex.slice(2, 4), 16) / 255;
+        const b = parseInt(hex.slice(4, 6), 16) / 255;
+        const lum = 0.299 * r + 0.587 * g + 0.114 * b;
+        return lum < 0.5;
+      })()
+    : isDark;
 
   return (
-    <div className={clsx("py-8 sm:py-12 lg:py-24", isDark ? "bg-neutral-950" : "bg-neutral-100")}>
+    <div className="py-8 sm:py-12 lg:py-24" style={{ backgroundColor: bgColor }}>
       <Container>
         {/* Section header - SmartValve style */}
         <div className="text-center mb-16">
@@ -58,7 +70,7 @@ const OpticalMidi: FC<OpticalMidiProps> = ({ slice }) => {
               <span
                 className={clsx(
                   "inline-flex items-center px-3 py-1 rounded-full text-xs font-medium",
-                  isDark ? "bg-neutral-800 text-neutral-400 border border-neutral-700" : "bg-neutral-200 text-neutral-600 border border-neutral-300"
+                  effectiveIsDark ? "bg-neutral-800 text-neutral-400 border border-neutral-700" : "bg-neutral-200 text-neutral-600 border border-neutral-300"
                 )}
               >
                 {eyebrow_left}
@@ -68,7 +80,7 @@ const OpticalMidi: FC<OpticalMidiProps> = ({ slice }) => {
               <span
                 className={clsx(
                   "inline-flex items-center px-3 py-1 rounded-full text-xs font-medium",
-                  isDark ? "bg-neutral-800 text-neutral-400 border border-neutral-700" : "bg-neutral-200 text-neutral-600 border border-neutral-300"
+                  effectiveIsDark ? "bg-neutral-800 text-neutral-400 border border-neutral-700" : "bg-neutral-200 text-neutral-600 border border-neutral-300"
                 )}
               >
                 {eyebrow_right}
@@ -79,14 +91,14 @@ const OpticalMidi: FC<OpticalMidiProps> = ({ slice }) => {
             <h2
               className={clsx(
                 "text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-tight",
-                isDark ? "text-white" : "text-neutral-900"
+                effectiveIsDark ? "text-white" : "text-neutral-900"
               )}
             >
               {headline}
             </h2>
           )}
           {subheadline && (
-            <div className={clsx("mt-6 text-xl max-w-3xl mx-auto", isDark ? "text-neutral-400" : "text-neutral-600")}>
+            <div className={clsx("mt-6 text-xl max-w-3xl mx-auto", effectiveIsDark ? "text-neutral-400" : "text-neutral-600")}>
               {subheadline}
             </div>
           )}
@@ -99,7 +111,7 @@ const OpticalMidi: FC<OpticalMidiProps> = ({ slice }) => {
               <div
                 className={clsx(
                   "rounded-3xl p-8 border",
-                  isDark ? "bg-neutral-900 border-neutral-800" : "bg-white border-neutral-200 shadow-sm"
+                  effectiveIsDark ? "bg-neutral-900 border-neutral-800" : "bg-white border-neutral-200 shadow-sm"
                 )}
               >
                 <div className="space-y-6">
@@ -108,7 +120,7 @@ const OpticalMidi: FC<OpticalMidiProps> = ({ slice }) => {
                       <div
                         className={clsx(
                           "flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center",
-                          isDark ? "bg-neutral-700 text-white" : "bg-neutral-900 text-white"
+                          effectiveIsDark ? "bg-neutral-700 text-white" : "bg-neutral-900 text-white"
                         )}
                       >
                         {CheckIcon}
@@ -117,13 +129,13 @@ const OpticalMidi: FC<OpticalMidiProps> = ({ slice }) => {
                         <h3
                           className={clsx(
                             "text-xl font-display font-bold leading-tight mb-1",
-                            isDark ? "text-white" : "text-neutral-900"
+                            effectiveIsDark ? "text-white" : "text-neutral-900"
                           )}
                         >
                           {feature.feature_title}
                         </h3>
                         {feature.feature_description && (
-                          <div className={clsx("text-sm leading-relaxed", isDark ? "text-neutral-400" : "text-neutral-600")}>
+                          <div className={clsx("text-sm leading-relaxed", effectiveIsDark ? "text-neutral-400" : "text-neutral-600")}>
                             <PrismicRichText field={feature.feature_description} components={components} />
                           </div>
                         )}
@@ -138,16 +150,16 @@ const OpticalMidi: FC<OpticalMidiProps> = ({ slice }) => {
               <div
                 className={clsx(
                   "rounded-3xl p-8 border",
-                  isDark ? "bg-neutral-900 border-neutral-800" : "bg-white border-neutral-200 shadow-sm"
+                  effectiveIsDark ? "bg-neutral-900 border-neutral-800" : "bg-white border-neutral-200 shadow-sm"
                 )}
               >
                 <ul className="space-y-3">
                   {bullets.map((bullet: any, index: number) => (
                     <li key={index} className="flex items-start gap-3">
                       <span
-                        className={clsx("flex-shrink-0 w-2 h-2 rounded-full mt-2", isDark ? "bg-neutral-500" : "bg-neutral-400")}
+                        className={clsx("flex-shrink-0 w-2 h-2 rounded-full mt-2", effectiveIsDark ? "bg-neutral-500" : "bg-neutral-400")}
                       />
-                      <div className={clsx("text-sm leading-relaxed", isDark ? "text-neutral-400" : "text-neutral-600")}>
+                      <div className={clsx("text-sm leading-relaxed", effectiveIsDark ? "text-neutral-400" : "text-neutral-600")}>
                         <PrismicRichText field={bullet.bullet_text} components={components} />
                       </div>
                     </li>
@@ -161,7 +173,7 @@ const OpticalMidi: FC<OpticalMidiProps> = ({ slice }) => {
             <div
               className={clsx(
                 "relative rounded-2xl overflow-hidden border",
-                isDark ? "bg-neutral-900 border-neutral-800" : "bg-neutral-100 border-neutral-200"
+                effectiveIsDark ? "bg-neutral-900 border-neutral-800" : "bg-neutral-100 border-neutral-200"
               )}
             >
               <PrismicImage field={product_image} className="w-full h-auto" alt="" />
@@ -177,21 +189,21 @@ const OpticalMidi: FC<OpticalMidiProps> = ({ slice }) => {
                 key={index}
                 className={clsx(
                   "relative rounded-3xl p-8 border overflow-hidden",
-                  isDark ? "bg-neutral-900 border-neutral-800" : "bg-white border-neutral-200 shadow-sm"
+                  effectiveIsDark ? "bg-neutral-900 border-neutral-800" : "bg-white border-neutral-200 shadow-sm"
                 )}
               >
                 <div className={clsx("absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-indigo-600 via-blue-500 to-cyan-400")} />
                 <div className="text-center pt-2">
                   {stat.stat_kicker && (
-                    <div className={clsx("text-xs font-medium mb-2", isDark ? "text-neutral-500" : "text-neutral-500")}>
+                    <div className={clsx("text-xs font-medium mb-2", effectiveIsDark ? "text-neutral-500" : "text-neutral-500")}>
                       {stat.stat_kicker}
                     </div>
                   )}
-                  <div className={clsx("font-display text-3xl sm:text-4xl font-bold", isDark ? "text-white" : "text-neutral-900")}>
+                  <div className={clsx("font-display text-3xl sm:text-4xl font-bold", effectiveIsDark ? "text-white" : "text-neutral-900")}>
                     {stat.stat_value}
                   </div>
                   {stat.stat_unit && (
-                    <div className={clsx("text-sm mt-1", isDark ? "text-neutral-400" : "text-neutral-600")}>
+                    <div className={clsx("text-sm mt-1", effectiveIsDark ? "text-neutral-400" : "text-neutral-600")}>
                       {stat.stat_unit}
                     </div>
                   )}
@@ -205,7 +217,7 @@ const OpticalMidi: FC<OpticalMidiProps> = ({ slice }) => {
           <div
             className={clsx(
               "text-sm leading-relaxed mt-12 max-w-4xl mx-auto text-center",
-              isDark ? "text-neutral-500" : "text-neutral-500"
+              effectiveIsDark ? "text-neutral-500" : "text-neutral-500"
             )}
           >
             <PrismicRichText field={footnote} components={components} />

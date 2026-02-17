@@ -21,6 +21,13 @@ const components: JSXMapSerializer = {
   },
 };
 
+// Resolve image URL from site root so it never gets /en/ or locale prefixed (fixes 404 with i18n routes)
+function getAbsoluteImageUrl(path: string): string {
+  if (typeof window === "undefined") return path;
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  return `${window.location.origin}${normalized}`;
+}
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 type SmartValvePipeAnimationProps = SliceComponentProps<any>;
 
@@ -36,7 +43,8 @@ const SMARTVALVE_CURVES = [
 ];
 
 const SmartValvePipeAnimation: FC<SmartValvePipeAnimationProps> = ({ slice }) => {
-  const { title, subtitle } = slice.primary;
+  const { title, subtitle, background_color } = slice.primary;
+  const bgColor = background_color || "#0a0a0a";
   const containerRef = useRef<HTMLDivElement>(null);
   const curveSvgRef = useRef<SVGSVGElement>(null);
   const [isInView, setIsInView] = useState(true);
@@ -77,7 +85,8 @@ const SmartValvePipeAnimation: FC<SmartValvePipeAnimationProps> = ({ slice }) =>
   return (
     <div
       ref={containerRef}
-      className={`relative py-16 sm:py-24 lg:py-32 bg-neutral-950 text-white overflow-hidden ${!isInView ? "pipe-animation-paused" : ""}`}
+      className={`relative py-16 sm:py-24 lg:py-32 text-white overflow-hidden ${!isInView ? "pipe-animation-paused" : ""}`}
+      style={{ backgroundColor: bgColor }}
     >
       <Container className="relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 min-h-[600px] items-center">
@@ -149,9 +158,16 @@ const SmartValvePipeAnimation: FC<SmartValvePipeAnimationProps> = ({ slice }) =>
                 {/* Traditional: step curve */}
                 <div className="valve-curve-panel valve-curve-panel-binary">
                   <p className="valve-curve-label">Traditional valve</p>
-                  <p className="valve-curve-sublabel">Binary — open or closed</p>
+                  <p className="valve-curve-sublabel">
+                    Binary — open or closed
+                  </p>
                   <div className="valve-curve-chart">
-                    <svg className="valve-curve-svg" viewBox="-8 -12 216 104" fill="none" aria-hidden>
+                    <svg
+                      className="valve-curve-svg"
+                      viewBox="-8 -12 216 104"
+                      fill="none"
+                      aria-hidden
+                    >
                       <path
                         className="valve-curve-binary"
                         d="M 0 65 L 45 65 L 45 15 L 155 15 L 155 65 L 200 65"
@@ -166,11 +182,26 @@ const SmartValvePipeAnimation: FC<SmartValvePipeAnimationProps> = ({ slice }) =>
                 {/* SmartValve: smooth curve — valveHero gradient */}
                 <div className="valve-curve-panel valve-curve-panel-smooth">
                   <p className="valve-curve-label">SmartValve</p>
-                  <p className="valve-curve-sublabel">Curve — shape the response</p>
+                  <p className="valve-curve-sublabel">
+                    Curve — shape the response
+                  </p>
                   <div className="valve-curve-chart">
-                    <svg ref={curveSvgRef} className="valve-curve-svg" viewBox="-8 -12 216 104" fill="none" aria-hidden>
+                    <svg
+                      ref={curveSvgRef}
+                      className="valve-curve-svg"
+                      viewBox="-8 -12 216 104"
+                      fill="none"
+                      aria-hidden
+                    >
                       <defs>
-                        <linearGradient id="valve-hero-gradient" x1="0" y1="0" x2="200" y2="0" gradientUnits="userSpaceOnUse">
+                        <linearGradient
+                          id="valve-hero-gradient"
+                          x1="0"
+                          y1="0"
+                          x2="200"
+                          y2="0"
+                          gradientUnits="userSpaceOnUse"
+                        >
                           <stop offset="0%" stopColor="#3b82f6" />
                           <stop offset="25%" stopColor="#a855f7" />
                           <stop offset="50%" stopColor="#ec4899" />
@@ -455,7 +486,12 @@ const SmartValvePipeAnimation: FC<SmartValvePipeAnimationProps> = ({ slice }) =>
 
         .valve-curve-divider {
           width: 1px;
-          background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.08), transparent);
+          background: linear-gradient(
+            to bottom,
+            transparent,
+            rgba(255, 255, 255, 0.08),
+            transparent
+          );
           align-self: stretch;
         }
 
@@ -463,7 +499,12 @@ const SmartValvePipeAnimation: FC<SmartValvePipeAnimationProps> = ({ slice }) =>
           .valve-curve-divider {
             width: 100%;
             height: 1px;
-            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.08), transparent);
+            background: linear-gradient(
+              to right,
+              transparent,
+              rgba(255, 255, 255, 0.08),
+              transparent
+            );
           }
         }
 

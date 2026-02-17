@@ -39,9 +39,6 @@
             "valve_tech_description": {
               "type": "SharedSlice"
             },
-            "possibilities": {
-              "type": "SharedSlice"
-            },
             "feature_blocks": {
               "type": "SharedSlice"
             },
@@ -55,12 +52,6 @@
               "type": "SharedSlice"
             },
             "smart_valve_pipe_animation": {
-              "type": "SharedSlice"
-            },
-            "valve_hero": {
-              "type": "SharedSlice"
-            },
-            "smart_processor": {
               "type": "SharedSlice"
             },
             "smart_valve_transport": {
@@ -130,6 +121,15 @@
               "type": "SharedSlice"
             },
             "success": {
+              "type": "SharedSlice"
+            },
+            "smart_valve_possibilities": {
+              "type": "SharedSlice"
+            },
+            "smart_valve_processor": {
+              "type": "SharedSlice"
+            },
+            "smart_valve_landing": {
               "type": "SharedSlice"
             }
           }

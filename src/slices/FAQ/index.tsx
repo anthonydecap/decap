@@ -121,6 +121,8 @@ type FAQProps = SliceComponentProps<Content.FaqSlice>;
  */
 const FAQ: FC<FAQProps> = ({ slice }) => {
   const { title, eyebrow, description } = slice.primary;
+  const background_color = (slice.primary as { background_color?: string }).background_color;
+  const bgColor = background_color || "#ffffff";
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleFAQ = (index: number) => {
@@ -128,6 +130,7 @@ const FAQ: FC<FAQProps> = ({ slice }) => {
   };
 
   return (
+    <div style={{ backgroundColor: bgColor }}>
     <Container className="mt-8 sm:mt-12 lg:mt-16 sm:py-28 md:py-32">
       {(title || eyebrow || description) && (
         <SectionIntro title={title || ""} eyebrow={eyebrow || ""}>
@@ -155,6 +158,7 @@ const FAQ: FC<FAQProps> = ({ slice }) => {
         </div>
       </FadeInStagger>
     </Container>
+    </div>
   );
 };
 

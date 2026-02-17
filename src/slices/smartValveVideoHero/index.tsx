@@ -43,7 +43,9 @@ const SmartValveVideoHero: FC<SmartValveVideoHeroProps> = ({ slice }) => {
     button_link,
     background_video,
     overlay_opacity,
+    background_color,
   } = slice.primary;
+  const bgColor = background_color || "#0a0a0a";
 
   const videoRef = useRef<HTMLVideoElement>(null);
   const hlsRef = useRef<Hls | null>(null);
@@ -85,7 +87,7 @@ const SmartValveVideoHero: FC<SmartValveVideoHeroProps> = ({ slice }) => {
     overlayClasses[overlayValue as keyof typeof overlayClasses] || "bg-black/50";
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ backgroundColor: videoUrl ? undefined : bgColor }}>
       {videoUrl && (
         <video
           ref={videoRef}

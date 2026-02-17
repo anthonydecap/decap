@@ -90,8 +90,11 @@ type FeatureProps = SliceComponentProps<Content.FeatureSlice>;
  */
 const Feature: FC<FeatureProps> = ({ slice }) => {
   const { title, eyebrow, description, invert } = slice.primary;
+  const background_color = (slice.primary as { background_color?: string }).background_color;
+  const bgColor = background_color || (invert ? "#0a0a0a" : "#ffffff");
 
   return (
+    <div style={{ backgroundColor: bgColor }}>
     <Container className="mt-8 sm:mt-12 lg:mt-16">
       {(title || eyebrow || description) && (
         <SectionIntro title={title || ""} eyebrow={eyebrow || ""} invert={invert}>
@@ -166,6 +169,7 @@ const Feature: FC<FeatureProps> = ({ slice }) => {
         </GridList>
       </div>
     </Container>
+    </div>
   );
 };
 

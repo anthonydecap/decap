@@ -120,6 +120,13 @@ const AppleInteractionElegance = ({ isVisible }: { isVisible: boolean }) => {
   );
 };
 
+// Resolve model URL from site root so it never gets /en/ or locale prefixed (fixes 404 with i18n routes)
+function getAbsoluteModelUrl(path: string): string {
+  if (typeof window === "undefined") return path;
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  return `${window.location.origin}${normalized}`;
+}
+
 // 3D Model Component – rotation from Prismic; materials/lighting unchanged
 const Model = ({
   modelPath,
@@ -132,7 +139,8 @@ const Model = ({
   onLoad?: () => void;
   metallicMeshes: Set<string>;
 }) => {
-  const fbx = useLoader(FBXLoader, modelPath);
+  const absoluteUrl = getAbsoluteModelUrl(modelPath);
+  const fbx = useLoader(FBXLoader, absoluteUrl);
   const meshRef = useRef<THREE.Group>(null);
 
   useFrame(() => {

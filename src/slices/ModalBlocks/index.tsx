@@ -111,6 +111,8 @@ type ModalBlocksProps = SliceComponentProps<any>;
  */
 const ModalBlocks: FC<ModalBlocksProps> = ({ slice }) => {
   const { title, eyebrow, description } = slice.primary;
+  const background_color = (slice.primary as { background_color?: string }).background_color;
+  const bgColor = background_color || "#f5f5f5";
   const [openModal, setOpenModal] = useState<number | null>(null);
 
   const openModalHandler = (index: number) => {
@@ -122,7 +124,7 @@ const ModalBlocks: FC<ModalBlocksProps> = ({ slice }) => {
   };
 
   return (
-    <div className="bg-neutral-200/50 py-8 sm:py-12 lg:py-38">
+    <div className="py-8 sm:py-12 lg:py-38" style={{ backgroundColor: bgColor }}>
       <Container className="">
         {(title || eyebrow || description) && (
           <SectionIntro title={title || ""} eyebrow={eyebrow || ""}>

@@ -34,10 +34,11 @@ const accentGradients: Record<string, string> = {
 };
 
 const SmartValveTransport: FC<SmartValveTransportProps> = ({ slice }) => {
-  const { title, subtitle, section_image } = slice.primary;
+  const { title, subtitle, section_image, background_color } = slice.primary;
+  const bgColor = background_color || "#0a0a0a";
 
   return (
-    <div className="py-8 sm:py-12 lg:py-38 bg-neutral-950">
+    <div className="py-8 sm:py-12 lg:py-38" style={{ backgroundColor: bgColor }}>
       <Container>
         <div
           className={clsx("text-center mb-16 text-white")}

@@ -26,10 +26,12 @@ type ContactSectionProps = SliceComponentProps<Content.ContactSectionSlice>;
  */
 const ContactSection: FC<ContactSectionProps> = ({ slice }) => {
   const { title, description, email, phone } = slice.primary;
+  const background_color = (slice.primary as { background_color?: string }).background_color;
+  const bgColor = background_color || "#0a0a0a";
 
   return (
     <Container className="mt-8 sm:mt-12 lg:mt-16">
-      <FadeIn className="-mx-6 rounded-4xl bg-neutral-950 px-6 py-20 sm:mx-0 sm:py-32 md:px-12">
+      <FadeIn className="-mx-6 rounded-4xl px-6 py-20 sm:mx-0 sm:py-32 md:px-12" style={{ backgroundColor: bgColor }}>
         <div className="mx-auto max-w-4xl">
           <div className="max-w-xl">
             {title && (

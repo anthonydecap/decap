@@ -31,8 +31,11 @@ type HeroProps = SliceComponentProps<Content.HeroSlice>;
  */
 const Hero: FC<HeroProps> = ({ slice }) => {
   const { eyebrow, title, description, centered } = slice.primary;
+  const background_color = (slice.primary as { background_color?: string }).background_color;
+  const bgColor = background_color || "#ffffff";
 
   return (
+    <div className="py-16 sm:py-24" style={{ backgroundColor: bgColor }}>
     <Container
       className={clsx('mt-8 sm:mt-12 lg:mt-16', centered && 'text-center')}
     >
@@ -67,6 +70,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
         )}
       </FadeIn>
     </Container>
+    </div>
   );
 };
 

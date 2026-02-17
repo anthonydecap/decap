@@ -46,13 +46,7 @@ const GradientBentoGrid: FC<GradientBentoGridProps> = ({ slice }) => {
     background_color 
   } = slice.primary;
 
-  const bgColor = background_color || "dark";
-
-  const backgroundClasses = {
-    white: "bg-neutral-950",
-    light: "bg-neutral-900",
-    dark: "bg-neutral-950 text-white"
-  };
+  const bgColor = background_color || "#0a0a0a";
 
   const accentColors = {
     blue: "from-cyan-400 via-blue-500 to-indigo-600",
@@ -65,7 +59,7 @@ const GradientBentoGrid: FC<GradientBentoGridProps> = ({ slice }) => {
 
   const renderBentoItem = (item: any, index: number) => {
     const accentColor = accentColors[item.accent_color as keyof typeof accentColors] || "from-blue-500 to-blue-600";
-    const isDark = bgColor === "dark";
+    const isDark = true; // Cards use dark styling
     const hasImage = item.item_image?.url;
     const hasIcon = item.icon;
     const hasText = item.item_title || item.item_description;
@@ -174,7 +168,7 @@ const GradientBentoGrid: FC<GradientBentoGridProps> = ({ slice }) => {
   };
 
   return (
-    <div className={clsx("py-16 sm:py-24 lg:py-32", backgroundClasses[bgColor as keyof typeof backgroundClasses])}>
+    <div className="py-16 sm:py-24 lg:py-32 text-white" style={{ backgroundColor: bgColor }}>
       <Container>
         {/* Section Header */}
         {(section_title || section_subtitle) && (
