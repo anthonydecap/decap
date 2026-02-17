@@ -1,0 +1,23 @@
+{
+  "id": "smart_valve_landing",
+  "slice_type": "smart_valve_landing",
+  "slice_label": null,
+  "version": "initial",
+  "variation": "default",
+  "primary": {
+    "title": "Premium Brass Valve",
+    "subtitle": "Professional Quality Engineering",
+    "button_text": "Get Started",
+    "button_link": {
+      "__TYPE__": "LinkContent",
+      "value": {
+        "link_type": "Web",
+        "url": "#"
+      }
+    },
+    "background_color": "#0a0a0a"
+  }
+}
+
+
+

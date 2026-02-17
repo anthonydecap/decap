@@ -31,10 +31,11 @@ type FeatureBlocksProps = SliceComponentProps<any>;
  * Component for "FeatureBlocks" Slices.
  */
 const FeatureBlocks: FC<FeatureBlocksProps> = ({ slice }) => {
-  const { title, subtitle, background_image } = slice.primary;
+  const { title, subtitle, background_image, background_color } = slice.primary;
+  const bgColor = background_color || "#0a0a0a";
 
   return (
-    <div className="py-8 sm:py-12 lg:py-38 bg-neutral-950">
+    <div className="py-8 sm:py-12 lg:py-38" style={{ backgroundColor: bgColor }}>
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 min-h-[600px]">
           {/* Left side - Background Image */}

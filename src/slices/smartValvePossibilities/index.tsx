@@ -54,7 +54,7 @@ const Possibilities: FC<PossibilitiesProps> = ({ slice }) => {
     background_color 
   } = slice.primary;
 
-  const bgColor = background_color || "white";
+  const bgColor = background_color || "#0a0a0a";
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(1);
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -152,16 +152,10 @@ const Possibilities: FC<PossibilitiesProps> = ({ slice }) => {
     };
   }, [maxIndex, nextSlide, prevSlide]);
 
-  const backgroundClasses = {
-    white: "bg-neutral-950",
-    light: "bg-neutral-900",
-    dark: "bg-neutral-950 text-white"
-  };
-
   const renderPossibilityBlock = (item: any, index: number) => {
     const total = slice.items.length;
     const accentGradient = getGradientForCard(index, total);
-    const isDark = bgColor === "dark";
+    const isDark = true; // Cards use dark styling for SmartValve look
     
     return (
       <FadeIn key={index}>
@@ -180,18 +174,6 @@ const Possibilities: FC<PossibilitiesProps> = ({ slice }) => {
             className="absolute top-0 left-0 right-0 h-1 opacity-50 blur-sm"
             style={{ background: accentGradient }}
           />
-          
-          {/* Icon */}
-          {item.icon && (
-            <div className="mb-6">
-              <div
-                className="inline-flex items-center justify-center w-16 h-16 rounded-2xl text-2xl text-white"
-                style={{ background: accentGradient }}
-              >
-                {item.icon}
-              </div>
-            </div>
-          )}
           
           {/* Title */}
           {item.possibility_title && (
@@ -326,7 +308,7 @@ const Possibilities: FC<PossibilitiesProps> = ({ slice }) => {
   };
 
   return (
-    <div className={clsx("py-16 sm:py-24 lg:py-32", backgroundClasses[bgColor as keyof typeof backgroundClasses])}>
+    <div className="py-16 sm:py-24 lg:py-32 text-white" style={{ backgroundColor: bgColor }}>
       <Container className="overflow-visible">
         {/* Section Header */}
         {(section_title || section_subtitle) && (

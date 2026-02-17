@@ -1,7 +1,7 @@
 "use client";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { type FC } from "react";
+import { type FC, useState, useEffect } from "react";
 import { PrismicNextLink } from "@prismicio/next";
 import {
   PrismicRichText,
@@ -9,6 +9,7 @@ import {
   type JSXMapSerializer,
 } from "@prismicio/react";
 import { Container } from "@/components/Container";
+import { FadeIn } from "@/components/FadeIn";
 import clsx from "clsx";
 
 const components: JSXMapSerializer = {
@@ -33,24 +34,132 @@ function getYouTubeVideoId(value: string | null | undefined): string | null {
   return null;
 }
 
-type SmartValveVideoProps = SliceComponentProps<any>;
+/** Get YouTube thumbnail URL */
+function getYouTubeThumbnail(videoId: string): string {
+  return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+}
 
-const SmartValveVideo: FC<SmartValveVideoProps> = ({ slice }) => {
-  const { title, description, youtube_url } = slice.primary as any;
-  const videoId = getYouTubeVideoId(youtube_url);
+// Fullscreen Video Modal Component
+const VideoModal: FC<{
+  isOpen: boolean;
+  onClose: () => void;
+  videoId: string;
+}> = ({ isOpen, onClose, videoId }) => {
+  const [isMounted, setIsMounted] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      setIsMounted(true);
+      document.body.style.overflow = "hidden";
+      // Trigger animation after mount
+      setTimeout(() => setIsClosing(false), 10);
+    } else {
+      setIsMounted(false);
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
+  const handleClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      onClose();
+      setIsClosing(false);
+      setIsMounted(false);
+    }, 300);
+  };
+
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
+      handleClose();
+    }
+  };
 
   const embedParams = new URLSearchParams({
+    autoplay: "1",
     rel: "0",
     modestbranding: "1",
     showinfo: "0",
+    controls: "1",
   }).toString();
 
+  if (!isOpen && !isMounted) return null;
+
   return (
-    <div className="py-8 sm:py-12 lg:py-24 bg-neutral-950">
+    <div
+      className={clsx(
+        "fixed inset-0 z-50 flex items-center justify-center",
+        "transition-opacity duration-300 ease-out",
+        isClosing ? "opacity-0" : "opacity-100"
+      )}
+      onClick={handleBackdropClick}
+    >
+      {/* Lighter backdrop - shows page content underneath */}
+      <div
+        className={clsx(
+          "absolute inset-0 bg-black/50 backdrop-blur-[2px]",
+          "transition-opacity duration-300 ease-out",
+          isClosing ? "opacity-0" : "opacity-100"
+        )}
+      />
+
+      {/* Modal Content */}
+      <div
+        className={clsx(
+          "relative w-full h-full max-w-7xl max-h-[90vh] mx-4",
+          "transition-all duration-300 ease-out",
+          isClosing 
+            ? "opacity-0 scale-95 translate-y-4" 
+            : "opacity-100 scale-100 translate-y-0"
+        )}
+      >
+        {/* Close Button */}
+        <button
+          onClick={handleClose}
+          className="absolute -top-12 right-0 z-10 rounded-full bg-white/10 p-3 text-white backdrop-blur-sm transition-all hover:bg-white/20 hover:scale-110"
+          aria-label="Close video"
+        >
+          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        {/* Video Container */}
+        <div className="relative w-full h-full rounded-2xl overflow-hidden bg-black shadow-2xl">
+          <div className="absolute inset-0">
+            <iframe
+              src={`https://www.youtube.com/embed/${videoId}?${embedParams}`}
+              title="YouTube video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+type SmartValveVideoProps = SliceComponentProps<any>;
+
+const SmartValveVideo: FC<SmartValveVideoProps> = ({ slice }) => {
+  const { title, description, youtube_url, background_color } = slice.primary as any;
+  const videoId = getYouTubeVideoId(youtube_url);
+  const bgColor = background_color || "#0a0a0a";
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const thumbnailUrl = videoId ? getYouTubeThumbnail(videoId) : null;
+
+  return (
+    <div className="py-8 sm:py-12 lg:py-24" style={{ backgroundColor: bgColor }}>
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
           {/* Left: title + description */}
-          <div className="text-white">
+          <div className="text-white flex flex-col justify-center">
             {title && (
               <div className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-tight text-white">
                 <PrismicRichText field={title} components={components} />
@@ -63,32 +172,118 @@ const SmartValveVideo: FC<SmartValveVideoProps> = ({ slice }) => {
             )}
           </div>
 
-          {/* Right: video in same card style as other SmartValve slices */}
-          <div className="relative overflow-hidden rounded-3xl border border-neutral-800 bg-neutral-900">
-            <div
-              className={clsx(
-                "absolute top-0 left-0 right-0 h-1 bg-gradient-to-r",
-                "from-indigo-600 via-blue-500 to-cyan-400"
+          {/* Right: Custom video player mockup */}
+          <FadeIn>
+            <div className="relative overflow-hidden rounded-3xl border border-neutral-800 bg-neutral-900 group cursor-pointer transition-[border-color,box-shadow] duration-200 hover:border-neutral-700 hover:shadow-xl hover:shadow-blue-500/5 h-full flex flex-col">
+              {videoId && thumbnailUrl ? (
+                <button
+                  onClick={() => setIsModalOpen(true)}
+                  className="relative w-full h-full flex-1 overflow-hidden bg-neutral-950 min-h-[400px]"
+                  aria-label="Play video"
+                >
+                  {/* Thumbnail Image - GPU accelerated */}
+                  <img
+                    src={thumbnailUrl}
+                    alt="Video thumbnail"
+                    className="w-full h-full object-cover will-change-transform"
+                    style={{
+                      transform: 'scale(1)',
+                      transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'scale(1.02)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'scale(1)';
+                    }}
+                    onError={(e) => {
+                      // Fallback to default thumbnail if maxresdefault fails
+                      const target = e.target as HTMLImageElement;
+                      target.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+                    }}
+                  />
+
+                  {/* Dark overlay for better contrast */}
+                  <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+
+                  {/* Play Button */}
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div className="relative">
+                      {/* Outer glow ring - simplified */}
+                      <div className="absolute inset-0 rounded-full bg-white/8 blur-xl scale-150 pointer-events-none" />
+                      
+                      {/* Play button circle - glass style with reduced blur */}
+                      <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center shadow-xl pointer-events-none">
+                        {/* Play icon */}
+                        <svg
+                          className="w-8 h-8 sm:w-10 sm:h-10 text-white ml-1"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Video player controls - glass style with single backdrop blur */}
+                  <div className="absolute bottom-0 left-0 right-0 p-4 pointer-events-none">
+                    {/* Glass backdrop - single blur layer */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/30 to-transparent backdrop-blur-sm" />
+                    
+                    {/* Controls content */}
+                    <div className="relative flex items-center gap-3">
+                      {/* Play/Pause button mockup */}
+                      <div className="w-8 h-8 rounded-lg bg-white/10 border border-white/10 flex items-center justify-center">
+                        <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
+                        </svg>
+                      </div>
+                      
+                      {/* Progress bar mockup */}
+                      <div className="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden border border-white/5">
+                        <div className="h-full w-0 bg-white/40 rounded-full" />
+                      </div>
+                      
+                      {/* Time indicator mockup */}
+                      <div className="text-white/80 text-xs font-mono px-2 py-1 rounded bg-white/5 border border-white/10">
+                        0:00
+                      </div>
+                      
+                      {/* Volume control mockup */}
+                      <div className="w-8 h-8 rounded-lg bg-white/10 border border-white/10 flex items-center justify-center">
+                        <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+                        </svg>
+                      </div>
+                      
+                      {/* Fullscreen button mockup */}
+                      <div className="w-8 h-8 rounded-lg bg-white/10 border border-white/10 flex items-center justify-center">
+                        <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </button>
+              ) : (
+                <div className="h-full min-h-[400px] flex items-center justify-center">
+                  <p className="text-neutral-500 text-sm">Add a YouTube URL or video ID in Prismic</p>
+                </div>
               )}
-            />
-            {videoId ? (
-              <div className="aspect-video w-full">
-                <iframe
-                  src={`https://www.youtube.com/embed/${videoId}?${embedParams}`}
-                  title="YouTube video"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="w-full h-full"
-                />
-              </div>
-            ) : (
-              <div className="aspect-video flex items-center justify-center">
-                <p className="text-neutral-500 text-sm">Add a YouTube URL or video ID in Prismic</p>
-              </div>
-            )}
-          </div>
+            </div>
+          </FadeIn>
         </div>
       </Container>
+
+      {/* Video Modal */}
+      {videoId && (
+        <VideoModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          videoId={videoId}
+        />
+      )}
     </div>
   );
 };

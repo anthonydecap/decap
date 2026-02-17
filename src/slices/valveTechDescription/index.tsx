@@ -101,8 +101,20 @@ const ValveTechDescription: FC<ValveTechDescriptionProps> = ({ slice }) => {
 
   const categories = Object.entries(groupedProperties);
 
+  const bgColor = slice.primary.background_color || (isDark ? "#0a0a0a" : "#f5f5f5");
+  const effectiveIsDark = slice.primary.background_color
+    ? (() => {
+        const hex = (slice.primary.background_color as string).replace("#", "");
+        const r = parseInt(hex.slice(0, 2), 16) / 255;
+        const g = parseInt(hex.slice(2, 4), 16) / 255;
+        const b = parseInt(hex.slice(4, 6), 16) / 255;
+        const lum = 0.299 * r + 0.587 * g + 0.114 * b;
+        return lum < 0.5;
+      })()
+    : isDark;
+
   return (
-    <div className={clsx("py-8 sm:py-12 lg:py-24", isDark ? "bg-neutral-950" : "bg-neutral-100")}>
+    <div className="py-8 sm:py-12 lg:py-24" style={{ backgroundColor: bgColor }}>
       <Container>
         {/* Section header - SmartValve style */}
         <div className="text-center mb-16">
@@ -110,7 +122,7 @@ const ValveTechDescription: FC<ValveTechDescriptionProps> = ({ slice }) => {
             <span
               className={clsx(
                 "inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-6",
-                isDark ? "bg-neutral-800 text-neutral-400 border border-neutral-700" : "bg-neutral-200 text-neutral-600 border border-neutral-300"
+                effectiveIsDark ? "bg-neutral-800 text-neutral-400 border border-neutral-700" : "bg-neutral-200 text-neutral-600 border border-neutral-300"
               )}
             >
               {eyebrow}
@@ -120,14 +132,14 @@ const ValveTechDescription: FC<ValveTechDescriptionProps> = ({ slice }) => {
             <h2
               className={clsx(
                 "text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-tight",
-                isDark ? "text-white" : "text-neutral-900"
+                effectiveIsDark ? "text-white" : "text-neutral-900"
               )}
             >
               {title}
             </h2>
           )}
           {description && (
-            <div className={clsx("mt-6 text-xl max-w-3xl mx-auto", isDark ? "text-neutral-400" : "text-neutral-600")}>
+            <div className={clsx("mt-6 text-xl max-w-3xl mx-auto", effectiveIsDark ? "text-neutral-400" : "text-neutral-600")}>
               <PrismicRichText field={description} components={components} />
             </div>
           )}
@@ -144,7 +156,7 @@ const ValveTechDescription: FC<ValveTechDescriptionProps> = ({ slice }) => {
                 key={category}
                 className={clsx(
                   "relative rounded-3xl border overflow-hidden",
-                  isDark ? "bg-neutral-900 border-neutral-800" : "bg-white border-neutral-200 shadow-sm"
+                  effectiveIsDark ? "bg-neutral-900 border-neutral-800" : "bg-white border-neutral-200 shadow-sm"
                 )}
               >
                 <div className={clsx("absolute top-0 left-0 right-0 h-1 bg-gradient-to-r", gradient)} />
@@ -152,7 +164,7 @@ const ValveTechDescription: FC<ValveTechDescriptionProps> = ({ slice }) => {
                   <h3
                     className={clsx(
                       "text-xl font-display font-bold mb-6",
-                      isDark ? "text-white" : "text-neutral-900"
+                      effectiveIsDark ? "text-white" : "text-neutral-900"
                     )}
                   >
                     {category}
@@ -169,10 +181,10 @@ const ValveTechDescription: FC<ValveTechDescriptionProps> = ({ slice }) => {
                           className={clsx(
                             "flex items-center gap-3 p-3 rounded-xl",
                             isHighlight
-                              ? isDark
+                              ? effectiveIsDark
                                 ? "bg-neutral-800/80 border border-neutral-700"
                                 : "bg-neutral-100 border border-neutral-200"
-                              : isDark
+                              : effectiveIsDark
                                 ? "bg-neutral-800/40 border border-neutral-800"
                                 : "bg-neutral-50 border border-neutral-100"
                           )}
@@ -181,7 +193,7 @@ const ValveTechDescription: FC<ValveTechDescriptionProps> = ({ slice }) => {
                             <div
                               className={clsx(
                                 "flex-shrink-0 p-1.5 rounded-lg",
-                                isDark ? "bg-neutral-700 text-neutral-400" : "bg-neutral-200 text-neutral-600"
+                                effectiveIsDark ? "bg-neutral-700 text-neutral-400" : "bg-neutral-200 text-neutral-600"
                               )}
                             >
                               {icon}
@@ -191,7 +203,7 @@ const ValveTechDescription: FC<ValveTechDescriptionProps> = ({ slice }) => {
                             <span
                               className={clsx(
                                 "text-sm font-medium truncate",
-                                isDark ? "text-neutral-300" : "text-neutral-700"
+                                effectiveIsDark ? "text-neutral-300" : "text-neutral-700"
                               )}
                             >
                               {property.property_name}
@@ -199,7 +211,7 @@ const ValveTechDescription: FC<ValveTechDescriptionProps> = ({ slice }) => {
                             <span
                               className={clsx(
                                 "text-sm font-semibold flex-shrink-0",
-                                isDark ? "text-white" : "text-neutral-900"
+                                effectiveIsDark ? "text-white" : "text-neutral-900"
                               )}
                             >
                               {property.property_value}
