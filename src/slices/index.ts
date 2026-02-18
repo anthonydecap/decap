@@ -17,7 +17,8 @@ export const components = {
 
   enhanced_bento_grid: dynamic(() => import("./EnhancedBentoGrid")),
   gradient_bento_grid: dynamic(() => import("./GradientBentoGrid")),
-  optical_midi: dynamic(() => import("./opticalMidi")),
+  smart_valve_optical_midi: dynamic(() => import("./smartValveOpticalMidi")),
+  optical_midi: dynamic(() => import("./smartValveOpticalMidi")),
   faq: dynamic(() => import("./FAQ")),
   feature: dynamic(() => import("./Feature")),
   feature_blocks: dynamic(() => import("./FeatureBlocks")),
@@ -45,7 +46,8 @@ export const components = {
   testimonial: dynamic(() => import("./Testimonial")),
   
   technical_specifications: dynamic(() => import("./TechnicalSpecifications")),
-  valve_tech_description: dynamic(() => import("./valveTechDescription")),
+  smart_valve_tech_description: dynamic(() => import("./smartValveTechDescription")),
+  valve_tech_description: dynamic(() => import("./smartValveTechDescription")),
 
   three_d_model: dynamic(() => import("./ThreeDModel")),
   smart_valve_chest_3_d: dynamic(() => import("./smartValveChest3D")),

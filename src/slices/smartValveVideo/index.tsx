@@ -147,12 +147,14 @@ const VideoModal: FC<{
 type SmartValveVideoProps = SliceComponentProps<any>;
 
 const SmartValveVideo: FC<SmartValveVideoProps> = ({ slice }) => {
-  const { title, description, youtube_url, background_color } = slice.primary as any;
+  const { title, description, youtube_url, thumbnail_image, background_color } = slice.primary as any;
   const videoId = getYouTubeVideoId(youtube_url);
   const bgColor = background_color || "#0a0a0a";
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const thumbnailUrl = videoId ? getYouTubeThumbnail(videoId) : null;
+  const customThumbnail = thumbnail_image?.url;
+  const youtubeThumbnail = videoId ? getYouTubeThumbnail(videoId) : null;
+  const thumbnailUrl = customThumbnail ?? youtubeThumbnail;
 
   return (
     <div className="py-8 sm:py-12 lg:py-24" style={{ backgroundColor: bgColor }}>
@@ -197,34 +199,60 @@ const SmartValveVideo: FC<SmartValveVideoProps> = ({ slice }) => {
                       e.currentTarget.style.transform = 'scale(1)';
                     }}
                     onError={(e) => {
-                      // Fallback to default thumbnail if maxresdefault fails
                       const target = e.target as HTMLImageElement;
-                      target.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+                      if (videoId && !customThumbnail) {
+                        target.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+                      }
                     }}
                   />
 
                   {/* Dark overlay for better contrast */}
                   <div className="absolute inset-0 bg-black/20 pointer-events-none" />
 
-                  {/* Play Button */}
+                  {/* Play Button - glass circle, animated gradient on triangle outline */}
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <div className="relative">
-                      {/* Outer glow ring - simplified */}
-                      <div className="absolute inset-0 rounded-full bg-white/8 blur-xl scale-150 pointer-events-none" />
-                      
-                      {/* Play button circle - glass style with reduced blur */}
-                      <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center shadow-xl pointer-events-none">
-                        {/* Play icon */}
-                        <svg
-                          className="w-8 h-8 sm:w-10 sm:h-10 text-white ml-1"
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M8 5v14l11-7z" />
-                        </svg>
-                      </div>
+                    <div className="relative flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/10 backdrop-blur-md border border-white/20">
+                      {/* Play triangle icon with animated gradient stroke */}
+                      <svg
+                        className="w-8 h-8 sm:w-10 sm:h-10 ml-1 play-triangle-stroke"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <defs>
+                          <linearGradient id="play-triangle-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stopColor="#3b82f6" />
+                            <stop offset="25%" stopColor="#a855f7" />
+                            <stop offset="50%" stopColor="#ec4899" />
+                            <stop offset="75%" stopColor="#f97316" />
+                            <stop offset="100%" stopColor="#eab308" />
+                          </linearGradient>
+                        </defs>
+                        {/* Filled triangle (white) */}
+                        <path d="M8 5v14l11-7z" fill="white" fillOpacity="0.9" />
+                        {/* Animated gradient outline on the triangle */}
+                        <path
+                          className="play-triangle-outline"
+                          d="M8 5v14l11-7z"
+                          fill="none"
+                          stroke="url(#play-triangle-grad)"
+                          strokeWidth="1.5"
+                          strokeLinejoin="round"
+                          strokeDasharray="55"
+                          strokeDashoffset="55"
+                        />
+                      </svg>
                     </div>
                   </div>
+
+                  <style jsx>{`
+                    @keyframes play-triangle-draw {
+                      0% { stroke-dashoffset: 55; }
+                      100% { stroke-dashoffset: -55; }
+                    }
+                    .play-triangle-outline {
+                      animation: play-triangle-draw 2.5s linear infinite;
+                    }
+                  `}</style>
 
                   {/* Video player controls - glass style with single backdrop blur */}
                   <div className="absolute bottom-0 left-0 right-0 p-4 pointer-events-none">

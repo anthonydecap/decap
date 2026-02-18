@@ -83,12 +83,10 @@ const accentGradients: Record<string, string> = {
 
 const gradientOrder = ["blue", "purple", "green", "orange", "red", "yellow"];
 
-type ValveTechDescriptionProps = SliceComponentProps<any>;
+type SmartValveTechDescriptionProps = SliceComponentProps<any>;
 
-const ValveTechDescription: FC<ValveTechDescriptionProps> = ({ slice }) => {
-  const { title, eyebrow, description, invert } = slice.primary;
-
-  const isDark = invert !== true;
+const SmartValveTechDescription: FC<SmartValveTechDescriptionProps> = ({ slice }) => {
+  const { title, description } = slice.primary;
 
   const groupedProperties: { [key: string]: any[] } = {};
   slice.items.forEach((property: any) => {
@@ -101,7 +99,7 @@ const ValveTechDescription: FC<ValveTechDescriptionProps> = ({ slice }) => {
 
   const categories = Object.entries(groupedProperties);
 
-  const bgColor = slice.primary.background_color || (isDark ? "#0a0a0a" : "#f5f5f5");
+  const bgColor = slice.primary.background_color || "#0a0a0a";
   const effectiveIsDark = slice.primary.background_color
     ? (() => {
         const hex = (slice.primary.background_color as string).replace("#", "");
@@ -111,23 +109,13 @@ const ValveTechDescription: FC<ValveTechDescriptionProps> = ({ slice }) => {
         const lum = 0.299 * r + 0.587 * g + 0.114 * b;
         return lum < 0.5;
       })()
-    : isDark;
+    : true;
 
   return (
     <div className="py-8 sm:py-12 lg:py-24" style={{ backgroundColor: bgColor }}>
       <Container>
         {/* Section header - SmartValve style */}
         <div className="text-center mb-16">
-          {eyebrow && (
-            <span
-              className={clsx(
-                "inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-6",
-                effectiveIsDark ? "bg-neutral-800 text-neutral-400 border border-neutral-700" : "bg-neutral-200 text-neutral-600 border border-neutral-300"
-              )}
-            >
-              {eyebrow}
-            </span>
-          )}
           {title && (
             <h2
               className={clsx(
@@ -231,4 +219,4 @@ const ValveTechDescription: FC<ValveTechDescriptionProps> = ({ slice }) => {
   );
 };
 
-export default ValveTechDescription;
+export default SmartValveTechDescription;
