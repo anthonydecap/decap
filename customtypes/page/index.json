@@ -33,10 +33,10 @@
             "smart_valve_story": {
               "type": "SharedSlice"
             },
-            "optical_midi": {
+            "smart_valve_optical_midi": {
               "type": "SharedSlice"
             },
-            "valve_tech_description": {
+            "smart_valve_tech_description": {
               "type": "SharedSlice"
             },
             "feature_blocks": {
