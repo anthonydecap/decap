@@ -1,0 +1,55 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "slice_type": "smart_valve_icon_blocks",
+    "variation": "default",
+    "primary": {
+      "section_title": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [{ "type": "heading2", "content": { "text": "Smart connectivity" } }]
+      },
+      "background_color": { "__TYPE__": "FieldContent", "value": "#0a0a0a", "type": "Color" }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          ["icon", { "__TYPE__": "FieldContent", "value": "midi_2", "type": "Select" }],
+          [
+            "description",
+            {
+              "__TYPE__": "StructuredTextContent",
+              "value": [{ "type": "paragraph", "content": { "text": "Full MIDI 2.0 support for future-proof connectivity and extended capabilities." } }]
+            }
+          ]
+        ]
+      },
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          ["icon", { "__TYPE__": "FieldContent", "value": "polyphonic_aftertouch", "type": "Select" }],
+          [
+            "description",
+            {
+              "__TYPE__": "StructuredTextContent",
+              "value": [{ "type": "paragraph", "content": { "text": "Polyphonic aftertouch for expressive, per-note pressure sensitivity." } }]
+            }
+          ]
+        ]
+      },
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          ["icon", { "__TYPE__": "FieldContent", "value": "midi_cc", "type": "Select" }],
+          [
+            "description",
+            {
+              "__TYPE__": "StructuredTextContent",
+              "value": [{ "type": "paragraph", "content": { "text": "MIDI CC control for real-time parameter mapping and automation." } }]
+            }
+          ]
+        ]
+      }
+    ]
+  }
+]

@@ -51,5 +51,8 @@ export const components = {
 
   three_d_model: dynamic(() => import("./ThreeDModel")),
   smart_valve_chest_3_d: dynamic(() => import("./smartValveChest3D")),
+  smart_valve_chest: dynamic(() => import("./smartValveChest")),
+  smart_valve_bento_grid: dynamic(() => import("./smartValveBentoGrid")),
+  smart_valve_icon_blocks: dynamic(() => import("./smartValveIconBlocks")),
   trumpet_video: dynamic(() => import("./TrumpetVideo")),
 };

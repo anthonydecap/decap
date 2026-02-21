@@ -157,7 +157,7 @@ const SmartValveVideo: FC<SmartValveVideoProps> = ({ slice }) => {
   const thumbnailUrl = customThumbnail ?? youtubeThumbnail;
 
   return (
-    <div className="py-8 sm:py-12 lg:py-24" style={{ backgroundColor: bgColor }}>
+    <div className="py-16 sm:py-24 lg:py-32" style={{ backgroundColor: bgColor }}>
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
           {/* Left: title + description */}

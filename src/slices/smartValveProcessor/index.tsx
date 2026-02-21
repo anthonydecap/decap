@@ -95,7 +95,7 @@ const SmartProcessor: FC<SmartProcessorProps> = ({ slice }) => {
   const bgColor = background_color || "#0a0a0a";
 
   return (
-    <div className="py-8 sm:py-12 lg:py-38" style={{ backgroundColor: bgColor }}>
+    <div className="py-12 sm:py-16 lg:py-24" style={{ backgroundColor: bgColor }}>
       <Container>
         <FadeIn>
           <div

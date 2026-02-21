@@ -30,6 +30,15 @@
             "smart_valve_chest_3_d": {
               "type": "SharedSlice"
             },
+            "smart_valve_chest": {
+              "type": "SharedSlice"
+            },
+            "smart_valve_bento_grid": {
+              "type": "SharedSlice"
+            },
+            "smart_valve_icon_blocks": {
+              "type": "SharedSlice"
+            },
             "smart_valve_story": {
               "type": "SharedSlice"
             },

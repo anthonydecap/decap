@@ -38,7 +38,7 @@ const SmartValveTransport: FC<SmartValveTransportProps> = ({ slice }) => {
   const bgColor = background_color || "#0a0a0a";
 
   return (
-    <div className="py-8 sm:py-12 lg:py-38" style={{ backgroundColor: bgColor }}>
+    <div className="py-16 sm:py-24 lg:py-32" style={{ backgroundColor: bgColor }}>
       <Container>
         <div
           className={clsx("text-center mb-16 text-white")}
