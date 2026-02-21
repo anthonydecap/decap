@@ -13,19 +13,11 @@ import { Container } from "@/components/Container";
 import { FadeIn } from "@/components/FadeIn";
 import clsx from "clsx";
 
-/** SmartValve gradient — distributed across cards like possibilities slice */
+/** SmartValve gradient — one color per KPI for value text */
 const SMARTVALVE_GRADIENT = ["#3b82f6", "#a855f7", "#ec4899", "#ef4444", "#f97316", "#eab308"];
 
-function getGradientForCard(index: number, total: number): string {
-  if (total <= 0) return `linear-gradient(to right, ${SMARTVALVE_GRADIENT[0]}, ${SMARTVALVE_GRADIENT[1]})`;
-  const start = index / total;
-  const end = (index + 1) / total;
-  const fromIdx = Math.min(4, Math.floor(start * 6));
-  let toIdx = Math.min(5, Math.floor(end * 6));
-  if (toIdx <= fromIdx) toIdx = Math.min(5, fromIdx + 1);
-  const from = SMARTVALVE_GRADIENT[fromIdx];
-  const to = SMARTVALVE_GRADIENT[toIdx];
-  return `linear-gradient(to right, ${from}, ${to})`;
+function getAccentColor(index: number): string {
+  return SMARTVALVE_GRADIENT[Math.min(index % 6, 5)];
 }
 
 const components: JSXMapSerializer = {
@@ -65,7 +57,7 @@ const SmartValveOpticalMidi: FC<SmartValveOpticalMidiProps> = ({ slice }) => {
     : true;
 
   return (
-    <div className="py-8 sm:py-12 lg:py-24" style={{ backgroundColor: bgColor }}>
+    <div className="py-16 sm:py-24 lg:py-32" style={{ backgroundColor: bgColor }}>
       <Container>
         {/* Two-column: image (left) | title + description (right) */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -107,55 +99,30 @@ const SmartValveOpticalMidi: FC<SmartValveOpticalMidiProps> = ({ slice }) => {
           </FadeIn>
         </div>
 
-        {/* Stats cards — SmartValve gradient style like possibilities slice */}
+        {/* KPIs — metrics only, no cards */}
         {stats.length > 0 && (
-          <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="mt-24 sm:mt-28 lg:mt-32 grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-12">
             {stats.map((stat: any, index: number) => {
-              const accentGradient = getGradientForCard(index, stats.length);
+              const accent = getAccentColor(index);
               return (
                 <FadeIn key={index}>
-                  <div
-                    className={clsx(
-                      "group relative overflow-hidden rounded-3xl p-8 transition-all duration-500 hover:scale-[1.02] h-full flex flex-col",
-                      effectiveIsDark
-                        ? "bg-neutral-900 border border-neutral-800 hover:border-neutral-700 shadow-xl hover:shadow-2xl"
-                        : "bg-white border border-neutral-200 shadow-sm hover:shadow-xl"
-                    )}
-                  >
-                    {/* SmartValve gradient accent line */}
-                    <div
-                      className="absolute top-0 left-0 right-0 h-1 shadow-lg"
-                      style={{ background: accentGradient }}
-                    />
-                    <div
-                      className="absolute top-0 left-0 right-0 h-1 opacity-50 blur-sm pointer-events-none"
-                      style={{ background: accentGradient }}
-                    />
-
-                    <div className="text-center pt-2">
-                      {stat.stat_kicker && (
-                        <div className={clsx("text-xs font-medium mb-2", effectiveIsDark ? "text-neutral-500" : "text-neutral-500")}>
-                          {stat.stat_kicker}
-                        </div>
-                      )}
-                      <div
-                        className="font-display text-3xl sm:text-4xl font-bold text-transparent bg-clip-text"
-                        style={{ backgroundImage: accentGradient }}
-                      >
-                        {stat.stat_value}
+                  <div className="text-left">
+                    {stat.stat_kicker && (
+                      <div className={clsx("text-xs font-medium uppercase tracking-wider mb-1.5", effectiveIsDark ? "text-neutral-500" : "text-neutral-500")}>
+                        {stat.stat_kicker}
                       </div>
-                      {stat.stat_unit && (
-                        <div className={clsx("text-sm mt-1", effectiveIsDark ? "text-neutral-400" : "text-neutral-600")}>
-                          {stat.stat_unit}
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Hover effect overlay */}
+                    )}
                     <div
-                      className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 blur-sm pointer-events-none"
-                      style={{ background: accentGradient }}
-                    />
+                      className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tabular-nums"
+                      style={{ color: accent }}
+                    >
+                      {stat.stat_value}
+                    </div>
+                    {stat.stat_unit && (
+                      <div className={clsx("text-sm mt-0.5", effectiveIsDark ? "text-neutral-400" : "text-neutral-600")}>
+                        {stat.stat_unit}
+                      </div>
+                    )}
                   </div>
                 </FadeIn>
               );

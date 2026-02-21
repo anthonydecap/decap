@@ -1,0 +1,17 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "slice_type": "smart_valve_chest",
+    "variation": "default",
+    "primary": {
+      "title": {"__TYPE__": "StructuredTextContent", "value": [{"type": "heading1", "content": {"text": "The SmartValve Wind Chest"}}]},
+      "description": {"__TYPE__": "StructuredTextContent", "value": [{"type": "paragraph", "content": {"text": "In its most basic form, SmartValve has a wind chest where pipes are placed."}}]},
+      "background_color": {"__TYPE__": "FieldContent", "value": "#0a0a0a", "type": "Color"}
+    },
+    "items": [
+      {"__TYPE__": "GroupItemContent", "value": [["image", {"__TYPE__": "ImageContent", "url": "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800&h=600&fit=crop", "alt": "Separate Chests", "copyright": null, "dimensions": {"width": 800, "height": 600}}], ["item_title", {"__TYPE__": "FieldContent", "value": "Separate Chests", "type": "Text"}], ["item_description", {"__TYPE__": "StructuredTextContent", "value": [{"type": "paragraph", "content": {"text": "Create individual wind chests for different sections or stops."}}]}]]},
+      {"__TYPE__": "GroupItemContent", "value": [["image", {"__TYPE__": "ImageContent", "url": "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800&h=600&fit=crop", "alt": "Modular Frames", "copyright": null, "dimensions": {"width": 800, "height": 600}}], ["item_title", {"__TYPE__": "FieldContent", "value": "Modular Frames", "type": "Text"}], ["item_description", {"__TYPE__": "StructuredTextContent", "value": [{"type": "paragraph", "content": {"text": "Build movable and transportable frames."}}]}]]},
+      {"__TYPE__": "GroupItemContent", "value": [["image", {"__TYPE__": "ImageContent", "url": "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800&h=600&fit=crop", "alt": "Wood Sculptures", "copyright": null, "dimensions": {"width": 800, "height": 600}}], ["item_title", {"__TYPE__": "FieldContent", "value": "Wood Sculptures", "type": "Text"}], ["item_description", {"__TYPE__": "StructuredTextContent", "value": [{"type": "paragraph", "content": {"text": "Integrate wind chests into artistic wood sculptures."}}]}]]}
+    ]
+  }
+]

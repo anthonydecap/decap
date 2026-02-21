@@ -1,0 +1,24 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "slice_type": "smart_valve_bento_grid",
+    "variation": "default",
+    "primary": {
+      "section_title": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [{ "type": "heading1", "content": { "text": "SmartValve Bento" } }]
+      },
+      "section_subtitle": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [{ "type": "paragraph", "content": { "text": "Four items, two per row." } }]
+      },
+      "background_color": { "__TYPE__": "FieldContent", "value": "#0a0a0a", "type": "Color" }
+    },
+    "items": [
+      { "__TYPE__": "GroupItemContent", "value": [["item_title", { "__TYPE__": "FieldContent", "value": "One", "type": "Text" }], ["item_description", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "First cell." } }] }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["item_title", { "__TYPE__": "FieldContent", "value": "Two", "type": "Text" }], ["item_description", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "Second cell." } }] }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["item_title", { "__TYPE__": "FieldContent", "value": "Three", "type": "Text" }], ["item_description", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "Third cell." } }] }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["item_title", { "__TYPE__": "FieldContent", "value": "Four", "type": "Text" }], ["item_description", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "Fourth cell." } }] }]] }
+    ]
+  }
+]
