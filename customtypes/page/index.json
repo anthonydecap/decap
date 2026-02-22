@@ -54,6 +54,9 @@
             "smart_valve_video_hero": {
               "type": "SharedSlice"
             },
+            "smart_valve_image_hero": {
+              "type": "SharedSlice"
+            },
             "smart_valve_video": {
               "type": "SharedSlice"
             },

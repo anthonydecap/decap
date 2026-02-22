@@ -13,12 +13,8 @@ import { Container } from "@/components/Container";
 import { FadeIn } from "@/components/FadeIn";
 import clsx from "clsx";
 
-/** SmartValve gradient — one color per KPI for value text */
 const SMARTVALVE_GRADIENT = ["#3b82f6", "#a855f7", "#ec4899", "#ef4444", "#f97316", "#eab308"];
-
-function getAccentColor(index: number): string {
-  return SMARTVALVE_GRADIENT[Math.min(index % 6, 5)];
-}
+const GRADIENT_TEXT = `linear-gradient(to right, ${SMARTVALVE_GRADIENT.join(", ")})`;
 
 const components: JSXMapSerializer = {
   hyperlink: ({ node, children }) => {
@@ -99,34 +95,54 @@ const SmartValveOpticalMidi: FC<SmartValveOpticalMidiProps> = ({ slice }) => {
           </FadeIn>
         </div>
 
-        {/* KPIs — metrics only, no cards */}
+        {/* KPIs — soft card-like blocks (contained but not boxy) */}
         {stats.length > 0 && (
-          <div className="mt-24 sm:mt-28 lg:mt-32 grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-12">
-            {stats.map((stat: any, index: number) => {
-              const accent = getAccentColor(index);
-              return (
-                <FadeIn key={index}>
-                  <div className="text-left">
-                    {stat.stat_kicker && (
-                      <div className={clsx("text-xs font-medium uppercase tracking-wider mb-1.5", effectiveIsDark ? "text-neutral-500" : "text-neutral-500")}>
-                        {stat.stat_kicker}
-                      </div>
-                    )}
-                    <div
-                      className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tabular-nums"
-                      style={{ color: accent }}
+          <div className="mt-24 sm:mt-28 lg:mt-32 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+            {stats.map((stat: any, index: number) => (
+              <FadeIn key={index}>
+                <div
+                  className={clsx(
+                    "rounded-2xl px-5 py-4 sm:px-6 sm:py-5 text-left",
+                    effectiveIsDark
+                      ? "bg-white/[0.04] ring-1 ring-white/[0.06]"
+                      : "bg-neutral-100/70 ring-1 ring-neutral-200/80"
+                  )}
+                >
+                  <div className="font-display text-3xl sm:text-4xl font-bold tabular-nums leading-tight">
+                    <span
+                      className="bg-clip-text text-transparent"
+                      style={{
+                        backgroundImage: GRADIENT_TEXT,
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent",
+                      }}
                     >
                       {stat.stat_value}
-                    </div>
+                    </span>
                     {stat.stat_unit && (
-                      <div className={clsx("text-sm mt-0.5", effectiveIsDark ? "text-neutral-400" : "text-neutral-600")}>
+                      <span
+                        className={clsx(
+                          "font-normal ml-1.5 text-xl sm:text-2xl",
+                          effectiveIsDark ? "text-neutral-400" : "text-neutral-600"
+                        )}
+                      >
                         {stat.stat_unit}
-                      </div>
+                      </span>
                     )}
                   </div>
-                </FadeIn>
-              );
-            })}
+                  {stat.stat_kicker && (
+                    <div
+                      className={clsx(
+                        "mt-1 text-sm",
+                        effectiveIsDark ? "text-neutral-500" : "text-neutral-500"
+                      )}
+                    >
+                      {stat.stat_kicker}
+                    </div>
+                  )}
+                </div>
+              </FadeIn>
+            ))}
           </div>
         )}
 

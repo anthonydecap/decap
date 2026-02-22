@@ -32,6 +32,7 @@ export const components = {
   hero_image: dynamic(() => import("./HeroImage")),
   smart_valve_landing: dynamic(() => import("./smartValveLanding")),
   smart_valve_video_hero: dynamic(() => import("./smartValveVideoHero")),
+  smart_valve_image_hero: dynamic(() => import("./smartValveImageHero")),
   smart_valve_video: dynamic(() => import("./smartValveVideo")),
 
 
