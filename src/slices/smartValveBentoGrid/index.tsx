@@ -27,8 +27,8 @@ const components: JSXMapSerializer = {
     ) : null,
 };
 
-/** Single cell: image, gradient bar, title, description. */
-function BentoCell({
+/** Image layer + gradient bar; shared by all styles that use an image. */
+function BentoImageLayer({
   item,
   index,
   gradient,
@@ -38,21 +38,170 @@ function BentoCell({
   gradient: string;
 }) {
   const hasImage = item.background_image?.url;
+  const isContain = item.background_image_mode === "contain";
+  const filterKey = (item.background_image_filter as string) || "none";
+  const imageFilter =
+    filterKey === "grayscale" ? "grayscale(100%)" : filterKey === "sepia" ? "sepia(100%)" : "none";
+  const filterStyle = imageFilter !== "none" ? { filter: imageFilter } : undefined;
+
   return (
-    <div className="group relative overflow-hidden rounded-2xl lg:rounded-3xl flex flex-col min-h-0 h-full bg-neutral-900 border border-neutral-800 hover:border-neutral-700 transition-all duration-300">
+    <>
       {hasImage && (
         <div className="absolute inset-0">
-          <PrismicNextImage
-            field={item.background_image}
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-            priority={index < 2}
-            alt=""
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+          {isContain ? (
+            <div
+              className="h-full w-full bg-neutral-800 bg-center bg-no-repeat"
+              style={{
+                backgroundImage: `url(${item.background_image.url})`,
+                backgroundSize: "55%",
+                ...filterStyle,
+              }}
+            />
+          ) : (
+            <PrismicNextImage
+              field={item.background_image}
+              className="h-full w-full object-cover"
+              style={filterStyle}
+              priority={index < 2}
+              alt=""
+            />
+          )}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent pointer-events-none" />
         </div>
       )}
       <div className="absolute top-0 left-0 right-0 h-0.5 z-10" style={{ background: gradient }} />
-      <div className="relative z-10 mt-auto p-5 sm:p-6">
+    </>
+  );
+}
+
+/** Single cell: layout varies by cell_style. */
+function BentoCell({
+  item,
+  index,
+  gradient,
+}: {
+  item: any;
+  index: number;
+  gradient: string;
+}) {
+  const style = (item.cell_style as string) || "default";
+  const hasImage = item.background_image?.url;
+
+  const baseClasses =
+    "group relative overflow-hidden rounded-2xl lg:rounded-3xl flex flex-col min-h-0 h-full bg-neutral-900 border border-neutral-800 hover:border-neutral-700 transition-all duration-300";
+
+  // text_only: no image, gradient tint + large text
+  if (style === "text_only") {
+    return (
+      <div className={baseClasses}>
+        <div
+          className="absolute inset-0 opacity-90"
+          style={{ background: gradient }}
+        />
+        <div className="absolute top-0 left-0 right-0 h-0.5 z-10" style={{ background: gradient }} />
+        <div className="relative z-10 flex flex-col justify-center p-6 sm:p-8 flex-1 transition-opacity duration-300 group-hover:opacity-0">
+          {item.item_title && (
+            <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight mb-3">
+              {item.item_title}
+            </h3>
+          )}
+          {item.item_description && (
+            <div className="text-sm sm:text-base text-white/90 leading-relaxed">
+              <PrismicRichText field={item.item_description} components={components} />
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  // stat: huge number + label
+  if (style === "stat") {
+    return (
+      <div className={baseClasses}>
+        {hasImage && <BentoImageLayer item={item} index={index} gradient={gradient} />}
+        <div className="relative z-10 flex flex-col justify-center items-center p-6 sm:p-8 flex-1 text-center transition-opacity duration-300 group-hover:opacity-0">
+          {item.item_title && (
+            <span
+              className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-white tabular-nums block mb-2"
+              style={{ textShadow: "0 2px 20px rgba(0,0,0,0.5)" }}
+            >
+              {item.item_title}
+            </span>
+          )}
+          {item.item_description && (
+            <div className="text-sm sm:text-base text-white/80 max-w-[12rem]">
+              <PrismicRichText field={item.item_description} components={components} />
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  // quote: description = quote, title = attribution
+  if (style === "quote") {
+    return (
+      <div className={baseClasses}>
+        {hasImage && <BentoImageLayer item={item} index={index} gradient={gradient} />}
+        <div className="relative z-10 flex flex-col justify-center p-6 sm:p-8 flex-1 transition-opacity duration-300 group-hover:opacity-0">
+          {item.item_description && (
+            <blockquote className="text-lg sm:text-xl lg:text-2xl text-white/95 leading-snug italic font-serif mb-4 drop-shadow-md">
+              <PrismicRichText field={item.item_description} components={components} />
+            </blockquote>
+          )}
+          {item.item_title && (
+            <cite className="text-sm text-white/70 not-italic">
+              — {item.item_title}
+            </cite>
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  // large_headline: big title, small description
+  if (style === "large_headline") {
+    return (
+      <div className={baseClasses}>
+        {hasImage && <BentoImageLayer item={item} index={index} gradient={gradient} />}
+        <div className="relative z-10 mt-auto p-5 sm:p-6 lg:p-8 transition-opacity duration-300 group-hover:opacity-0">
+          {item.item_title && (
+            <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight mb-3 drop-shadow-sm">
+              {item.item_title}
+            </h3>
+          )}
+          {item.item_description && (
+            <div className="text-sm text-neutral-200/90 leading-relaxed drop-shadow-sm max-w-md">
+              <PrismicRichText field={item.item_description} components={components} />
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  // minimal: image + large title only (centered or bottom)
+  if (style === "minimal") {
+    return (
+      <div className={baseClasses}>
+        {hasImage && <BentoImageLayer item={item} index={index} gradient={gradient} />}
+        <div className="relative z-10 flex flex-col justify-end flex-1 p-5 sm:p-6 transition-opacity duration-300 group-hover:opacity-0">
+          {item.item_title && (
+            <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white leading-tight drop-shadow-lg">
+              {item.item_title}
+            </h3>
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  // default: classic image + title + description at bottom
+  return (
+    <div className={baseClasses}>
+      {hasImage && <BentoImageLayer item={item} index={index} gradient={gradient} />}
+      <div className="relative z-10 mt-auto p-5 sm:p-6 transition-opacity duration-300 group-hover:opacity-0">
         {item.item_title && (
           <h3 className="text-lg sm:text-xl font-display font-bold text-white mb-2 drop-shadow-sm">
             {item.item_title}
