@@ -27,6 +27,12 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "smart_valve_endorsees": {
+              "type": "SharedSlice"
+            },
+            "smart_valve_quote": {
+              "type": "SharedSlice"
+            },
             "smart_valve_chest_3_d": {
               "type": "SharedSlice"
             },
@@ -90,7 +96,10 @@
             "stylized_image": {
               "type": "SharedSlice"
             },
-            "blog_overview": {
+            "smart_valve_blogs": {
+              "type": "SharedSlice"
+            },
+            "smart_valve_blogs_advanced": {
               "type": "SharedSlice"
             },
             "product": {
@@ -106,12 +115,6 @@
               "type": "SharedSlice"
             },
             "content": {
-              "type": "SharedSlice"
-            },
-            "blog": {
-              "type": "SharedSlice"
-            },
-            "blog_listing": {
               "type": "SharedSlice"
             },
             "bento_grid": {

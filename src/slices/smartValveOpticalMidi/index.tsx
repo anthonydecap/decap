@@ -15,6 +15,19 @@ import clsx from "clsx";
 
 const SMARTVALVE_GRADIENT = ["#3b82f6", "#a855f7", "#ec4899", "#ef4444", "#f97316", "#eab308"];
 const GRADIENT_TEXT = `linear-gradient(to right, ${SMARTVALVE_GRADIENT.join(", ")})`;
+const FULL_GRADIENT = GRADIENT_TEXT;
+
+/** Returns background styles so the full gradient is spread across N cards; this card shows segment for index. */
+function getGradientSegmentStyles(index: number, total: number) {
+  if (total <= 0) return { background: SMARTVALVE_GRADIENT[0] };
+  const widthPercent = 100 / total;
+  const positionPercent = -index * widthPercent;
+  return {
+    background: FULL_GRADIENT,
+    backgroundSize: `${total * 100}% 100%`,
+    backgroundPosition: `${positionPercent}% 0`,
+  };
+}
 
 const components: JSXMapSerializer = {
   hyperlink: ({ node, children }) => {
@@ -95,51 +108,54 @@ const SmartValveOpticalMidi: FC<SmartValveOpticalMidiProps> = ({ slice }) => {
           </FadeIn>
         </div>
 
-        {/* KPIs — soft card-like blocks (contained but not boxy) */}
+        {/* KPIs — gradient spread across cards: one continuous gradient, each card shows its segment */}
         {stats.length > 0 && (
           <div className="mt-24 sm:mt-28 lg:mt-32 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
             {stats.map((stat: any, index: number) => (
               <FadeIn key={index}>
                 <div
                   className={clsx(
-                    "rounded-2xl px-5 py-4 sm:px-6 sm:py-5 text-left",
+                    "rounded-2xl border overflow-hidden",
                     effectiveIsDark
-                      ? "bg-white/[0.04] ring-1 ring-white/[0.06]"
-                      : "bg-neutral-100/70 ring-1 ring-neutral-200/80"
+                      ? "border-neutral-800 bg-neutral-900"
+                      : "border-neutral-200 bg-neutral-50"
                   )}
                 >
-                  <div className="font-display text-3xl sm:text-4xl font-bold tabular-nums leading-tight">
-                    <span
-                      className="bg-clip-text text-transparent"
-                      style={{
-                        backgroundImage: GRADIENT_TEXT,
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent",
-                      }}
-                    >
-                      {stat.stat_value}
-                    </span>
-                    {stat.stat_unit && (
-                      <span
+                  <div
+                    className="h-1 w-full"
+                    style={getGradientSegmentStyles(index, stats.length)}
+                  />
+                  <div className="p-5 sm:p-6 text-left">
+                    {stat.stat_kicker && (
+                      <div
                         className={clsx(
-                          "font-normal ml-1.5 text-xl sm:text-2xl",
-                          effectiveIsDark ? "text-neutral-400" : "text-neutral-600"
+                          "text-xs font-medium uppercase tracking-wider mb-2",
+                          effectiveIsDark ? "text-neutral-500" : "text-neutral-500"
                         )}
                       >
-                        {stat.stat_unit}
-                      </span>
+                        {stat.stat_kicker}
+                      </div>
                     )}
-                  </div>
-                  {stat.stat_kicker && (
-                    <div
-                      className={clsx(
-                        "mt-1 text-sm",
-                        effectiveIsDark ? "text-neutral-500" : "text-neutral-500"
+                    <div className="font-display text-2xl sm:text-3xl font-bold tabular-nums leading-tight">
+                      <span
+                        className={clsx(
+                          effectiveIsDark ? "text-white" : "text-neutral-900"
+                        )}
+                      >
+                        {stat.stat_value}
+                      </span>
+                      {stat.stat_unit && (
+                        <span
+                          className={clsx(
+                            "font-normal ml-1.5 text-lg",
+                            effectiveIsDark ? "text-neutral-400" : "text-neutral-600"
+                          )}
+                        >
+                          {stat.stat_unit}
+                        </span>
                       )}
-                    >
-                      {stat.stat_kicker}
                     </div>
-                  )}
+                  </div>
                 </div>
               </FadeIn>
             ))}

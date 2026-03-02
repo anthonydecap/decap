@@ -88,7 +88,7 @@ function BentoCell({
   const hasImage = item.background_image?.url;
 
   const baseClasses =
-    "group relative overflow-hidden rounded-2xl lg:rounded-3xl flex flex-col min-h-0 h-full bg-neutral-900 border border-neutral-800 hover:border-neutral-700 transition-all duration-300";
+    "group relative overflow-hidden rounded-2xl lg:rounded-3xl flex flex-col min-h-0 h-full bg-neutral-900 transition-all duration-300";
 
   // text_only: no image, gradient tint + large text
   if (style === "text_only") {
@@ -115,7 +115,7 @@ function BentoCell({
     );
   }
 
-  // stat: huge number + label
+  // stat: big number + label (original)
   if (style === "stat") {
     return (
       <div className={baseClasses}>
@@ -123,7 +123,7 @@ function BentoCell({
         <div className="relative z-10 flex flex-col justify-center items-center p-6 sm:p-8 flex-1 text-center transition-opacity duration-300 group-hover:opacity-0">
           {item.item_title && (
             <span
-              className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-white tabular-nums block mb-2"
+              className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white tabular-nums block mb-2"
               style={{ textShadow: "0 2px 20px rgba(0,0,0,0.5)" }}
             >
               {item.item_title}
@@ -133,6 +133,71 @@ function BentoCell({
             <div className="text-sm sm:text-base text-white/80 max-w-[12rem]">
               <PrismicRichText field={item.item_description} components={components} />
             </div>
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  // stat_compact: smaller number, same layout
+  if (style === "stat_compact") {
+    return (
+      <div className={baseClasses}>
+        {hasImage && <BentoImageLayer item={item} index={index} gradient={gradient} />}
+        <div className="relative z-10 flex flex-col justify-center items-center p-5 sm:p-6 flex-1 text-center transition-opacity duration-300 group-hover:opacity-0">
+          {item.item_title && (
+            <span className="font-display text-2xl sm:text-3xl font-bold text-white tabular-nums block mb-1.5 drop-shadow-md">
+              {item.item_title}
+            </span>
+          )}
+          {item.item_description && (
+            <div className="text-xs sm:text-sm text-white/75 max-w-[10rem]">
+              <PrismicRichText field={item.item_description} components={components} />
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  // stat_minimal: number + label one line, bottom of cell
+  if (style === "stat_minimal") {
+    return (
+      <div className={baseClasses}>
+        {hasImage && <BentoImageLayer item={item} index={index} gradient={gradient} />}
+        <div className="relative z-10 mt-auto p-5 sm:p-6 transition-opacity duration-300 group-hover:opacity-0">
+          <div className="flex items-baseline gap-2 flex-wrap">
+            {item.item_title && (
+              <span className="font-display text-2xl sm:text-3xl font-semibold text-white tabular-nums drop-shadow-md">
+                {item.item_title}
+              </span>
+            )}
+            {item.item_description && (
+              <span className="text-sm text-white/80">
+                <PrismicRichText field={item.item_description} components={components} />
+              </span>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // stat_soft: medium number, more emphasis on label, softer weight
+  if (style === "stat_soft") {
+    return (
+      <div className={baseClasses}>
+        {hasImage && <BentoImageLayer item={item} index={index} gradient={gradient} />}
+        <div className="relative z-10 flex flex-col justify-center items-center p-6 sm:p-7 flex-1 text-center transition-opacity duration-300 group-hover:opacity-0">
+          {item.item_description && (
+            <div className="text-xs uppercase tracking-wider text-white/70 mb-2">
+              <PrismicRichText field={item.item_description} components={components} />
+            </div>
+          )}
+          {item.item_title && (
+            <span className="font-display text-3xl sm:text-4xl font-semibold text-white tabular-nums drop-shadow-md">
+              {item.item_title}
+            </span>
           )}
         </div>
       </div>

@@ -32,9 +32,6 @@
             "testimonial": {
               "type": "SharedSlice"
             },
-            "blog": {
-              "type": "SharedSlice"
-            },
             "content": {
               "type": "SharedSlice"
             },

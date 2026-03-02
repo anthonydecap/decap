@@ -41,11 +41,16 @@ const SmartValveImageHero: FC<SmartValveImageHeroProps> = ({ slice }) => {
     button_link,
     background_image,
     background_image_mode,
+    background_image_filter,
     overlay_opacity,
     background_color,
   } = slice.primary;
   const bgColor = background_color || "#0a0a0a";
   const objectFit = background_image_mode === "contain" ? "object-contain" : "object-cover";
+  const filterKey = (background_image_filter as string) || "none";
+  const imageFilter =
+    filterKey === "grayscale" ? "grayscale(100%)" : filterKey === "sepia" ? "sepia(100%)" : "none";
+  const filterStyle = imageFilter !== "none" ? { filter: imageFilter } : undefined;
 
   const overlayClasses = {
     light: "bg-black/40",
@@ -66,6 +71,7 @@ const SmartValveImageHero: FC<SmartValveImageHeroProps> = ({ slice }) => {
         <PrismicImage
           field={background_image}
           className={clsx("absolute inset-0 w-full h-full", objectFit)}
+          style={filterStyle}
           alt=""
         />
       )}

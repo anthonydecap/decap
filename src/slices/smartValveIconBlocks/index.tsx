@@ -59,7 +59,7 @@ const SmartValveIconBlocks: FC<SmartValveIconBlocksProps> = ({ slice }) => {
   return (
     <div className="py-12 sm:py-16 lg:py-24 text-white" style={{ backgroundColor: bgColor }}>
       <Container>
-        {section_title && (
+        {section_title && section_title.length > 0 && (
           <div className="text-center mb-12 lg:mb-16">
             <FadeIn>
               <div className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold leading-tight">

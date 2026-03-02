@@ -70,10 +70,11 @@ type ContentRelationshipFieldWithData<
 }[Exclude<TCustomType[number], string>["id"]];
 
 type BlogDocumentDataSlicesSlice =
-  | ContentSlice
-  | FeatureSlice
-  | TestimonialSlice
-  | ContactSectionSlice;
+  | BlogRichTextSlice
+  | BlogImageSlice
+  | BlogQuoteSlice
+  | BlogCtaSlice
+  | BlogRelatedPostsSlice;
 
 /**
  * Item in *Blog → Tags*
@@ -109,7 +110,7 @@ interface BlogDocumentData {
    * Excerpt field in *Blog*
    *
    * - **Field Type**: Rich Text
-   * - **Placeholder**: Brief description of the blog post
+   * - **Placeholder**: Brief description
    * - **API ID Path**: blog.excerpt
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
@@ -117,7 +118,18 @@ interface BlogDocumentData {
   excerpt: prismic.RichTextField;
 
   /**
-   * Featured Image field in *Blog*
+   * Card Image field in *Blog*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: Image for cards/listings
+   * - **API ID Path**: blog.card_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  card_image: prismic.ImageField<never>;
+
+  /**
+   * Featured Image (post header) field in *Blog*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -128,15 +140,26 @@ interface BlogDocumentData {
   featured_image: prismic.ImageField<"thumbnail">;
 
   /**
-   * Content field in *Blog*
+   * Published Date field in *Blog*
    *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Write your blog post content here...
-   * - **API ID Path**: blog.content
+   * - **Field Type**: Date
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog.published_date
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   * - **Documentation**: https://prismic.io/docs/fields/date
    */
-  content: prismic.RichTextField;
+  published_date: prismic.DateField;
+
+  /**
+   * Type field in *Blog*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Blog type
+   * - **API ID Path**: blog.type
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  type: prismic.SelectField<"smartvalve" | "general">;
 
   /**
    * Slice Zone field in *Blog*
@@ -162,7 +185,7 @@ interface BlogDocumentData {
    * Author Role field in *Blog*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: Senior Developer
+   * - **Placeholder**: Writer
    * - **API ID Path**: blog.author_role
    * - **Tab**: Author
    * - **Documentation**: https://prismic.io/docs/fields/text
@@ -179,17 +202,6 @@ interface BlogDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/image
    */
   author_image: prismic.ImageField<never> /**
-   * Published Date field in *Blog*
-   *
-   * - **Field Type**: Date
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blog.published_date
-   * - **Tab**: Meta
-   * - **Documentation**: https://prismic.io/docs/fields/date
-   */;
-  published_date: prismic.DateField;
-
-  /**
    * Tags field in *Blog*
    *
    * - **Field Type**: Group
@@ -197,7 +209,7 @@ interface BlogDocumentData {
    * - **API ID Path**: blog.tags[]
    * - **Tab**: Meta
    * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
-   */
+   */;
   tags: prismic.GroupField<Simplify<BlogDocumentDataTagsItem>>;
 
   /**
@@ -255,7 +267,7 @@ interface BlogDocumentData {
 export type BlogDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<BlogDocumentData>, "blog", Lang>;
 
-type BlogOverviewDocumentDataSlicesSlice = BlogListingSlice | ContentSlice;
+type BlogOverviewDocumentDataSlicesSlice = BlogGridSlice;
 
 /**
  * Content for Blog Overview documents
@@ -419,17 +431,22 @@ export type CheckoutPageDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | SmartValveEndorseesSlice
+  | SmartValveQuoteSlice
   | SmartValveChest3DSlice
-  | StorySlice
-  | OpticalMidiSlice
-  | ValveTechDescriptionSlice
-  | PossibilitiesSlice
+  | SmartValveChestSlice
+  | SmartValveBentoGridSlice
+  | SmartValveIconBlocksSlice
+  | SmartValveStorySlice
+  | SmartValveOpticalMidiSlice
+  | SmartValveTechDescriptionSlice
   | FeatureBlocksSlice
-  | VideoHeroSlice
+  | SmartValveVideoHeroSlice
+  | SmartValveImageHeroSlice
+  | SmartValveVideoSlice
   | ModalBlocksSlice
   | SmartValvePipeAnimationSlice
-  | ValveHeroSlice
-  | SmartProcessorSlice
+  | SmartValveTransportSlice
   | AccessoriesSlice
   | TechnicalSpecificationsSlice
   | TrumpetVideoSlice
@@ -437,21 +454,23 @@ type PageDocumentDataSlicesSlice =
   | HeroImageSlice
   | EnhancedBentoGridSlice
   | StylizedImageSlice
-  | BlogOverviewSlice
+  | SmartValveBlogsSlice
+  | SmartValveBlogsAdvancedSlice
   | ProductSlice
   | ArtistsSlice
   | FaqSlice
   | FeatureSlice
   | ContentSlice
-  | BlogSlice
-  | BlogListingSlice
   | BentoGridSlice
   | SectionIntroSlice
   | TestimonialSlice
   | ContactSectionSlice
   | HeroSlice
   | CheckoutSlice
-  | SuccessSlice;
+  | SuccessSlice
+  | SmartValvePossibilitiesSlice
+  | SmartValveProcessorSlice
+  | SmartValveLandingSlice;
 
 /**
  * Content for Page documents
@@ -529,7 +548,6 @@ type ProductDocumentDataSlicesSlice =
   | FeatureSlice
   | ContactSectionSlice
   | TestimonialSlice
-  | BlogSlice
   | ContentSlice
   | FaqSlice
   | BentoGridSlice
@@ -987,6 +1005,16 @@ export interface AccessoriesSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
   main_product_id: prismic.KeyTextField;
+
+  /**
+   * Background Color field in *Accessories → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: accessories.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
 }
 
 /**
@@ -1097,6 +1125,16 @@ export interface ArtistsSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   description: prismic.RichTextField;
+
+  /**
+   * Background Color field in *Artists → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: artists.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
 }
 
 /**
@@ -1197,6 +1235,16 @@ export interface BentoGridSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   description: prismic.RichTextField;
+
+  /**
+   * Background Color field in *BentoGrid → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: bento_grid.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
 }
 
 /**
@@ -1311,48 +1359,48 @@ export type BentoGridSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *Blog → Default → Primary*
+ * Primary content in *BlogCta → Default → Primary*
  */
-export interface BlogSliceDefaultPrimary {
+export interface BlogCtaSliceDefaultPrimary {
   /**
-   * Section Title field in *Blog → Default → Primary*
+   * Heading field in *BlogCta → Default → Primary*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: Latest Articles
-   * - **API ID Path**: blog.default.primary.title
+   * - **Placeholder**: Get started
+   * - **API ID Path**: blog_cta.default.primary.heading
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
-  title: prismic.KeyTextField;
+  heading: prismic.KeyTextField;
 
   /**
-   * Eyebrow field in *Blog → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Blog
-   * - **API ID Path**: blog.default.primary.eyebrow
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  eyebrow: prismic.KeyTextField;
-
-  /**
-   * Description field in *Blog → Default → Primary*
+   * Text field in *BlogCta → Default → Primary*
    *
    * - **Field Type**: Rich Text
-   * - **Placeholder**: Stay updated with the latest news and insights from the audio world...
-   * - **API ID Path**: blog.default.primary.description
+   * - **Placeholder**: Optional description
+   * - **API ID Path**: blog_cta.default.primary.text
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
-  description: prismic.RichTextField;
+  text: prismic.RichTextField;
 
   /**
-   * View All Link field in *Blog → Default → Primary*
+   * Button Text field in *BlogCta → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Learn more
+   * - **API ID Path**: blog_cta.default.primary.button_text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  button_text: prismic.KeyTextField;
+
+  /**
+   * Button Link field in *BlogCta → Default → Primary*
    *
    * - **Field Type**: Link
-   * - **Placeholder**: Link to blog page
-   * - **API ID Path**: blog.default.primary.view_all_link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_cta.default.primary.button_link
    * - **Documentation**: https://prismic.io/docs/fields/link
    */
-  view_all_link: prismic.LinkField<
+  button_link: prismic.LinkField<
     string,
     string,
     unknown,
@@ -1362,253 +1410,308 @@ export interface BlogSliceDefaultPrimary {
 }
 
 /**
- * Primary content in *Blog → Items*
+ * Default variation for BlogCta Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Call to action
+ * - **Documentation**: https://prismic.io/docs/slices
  */
-export interface BlogSliceDefaultItem {
+export type BlogCtaSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<BlogCtaSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *BlogCta*
+ */
+type BlogCtaSliceVariation = BlogCtaSliceDefault;
+
+/**
+ * BlogCta Shared Slice
+ *
+ * - **API ID**: `blog_cta`
+ * - **Description**: Call to action block for blog posts
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type BlogCtaSlice = prismic.SharedSlice<
+  "blog_cta",
+  BlogCtaSliceVariation
+>;
+
+/**
+ * Primary content in *BlogGrid → Default → Primary*
+ */
+export interface BlogGridSliceDefaultPrimary {
   /**
-   * Post Title field in *Blog → Items*
+   * Section Title field in *BlogGrid → Default → Primary*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: The Future of Professional Audio
-   * - **API ID Path**: blog.items[].post_title
+   * - **Placeholder**: All posts
+   * - **API ID Path**: blog_grid.default.primary.section_title
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
-  post_title: prismic.KeyTextField;
+  section_title: prismic.KeyTextField;
 
   /**
-   * Post Excerpt field in *Blog → Items*
+   * Background Color field in *BlogGrid → Default → Primary*
    *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Explore the latest trends and innovations in professional audio technology...
-   * - **API ID Path**: blog.items[].post_excerpt
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: blog_grid.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
    */
-  post_excerpt: prismic.RichTextField;
+  background_color: prismic.ColorField;
+}
 
+/**
+ * Default variation for BlogGrid Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Grid of all posts
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type BlogGridSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<BlogGridSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *BlogGrid*
+ */
+type BlogGridSliceVariation = BlogGridSliceDefault;
+
+/**
+ * BlogGrid Shared Slice
+ *
+ * - **API ID**: `blog_grid`
+ * - **Description**: Grid of all blog posts for blog overview page
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type BlogGridSlice = prismic.SharedSlice<
+  "blog_grid",
+  BlogGridSliceVariation
+>;
+
+/**
+ * Primary content in *BlogImage → Default → Primary*
+ */
+export interface BlogImageSliceDefaultPrimary {
   /**
-   * Post Image field in *Blog → Items*
+   * Image field in *BlogImage → Default → Primary*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: blog.items[].post_image
+   * - **API ID Path**: blog_image.default.primary.image
    * - **Documentation**: https://prismic.io/docs/fields/image
    */
-  post_image: prismic.ImageField<"thumbnail">;
+  image: prismic.ImageField<never>;
 
   /**
-   * Post Date field in *Blog → Items*
-   *
-   * - **Field Type**: Date
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blog.items[].post_date
-   * - **Documentation**: https://prismic.io/docs/fields/date
-   */
-  post_date: prismic.DateField;
-
-  /**
-   * Category field in *Blog → Items*
+   * Caption field in *BlogImage → Default → Primary*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: Technology
-   * - **API ID Path**: blog.items[].post_category
+   * - **Placeholder**: Optional caption
+   * - **API ID Path**: blog_image.default.primary.caption
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
-  post_category: prismic.KeyTextField;
+  caption: prismic.KeyTextField;
 
   /**
-   * Post Link field in *Blog → Items*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: Link to full article
-   * - **API ID Path**: blog.items[].post_link
-   * - **Documentation**: https://prismic.io/docs/fields/link
-   */
-  post_link: prismic.LinkField<
-    string,
-    string,
-    unknown,
-    prismic.FieldState,
-    never
-  >;
-
-  /**
-   * Featured Post field in *Blog → Items*
+   * Full width field in *BlogImage → Default → Primary*
    *
    * - **Field Type**: Boolean
    * - **Placeholder**: *None*
-   * - **Default Value**: false
-   * - **API ID Path**: blog.items[].featured
+   * - **API ID Path**: blog_image.default.primary.full_width
    * - **Documentation**: https://prismic.io/docs/fields/boolean
    */
-  featured: prismic.BooleanField;
+  full_width: prismic.BooleanField;
 }
 
 /**
- * Default variation for Blog Slice
+ * Default variation for BlogImage Slice
  *
  * - **API ID**: `default`
- * - **Description**: Default Blog Section
+ * - **Description**: Image block
  * - **Documentation**: https://prismic.io/docs/slices
  */
-export type BlogSliceDefault = prismic.SharedSliceVariation<
+export type BlogImageSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Simplify<BlogSliceDefaultPrimary>,
-  Simplify<BlogSliceDefaultItem>
+  Simplify<BlogImageSliceDefaultPrimary>,
+  never
 >;
 
 /**
- * Slice variation for *Blog*
+ * Slice variation for *BlogImage*
  */
-type BlogSliceVariation = BlogSliceDefault;
+type BlogImageSliceVariation = BlogImageSliceDefault;
 
 /**
- * Blog Shared Slice
+ * BlogImage Shared Slice
  *
- * - **API ID**: `blog`
- * - **Description**: Blog section for showcasing articles and posts
+ * - **API ID**: `blog_image`
+ * - **Description**: Full-width or constrained image for blog posts
  * - **Documentation**: https://prismic.io/docs/slices
  */
-export type BlogSlice = prismic.SharedSlice<"blog", BlogSliceVariation>;
+export type BlogImageSlice = prismic.SharedSlice<
+  "blog_image",
+  BlogImageSliceVariation
+>;
 
 /**
- * Primary content in *BlogListing → Default → Primary*
+ * Primary content in *BlogQuote → Default → Primary*
  */
-export interface BlogListingSliceDefaultPrimary {
+export interface BlogQuoteSliceDefaultPrimary {
   /**
-   * Eyebrow field in *BlogListing → Default → Primary*
+   * Quote field in *BlogQuote → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Quote text...
+   * - **API ID Path**: blog_quote.default.primary.quote
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  quote: prismic.RichTextField;
+
+  /**
+   * Attribution field in *BlogQuote → Default → Primary*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: Blog
-   * - **API ID Path**: blog_listing.default.primary.eyebrow
+   * - **Placeholder**: — Author
+   * - **API ID Path**: blog_quote.default.primary.attribution
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
-  eyebrow: prismic.KeyTextField;
+  attribution: prismic.KeyTextField;
+}
 
+/**
+ * Default variation for BlogQuote Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Pull quote
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type BlogQuoteSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<BlogQuoteSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *BlogQuote*
+ */
+type BlogQuoteSliceVariation = BlogQuoteSliceDefault;
+
+/**
+ * BlogQuote Shared Slice
+ *
+ * - **API ID**: `blog_quote`
+ * - **Description**: Pull quote for blog posts
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type BlogQuoteSlice = prismic.SharedSlice<
+  "blog_quote",
+  BlogQuoteSliceVariation
+>;
+
+/**
+ * Primary content in *BlogRelatedPosts → Default → Primary*
+ */
+export interface BlogRelatedPostsSliceDefaultPrimary {
   /**
-   * Title field in *BlogListing → Default → Primary*
+   * Section Title field in *BlogRelatedPosts → Default → Primary*
    *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: The latest articles and news
-   * - **API ID Path**: blog_listing.default.primary.title
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   * - **Field Type**: Text
+   * - **Placeholder**: Related Posts
+   * - **API ID Path**: blog_related_posts.default.primary.section_title
+   * - **Documentation**: https://prismic.io/docs/fields/text
    */
-  title: prismic.RichTextField;
+  section_title: prismic.KeyTextField;
 
   /**
-   * Description field in *BlogListing → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Stay up-to-date with the latest industry news...
-   * - **API ID Path**: blog_listing.default.primary.description
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  description: prismic.RichTextField;
-
-  /**
-   * Posts per page field in *BlogListing → Default → Primary*
+   * Max posts to show field in *BlogRelatedPosts → Default → Primary*
    *
    * - **Field Type**: Number
-   * - **Placeholder**: 6
-   * - **API ID Path**: blog_listing.default.primary.posts_per_page
+   * - **Placeholder**: 3
+   * - **API ID Path**: blog_related_posts.default.primary.max_posts
    * - **Documentation**: https://prismic.io/docs/fields/number
    */
-  posts_per_page: prismic.NumberField;
-
-  /**
-   * Show featured posts field in *BlogListing → Default → Primary*
-   *
-   * - **Field Type**: Boolean
-   * - **Placeholder**: *None*
-   * - **Default Value**: true
-   * - **API ID Path**: blog_listing.default.primary.show_featured
-   * - **Documentation**: https://prismic.io/docs/fields/boolean
-   */
-  show_featured: prismic.BooleanField;
+  max_posts: prismic.NumberField;
 }
 
 /**
- * Default variation for BlogListing Slice
+ * Default variation for BlogRelatedPosts Slice
  *
  * - **API ID**: `default`
- * - **Description**: Default blog listing layout
+ * - **Description**: Related posts block
  * - **Documentation**: https://prismic.io/docs/slices
  */
-export type BlogListingSliceDefault = prismic.SharedSliceVariation<
+export type BlogRelatedPostsSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Simplify<BlogListingSliceDefaultPrimary>,
+  Simplify<BlogRelatedPostsSliceDefaultPrimary>,
   never
 >;
 
 /**
- * Slice variation for *BlogListing*
+ * Slice variation for *BlogRelatedPosts*
  */
-type BlogListingSliceVariation = BlogListingSliceDefault;
+type BlogRelatedPostsSliceVariation = BlogRelatedPostsSliceDefault;
 
 /**
- * BlogListing Shared Slice
+ * BlogRelatedPosts Shared Slice
  *
- * - **API ID**: `blog_listing`
- * - **Description**: A slice for displaying a list of blog posts
+ * - **API ID**: `blog_related_posts`
+ * - **Description**: Related posts grid for blog post pages
  * - **Documentation**: https://prismic.io/docs/slices
  */
-export type BlogListingSlice = prismic.SharedSlice<
-  "blog_listing",
-  BlogListingSliceVariation
+export type BlogRelatedPostsSlice = prismic.SharedSlice<
+  "blog_related_posts",
+  BlogRelatedPostsSliceVariation
 >;
 
 /**
- * Primary content in *BlogOverview → Default → Primary*
+ * Primary content in *BlogRichText → Default → Primary*
  */
-export interface BlogOverviewSliceDefaultPrimary {
+export interface BlogRichTextSliceDefaultPrimary {
   /**
-   * Section Title field in *BlogOverview → Default → Primary*
+   * Content field in *BlogRichText → Default → Primary*
    *
    * - **Field Type**: Rich Text
-   * - **Placeholder**: Section heading
-   * - **API ID Path**: blog_overview.default.primary.section_title
+   * - **Placeholder**: Write content...
+   * - **API ID Path**: blog_rich_text.default.primary.content
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
-  section_title: prismic.RichTextField;
-
-  /**
-   * Section Description field in *BlogOverview → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Section description
-   * - **API ID Path**: blog_overview.default.primary.section_description
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  section_description: prismic.RichTextField;
+  content: prismic.RichTextField;
 }
 
 /**
- * Default variation for BlogOverview Slice
+ * Default variation for BlogRichText Slice
  *
  * - **API ID**: `default`
- * - **Description**: Default blog overview layout
+ * - **Description**: Rich text block
  * - **Documentation**: https://prismic.io/docs/slices
  */
-export type BlogOverviewSliceDefault = prismic.SharedSliceVariation<
+export type BlogRichTextSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Simplify<BlogOverviewSliceDefaultPrimary>,
+  Simplify<BlogRichTextSliceDefaultPrimary>,
   never
 >;
 
 /**
- * Slice variation for *BlogOverview*
+ * Slice variation for *BlogRichText*
  */
-type BlogOverviewSliceVariation = BlogOverviewSliceDefault;
+type BlogRichTextSliceVariation = BlogRichTextSliceDefault;
 
 /**
- * BlogOverview Shared Slice
+ * BlogRichText Shared Slice
  *
- * - **API ID**: `blog_overview`
- * - **Description**: A slice for flexible content on the blog overview page.
+ * - **API ID**: `blog_rich_text`
+ * - **Description**: Rich text block for blog posts
  * - **Documentation**: https://prismic.io/docs/slices
  */
-export type BlogOverviewSlice = prismic.SharedSlice<
-  "blog_overview",
-  BlogOverviewSliceVariation
+export type BlogRichTextSlice = prismic.SharedSlice<
+  "blog_rich_text",
+  BlogRichTextSliceVariation
 >;
 
 /**
@@ -1704,6 +1807,16 @@ export interface CheckoutSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
   security_text: prismic.KeyTextField;
+
+  /**
+   * Background Color field in *Checkout → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: checkout.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
 }
 
 /**
@@ -1824,6 +1937,16 @@ export interface ContactSectionSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
   phone: prismic.KeyTextField;
+
+  /**
+   * Background Color field in *ContactSection → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: contact_section.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
 }
 
 /**
@@ -1913,12 +2036,12 @@ export interface ContentSliceDefaultPrimary {
   /**
    * Background Color field in *Content → Default → Primary*
    *
-   * - **Field Type**: Select
-   * - **Placeholder**: Select background
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
    * - **API ID Path**: content.default.primary.background_color
-   * - **Documentation**: https://prismic.io/docs/fields/select
+   * - **Documentation**: https://prismic.io/docs/fields/color
    */
-  background_color: prismic.SelectField<"white" | "gray" | "dark">;
+  background_color: prismic.ColorField;
 
   /**
    * Call to Action field in *Content → Default → Primary*
@@ -2020,6 +2143,16 @@ export interface EnhancedBentoGridSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/boolean
    */
   invert: prismic.BooleanField;
+
+  /**
+   * Background Color field in *EnhancedBentoGrid → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: enhanced_bento_grid.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
 }
 
 /**
@@ -2273,6 +2406,16 @@ export interface FaqSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   description: prismic.RichTextField;
+
+  /**
+   * Background Color field in *FAQ → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: faq.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
 }
 
 /**
@@ -2371,6 +2514,16 @@ export interface FeatureSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/boolean
    */
   invert: prismic.BooleanField;
+
+  /**
+   * Background Color field in *Feature → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: feature.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
 }
 
 /**
@@ -2498,6 +2651,16 @@ export interface FeatureBlocksSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/image
    */
   background_image: prismic.ImageField<"thumbnail">;
+
+  /**
+   * Background Color field in *FeatureBlocks → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: feature_blocks.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
 }
 
 /**
@@ -2599,6 +2762,16 @@ export interface FoundationSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/boolean
    */
   show_animation: prismic.BooleanField;
+
+  /**
+   * Background Color field in *Foundation → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: foundation.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
 }
 
 /**
@@ -2708,13 +2881,12 @@ export interface GradientBentoGridSliceDefaultPrimary {
   /**
    * Background Color field in *GradientBentoGrid → Default → Primary*
    *
-   * - **Field Type**: Select
-   * - **Placeholder**: Select background color
-   * - **Default Value**: dark
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
    * - **API ID Path**: gradient_bento_grid.default.primary.background_color
-   * - **Documentation**: https://prismic.io/docs/fields/select
+   * - **Documentation**: https://prismic.io/docs/fields/color
    */
-  background_color: prismic.SelectField<"white" | "light" | "dark", "filled">;
+  background_color: prismic.ColorField;
 }
 
 /**
@@ -2864,6 +3036,16 @@ export interface HeroSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/boolean
    */
   centered: prismic.BooleanField;
+
+  /**
+   * Background Color field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: hero.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
 }
 
 /**
@@ -3081,6 +3263,16 @@ export interface HeroImageSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/number
    */
   product_weight: prismic.NumberField;
+
+  /**
+   * Background Color field in *HeroImage → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: hero_image.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
 }
 
 /**
@@ -3222,6 +3414,16 @@ export interface MidiSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   subscript: prismic.RichTextField;
+
+  /**
+   * Background Color field in *Midi → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: midi.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
 }
 
 /**
@@ -3328,6 +3530,16 @@ export interface ModalBlocksSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   description: prismic.RichTextField;
+
+  /**
+   * Background Color field in *ModalBlocks → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: modal_blocks.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
 }
 
 /**
@@ -3446,299 +3658,6 @@ export type ModalBlocksSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *Optical MIDI → Default → Primary*
- */
-export interface OpticalMidiSliceDefaultPrimary {
-  /**
-   * Left Eyebrow Badge field in *Optical MIDI → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: SmARTvalve
-   * - **API ID Path**: optical_midi.default.primary.eyebrow_left
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  eyebrow_left: prismic.KeyTextField;
-
-  /**
-   * Right Eyebrow Badge field in *Optical MIDI → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Optical MIDI
-   * - **API ID Path**: optical_midi.default.primary.eyebrow_right
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  eyebrow_right: prismic.KeyTextField;
-
-  /**
-   * Main Headline field in *Optical MIDI → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: High-speed Optical MIDI. Precision you can hear.
-   * - **API ID Path**: optical_midi.default.primary.headline
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  headline: prismic.KeyTextField;
-
-  /**
-   * Subheadline field in *Optical MIDI → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: A minimal connector. Massive bandwidth. Designed for modern, per-note control.
-   * - **API ID Path**: optical_midi.default.primary.subheadline
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  subheadline: prismic.KeyTextField;
-
-  /**
-   * Product Image field in *Optical MIDI → Default → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: optical_midi.default.primary.product_image
-   * - **Documentation**: https://prismic.io/docs/fields/image
-   */
-  product_image: prismic.ImageField<never>;
-
-  /**
-   * Footnote field in *Optical MIDI → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Explanation text below stats...
-   * - **API ID Path**: optical_midi.default.primary.footnote
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  footnote: prismic.RichTextField;
-
-  /**
-   * Invert Colors field in *Optical MIDI → Default → Primary*
-   *
-   * - **Field Type**: Boolean
-   * - **Placeholder**: *None*
-   * - **Default Value**: false
-   * - **API ID Path**: optical_midi.default.primary.invert
-   * - **Documentation**: https://prismic.io/docs/fields/boolean
-   */
-  invert: prismic.BooleanField;
-}
-
-/**
- * Primary content in *Optical MIDI → Items*
- */
-export interface OpticalMidiSliceDefaultItem {
-  /**
-   * Content Type field in *Optical MIDI → Items*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: Select content type
-   * - **API ID Path**: optical_midi.items[].content_type
-   * - **Documentation**: https://prismic.io/docs/fields/select
-   */
-  content_type: prismic.SelectField<"feature" | "bullet" | "stat">;
-
-  /**
-   * Feature Title field in *Optical MIDI → Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: MIDI Compatibility
-   * - **API ID Path**: optical_midi.items[].feature_title
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  feature_title: prismic.KeyTextField;
-
-  /**
-   * Feature Description field in *Optical MIDI → Items*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Uses MIDI 1.0 as extensive as possible...
-   * - **API ID Path**: optical_midi.items[].feature_description
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  feature_description: prismic.RichTextField;
-
-  /**
-   * Bullet Point field in *Optical MIDI → Items*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Bullet point text...
-   * - **API ID Path**: optical_midi.items[].bullet_text
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  bullet_text: prismic.RichTextField;
-
-  /**
-   * Stat Kicker field in *Optical MIDI → Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Link speed
-   * - **API ID Path**: optical_midi.items[].stat_kicker
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  stat_kicker: prismic.KeyTextField;
-
-  /**
-   * Stat Value field in *Optical MIDI → Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: 300,000
-   * - **API ID Path**: optical_midi.items[].stat_value
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  stat_value: prismic.KeyTextField;
-
-  /**
-   * Stat Unit field in *Optical MIDI → Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: bytes/sec
-   * - **API ID Path**: optical_midi.items[].stat_unit
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  stat_unit: prismic.KeyTextField;
-}
-
-/**
- * Default variation for Optical MIDI Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default Optical MIDI Section
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type OpticalMidiSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<OpticalMidiSliceDefaultPrimary>,
-  Simplify<OpticalMidiSliceDefaultItem>
->;
-
-/**
- * Slice variation for *Optical MIDI*
- */
-type OpticalMidiSliceVariation = OpticalMidiSliceDefault;
-
-/**
- * Optical MIDI Shared Slice
- *
- * - **API ID**: `optical_midi`
- * - **Description**: Apple-style product section for Optical MIDI cable with two-column layout, features, stats, and product image
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type OpticalMidiSlice = prismic.SharedSlice<
-  "optical_midi",
-  OpticalMidiSliceVariation
->;
-
-/**
- * Primary content in *Possibilities → Default → Primary*
- */
-export interface PossibilitiesSliceDefaultPrimary {
-  /**
-   * Section Title field in *Possibilities → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Main section title
-   * - **API ID Path**: possibilities.default.primary.section_title
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  section_title: prismic.RichTextField;
-
-  /**
-   * Section Subtitle field in *Possibilities → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Section subtitle or description
-   * - **API ID Path**: possibilities.default.primary.section_subtitle
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  section_subtitle: prismic.RichTextField;
-
-  /**
-   * Background Color field in *Possibilities → Default → Primary*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: Select background color
-   * - **API ID Path**: possibilities.default.primary.background_color
-   * - **Documentation**: https://prismic.io/docs/fields/select
-   */
-  background_color: prismic.SelectField<"white" | "light" | "dark">;
-}
-
-/**
- * Primary content in *Possibilities → Items*
- */
-export interface PossibilitiesSliceDefaultItem {
-  /**
-   * Possibility Title field in *Possibilities → Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Big, creative title
-   * - **API ID Path**: possibilities.items[].possibility_title
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  possibility_title: prismic.KeyTextField;
-
-  /**
-   * Possibility Description field in *Possibilities → Items*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Description of this possibility
-   * - **API ID Path**: possibilities.items[].possibility_description
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  possibility_description: prismic.RichTextField;
-
-  /**
-   * Accent Color field in *Possibilities → Items*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: Select accent color
-   * - **API ID Path**: possibilities.items[].accent_color
-   * - **Documentation**: https://prismic.io/docs/fields/select
-   */
-  accent_color: prismic.SelectField<
-    "blue" | "green" | "purple" | "orange" | "red" | "yellow"
-  >;
-
-  /**
-   * Icon field in *Possibilities → Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Emoji or symbol
-   * - **API ID Path**: possibilities.items[].icon
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  icon: prismic.KeyTextField;
-}
-
-/**
- * Default variation for Possibilities Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default Possibilities
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type PossibilitiesSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<PossibilitiesSliceDefaultPrimary>,
-  Simplify<PossibilitiesSliceDefaultItem>
->;
-
-/**
- * Slice variation for *Possibilities*
- */
-type PossibilitiesSliceVariation = PossibilitiesSliceDefault;
-
-/**
- * Possibilities Shared Slice
- *
- * - **API ID**: `possibilities`
- * - **Description**: Creative blocks showcasing different possibilities with big titles and descriptions
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type PossibilitiesSlice = prismic.SharedSlice<
-  "possibilities",
-  PossibilitiesSliceVariation
->;
-
-/**
  * Primary content in *Product → Default → Primary*
  */
 export interface ProductSliceDefaultPrimary {
@@ -3812,6 +3731,16 @@ export interface ProductSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/number
    */
   product_weight: prismic.NumberField;
+
+  /**
+   * Background Color field in *Product → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: product.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
 }
 
 /**
@@ -3899,6 +3828,16 @@ export interface SectionIntroSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/boolean
    */
   invert: prismic.BooleanField;
+
+  /**
+   * Background Color field in *SectionIntro → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: section_intro.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
 }
 
 /**
@@ -3932,117 +3871,354 @@ export type SectionIntroSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *SmartProcessor → Default → Primary*
+ * Primary content in *SmartValveBentoGrid → Default → Primary*
  */
-export interface SmartProcessorSliceDefaultPrimary {
+export interface SmartValveBentoGridSliceDefaultPrimary {
   /**
-   * Title field in *SmartProcessor → Default → Primary*
+   * Section Title field in *SmartValveBentoGrid → Default → Primary*
    *
    * - **Field Type**: Rich Text
-   * - **Placeholder**: Powered by SmartProcessor
-   * - **API ID Path**: smart_processor.default.primary.title
+   * - **Placeholder**: Main section title
+   * - **API ID Path**: smart_valve_bento_grid.default.primary.section_title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  section_title: prismic.RichTextField;
+
+  /**
+   * Section Subtitle field in *SmartValveBentoGrid → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Section subtitle or description
+   * - **API ID Path**: smart_valve_bento_grid.default.primary.section_subtitle
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  section_subtitle: prismic.RichTextField;
+
+  /**
+   * Background Color field in *SmartValveBentoGrid → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: smart_valve_bento_grid.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
+}
+
+/**
+ * Primary content in *SmartValveBentoGrid → Items*
+ */
+export interface SmartValveBentoGridSliceDefaultItem {
+  /**
+   * Item Title field in *SmartValveBentoGrid → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Item title
+   * - **API ID Path**: smart_valve_bento_grid.items[].item_title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  item_title: prismic.KeyTextField;
+
+  /**
+   * Item Description field in *SmartValveBentoGrid → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Item description
+   * - **API ID Path**: smart_valve_bento_grid.items[].item_description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  item_description: prismic.RichTextField;
+
+  /**
+   * Background Image field in *SmartValveBentoGrid → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: smart_valve_bento_grid.items[].background_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  background_image: prismic.ImageField<never>;
+
+  /**
+   * Image Fit field in *SmartValveBentoGrid → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Cover or contain
+   * - **API ID Path**: smart_valve_bento_grid.items[].background_image_mode
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  background_image_mode: prismic.SelectField<"cover" | "contain">;
+
+  /**
+   * Image Filter field in *SmartValveBentoGrid → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Optional filter
+   * - **API ID Path**: smart_valve_bento_grid.items[].background_image_filter
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  background_image_filter: prismic.SelectField<"none" | "grayscale" | "sepia">;
+
+  /**
+   * Cell Style field in *SmartValveBentoGrid → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: How this box looks
+   * - **API ID Path**: smart_valve_bento_grid.items[].cell_style
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  cell_style: prismic.SelectField<
+    | "default"
+    | "large_headline"
+    | "quote"
+    | "stat"
+    | "stat_compact"
+    | "stat_minimal"
+    | "stat_soft"
+    | "minimal"
+    | "text_only"
+  >;
+}
+
+/**
+ * Default variation for SmartValveBentoGrid Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default SmartValveBentoGrid
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SmartValveBentoGridSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SmartValveBentoGridSliceDefaultPrimary>,
+  Simplify<SmartValveBentoGridSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *SmartValveBentoGrid*
+ */
+type SmartValveBentoGridSliceVariation = SmartValveBentoGridSliceDefault;
+
+/**
+ * SmartValveBentoGrid Shared Slice
+ *
+ * - **API ID**: `smart_valve_bento_grid`
+ * - **Description**: Bento grid with background images, titles, and text - SmartValve styled
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SmartValveBentoGridSlice = prismic.SharedSlice<
+  "smart_valve_bento_grid",
+  SmartValveBentoGridSliceVariation
+>;
+
+/**
+ * Primary content in *SmartValveBlogs → Default → Primary*
+ */
+export interface SmartValveBlogsSliceDefaultPrimary {
+  /**
+   * Section Title field in *SmartValveBlogs → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Latest from SmartValve
+   * - **API ID Path**: smart_valve_blogs.default.primary.section_title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  section_title: prismic.KeyTextField;
+
+  /**
+   * Background Color field in *SmartValveBlogs → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: smart_valve_blogs.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
+}
+
+/**
+ * Default variation for SmartValveBlogs Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Carousel of SmartValve blogs
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SmartValveBlogsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SmartValveBlogsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *SmartValveBlogs*
+ */
+type SmartValveBlogsSliceVariation = SmartValveBlogsSliceDefault;
+
+/**
+ * SmartValveBlogs Shared Slice
+ *
+ * - **API ID**: `smart_valve_blogs`
+ * - **Description**: Carousel of blog cards (type: smartvalve)
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SmartValveBlogsSlice = prismic.SharedSlice<
+  "smart_valve_blogs",
+  SmartValveBlogsSliceVariation
+>;
+
+/**
+ * Primary content in *SmartValveBlogsAdvanced → Default → Primary*
+ */
+export interface SmartValveBlogsAdvancedSliceDefaultPrimary {
+  /**
+   * Section Title field in *SmartValveBlogsAdvanced → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Latest from SmartValve
+   * - **API ID Path**: smart_valve_blogs_advanced.default.primary.section_title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  section_title: prismic.KeyTextField;
+
+  /**
+   * Background Color field in *SmartValveBlogsAdvanced → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: smart_valve_blogs_advanced.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
+}
+
+/**
+ * Default variation for SmartValveBlogsAdvanced Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Advanced carousel with 3D effect
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SmartValveBlogsAdvancedSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SmartValveBlogsAdvancedSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *SmartValveBlogsAdvanced*
+ */
+type SmartValveBlogsAdvancedSliceVariation =
+  SmartValveBlogsAdvancedSliceDefault;
+
+/**
+ * SmartValveBlogsAdvanced Shared Slice
+ *
+ * - **API ID**: `smart_valve_blogs_advanced`
+ * - **Description**: Carousel of blog cards with curve/depth effect (type: smartvalve)
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SmartValveBlogsAdvancedSlice = prismic.SharedSlice<
+  "smart_valve_blogs_advanced",
+  SmartValveBlogsAdvancedSliceVariation
+>;
+
+/**
+ * Primary content in *SmartValveChest → Default → Primary*
+ */
+export interface SmartValveChestSliceDefaultPrimary {
+  /**
+   * Title field in *SmartValveChest → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: The SmartValve Wind Chest
+   * - **API ID Path**: smart_valve_chest.default.primary.title
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   title: prismic.RichTextField;
 
   /**
-   * Subtitle field in *SmartProcessor → Default → Primary*
+   * Description field in *SmartValveChest → Default → Primary*
    *
    * - **Field Type**: Rich Text
-   * - **Placeholder**: Everything you need for intelligent organ control.
-   * - **API ID Path**: smart_processor.default.primary.subtitle
+   * - **Placeholder**: In its most basic form, SmartValve has a wind chest where pipes are placed...
+   * - **API ID Path**: smart_valve_chest.default.primary.description
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
-  subtitle: prismic.RichTextField;
+  description: prismic.RichTextField;
 
   /**
-   * Show Animation field in *SmartProcessor → Default → Primary*
+   * Background Color field in *SmartValveChest → Default → Primary*
    *
-   * - **Field Type**: Boolean
-   * - **Placeholder**: *None*
-   * - **Default Value**: true
-   * - **API ID Path**: smart_processor.default.primary.show_animation
-   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: smart_valve_chest.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
    */
-  show_animation: prismic.BooleanField;
+  background_color: prismic.ColorField;
 }
 
 /**
- * Primary content in *SmartProcessor → Items*
+ * Primary content in *SmartValveChest → Items*
  */
-export interface SmartProcessorSliceDefaultItem {
+export interface SmartValveChestSliceDefaultItem {
   /**
-   * Card Title field in *SmartProcessor → Items*
+   * Image field in *SmartValveChest → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: smart_valve_chest.items[].image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Title field in *SmartValveChest → Items*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: Card title
-   * - **API ID Path**: smart_processor.items[].card_title
+   * - **Placeholder**: Title on the image
+   * - **API ID Path**: smart_valve_chest.items[].item_title
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
-  card_title: prismic.KeyTextField;
+  item_title: prismic.KeyTextField;
 
   /**
-   * Card Description field in *SmartProcessor → Items*
+   * Description field in *SmartValveChest → Items*
    *
    * - **Field Type**: Rich Text
-   * - **Placeholder**: Card description
-   * - **API ID Path**: smart_processor.items[].card_description
+   * - **Placeholder**: Description under the image
+   * - **API ID Path**: smart_valve_chest.items[].item_description
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
-  card_description: prismic.RichTextField;
-
-  /**
-   * Card Icon field in *SmartProcessor → Items*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: Select an icon
-   * - **Default Value**: organ_stops
-   * - **API ID Path**: smart_processor.items[].card_icon
-   * - **Documentation**: https://prismic.io/docs/fields/select
-   */
-  card_icon: prismic.SelectField<"organ_stops" | "update" | "id", "filled">;
-
-  /**
-   * Accent Color field in *SmartProcessor → Items*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: Select accent color
-   * - **API ID Path**: smart_processor.items[].accent_color
-   * - **Documentation**: https://prismic.io/docs/fields/select
-   */
-  accent_color: prismic.SelectField<
-    "blue" | "green" | "purple" | "orange" | "red" | "yellow"
-  >;
+  item_description: prismic.RichTextField;
 }
 
 /**
- * Default variation for SmartProcessor Slice
+ * Default variation for SmartValveChest Slice
  *
  * - **API ID**: `default`
- * - **Description**: Default SmartProcessor section with animated lines and CPU
+ * - **Description**: Default SmartValveChest
  * - **Documentation**: https://prismic.io/docs/slices
  */
-export type SmartProcessorSliceDefault = prismic.SharedSliceVariation<
+export type SmartValveChestSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Simplify<SmartProcessorSliceDefaultPrimary>,
-  Simplify<SmartProcessorSliceDefaultItem>
+  Simplify<SmartValveChestSliceDefaultPrimary>,
+  Simplify<SmartValveChestSliceDefaultItem>
 >;
 
 /**
- * Slice variation for *SmartProcessor*
+ * Slice variation for *SmartValveChest*
  */
-type SmartProcessorSliceVariation = SmartProcessorSliceDefault;
+type SmartValveChestSliceVariation = SmartValveChestSliceDefault;
 
 /**
- * SmartProcessor Shared Slice
+ * SmartValveChest Shared Slice
  *
- * - **API ID**: `smart_processor`
- * - **Description**: SmartProcessor section with animated CPU visualization and feature cards
+ * - **API ID**: `smart_valve_chest`
+ * - **Description**: Cinema view with three images showcasing SmartValve wind chest installations
  * - **Documentation**: https://prismic.io/docs/slices
  */
-export type SmartProcessorSlice = prismic.SharedSlice<
-  "smart_processor",
-  SmartProcessorSliceVariation
+export type SmartValveChestSlice = prismic.SharedSlice<
+  "smart_valve_chest",
+  SmartValveChestSliceVariation
 >;
 
 /**
@@ -4070,21 +4246,10 @@ export interface SmartValveChest3DSliceDefaultPrimary {
   description: prismic.RichTextField;
 
   /**
-   * Background Type field in *SmartValveChest3D → Default → Primary*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: Select background type
-   * - **Default Value**: color
-   * - **API ID Path**: smart_valve_chest_3_d.default.primary.background_type
-   * - **Documentation**: https://prismic.io/docs/fields/select
-   */
-  background_type: prismic.SelectField<"color" | "image", "filled">;
-
-  /**
    * Background Color field in *SmartValveChest3D → Default → Primary*
    *
    * - **Field Type**: Color
-   * - **Placeholder**: Select background color
+   * - **Placeholder**: Section background (optional)
    * - **API ID Path**: smart_valve_chest_3_d.default.primary.background_color
    * - **Documentation**: https://prismic.io/docs/fields/color
    */
@@ -4094,11 +4259,21 @@ export interface SmartValveChest3DSliceDefaultPrimary {
    * Background Image field in *SmartValveChest3D → Default → Primary*
    *
    * - **Field Type**: Image
-   * - **Placeholder**: Upload background image
+   * - **Placeholder**: Optional section background image
    * - **API ID Path**: smart_valve_chest_3_d.default.primary.background_image
    * - **Documentation**: https://prismic.io/docs/fields/image
    */
   background_image: prismic.ImageField<never>;
+
+  /**
+   * Fallback Image field in *SmartValveChest3D → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: Shown when WebGL is unavailable (optional)
+   * - **API ID Path**: smart_valve_chest_3_d.default.primary.fallback_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  fallback_image: prismic.ImageField<never>;
 
   /**
    * Camera Position X field in *SmartValveChest3D → Default → Primary*
@@ -4124,21 +4299,11 @@ export interface SmartValveChest3DSliceDefaultPrimary {
    * Camera Position Z field in *SmartValveChest3D → Default → Primary*
    *
    * - **Field Type**: Number
-   * - **Placeholder**: 5
+   * - **Placeholder**: 26
    * - **API ID Path**: smart_valve_chest_3_d.default.primary.camera_position_z
    * - **Documentation**: https://prismic.io/docs/fields/number
    */
   camera_position_z: prismic.NumberField;
-
-  /**
-   * Camera Zoom field in *SmartValveChest3D → Default → Primary*
-   *
-   * - **Field Type**: Number
-   * - **Placeholder**: 1
-   * - **API ID Path**: smart_valve_chest_3_d.default.primary.camera_zoom
-   * - **Documentation**: https://prismic.io/docs/fields/number
-   */
-  camera_zoom: prismic.NumberField;
 
   /**
    * Model Rotation X field in *SmartValveChest3D → Default → Primary*
@@ -4174,7 +4339,7 @@ export interface SmartValveChest3DSliceDefaultPrimary {
    * Enable Dragging field in *SmartValveChest3D → Default → Primary*
    *
    * - **Field Type**: Boolean
-   * - **Placeholder**: Allow users to drag the model
+   * - **Placeholder**: Allow pan/drag
    * - **API ID Path**: smart_valve_chest_3_d.default.primary.enable_dragging
    * - **Documentation**: https://prismic.io/docs/fields/boolean
    */
@@ -4184,7 +4349,7 @@ export interface SmartValveChest3DSliceDefaultPrimary {
    * Enable Zoom field in *SmartValveChest3D → Default → Primary*
    *
    * - **Field Type**: Boolean
-   * - **Placeholder**: Allow users to zoom the model
+   * - **Placeholder**: Allow zoom
    * - **API ID Path**: smart_valve_chest_3_d.default.primary.enable_zoom
    * - **Documentation**: https://prismic.io/docs/fields/boolean
    */
@@ -4194,18 +4359,28 @@ export interface SmartValveChest3DSliceDefaultPrimary {
    * Enable Rotation field in *SmartValveChest3D → Default → Primary*
    *
    * - **Field Type**: Boolean
-   * - **Placeholder**: Allow users to rotate the model
+   * - **Placeholder**: Allow rotate
    * - **API ID Path**: smart_valve_chest_3_d.default.primary.enable_rotation
    * - **Documentation**: https://prismic.io/docs/fields/boolean
    */
   enable_rotation: prismic.BooleanField;
+
+  /**
+   * Show control inputs field in *SmartValveChest3D → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: Show Camera & Model number inputs (for finding defaults)
+   * - **API ID Path**: smart_valve_chest_3_d.default.primary.show_controls
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  show_controls: prismic.BooleanField;
 }
 
 /**
  * Default variation for SmartValveChest3D Slice
  *
  * - **API ID**: `default`
- * - **Description**: Default SmartValveChest3D
+ * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slices
  */
 export type SmartValveChest3DSliceDefault = prismic.SharedSliceVariation<
@@ -4223,12 +4398,538 @@ type SmartValveChest3DSliceVariation = SmartValveChest3DSliceDefault;
  * SmartValveChest3D Shared Slice
  *
  * - **API ID**: `smart_valve_chest_3_d`
- * - **Description**: Smart valve chest 3D model viewer with interactive controls
+ * - **Description**: Smart valve chest 3D model viewer
  * - **Documentation**: https://prismic.io/docs/slices
  */
 export type SmartValveChest3DSlice = prismic.SharedSlice<
   "smart_valve_chest_3_d",
   SmartValveChest3DSliceVariation
+>;
+
+/**
+ * Primary content in *SmartValveEndorsees → Default → Primary*
+ */
+export interface SmartValveEndorseesSliceDefaultPrimary {
+  /**
+   * Section Title field in *SmartValveEndorsees → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: e.g. Trusted by
+   * - **API ID Path**: smart_valve_endorsees.default.primary.section_title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  section_title: prismic.RichTextField;
+
+  /**
+   * Section Subtitle field in *SmartValveEndorsees → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Optional subtitle
+   * - **API ID Path**: smart_valve_endorsees.default.primary.section_subtitle
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  section_subtitle: prismic.RichTextField;
+
+  /**
+   * Background Color field in *SmartValveEndorsees → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: smart_valve_endorsees.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
+}
+
+/**
+ * Primary content in *SmartValveEndorsees → Items*
+ */
+export interface SmartValveEndorseesSliceDefaultItem {
+  /**
+   * Logo field in *SmartValveEndorsees → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: smart_valve_endorsees.items[].logo
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  logo: prismic.ImageField<never>;
+
+  /**
+   * Company Name field in *SmartValveEndorsees → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: For accessibility / alt text
+   * - **API ID Path**: smart_valve_endorsees.items[].company_name
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  company_name: prismic.KeyTextField;
+
+  /**
+   * Link field in *SmartValveEndorsees → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: smart_valve_endorsees.items[].link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Default variation for SmartValveEndorsees Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SmartValveEndorseesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SmartValveEndorseesSliceDefaultPrimary>,
+  Simplify<SmartValveEndorseesSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *SmartValveEndorsees*
+ */
+type SmartValveEndorseesSliceVariation = SmartValveEndorseesSliceDefault;
+
+/**
+ * SmartValveEndorsees Shared Slice
+ *
+ * - **API ID**: `smart_valve_endorsees`
+ * - **Description**: Logos of companies or brands who endorse us — SmartValve styled
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SmartValveEndorseesSlice = prismic.SharedSlice<
+  "smart_valve_endorsees",
+  SmartValveEndorseesSliceVariation
+>;
+
+/**
+ * Primary content in *SmartValveIconBlocks → Default → Primary*
+ */
+export interface SmartValveIconBlocksSliceDefaultPrimary {
+  /**
+   * Section Title field in *SmartValveIconBlocks → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Optional title
+   * - **API ID Path**: smart_valve_icon_blocks.default.primary.section_title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  section_title: prismic.RichTextField;
+
+  /**
+   * Background Color field in *SmartValveIconBlocks → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: smart_valve_icon_blocks.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
+}
+
+/**
+ * Primary content in *SmartValveIconBlocks → Items*
+ */
+export interface SmartValveIconBlocksSliceDefaultItem {
+  /**
+   * Icon field in *SmartValveIconBlocks → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: midi_2
+   * - **API ID Path**: smart_valve_icon_blocks.items[].icon
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  icon: prismic.SelectField<
+    "midi_2" | "adsr" | "polyphonic_aftertouch" | "midi_cc",
+    "filled"
+  >;
+
+  /**
+   * Description field in *SmartValveIconBlocks → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Block description
+   * - **API ID Path**: smart_valve_icon_blocks.items[].description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Default variation for SmartValveIconBlocks Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SmartValveIconBlocksSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SmartValveIconBlocksSliceDefaultPrimary>,
+  Simplify<SmartValveIconBlocksSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *SmartValveIconBlocks*
+ */
+type SmartValveIconBlocksSliceVariation = SmartValveIconBlocksSliceDefault;
+
+/**
+ * SmartValveIconBlocks Shared Slice
+ *
+ * - **API ID**: `smart_valve_icon_blocks`
+ * - **Description**: Repeatable blocks with icon above and description — e.g. MIDI 2.0, Polyphonic Aftertouch, MIDI CC
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SmartValveIconBlocksSlice = prismic.SharedSlice<
+  "smart_valve_icon_blocks",
+  SmartValveIconBlocksSliceVariation
+>;
+
+/**
+ * Primary content in *SmartValveImageHero → Default → Primary*
+ */
+export interface SmartValveImageHeroSliceDefaultPrimary {
+  /**
+   * Main Title field in *SmartValveImageHero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Your Main Title Here
+   * - **API ID Path**: smart_valve_image_hero.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Subtitle field in *SmartValveImageHero → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Your subtitle or description...
+   * - **API ID Path**: smart_valve_image_hero.default.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  subtitle: prismic.RichTextField;
+
+  /**
+   * Button Text field in *SmartValveImageHero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Get Started
+   * - **API ID Path**: smart_valve_image_hero.default.primary.button_text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  button_text: prismic.KeyTextField;
+
+  /**
+   * Button Link field in *SmartValveImageHero → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Where should the button link to?
+   * - **API ID Path**: smart_valve_image_hero.default.primary.button_link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  button_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Background Image field in *SmartValveImageHero → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: Upload hero background image
+   * - **API ID Path**: smart_valve_image_hero.default.primary.background_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  background_image: prismic.ImageField<never>;
+
+  /**
+   * Background Image Mode field in *SmartValveImageHero → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Cover or contain
+   * - **API ID Path**: smart_valve_image_hero.default.primary.background_image_mode
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  background_image_mode: prismic.SelectField<"cover" | "contain">;
+
+  /**
+   * Image Filter field in *SmartValveImageHero → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Optional filter
+   * - **API ID Path**: smart_valve_image_hero.default.primary.background_image_filter
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  background_image_filter: prismic.SelectField<"none" | "grayscale" | "sepia">;
+
+  /**
+   * Overlay Opacity field in *SmartValveImageHero → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Select overlay darkness
+   * - **API ID Path**: smart_valve_image_hero.default.primary.overlay_opacity
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  overlay_opacity: prismic.SelectField<"light" | "medium" | "dark">;
+
+  /**
+   * Background Color field in *SmartValveImageHero → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: smart_valve_image_hero.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
+}
+
+/**
+ * Default variation for SmartValveImageHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default SmartValveImageHero
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SmartValveImageHeroSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SmartValveImageHeroSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *SmartValveImageHero*
+ */
+type SmartValveImageHeroSliceVariation = SmartValveImageHeroSliceDefault;
+
+/**
+ * SmartValveImageHero Shared Slice
+ *
+ * - **API ID**: `smart_valve_image_hero`
+ * - **Description**: Hero section with image background, title, subtitle, and centered button
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SmartValveImageHeroSlice = prismic.SharedSlice<
+  "smart_valve_image_hero",
+  SmartValveImageHeroSliceVariation
+>;
+
+/**
+ * Primary content in *SmartValveLanding → Default → Primary*
+ */
+export interface SmartValveLandingSliceDefaultPrimary {
+  /**
+   * Hero Title field in *SmartValveLanding → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Premium Valve Product
+   * - **API ID Path**: smart_valve_landing.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Subtitle field in *SmartValveLanding → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Professional Quality
+   * - **API ID Path**: smart_valve_landing.default.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  subtitle: prismic.KeyTextField;
+
+  /**
+   * Button Text field in *SmartValveLanding → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Get Started
+   * - **API ID Path**: smart_valve_landing.default.primary.button_text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  button_text: prismic.KeyTextField;
+
+  /**
+   * Button Link field in *SmartValveLanding → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Where should the button link to?
+   * - **API ID Path**: smart_valve_landing.default.primary.button_link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  button_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Background Color field in *SmartValveLanding → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: smart_valve_landing.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
+}
+
+/**
+ * Default variation for SmartValveLanding Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default SmartValveLanding
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SmartValveLandingSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SmartValveLandingSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *SmartValveLanding*
+ */
+type SmartValveLandingSliceVariation = SmartValveLandingSliceDefault;
+
+/**
+ * SmartValveLanding Shared Slice
+ *
+ * - **API ID**: `smart_valve_landing`
+ * - **Description**: Hero section with title, subtitle, and CTA button - center aligned
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SmartValveLandingSlice = prismic.SharedSlice<
+  "smart_valve_landing",
+  SmartValveLandingSliceVariation
+>;
+
+/**
+ * Primary content in *SmartValveOpticalMidi → Default → Primary*
+ */
+export interface SmartValveOpticalMidiSliceDefaultPrimary {
+  /**
+   * Headline field in *SmartValveOpticalMidi → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: High-speed Optical MIDI. Precision you can hear.
+   * - **API ID Path**: smart_valve_optical_midi.default.primary.headline
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  headline: prismic.KeyTextField;
+
+  /**
+   * Description field in *SmartValveOpticalMidi → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Main description...
+   * - **API ID Path**: smart_valve_optical_midi.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Product Image field in *SmartValveOpticalMidi → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: smart_valve_optical_midi.default.primary.product_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  product_image: prismic.ImageField<never>;
+
+  /**
+   * Footnote field in *SmartValveOpticalMidi → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Optional footnote text...
+   * - **API ID Path**: smart_valve_optical_midi.default.primary.footnote
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  footnote: prismic.RichTextField;
+
+  /**
+   * Background Color field in *SmartValveOpticalMidi → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: smart_valve_optical_midi.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
+}
+
+/**
+ * Primary content in *SmartValveOpticalMidi → Items*
+ */
+export interface SmartValveOpticalMidiSliceDefaultItem {
+  /**
+   * Stat Label field in *SmartValveOpticalMidi → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Link speed
+   * - **API ID Path**: smart_valve_optical_midi.items[].stat_kicker
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  stat_kicker: prismic.KeyTextField;
+
+  /**
+   * Stat Value field in *SmartValveOpticalMidi → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: 300,000
+   * - **API ID Path**: smart_valve_optical_midi.items[].stat_value
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  stat_value: prismic.KeyTextField;
+
+  /**
+   * Stat Unit field in *SmartValveOpticalMidi → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: bytes/sec
+   * - **API ID Path**: smart_valve_optical_midi.items[].stat_unit
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  stat_unit: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for SmartValveOpticalMidi Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default SmartValve Optical MIDI Section
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SmartValveOpticalMidiSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SmartValveOpticalMidiSliceDefaultPrimary>,
+  Simplify<SmartValveOpticalMidiSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *SmartValveOpticalMidi*
+ */
+type SmartValveOpticalMidiSliceVariation = SmartValveOpticalMidiSliceDefault;
+
+/**
+ * SmartValveOpticalMidi Shared Slice
+ *
+ * - **API ID**: `smart_valve_optical_midi`
+ * - **Description**: Product section for Optical MIDI cable with two-column layout, stats, and product image
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SmartValveOpticalMidiSlice = prismic.SharedSlice<
+  "smart_valve_optical_midi",
+  SmartValveOpticalMidiSliceVariation
 >;
 
 /**
@@ -4254,6 +4955,16 @@ export interface SmartValvePipeAnimationSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   subtitle: prismic.RichTextField;
+
+  /**
+   * Background Color field in *SmartValvePipeAnimation → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: smart_valve_pipe_animation.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
 }
 
 /**
@@ -4288,141 +4999,886 @@ export type SmartValvePipeAnimationSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *Story → Default → Primary*
+ * Primary content in *SmartValvePossibilities → Default → Primary*
  */
-export interface StorySliceDefaultPrimary {
+export interface SmartValvePossibilitiesSliceDefaultPrimary {
   /**
-   * Section Title field in *Story → Default → Primary*
+   * Section Title field in *SmartValvePossibilities → Default → Primary*
    *
    * - **Field Type**: Rich Text
-   * - **Placeholder**: How It Works
-   * - **API ID Path**: story.default.primary.section_title
+   * - **Placeholder**: Main section title
+   * - **API ID Path**: smart_valve_possibilities.default.primary.section_title
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   section_title: prismic.RichTextField;
 
   /**
-   * Section Subtitle field in *Story → Default → Primary*
+   * Section Subtitle field in *SmartValvePossibilities → Default → Primary*
    *
    * - **Field Type**: Rich Text
-   * - **Placeholder**: SmartValve doesn't open air — it sculpts it.
-   * - **API ID Path**: story.default.primary.section_subtitle
+   * - **Placeholder**: Section subtitle or description
+   * - **API ID Path**: smart_valve_possibilities.default.primary.section_subtitle
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   section_subtitle: prismic.RichTextField;
 
   /**
-   * Background Color field in *Story → Default → Primary*
+   * Background Color field in *SmartValvePossibilities → Default → Primary*
    *
    * - **Field Type**: Color
    * - **Placeholder**: #0a0a0a
-   * - **API ID Path**: story.default.primary.background_color
+   * - **API ID Path**: smart_valve_possibilities.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
+}
+
+/**
+ * Primary content in *SmartValvePossibilities → Items*
+ */
+export interface SmartValvePossibilitiesSliceDefaultItem {
+  /**
+   * Possibility Title field in *SmartValvePossibilities → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Big, creative title
+   * - **API ID Path**: smart_valve_possibilities.items[].possibility_title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  possibility_title: prismic.KeyTextField;
+
+  /**
+   * Possibility Description field in *SmartValvePossibilities → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Description of this possibility
+   * - **API ID Path**: smart_valve_possibilities.items[].possibility_description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  possibility_description: prismic.RichTextField;
+}
+
+/**
+ * Default variation for SmartValvePossibilities Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default Possibilities
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SmartValvePossibilitiesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SmartValvePossibilitiesSliceDefaultPrimary>,
+  Simplify<SmartValvePossibilitiesSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *SmartValvePossibilities*
+ */
+type SmartValvePossibilitiesSliceVariation =
+  SmartValvePossibilitiesSliceDefault;
+
+/**
+ * SmartValvePossibilities Shared Slice
+ *
+ * - **API ID**: `smart_valve_possibilities`
+ * - **Description**: Creative blocks showcasing different possibilities with big titles and descriptions
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SmartValvePossibilitiesSlice = prismic.SharedSlice<
+  "smart_valve_possibilities",
+  SmartValvePossibilitiesSliceVariation
+>;
+
+/**
+ * Primary content in *SmartValveProcessor → Default → Primary*
+ */
+export interface SmartValveProcessorSliceDefaultPrimary {
+  /**
+   * Title field in *SmartValveProcessor → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Powered by SmartProcessor
+   * - **API ID Path**: smart_valve_processor.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Subtitle field in *SmartValveProcessor → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Everything you need for intelligent organ control.
+   * - **API ID Path**: smart_valve_processor.default.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  subtitle: prismic.RichTextField;
+
+  /**
+   * Show Animation field in *SmartValveProcessor → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: true
+   * - **API ID Path**: smart_valve_processor.default.primary.show_animation
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  show_animation: prismic.BooleanField;
+
+  /**
+   * Background Color field in *SmartValveProcessor → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: smart_valve_processor.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
+}
+
+/**
+ * Primary content in *SmartValveProcessor → Items*
+ */
+export interface SmartValveProcessorSliceDefaultItem {
+  /**
+   * Card Title field in *SmartValveProcessor → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Card title
+   * - **API ID Path**: smart_valve_processor.items[].card_title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  card_title: prismic.KeyTextField;
+
+  /**
+   * Card Description field in *SmartValveProcessor → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Card description
+   * - **API ID Path**: smart_valve_processor.items[].card_description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  card_description: prismic.RichTextField;
+
+  /**
+   * Card Icon field in *SmartValveProcessor → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Select an icon
+   * - **Default Value**: organ_stops
+   * - **API ID Path**: smart_valve_processor.items[].card_icon
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  card_icon: prismic.SelectField<"organ_stops" | "update" | "id", "filled">;
+}
+
+/**
+ * Default variation for SmartValveProcessor Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default SmartProcessor section with animated lines and CPU
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SmartValveProcessorSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SmartValveProcessorSliceDefaultPrimary>,
+  Simplify<SmartValveProcessorSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *SmartValveProcessor*
+ */
+type SmartValveProcessorSliceVariation = SmartValveProcessorSliceDefault;
+
+/**
+ * SmartValveProcessor Shared Slice
+ *
+ * - **API ID**: `smart_valve_processor`
+ * - **Description**: SmartProcessor section with animated CPU visualization and feature cards
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SmartValveProcessorSlice = prismic.SharedSlice<
+  "smart_valve_processor",
+  SmartValveProcessorSliceVariation
+>;
+
+/**
+ * Primary content in *SmartValveQuote → Default → Primary*
+ */
+export interface SmartValveQuoteSliceDefaultPrimary {
+  /**
+   * Section Title field in *SmartValveQuote → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Optional heading above the quote
+   * - **API ID Path**: smart_valve_quote.default.primary.section_title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  section_title: prismic.RichTextField;
+
+  /**
+   * Quote field in *SmartValveQuote → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Testimonial or quote text...
+   * - **API ID Path**: smart_valve_quote.default.primary.quote
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  quote: prismic.RichTextField;
+
+  /**
+   * Attribution field in *SmartValveQuote → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Name, role or company
+   * - **API ID Path**: smart_valve_quote.default.primary.attribution
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  attribution: prismic.KeyTextField;
+
+  /**
+   * Background Color field in *SmartValveQuote → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: smart_valve_quote.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
+}
+
+/**
+ * Default variation for SmartValveQuote Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SmartValveQuoteSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SmartValveQuoteSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *SmartValveQuote*
+ */
+type SmartValveQuoteSliceVariation = SmartValveQuoteSliceDefault;
+
+/**
+ * SmartValveQuote Shared Slice
+ *
+ * - **API ID**: `smart_valve_quote`
+ * - **Description**: Testimonial / quote block — SmartValve styled with gradient accent
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SmartValveQuoteSlice = prismic.SharedSlice<
+  "smart_valve_quote",
+  SmartValveQuoteSliceVariation
+>;
+
+/**
+ * Primary content in *SmartValveStory → Default → Primary*
+ */
+export interface SmartValveStorySliceDefaultPrimary {
+  /**
+   * Section Title field in *SmartValveStory → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: How It Works
+   * - **API ID Path**: smart_valve_story.default.primary.section_title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  section_title: prismic.RichTextField;
+
+  /**
+   * Section Subtitle field in *SmartValveStory → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: SmartValve doesn't open air — it sculpts it.
+   * - **API ID Path**: smart_valve_story.default.primary.section_subtitle
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  section_subtitle: prismic.RichTextField;
+
+  /**
+   * Background Color field in *SmartValveStory → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: smart_valve_story.default.primary.background_color
    * - **Documentation**: https://prismic.io/docs/fields/color
    */
   background_color: prismic.ColorField;
 
   /**
-   * Background Image field in *Story → Default → Primary*
+   * Background Image field in *SmartValveStory → Default → Primary*
    *
    * - **Field Type**: Image
    * - **Placeholder**: Upload background image (parallax effect)
-   * - **API ID Path**: story.default.primary.background_image
+   * - **API ID Path**: smart_valve_story.default.primary.background_image
    * - **Documentation**: https://prismic.io/docs/fields/image
    */
   background_image: prismic.ImageField<never>;
 
   /**
-   * Background Video field in *Story → Default → Primary*
+   * Background Video field in *SmartValveStory → Default → Primary*
    *
    * - **Field Type**: Link to Media
    * - **Placeholder**: Upload background video (parallax effect, loops automatically)
-   * - **API ID Path**: story.default.primary.background_video
+   * - **API ID Path**: smart_valve_story.default.primary.background_video
    * - **Documentation**: https://prismic.io/docs/fields/link-to-media
    */
   background_video: prismic.LinkToMediaField<prismic.FieldState, never>;
 }
 
 /**
- * Primary content in *Story → Items*
+ * Primary content in *SmartValveStory → Items*
  */
-export interface StorySliceDefaultItem {
+export interface SmartValveStorySliceDefaultItem {
   /**
-   * Step Headline field in *Story → Items*
+   * Step Headline field in *SmartValveStory → Items*
    *
    * - **Field Type**: Text
    * - **Placeholder**: MIDI command → target pressure
-   * - **API ID Path**: story.items[].step_headline
+   * - **API ID Path**: smart_valve_story.items[].step_headline
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
   step_headline: prismic.KeyTextField;
 
   /**
-   * Step Subline field in *Story → Items*
+   * Step Subline field in *SmartValveStory → Items*
    *
    * - **Field Type**: Text
    * - **Placeholder**: Every note begins as a pressure curve — attack, decay, sustain, release — not an on/off.
-   * - **API ID Path**: story.items[].step_subline
+   * - **API ID Path**: smart_valve_story.items[].step_subline
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
   step_subline: prismic.KeyTextField;
 
   /**
-   * Step Number field in *Story → Items*
+   * Step Number field in *SmartValveStory → Items*
    *
    * - **Field Type**: Number
    * - **Placeholder**: 1
-   * - **API ID Path**: story.items[].step_number
+   * - **API ID Path**: smart_valve_story.items[].step_number
    * - **Documentation**: https://prismic.io/docs/fields/number
    */
   step_number: prismic.NumberField;
 
   /**
-   * Step Video field in *Story → Items*
+   * Step Video (Mux or other URL) field in *SmartValveStory → Items*
    *
-   * - **Field Type**: Link to Media
-   * - **Placeholder**: Upload video (auto-plays when step is active)
-   * - **API ID Path**: story.items[].step_video
-   * - **Documentation**: https://prismic.io/docs/fields/link-to-media
+   * - **Field Type**: Link
+   * - **Placeholder**: Paste Mux playback URL (e.g. https://stream.mux.com/xxx/high.mp4) or link to video
+   * - **API ID Path**: smart_valve_story.items[].step_video
+   * - **Documentation**: https://prismic.io/docs/fields/link
    */
-  step_video: prismic.LinkToMediaField<prismic.FieldState, never>;
+  step_video: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
 
   /**
-   * Step Image (fallback if no video) field in *Story → Items*
+   * Step Image (fallback if no video) field in *SmartValveStory → Items*
    *
    * - **Field Type**: Image
    * - **Placeholder**: Upload image
-   * - **API ID Path**: story.items[].step_image
+   * - **API ID Path**: smart_valve_story.items[].step_image
    * - **Documentation**: https://prismic.io/docs/fields/image
    */
   step_image: prismic.ImageField<never>;
 }
 
 /**
- * Default variation for Story Slice
+ * Default variation for SmartValveStory Slice
  *
  * - **API ID**: `default`
- * - **Description**: Default Story
+ * - **Description**: Default SmartValveStory
  * - **Documentation**: https://prismic.io/docs/slices
  */
-export type StorySliceDefault = prismic.SharedSliceVariation<
+export type SmartValveStorySliceDefault = prismic.SharedSliceVariation<
   "default",
-  Simplify<StorySliceDefaultPrimary>,
-  Simplify<StorySliceDefaultItem>
+  Simplify<SmartValveStorySliceDefaultPrimary>,
+  Simplify<SmartValveStorySliceDefaultItem>
 >;
 
 /**
- * Slice variation for *Story*
+ * Slice variation for *SmartValveStory*
  */
-type StorySliceVariation = StorySliceDefault;
+type SmartValveStorySliceVariation = SmartValveStorySliceDefault;
 
 /**
- * Story Shared Slice
+ * SmartValveStory Shared Slice
  *
- * - **API ID**: `story`
+ * - **API ID**: `smart_valve_story`
  * - **Description**: Scroll-based storytelling slice that explains 'How It Works' in four immersive steps
  * - **Documentation**: https://prismic.io/docs/slices
  */
-export type StorySlice = prismic.SharedSlice<"story", StorySliceVariation>;
+export type SmartValveStorySlice = prismic.SharedSlice<
+  "smart_valve_story",
+  SmartValveStorySliceVariation
+>;
+
+/**
+ * Primary content in *SmartValveTechDescription → Default → Primary*
+ */
+export interface SmartValveTechDescriptionSliceDefaultPrimary {
+  /**
+   * Title field in *SmartValveTechDescription → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: SmartValve Specifications
+   * - **API ID Path**: smart_valve_tech_description.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *SmartValveTechDescription → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Technical specifications description...
+   * - **API ID Path**: smart_valve_tech_description.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Background Color field in *SmartValveTechDescription → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: smart_valve_tech_description.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
+}
+
+/**
+ * Primary content in *SmartValveTechDescription → Items*
+ */
+export interface SmartValveTechDescriptionSliceDefaultItem {
+  /**
+   * Category field in *SmartValveTechDescription → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Mechanical Properties
+   * - **API ID Path**: smart_valve_tech_description.items[].property_category
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  property_category: prismic.KeyTextField;
+
+  /**
+   * Property Name field in *SmartValveTechDescription → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Weight
+   * - **API ID Path**: smart_valve_tech_description.items[].property_name
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  property_name: prismic.KeyTextField;
+
+  /**
+   * Value field in *SmartValveTechDescription → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: 0.1 kg
+   * - **API ID Path**: smart_valve_tech_description.items[].property_value
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  property_value: prismic.KeyTextField;
+
+  /**
+   * Icon field in *SmartValveTechDescription → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Select icon
+   * - **API ID Path**: smart_valve_tech_description.items[].property_icon
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  property_icon: prismic.SelectField<
+    | "weight"
+    | "dimensions"
+    | "height"
+    | "power"
+    | "voltage"
+    | "current"
+    | "resistance"
+    | "electronics"
+    | "motor"
+    | "none"
+  >;
+
+  /**
+   * Highlight field in *SmartValveTechDescription → Items*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: smart_valve_tech_description.items[].highlight
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  highlight: prismic.BooleanField;
+}
+
+/**
+ * Default variation for SmartValveTechDescription Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default SmartValve Tech Description Section
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SmartValveTechDescriptionSliceDefault =
+  prismic.SharedSliceVariation<
+    "default",
+    Simplify<SmartValveTechDescriptionSliceDefaultPrimary>,
+    Simplify<SmartValveTechDescriptionSliceDefaultItem>
+  >;
+
+/**
+ * Slice variation for *SmartValveTechDescription*
+ */
+type SmartValveTechDescriptionSliceVariation =
+  SmartValveTechDescriptionSliceDefault;
+
+/**
+ * SmartValveTechDescription Shared Slice
+ *
+ * - **API ID**: `smart_valve_tech_description`
+ * - **Description**: SmartValve technical specifications for displaying mechanical and electrical properties
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SmartValveTechDescriptionSlice = prismic.SharedSlice<
+  "smart_valve_tech_description",
+  SmartValveTechDescriptionSliceVariation
+>;
+
+/**
+ * Primary content in *SmartValveTransport → Default → Primary*
+ */
+export interface SmartValveTransportSliceDefaultPrimary {
+  /**
+   * Title field in *SmartValveTransport → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Transport
+   * - **API ID Path**: smart_valve_transport.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Subtitle field in *SmartValveTransport → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Section subtitle.
+   * - **API ID Path**: smart_valve_transport.default.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  subtitle: prismic.RichTextField;
+
+  /**
+   * Section Image field in *SmartValveTransport → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: Main visual (replaces animated diagram)
+   * - **API ID Path**: smart_valve_transport.default.primary.section_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  section_image: prismic.ImageField<never>;
+
+  /**
+   * Background Color field in *SmartValveTransport → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: smart_valve_transport.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
+}
+
+/**
+ * Primary content in *SmartValveTransport → Items*
+ */
+export interface SmartValveTransportSliceDefaultItem {
+  /**
+   * Card Title field in *SmartValveTransport → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Card title
+   * - **API ID Path**: smart_valve_transport.items[].card_title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  card_title: prismic.KeyTextField;
+
+  /**
+   * Card Description field in *SmartValveTransport → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Card description
+   * - **API ID Path**: smart_valve_transport.items[].card_description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  card_description: prismic.RichTextField;
+
+  /**
+   * Card Image field in *SmartValveTransport → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: Card image
+   * - **API ID Path**: smart_valve_transport.items[].card_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  card_image: prismic.ImageField<never>;
+
+  /**
+   * Accent Color field in *SmartValveTransport → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Select accent color
+   * - **API ID Path**: smart_valve_transport.items[].accent_color
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  accent_color: prismic.SelectField<
+    "blue" | "green" | "purple" | "orange" | "red" | "yellow"
+  >;
+}
+
+/**
+ * Default variation for SmartValveTransport Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default SmartValveTransport
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SmartValveTransportSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SmartValveTransportSliceDefaultPrimary>,
+  Simplify<SmartValveTransportSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *SmartValveTransport*
+ */
+type SmartValveTransportSliceVariation = SmartValveTransportSliceDefault;
+
+/**
+ * SmartValveTransport Shared Slice
+ *
+ * - **API ID**: `smart_valve_transport`
+ * - **Description**: Transport section with Prismic-configured image and feature cards (no animations)
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SmartValveTransportSlice = prismic.SharedSlice<
+  "smart_valve_transport",
+  SmartValveTransportSliceVariation
+>;
+
+/**
+ * Primary content in *SmartValveVideo → Default → Primary*
+ */
+export interface SmartValveVideoSliceDefaultPrimary {
+  /**
+   * Title field in *SmartValveVideo → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Video title
+   * - **API ID Path**: smart_valve_video.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Description field in *SmartValveVideo → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Video description...
+   * - **API ID Path**: smart_valve_video.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * YouTube URL or Video ID field in *SmartValveVideo → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: https://www.youtube.com/watch?v=... or video ID
+   * - **API ID Path**: smart_valve_video.default.primary.youtube_url
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  youtube_url: prismic.KeyTextField;
+
+  /**
+   * Custom Thumbnail (optional) field in *SmartValveVideo → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: Override YouTube thumbnail
+   * - **API ID Path**: smart_valve_video.default.primary.thumbnail_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  thumbnail_image: prismic.ImageField<never>;
+
+  /**
+   * Background Color field in *SmartValveVideo → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: smart_valve_video.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
+}
+
+/**
+ * Default variation for SmartValveVideo Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default SmartValveVideo
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SmartValveVideoSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SmartValveVideoSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *SmartValveVideo*
+ */
+type SmartValveVideoSliceVariation = SmartValveVideoSliceDefault;
+
+/**
+ * SmartValveVideo Shared Slice
+ *
+ * - **API ID**: `smart_valve_video`
+ * - **Description**: Highlighted YouTube video with title and description
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SmartValveVideoSlice = prismic.SharedSlice<
+  "smart_valve_video",
+  SmartValveVideoSliceVariation
+>;
+
+/**
+ * Primary content in *SmartValveVideoHero → Default → Primary*
+ */
+export interface SmartValveVideoHeroSliceDefaultPrimary {
+  /**
+   * Main Title field in *SmartValveVideoHero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Your Main Title Here
+   * - **API ID Path**: smart_valve_video_hero.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Subtitle field in *SmartValveVideoHero → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Your subtitle or description...
+   * - **API ID Path**: smart_valve_video_hero.default.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  subtitle: prismic.RichTextField;
+
+  /**
+   * Button Text field in *SmartValveVideoHero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Get Started
+   * - **API ID Path**: smart_valve_video_hero.default.primary.button_text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  button_text: prismic.KeyTextField;
+
+  /**
+   * Button Link field in *SmartValveVideoHero → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Where should the button link to?
+   * - **API ID Path**: smart_valve_video_hero.default.primary.button_link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  button_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Background Video field in *SmartValveVideoHero → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Upload or link to a video file
+   * - **API ID Path**: smart_valve_video_hero.default.primary.background_video
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  background_video: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Overlay Opacity field in *SmartValveVideoHero → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Select overlay darkness
+   * - **API ID Path**: smart_valve_video_hero.default.primary.overlay_opacity
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  overlay_opacity: prismic.SelectField<"light" | "medium" | "dark">;
+
+  /**
+   * Background Color field in *SmartValveVideoHero → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: smart_valve_video_hero.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
+}
+
+/**
+ * Default variation for SmartValveVideoHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default SmartValveVideoHero
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SmartValveVideoHeroSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SmartValveVideoHeroSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *SmartValveVideoHero*
+ */
+type SmartValveVideoHeroSliceVariation = SmartValveVideoHeroSliceDefault;
+
+/**
+ * SmartValveVideoHero Shared Slice
+ *
+ * - **API ID**: `smart_valve_video_hero`
+ * - **Description**: Hero section with looping video background, title, subtitle, and centered button
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SmartValveVideoHeroSlice = prismic.SharedSlice<
+  "smart_valve_video_hero",
+  SmartValveVideoHeroSliceVariation
+>;
 
 /**
  * Primary content in *StylizedImage → Default → Primary*
@@ -4467,6 +5923,16 @@ export interface StylizedImageSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/boolean
    */
   invert: prismic.BooleanField;
+
+  /**
+   * Background Color field in *StylizedImage → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: stylized_image.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
 }
 
 /**
@@ -4627,6 +6093,16 @@ export interface SuccessSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
   view_orders_text: prismic.KeyTextField;
+
+  /**
+   * Background Color field in *Success → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: success.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
 }
 
 /**
@@ -4723,6 +6199,16 @@ export interface TechnicalSpecificationsSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/select
    */
   columns: prismic.SelectField<"1" | "2" | "3">;
+
+  /**
+   * Background Color field in *Technical Specifications → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: technical_specifications.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
 }
 
 /**
@@ -4867,6 +6353,16 @@ export interface TestimonialSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/image
    */
   client_logo: prismic.ImageField<never>;
+
+  /**
+   * Background Color field in *Testimonial → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: testimonial.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
 }
 
 /**
@@ -5224,392 +6720,6 @@ export type TrumpetVideoSlice = prismic.SharedSlice<
   TrumpetVideoSliceVariation
 >;
 
-/**
- * Primary content in *ValveHero → Default → Primary*
- */
-export interface ValveHeroSliceDefaultPrimary {
-  /**
-   * Hero Title field in *ValveHero → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Premium Valve Product
-   * - **API ID Path**: valve_hero.default.primary.title
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  title: prismic.KeyTextField;
-
-  /**
-   * Subtitle field in *ValveHero → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Professional Quality
-   * - **API ID Path**: valve_hero.default.primary.subtitle
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  subtitle: prismic.KeyTextField;
-
-  /**
-   * Buy Button Text field in *ValveHero → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Buy Now
-   * - **API ID Path**: valve_hero.default.primary.buy_button_text
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  buy_button_text: prismic.KeyTextField;
-
-  /**
-   * Stripe Product ID field in *ValveHero → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Enter Stripe product ID to enable purchase functionality
-   * - **API ID Path**: valve_hero.default.primary.stripeid
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  stripeid: prismic.KeyTextField;
-
-  /**
-   * Product Price field in *ValveHero → Default → Primary*
-   *
-   * - **Field Type**: Number
-   * - **Placeholder**: Enter price (e.g., 29.99)
-   * - **API ID Path**: valve_hero.default.primary.product_price
-   * - **Documentation**: https://prismic.io/docs/fields/number
-   */
-  product_price: prismic.NumberField;
-
-  /**
-   * Currency field in *ValveHero → Default → Primary*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: Select currency
-   * - **Default Value**: USD
-   * - **API ID Path**: valve_hero.default.primary.currency
-   * - **Documentation**: https://prismic.io/docs/fields/select
-   */
-  currency: prismic.SelectField<"USD" | "EUR" | "GBP", "filled">;
-
-  /**
-   * Product ID field in *ValveHero → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Enter unique product ID
-   * - **API ID Path**: valve_hero.default.primary.product_id
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  product_id: prismic.KeyTextField;
-
-  /**
-   * Product Weight (kg) field in *ValveHero → Default → Primary*
-   *
-   * - **Field Type**: Number
-   * - **Placeholder**: Enter weight in kilograms (e.g., 0.5)
-   * - **API ID Path**: valve_hero.default.primary.product_weight
-   * - **Documentation**: https://prismic.io/docs/fields/number
-   */
-  product_weight: prismic.NumberField;
-}
-
-/**
- * Default variation for ValveHero Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default ValveHero
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type ValveHeroSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<ValveHeroSliceDefaultPrimary>,
-  never
->;
-
-/**
- * Slice variation for *ValveHero*
- */
-type ValveHeroSliceVariation = ValveHeroSliceDefault;
-
-/**
- * ValveHero Shared Slice
- *
- * - **API ID**: `valve_hero`
- * - **Description**: Simple hero section with title, subtitle, and buy button - center aligned
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type ValveHeroSlice = prismic.SharedSlice<
-  "valve_hero",
-  ValveHeroSliceVariation
->;
-
-/**
- * Primary content in *Valve Tech Description → Default → Primary*
- */
-export interface ValveTechDescriptionSliceDefaultPrimary {
-  /**
-   * Section Title field in *Valve Tech Description → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: SmartValve Specifications
-   * - **API ID Path**: valve_tech_description.default.primary.title
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  title: prismic.KeyTextField;
-
-  /**
-   * Eyebrow field in *Valve Tech Description → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Technical Properties
-   * - **API ID Path**: valve_tech_description.default.primary.eyebrow
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  eyebrow: prismic.KeyTextField;
-
-  /**
-   * Description field in *Valve Tech Description → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Complete technical specifications for the SmartValve system...
-   * - **API ID Path**: valve_tech_description.default.primary.description
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  description: prismic.RichTextField;
-
-  /**
-   * Invert Colors field in *Valve Tech Description → Default → Primary*
-   *
-   * - **Field Type**: Boolean
-   * - **Placeholder**: *None*
-   * - **Default Value**: false
-   * - **API ID Path**: valve_tech_description.default.primary.invert
-   * - **Documentation**: https://prismic.io/docs/fields/boolean
-   */
-  invert: prismic.BooleanField;
-
-  /**
-   * Layout Style field in *Valve Tech Description → Default → Primary*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: Choose layout style
-   * - **API ID Path**: valve_tech_description.default.primary.layout_style
-   * - **Documentation**: https://prismic.io/docs/fields/select
-   */
-  layout_style: prismic.SelectField<"two_column" | "single_column" | "cards">;
-}
-
-/**
- * Primary content in *Valve Tech Description → Items*
- */
-export interface ValveTechDescriptionSliceDefaultItem {
-  /**
-   * Property Category field in *Valve Tech Description → Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Mechanical Properties
-   * - **API ID Path**: valve_tech_description.items[].property_category
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  property_category: prismic.KeyTextField;
-
-  /**
-   * Property Name field in *Valve Tech Description → Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Weight
-   * - **API ID Path**: valve_tech_description.items[].property_name
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  property_name: prismic.KeyTextField;
-
-  /**
-   * Property Value field in *Valve Tech Description → Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: 0.1 kg
-   * - **API ID Path**: valve_tech_description.items[].property_value
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  property_value: prismic.KeyTextField;
-
-  /**
-   * Property Description field in *Valve Tech Description → Items*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Optional additional details about this property...
-   * - **API ID Path**: valve_tech_description.items[].property_description
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  property_description: prismic.RichTextField;
-
-  /**
-   * Property Icon field in *Valve Tech Description → Items*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: Select an icon
-   * - **API ID Path**: valve_tech_description.items[].property_icon
-   * - **Documentation**: https://prismic.io/docs/fields/select
-   */
-  property_icon: prismic.SelectField<
-    | "weight"
-    | "dimensions"
-    | "height"
-    | "power"
-    | "voltage"
-    | "current"
-    | "resistance"
-    | "electronics"
-    | "motor"
-    | "none"
-  >;
-
-  /**
-   * Highlight Property field in *Valve Tech Description → Items*
-   *
-   * - **Field Type**: Boolean
-   * - **Placeholder**: *None*
-   * - **Default Value**: false
-   * - **API ID Path**: valve_tech_description.items[].highlight
-   * - **Documentation**: https://prismic.io/docs/fields/boolean
-   */
-  highlight: prismic.BooleanField;
-}
-
-/**
- * Default variation for Valve Tech Description Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default Valve Tech Description Section
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type ValveTechDescriptionSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<ValveTechDescriptionSliceDefaultPrimary>,
-  Simplify<ValveTechDescriptionSliceDefaultItem>
->;
-
-/**
- * Slice variation for *Valve Tech Description*
- */
-type ValveTechDescriptionSliceVariation = ValveTechDescriptionSliceDefault;
-
-/**
- * Valve Tech Description Shared Slice
- *
- * - **API ID**: `valve_tech_description`
- * - **Description**: SmartValve technical specifications with Apple-style design for displaying mechanical and electrical properties
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type ValveTechDescriptionSlice = prismic.SharedSlice<
-  "valve_tech_description",
-  ValveTechDescriptionSliceVariation
->;
-
-/**
- * Primary content in *VideoHero → Default → Primary*
- */
-export interface VideoHeroSliceDefaultPrimary {
-  /**
-   * Main Title field in *VideoHero → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Your Main Title Here
-   * - **API ID Path**: video_hero.default.primary.title
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  title: prismic.KeyTextField;
-
-  /**
-   * Subtitle field in *VideoHero → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Your subtitle or description...
-   * - **API ID Path**: video_hero.default.primary.subtitle
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  subtitle: prismic.RichTextField;
-
-  /**
-   * Button Text field in *VideoHero → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Get Started
-   * - **API ID Path**: video_hero.default.primary.button_text
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  button_text: prismic.KeyTextField;
-
-  /**
-   * Button Link field in *VideoHero → Default → Primary*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: Where should the button link to?
-   * - **API ID Path**: video_hero.default.primary.button_link
-   * - **Documentation**: https://prismic.io/docs/fields/link
-   */
-  button_link: prismic.LinkField<
-    string,
-    string,
-    unknown,
-    prismic.FieldState,
-    never
-  >;
-
-  /**
-   * Background Video field in *VideoHero → Default → Primary*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: Upload or link to a video file
-   * - **API ID Path**: video_hero.default.primary.background_video
-   * - **Documentation**: https://prismic.io/docs/fields/link
-   */
-  background_video: prismic.LinkField<
-    string,
-    string,
-    unknown,
-    prismic.FieldState,
-    never
-  >;
-
-  /**
-   * Overlay Opacity field in *VideoHero → Default → Primary*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: Select overlay darkness
-   * - **API ID Path**: video_hero.default.primary.overlay_opacity
-   * - **Documentation**: https://prismic.io/docs/fields/select
-   */
-  overlay_opacity: prismic.SelectField<"light" | "medium" | "dark">;
-}
-
-/**
- * Default variation for VideoHero Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default VideoHero
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type VideoHeroSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<VideoHeroSliceDefaultPrimary>,
-  never
->;
-
-/**
- * Slice variation for *VideoHero*
- */
-type VideoHeroSliceVariation = VideoHeroSliceDefault;
-
-/**
- * VideoHero Shared Slice
- *
- * - **API ID**: `video_hero`
- * - **Description**: Hero section with looping video background, title, subtitle, and centered button
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type VideoHeroSlice = prismic.SharedSlice<
-  "video_hero",
-  VideoHeroSliceVariation
->;
-
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -5674,19 +6784,30 @@ declare module "@prismicio/client" {
       BentoGridSliceDefaultItem,
       BentoGridSliceVariation,
       BentoGridSliceDefault,
-      BlogSlice,
-      BlogSliceDefaultPrimary,
-      BlogSliceDefaultItem,
-      BlogSliceVariation,
-      BlogSliceDefault,
-      BlogListingSlice,
-      BlogListingSliceDefaultPrimary,
-      BlogListingSliceVariation,
-      BlogListingSliceDefault,
-      BlogOverviewSlice,
-      BlogOverviewSliceDefaultPrimary,
-      BlogOverviewSliceVariation,
-      BlogOverviewSliceDefault,
+      BlogCtaSlice,
+      BlogCtaSliceDefaultPrimary,
+      BlogCtaSliceVariation,
+      BlogCtaSliceDefault,
+      BlogGridSlice,
+      BlogGridSliceDefaultPrimary,
+      BlogGridSliceVariation,
+      BlogGridSliceDefault,
+      BlogImageSlice,
+      BlogImageSliceDefaultPrimary,
+      BlogImageSliceVariation,
+      BlogImageSliceDefault,
+      BlogQuoteSlice,
+      BlogQuoteSliceDefaultPrimary,
+      BlogQuoteSliceVariation,
+      BlogQuoteSliceDefault,
+      BlogRelatedPostsSlice,
+      BlogRelatedPostsSliceDefaultPrimary,
+      BlogRelatedPostsSliceVariation,
+      BlogRelatedPostsSliceDefault,
+      BlogRichTextSlice,
+      BlogRichTextSliceDefaultPrimary,
+      BlogRichTextSliceVariation,
+      BlogRichTextSliceDefault,
       CheckoutSlice,
       CheckoutSliceDefaultPrimary,
       CheckoutSliceDefaultItem,
@@ -5749,16 +6870,6 @@ declare module "@prismicio/client" {
       ModalBlocksSliceDefaultItem,
       ModalBlocksSliceVariation,
       ModalBlocksSliceDefault,
-      OpticalMidiSlice,
-      OpticalMidiSliceDefaultPrimary,
-      OpticalMidiSliceDefaultItem,
-      OpticalMidiSliceVariation,
-      OpticalMidiSliceDefault,
-      PossibilitiesSlice,
-      PossibilitiesSliceDefaultPrimary,
-      PossibilitiesSliceDefaultItem,
-      PossibilitiesSliceVariation,
-      PossibilitiesSliceDefault,
       ProductSlice,
       ProductSliceDefaultPrimary,
       ProductSliceVariation,
@@ -5767,24 +6878,92 @@ declare module "@prismicio/client" {
       SectionIntroSliceDefaultPrimary,
       SectionIntroSliceVariation,
       SectionIntroSliceDefault,
-      SmartProcessorSlice,
-      SmartProcessorSliceDefaultPrimary,
-      SmartProcessorSliceDefaultItem,
-      SmartProcessorSliceVariation,
-      SmartProcessorSliceDefault,
+      SmartValveBentoGridSlice,
+      SmartValveBentoGridSliceDefaultPrimary,
+      SmartValveBentoGridSliceDefaultItem,
+      SmartValveBentoGridSliceVariation,
+      SmartValveBentoGridSliceDefault,
+      SmartValveBlogsSlice,
+      SmartValveBlogsSliceDefaultPrimary,
+      SmartValveBlogsSliceVariation,
+      SmartValveBlogsSliceDefault,
+      SmartValveBlogsAdvancedSlice,
+      SmartValveBlogsAdvancedSliceDefaultPrimary,
+      SmartValveBlogsAdvancedSliceVariation,
+      SmartValveBlogsAdvancedSliceDefault,
+      SmartValveChestSlice,
+      SmartValveChestSliceDefaultPrimary,
+      SmartValveChestSliceDefaultItem,
+      SmartValveChestSliceVariation,
+      SmartValveChestSliceDefault,
       SmartValveChest3DSlice,
       SmartValveChest3DSliceDefaultPrimary,
       SmartValveChest3DSliceVariation,
       SmartValveChest3DSliceDefault,
+      SmartValveEndorseesSlice,
+      SmartValveEndorseesSliceDefaultPrimary,
+      SmartValveEndorseesSliceDefaultItem,
+      SmartValveEndorseesSliceVariation,
+      SmartValveEndorseesSliceDefault,
+      SmartValveIconBlocksSlice,
+      SmartValveIconBlocksSliceDefaultPrimary,
+      SmartValveIconBlocksSliceDefaultItem,
+      SmartValveIconBlocksSliceVariation,
+      SmartValveIconBlocksSliceDefault,
+      SmartValveImageHeroSlice,
+      SmartValveImageHeroSliceDefaultPrimary,
+      SmartValveImageHeroSliceVariation,
+      SmartValveImageHeroSliceDefault,
+      SmartValveLandingSlice,
+      SmartValveLandingSliceDefaultPrimary,
+      SmartValveLandingSliceVariation,
+      SmartValveLandingSliceDefault,
+      SmartValveOpticalMidiSlice,
+      SmartValveOpticalMidiSliceDefaultPrimary,
+      SmartValveOpticalMidiSliceDefaultItem,
+      SmartValveOpticalMidiSliceVariation,
+      SmartValveOpticalMidiSliceDefault,
       SmartValvePipeAnimationSlice,
       SmartValvePipeAnimationSliceDefaultPrimary,
       SmartValvePipeAnimationSliceVariation,
       SmartValvePipeAnimationSliceDefault,
-      StorySlice,
-      StorySliceDefaultPrimary,
-      StorySliceDefaultItem,
-      StorySliceVariation,
-      StorySliceDefault,
+      SmartValvePossibilitiesSlice,
+      SmartValvePossibilitiesSliceDefaultPrimary,
+      SmartValvePossibilitiesSliceDefaultItem,
+      SmartValvePossibilitiesSliceVariation,
+      SmartValvePossibilitiesSliceDefault,
+      SmartValveProcessorSlice,
+      SmartValveProcessorSliceDefaultPrimary,
+      SmartValveProcessorSliceDefaultItem,
+      SmartValveProcessorSliceVariation,
+      SmartValveProcessorSliceDefault,
+      SmartValveQuoteSlice,
+      SmartValveQuoteSliceDefaultPrimary,
+      SmartValveQuoteSliceVariation,
+      SmartValveQuoteSliceDefault,
+      SmartValveStorySlice,
+      SmartValveStorySliceDefaultPrimary,
+      SmartValveStorySliceDefaultItem,
+      SmartValveStorySliceVariation,
+      SmartValveStorySliceDefault,
+      SmartValveTechDescriptionSlice,
+      SmartValveTechDescriptionSliceDefaultPrimary,
+      SmartValveTechDescriptionSliceDefaultItem,
+      SmartValveTechDescriptionSliceVariation,
+      SmartValveTechDescriptionSliceDefault,
+      SmartValveTransportSlice,
+      SmartValveTransportSliceDefaultPrimary,
+      SmartValveTransportSliceDefaultItem,
+      SmartValveTransportSliceVariation,
+      SmartValveTransportSliceDefault,
+      SmartValveVideoSlice,
+      SmartValveVideoSliceDefaultPrimary,
+      SmartValveVideoSliceVariation,
+      SmartValveVideoSliceDefault,
+      SmartValveVideoHeroSlice,
+      SmartValveVideoHeroSliceDefaultPrimary,
+      SmartValveVideoHeroSliceVariation,
+      SmartValveVideoHeroSliceDefault,
       StylizedImageSlice,
       StylizedImageSliceDefaultPrimary,
       StylizedImageSliceDefaultItem,
@@ -5811,19 +6990,6 @@ declare module "@prismicio/client" {
       TrumpetVideoSliceDefaultSlicePrimary,
       TrumpetVideoSliceVariation,
       TrumpetVideoSliceDefaultSlice,
-      ValveHeroSlice,
-      ValveHeroSliceDefaultPrimary,
-      ValveHeroSliceVariation,
-      ValveHeroSliceDefault,
-      ValveTechDescriptionSlice,
-      ValveTechDescriptionSliceDefaultPrimary,
-      ValveTechDescriptionSliceDefaultItem,
-      ValveTechDescriptionSliceVariation,
-      ValveTechDescriptionSliceDefault,
-      VideoHeroSlice,
-      VideoHeroSliceDefaultPrimary,
-      VideoHeroSliceVariation,
-      VideoHeroSliceDefault,
     };
   }
 }

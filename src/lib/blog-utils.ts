@@ -7,12 +7,13 @@ export interface BlogPost {
   data: {
     title: any;
     excerpt: any;
-    content: any;
+    card_image: any;
     featured_image: any;
     author_name: string;
     author_role: string;
     author_image: any;
     published_date: string;
+    type?: string;
     tags: any[];
     reading_time: number;
     meta_title: string;
@@ -86,6 +87,14 @@ export async function getBlogPostsByTag(tag: string, lang: string = "en-us"): Pr
   return posts.filter((post) => 
     post.data.tags?.some((postTag: any) => postTag.tag === tag)
   );
+}
+
+/**
+ * Get blog posts by type (e.g. "smartvalve", "general")
+ */
+export async function getBlogPostsByType(type: string, lang: string = "en-us"): Promise<BlogPost[]> {
+  const posts = await getBlogPosts(lang);
+  return posts.filter((post: any) => post?.data?.type === type);
 }
 
 /**
