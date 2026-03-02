@@ -87,7 +87,7 @@ const ContentSlice: FC<ContentProps> = ({ slice }) => {
     dark: "text-white",
   };
 
-  const bgColor = background_color || "white";
+  const bgColor = (background_color as string) || "white";
   const isDark = bgColor === "dark";
 
   const containerClasses = clsx(
