@@ -8,15 +8,19 @@ import { PrismicRichText } from "@prismicio/react";
 import { FadeIn } from "@/components/FadeIn";
 import { getBlogPostDate } from "@/lib/blog-utils";
 import type { BlogPost } from "@/lib/blog-utils";
+import {
+  getSliceLocale,
+  type SliceZoneContext,
+} from "@/lib/slice-context";
 
 type BlogRelatedPostsProps = {
   slice: any;
-  context?: { lang?: string; relatedPosts?: BlogPost[] };
+  context?: SliceZoneContext;
 };
 
 const BlogRelatedPosts: FC<BlogRelatedPostsProps> = ({ slice, context }) => {
   const relatedPosts = context?.relatedPosts ?? [];
-  const lang = context?.lang ?? "en";
+  const { urlLang } = getSliceLocale(context);
   const sectionTitle = slice?.primary?.section_title || "Related Posts";
 
   if (relatedPosts.length === 0) return null;
@@ -33,7 +37,7 @@ const BlogRelatedPosts: FC<BlogRelatedPostsProps> = ({ slice, context }) => {
             return (
               <Link
                 key={relatedPost.uid}
-                href={`/${lang}/blog/${relatedPost.uid}`}
+                href={`/${urlLang}/blog/${relatedPost.uid}`}
                 className="group block rounded-2xl bg-neutral-900 overflow-hidden transition-colors"
               >
                 {cardImg?.url && (

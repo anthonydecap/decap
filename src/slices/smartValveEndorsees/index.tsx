@@ -57,7 +57,7 @@ const SmartValveEndorsees: FC<SmartValveEndorseesProps> = ({ slice }) => {
                     <PrismicNextImage
                       field={item.logo}
                       className="max-h-full w-auto object-contain"
-                      alt={item.company_name || "Logo"}
+                      alt=""
                     />
                   ) : (
                     <span className="text-neutral-500 text-sm font-medium">
@@ -74,6 +74,7 @@ const SmartValveEndorsees: FC<SmartValveEndorseesProps> = ({ slice }) => {
                       field={item.link}
                       className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500 rounded-lg"
                       target={item.link.target}
+                      aria-label={item.company_name || "Partner logo"}
                     >
                       {logoContent}
                     </PrismicNextLink>

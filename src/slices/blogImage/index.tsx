@@ -18,7 +18,6 @@ const BlogImage: FC<BlogImageProps> = ({ slice }) => {
         <PrismicNextImage
           field={image}
           className="w-full h-auto rounded-2xl border border-neutral-800"
-          alt={caption || ""}
         />
         {caption && (
           <figcaption className="mt-3 text-sm text-neutral-500 text-center">

@@ -410,11 +410,11 @@ const SmartValveChest3D: FC<SmartValveChest3DProps> = ({ slice }) => {
   const primary = slice.primary as any;
   const [isLoading, setIsLoading] = useState(true);
   const [webglError, setWebglError] = useState(false);
-  const [webglAvailable, setWebglAvailable] = useState<boolean | null>(null);
+  const [webglAvailable, setWebglAvailable] = useState(() =>
+    checkWebGLAvailability(),
+  );
 
   React.useEffect(() => {
-    setWebglAvailable(checkWebGLAvailability());
-
     // Listen for WebGL context lost events
     const handleWebGLContextLost = (event: Event) => {
       event.preventDefault();

@@ -2,19 +2,22 @@ import { Container } from "@/components/Container";
 import { FadeIn, FadeInStagger } from "@/components/FadeIn";
 import { BlogCarouselPossibilities } from "./BlogCarouselPossibilities";
 import { getBlogPostsByType } from "@/lib/blog-utils";
+import {
+  getSliceLocale,
+  type SliceZoneContext,
+} from "@/lib/slice-context";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 type SmartValveBlogsProps = {
   slice: any;
-  context?: { lang?: string };
+  context?: SliceZoneContext;
 };
 
 /** SmartValve Blogs: same carousel behaviour as smartValvePossibilities but with blog cards. */
 export default async function SmartValveBlogs({ slice, context }: SmartValveBlogsProps) {
   const { section_title, background_color } = slice.primary;
-  const lang = context?.lang || "en";
-  const langCode = lang === "fr" ? "fr-fr" : "en-us";
-  const posts = await getBlogPostsByType("smartvalve", langCode);
+  const { urlLang, prismicLang } = getSliceLocale(context);
+  const posts = await getBlogPostsByType("smartvalve", prismicLang);
   const bgColor = background_color || "#0a0a0a";
 
   if (posts.length === 0) return null;
@@ -30,7 +33,7 @@ export default async function SmartValveBlogs({ slice, context }: SmartValveBlog
           </FadeIn>
         )}
         <FadeInStagger faster>
-          <BlogCarouselPossibilities posts={posts} lang={lang} />
+          <BlogCarouselPossibilities posts={posts} lang={urlLang} />
         </FadeInStagger>
       </Container>
     </div>

@@ -45,19 +45,14 @@ const VideoModal: FC<{
   onClose: () => void;
   videoId: string;
 }> = ({ isOpen, onClose, videoId }) => {
-  const [isMounted, setIsMounted] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
 
   useEffect(() => {
-    if (isOpen) {
-      setIsMounted(true);
-      document.body.style.overflow = "hidden";
-      // Trigger animation after mount
-      setTimeout(() => setIsClosing(false), 10);
-    } else {
-      setIsMounted(false);
+    if (!isOpen) {
       document.body.style.overflow = "";
+      return;
     }
+    document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = "";
     };
@@ -68,7 +63,6 @@ const VideoModal: FC<{
     setTimeout(() => {
       onClose();
       setIsClosing(false);
-      setIsMounted(false);
     }, 300);
   };
 
@@ -86,7 +80,7 @@ const VideoModal: FC<{
     controls: "1",
   }).toString();
 
-  if (!isOpen && !isMounted) return null;
+  if (!isOpen && !isClosing) return null;
 
   return (
     <div

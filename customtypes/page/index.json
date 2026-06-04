@@ -27,6 +27,12 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "home_landing": {
+              "type": "SharedSlice"
+            },
+            "home_choice": {
+              "type": "SharedSlice"
+            },
             "smart_valve_endorsees": {
               "type": "SharedSlice"
             },
@@ -108,6 +114,9 @@
             "artists": {
               "type": "SharedSlice"
             },
+            "home_artists": {
+              "type": "SharedSlice"
+            },
             "faq": {
               "type": "SharedSlice"
             },
@@ -130,9 +139,6 @@
               "type": "SharedSlice"
             },
             "hero": {
-              "type": "SharedSlice"
-            },
-            "checkout": {
               "type": "SharedSlice"
             },
             "success": {

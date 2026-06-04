@@ -123,7 +123,7 @@ const GradientBentoGrid: FC<GradientBentoGridProps> = ({ slice }) => {
                     field={item.item_image}
                     className="h-full w-full object-cover"
                     priority={index < 2}
-                    alt={item.item_title || "Bento item image"}
+                    alt=""
                   />
                 </div>
               </div>

@@ -8,6 +8,7 @@ import BlogGrid from "./blogGrid";
 export const components = {
   accessories: dynamic(() => import("./Accessories")),
   artists: dynamic(() => import("./Artists")),
+  home_artists: dynamic(() => import("./homeArtists")),
   bento_grid: dynamic(() => import("./BentoGrid")),
   blog_rich_text: dynamic(() => import("./blogRichText")),
   blog_image: dynamic(() => import("./blogImage")),
@@ -18,7 +19,6 @@ export const components = {
   smart_valve_blogs: SmartValveBlogs,
   smart_valve_blogs_advanced: SmartValveBlogsAdvanced,
 
-  checkout: dynamic(() => import("./Checkout")),
   contact_section: dynamic(() => import("./ContactSection")),
   content: dynamic(() => import("./Content")),
 
@@ -38,7 +38,9 @@ export const components = {
   hero: dynamic(() => import("./Hero")),
   smart_valve_pipe_animation: dynamic(() => import("./smartValvePipeAnimation")),
   hero_image: dynamic(() => import("./HeroImage")),
+  home_choice: dynamic(() => import("./homeChoice")),
   smart_valve_landing: dynamic(() => import("./smartValveLanding")),
+  home_landing: dynamic(() => import("./homeLanding")),
   smart_valve_video_hero: dynamic(() => import("./smartValveVideoHero")),
   smart_valve_image_hero: dynamic(() => import("./smartValveImageHero")),
   smart_valve_video: dynamic(() => import("./smartValveVideo")),

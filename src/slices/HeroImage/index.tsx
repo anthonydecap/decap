@@ -1,8 +1,8 @@
 'use client';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { type FC } from "react";
-import type { Content } from '@prismicio/client'
+import { type FC, useId } from "react";
+import type { Content } from '@prismicio/client';
 import { PrismicNextLink, PrismicNextImage } from "@prismicio/next";
 import {
   PrismicRichText,
@@ -11,16 +11,13 @@ import {
 } from "@prismicio/react";
 import { Container } from "@/components/Container";
 import { FadeIn, FadeInStagger } from "@/components/FadeIn";
-import { useCartStore } from "@/lib/cart-store";
-import { getCurrencySymbol } from "@/lib/stripe-client";
-import { createCartItemFromProductId, getProductForSlice } from "@/lib/product-utils";
-import { Button } from "@/components/Button";
+import { getCurrencySymbol } from "@/lib/format-currency";
 import clsx from "clsx";
 
 const components: JSXMapSerializer = {
-  hyperlink: ({ node, children }) => {
-    return <PrismicNextLink field={node.data}>{children}</PrismicNextLink>;
-  },
+  hyperlink: ({ node, children }) => (
+    <PrismicNextLink field={node.data}>{children}</PrismicNextLink>
+  ),
   label: ({ node, children }) => {
     if (node.data.label === "codespan") {
       return <code>{children}</code>;
@@ -28,36 +25,24 @@ const components: JSXMapSerializer = {
   },
 };
 
-// HeroImage component with optional SVG overlay
-const HeroImage = ({ 
-  image, 
-  svgOverlay, 
+const HeroImage = ({
+  image,
+  svgOverlay,
   className,
-  imageFit = 'cover'
-}: { 
-  image: any; 
-  svgOverlay?: any; 
+  imageFit = 'cover',
+}: {
+  image: any;
+  svgOverlay?: any;
   className?: string;
   imageFit?: 'cover' | 'contain' | 'fit';
 }) => {
-  console.log('HeroImage component received:', { image, svgOverlay, className });
-  
-  // If no image, don't render anything
-  if (!image) {
-    console.log('No image provided to HeroImage component');
-    return null;
-  }
-
-  const id = `hero-image-${Math.random().toString(36).substr(2, 9)}`;
-
-  // Check if we have a valid SVG overlay
+  const id = useId();
+  if (!image) return null;
   const hasSvgOverlay = svgOverlay && svgOverlay.url;
-  console.log('Has SVG overlay:', hasSvgOverlay, 'SVG URL:', svgOverlay?.url);
 
   return (
     <div className={clsx(className, 'relative w-full aspect-[3/2]')}>
       {hasSvgOverlay ? (
-        // With SVG overlay - using clipPath approach
         <svg viewBox="0 0 1200 800" fill="none" className="h-full w-full">
           <defs>
             <clipPath id={`${id}-clip`}>
@@ -69,7 +54,6 @@ const HeroImage = ({
               />
             </clipPath>
           </defs>
-          
           <g clipPath={`url(#${id}-clip)`} className="group">
             <g className="origin-center scale-100 transition duration-700 motion-safe:group-hover:scale-110">
               <image
@@ -77,8 +61,8 @@ const HeroImage = ({
                 width="1200"
                 height="800"
                 preserveAspectRatio={
-                  imageFit === 'contain' ? "xMidYMid meet" : 
-                  imageFit === 'fit' ? "xMidYMid meet" : 
+                  imageFit === 'contain' ? "xMidYMid meet" :
+                  imageFit === 'fit' ? "xMidYMid meet" :
                   "xMidYMid slice"
                 }
                 className={`w-full h-full object-${imageFit === 'fit' ? 'contain' : imageFit}`}
@@ -87,7 +71,6 @@ const HeroImage = ({
           </g>
         </svg>
       ) : (
-        // Normal image without overlay
         <div className="group overflow-hidden rounded-2xl h-full w-full">
           <img
             src={image.url}
@@ -100,115 +83,62 @@ const HeroImage = ({
   );
 };
 
-/**
- * Props for `HeroImage`.
- */
 type HeroImageProps = SliceComponentProps<Content.HeroImageSlice>;
 
-/**
- * Component for "HeroImage" Slices.
- */
 const HeroImageSlice: FC<HeroImageProps> = ({ slice }) => {
-  const { addItem } = useCartStore();
-  const { 
-    title, 
-    subtitle, 
-    description, 
-    image, 
+  const {
+    title,
+    subtitle,
+    description,
+    image,
     svg_overlay,
-    text_position, 
+    text_position,
     invert_text,
     image_fit,
     primary_button_text,
     primary_button_link,
     secondary_button_text,
     secondary_button_link,
-    stripeid,
     product_price,
     currency,
-    product_id,
-    product_weight
   } = slice.primary as any;
 
-  // For DISPLAY: Use Prismic data first, fall back to database
-  const productData = getProductForSlice(product_id);
-  const displayName = title || productData?.name || 'Product';
-  const displayPrice = product_price || productData?.price;
-  const displayCurrency = currency || productData?.currency || 'USD';
-  const displayImage = image?.url || productData?.image || '';
-  
+  const displayName = title || 'Product';
+  const displayCurrency = currency || 'EUR';
   const currencySymbol = getCurrencySymbol(displayCurrency);
-  const hasStripeId = stripeid && stripeid.trim() !== '';
-  const hasProductFields = displayPrice && product_id;
-
-  const handleAddToCart = () => {
-    if (hasStripeId && hasProductFields) {
-      // For CART: Always use database data for consistency
-      const cartItem = createCartItemFromProductId(product_id);
-      
-      if (cartItem) {
-        addItem(cartItem);
-      } else {
-        // Only as last resort if product not in database
-        console.warn(`Product ${product_id} not found in database, using slice data for cart`);
-        addItem({
-          id: product_id,
-          name: displayName,
-          price: displayPrice,
-          currency: displayCurrency,
-          image: displayImage,
-          weight: product_weight || 1,
-        });
-      }
-    }
-  };
-
-  // Debug logging
-  console.log('HeroImage slice data:', {
-    image: image,
-    imageUrl: image?.url,
-    imageAlt: image?.alt,
-    svg_overlay: svg_overlay,
-    svg_overlay_url: svg_overlay?.url,
-    title: title,
-    subtitle: subtitle,
-    stripeid: stripeid,
-    hasStripeId: hasStripeId,
-    product_price: product_price,
-    product_id: product_id
-  });
+  const showPrice = product_price != null && !Number.isNaN(product_price);
+  const hasButtons =
+    (primary_button_link && primary_button_text) ||
+    (secondary_button_link && secondary_button_text);
 
   const getTextPositionClasses = () => {
-    switch (text_position as any) {
+    switch (text_position as string) {
       case "left":
         return "lg:flex-row lg:text-left";
       case "right":
         return "lg:flex-row-reverse lg:text-right";
-      case "center":
       default:
         return "lg:flex-col lg:text-center";
     }
   };
 
   const getImagePositionClasses = () => {
-    switch (text_position as any) {
+    switch (text_position as string) {
       case "left":
         return "lg:order-2";
       case "right":
         return "lg:order-1";
-      case "center":
       default:
         return "lg:order-1";
     }
   };
 
   const getTextOrderClasses = () => {
-    switch (text_position as any) {
+    switch (text_position as string) {
       case "left":
         return "lg:order-1";
       case "right":
         return "lg:order-2";
-      case "center":
       default:
         return "lg:order-2";
     }
@@ -216,10 +146,7 @@ const HeroImageSlice: FC<HeroImageProps> = ({ slice }) => {
 
   return (
     <div className="relative">
-      {/* Background gradient */}
-      <div className="absolute inset-0 " />
-      
-      {/* Content */}
+      <div className="absolute inset-0" />
       <Container className="relative z-10 flex h-full">
         <div className={clsx(
           "flex w-full flex-col items-center justify-center py-24 sm:py-32 lg:py-40",
@@ -228,143 +155,85 @@ const HeroImageSlice: FC<HeroImageProps> = ({ slice }) => {
           <FadeInStagger className="w-full">
             <div className={clsx(
               "grid w-full gap-12 lg:grid-cols-2 lg:items-center lg:gap-16",
-              (text_position as any) === "center" && "lg:grid-cols-1 lg:max-w-4xl lg:mx-auto"
+              text_position === "center" && "lg:grid-cols-1 lg:max-w-4xl lg:mx-auto"
             )}>
-              
-              {/* Hero Image */}
-              {(image || displayImage) ? (
+              {image?.url ? (
                 <FadeIn className={getImagePositionClasses()}>
                   <div className="flex justify-center">
                     <div className="w-full max-w-lg sm:max-w-xl lg:max-w-2xl xl:max-w-3xl">
-                      {image ? (
-                        <HeroImage
-                          image={image}
-                          svgOverlay={svg_overlay}
-                          className="w-full"
-                          imageFit={image_fit || 'cover'}
-                        />
-                      ) : displayImage ? (
-                        <div className="relative w-full aspect-[3/2]">
-                          <div className="group overflow-hidden rounded-2xl h-full w-full">
-                            <img
-                              src={displayImage}
-                              alt={displayName}
-                              className={`w-full h-full object-${image_fit === 'fit' ? 'contain' : (image_fit || 'cover')} transition duration-700 motion-safe:group-hover:scale-110`}
-                            />
-                          </div>
-                        </div>
-                      ) : null}
+                      <HeroImage
+                        image={image}
+                        svgOverlay={svg_overlay}
+                        className="w-full"
+                        imageFit={image_fit || 'cover'}
+                      />
                     </div>
                   </div>
                 </FadeIn>
               ) : (
                 <FadeIn className={getImagePositionClasses()}>
                   <div className="flex justify-center">
-                    <div className="w-full max-w-lg sm:max-w-xl lg:max-w-2xl xl:max-w-3xl">
-                      <div className="w-full aspect-[3/2] bg-neutral-200 rounded-2xl flex items-center justify-center">
-                        <p className="text-neutral-500">No image selected</p>
-                      </div>
+                    <div className="w-full max-w-lg aspect-[3/2] rounded-2xl bg-neutral-200 flex items-center justify-center">
+                      <p className="text-neutral-500">No image selected</p>
                     </div>
                   </div>
                 </FadeIn>
               )}
-              
-              {/* Text Content */}
+
               <FadeIn className={getTextOrderClasses()}>
                 <div className={clsx(
                   "max-w-2xl",
-                  (text_position as any) === "center" && "mx-auto text-center"
+                  text_position === "center" && "mx-auto text-center"
                 )}>
-                  {/* Eyebrow/Subtitle */}
-                  {subtitle && (
-                    <p className={clsx(
-                      "text-lg font-semibold tracking-wide sm:text-xl",
-                      invert_text ? "text-neutral-600" : "text-neutral-600"
-                    )}>
+                  {subtitle ? (
+                    <p className="text-lg font-semibold tracking-wide sm:text-xl text-neutral-600">
                       {subtitle}
                     </p>
-                  )}
-                  
-                  {/* Main Title */}
-                  {displayName && (
-                    <h1 className={clsx(
-                      "mt-6 font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl",
-                      invert_text ? "text-neutral-950" : "text-neutral-950"
-                    )}>
+                  ) : null}
+
+                  {displayName ? (
+                    <h1 className="mt-6 font-display text-4xl font-semibold tracking-tight text-neutral-950 sm:text-5xl lg:text-6xl xl:text-7xl">
                       {displayName}
                     </h1>
-                  )}
-                  
-                  {/* Description */}
-                  {description && (
-                    <div className={clsx(
-                      "mt-6 text-lg sm:text-xl lg:text-2xl",
-                      invert_text ? "text-neutral-700" : "text-neutral-700"
-                    )}>
-                      <PrismicRichText
-                        field={description}
-                        components={components}
-                      />
+                  ) : null}
+
+                  {description ? (
+                    <div className="mt-6 text-lg sm:text-xl lg:text-2xl text-neutral-700">
+                      <PrismicRichText field={description} components={components} />
                     </div>
-                  )}
-                  
-                  {/* Product Price and Buy Button - Apple Style */}
-                  {hasStripeId && hasProductFields && (
-                    <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
-                      {/* Price Display */}
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-3xl font-bold text-neutral-900">
-                          {currencySymbol}{displayPrice?.toFixed(2)}
-                        </span>
-                        {displayCurrency && (
-                          <span className="text-sm text-neutral-500 uppercase tracking-wide">
-                            {displayCurrency}
-                          </span>
-                        )}
-                      </div>
-                      
-                      {/* Buy Button - Apple Style */}
-                      <Button 
-                        onClick={handleAddToCart}
-                        className="inline-flex items-center justify-center rounded-full bg-neutral-900 px-8 py-3 text-base font-semibold text-white transition-all duration-300 hover:bg-neutral-800 hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
-                      >
-                        Buy
-                      </Button>
+                  ) : null}
+
+                  {showPrice ? (
+                    <div className="mt-8 flex items-baseline gap-2">
+                      <span className="text-3xl font-bold text-neutral-900">
+                        {currencySymbol}{product_price.toFixed(2)}
+                      </span>
+                      <span className="text-sm text-neutral-500 uppercase tracking-wide">
+                        {displayCurrency}
+                      </span>
                     </div>
-                  )}
-                  
-                  {/* Regular Buttons (when no product functionality) */}
-                  {(!hasStripeId || !hasProductFields) && ((primary_button_link && primary_button_text) || (secondary_button_link && secondary_button_text)) && (
+                  ) : null}
+
+                  {hasButtons ? (
                     <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:gap-6">
-                      {primary_button_link && primary_button_text && (
+                      {primary_button_link && primary_button_text ? (
                         <PrismicNextLink
                           field={primary_button_link}
-                          className={clsx(
-                            "inline-flex items-center justify-center rounded-full px-8 py-3 text-base font-semibold transition-all duration-300 hover:scale-105",
-                            invert_text 
-                              ? "bg-neutral-950 text-white hover:bg-neutral-800" 
-                              : "bg-neutral-950 text-white hover:bg-neutral-800"
-                          )}
+                          className="inline-flex items-center justify-center rounded-full bg-neutral-950 px-8 py-3 text-base font-semibold text-white transition-all duration-300 hover:bg-neutral-800 hover:scale-105"
                         >
                           {primary_button_text}
                         </PrismicNextLink>
-                      )}
-                      
-                      {secondary_button_link && secondary_button_text && (
+                      ) : null}
+                      {secondary_button_link && secondary_button_text ? (
                         <PrismicNextLink
                           field={secondary_button_link}
-                          className={clsx(
-                            "inline-flex items-center justify-center rounded-full border-2 px-8 py-3 text-base font-semibold transition-all duration-300 hover:scale-105",
-                            invert_text 
-                              ? "border-neutral-950 text-neutral-950 hover:bg-neutral-950 hover:text-white" 
-                              : "border-neutral-950 text-neutral-950 hover:bg-neutral-950 hover:text-white"
-                          )}
+                          className="inline-flex items-center justify-center rounded-full border-2 border-neutral-950 px-8 py-3 text-base font-semibold text-neutral-950 transition-all duration-300 hover:bg-neutral-950 hover:text-white hover:scale-105"
                         >
                           {secondary_button_text}
                         </PrismicNextLink>
-                      )}
+                      ) : null}
                     </div>
-                  )}
+                  ) : null}
                 </div>
               </FadeIn>
             </div>
@@ -375,4 +244,4 @@ const HeroImageSlice: FC<HeroImageProps> = ({ slice }) => {
   );
 };
 
-export default HeroImageSlice; 
+export default HeroImageSlice;

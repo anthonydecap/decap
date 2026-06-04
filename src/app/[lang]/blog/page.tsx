@@ -1,29 +1,63 @@
 import { type Metadata } from "next";
-import { reverseLocaleLookup } from "@/i18n";
+import {
+  DEFAULT_PRISMIC_LANG,
+  resolveUrlLang,
+  urlLangToPrismic,
+} from "@/i18n";
+import { createSliceContext } from "@/lib/slice-context";
+import { buildLocaleMetadataAlternates } from "@/lib/locale-alternates";
+import { existingLocalePathsFromDocument } from "@/lib/locale-path";
 import { createClient } from "@/prismicio";
 import { SliceZone } from "@prismicio/react";
 import { PrismicRichText } from "@prismicio/react";
 import { components } from "@/slices";
 import { Container } from "@/components/Container";
 import { FadeIn } from "@/components/FadeIn";
+export const revalidate = 3600;
+
+export function generateStaticParams() {
+  return [{ lang: "en" }, { lang: "fr" }];
+}
 
 type Params = { lang: string };
 
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: "Blog",
-    description: "The latest articles and news",
-  };
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<Params>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  const urlLang = resolveUrlLang(lang);
+  const prismicLang = urlLangToPrismic(urlLang) ?? DEFAULT_PRISMIC_LANG;
+
+  try {
+    const client = createClient();
+    const overview = await client.getSingle("blog_overview", { lang: prismicLang });
+    const localePaths = existingLocalePathsFromDocument(overview);
+
+    return {
+      title: "Blog",
+      description: "The latest articles and news",
+      alternates: buildLocaleMetadataAlternates(localePaths, urlLang),
+    };
+  } catch {
+    return {
+      title: "Blog",
+      description: "The latest articles and news",
+    };
+  }
 }
 
 export default async function BlogPage({ params }: { params: Promise<Params> }) {
   const { lang } = await params;
+  const urlLang = resolveUrlLang(lang);
+  const prismicLang = urlLangToPrismic(urlLang) ?? DEFAULT_PRISMIC_LANG;
   const client = createClient();
 
   let overviewDoc = null;
   try {
     overviewDoc = await client.getSingle("blog_overview", {
-      lang: reverseLocaleLookup(lang),
+      lang: prismicLang,
     });
   } catch {
     return (
@@ -62,8 +96,8 @@ export default async function BlogPage({ params }: { params: Promise<Params> }) 
       <SliceZone
         slices={overviewDoc.data.slices}
         components={components}
-        context={{ lang }}
+        context={createSliceContext(urlLang)}
       />
     </div>
   );
-} 
+}

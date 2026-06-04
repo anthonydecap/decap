@@ -33,11 +33,11 @@ export default function Success({ slice }: { slice: any }): React.JSX.Element {
             </div>
             
             <h1 className="mt-6 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              {slice.primary.title || 'Payment Successful!'}
+              {slice.primary.title || 'Thank you!'}
             </h1>
             
             <p className="mt-4 text-lg leading-8 text-gray-600">
-              {slice.primary.subtitle || 'Thank you for your purchase. You will receive a confirmation email shortly.'}
+              {slice.primary.subtitle || 'Your submission was received successfully.'}
             </p>
             
             {slice.primary.order_number && (
@@ -59,7 +59,7 @@ export default function Success({ slice }: { slice: any }): React.JSX.Element {
               )}
               
               {slice.primary.view_orders_text && (
-                <Button href="/orders" className="bg-gray-200 text-gray-900 hover:bg-gray-300">
+                <Button href="/contact" className="bg-gray-200 text-gray-900 hover:bg-gray-300">
                   {slice.primary.view_orders_text}
                 </Button>
               )}

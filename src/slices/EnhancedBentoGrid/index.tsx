@@ -164,7 +164,7 @@ const EnhancedBentoGrid: FC<EnhancedBentoGridProps> = ({ slice }) => {
                             ) : (
                               <img
                                 src={item.image_url}
-                                alt={item.item_title || "Item image"}
+                                alt=""
                                 className={`h-full w-full rounded-xl object-${imageFit}`}
                               />
                             )}
@@ -218,7 +218,7 @@ const EnhancedBentoGrid: FC<EnhancedBentoGridProps> = ({ slice }) => {
                             ) : (
                               <img
                                 src={item.image_url}
-                                alt={item.item_title || "Item image"}
+                                alt=""
                                 className={clsx(
                                   `w-full rounded-xl object-${imageFit}`,
                                   imageRatio === "100"
