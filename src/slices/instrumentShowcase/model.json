@@ -1,0 +1,40 @@
+{
+  "id": "instrument_showcase",
+  "type": "SharedSlice",
+  "name": "InstrumentShowcase",
+  "description": "Full-width product image on white background",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": { "label": "Headline", "placeholder": "A genuine acoustic instrument." }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body",
+            "placeholder": "Supporting text…",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": { "label": "Product image", "constraint": {}, "thumbnails": [] }
+        },
+        "background_color": {
+          "type": "Color",
+          "config": { "label": "Background", "placeholder": "#ffffff" }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

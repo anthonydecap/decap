@@ -1,0 +1,23 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "title": { "__TYPE__": "FieldContent", "value": "A genuine acoustic instrument.", "type": "Text" },
+      "body": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Every note is produced by a real accordion. The keys move, the reeds sound and the instrument performs exactly where the audience can see it."
+            }
+          }
+        ]
+      },
+      "image": { "__TYPE__": "ImageContent", "origin": { "id": "main", "url": "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=1600" }, "url": "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=1600", "width": 1600, "height": 1067, "alt": "Accordion" },
+      "background_color": { "__TYPE__": "FieldContent", "value": "#ffffff", "type": "Color" }
+    },
+    "items": []
+  }
+]

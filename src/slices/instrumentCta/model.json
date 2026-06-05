@@ -1,0 +1,49 @@
+{
+  "id": "instrument_cta",
+  "type": "SharedSlice",
+  "name": "InstrumentCta",
+  "description": "Final full-screen CTA with optional Mux video",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "mux_hls_url": {
+          "type": "Text",
+          "config": { "label": "Mux HLS URL or playback ID (optional)" }
+        },
+        "title": { "type": "Text", "config": { "label": "Headline" } },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body",
+            "allowTargetBlank": true,
+            "multi": "paragraph"
+          }
+        },
+        "button_text": { "type": "Text", "config": { "label": "CTA label" } },
+        "button_link": {
+          "type": "Link",
+          "config": { "label": "CTA link", "allowTargetBlank": true, "select": null }
+        },
+        "footnote": {
+          "type": "Text",
+          "config": { "label": "Small text", "placeholder": "Manufactured by…" }
+        },
+        "overlay_opacity": {
+          "type": "Select",
+          "config": { "label": "Overlay", "options": ["light", "medium", "dark"] }
+        },
+        "background_color": {
+          "type": "Color",
+          "config": { "label": "Fallback background", "placeholder": "#0a0a0a" }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

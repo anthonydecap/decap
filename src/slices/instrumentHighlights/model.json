@@ -1,0 +1,25 @@
+{
+  "id": "instrument_highlights",
+  "type": "SharedSlice",
+  "name": "InstrumentHighlights",
+  "description": "Horizontal scrolling feature chips",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "background_color": {
+          "type": "Color",
+          "config": { "label": "Background", "placeholder": "#0a0a0a" }
+        }
+      },
+      "items": {
+        "label": { "type": "Text", "config": { "label": "Feature label" } }
+      }
+    }
+  ]
+}

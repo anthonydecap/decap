@@ -68,4 +68,16 @@ export const components = {
   smart_valve_quote: dynamic(() => import("./smartValveQuote")),
   smart_valve_endorsees: dynamic(() => import("./smartValveEndorsees")),
   trumpet_video: dynamic(() => import("./TrumpetVideo")),
+
+  instrument_header: dynamic(() => import("./instrumentHeader")),
+  instrument_showcase: dynamic(() => import("./instrumentShowcase")),
+  instrument_bento: dynamic(() => import("./instrumentBento")),
+  instrument_feature: dynamic(() => import("./instrumentFeature")),
+  instrument_split: dynamic(() => import("./instrumentSplit")),
+  instrument_applications: dynamic(() => import("./instrumentApplications")),
+  instrument_connectivity: dynamic(() => import("./instrumentConnectivity")),
+  instrument_highlights: dynamic(() => import("./instrumentHighlights")),
+  instrument_specs: dynamic(() => import("./instrumentSpecs")),
+  instrument_faq: dynamic(() => import("./instrumentFaq")),
+  instrument_cta: dynamic(() => import("./instrumentCta")),
 };

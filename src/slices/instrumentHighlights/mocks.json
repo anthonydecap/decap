@@ -1,0 +1,21 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "background_color": { "__TYPE__": "FieldContent", "value": "#0a0a0a", "type": "Color" }
+    },
+    "items": [
+      { "__TYPE__": "GroupItemContent", "value": [["label", { "__TYPE__": "FieldContent", "value": "Acoustic Instrument", "type": "Text" }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["label", { "__TYPE__": "FieldContent", "value": "Automatic Performance", "type": "Text" }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["label", { "__TYPE__": "FieldContent", "value": "MIDI Integration", "type": "Text" }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["label", { "__TYPE__": "FieldContent", "value": "Dynamic Airflow Control", "type": "Text" }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["label", { "__TYPE__": "FieldContent", "value": "Visible Key Movement", "type": "Text" }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["label", { "__TYPE__": "FieldContent", "value": "Real-Time Playback", "type": "Text" }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["label", { "__TYPE__": "FieldContent", "value": "Orchestrion Integration", "type": "Text" }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["label", { "__TYPE__": "FieldContent", "value": "Pedestal Version", "type": "Text" }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["label", { "__TYPE__": "FieldContent", "value": "Cube Version", "type": "Text" }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["label", { "__TYPE__": "FieldContent", "value": "Professional Installation Ready", "type": "Text" }]] }
+    ]
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "footnote": {
+        "__TYPE__": "FieldContent",
+        "value": "Both versions share the same core technology and performance capabilities.",
+        "type": "Text"
+      },
+      "background_color": { "__TYPE__": "FieldContent", "value": "#ffffff", "type": "Color" }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          ["title", { "__TYPE__": "FieldContent", "value": "Pedestal", "type": "Text" }],
+          ["description", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "Designed as a visual centerpiece for museums, attractions and public installations." } }] }]
+        ]
+      },
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          ["title", { "__TYPE__": "FieldContent", "value": "Cube", "type": "Text" }],
+          ["description", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "A compact format for orchestrions and integrated projects." } }] }]
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,45 @@
+{
+  "id": "instrument_bento",
+  "type": "SharedSlice",
+  "name": "InstrumentBento",
+  "description": "Apple-style bento grid (4 cards)",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "section_title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Section title (optional)",
+            "allowTargetBlank": true,
+            "multi": "heading2,paragraph"
+          }
+        },
+        "background_color": {
+          "type": "Color",
+          "config": { "label": "Background", "placeholder": "#0a0a0a" }
+        }
+      },
+      "items": {
+        "item_title": { "type": "Text", "config": { "label": "Title" } },
+        "item_description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Text",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em"
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": { "label": "Image", "constraint": {}, "thumbnails": [] }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "mux_hls_url": { "__TYPE__": "FieldContent", "value": "", "type": "Text" },
+      "title": { "__TYPE__": "FieldContent", "value": "Automatic Accordion", "type": "Text" },
+      "subtitle": {
+        "__TYPE__": "FieldContent",
+        "value": "A real accordion. Playing automatically.",
+        "type": "Text"
+      },
+      "body": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "The sound, movement and character of an acoustic accordion, brought to life through advanced automation."
+            }
+          }
+        ]
+      },
+      "primary_button_text": { "__TYPE__": "FieldContent", "value": "Request Information", "type": "Text" },
+      "primary_button_link": { "__TYPE__": "LinkContent", "key": "primary", "value": { "__TYPE__": "ExternalLink", "url": "#contact" } },
+      "secondary_button_text": { "__TYPE__": "FieldContent", "value": "Watch Video", "type": "Text" },
+      "secondary_button_link": { "__TYPE__": "LinkContent", "key": "secondary", "value": { "__TYPE__": "ExternalLink", "url": "#video" } },
+      "footnote": { "__TYPE__": "FieldContent", "value": "Available as Pedestal or Cube.", "type": "Text" },
+      "overlay_opacity": { "__TYPE__": "FieldContent", "value": "dark", "type": "Select" },
+      "background_color": { "__TYPE__": "FieldContent", "value": "#0a0a0a", "type": "Color" }
+    },
+    "items": []
+  }
+]

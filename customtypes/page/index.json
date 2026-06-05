@@ -152,6 +152,39 @@
             },
             "smart_valve_landing": {
               "type": "SharedSlice"
+            },
+            "instrument_header": {
+              "type": "SharedSlice"
+            },
+            "instrument_showcase": {
+              "type": "SharedSlice"
+            },
+            "instrument_bento": {
+              "type": "SharedSlice"
+            },
+            "instrument_feature": {
+              "type": "SharedSlice"
+            },
+            "instrument_split": {
+              "type": "SharedSlice"
+            },
+            "instrument_applications": {
+              "type": "SharedSlice"
+            },
+            "instrument_connectivity": {
+              "type": "SharedSlice"
+            },
+            "instrument_highlights": {
+              "type": "SharedSlice"
+            },
+            "instrument_specs": {
+              "type": "SharedSlice"
+            },
+            "instrument_faq": {
+              "type": "SharedSlice"
+            },
+            "instrument_cta": {
+              "type": "SharedSlice"
             }
           }
         }

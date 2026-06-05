@@ -1,0 +1,18 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "section_title": { "__TYPE__": "FieldContent", "value": "Technical overview", "type": "Text" },
+      "background_color": { "__TYPE__": "FieldContent", "value": "#ffffff", "type": "Color" }
+    },
+    "items": [
+      { "__TYPE__": "GroupItemContent", "value": [["label", { "__TYPE__": "FieldContent", "value": "Instrument", "type": "Text" }], ["value", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "Real acoustic accordion" } }] }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["label", { "__TYPE__": "FieldContent", "value": "Performance", "type": "Text" }], ["value", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "Automatic playback" } }] }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["label", { "__TYPE__": "FieldContent", "value": "Control", "type": "Text" }], ["value", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "Dedicated electronic control system" } }] }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["label", { "__TYPE__": "FieldContent", "value": "Connectivity", "type": "Text" }], ["value", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "MIDI In / MIDI Out / MIDI Thru" } }] }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["label", { "__TYPE__": "FieldContent", "value": "Applications", "type": "Text" }], ["value", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "Standalone operation or orchestrion integration" } }] }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["label", { "__TYPE__": "FieldContent", "value": "Optional additions", "type": "Text" }], ["value", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "Touchscreen control, audio playback, integrated sound system" } }] }]] }
+    ]
+  }
+]
