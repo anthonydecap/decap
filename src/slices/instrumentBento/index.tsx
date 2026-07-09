@@ -42,7 +42,7 @@ const InstrumentBento: FC<SliceComponentProps<any>> = ({ slice }) => {
   const bg = background_color || "#0a0a0a";
   const items = (slice.items ?? []).slice(0, 4);
   const hasGrid = items.some(
-    (item) => item?.item_title || item?.item_description?.length || item?.image?.url,
+    (item: any) => item?.item_title || item?.item_description?.length || item?.image?.url,
   );
 
   const cellSlot = (item: (typeof items)[number], flexClass: string) =>
