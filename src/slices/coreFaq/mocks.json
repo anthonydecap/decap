@@ -2,7 +2,7 @@
   {
     "variation": "default",
     "name": "Default",
-    "slice_type": "faq",
+    "slice_type": "core_faq",
     "items": [
       {
         "question": "What makes your microphones different from others?",

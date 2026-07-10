@@ -1,6 +1,6 @@
 {
-  "id": "hero_image",
-  "slice_type": "hero_image",
+  "id": "core_hero",
+  "slice_type": "core_hero",
   "slice_label": null,
   "version": "initial",
   "variation": "default",

@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { type FC } from "react";
-import type { Content } from "@prismicio/client";
 import {
   PrismicRichText,
   type SliceComponentProps,
@@ -99,15 +98,9 @@ const groupSpecsByCategory = (specs: any[]) => {
 };
 
 /**
- * Props for `TechnicalSpecifications`.
+ * Component for "CoreSpecs" Slices.
  */
-type TechnicalSpecificationsProps =
-  SliceComponentProps<Content.TechnicalSpecificationsSlice>;
-
-/**
- * Component for "TechnicalSpecifications" Slices.
- */
-const TechnicalSpecifications: FC<TechnicalSpecificationsProps> = ({ slice }) => {
+const CoreSpecs: FC<SliceComponentProps<any>> = ({ slice }) => {
   const { title, eyebrow, description, invert, layout = "grid", columns = "2" } = slice.primary;
 
   const groupedSpecs = groupSpecsByCategory(slice.items);
@@ -257,7 +250,7 @@ const TechnicalSpecifications: FC<TechnicalSpecificationsProps> = ({ slice }) =>
               </h3>
             )}
             <div className="space-y-3">
-              {specs.map((spec, index) => (
+              {specs.map((spec: any, index: number) => (
                 <FadeIn key={index}>
                   <div
                     className={clsx(
@@ -328,7 +321,7 @@ const TechnicalSpecifications: FC<TechnicalSpecificationsProps> = ({ slice }) =>
 
   const renderGridLayout = () => (
     <div className={`grid gap-6 ${getColumnClasses(columns || "2")}`}>
-      {slice.items.map((spec, index) => renderSpecItem(spec, index))}
+      {slice.items.map((spec: any, index: number) => renderSpecItem(spec, index))}
     </div>
   );
 
@@ -379,4 +372,4 @@ const TechnicalSpecifications: FC<TechnicalSpecificationsProps> = ({ slice }) =>
   );
 };
 
-export default TechnicalSpecifications; 
+export default CoreSpecs; 

@@ -81,24 +81,6 @@
             "smart_valve_transport": {
               "type": "SharedSlice"
             },
-            "accessories": {
-              "type": "SharedSlice"
-            },
-            "technical_specifications": {
-              "type": "SharedSlice"
-            },
-            "trumpet_video": {
-              "type": "SharedSlice"
-            },
-            "three_d_model": {
-              "type": "SharedSlice"
-            },
-            "hero_image": {
-              "type": "SharedSlice"
-            },
-            "enhanced_bento_grid": {
-              "type": "SharedSlice"
-            },
             "stylized_image": {
               "type": "SharedSlice"
             },
@@ -117,9 +99,6 @@
             "home_artists": {
               "type": "SharedSlice"
             },
-            "faq": {
-              "type": "SharedSlice"
-            },
             "feature": {
               "type": "SharedSlice"
             },
@@ -130,9 +109,6 @@
               "type": "SharedSlice"
             },
             "section_intro": {
-              "type": "SharedSlice"
-            },
-            "testimonial": {
               "type": "SharedSlice"
             },
             "contact_section": {
@@ -184,6 +160,30 @@
               "type": "SharedSlice"
             },
             "instrument_cta": {
+              "type": "SharedSlice"
+            },
+            "core_accessories": {
+              "type": "SharedSlice"
+            },
+            "core_bento": {
+              "type": "SharedSlice"
+            },
+            "core_demo_video": {
+              "type": "SharedSlice"
+            },
+            "core_faq": {
+              "type": "SharedSlice"
+            },
+            "core_hero": {
+              "type": "SharedSlice"
+            },
+            "core_specs": {
+              "type": "SharedSlice"
+            },
+            "core_testimonial": {
+              "type": "SharedSlice"
+            },
+            "core_3_d": {
               "type": "SharedSlice"
             }
           }

@@ -2,7 +2,6 @@
 "use client";
 
 import { type FC, useState } from "react";
-import { type Content } from "@prismicio/client";
 import { PrismicNextLink } from "@prismicio/next";
 import {
   PrismicRichText,
@@ -112,14 +111,9 @@ const FAQItem: FC<FAQItemProps> = ({ question, answer, isOpen, onToggle, index }
 };
 
 /**
- * Props for `FAQ`.
+ * Component for "CoreFaq" Slices.
  */
-type FAQProps = SliceComponentProps<Content.FaqSlice>;
-
-/**
- * Component for "FAQ" Slices.
- */
-const FAQ: FC<FAQProps> = ({ slice }) => {
+const CoreFaq: FC<SliceComponentProps<any>> = ({ slice }) => {
   const { title, eyebrow, description } = slice.primary;
   const background_color = (slice.primary as { background_color?: string }).background_color;
   const bgColor = background_color || "#ffffff";
@@ -162,4 +156,4 @@ const FAQ: FC<FAQProps> = ({ slice }) => {
   );
 };
 
-export default FAQ; 
+export default CoreFaq; 

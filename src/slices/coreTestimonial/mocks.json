@@ -2,7 +2,7 @@
   {
     "variation": "default",
     "name": "Default",
-    "slice_type": "testimonial",
+    "slice_type": "core_testimonial",
     "items": [],
     "primary": {
       "quote": [

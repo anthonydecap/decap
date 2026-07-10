@@ -29,13 +29,13 @@
             "contact_section": {
               "type": "SharedSlice"
             },
-            "testimonial": {
+            "core_testimonial": {
               "type": "SharedSlice"
             },
             "content": {
               "type": "SharedSlice"
             },
-            "faq": {
+            "core_faq": {
               "type": "SharedSlice"
             },
             "bento_grid": {

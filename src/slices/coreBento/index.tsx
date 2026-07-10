@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { type FC } from "react";
-import type { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import {
   PrismicRichText,
@@ -32,15 +31,9 @@ const components: JSXMapSerializer = {
 };
 
 /**
- * Props for `EnhancedBentoGrid`.
+ * Component for "CoreBento" Slices.
  */
-type EnhancedBentoGridProps =
-  SliceComponentProps<Content.EnhancedBentoGridSlice>;
-
-/**
- * Component for "EnhancedBentoGrid" Slices.
- */
-const EnhancedBentoGrid: FC<EnhancedBentoGridProps> = ({ slice }) => {
+const CoreBento: FC<SliceComponentProps<any>> = ({ slice }) => {
   const { title, eyebrow, description, invert } = slice.primary;
 
   return (
@@ -282,4 +275,4 @@ const EnhancedBentoGrid: FC<EnhancedBentoGridProps> = ({ slice }) => {
   );
 };
 
-export default EnhancedBentoGrid;
+export default CoreBento;

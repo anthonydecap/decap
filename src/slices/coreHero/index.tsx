@@ -2,7 +2,6 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { type FC, useId } from "react";
-import type { Content } from '@prismicio/client';
 import { PrismicNextLink, PrismicNextImage } from "@prismicio/next";
 import {
   PrismicRichText,
@@ -83,9 +82,9 @@ const HeroImage = ({
   );
 };
 
-type HeroImageProps = SliceComponentProps<Content.HeroImageSlice>;
+type CoreHeroProps = SliceComponentProps<any>;
 
-const HeroImageSlice: FC<HeroImageProps> = ({ slice }) => {
+const CoreHero: FC<CoreHeroProps> = ({ slice }) => {
   const {
     title,
     subtitle,
@@ -244,4 +243,4 @@ const HeroImageSlice: FC<HeroImageProps> = ({ slice }) => {
   );
 };
 
-export default HeroImageSlice;
+export default CoreHero;

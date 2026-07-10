@@ -60,7 +60,7 @@ function AccessoryCard({ item }: { item: AccessoryItem }) {
   );
 }
 
-export default function Accessories({
+export default function CoreAccessories({
   slice,
 }: SliceComponentProps<any>) {
   const { section_title, section_subtitle } = slice.primary;

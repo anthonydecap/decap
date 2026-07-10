@@ -1,6 +1,6 @@
 {
-  "id": "three_d_model",
-  "slice_type": "three_d_model",
+  "id": "core_3_d",
+  "slice_type": "core_3_d",
   "slice_label": null,
   "version": "initial",
   "variation": "default",

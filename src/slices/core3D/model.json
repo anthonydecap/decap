@@ -1,7 +1,7 @@
 {
-  "id": "three_d_model",
+  "id": "core_3_d",
   "type": "SharedSlice",
-  "name": "ThreeDModel",
+  "name": "Core3D",
   "description": "3D model viewer with interactive controls",
   "variations": [
     {

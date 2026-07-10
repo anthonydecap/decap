@@ -1,6 +1,6 @@
 {
-  "id": "enhanced_bento_grid",
-  "slice_type": "enhanced_bento_grid",
+  "id": "core_bento",
+  "slice_type": "core_bento",
   "slice_label": null,
   "version": "initial",
   "variation": "default",

@@ -1,6 +1,6 @@
 {
-  "id": "accessories",
-  "slice_type": "accessories",
+  "id": "core_accessories",
+  "slice_type": "core_accessories",
   "slice_label": null,
   "version": "initial",
   "variation": "default",

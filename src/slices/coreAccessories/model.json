@@ -1,7 +1,7 @@
 {
-  "id": "accessories",
+  "id": "core_accessories",
   "type": "SharedSlice",
-  "name": "Accessories",
+  "name": "CoreAccessories",
   "description": "Accessories grid — all content from Prismic item fields",
   "variations": [
     {

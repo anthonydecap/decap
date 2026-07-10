@@ -2,7 +2,6 @@
 "use client";
 
 import { type FC, useState, useRef, useEffect } from "react";
-import type { Content } from "@prismicio/client";
 import {
   PrismicRichText,
   type SliceComponentProps,
@@ -32,14 +31,9 @@ const components: JSXMapSerializer = {
 };
 
 /**
- * Props for `TrumpetVideo`.
+ * Component for "CoreDemoVideo" Slices.
  */
-type TrumpetVideoProps = SliceComponentProps<Content.TrumpetVideoSlice>;
-
-/**
- * Component for "TrumpetVideo" Slices.
- */
-const TrumpetVideo: FC<TrumpetVideoProps> = ({ slice }) => {
+const CoreDemoVideo: FC<SliceComponentProps<any>> = ({ slice }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [currentTime, setCurrentTime] = useState(0);
@@ -398,4 +392,4 @@ const TrumpetVideo: FC<TrumpetVideoProps> = ({ slice }) => {
   );
 };
 
-export default TrumpetVideo; 
+export default CoreDemoVideo; 

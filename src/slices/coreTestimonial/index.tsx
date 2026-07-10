@@ -1,5 +1,4 @@
 import { type FC } from "react";
-import { type Content } from "@prismicio/client";
 import { PrismicNextLink, PrismicNextImage } from "@prismicio/next";
 import {
   PrismicRichText,
@@ -22,14 +21,9 @@ const components: JSXMapSerializer = {
 };
 
 /**
- * Props for `Testimonial`.
+ * Component for "CoreTestimonial" Slices.
  */
-type TestimonialProps = SliceComponentProps<Content.TestimonialSlice>;
-
-/**
- * Component for "Testimonial" Slices.
- */
-const Testimonial: FC<TestimonialProps> = ({ slice }) => {
+const CoreTestimonial: FC<SliceComponentProps<any>> = ({ slice }) => {
   const { quote, client_name, client_logo } = slice.primary;
 
   return (
@@ -69,4 +63,4 @@ const Testimonial: FC<TestimonialProps> = ({ slice }) => {
   );
 };
 
-export default Testimonial;
+export default CoreTestimonial;

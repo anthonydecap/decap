@@ -6,7 +6,6 @@ import SmartValveBlogsAdvanced from "./smartValveBlogsAdvanced";
 import BlogGrid from "./blogGrid";
 
 export const components = {
-  accessories: dynamic(() => import("./Accessories")),
   artists: dynamic(() => import("./Artists")),
   home_artists: dynamic(() => import("./homeArtists")),
   bento_grid: dynamic(() => import("./BentoGrid")),
@@ -23,11 +22,9 @@ export const components = {
   content: dynamic(() => import("./Content")),
 
 
-  enhanced_bento_grid: dynamic(() => import("./EnhancedBentoGrid")),
   gradient_bento_grid: dynamic(() => import("./GradientBentoGrid")),
   smart_valve_optical_midi: dynamic(() => import("./smartValveOpticalMidi")),
   optical_midi: dynamic(() => import("./smartValveOpticalMidi")),
-  faq: dynamic(() => import("./FAQ")),
   feature: dynamic(() => import("./Feature")),
   feature_blocks: dynamic(() => import("./FeatureBlocks")),
   smart_valve_processor: dynamic(() => import("./smartValveProcessor")),
@@ -37,7 +34,6 @@ export const components = {
 
   hero: dynamic(() => import("./Hero")),
   smart_valve_pipe_animation: dynamic(() => import("./smartValvePipeAnimation")),
-  hero_image: dynamic(() => import("./HeroImage")),
   home_choice: dynamic(() => import("./homeChoice")),
   smart_valve_landing: dynamic(() => import("./smartValveLanding")),
   home_landing: dynamic(() => import("./homeLanding")),
@@ -54,20 +50,16 @@ export const components = {
   smart_valve_story: dynamic(() => import("./smartValveStory")),
   stylized_image: dynamic(() => import("./StylizedImage")),
   success: dynamic(() => import("./Success")),
-  testimonial: dynamic(() => import("./Testimonial")),
-  
-  technical_specifications: dynamic(() => import("./TechnicalSpecifications")),
+
   smart_valve_tech_description: dynamic(() => import("./smartValveTechDescription")),
   valve_tech_description: dynamic(() => import("./smartValveTechDescription")),
 
-  three_d_model: dynamic(() => import("./ThreeDModel")),
   smart_valve_chest_3_d: dynamic(() => import("./smartValveChest3D")),
   smart_valve_chest: dynamic(() => import("./smartValveChest")),
   smart_valve_bento_grid: dynamic(() => import("./smartValveBentoGrid")),
   smart_valve_icon_blocks: dynamic(() => import("./smartValveIconBlocks")),
   smart_valve_quote: dynamic(() => import("./smartValveQuote")),
   smart_valve_endorsees: dynamic(() => import("./smartValveEndorsees")),
-  trumpet_video: dynamic(() => import("./TrumpetVideo")),
 
   instrument_header: dynamic(() => import("./instrumentHeader")),
   instrument_showcase: dynamic(() => import("./instrumentShowcase")),
@@ -80,4 +72,13 @@ export const components = {
   instrument_specs: dynamic(() => import("./instrumentSpecs")),
   instrument_faq: dynamic(() => import("./instrumentFaq")),
   instrument_cta: dynamic(() => import("./instrumentCta")),
+
+  core_accessories: dynamic(() => import("./coreAccessories")),
+  core_bento: dynamic(() => import("./coreBento")),
+  core_demo_video: dynamic(() => import("./coreDemoVideo")),
+  core_faq: dynamic(() => import("./coreFaq")),
+  core_hero: dynamic(() => import("./coreHero")),
+  core_specs: dynamic(() => import("./coreSpecs")),
+  core_testimonial: dynamic(() => import("./coreTestimonial")),
+  core_3_d: dynamic(() => import("./core3D")),
 };

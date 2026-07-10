@@ -1,7 +1,7 @@
 {
-  "id": "trumpet_video",
+  "id": "core_demo_video",
   "type": "SharedSlice",
-  "name": "TrumpetVideo",
+  "name": "CoreDemoVideo",
   "description": "TrumpetVideo",
   "variations": [
     {

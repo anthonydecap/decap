@@ -2,7 +2,6 @@
 "use client";
 
 import React, { type FC, Suspense, useRef, useState, useEffect } from "react";
-import { type Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import {
   PrismicRichText,
@@ -334,14 +333,9 @@ const Scene = ({
 };
 
 /**
- * Props for `ThreeDModel`.
+ * Component for "Core3D" Slices.
  */
-type ThreeDModelProps = SliceComponentProps<Content.ThreeDModelSlice>;
-
-/**
- * Component for "ThreeDModel" Slices.
- */
-const ThreeDModel: FC<ThreeDModelProps> = ({ slice }) => {
+const Core3D: FC<SliceComponentProps<any>> = ({ slice }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [meshNames, setMeshNames] = useState<string[]>([]);
   const [metallicMeshes, setMetallicMeshes] = useState<Set<string>>(
@@ -478,4 +472,4 @@ const ThreeDModel: FC<ThreeDModelProps> = ({ slice }) => {
   );
 };
 
-export default ThreeDModel;
+export default Core3D;
