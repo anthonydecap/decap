@@ -1,0 +1,48 @@
+{
+  "id": "instrument_feature",
+  "type": "SharedSlice",
+  "name": "InstrumentFeature",
+  "description": "Dark feature section with copy and media",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": { "type": "Text", "config": { "label": "Headline" } },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "media_type": {
+          "type": "Select",
+          "config": {
+            "label": "Media type",
+            "options": ["image", "mux_video"],
+            "default_value": "image"
+          }
+        },
+        "mux_hls_url": {
+          "type": "Text",
+          "config": { "label": "Mux HLS URL or playback ID" }
+        },
+        "image": {
+          "type": "Image",
+          "config": { "label": "Image", "constraint": {}, "thumbnails": [] }
+        },
+        "background_color": {
+          "type": "Color",
+          "config": { "label": "Background", "placeholder": "#0a0a0a" }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

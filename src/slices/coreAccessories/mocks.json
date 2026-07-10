@@ -1,0 +1,24 @@
+{
+  "id": "core_accessories",
+  "slice_type": "core_accessories",
+  "slice_label": null,
+  "version": "initial",
+  "variation": "default",
+  "primary": {
+    "section_title": "Accessories",
+    "section_subtitle": "Complete your setup"
+  },
+  "items": [
+    {
+      "custom_title": "Premium Case",
+      "custom_price": 129,
+      "currency": "EUR",
+      "custom_description": "Protective case with premium materials"
+    },
+    {
+      "custom_title": "Professional Mouthpiece",
+      "custom_price": 85,
+      "currency": "EUR"
+    }
+  ]
+}

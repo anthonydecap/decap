@@ -40,7 +40,17 @@ const SMARTVALVE_CURVES = [
   "M 0 65 C 20 65 50 10 100 10 L 150 10 C 180 10 190 65 200 65",
   "M 0 65 C 30 65 55 25 70 15 L 130 15 C 145 25 170 65 200 65",
   "M 0 65 Q 40 65 80 12 Q 120 12 160 45 Q 180 65 200 65",
-];
+] as const;
+
+/** Stable SSR + first paint; randomized after mount to avoid hydration mismatch. */
+const INITIAL_SMARTVALVE_CURVE = SMARTVALVE_CURVES[3];
+
+function pickRandomCurve(exclude?: string): string {
+  const pool = exclude
+    ? SMARTVALVE_CURVES.filter((p) => p !== exclude)
+    : [...SMARTVALVE_CURVES];
+  return pool[Math.floor(Math.random() * pool.length)] ?? INITIAL_SMARTVALVE_CURVE;
+}
 
 const SmartValvePipeAnimation: FC<SmartValvePipeAnimationProps> = ({ slice }) => {
   const { title, subtitle, background_color } = slice.primary;
@@ -48,9 +58,13 @@ const SmartValvePipeAnimation: FC<SmartValvePipeAnimationProps> = ({ slice }) =>
   const containerRef = useRef<HTMLDivElement>(null);
   const curveSvgRef = useRef<SVGSVGElement>(null);
   const [isInView, setIsInView] = useState(true);
-  const [smartValvePath, setSmartValvePath] = useState(
-    () => SMARTVALVE_CURVES[Math.floor(Math.random() * SMARTVALVE_CURVES.length)]
+  const [smartValvePath, setSmartValvePath] = useState<string>(
+    INITIAL_SMARTVALVE_CURVE,
   );
+
+  useEffect(() => {
+    setSmartValvePath(pickRandomCurve());
+  }, []);
 
   // Pick a different random curve after each animation cycle (event bubbles from path to SVG)
   useEffect(() => {
@@ -58,10 +72,7 @@ const SmartValvePipeAnimation: FC<SmartValvePipeAnimationProps> = ({ slice }) =>
     if (!svg) return;
     const handler = (e: AnimationEvent) => {
       if (e.animationName?.includes("valve-curve-draw")) {
-        setSmartValvePath((prev) => {
-          const others = SMARTVALVE_CURVES.filter((p) => p !== prev);
-          return others[Math.floor(Math.random() * others.length)] ?? prev;
-        });
+        setSmartValvePath((prev) => pickRandomCurve(prev));
       }
     };
     svg.addEventListener("animationiteration", handler);

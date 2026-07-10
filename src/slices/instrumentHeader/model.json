@@ -1,0 +1,100 @@
+{
+  "id": "instrument_header",
+  "type": "SharedSlice",
+  "name": "InstrumentHeader",
+  "description": "Full-screen hero with Mux video background",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "mux_hls_url": {
+          "type": "Text",
+          "config": {
+            "label": "Mux HLS URL or playback ID",
+            "placeholder": "https://stream.mux.com/….m3u8 or playback ID"
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title (H1)",
+            "placeholder": "Automatic Accordion"
+          }
+        },
+        "subtitle": {
+          "type": "Text",
+          "config": {
+            "label": "Subheadline",
+            "placeholder": "A real accordion. Playing automatically."
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body",
+            "placeholder": "Supporting paragraph…",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "primary_button_text": {
+          "type": "Text",
+          "config": {
+            "label": "Primary CTA label",
+            "placeholder": "Request Information"
+          }
+        },
+        "primary_button_link": {
+          "type": "Link",
+          "config": {
+            "label": "Primary CTA link",
+            "allowTargetBlank": true,
+            "select": null
+          }
+        },
+        "secondary_button_text": {
+          "type": "Text",
+          "config": {
+            "label": "Secondary CTA label",
+            "placeholder": "Watch Video"
+          }
+        },
+        "secondary_button_link": {
+          "type": "Link",
+          "config": {
+            "label": "Secondary CTA link",
+            "allowTargetBlank": true,
+            "select": null
+          }
+        },
+        "footnote": {
+          "type": "Text",
+          "config": {
+            "label": "Small note",
+            "placeholder": "Available as Pedestal or Cube."
+          }
+        },
+        "overlay_opacity": {
+          "type": "Select",
+          "config": {
+            "label": "Overlay opacity",
+            "options": ["light", "medium", "dark"]
+          }
+        },
+        "background_color": {
+          "type": "Color",
+          "config": {
+            "label": "Fallback background",
+            "placeholder": "#0a0a0a"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

@@ -1,48 +1,75 @@
 import type { NextRequest } from "next/server";
-import { match } from "@formatjs/intl-localematcher";
-import Negotiator from "negotiator";
 
 /**
- * A record of locales mapped to a version displayed in URLs. The first entry is
- * used as the default locale.
+ * Prismic locale IDs (keys) mapped to URL path segments (values).
+ * Keys must match locales in your Prismic repository.
+ * First key is the default Prismic locale.
  */
-// TODO: Update this object with your website's supported locales. Keys
-// should be the locale IDs registered in your Prismic repository, and values
-// should be the string that appears in the URL.
-const LOCALES = {
-    "en-us": "en",
-    "fr-fr": "fr",
-  } as const;
+export const PRISMIC_TO_URL_LOCALE = {
+  "en-us": "en",
+  "fr-fr": "fr",
+} as const;
 
-/** Creates a redirect with an auto-detected locale prepended to the URL. */
+export type PrismicLocale = keyof typeof PRISMIC_TO_URL_LOCALE;
+export type UrlLocale = (typeof PRISMIC_TO_URL_LOCALE)[PrismicLocale];
+
+/** Default URL segment when no locale is in the path (e.g. redirect from `/`). */
+export const DEFAULT_URL_LANG: UrlLocale = "en";
+
+/** Default Prismic locale for API queries. */
+export const DEFAULT_PRISMIC_LANG: PrismicLocale = "en-us";
+
+/** URL segments used as first path segment (e.g. `/en`, `/fr`). */
+export const LOCALE_PATH_PREFIXES = Object.values(PRISMIC_TO_URL_LOCALE);
+
+/** True when pathname is exactly `/en`, `/fr`, etc. (localized home). */
+export function isLocaleHomePathname(pathname: string): boolean {
+  const segments = pathname.replace(/\/$/, "").split("/").filter(Boolean);
+  return (
+    segments.length === 1 &&
+    (LOCALE_PATH_PREFIXES as readonly string[]).includes(segments[0]!)
+  );
+}
+
+/** Redirects paths without a locale prefix to the default locale (`/en/...`). */
 export function createLocaleRedirect(request: NextRequest): Response {
-  const headers = {
-    "accept-language": request.headers.get("accept-language") || undefined,
-  };
-  const languages = new Negotiator({ headers }).languages();
-  const locales = Object.keys(LOCALES);
-  const locale = match(languages, locales, locales[0]);
-
-  request.nextUrl.pathname = `/${LOCALES[locale as keyof typeof LOCALES]}${request.nextUrl.pathname}`;
-
+  const pathname = request.nextUrl.pathname;
+  const prefix =
+    pathname === "/" ? `/${DEFAULT_URL_LANG}` : `/${DEFAULT_URL_LANG}${pathname}`;
+  request.nextUrl.pathname = prefix;
   return Response.redirect(request.nextUrl);
 }
 
-/** Determines if a pathname has a locale as its first segment. */
+/** Determines if a pathname has a supported locale as its first segment. */
 export function pathnameHasLocale(request: NextRequest): boolean {
-  const regexp = new RegExp(`^/(${Object.values(LOCALES).join("|")})(\/|$)`);
-
+  const regexp = new RegExp(
+    `^/(${LOCALE_PATH_PREFIXES.join("|")})(/|$)`,
+  );
   return regexp.test(request.nextUrl.pathname);
 }
 
-/**
- * Returns the full locale of a given locale. It returns `undefined` if the
- * locale is not in the master list.
- */
-export function reverseLocaleLookup(locale: string): string | undefined {
-  for (const key in LOCALES) {
-    if (LOCALES[key as keyof typeof LOCALES] === locale) {
-      return key;
+export function isValidUrlLang(lang: string): lang is UrlLocale {
+  return (LOCALE_PATH_PREFIXES as readonly string[]).includes(lang);
+}
+
+/** URL segment (`en`) → Prismic locale (`en-us`). */
+export function urlLangToPrismic(urlLang: string): PrismicLocale | undefined {
+  for (const prismicLang of Object.keys(PRISMIC_TO_URL_LOCALE) as PrismicLocale[]) {
+    if (PRISMIC_TO_URL_LOCALE[prismicLang] === urlLang) {
+      return prismicLang;
     }
   }
+  return undefined;
+}
+
+/** Prismic locale (`en-us`) → URL segment (`en`). Falls back to the Prismic id if unknown. */
+export function prismicLangToUrl(prismicLang: string): string {
+  const mapped =
+    PRISMIC_TO_URL_LOCALE[prismicLang as PrismicLocale];
+  return mapped ?? prismicLang;
+}
+
+/** Resolves URL lang for routes; invalid segments fall back to default. */
+export function resolveUrlLang(urlLang: string): UrlLocale {
+  return isValidUrlLang(urlLang) ? urlLang : DEFAULT_URL_LANG;
 }

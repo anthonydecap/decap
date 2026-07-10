@@ -1,0 +1,19 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "title": { "__TYPE__": "FieldContent", "value": "Frequently asked questions", "type": "Text" },
+      "background_color": { "__TYPE__": "FieldContent", "value": "#ffffff", "type": "Color" }
+    },
+    "items": [
+      { "__TYPE__": "GroupItemContent", "value": [["question", { "__TYPE__": "FieldContent", "value": "Is it a real accordion?", "type": "Text" }], ["answer", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "Yes. The instrument is built around a genuine acoustic accordion and produces sound acoustically." } }] }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["question", { "__TYPE__": "FieldContent", "value": "Does it use sampled sounds?", "type": "Text" }], ["answer", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "No. Sound is produced by the accordion itself." } }] }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["question", { "__TYPE__": "FieldContent", "value": "Can it be integrated into an orchestrion?", "type": "Text" }], ["answer", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "Yes. The system is designed for MIDI-based integration." } }] }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["question", { "__TYPE__": "FieldContent", "value": "Can custom arrangements be played?", "type": "Text" }], ["answer", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "Yes. Music is performed from MIDI data." } }] }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["question", { "__TYPE__": "FieldContent", "value": "What is the difference between Pedestal and Cube?", "type": "Text" }], ["answer", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "The primary difference is the presentation format. Both versions share the same technology." } }] }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["question", { "__TYPE__": "FieldContent", "value": "Can it operate as a standalone attraction?", "type": "Text" }], ["answer", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "Yes." } }] }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["question", { "__TYPE__": "FieldContent", "value": "Is it suitable for public installations?", "type": "Text" }], ["answer", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "Yes. The instrument is designed for professional environments." } }] }]] }
+    ]
+  }
+]

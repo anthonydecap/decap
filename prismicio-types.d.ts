@@ -431,6 +431,7 @@ export type CheckoutPageDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | HomeLandingSlice
   | SmartValveEndorseesSlice
   | SmartValveQuoteSlice
   | SmartValveChest3DSlice
@@ -3303,6 +3304,173 @@ type HeroImageSliceVariation = HeroImageSliceDefault;
 export type HeroImageSlice = prismic.SharedSlice<
   "hero_image",
   HeroImageSliceVariation
+>;
+
+/**
+ * Primary content in *HomeLanding → Default → Primary*
+ */
+export interface HomeLandingSliceDefaultPrimary {
+  /**
+   * Eyebrow field in *HomeLanding → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: New · SmartValve
+   * - **API ID Path**: home_landing.default.primary.eyebrow
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  eyebrow: prismic.KeyTextField;
+
+  /**
+   * Headline field in *HomeLanding → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: The future of expressive control
+   * - **API ID Path**: home_landing.default.primary.headline
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  headline: prismic.KeyTextField;
+
+  /**
+   * Supporting Text field in *HomeLanding → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Short paragraph under the headline...
+   * - **API ID Path**: home_landing.default.primary.supporting_text
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  supporting_text: prismic.RichTextField;
+
+  /**
+   * Primary Button Text field in *HomeLanding → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Explore
+   * - **API ID Path**: home_landing.default.primary.primary_cta_text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  primary_cta_text: prismic.KeyTextField;
+
+  /**
+   * Primary Button Link field in *HomeLanding → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_landing.default.primary.primary_cta_link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  primary_cta_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Secondary Button Text field in *HomeLanding → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Watch the film
+   * - **API ID Path**: home_landing.default.primary.secondary_cta_text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  secondary_cta_text: prismic.KeyTextField;
+
+  /**
+   * Secondary Button Link field in *HomeLanding → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_landing.default.primary.secondary_cta_link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  secondary_cta_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Background Image field in *HomeLanding → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_landing.default.primary.background_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  background_image: prismic.ImageField<never>;
+
+  /**
+   * Image Fit field in *HomeLanding → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_landing.default.primary.background_image_mode
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  background_image_mode: prismic.SelectField<"cover" | "contain">;
+
+  /**
+   * Overlay field in *HomeLanding → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_landing.default.primary.overlay_opacity
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  overlay_opacity: prismic.SelectField<"light" | "medium" | "dark">;
+
+  /**
+   * Show ambient gradient glow field in *HomeLanding → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: true
+   * - **API ID Path**: home_landing.default.primary.show_ambient_gradient
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  show_ambient_gradient: prismic.BooleanField;
+
+  /**
+   * Background Color field in *HomeLanding → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: #0a0a0a
+   * - **API ID Path**: home_landing.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  background_color: prismic.ColorField;
+}
+
+/**
+ * Default variation for HomeLanding Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type HomeLandingSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<HomeLandingSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *HomeLanding*
+ */
+type HomeLandingSliceVariation = HomeLandingSliceDefault;
+
+/**
+ * HomeLanding Shared Slice
+ *
+ * - **API ID**: `home_landing`
+ * - **Description**: Full-viewport home landing — eye-catching hero with optional background image and dual CTAs
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type HomeLandingSlice = prismic.SharedSlice<
+  "home_landing",
+  HomeLandingSliceVariation
 >;
 
 /**
@@ -6859,6 +7027,10 @@ declare module "@prismicio/client" {
       HeroImageSliceDefaultPrimary,
       HeroImageSliceVariation,
       HeroImageSliceDefault,
+      HomeLandingSlice,
+      HomeLandingSliceDefaultPrimary,
+      HomeLandingSliceVariation,
+      HomeLandingSliceDefault,
       MidiSlice,
       MidiSliceDefaultPrimaryStatsItem,
       MidiSliceDefaultPrimary,

@@ -1,0 +1,44 @@
+{
+  "id": "instrument_split",
+  "type": "SharedSlice",
+  "name": "InstrumentSplit",
+  "description": "Pedestal vs Cube split comparison",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "footnote": {
+          "type": "Text",
+          "config": {
+            "label": "Footnote",
+            "placeholder": "Both versions share the same core technology…"
+          }
+        },
+        "background_color": {
+          "type": "Color",
+          "config": { "label": "Background", "placeholder": "#ffffff" }
+        }
+      },
+      "items": {
+        "title": { "type": "Text", "config": { "label": "Title" } },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "allowTargetBlank": true,
+            "multi": "paragraph"
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": { "label": "Image", "constraint": {}, "thumbnails": [] }
+        }
+      }
+    }
+  ]
+}

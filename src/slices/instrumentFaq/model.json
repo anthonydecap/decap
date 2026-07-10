@@ -1,0 +1,34 @@
+{
+  "id": "instrument_faq",
+  "type": "SharedSlice",
+  "name": "InstrumentFaq",
+  "description": "FAQ accordion",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": { "type": "Text", "config": { "label": "Section title" } },
+        "background_color": {
+          "type": "Color",
+          "config": { "label": "Background", "placeholder": "#ffffff" }
+        }
+      },
+      "items": {
+        "question": { "type": "Text", "config": { "label": "Question" } },
+        "answer": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Answer",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink,list-item,o-list-item"
+          }
+        }
+      }
+    }
+  ]
+}

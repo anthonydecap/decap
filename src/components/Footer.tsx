@@ -1,19 +1,26 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+"use client";
+
+import clsx from "clsx";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { prismicLinkHref, urlLangFromPathname, type LinkLike } from "@/lib/prismic-link";
 import { Container } from "./Container";
 import { FadeIn } from "./FadeIn";
 import { Logo } from "./Logo";
 import { PrismicNextImage } from "@prismicio/next";
 
+type FooterSection = {
+  section_title: string;
+  section_links: Array<{
+    link_text: string;
+    link_url: LinkLike;
+  }>;
+};
+
 interface FooterSettings {
   data?: {
-    footer_sections?: Array<{
-      section_title: string;
-      section_links: Array<{
-        link_text: string;
-        link_url: { url: string };
-      }>;
-    }>;
+    footer_sections?: FooterSection[];
     newsletter_title?: string;
     newsletter_description?: string;
     copyright_text?: string;
@@ -22,7 +29,7 @@ interface FooterSettings {
   };
 }
 
-const defaultFooterSections = [
+const defaultFooterSections: FooterSection[] = [
   {
     section_title: "Work",
     section_links: [
@@ -49,7 +56,10 @@ const defaultFooterSections = [
   },
 ];
 
-function Navigation({ sections }: { sections: typeof defaultFooterSections }) {
+function Navigation({ sections }: { sections: FooterSection[] }) {
+  const pathname = usePathname();
+  const urlLang = urlLangFromPathname(pathname);
+
   return (
     <nav>
       <ul role="list" className="grid grid-cols-2 gap-8 sm:grid-cols-3">
@@ -62,7 +72,7 @@ function Navigation({ sections }: { sections: typeof defaultFooterSections }) {
               {section.section_links.map((link, linkIndex) => (
                 <li key={linkIndex} className="mt-4">
                   <Link
-                    href={link.link_url.url}
+                    href={prismicLinkHref(link.link_url, "#", urlLang)}
                     className="transition hover:text-neutral-950"
                   >
                     {link.link_text}
@@ -77,7 +87,14 @@ function Navigation({ sections }: { sections: typeof defaultFooterSections }) {
   );
 }
 
-export function Footer({ settings }: { settings?: FooterSettings }) {
+export function Footer({
+  settings,
+  className,
+}: {
+  settings?: FooterSettings;
+  /** e.g. mt-0 when wrapped in a surface that already provides spacing */
+  className?: string;
+}) {
   const footerSections =
     settings?.data?.footer_sections || defaultFooterSections;
   const newsletterTitle = settings?.data?.newsletter_title || "Newsletter";
@@ -90,7 +107,9 @@ export function Footer({ settings }: { settings?: FooterSettings }) {
   // const siteName = settings?.data?.site_name || 'Studio'
 
   return (
-    <footer className="mt-24 w-full sm:mt-32 lg:mt-40">
+    <footer
+      className={clsx("mt-24 w-full sm:mt-32 lg:mt-40", className)}
+    >
       <Container>
         <FadeIn>
         <div className="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2">

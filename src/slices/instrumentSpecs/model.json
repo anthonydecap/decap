@@ -1,0 +1,34 @@
+{
+  "id": "instrument_specs",
+  "type": "SharedSlice",
+  "name": "InstrumentSpecs",
+  "description": "Technical overview two-column list",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "section_title": { "type": "Text", "config": { "label": "Section title (optional)" } },
+        "background_color": {
+          "type": "Color",
+          "config": { "label": "Background", "placeholder": "#ffffff" }
+        }
+      },
+      "items": {
+        "label": { "type": "Text", "config": { "label": "Label" } },
+        "value": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Value",
+            "allowTargetBlank": true,
+            "multi": "paragraph"
+          }
+        }
+      }
+    }
+  ]
+}

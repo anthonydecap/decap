@@ -1,0 +1,31 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "mux_hls_url": { "__TYPE__": "FieldContent", "value": "", "type": "Text" },
+      "title": {
+        "__TYPE__": "FieldContent",
+        "value": "Acoustic tradition. Automated performance.",
+        "type": "Text"
+      },
+      "body": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Discover the Automatic Accordion Pedestal / Cube."
+            }
+          }
+        ]
+      },
+      "button_text": { "__TYPE__": "FieldContent", "value": "Request Information", "type": "Text" },
+      "button_link": { "__TYPE__": "LinkContent", "key": "cta", "value": { "__TYPE__": "ExternalLink", "url": "#contact" } },
+      "footnote": { "__TYPE__": "FieldContent", "value": "Manufactured by Decap Orchestrionix.", "type": "Text" },
+      "overlay_opacity": { "__TYPE__": "FieldContent", "value": "dark", "type": "Select" },
+      "background_color": { "__TYPE__": "FieldContent", "value": "#0a0a0a", "type": "Color" }
+    },
+    "items": []
+  }
+]

@@ -6,6 +6,10 @@ import { FadeIn, FadeInStagger } from "@/components/FadeIn";
 import { getBlogPosts } from "@/lib/blog-utils";
 import { getBlogPostDate, extractTagsFromPost } from "@/lib/blog-utils";
 import type { BlogPost } from "@/lib/blog-utils";
+import {
+  getSliceLocale,
+  type SliceZoneContext,
+} from "@/lib/slice-context";
 
 const SMARTVALVE_GRADIENT = ["#3b82f6", "#a855f7", "#ec4899", "#ef4444", "#f97316", "#eab308"];
 
@@ -60,13 +64,12 @@ function BlogGridCard({ post, index, lang }: { post: BlogPost; index: number; la
 }
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-type BlogGridProps = { slice: any; context?: { lang?: string } };
+type BlogGridProps = { slice: any; context?: SliceZoneContext };
 
 export default async function BlogGrid({ slice, context }: BlogGridProps) {
   const { section_title, background_color } = slice.primary;
-  const lang = context?.lang || "en";
-  const langCode = lang === "fr" ? "fr-fr" : "en-us";
-  const posts = await getBlogPosts(langCode);
+  const { urlLang, prismicLang } = getSliceLocale(context);
+  const posts = await getBlogPosts(prismicLang);
   const bgColor = background_color || "#0a0a0a";
 
   return (
@@ -82,7 +85,7 @@ export default async function BlogGrid({ slice, context }: BlogGridProps) {
         <FadeInStagger faster>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {posts.map((post, index) => (
-              <BlogGridCard key={post.uid} post={post} index={index} lang={lang} />
+              <BlogGridCard key={post.uid} post={post} index={index} lang={urlLang} />
             ))}
           </div>
         </FadeInStagger>

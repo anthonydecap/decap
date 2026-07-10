@@ -72,4 +72,29 @@ body {
 
 .text-balance {
   text-wrap: balance;
-} 
+}
+
+@keyframes home-artists-reel {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 0.75rem));
+  }
+}
+
+.home-artists-reel {
+  animation: home-artists-reel 42s linear infinite;
+  will-change: transform;
+}
+
+.home-artists-reel:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-artists-reel {
+    animation: none;
+  }
+}
+ 

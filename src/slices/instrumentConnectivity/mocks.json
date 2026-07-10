@@ -1,0 +1,27 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "section_title": { "__TYPE__": "FieldContent", "value": "Easy integration.", "type": "Text" },
+      "intro": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "MIDI connectivity allows the Automatic Accordion to operate independently or as part of a larger automated music installation."
+            }
+          }
+        ]
+      },
+      "background_color": { "__TYPE__": "FieldContent", "value": "#0a0a0a", "type": "Color" }
+    },
+    "items": [
+      { "__TYPE__": "GroupItemContent", "value": [["title", { "__TYPE__": "FieldContent", "value": "MIDI In", "type": "Text" }], ["description", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "Connect external playback systems." } }] }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["title", { "__TYPE__": "FieldContent", "value": "MIDI Out", "type": "Text" }], ["description", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "Synchronize additional instruments." } }] }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["title", { "__TYPE__": "FieldContent", "value": "MIDI Thru", "type": "Text" }], ["description", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "Expand larger installations." } }] }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["title", { "__TYPE__": "FieldContent", "value": "Real-Time Control", "type": "Text" }], ["description", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "Perform directly from incoming MIDI data." } }] }]] }
+    ]
+  }
+]

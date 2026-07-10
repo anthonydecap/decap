@@ -1,0 +1,18 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "section_title": { "__TYPE__": "FieldContent", "value": "Suitable for a wide range of installations.", "type": "Text" },
+      "background_color": { "__TYPE__": "FieldContent", "value": "#0a0a0a", "type": "Color" }
+    },
+    "items": [
+      { "__TYPE__": "GroupItemContent", "value": [["title", { "__TYPE__": "FieldContent", "value": "Orchestrions", "type": "Text" }], ["description", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "For integration into automated musical ensembles." } }] }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["title", { "__TYPE__": "FieldContent", "value": "Museums", "type": "Text" }], ["description", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "Create engaging and interactive exhibitions." } }] }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["title", { "__TYPE__": "FieldContent", "value": "Theme Parks", "type": "Text" }], ["description", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "Add movement, sound and visual appeal." } }] }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["title", { "__TYPE__": "FieldContent", "value": "Hospitality", "type": "Text" }], ["description", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "Enhance restaurants, bars and entertainment venues." } }] }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["title", { "__TYPE__": "FieldContent", "value": "Private Collections", "type": "Text" }], ["description", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "A unique addition to automated music collections." } }] }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["title", { "__TYPE__": "FieldContent", "value": "Showrooms", "type": "Text" }], ["description", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "Demonstrate technology and craftsmanship." } }] }]] }
+    ]
+  }
+]

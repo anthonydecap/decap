@@ -1,0 +1,78 @@
+{
+  "id": "core_accessories",
+  "type": "SharedSlice",
+  "name": "CoreAccessories",
+  "description": "Accessories grid — all content from Prismic item fields",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "section_title": {
+          "type": "Text",
+          "config": {
+            "label": "Section Title",
+            "placeholder": "Accessories"
+          }
+        },
+        "section_subtitle": {
+          "type": "Text",
+          "config": {
+            "label": "Section Subtitle",
+            "placeholder": "Complete your setup"
+          }
+        },
+        "background_color": {
+          "type": "Color",
+          "config": {
+            "label": "Background Color",
+            "placeholder": "#0a0a0a"
+          }
+        }
+      },
+      "items": {
+        "custom_title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": "Product name"
+          }
+        },
+        "custom_price": {
+          "type": "Number",
+          "config": {
+            "label": "Price",
+            "placeholder": "e.g. 165.00"
+          }
+        },
+        "currency": {
+          "type": "Select",
+          "config": {
+            "label": "Currency",
+            "options": ["USD", "EUR", "GBP"],
+            "default_value": "EUR"
+          }
+        },
+        "custom_image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": { "width": 400, "height": 400 },
+            "thumbnails": []
+          }
+        },
+        "custom_description": {
+          "type": "Text",
+          "config": {
+            "label": "Description",
+            "placeholder": "Short description"
+          }
+        }
+      }
+    }
+  ]
+}

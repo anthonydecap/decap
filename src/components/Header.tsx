@@ -10,16 +10,19 @@ import {
 } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { isLocaleHomePathname } from '@/i18n'
 import clsx from 'clsx'
 import { motion, MotionConfig, useReducedMotion } from 'framer-motion'
 import { PrismicNextImage } from '@prismicio/next'
 import { ImageField } from '@prismicio/client'
+import { prismicLinkHref, type LinkLike } from '@/lib/prismic-link'
 import { Container } from './Container'
 import { Logo, Logomark } from './Logo'
 import { Offices } from './Offices'
 import { SocialMedia } from './SocialMedia'
-import { CartIcon } from './CartIcon'
-import { CartSidePanel } from './CartSidePanel'
+import { LanguageSwitcher } from './LanguageSwitcher'
+import { pathForHome } from '@/lib/locale-path'
+import type { UrlLocale } from '@/i18n'
 
 const HeaderContext = createContext<{
   logoHovered: boolean
@@ -51,9 +54,7 @@ function HeaderContent({
   toggleRef,
   invert = false,
   settings,
-  isCartOpen,
-  onOpenCart,
-  onCloseCart,
+  urlLang,
 }: {
   panelId: string
   icon: React.ComponentType<{ className?: string }>
@@ -62,21 +63,23 @@ function HeaderContent({
   toggleRef: React.RefObject<HTMLButtonElement | null>
   invert?: boolean
   settings?: Settings
-  isCartOpen: boolean
-  onOpenCart: () => void
-  onCloseCart: () => void
+  urlLang: UrlLocale
 }) {
   const { logoHovered, setLogoHovered } = useContext(HeaderContext)!
 
   const contactButtonText = settings?.data?.contact_button_text || 'Contact us'
-  const contactButtonUrl = settings?.data?.contact_button_link?.url || '/contact'
+  const contactButtonUrl = prismicLinkHref(
+    settings?.data?.contact_button_link,
+    '/contact',
+    urlLang,
+  )
   const logo = settings?.data?.logo
 
   return (
     <Container>
       <div className="flex items-center justify-between">
         <Link
-          href="/"
+          href={pathForHome(urlLang)}
           aria-label="Home"
           onMouseEnter={() => setLogoHovered(true)}
           onMouseLeave={() => setLogoHovered(false)}
@@ -84,7 +87,7 @@ function HeaderContent({
           {logo ? (
             <PrismicNextImage
               field={logo}
-              className="h-8 w-auto"
+              className={clsx('h-8 w-auto', invert && 'brightness-0 invert')}
               alt=""
             />
           ) : (
@@ -102,8 +105,8 @@ function HeaderContent({
             </>
           )}
         </Link>
-        <div className="flex items-center gap-x-8">
-          <CartIcon onOpenCart={onOpenCart} />
+        <div className="flex items-center gap-x-4 sm:gap-x-6">
+          <LanguageSwitcher invert={invert} />
           <Link
             href={contactButtonUrl}
             className={clsx(
@@ -138,7 +141,6 @@ function HeaderContent({
           </button>
         </div>
       </div>
-      <CartSidePanel isOpen={isCartOpen} onClose={onCloseCart} />
     </Container>
   )
 }
@@ -179,7 +181,13 @@ function NavigationItem({
   )
 }
 
-function Navigation({ items }: { items: Array<{ label: string; link: { url: string } }> }) {
+function Navigation({
+  items,
+  urlLang,
+}: {
+  items: Array<{ label: string; link: LinkLike }>
+  urlLang: UrlLocale
+}) {
   // Organize items into rows of 2
   const rows = []
   for (let i = 0; i < items.length; i += 2) {
@@ -191,7 +199,10 @@ function Navigation({ items }: { items: Array<{ label: string; link: { url: stri
       {rows.map((row, rowIndex) => (
         <NavigationRow key={rowIndex}>
           {row.map((item, itemIndex) => (
-            <NavigationItem key={itemIndex} href={item.link.url}>
+            <NavigationItem
+              key={itemIndex}
+              href={prismicLinkHref(item.link, '#', urlLang)}
+            >
               {item.label}
             </NavigationItem>
           ))}
@@ -203,19 +214,26 @@ function Navigation({ items }: { items: Array<{ label: string; link: { url: stri
 
 export interface Settings {
   data?: {
-    navigation?: Array<{ label: string; link: { url: string } }>
+    navigation?: Array<{ label: string; link: LinkLike }>
     contact_button_text?: string
-    contact_button_link?: { url: string }
+    contact_button_link?: LinkLike
     logo?: ImageField
     site_name?: string
   }
 }
 
-function HeaderInner({ settings }: { settings?: Settings }) {
+function HeaderInner({
+  settings,
+  urlLang,
+}: {
+  settings?: Settings
+  urlLang: UrlLocale
+}) {
+  const pathname = usePathname()
+  const isHome = isLocaleHomePathname(pathname)
   const panelId = useId()
   const [expanded, setExpanded] = useState(false)
   const [isTransitioning, setIsTransitioning] = useState(false)
-  const [isCartOpen, setIsCartOpen] = useState(false)
   const openRef = useRef<React.ElementRef<'button'>>(null)
   const closeRef = useRef<React.ElementRef<'button'>>(null)
   const navRef = useRef<React.ElementRef<'div'>>(null)
@@ -263,10 +281,9 @@ function HeaderInner({ settings }: { settings?: Settings }) {
             icon={MenuIcon}
             toggleRef={openRef}
             expanded={expanded}
+            invert={isHome}
             settings={settings}
-            isCartOpen={isCartOpen}
-            onOpenCart={() => setIsCartOpen(true)}
-            onCloseCart={() => setIsCartOpen(false)}
+            urlLang={urlLang}
             onToggle={() => {
               setIsTransitioning(true)
               setExpanded((expanded) => !expanded)
@@ -277,11 +294,15 @@ function HeaderInner({ settings }: { settings?: Settings }) {
           />
         </div>
 
+        {/* Collapsed: 0.5rem-tall strip — bg must match page (white on home) so it blends with html/corners */}
         <motion.div
           layout
           id={panelId}
           style={{ height: expanded ? 'auto' : '0.5rem' }}
-          className="relative z-50 overflow-hidden bg-neutral-950 pt-2"
+          className={clsx(
+            'relative z-50 overflow-hidden pt-2',
+            isHome && !expanded ? 'bg-white' : 'bg-neutral-950',
+          )}
           aria-hidden={expanded ? undefined : 'true'}
           inert={expanded ? undefined : true}
         >
@@ -294,9 +315,7 @@ function HeaderInner({ settings }: { settings?: Settings }) {
                 toggleRef={closeRef}
                 expanded={expanded}
                 settings={settings}
-                isCartOpen={isCartOpen}
-                onOpenCart={() => setIsCartOpen(true)}
-                onCloseCart={() => setIsCartOpen(false)}
+                urlLang={urlLang}
                 onToggle={() => {
                   setIsTransitioning(true)
                   setExpanded((expanded) => !expanded)
@@ -306,7 +325,7 @@ function HeaderInner({ settings }: { settings?: Settings }) {
                 }}
               />
             </div>
-            <Navigation items={navigationItems} />
+            <Navigation items={navigationItems} urlLang={urlLang} />
             <div className="relative bg-neutral-950 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-neutral-800">
               <Container>
                 <div className="grid grid-cols-1 gap-y-10 pt-10 pb-16 sm:grid-cols-2 sm:pt-16">
@@ -335,13 +354,23 @@ function HeaderInner({ settings }: { settings?: Settings }) {
   )
 }
 
-export function Header({ settings }: { settings?: Settings }) {
+export function Header({
+  settings,
+  urlLang,
+}: {
+  settings?: Settings
+  urlLang: UrlLocale
+}) {
   const pathname = usePathname()
   const [logoHovered, setLogoHovered] = useState(false)
 
   return (
     <HeaderContext.Provider value={{ logoHovered, setLogoHovered }}>
-      <HeaderInner key={pathname} settings={settings} />
+      <HeaderInner
+        key={pathname}
+        settings={settings}
+        urlLang={urlLang}
+      />
     </HeaderContext.Provider>
   )
 } 

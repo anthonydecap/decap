@@ -1,0 +1,40 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "section_title": { "__TYPE__": "StructuredTextContent", "value": [] },
+      "background_color": { "__TYPE__": "FieldContent", "value": "#0a0a0a", "type": "Color" }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          ["item_title", { "__TYPE__": "FieldContent", "value": "Built Around A Real Accordion", "type": "Text" }],
+          ["item_description", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "A genuine accordion forms the heart of the system, preserving the sound and character of the original instrument." } }] }]
+        ]
+      },
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          ["item_title", { "__TYPE__": "FieldContent", "value": "Automated Performance", "type": "Text" }],
+          ["item_description", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "Performs automatically from MIDI data while maintaining the visual appeal of a live instrument." } }] }]
+        ]
+      },
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          ["item_title", { "__TYPE__": "FieldContent", "value": "Dynamic Control", "type": "Text" }],
+          ["item_description", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "Dedicated control systems manage both note actuation and airflow." } }] }]
+        ]
+      },
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          ["item_title", { "__TYPE__": "FieldContent", "value": "Made For Public Display", "type": "Text" }],
+          ["item_description", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "Designed for museums, attractions, orchestrions and professional installations." } }] }]
+        ]
+      }
+    ]
+  }
+]

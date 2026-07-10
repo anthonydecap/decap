@@ -8,6 +8,10 @@ import { getBlogPostsByType } from "@/lib/blog-utils";
 import { getBlogPostDate } from "@/lib/blog-utils";
 import { extractTagsFromPost } from "@/lib/blog-utils";
 import type { BlogPost } from "@/lib/blog-utils";
+import {
+  getSliceLocale,
+  type SliceZoneContext,
+} from "@/lib/slice-context";
 
 const SMARTVALVE_GRADIENT = ["#3b82f6", "#a855f7", "#ec4899", "#ef4444", "#f97316", "#eab308"];
 
@@ -79,14 +83,13 @@ function BlogCard({
 /* eslint-disable @typescript-eslint/no-explicit-any */
 type SmartValveBlogsAdvancedProps = {
   slice: any;
-  context?: { lang?: string };
+  context?: SliceZoneContext;
 };
 
 export default async function SmartValveBlogsAdvanced({ slice, context }: SmartValveBlogsAdvancedProps) {
   const { section_title, background_color } = slice.primary;
-  const lang = context?.lang || "en";
-  const langCode = lang === "fr" ? "fr-fr" : "en-us";
-  const posts = await getBlogPostsByType("smartvalve", langCode);
+  const { urlLang, prismicLang } = getSliceLocale(context);
+  const posts = await getBlogPostsByType("smartvalve", prismicLang);
   const bgColor = background_color || "#0a0a0a";
 
   if (posts.length === 0) return null;
@@ -103,7 +106,7 @@ export default async function SmartValveBlogsAdvanced({ slice, context }: SmartV
         )}
         <BlogCarousel>
           {posts.map((post, index) => (
-            <BlogCard key={post.uid} post={post} index={index} lang={lang} />
+            <BlogCard key={post.uid} post={post} index={index} lang={urlLang} />
           ))}
         </BlogCarousel>
       </Container>

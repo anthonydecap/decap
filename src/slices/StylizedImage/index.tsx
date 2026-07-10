@@ -1,5 +1,7 @@
+"use client";
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { type FC } from "react";
+import { type FC, useId } from "react";
 import type { Content } from '@prismicio/client'
 import { PrismicNextLink, PrismicNextImage } from "@prismicio/next";
 import {
@@ -52,7 +54,7 @@ const StylizedImage = ({
   ];
 
   const { width, height, path } = shapes[shape];
-  const id = `stylized-${Math.random().toString(36).substr(2, 9)}`;
+  const id = useId();
 
   return (
     <div

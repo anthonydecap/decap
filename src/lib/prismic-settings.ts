@@ -1,17 +1,37 @@
-import { createClient } from "@/prismicio";
+import { createClient, repositoryName } from "@/prismicio";
+import { urlLangToPrismic } from "@/i18n";
+import { prismicErrorFromUnknown, prismicLog } from "@/lib/prismic-debug";
 
 export async function getSettings(lang?: string) {
   const client = createClient();
-  
+  const prismicLang = lang ? urlLangToPrismic(lang) : undefined;
+
+  prismicLog("getSettings: request", {
+    repository: repositoryName,
+    urlLang: lang ?? "(none)",
+    prismicLang: prismicLang ?? "(master / default)",
+  });
+
   try {
-    //this fails because we have not all settings configured in prismic
-    // so default settings are used for now
     const settings = await client.getSingle("settings", {
-      lang: lang ? lang : undefined, 
+      ...(prismicLang ? { lang: prismicLang } : {}),
+    });
+    prismicLog("getSettings: ok", {
+      id: settings.id,
+      lang: settings.lang,
+      type: settings.type,
     });
     return settings;
-  } catch {
-    console.warn("Settings document not found, using defaults");
+  } catch (err) {
+    prismicErrorFromUnknown(
+      "getSettings: failed (singleton type \"settings\") — using defaultSettings",
+      err,
+      {
+        repository: repositoryName,
+        urlLang: lang ?? "(none)",
+        prismicLang: prismicLang ?? "(master / default)",
+      },
+    );
     return null;
   }
 }
@@ -56,7 +76,8 @@ export const defaultSettings = {
       },
     ],
     newsletter_title: "Newsletter",
-    newsletter_description: "Subscribe to get the latest design news, articles, resources and inspiration.",
+    newsletter_description:
+      "Subscribe to get the latest design news, articles, resources and inspiration.",
     copyright_text: "© Studio Agency Inc.",
   },
-}; 
+};
