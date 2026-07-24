@@ -27,7 +27,7 @@ function FaqItem({
         className={clsx(
           "relative overflow-hidden rounded-2xl transition-all duration-300",
           isOpen
-            ? "border border-neutral-300 bg-white shadow-lg"
+            ? "border border-neutral-200 bg-white shadow-lg"
             : "bg-neutral-50/50 hover:bg-white hover:shadow-md",
         )}
       >
@@ -35,8 +35,8 @@ function FaqItem({
           type="button"
           onClick={onToggle}
           className={clsx(
-            "flex w-full items-center justify-between text-left transition-all",
-            isOpen ? "p-6 pb-4" : "p-6",
+            "flex w-full items-center justify-between text-left transition-all duration-300",
+            isOpen ? "p-6 pb-4" : "p-6 hover:bg-neutral-50/50",
           )}
         >
           <div className="flex items-start gap-4">
@@ -50,19 +50,19 @@ function FaqItem({
             >
               {index + 1}
             </div>
-            <span className="font-display text-lg font-semibold leading-relaxed text-neutral-950">
+            <span className="font-display text-lg font-bold leading-relaxed text-neutral-950">
               {question}
             </span>
           </div>
           <div
             className={clsx(
-              "ml-4 flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-all",
+              "ml-4 flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-all duration-300",
               isOpen
                 ? "rotate-180 bg-neutral-900 text-white"
                 : "bg-neutral-200 text-neutral-600 group-hover:bg-neutral-300",
             )}
           >
-            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg className="h-4 w-4 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
             </svg>
           </div>
@@ -104,14 +104,15 @@ const InstrumentFaq: FC<SliceComponentProps<any>> = ({ slice }) => {
         <FadeInStagger faster>
           <div className="mx-auto max-w-3xl space-y-4">
             {slice.items.map((item: any, index: number) => (
-              <FaqItem
-                key={index}
-                question={item.question}
-                answer={item.answer}
-                isOpen={openIndex === index}
-                onToggle={() => setOpenIndex(openIndex === index ? null : index)}
-                index={index}
-              />
+              <FadeIn key={index}>
+                <FaqItem
+                  question={item.question}
+                  answer={item.answer}
+                  isOpen={openIndex === index}
+                  onToggle={() => setOpenIndex(openIndex === index ? null : index)}
+                  index={index}
+                />
+              </FadeIn>
             ))}
           </div>
         </FadeInStagger>

@@ -1,0 +1,27 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "mux_hls_url": { "__TYPE__": "FieldContent", "value": "", "type": "Text" },
+      "eyebrow": { "__TYPE__": "FieldContent", "value": "Now shipping", "type": "Text" },
+      "title": { "__TYPE__": "FieldContent", "value": "Hear it for yourself", "type": "Text" },
+      "body": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Book a private demo and experience the instrument the way it was meant to be heard, in the room, in full."
+            }
+          }
+        ]
+      },
+      "button_text": { "__TYPE__": "FieldContent", "value": "Book a demo", "type": "Text" },
+      "button_link": { "__TYPE__": "LinkContent", "key": "button", "value": { "__TYPE__": "ExternalLink", "url": "#contact" } },
+      "overlay_opacity": { "__TYPE__": "FieldContent", "value": "medium", "type": "Select" },
+      "background_color": { "__TYPE__": "FieldContent", "value": "#0a0a0a", "type": "Color" }
+    },
+    "items": []
+  }
+]

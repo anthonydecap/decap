@@ -2,6 +2,7 @@
 "use client";
 
 import { type FC, useState, useRef, useEffect } from "react";
+import { PrismicNextLink } from "@prismicio/next";
 import {
   PrismicRichText,
   type SliceComponentProps,
@@ -12,17 +13,13 @@ import { FadeIn } from "@/components/FadeIn";
 import clsx from "clsx";
 
 const components: JSXMapSerializer = {
-  hyperlink: ({ children }) => {
-    return (
-      <span className="text-blue-500 underline decoration-blue-300/50 underline-offset-2">
-        {children}
-      </span>
-    );
-  },
+  hyperlink: ({ node, children }) => (
+    <PrismicNextLink field={node.data}>{children}</PrismicNextLink>
+  ),
   label: ({ node, children }) => {
     if (node.data.label === "codespan") {
       return (
-        <code className="rounded bg-neutral-100 px-1 py-0.5 text-sm font-mono text-neutral-700">
+        <code className="rounded bg-neutral-800 px-1 py-0.5 text-sm font-mono text-neutral-400">
           {children}
         </code>
       );
@@ -207,9 +204,9 @@ const CoreDemoVideo: FC<SliceComponentProps<any>> = ({ slice }) => {
       >
         <div className="mx-auto max-w-6xl">
           {/* Text Content */}
-          <div className="mb-16 max-w-3xl mx-auto text-center">
+          <div className="mb-12 lg:mb-16 max-w-3xl mx-auto text-center">
             {title && (
-              <h2 className="font-display text-4xl font-medium text-white sm:text-5xl mb-8 tracking-tight">
+              <h2 className="font-display text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl mb-6">
                 {title}
               </h2>
             )}
@@ -224,7 +221,7 @@ const CoreDemoVideo: FC<SliceComponentProps<any>> = ({ slice }) => {
           <div className="relative">
             <div
               ref={containerRef}
-              className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-neutral-900/50 to-black/50 backdrop-blur-sm border border-neutral-800/50"
+              className="relative overflow-hidden rounded-2xl lg:rounded-3xl bg-neutral-900 border border-neutral-800"
               onMouseEnter={() => {
                 setIsHovered(true);
                 setShowControls(true);

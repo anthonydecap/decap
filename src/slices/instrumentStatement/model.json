@@ -1,0 +1,43 @@
+{
+  "id": "instrument_statement",
+  "type": "SharedSlice",
+  "name": "InstrumentStatement",
+  "description": "Big centered typographic statement moment",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "eyebrow": {
+          "type": "Text",
+          "config": { "label": "Eyebrow", "placeholder": "Small label above the statement" }
+        },
+        "statement": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Statement",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "cta_text": {
+          "type": "Text",
+          "config": { "label": "CTA text", "placeholder": "Learn more" }
+        },
+        "cta_link": {
+          "type": "Link",
+          "config": { "label": "CTA link", "allowTargetBlank": true, "select": null }
+        },
+        "background_color": {
+          "type": "Color",
+          "config": { "label": "Background", "placeholder": "#0a0a0a" }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

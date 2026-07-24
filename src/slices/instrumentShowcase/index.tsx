@@ -16,9 +16,9 @@ const InstrumentShowcase: FC<SliceComponentProps<any>> = ({ slice }) => {
     <section className={INSTRUMENT_SECTION_PY_LG} style={{ backgroundColor: bg }}>
       <Container>
         <FadeIn>
-          <div className="mx-auto max-w-3xl text-center">
+          <div className="mx-auto max-w-3xl text-center mb-12 lg:mb-16">
             {title && (
-              <h2 className="font-display text-4xl font-bold tracking-tight text-neutral-950 sm:text-5xl lg:text-6xl">
+              <h2 className="font-display text-3xl font-bold leading-tight tracking-tight text-neutral-950 sm:text-4xl lg:text-5xl">
                 {title}
               </h2>
             )}
@@ -28,12 +28,18 @@ const InstrumentShowcase: FC<SliceComponentProps<any>> = ({ slice }) => {
               </div>
             )}
           </div>
-          {image?.url && (
-            <div className="mt-12 lg:mt-16 overflow-hidden rounded-2xl lg:rounded-3xl bg-neutral-100">
-              <PrismicNextImage field={image} className="h-auto w-full object-cover" alt="" />
-            </div>
-          )}
         </FadeIn>
+        {image?.url && (
+          <FadeIn>
+            <div className="group relative overflow-hidden rounded-2xl bg-neutral-100 lg:rounded-3xl">
+              <PrismicNextImage
+                field={image}
+                className="h-auto w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                alt=""
+              />
+            </div>
+          </FadeIn>
+        )}
       </Container>
     </section>
   );

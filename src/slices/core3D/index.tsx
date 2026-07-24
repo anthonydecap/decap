@@ -2,7 +2,7 @@
 "use client";
 
 import React, { type FC, Suspense, useRef, useState, useEffect } from "react";
-import { PrismicNextImage } from "@prismicio/next";
+import { PrismicNextLink } from "@prismicio/next";
 import {
   PrismicRichText,
   type SliceComponentProps,
@@ -16,9 +16,13 @@ import { FadeIn } from "@/components/FadeIn";
 import * as THREE from "three";
 
 const components: JSXMapSerializer = {
-  hyperlink: ({ node, children }) => {
-    return <span className="text-blue-600 underline">{children}</span>;
-  },
+  hyperlink: ({ node, children }) => (
+    <PrismicNextLink field={node.data}>{children}</PrismicNextLink>
+  ),
+  label: ({ node, children }) =>
+    node.data.label === "codespan" ? (
+      <code className="rounded bg-neutral-800 px-1 py-0.5 text-sm font-mono text-neutral-400">{children}</code>
+    ) : null,
 };
 
 // Apple-Level Interaction Elegance
@@ -377,21 +381,21 @@ const Core3D: FC<SliceComponentProps<any>> = ({ slice }) => {
       >
         <div className="mx-auto max-w-6xl">
           {/* Text Content */}
-          <div className="mb-12 max-w">
+          <div className="mb-12 lg:mb-16">
             {title && (
-              <h2 className="font-display text-3xl font-medium text-white sm:text-4xl text-center max-w-4xl mx-auto">
+              <h2 className="font-display text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl text-center max-w-4xl mx-auto">
                 {title}
               </h2>
             )}
             {description && (
-              <div className="mt-6 text-base text-neutral-300">
+              <div className="mt-6 text-lg text-neutral-300 leading-relaxed text-center max-w-3xl mx-auto">
                 <PrismicRichText field={description} components={components} />
               </div>
             )}
           </div>
 
           {/* 3D Model Viewer */}
-          <div className="relative h-96 w-full rounded-2xl backdrop-blur-sm sm:h-[500px] lg:h-[600px]">
+          <div className="relative h-96 w-full overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900 sm:h-[500px] lg:h-[600px] lg:rounded-3xl">
             <Canvas
               camera={{
                 position: [

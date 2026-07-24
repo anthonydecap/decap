@@ -16,6 +16,12 @@ type AccessoryItem = {
   currency?: string | null;
 };
 
+/**
+ * Accessory tile — Smart Valve "immersive tile" language, standard (light)
+ * theme, no gradient. Accessories are product shots, so each tile uses the
+ * clean light-card (contain) branch from coreBento: image uncropped on a
+ * neutral top area, bold font-display title, muted description, price below.
+ */
 function AccessoryCard({ item }: { item: AccessoryItem }) {
   const title = item.custom_title?.trim();
   const price = item.custom_price;
@@ -28,34 +34,35 @@ function AccessoryCard({ item }: { item: AccessoryItem }) {
   }
 
   return (
-    <FadeIn>
-      <article className="group relative overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:shadow-lg">
-        <div className="flex aspect-square items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 p-8">
-          {item.custom_image ? (
-            <PrismicNextImage
-              field={item.custom_image}
-              className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
-              alt=""
-            />
-          ) : null}
+    <FadeIn className="group relative flex flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm transition-all duration-300 hover:border-neutral-300 hover:shadow-md lg:rounded-3xl">
+      {item.custom_image ? (
+        <div className="relative aspect-square w-full overflow-hidden bg-neutral-100">
+          <PrismicNextImage
+            field={item.custom_image}
+            className="absolute inset-0 h-full w-full object-contain p-8 transition-transform duration-700 group-hover:scale-105"
+            alt=""
+          />
         </div>
-        <div className="p-6">
-          {title ? (
-            <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
-          ) : null}
-          {item.custom_description ? (
-            <p className="mt-2 line-clamp-2 text-sm text-gray-600">
-              {item.custom_description}
-            </p>
-          ) : null}
-          {hasPrice ? (
-            <p className="mt-4 text-xl font-bold text-gray-900">
-              {currencySymbol}
-              {price.toFixed(2)}
-            </p>
-          ) : null}
-        </div>
-      </article>
+      ) : null}
+
+      <div className="flex flex-1 flex-col p-6 lg:p-8">
+        {title ? (
+          <h3 className="font-display text-xl font-bold leading-tight tracking-tight text-neutral-950 sm:text-2xl">
+            {title}
+          </h3>
+        ) : null}
+        {item.custom_description ? (
+          <p className="mt-2 flex-grow text-sm leading-relaxed text-neutral-600">
+            {item.custom_description}
+          </p>
+        ) : null}
+        {hasPrice ? (
+          <div className="mt-4 font-display text-lg font-semibold text-neutral-900">
+            {currencySymbol}
+            {price.toFixed(2)}
+          </div>
+        ) : null}
+      </div>
     </FadeIn>
   );
 }
@@ -63,7 +70,8 @@ function AccessoryCard({ item }: { item: AccessoryItem }) {
 export default function CoreAccessories({
   slice,
 }: SliceComponentProps<any>) {
-  const { section_title, section_subtitle } = slice.primary;
+  const { section_title, section_subtitle, background_color } = slice.primary;
+  const bgColor = background_color || '#ffffff';
   const items = ((slice.items ?? []) as AccessoryItem[]).filter(
     (item) => item.custom_title || item.custom_image,
   );
@@ -73,18 +81,18 @@ export default function CoreAccessories({
   }
 
   return (
-    <section className="bg-gradient-to-b from-white to-gray-50 py-24 sm:py-32">
+    <section className="py-16 sm:py-24 lg:py-32" style={{ backgroundColor: bgColor }}>
       <Container>
         <FadeInStagger>
           <FadeIn>
-            <div className="mb-16 text-center">
+            <div className="mb-12 text-center lg:mb-16">
               {section_title ? (
-                <h2 className="mb-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
+                <h2 className="mb-4 font-display text-3xl font-bold leading-tight tracking-tight text-neutral-950 sm:text-4xl lg:text-5xl">
                   {section_title}
                 </h2>
               ) : null}
               {section_subtitle ? (
-                <p className="mx-auto max-w-2xl text-lg text-gray-600 sm:text-xl">
+                <p className="mx-auto max-w-2xl text-lg text-neutral-600 sm:text-xl">
                   {section_subtitle}
                 </p>
               ) : null}
@@ -93,7 +101,7 @@ export default function CoreAccessories({
 
           <div
             className={clsx(
-              'grid w-full gap-8',
+              'grid w-full gap-4 lg:gap-5',
               items.length === 1 && 'grid-cols-1',
               items.length === 2 && 'grid-cols-1 md:grid-cols-2',
               items.length === 3 && 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',

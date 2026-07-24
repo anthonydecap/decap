@@ -1,0 +1,64 @@
+{
+  "id": "instrument_media_text",
+  "type": "SharedSlice",
+  "name": "InstrumentMediaText",
+  "description": "Dark two-column media and copy with feature bullets and CTA",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "eyebrow": {
+          "type": "Text",
+          "config": { "label": "Eyebrow" }
+        },
+        "title": {
+          "type": "Text",
+          "config": { "label": "Headline" }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": { "label": "Image", "constraint": {}, "thumbnails": [] }
+        },
+        "media_side": {
+          "type": "Select",
+          "config": {
+            "label": "Media side",
+            "options": ["image_left", "image_right"],
+            "default_value": "image_right"
+          }
+        },
+        "cta_text": {
+          "type": "Text",
+          "config": { "label": "CTA label" }
+        },
+        "cta_link": {
+          "type": "Link",
+          "config": { "label": "CTA link", "allowTargetBlank": true, "select": null }
+        },
+        "background_color": {
+          "type": "Color",
+          "config": { "label": "Background", "placeholder": "#0a0a0a" }
+        }
+      },
+      "items": {
+        "point": {
+          "type": "Text",
+          "config": { "label": "Feature point" }
+        }
+      }
+    }
+  ]
+}

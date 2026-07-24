@@ -26,14 +26,14 @@ const InstrumentApplications: FC<SliceComponentProps<any>> = ({ slice }) => {
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
             {items.map((item: any, index: number) => (
               <FadeIn key={index}>
-                <div className="h-full rounded-2xl border border-neutral-800 bg-neutral-900 p-6 lg:rounded-3xl lg:p-8">
+                <div className="h-full rounded-2xl border border-neutral-800 bg-neutral-900 p-6 transition-all duration-300 hover:border-neutral-700 lg:rounded-3xl lg:p-8">
                   {item.title && (
                     <h3 className="font-display text-xl font-bold text-white sm:text-2xl">
                       {item.title}
                     </h3>
                   )}
                   {item.description && (
-                    <div className="mt-3 text-sm leading-relaxed text-neutral-400 sm:text-base">
+                    <div className="mt-3 text-sm leading-relaxed text-neutral-300 sm:text-base">
                       <PrismicRichText field={item.description} components={instrumentRichText} />
                     </div>
                   )}

@@ -2,7 +2,7 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { type FC, useId } from "react";
-import { PrismicNextLink, PrismicNextImage } from "@prismicio/next";
+import { PrismicNextLink } from "@prismicio/next";
 import {
   PrismicRichText,
   type SliceComponentProps,
@@ -19,7 +19,7 @@ const components: JSXMapSerializer = {
   ),
   label: ({ node, children }) => {
     if (node.data.label === "codespan") {
-      return <code>{children}</code>;
+      return <code className="rounded bg-neutral-100 px-1 py-0.5 text-sm font-mono text-neutral-700">{children}</code>;
     }
   },
 };
@@ -54,7 +54,7 @@ const HeroImage = ({
             </clipPath>
           </defs>
           <g clipPath={`url(#${id}-clip)`} className="group">
-            <g className="origin-center scale-100 transition duration-700 motion-safe:group-hover:scale-110">
+            <g className="origin-center scale-100 transition duration-700 motion-safe:group-hover:scale-105">
               <image
                 href={image.url}
                 width="1200"
@@ -70,11 +70,11 @@ const HeroImage = ({
           </g>
         </svg>
       ) : (
-        <div className="group overflow-hidden rounded-2xl h-full w-full">
+        <div className="group overflow-hidden rounded-2xl shadow-sm h-full w-full lg:rounded-3xl">
           <img
             src={image.url}
             alt={image.alt || 'Hero image'}
-            className={`w-full h-full object-${imageFit === 'fit' ? 'contain' : imageFit} transition duration-700 motion-safe:group-hover:scale-110`}
+            className={`w-full h-full object-${imageFit === 'fit' ? 'contain' : imageFit} transition duration-700 motion-safe:group-hover:scale-105`}
           />
         </div>
       )}
@@ -100,6 +100,7 @@ const CoreHero: FC<CoreHeroProps> = ({ slice }) => {
     secondary_button_link,
     product_price,
     currency,
+    background_color,
   } = slice.primary as any;
 
   const displayName = title || 'Product';
@@ -144,8 +145,7 @@ const CoreHero: FC<CoreHeroProps> = ({ slice }) => {
   };
 
   return (
-    <div className="relative">
-      <div className="absolute inset-0" />
+    <div className="relative" style={{ backgroundColor: background_color || undefined }}>
       <Container className="relative z-10 flex h-full">
         <div className={clsx(
           "flex w-full flex-col items-center justify-center py-24 sm:py-32 lg:py-40",
@@ -172,7 +172,7 @@ const CoreHero: FC<CoreHeroProps> = ({ slice }) => {
               ) : (
                 <FadeIn className={getImagePositionClasses()}>
                   <div className="flex justify-center">
-                    <div className="w-full max-w-lg aspect-[3/2] rounded-2xl bg-neutral-200 flex items-center justify-center">
+                    <div className="w-full max-w-lg aspect-[3/2] rounded-2xl bg-neutral-100 flex items-center justify-center lg:rounded-3xl">
                       <p className="text-neutral-500">No image selected</p>
                     </div>
                   </div>
@@ -185,13 +185,13 @@ const CoreHero: FC<CoreHeroProps> = ({ slice }) => {
                   text_position === "center" && "mx-auto text-center"
                 )}>
                   {subtitle ? (
-                    <p className="text-lg font-semibold tracking-wide sm:text-xl text-neutral-600">
+                    <p className="text-lg font-semibold uppercase tracking-wide text-neutral-500 sm:text-xl">
                       {subtitle}
                     </p>
                   ) : null}
 
                   {displayName ? (
-                    <h1 className="mt-6 font-display text-4xl font-semibold tracking-tight text-neutral-950 sm:text-5xl lg:text-6xl xl:text-7xl">
+                    <h1 className="mt-6 font-display text-4xl font-bold leading-tight tracking-tight text-neutral-950 sm:text-5xl lg:text-6xl xl:text-7xl">
                       {displayName}
                     </h1>
                   ) : null}

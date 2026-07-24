@@ -33,12 +33,12 @@ const InstrumentConnectivity: FC<SliceComponentProps<any>> = ({ slice }) => {
           <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-6">
             {items.map((item: any, index: number) => (
               <FadeIn key={index}>
-                <div className="h-full rounded-2xl border border-neutral-800 bg-neutral-900 p-6">
+                <div className="h-full rounded-2xl border border-neutral-800 bg-neutral-900 p-6 transition-all duration-300 hover:border-neutral-700 lg:rounded-3xl">
                   {item.title && (
                     <h3 className="font-display text-lg font-bold text-white">{item.title}</h3>
                   )}
                   {item.description && (
-                    <div className="mt-2 text-sm leading-relaxed text-neutral-400">
+                    <div className="mt-2 text-sm leading-relaxed text-neutral-300">
                       <PrismicRichText field={item.description} components={instrumentRichText} />
                     </div>
                   )}

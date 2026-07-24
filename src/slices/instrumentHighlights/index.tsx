@@ -19,7 +19,7 @@ const InstrumentHighlights: FC<SliceComponentProps<any>> = ({ slice }) => {
             {items.map((item: any, index: number) => (
               <div
                 key={index}
-                className="min-w-[200px] shrink-0 snap-start rounded-2xl border border-neutral-800 bg-neutral-900 px-5 py-4 sm:min-w-[220px] lg:rounded-3xl lg:px-6 lg:py-5"
+                className="min-w-[200px] shrink-0 snap-start rounded-2xl border border-neutral-800 bg-neutral-900 px-5 py-4 transition-all duration-300 hover:border-neutral-700 sm:min-w-[220px] lg:rounded-3xl lg:px-6 lg:py-5"
               >
                 {item.label && (
                   <p className="font-display text-sm font-semibold text-white sm:text-base">

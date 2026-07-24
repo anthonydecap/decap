@@ -1,0 +1,42 @@
+{
+  "id": "instrument_logos",
+  "type": "SharedSlice",
+  "name": "InstrumentLogos",
+  "description": "Partner / endorsement logo wall",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "section_title": { "type": "Text", "config": { "label": "Section title" } },
+        "section_subtitle": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Section subtitle",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "background_color": {
+          "type": "Color",
+          "config": { "label": "Background", "placeholder": "#0a0a0a" }
+        }
+      },
+      "items": {
+        "logo": {
+          "type": "Image",
+          "config": { "label": "Logo", "constraint": {}, "thumbnails": [] }
+        },
+        "company_name": { "type": "Text", "config": { "label": "Company name" } },
+        "link": {
+          "type": "Link",
+          "config": { "label": "Link", "allowTargetBlank": true, "select": null }
+        }
+      }
+    }
+  ]
+}

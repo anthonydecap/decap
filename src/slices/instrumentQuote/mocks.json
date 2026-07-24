@@ -1,0 +1,27 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "quote": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "The precision of this instrument transformed how we approach restoration. Every measurement is trustworthy, and that changes everything."
+            }
+          }
+        ]
+      },
+      "author_name": { "__TYPE__": "FieldContent", "value": "Elena Marchetti", "type": "Text" },
+      "author_role": {
+        "__TYPE__": "FieldContent",
+        "value": "Head Conservator, Museo della Musica",
+        "type": "Text"
+      },
+      "background_color": { "__TYPE__": "FieldContent", "value": "#0a0a0a", "type": "Color" }
+    },
+    "items": []
+  }
+]

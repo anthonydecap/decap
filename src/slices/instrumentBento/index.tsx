@@ -14,21 +14,25 @@ function BentoCell({ item }: { item: any }) {
   const hasImage = item.image?.url;
 
   return (
-    <div className="group relative flex h-full min-h-0 flex-col overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900 lg:rounded-3xl">
+    <div className="group relative flex h-full min-h-0 flex-col overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900 transition-all duration-300 hover:border-neutral-700 lg:rounded-3xl">
       {hasImage && (
         <div className="absolute inset-0">
-          <PrismicNextImage field={item.image} className="h-full w-full object-cover" alt="" />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
+          <PrismicNextImage
+            field={item.image}
+            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            alt=""
+          />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
         </div>
       )}
       <div className="relative mt-auto p-5 sm:p-6 lg:p-8">
         {item.item_title && (
-          <h3 className="font-display text-xl font-bold text-white sm:text-2xl lg:text-3xl">
+          <h3 className="font-display text-xl font-bold leading-tight tracking-tight text-white drop-shadow-sm sm:text-2xl lg:text-3xl">
             {item.item_title}
           </h3>
         )}
         {item.item_description && (
-          <div className="mt-2 text-sm leading-relaxed text-neutral-300 sm:text-base">
+          <div className="mt-2 text-sm leading-relaxed text-neutral-300 drop-shadow-sm sm:text-base">
             <PrismicRichText field={item.item_description} components={instrumentRichText} />
           </div>
         )}

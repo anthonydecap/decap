@@ -1,0 +1,22 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "section_title": { "__TYPE__": "FieldContent", "value": "Performance by the numbers", "type": "Text" },
+      "section_subtitle": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          { "type": "paragraph", "content": { "text": "Precision engineering, measured in results that speak for themselves." } }
+        ]
+      },
+      "background_color": { "__TYPE__": "FieldContent", "value": "#0a0a0a", "type": "Color" }
+    },
+    "items": [
+      { "__TYPE__": "GroupItemContent", "value": [["value", { "__TYPE__": "FieldContent", "value": "9,000×", "type": "Text" }], ["label", { "__TYPE__": "FieldContent", "value": "Dynamic range", "type": "Text" }], ["description", { "__TYPE__": "FieldContent", "value": "From whisper to full ensemble.", "type": "Text" }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["value", { "__TYPE__": "FieldContent", "value": "128", "type": "Text" }], ["label", { "__TYPE__": "FieldContent", "value": "Voices", "type": "Text" }], ["description", { "__TYPE__": "FieldContent", "value": "Simultaneous polyphony.", "type": "Text" }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["value", { "__TYPE__": "FieldContent", "value": "0.1ms", "type": "Text" }], ["label", { "__TYPE__": "FieldContent", "value": "Latency", "type": "Text" }], ["description", { "__TYPE__": "FieldContent", "value": "Imperceptible to the ear.", "type": "Text" }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["value", { "__TYPE__": "FieldContent", "value": "25 yr", "type": "Text" }], ["label", { "__TYPE__": "FieldContent", "value": "Lifespan", "type": "Text" }], ["description", { "__TYPE__": "FieldContent", "value": "Built to outlast trends.", "type": "Text" }]] }
+    ]
+  }
+]
