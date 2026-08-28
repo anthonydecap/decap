@@ -1,0 +1,48 @@
+{
+  "id": "instrument_stats",
+  "type": "SharedSlice",
+  "name": "InstrumentStats",
+  "description": "Row of big headline metrics",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "section_title": {
+          "type": "Text",
+          "config": { "label": "Section title", "placeholder": "By the numbers" }
+        },
+        "section_subtitle": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Section subtitle",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "background_color": {
+          "type": "Color",
+          "config": { "label": "Background", "placeholder": "#0a0a0a" }
+        }
+      },
+      "items": {
+        "value": {
+          "type": "Text",
+          "config": { "label": "Value", "placeholder": "9,000×" }
+        },
+        "label": {
+          "type": "Text",
+          "config": { "label": "Label", "placeholder": "Faster" }
+        },
+        "description": {
+          "type": "Text",
+          "config": { "label": "Description", "placeholder": "Optional supporting detail" }
+        }
+      }
+    }
+  ]
+}

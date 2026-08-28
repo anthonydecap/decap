@@ -1,0 +1,17 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "section_title": { "__TYPE__": "FieldContent", "value": "Crafted detail, seen up close.", "type": "Text" },
+      "section_subtitle": { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "Explore the instrument from every angle, from the finished cabinet to the mechanism within." } }] },
+      "background_color": { "__TYPE__": "FieldContent", "value": "#0a0a0a", "type": "Color" }
+    },
+    "items": [
+      { "__TYPE__": "GroupItemContent", "value": [["title", { "__TYPE__": "FieldContent", "value": "The Cabinet", "type": "Text" }], ["description", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "Hand-finished hardwood with a deep, lasting sheen." } }] }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["title", { "__TYPE__": "FieldContent", "value": "The Mechanism", "type": "Text" }], ["description", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "Precision-tuned components working in perfect harmony." } }] }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["title", { "__TYPE__": "FieldContent", "value": "The Keys", "type": "Text" }], ["description", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "Responsive to the lightest touch and the boldest passage." } }] }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["title", { "__TYPE__": "FieldContent", "value": "The Finish", "type": "Text" }], ["description", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "A flawless surface refined through countless hours of work." } }] }]] }
+    ]
+  }
+]

@@ -1,0 +1,77 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { type FC } from "react";
+import { PrismicNextLink } from "@prismicio/next";
+import {
+  PrismicRichText,
+  type SliceComponentProps,
+  type JSXMapSerializer,
+} from "@prismicio/react";
+import { Container } from "@/components/Container";
+import { FadeIn } from "@/components/FadeIn";
+import clsx from "clsx";
+
+const components: JSXMapSerializer = {
+  hyperlink: ({ node, children }) => {
+    return <PrismicNextLink field={node.data}>{children}</PrismicNextLink>;
+  },
+  label: ({ node, children }) => {
+    if (node.data.label === "codespan") {
+      return <code>{children}</code>;
+    }
+  },
+};
+
+/**
+ * Props for `ContentHero`.
+ */
+type ContentHeroProps = SliceComponentProps<any>;
+
+/**
+ * Component for "ContentHero" Slices.
+ */
+const ContentHero: FC<ContentHeroProps> = ({ slice }) => {
+  const { eyebrow, title, description, centered } = slice.primary;
+  const background_color = (slice.primary as { background_color?: string }).background_color;
+  const bgColor = background_color || "#ffffff";
+
+  return (
+    <div className="py-16 sm:py-24" style={{ backgroundColor: bgColor }}>
+    <Container
+      className={clsx('mt-8 sm:mt-12 lg:mt-16', centered && 'text-center')}
+    >
+      <FadeIn>
+        <h1>
+          {eyebrow && (
+            <span className="block font-display text-base font-semibold text-neutral-950">
+              {eyebrow}
+            </span>
+          )}
+          <span className="sr-only"> - </span>
+          {title && (
+            <span
+              className={clsx(
+                'mt-6 block max-w-5xl font-display text-5xl font-medium tracking-tight text-balance text-neutral-950 sm:text-6xl',
+                centered && 'mx-auto',
+              )}
+            >
+              {title}
+            </span>
+          )}
+        </h1>
+        {description && (
+          <div
+            className={clsx(
+              'mt-6 max-w-3xl text-xl text-neutral-600',
+              centered && 'mx-auto',
+            )}
+          >
+            <PrismicRichText field={description} components={components} />
+          </div>
+        )}
+      </FadeIn>
+    </Container>
+    </div>
+  );
+};
+
+export default ContentHero;

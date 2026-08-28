@@ -1,0 +1,39 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "eyebrow": { "__TYPE__": "FieldContent", "value": "Engineered to perform", "type": "Text" },
+      "title": { "__TYPE__": "FieldContent", "value": "Every note, precisely in place", "type": "Text" },
+      "body": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Precision actuators drive each key with studio-grade timing, so the instrument responds exactly as intended, take after take."
+            }
+          }
+        ]
+      },
+      "media_side": { "__TYPE__": "FieldContent", "value": "image_right", "type": "Select" },
+      "cta_text": { "__TYPE__": "FieldContent", "value": "Explore the details", "type": "Text" },
+      "cta_link": { "__TYPE__": "LinkContent", "key": "cta", "value": { "__TYPE__": "ExternalLink", "url": "#details" } },
+      "background_color": { "__TYPE__": "FieldContent", "value": "#0a0a0a", "type": "Color" }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [["point", { "__TYPE__": "FieldContent", "value": "Sub-millisecond actuation across the full keyboard", "type": "Text" }]]
+      },
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [["point", { "__TYPE__": "FieldContent", "value": "Whisper-quiet mechanism tuned for live rooms", "type": "Text" }]]
+      },
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [["point", { "__TYPE__": "FieldContent", "value": "Recall any performance with a single command", "type": "Text" }]]
+      }
+    ]
+  }
+]

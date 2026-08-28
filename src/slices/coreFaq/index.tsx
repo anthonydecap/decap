@@ -10,7 +10,6 @@ import {
 } from "@prismicio/react";
 import { Container } from "@/components/Container";
 import { FadeIn, FadeInStagger } from "@/components/FadeIn";
-import { SectionIntro } from "@/components/SectionIntro";
 import clsx from "clsx";
 
 const components: JSXMapSerializer = {
@@ -19,7 +18,7 @@ const components: JSXMapSerializer = {
   },
   label: ({ node, children }) => {
     if (node.data.label === "codespan") {
-      return <code>{children}</code>;
+      return <code className="rounded bg-neutral-100 px-1 py-0.5 text-sm font-mono text-neutral-700">{children}</code>;
     }
   },
 };
@@ -37,8 +36,8 @@ const FAQItem: FC<FAQItemProps> = ({ question, answer, isOpen, onToggle, index }
     <div className="group">
       <div className={clsx(
         "relative overflow-hidden rounded-2xl transition-all duration-300 ease-in-out",
-        isOpen 
-          ? "border border-neutral-300 bg-white shadow-lg" 
+        isOpen
+          ? "border border-neutral-200 bg-white shadow-lg"
           : "bg-neutral-50/50 hover:bg-white hover:shadow-md"
       )}>
         <button
@@ -125,18 +124,29 @@ const CoreFaq: FC<SliceComponentProps<any>> = ({ slice }) => {
 
   return (
     <div style={{ backgroundColor: bgColor }}>
-    <Container className="mt-8 sm:mt-12 lg:mt-16 sm:py-28 md:py-32">
-      {(title || eyebrow || description) && (
-        <SectionIntro title={title || ""} eyebrow={eyebrow || ""}>
-          {description && (
-            <PrismicRichText field={description} components={components} />
-          )}
-        </SectionIntro>
-      )}
-      
-      <FadeInStagger className="mt-16">
-        <div className="mx-auto max-w-4xl">
-          <div className="space-y-4">
+      <Container className="py-16 sm:py-24 lg:py-32">
+        {(title || eyebrow || description) && (
+          <FadeIn className="mx-auto mb-12 max-w-3xl text-center lg:mb-16">
+            {eyebrow && (
+              <span className="mb-4 block font-display text-base font-semibold text-neutral-950">
+                {eyebrow}
+              </span>
+            )}
+            {title && (
+              <h2 className="font-display text-3xl font-bold leading-tight tracking-tight text-neutral-950 sm:text-4xl lg:text-5xl">
+                {title}
+              </h2>
+            )}
+            {description && (
+              <div className="mt-6 text-lg leading-relaxed text-neutral-600">
+                <PrismicRichText field={description} components={components} />
+              </div>
+            )}
+          </FadeIn>
+        )}
+
+        <FadeInStagger faster>
+          <div className="mx-auto max-w-3xl space-y-4">
             {slice.items.map((item: any, index: number) => (
               <FadeIn key={index}>
                 <FAQItem
@@ -149,9 +159,8 @@ const CoreFaq: FC<SliceComponentProps<any>> = ({ slice }) => {
               </FadeIn>
             ))}
           </div>
-        </div>
-      </FadeInStagger>
-    </Container>
+        </FadeInStagger>
+      </Container>
     </div>
   );
 };

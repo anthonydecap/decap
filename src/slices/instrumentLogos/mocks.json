@@ -1,0 +1,43 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "section_title": { "__TYPE__": "FieldContent", "value": "Trusted by leading institutions", "type": "Text" },
+      "section_subtitle": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Museums, conservatories and workshops around the world rely on our instruments."
+            }
+          }
+        ]
+      },
+      "background_color": { "__TYPE__": "FieldContent", "value": "#0a0a0a", "type": "Color" }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [["company_name", { "__TYPE__": "FieldContent", "value": "Museo della Musica", "type": "Text" }]]
+      },
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [["company_name", { "__TYPE__": "FieldContent", "value": "Royal Conservatory", "type": "Text" }]]
+      },
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [["company_name", { "__TYPE__": "FieldContent", "value": "Speelklok", "type": "Text" }]]
+      },
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [["company_name", { "__TYPE__": "FieldContent", "value": "Atelier Blondeau", "type": "Text" }]]
+      },
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [["company_name", { "__TYPE__": "FieldContent", "value": "The Mechanical Music Society", "type": "Text" }]]
+      }
+    ]
+  }
+]

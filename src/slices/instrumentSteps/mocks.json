@@ -1,0 +1,16 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "section_title": { "__TYPE__": "FieldContent", "value": "How it works.", "type": "Text" },
+      "section_subtitle": { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "From first contact to a finished instrument in your space, in three considered steps." } }] },
+      "background_color": { "__TYPE__": "FieldContent", "value": "#0a0a0a", "type": "Color" }
+    },
+    "items": [
+      { "__TYPE__": "GroupItemContent", "value": [["step_title", { "__TYPE__": "FieldContent", "value": "Consultation", "type": "Text" }], ["step_description", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "We discuss your requirements, space and musical vision to shape the right specification." } }] }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["step_title", { "__TYPE__": "FieldContent", "value": "Handcrafting", "type": "Text" }], ["step_description", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "Our workshop builds and tunes each component by hand to exacting tolerances." } }] }]] },
+      { "__TYPE__": "GroupItemContent", "value": [["step_title", { "__TYPE__": "FieldContent", "value": "Installation", "type": "Text" }], ["step_description", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "We deliver, install and calibrate the instrument on site, ready to play." } }] }]] }
+    ]
+  }
+]

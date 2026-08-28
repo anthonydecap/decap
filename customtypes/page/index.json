@@ -27,6 +27,15 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "foundation": {
+              "type": "SharedSlice"
+            },
+            "gradient_bento_grid": {
+              "type": "SharedSlice"
+            },
+            "midi": {
+              "type": "SharedSlice"
+            },
             "home_landing": {
               "type": "SharedSlice"
             },
@@ -93,7 +102,7 @@
             "product": {
               "type": "SharedSlice"
             },
-            "artists": {
+            "content_artists": {
               "type": "SharedSlice"
             },
             "home_artists": {
@@ -108,13 +117,13 @@
             "bento_grid": {
               "type": "SharedSlice"
             },
-            "section_intro": {
+            "content_intro": {
               "type": "SharedSlice"
             },
-            "contact_section": {
+            "content_contact": {
               "type": "SharedSlice"
             },
-            "hero": {
+            "content_hero": {
               "type": "SharedSlice"
             },
             "success": {
@@ -184,6 +193,30 @@
               "type": "SharedSlice"
             },
             "core_3_d": {
+              "type": "SharedSlice"
+            },
+            "instrument_statement": {
+              "type": "SharedSlice"
+            },
+            "instrument_stats": {
+              "type": "SharedSlice"
+            },
+            "instrument_gallery": {
+              "type": "SharedSlice"
+            },
+            "instrument_steps": {
+              "type": "SharedSlice"
+            },
+            "instrument_quote": {
+              "type": "SharedSlice"
+            },
+            "instrument_logos": {
+              "type": "SharedSlice"
+            },
+            "instrument_media_text": {
+              "type": "SharedSlice"
+            },
+            "instrument_banner": {
               "type": "SharedSlice"
             }
           }

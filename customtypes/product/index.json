@@ -17,16 +17,16 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "section_intro": {
+            "content_intro": {
               "type": "SharedSlice"
             },
-            "hero": {
+            "content_hero": {
               "type": "SharedSlice"
             },
             "feature": {
               "type": "SharedSlice"
             },
-            "contact_section": {
+            "content_contact": {
               "type": "SharedSlice"
             },
             "core_testimonial": {

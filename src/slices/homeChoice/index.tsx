@@ -9,23 +9,41 @@ import { Container } from "@/components/Container";
 import { prismicLinkHref } from "@/lib/prismic-link";
 import { getSliceLocale, type SliceZoneContext } from "@/lib/slice-context";
 import type { UrlLocale } from "@/i18n";
+import clsx from "clsx";
 
 const HEADER_OFFSET = "calc(3.5rem + 2.25rem + 0.5rem)";
 
-function ChoiceLink({
-  link,
-  urlLang,
-  label,
-  className,
-}: {
-  link: ChoiceItem["choice_link"];
-  urlLang: UrlLocale;
-  label: string;
-  className: string;
-}) {
-  const href = prismicLinkHref(link, "#", urlLang);
-  if (href === "#") return null;
-  return <Link href={href} className={className} aria-label={label} />;
+// --- Seam geometry -----------------------------------------------------------
+// Two full-stage image layers tile a single broken (chevron) line; only the
+// clip-path seam moves, so the seam/line stays crisp. The images themselves
+// translate + zoom WITH the seam (see imgTransform) so the content "slides out"
+// on hover — matching the FN Herstal landing.
+// The seam is a single broken diagonal (like FN): near-vertical at the top,
+// then it bends once and angles out toward the bottom. The three X offsets are
+// MONOTONIC (top ≤ kink ≤ bottom) so the line never reverses into an arrow/
+// chevron point. Offsets are relative to the seam centre (s) — tweak to taste.
+const KINK_Y = 48; // height of the bend (% of height)
+const SEAM_TOP = -3; // x offset at the top edge (% of width)
+const SEAM_KINK = -2; // x offset at the bend
+const SEAM_BOTTOM = 6; // x offset at the bottom edge
+const SEAM_DEFAULT = 50;
+const SEAM_EXPANDED = 60; // hovered side grows to this width
+const SLIDE = 4; // how far the images slide with the seam (% of width)
+const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
+const DUR = 700;
+
+const leftClip = (s: number) =>
+  `polygon(0% 0%, ${s + SEAM_TOP}% 0%, ${s + SEAM_KINK}% ${KINK_Y}%, ${s + SEAM_BOTTOM}% 100%, 0% 100%)`;
+const rightClip = (s: number) =>
+  `polygon(${s + SEAM_TOP}% 0%, 100% 0%, 100% 100%, ${s + SEAM_BOTTOM}% 100%, ${s + SEAM_KINK}% ${KINK_Y}%)`;
+
+// Images move in the direction the seam travels; the hovered side zooms more so
+// it reads as coming forward. Scale always exceeds the slide so no edge shows.
+function imgTransform(side: "left" | "right", hovered: "left" | "right" | null) {
+  if (!hovered) return "scale(1.04)";
+  const dir = hovered === "left" ? SLIDE : -SLIDE; // seam moves right on hover-left
+  const zoom = side === hovered ? 1.12 : 1.1;
+  return `scale(${zoom}) translateX(${dir}%)`;
 }
 
 type ChoiceItem = {
@@ -36,215 +54,190 @@ type ChoiceItem = {
   choice_link?: any;
 };
 
-const panelBase =
-  "group relative h-full overflow-hidden transition-[width,left] duration-700 ease-[cubic-bezier(.22,1,.36,1)]";
+function ChoiceContent({ item }: { item: ChoiceItem }) {
+  return (
+    <div className="flex flex-col items-center text-center text-white drop-shadow-[0_2px_16px_rgba(0,0,0,0.55)]">
+      {item.choice_label ? (
+        <p className="mb-4 text-xs uppercase tracking-[0.25em] text-white/75 sm:text-sm">
+          {item.choice_label}
+        </p>
+      ) : null}
+      {item.choice_title ? (
+        <h2 className="font-display text-5xl font-bold uppercase leading-[0.9] tracking-tight sm:text-6xl lg:text-7xl">
+          {item.choice_title}
+        </h2>
+      ) : null}
+      {item.choice_subtitle ? (
+        <p className="font-display text-3xl font-light uppercase leading-none tracking-wide text-white/90 sm:text-4xl lg:text-5xl">
+          {item.choice_subtitle}
+        </p>
+      ) : null}
+    </div>
+  );
+}
+
+/** Full-stage image that translates + zooms with the seam. */
+function PanelImage({
+  item,
+  side,
+  hovered,
+}: {
+  item: ChoiceItem;
+  side: "left" | "right";
+  hovered: "left" | "right" | null;
+}) {
+  return (
+    <>
+      <div
+        className="absolute inset-0"
+        style={{
+          transform: imgTransform(side, hovered),
+          transition: `transform ${DUR}ms ${EASE}`,
+        }}
+      >
+        {item.choice_image?.url ? (
+          <PrismicNextImage
+            field={item.choice_image}
+            className="h-full w-full object-cover object-center"
+            alt=""
+          />
+        ) : (
+          <div className="h-full w-full bg-neutral-900" />
+        )}
+      </div>
+      {/* Light base darken for legibility (kept low so the seam stays crisp) */}
+      <div className="absolute inset-0 bg-black/15" />
+      {/* Subtle darken toward the seam (centre), where the labels sit — like FN */}
+      <div
+        className={clsx(
+          "absolute inset-0",
+          side === "left"
+            ? "bg-[linear-gradient(to_right,rgba(0,0,0,0)_55%,rgba(0,0,0,0.35)_100%)]"
+            : "bg-[linear-gradient(to_left,rgba(0,0,0,0)_55%,rgba(0,0,0,0.35)_100%)]",
+        )}
+      />
+    </>
+  );
+}
 
 const HomeChoice: FC<SliceComponentProps<any>> = ({ slice, context }) => {
-  const { urlLang } = getSliceLocale(context as Partial<SliceZoneContext> | undefined);
+  const { urlLang } = getSliceLocale(
+    context as Partial<SliceZoneContext> | undefined,
+  );
   const [hovered, setHovered] = useState<"left" | "right" | null>(null);
   const choices = ((slice.items ?? []) as ChoiceItem[]).slice(0, 2);
 
   const left = choices[0];
   const right = choices[1];
 
-  const leftWidth = hovered === "left" ? 58 : hovered === "right" ? 42 : 50;
+  if (choices.length < 2) return null;
+
+  const seam =
+    hovered === "left"
+      ? SEAM_EXPANDED
+      : hovered === "right"
+        ? 100 - SEAM_EXPANDED
+        : SEAM_DEFAULT;
+
   const bg = slice.primary?.background_color || "#0a0a0a";
-  const panelHeight = `calc(100svh - ${HEADER_OFFSET})`;
-  const dividerCut = 140;
+  const stageHeight = `calc(100svh - ${HEADER_OFFSET})`;
+  const positionTransition = `left ${DUR}ms ${EASE}, width ${DUR}ms ${EASE}`;
 
-  const mobileChoices = choices;
-
-  if (choices.length < 2) {
-    return null;
-  }
+  const href = (l: ChoiceItem["choice_link"], lang: UrlLocale) =>
+    prismicLinkHref(l, "#", lang);
 
   return (
     <section className="relative" style={{ backgroundColor: bg }}>
       <Container className="!max-w-none !px-0">
+        {/* ================= Desktop ================= */}
         <div
-          className="relative overflow-hidden"
-          style={{ height: panelHeight, minHeight: panelHeight }}
+          className="relative hidden overflow-hidden md:block"
+          style={{ height: stageHeight }}
+          onMouseLeave={() => setHovered(null)}
         >
-          {/* Mobile: stacked split with diagonal seam */}
-          <div className="relative h-full md:hidden">
-            {mobileChoices.map((choice, idx) => {
-              const isTop = idx === 0;
-              return (
-                <div
-                  key={`mobile-${idx}`}
-                  className={`absolute inset-x-0 block h-[56%] ${
-                    isTop ? "top-0" : "bottom-0 h-[54%]"
-                  }`}
-                  style={{
-                    clipPath: isTop
-                      ? "polygon(0 0,100% 0,100% 86%,0 100%)"
-                      : "polygon(0 14%,100% 0,100% 100%,0 100%)",
-                  }}
-                >
-                  <ChoiceLink
-                    link={choice.choice_link}
-                    urlLang={urlLang}
-                    label={choice.choice_title || choice.choice_label || "choice"}
-                    className="absolute inset-0 block"
-                  />
-                  <div className="relative h-full w-full">
-                    {choice.choice_image?.url ? (
-                      <PrismicNextImage
-                        field={choice.choice_image}
-                        className="h-full w-full object-cover"
-                        alt=""
-                      />
-                    ) : null}
-                    <div className="absolute inset-0 bg-black/30" />
-                    <div className="absolute inset-x-6 bottom-8 text-white">
-                      {choice.choice_label ? (
-                        <p className="text-xs uppercase tracking-[0.2em] text-white/70">
-                          {choice.choice_label}
-                        </p>
-                      ) : null}
-                      {choice.choice_title ? (
-                        <h2 className="font-display text-5xl font-semibold leading-[0.95]">
-                          {choice.choice_title}
-                        </h2>
-                      ) : null}
-                      {choice.choice_subtitle ? (
-                        <p className="mt-1 text-3xl font-light leading-none text-white/85">
-                          {choice.choice_subtitle}
-                        </p>
-                      ) : null}
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+          {/* Right image layer (behind) */}
+          <div
+            className="absolute inset-0 overflow-hidden"
+            style={{ clipPath: rightClip(seam), transition: `clip-path ${DUR}ms ${EASE}` }}
+          >
+            <PanelImage item={right} side="right" hovered={hovered} />
           </div>
 
-          {/* Desktop: two choices with animated expansion */}
-          <div className="relative hidden h-full md:block">
-            <div
-              className={panelBase}
-              style={{
-                position: "absolute",
-                insetBlock: 0,
-                left: 0,
-                width: `${leftWidth}%`,
-                zIndex: 2,
-                clipPath: `polygon(
-                  0 0,
-                  calc(100% - ${dividerCut}px) 0,
-                  calc(100% - ${dividerCut - 34}px) 46%,
-                  100% 100%,
-                  0 100%
-                )`,
-              }}
-              onMouseEnter={() => setHovered("left")}
-              onMouseLeave={() => setHovered(null)}
-            >
-              <ChoiceLink
-                link={left.choice_link}
-                urlLang={urlLang}
-                label={left.choice_title || left.choice_label || "left choice"}
-                className="absolute inset-0 z-20 block"
-              />
-              <div className="relative h-full w-full">
-                {left.choice_image?.url ? (
-                  <PrismicNextImage
-                    field={left.choice_image}
-                    className="h-full w-full object-cover object-center"
-                    alt=""
-                  />
-                ) : null}
-                {/* Darker base for title contrast */}
-                <div className="absolute inset-0 bg-black/55 transition-opacity duration-500 group-hover:bg-black/40" />
-                {/* Left outer vignette to fuse into background */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.58)_0%,rgba(0,0,0,0.24)_24%,rgba(0,0,0,0)_52%)]" />
-                {/* Top vignette */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.44)_0%,rgba(0,0,0,0.12)_20%,rgba(0,0,0,0)_42%)]" />
-                <div className="absolute left-[8%] top-1/2 -translate-y-1/2 text-white">
-                  {left.choice_label ? (
-                    <p className="mb-3 text-sm uppercase tracking-[0.22em] text-white/75">
-                      {left.choice_label}
-                    </p>
-                  ) : null}
-                  {left.choice_title ? (
-                    <h2 className="font-display text-6xl font-semibold leading-[0.95] lg:text-7xl">
-                      {left.choice_title}
-                    </h2>
-                  ) : null}
-                  {left.choice_subtitle ? (
-                    <p className="text-5xl font-light leading-none text-white/85 lg:text-6xl">
-                      {left.choice_subtitle}
-                    </p>
-                  ) : null}
-                </div>
-              </div>
-            </div>
-
-            <div
-              className={panelBase}
-              style={{
-                position: "absolute",
-                insetBlock: 0,
-                left: `${leftWidth}%`,
-                width: `${100 - leftWidth}%`,
-                zIndex: 1,
-              }}
-              onMouseEnter={() => setHovered("right")}
-              onMouseLeave={() => setHovered(null)}
-            >
-              <ChoiceLink
-                link={right.choice_link}
-                urlLang={urlLang}
-                label={right.choice_title || right.choice_label || "right choice"}
-                className="absolute inset-0 z-20 block"
-              />
-              <div className="relative h-full w-full">
-                {right.choice_image?.url ? (
-                  <PrismicNextImage
-                    field={right.choice_image}
-                    className="h-full w-full object-cover object-center"
-                    alt=""
-                  />
-                ) : null}
-                {/* Darker base for title contrast */}
-                <div className="absolute inset-0 bg-black/55 transition-opacity duration-500 group-hover:bg-black/40" />
-                {/* Right outer vignette to fuse into background */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_left,rgba(0,0,0,0.58)_0%,rgba(0,0,0,0.24)_24%,rgba(0,0,0,0)_52%)]" />
-                {/* Top vignette */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.44)_0%,rgba(0,0,0,0.12)_20%,rgba(0,0,0,0)_42%)]" />
-                <div className="absolute left-[14%] top-1/2 -translate-y-1/2 text-white">
-                  {right.choice_label ? (
-                    <p className="mb-3 text-sm uppercase tracking-[0.22em] text-white/75">
-                      {right.choice_label}
-                    </p>
-                  ) : null}
-                  {right.choice_title ? (
-                    <h2 className="font-display text-6xl font-semibold leading-[0.95] lg:text-7xl">
-                      {right.choice_title}
-                    </h2>
-                  ) : null}
-                  {right.choice_subtitle ? (
-                    <p className="text-5xl font-light leading-none text-white/85 lg:text-6xl">
-                      {right.choice_subtitle}
-                    </p>
-                  ) : null}
-                </div>
-              </div>
-            </div>
-
-            {/* Kinked seam softener (matches split shape, avoids arrow look) */}
-            <div
-              className="pointer-events-none absolute inset-y-0 z-10 transition-[left] duration-700 ease-[cubic-bezier(.22,1,.36,1)]"
-              style={{
-                left: `${leftWidth}%`,
-                width: "56px",
-                transform: "translateX(-50%)",
-                clipPath: "polygon(42% 0, 58% 0, 68% 46%, 58% 100%, 42% 100%, 32% 46%)",
-                background:
-                  "linear-gradient(to right, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.18) 50%, rgba(255,255,255,0.08) 100%)",
-              }}
-            />
+          {/* Left image layer (in front) — casts the thin seam line */}
+          <div
+            className="absolute inset-0 overflow-hidden"
+            style={{
+              clipPath: leftClip(seam),
+              transition: `clip-path ${DUR}ms ${EASE}`,
+              filter:
+                "drop-shadow(1.5px 0 0 rgba(255,255,255,0.45)) drop-shadow(-1px 0 0 rgba(0,0,0,0.35))",
+            }}
+          >
+            <PanelImage item={left} side="left" hovered={hovered} />
           </div>
+
+          {/* Labels — centred in each region, sliding with the seam */}
+          <div
+            className="pointer-events-none absolute top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 px-6"
+            style={{ left: `${seam / 2}%`, transition: positionTransition }}
+          >
+            <ChoiceContent item={left} />
+          </div>
+          <div
+            className="pointer-events-none absolute top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 px-6"
+            style={{ left: `${(100 + seam) / 2}%`, transition: positionTransition }}
+          >
+            <ChoiceContent item={right} />
+          </div>
+
+          {/* Hover + click regions (follow the current seam width) */}
+          <Link
+            href={href(left.choice_link, urlLang)}
+            aria-label={left.choice_title || left.choice_label || "left choice"}
+            className="absolute inset-y-0 left-0 z-30 block"
+            style={{ width: `${seam}%`, transition: positionTransition }}
+            onMouseEnter={() => setHovered("left")}
+            onFocus={() => setHovered("left")}
+          />
+          <Link
+            href={href(right.choice_link, urlLang)}
+            aria-label={right.choice_title || right.choice_label || "right choice"}
+            className="absolute inset-y-0 right-0 z-30 block"
+            style={{ width: `${100 - seam}%`, transition: positionTransition }}
+            onMouseEnter={() => setHovered("right")}
+            onFocus={() => setHovered("right")}
+          />
+        </div>
+
+        {/* ================= Mobile (stacked, diagonal seam) ================= */}
+        <div className="relative overflow-hidden md:hidden" style={{ height: stageHeight }}>
+          {[left, right].map((choice, idx) => {
+            const isTop = idx === 0;
+            return (
+              <div
+                key={`m-${idx}`}
+                className={clsx(
+                  "absolute inset-x-0 h-[54%] overflow-hidden",
+                  isTop ? "top-0" : "bottom-0",
+                )}
+                style={{
+                  clipPath: isTop
+                    ? "polygon(0 0, 100% 0, 100% 88%, 0 100%)"
+                    : "polygon(0 12%, 100% 0, 100% 100%, 0 100%)",
+                }}
+              >
+                <Link
+                  href={href(choice.choice_link, urlLang)}
+                  aria-label={choice.choice_title || choice.choice_label || "choice"}
+                  className="absolute inset-0 z-20 block"
+                />
+                <PanelImage item={choice} side={isTop ? "left" : "right"} hovered={null} />
+                <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center px-6">
+                  <ChoiceContent item={choice} />
+                </div>
+              </div>
+            );
+          })}
         </div>
       </Container>
     </section>

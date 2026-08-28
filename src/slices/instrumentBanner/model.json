@@ -1,0 +1,63 @@
+{
+  "id": "instrument_banner",
+  "type": "SharedSlice",
+  "name": "InstrumentBanner",
+  "description": "Dark full-bleed cinematic media band with overlaid headline and CTA",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "image": {
+          "type": "Image",
+          "config": { "label": "Background image", "constraint": {}, "thumbnails": [] }
+        },
+        "mux_hls_url": {
+          "type": "Text",
+          "config": { "label": "Mux HLS URL or playback ID" }
+        },
+        "eyebrow": {
+          "type": "Text",
+          "config": { "label": "Eyebrow" }
+        },
+        "title": {
+          "type": "Text",
+          "config": { "label": "Headline" }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "button_text": {
+          "type": "Text",
+          "config": { "label": "Button label" }
+        },
+        "button_link": {
+          "type": "Link",
+          "config": { "label": "Button link", "allowTargetBlank": true, "select": null }
+        },
+        "overlay_opacity": {
+          "type": "Select",
+          "config": {
+            "label": "Overlay opacity",
+            "options": ["light", "medium", "dark"],
+            "default_value": "medium"
+          }
+        },
+        "background_color": {
+          "type": "Color",
+          "config": { "label": "Background", "placeholder": "#0a0a0a" }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

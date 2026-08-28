@@ -1,0 +1,42 @@
+{
+  "id": "instrument_steps",
+  "type": "SharedSlice",
+  "name": "InstrumentSteps",
+  "description": "Numbered how-it-works steps",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "section_title": { "type": "Text", "config": { "label": "Section title" } },
+        "section_subtitle": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Section subtitle",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "background_color": {
+          "type": "Color",
+          "config": { "label": "Background", "placeholder": "#0a0a0a" }
+        }
+      },
+      "items": {
+        "step_title": { "type": "Text", "config": { "label": "Step title" } },
+        "step_description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Step description",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        }
+      }
+    }
+  ]
+}
