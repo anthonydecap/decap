@@ -26,6 +26,7 @@ const SECTIONS: { title: string; items: NavItem[] }[] = [
     items: [
       { href: "/admin/shop/orders", label: "Orders", permission: "orders:read" },
       { href: "/admin/shop/customers", label: "Customers", permission: "customers:read" },
+      { href: "/admin/shop/player-types", label: "Player types", permission: "players:read" },
       { href: "/admin/shop/royalties", label: "Royalties", permission: "royalties:read" },
     ],
   },

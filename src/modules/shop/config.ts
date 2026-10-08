@@ -26,6 +26,13 @@ export const shopConfig = {
     if (d !== "vercel-blob" && d !== "local" && d !== "memory") throw new Error(`Unknown SHOP_STORAGE_DRIVER ${d}`);
     return d;
   },
+  /**
+   * Secret for encrypting player activation keys at rest (AES-256-GCM). Separate from the
+   * upload-ticket secret on purpose: rotating one must not invalidate the other, and this
+   * one guards data that stays readable for years.
+   */
+  get activationKeySecret() { return required("SHOP_ACTIVATION_KEY_SECRET"); },
+  get hasActivationKeySecret() { return !!process.env.SHOP_ACTIVATION_KEY_SECRET; },
   /** HMAC secret for upload tickets and dev-storage URLs. */
   get uploadTicketSecret() {
     return process.env.SHOP_UPLOAD_TICKET_SECRET ?? process.env.SHOP_LOCAL_STORAGE_SECRET ?? required("SHOP_UPLOAD_TICKET_SECRET");

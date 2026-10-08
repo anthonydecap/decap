@@ -190,6 +190,49 @@ export const staffStatusSchema = z.object({
   reason: optionalText(500),
 });
 
+// ─── Registered players ───────────────────────────────────────────────────────
+
+const playerStatus = z.enum(["PENDING", "ACTIVE", "SUSPENDED", "RETIRED"]);
+/** Codes are read aloud and retyped, so spacing and case are not part of the value. */
+const registrationCode = z.string().trim().min(4).max(64);
+const isoDate = z.iso.date().transform((v) => new Date(`${v}T00:00:00.000Z`));
+
+export const playerTypeCreateSchema = z.object({
+  code: z.string().trim().min(2).max(40).regex(/^[A-Za-z0-9 _-]+$/, "letters, digits, space, dash, underscore"),
+  name: z.string().trim().min(2).max(120),
+  description: optionalText(500),
+});
+
+export const playerTypeUpdateSchema = z.object({
+  name: z.string().trim().min(2).max(120).optional(),
+  description: optionalText(500),
+  active: z.boolean().optional(),
+});
+
+export const playerCreateSchema = z.object({
+  playerTypeId: uuid,
+  registrationCode,
+  registrationIdentifier: z.string().trim().min(4).max(64).optional(),
+  serialNumber: optionalText(80),
+  adminLabel: optionalText(120),
+  dealerName: optionalText(120),
+  purchaseDate: isoDate.optional(),
+  warrantyUntil: isoDate.optional(),
+  status: playerStatus.optional(),
+  /** Only ever sent by staff with players:activation-key; stored encrypted, never logged. */
+  activationKey: z.string().trim().min(4).max(128).optional(),
+});
+
+export const playerUpdateSchema = playerCreateSchema.partial().extend({
+  /** Explicit null clears the stored key; omitting the field leaves it alone. */
+  activationKey: z.string().trim().min(4).max(128).nullable().optional(),
+});
+
+export const playerTransferSchema = z.object({
+  toCustomerId: uuid,
+  reason: z.string().trim().min(3).max(500),
+});
+
 // ─── Bulk import ─────────────────────────────────────────────────────────────
 
 export const importCreateSchema = z.object({

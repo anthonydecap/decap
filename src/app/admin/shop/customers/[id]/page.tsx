@@ -3,10 +3,12 @@ import { notFound } from "next/navigation";
 import { roleHasPermission } from "@/modules/shop/auth/session";
 import { shopDb } from "@/modules/shop/db";
 import { getCustomerAdmin } from "@/modules/shop/services/admin-ops";
+import { listCustomerPlayers, listPlayerTypes } from "@/modules/shop/services/players";
 import { formatOrderNumber } from "@/modules/shop/services/checkout";
 import { guardStaffPage } from "@/modules/shop/ui/admin/guard";
 import { NoAccess } from "@/modules/shop/ui/admin/NoAccess";
 import { EmptyState, PageHeader, Panel, StatusBadge, Table, td, th, tr } from "@/modules/shop/ui/admin/primitives";
+import { CustomerPlayers } from "@/modules/shop/ui/admin/players/CustomerPlayers";
 import { GrantForm } from "@/modules/shop/ui/admin/sales/GrantForm";
 import { customerName, humanize, sourceTypeLabel } from "@/modules/shop/ui/admin/sales/labels";
 import { RevokeSourceButton } from "@/modules/shop/ui/admin/sales/RevokeSourceButton";
@@ -38,6 +40,9 @@ export default async function AdminCustomerPage({ params }: { params: Promise<{ 
   const role = guard.ctx.staff.role;
   const canManage = roleHasPermission(role, "entitlements:grant");
   const canSeeOrders = roleHasPermission(role, "orders:read");
+  const canReadPlayers = roleHasPermission(role, "players:read");
+  const canWritePlayers = roleHasPermission(role, "players:write");
+  const canSeeActivationKey = roleHasPermission(role, "players:activation-key");
   const db = shopDb();
 
   const sources = customer.entitlements.flatMap((e) => e.sources);
@@ -46,7 +51,7 @@ export default async function AdminCustomerPage({ params }: { params: Promise<{ 
     ...new Set(sources.flatMap((s) => [s.grantedByStaffId, s.revokedByStaffId]).filter((v): v is string => Boolean(v))),
   ];
 
-  const [allocations, staff, arrangements] = await Promise.all([
+  const [allocations, staff, arrangements, players, playerTypes] = await Promise.all([
     allocationIds.length
       ? db.orderItemAllocation.findMany({
           where: { id: { in: allocationIds } },
@@ -63,6 +68,8 @@ export default async function AdminCustomerPage({ params }: { params: Promise<{ 
           orderBy: { sku: "asc" },
         })
       : Promise.resolve([]),
+    canReadPlayers ? listCustomerPlayers(id) : Promise.resolve([]),
+    canWritePlayers ? listPlayerTypes({ activeOnly: true }) : Promise.resolve([]),
   ]);
   const allocationOrder = new Map(allocations.map((a) => [a.id, { orderId: a.orderId, orderNumber: formatOrderNumber(a.order.number) }]));
   const staffName = new Map(staff.map((s) => [s.id, s.displayName ?? s.email ?? s.id]));
@@ -196,6 +203,32 @@ export default async function AdminCustomerPage({ params }: { params: Promise<{ 
           )}
         </Panel>
       </div>
+
+      {canReadPlayers && (
+        <div className="mt-6">
+          <CustomerPlayers
+            customerId={id}
+            canWrite={canWritePlayers}
+            canSeeActivationKey={canSeeActivationKey}
+            types={playerTypes.map((t) => ({ id: t.id, name: t.name }))}
+            players={players.map((p) => ({
+              id: p.id,
+              typeName: p.playerType.name,
+              registrationCode: p.registrationCode,
+              registrationIdentifier: p.registrationIdentifier,
+              serialNumber: p.serialNumber,
+              adminLabel: p.adminLabel,
+              dealerName: p.dealerName,
+              status: p.status,
+              purchaseDate: p.purchaseDate?.toISOString() ?? null,
+              warrantyUntil: p.warrantyUntil?.toISOString() ?? null,
+              registeredAt: p.registeredAt?.toISOString() ?? null,
+              activatedAt: p.activatedAt?.toISOString() ?? null,
+              hasActivationKey: p.hasActivationKey,
+            }))}
+          />
+        </div>
+      )}
 
       <Panel
         title="Library access"
