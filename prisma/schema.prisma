@@ -1,0 +1,1408 @@
+// DMI Music Shop — database schema.
+//
+// The shop is an isolated subsystem: nothing here is mirrored from or synchronised with
+// Prismic. PostgreSQL is authoritative for customers, staff, catalog, orders, entitlements,
+// royalties and the private master-asset registry. Auth0 owns credentials only; local rows
+// are linked through the stable Auth0 `sub` claim (`authSubject`), never through email.
+//
+// Money is always integer cents + ISO-4217 currency code.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/shop-prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ───────────────────────────────────────────────────────────────────────────────
+// Identity / business profile
+// ───────────────────────────────────────────────────────────────────────────────
+
+enum StaffRole {
+  /// Everything, plus staff management and player transfers. At least one must stay active.
+  SUPER_ADMIN
+  ADMIN
+  SUPPORT
+  CATALOG_MANAGER
+  FINANCE
+}
+
+/// Replaces the former `active` boolean: suspension and permanent removal are different
+/// operational facts, and both must deny `/admin/*` immediately.
+enum StaffStatus {
+  ACTIVE
+  SUSPENDED
+  DISABLED
+}
+
+enum LegalDocumentType {
+  TERMS
+  PRIVACY
+}
+
+enum CustomerAccountType {
+  INDIVIDUAL
+  BUSINESS
+}
+
+/// Operational CRM state only. It never decides what a customer owns — entitlements do.
+enum CrmStatus {
+  PROSPECT
+  CUSTOMER
+  ACTIVE
+  INACTIVE
+  ARCHIVED
+}
+
+enum CustomerSource {
+  WEBSITE
+  DIRECT_SALE
+  DEALER
+  REFERRAL
+  TRADE_SHOW
+  LEGACY_IMPORT
+  OTHER
+}
+
+enum AddressType {
+  BILLING
+  OTHER
+}
+
+model Customer {
+  id            String              @id @default(uuid()) @db.Uuid
+  /// Auth0 `sub`. The only stable identity key.
+  authSubject   String              @unique
+  email         String
+  emailVerified Boolean             @default(false)
+  firstName     String?
+  lastName      String?
+  phone         String?
+  accountType   CustomerAccountType @default(INDIVIDUAL)
+
+  /// Business profile. Only meaningful when accountType is BUSINESS, but never cleared
+  /// automatically: a customer who switches back keeps their history readable.
+  companyName               String?
+  companyRegistrationNumber String?
+  vatNumber                 String?
+  vatCountryCode            String? @db.Char(2)
+
+  countryCode       String? @db.Char(2)
+  preferredCurrency String  @default("EUR") @db.Char(3)
+  preferredLanguage String? @db.VarChar(5)
+  stripeCustomerId  String? @unique
+
+  /// CRM state. Operational only — see the CrmStatus comment.
+  crmStatus      CrmStatus       @default(PROSPECT)
+  customerSource CustomerSource?
+
+  /// An account is not consent. Both are recorded separately from LegalAcceptance,
+  /// which covers terms and privacy versions.
+  marketingConsent   Boolean   @default(false)
+  marketingConsentAt DateTime?
+
+  onboardingCompletedAt DateTime?
+  archivedAt            DateTime?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  legalAcceptances  LegalAcceptance[]
+  cart              Cart?
+  orders            Order[]
+  entitlements      Entitlement[]
+  encodingJobs      EncodingJob[]
+  deliveryArtifacts DeliveryArtifact[]
+  addresses         CustomerAddress[]
+  players           RegisteredPlayer[]
+  tags              CustomerTagAssignment[]
+  notes             CustomerNote[]
+  tasks             CustomerTask[]
+  communications    CommunicationLogEntry[]
+  activity          CustomerActivity[]
+  supportTickets    SupportTicket[]
+  supportMessages   SupportMessage[]
+
+  @@index([email])
+  @@index([crmStatus])
+  @@index([accountType])
+  @@index([companyName])
+  @@index([vatNumber])
+}
+
+model StaffAccount {
+  id               String      @id @default(uuid()) @db.Uuid
+  authSubject      String      @unique
+  email            String?
+  displayName      String?
+  role             StaffRole
+  status           StaffStatus @default(ACTIVE)
+  /// Who granted this access. Null for the bootstrap account and CLI-created staff.
+  createdByStaffId String?     @db.Uuid
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
+
+  uploadedAssetVersions AssetVersion[]
+  importBatches         ImportBatch[]
+
+  createdByStaff StaffAccount?  @relation("StaffCreatedBy", fields: [createdByStaffId], references: [id], onDelete: SetNull)
+  createdStaff   StaffAccount[] @relation("StaffCreatedBy")
+
+  playersCreated   RegisteredPlayer[]      @relation("PlayerCreatedBy")
+  playersUpdated   RegisteredPlayer[]      @relation("PlayerUpdatedBy")
+  notesWritten     CustomerNote[]
+  tasksCreated     CustomerTask[]          @relation("TaskCreatedBy")
+  tasksAssigned    CustomerTask[]          @relation("TaskAssignedTo")
+  communications   CommunicationLogEntry[]
+  activityRecorded CustomerActivity[]
+  ticketsAssigned  SupportTicket[]
+  supportMessages  SupportMessage[]
+
+  @@index([status])
+  @@index([role])
+}
+
+model LegalAcceptance {
+  id              String            @id @default(uuid()) @db.Uuid
+  customerId      String            @db.Uuid
+  documentType    LegalDocumentType
+  documentVersion String
+  acceptedAt      DateTime          @default(now())
+  /// Where the acceptance was captured (e.g. "account_onboarding"). No IP/UA fingerprinting.
+  source          String
+
+  customer Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+
+  @@unique([customerId, documentType, documentVersion])
+}
+
+/// Structured postal address. Never one free-text blob: invoices, VAT and shipping all
+/// need the parts separately, and the billing snapshot on an order copies these fields.
+model CustomerAddress {
+  id          String      @id @default(uuid()) @db.Uuid
+  customerId  String      @db.Uuid
+  type        AddressType @default(BILLING)
+  name        String?
+  companyName String?
+
+  addressLine1    String
+  addressLine2    String?
+  postalCode      String
+  city            String
+  stateOrProvince String?
+  /// ISO-3166-1 alpha-2.
+  countryCode     String  @db.Char(2)
+
+  isDefault Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  customer Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+
+  @@index([customerId, type])
+}
+
+/// What the invoice said at the moment of the order. Orders must never re-read the
+/// customer's current address: an address change next year may not rewrite last year's
+/// invoice. Written once at order creation and never updated.
+model OrderBillingSnapshot {
+  orderId String @id @db.Uuid
+
+  customerName String
+  companyName  String?
+  vatNumber    String?
+  email        String
+
+  addressLine1    String?
+  addressLine2    String?
+  postalCode      String?
+  city            String?
+  stateOrProvince String?
+  countryCode     String? @db.Char(2)
+
+  createdAt DateTime @default(now())
+
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+}
+
+// ───────────────────────────────────────────────────────────────────────────────
+// Registered players
+//
+// Activation stays offline: the player prints a registration code, a member of staff
+// runs it through the proprietary EXE and types the resulting activation key back in.
+// Nothing here reproduces that algorithm; the CRM only records the result.
+// ───────────────────────────────────────────────────────────────────────────────
+
+enum PlayerStatus {
+  PENDING
+  ACTIVE
+  SUSPENDED
+  RETIRED
+}
+
+/// Kinds of player, managed by staff rather than hard-coded, because the range grows.
+model PlayerType {
+  id          String   @id @default(uuid()) @db.Uuid
+  code        String   @unique
+  name        String
+  description String?
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  players RegisteredPlayer[]
+
+  @@index([active])
+}
+
+model RegisteredPlayer {
+  id           String @id @default(uuid()) @db.Uuid
+  customerId   String @db.Uuid
+  playerTypeId String @db.Uuid
+
+  /// Printed by the player, given to us by the customer, typed into the EXE.
+  registrationCode       String  @unique
+  /// What the future Player API will authenticate on. Starts out equal to the
+  /// registration code; kept separate so online validation never depends on the
+  /// activation key.
+  registrationIdentifier String  @unique
+  /// Authenticated-encryption blob, never a hash: support has to be able to read the
+  /// key back out for a customer. Never selected by default, never logged.
+  activationKeyEncrypted String?
+
+  serialNumber String?
+  adminLabel   String?
+  status       PlayerStatus @default(PENDING)
+
+  purchaseDate  DateTime?
+  warrantyUntil DateTime?
+  dealerName    String?
+
+  registeredAt DateTime?
+  activatedAt  DateTime?
+  suspendedAt  DateTime?
+  retiredAt    DateTime?
+
+  createdByStaffId String? @db.Uuid
+  updatedByStaffId String? @db.Uuid
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  customer       Customer      @relation(fields: [customerId], references: [id], onDelete: Restrict)
+  playerType     PlayerType    @relation(fields: [playerTypeId], references: [id], onDelete: Restrict)
+  createdByStaff StaffAccount? @relation("PlayerCreatedBy", fields: [createdByStaffId], references: [id], onDelete: SetNull)
+  updatedByStaff StaffAccount? @relation("PlayerUpdatedBy", fields: [updatedByStaffId], references: [id], onDelete: SetNull)
+
+  tickets SupportTicket[]
+  tasks   CustomerTask[]
+
+  @@index([customerId, status])
+  @@index([serialNumber])
+  @@index([playerTypeId])
+}
+
+// ───────────────────────────────────────────────────────────────────────────────
+// CRM: tags, notes, tasks, communication, timeline
+// ───────────────────────────────────────────────────────────────────────────────
+
+enum TaskStatus {
+  OPEN
+  IN_PROGRESS
+  DONE
+  CANCELLED
+}
+
+enum TaskPriority {
+  LOW
+  NORMAL
+  HIGH
+  URGENT
+}
+
+enum CommunicationType {
+  PHONE_CALL
+  EMAIL
+  WHATSAPP
+  IN_PERSON
+  OTHER
+}
+
+enum CommunicationDirection {
+  INBOUND
+  OUTBOUND
+}
+
+/// Labels with no authorisation meaning whatsoever. A tag never grants anything.
+model CustomerTag {
+  id          String   @id @default(uuid()) @db.Uuid
+  name        String   @unique
+  description String?
+  /// Set when the tag is an operational warning that belongs at the top of the customer
+  /// page ("needs manual DMI encoding"), rather than a quiet label ("dealer").
+  isAlert     Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  assignments CustomerTagAssignment[]
+}
+
+model CustomerTagAssignment {
+  customerId String   @db.Uuid
+  tagId      String   @db.Uuid
+  assignedAt DateTime @default(now())
+
+  customer Customer    @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  tag      CustomerTag @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([customerId, tagId])
+  @@index([tagId])
+}
+
+/// Internal only. Never rendered on any customer-facing page.
+model CustomerNote {
+  id               String   @id @default(uuid()) @db.Uuid
+  customerId       String   @db.Uuid
+  body             String
+  createdByStaffId String?  @db.Uuid
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  customer       Customer      @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  createdByStaff StaffAccount? @relation(fields: [createdByStaffId], references: [id], onDelete: SetNull)
+
+  @@index([customerId, createdAt])
+}
+
+model CustomerTask {
+  id                 String  @id @default(uuid()) @db.Uuid
+  customerId         String  @db.Uuid
+  registeredPlayerId String? @db.Uuid
+  supportTicketId    String? @db.Uuid
+
+  title       String
+  description String?
+
+  status   TaskStatus   @default(OPEN)
+  priority TaskPriority @default(NORMAL)
+
+  assignedStaffId String?   @db.Uuid
+  dueAt           DateTime?
+  completedAt     DateTime?
+
+  createdByStaffId String?  @db.Uuid
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  customer       Customer          @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  player         RegisteredPlayer? @relation(fields: [registeredPlayerId], references: [id], onDelete: SetNull)
+  ticket         SupportTicket?    @relation(fields: [supportTicketId], references: [id], onDelete: SetNull)
+  assignedStaff  StaffAccount?     @relation("TaskAssignedTo", fields: [assignedStaffId], references: [id], onDelete: SetNull)
+  createdByStaff StaffAccount?     @relation("TaskCreatedBy", fields: [createdByStaffId], references: [id], onDelete: SetNull)
+
+  @@index([customerId, status])
+  @@index([assignedStaffId, status, dueAt])
+  @@index([status, dueAt])
+}
+
+/// Contact that happened outside the ticket system, typed in afterwards by staff.
+/// Not a replacement for ticket messages.
+model CommunicationLogEntry {
+  id         String                 @id @default(uuid()) @db.Uuid
+  customerId String                 @db.Uuid
+  type       CommunicationType
+  direction  CommunicationDirection @default(OUTBOUND)
+  subject    String?
+  body       String
+  occurredAt DateTime               @default(now())
+
+  staffId   String?  @db.Uuid
+  createdAt DateTime @default(now())
+
+  customer Customer      @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  staff    StaffAccount? @relation(fields: [staffId], references: [id], onDelete: SetNull)
+
+  @@index([customerId, occurredAt])
+}
+
+/// The CRM timeline. Written by services when something noteworthy happens, so the
+/// customer page can be read in one query instead of joining eight tables by date.
+/// `type` is machine-readable (`player.activated`); `summary` is what staff reads.
+model CustomerActivity {
+  id         String   @id @default(uuid()) @db.Uuid
+  customerId String   @db.Uuid
+  type       String
+  summary    String
+  metadata   Json?
+  /// Null when the system produced the event rather than a person.
+  staffId    String?  @db.Uuid
+  occurredAt DateTime @default(now())
+
+  customer Customer      @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  staff    StaffAccount? @relation(fields: [staffId], references: [id], onDelete: SetNull)
+
+  @@index([customerId, occurredAt])
+  @@index([type])
+}
+
+// ───────────────────────────────────────────────────────────────────────────────
+// Support ticketing
+//
+// The ticket is the record; e-mail is only a notification pointing back to it.
+// Inbound e-mail parsing is deliberately not part of this phase.
+// ───────────────────────────────────────────────────────────────────────────────
+
+enum SupportCategory {
+  PLAYER_REGISTRATION
+  PLAYER_PROBLEM
+  MUSIC_DOWNLOAD
+  MUSIC_PLAYBACK
+  ORDER_PAYMENT
+  ARRANGEMENT_QUESTION
+  ACCOUNT
+  BILLING
+  REFUND_REQUEST
+  OTHER
+}
+
+enum TicketStatus {
+  OPEN
+  IN_PROGRESS
+  WAITING_FOR_CUSTOMER
+  WAITING_FOR_SUPPORT
+  RESOLVED
+  CLOSED
+}
+
+enum TicketPriority {
+  LOW
+  NORMAL
+  HIGH
+  URGENT
+}
+
+enum MessageAuthorType {
+  CUSTOMER
+  STAFF
+  SYSTEM
+}
+
+/// PUBLIC messages are part of the conversation the customer sees. INTERNAL notes are
+/// staff-only and must never leave a staff-authorised query.
+enum MessageVisibility {
+  PUBLIC
+  INTERNAL
+}
+
+model SupportTicket {
+  id     String @id @default(uuid()) @db.Uuid
+  /// Shown as SUP-1042. Sequential like Order.number, for the same reason: people read
+  /// it out over the phone.
+  number Int    @unique @default(autoincrement())
+
+  customerId         String  @db.Uuid
+  registeredPlayerId String? @db.Uuid
+  orderId            String? @db.Uuid
+  arrangementId      String? @db.Uuid
+
+  category SupportCategory
+  subject  String
+  status   TicketStatus    @default(WAITING_FOR_SUPPORT)
+  priority TicketPriority  @default(NORMAL)
+
+  assignedStaffId String? @db.Uuid
+
+  firstResponseAt     DateTime?
+  lastCustomerReplyAt DateTime?
+  lastStaffReplyAt    DateTime?
+  resolvedAt          DateTime?
+  closedAt            DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  customer      Customer          @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  player        RegisteredPlayer? @relation(fields: [registeredPlayerId], references: [id], onDelete: SetNull)
+  order         Order?            @relation(fields: [orderId], references: [id], onDelete: SetNull)
+  arrangement   Arrangement?      @relation(fields: [arrangementId], references: [id], onDelete: SetNull)
+  assignedStaff StaffAccount?     @relation(fields: [assignedStaffId], references: [id], onDelete: SetNull)
+
+  messages SupportMessage[]
+  tasks    CustomerTask[]
+
+  @@index([status, priority, updatedAt])
+  @@index([customerId, status])
+  @@index([assignedStaffId, status])
+  @@index([registeredPlayerId])
+}
+
+model SupportMessage {
+  id         String            @id @default(uuid()) @db.Uuid
+  ticketId   String            @db.Uuid
+  authorType MessageAuthorType
+  customerId String?           @db.Uuid
+  staffId    String?           @db.Uuid
+  visibility MessageVisibility @default(PUBLIC)
+  body       String
+  createdAt  DateTime          @default(now())
+
+  ticket      SupportTicket       @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  customer    Customer?           @relation(fields: [customerId], references: [id], onDelete: SetNull)
+  staff       StaffAccount?       @relation(fields: [staffId], references: [id], onDelete: SetNull)
+  attachments SupportAttachment[]
+
+  @@index([ticketId, createdAt])
+}
+
+/// Support files live in their own private storage prefix, away from masters, device
+/// deliveries and public previews.
+model SupportAttachment {
+  id          String   @id @default(uuid()) @db.Uuid
+  messageId   String   @db.Uuid
+  fileName    String
+  contentType String
+  sizeBytes   Int
+  storageKey  String
+  createdAt   DateTime @default(now())
+
+  message SupportMessage @relation(fields: [messageId], references: [id], onDelete: Cascade)
+
+  @@index([messageId])
+}
+
+// ───────────────────────────────────────────────────────────────────────────────
+// Music catalog
+// ───────────────────────────────────────────────────────────────────────────────
+
+enum CatalogStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum RightsStatus {
+  NOT_REVIEWED
+  PENDING_REVIEW
+  CLEARED
+  PUBLIC_DOMAIN
+  RESTRICTED
+  REJECTED
+}
+
+enum RoyaltyBasis {
+  /// rateBps of the net amount allocated to the arrangement.
+  PERCENT_OF_NET
+  /// fixedCents per unit sold, capped at the net allocation.
+  FIXED_PER_UNIT
+  NONE
+}
+
+/// The underlying song / composition.
+model Work {
+  id             String   @id @default(uuid()) @db.Uuid
+  title          String
+  originalArtist String?
+  composer       String?
+  year           Int?
+  era            String?
+  notes          String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  arrangements Arrangement[]
+
+  @@index([title])
+}
+
+model Arranger {
+  id                       String       @id @default(uuid()) @db.Uuid
+  name                     String
+  slug                     String       @unique
+  bio                      String?
+  contactEmail             String?
+  defaultRoyaltyBasis      RoyaltyBasis @default(PERCENT_OF_NET)
+  /// Basis points (1/100 of a percent). 2500 = 25%.
+  defaultRoyaltyRateBps    Int          @default(0)
+  defaultRoyaltyFixedCents Int?
+  active                   Boolean      @default(true)
+  createdAt                DateTime     @default(now())
+  updatedAt                DateTime     @updatedAt
+
+  arrangements   Arrangement[]
+  royaltyEntries RoyaltyLedgerEntry[]
+  payoutBatches  PayoutBatch[]
+}
+
+model Genre {
+  id           String        @id @default(uuid()) @db.Uuid
+  name         String
+  slug         String        @unique
+  arrangements Arrangement[]
+}
+
+model Tag {
+  id           String        @id @default(uuid()) @db.Uuid
+  name         String
+  slug         String        @unique
+  arrangements Arrangement[]
+}
+
+/// A playback system / instrument configuration an arrangement can target.
+model SystemProfile {
+  id           String   @id @default(uuid()) @db.Uuid
+  code         String   @unique
+  name         String
+  manufacturer String?
+  description  String?
+  /// Marks a "generic / any system" profile that satisfies the publish validator.
+  isGeneric    Boolean  @default(false)
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  compatibilities ArrangementCompatibility[]
+}
+
+model ArrangementCompatibility {
+  arrangementId   String  @db.Uuid
+  systemProfileId String  @db.Uuid
+  notes           String?
+
+  arrangement   Arrangement   @relation(fields: [arrangementId], references: [id], onDelete: Cascade)
+  systemProfile SystemProfile @relation(fields: [systemProfileId], references: [id], onDelete: Restrict)
+
+  @@id([arrangementId, systemProfileId])
+}
+
+/// The atomic licensed item.
+model Arrangement {
+  id                 String        @id @default(uuid()) @db.Uuid
+  sku                String        @unique
+  slug               String        @unique
+  workId             String        @db.Uuid
+  arrangerId         String        @db.Uuid
+  displayTitle       String
+  subtitle           String?
+  description        String?
+  status             CatalogStatus @default(DRAFT)
+  currency           String        @default("EUR") @db.Char(3)
+  priceCents         Int
+  durationSeconds    Int?
+  tempoBpm           Int?
+  musicalKey         String?
+  timeSignature      String?
+  /// 1 (easy) – 5 (virtuoso). Informational for the storefront.
+  difficulty         Int?
+  releaseDate        DateTime?
+  publishedAt        DateTime?
+  featured           Boolean       @default(false)
+  searchKeywords     String[]      @default([])
+  compatibilityNotes String?
+  containsMidi       Boolean       @default(false)
+  containsAudio      Boolean       @default(false)
+  containsVideo      Boolean       @default(false)
+  dmiFormatVersion   String?
+  internalNotes      String?
+
+  /// Per-arrangement royalty override; null → arranger default.
+  royaltyBasis      RoyaltyBasis?
+  royaltyRateBps    Int?
+  royaltyFixedCents Int?
+
+  // Rights / compliance workflow data. Not a legal conclusion.
+  rightsStatus            RightsStatus @default(NOT_REVIEWED)
+  rightsTerritory         String?
+  licenseReference        String?
+  licenseStartsAt         DateTime?
+  licenseEndsAt           DateTime?
+  rightsNotes             String?
+  rightsProofAssetId      String?      @unique @db.Uuid
+  rightsReviewedAt        DateTime?
+  rightsReviewedByStaffId String?      @db.Uuid
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  work              Work                       @relation(fields: [workId], references: [id], onDelete: Restrict)
+  arranger          Arranger                   @relation(fields: [arrangerId], references: [id], onDelete: Restrict)
+  genres            Genre[]
+  tags              Tag[]
+  compatibilities   ArrangementCompatibility[]
+  assets            Asset[]                    @relation("ArrangementAssets")
+  rightsProofAsset  Asset?                     @relation("RightsProof", fields: [rightsProofAssetId], references: [id], onDelete: SetNull)
+  bundleItems       BundleItem[]
+  cartItems         CartItem[]
+  entitlements      Entitlement[]
+  encodingJobs      EncodingJob[]
+  deliveryArtifacts DeliveryArtifact[]
+  supportTickets    SupportTicket[]
+  importItems       ImportBatchItem[]
+
+  @@index([status, featured])
+  @@index([arrangerId])
+  @@index([workId])
+}
+
+// ───────────────────────────────────────────────────────────────────────────────
+// Master assets (private vault) and previews
+// ───────────────────────────────────────────────────────────────────────────────
+
+enum AssetKind {
+  SOURCE_MIDI
+  SOURCE_DMI
+  SOURCE_AUDIO
+  SOURCE_VIDEO
+  PREVIEW_AUDIO
+  PREVIEW_VIDEO
+  COVER_IMAGE
+  DOCUMENT
+}
+
+enum StorageStore {
+  /// Private: canonical SOURCE_* masters and rights documents.
+  MASTERS
+  /// Private: generated device-bound DMI outputs.
+  DELIVERIES
+  /// Public (or signed) previews and artwork.
+  PREVIEWS
+}
+
+enum AssetVersionStatus {
+  UPLOADING
+  VALIDATING
+  VALID
+  INVALID
+  /// Upload never completed / was abandoned.
+  ABANDONED
+}
+
+/// A logical file slot (e.g. "the MIDI master of arrangement X"). Content lives in
+/// immutable AssetVersions; `activeVersionId` selects the one in use.
+model Asset {
+  id              String    @id @default(uuid()) @db.Uuid
+  kind            AssetKind
+  arrangementId   String?   @db.Uuid
+  bundleId        String?   @db.Uuid
+  label           String?
+  activeVersionId String?   @unique @db.Uuid
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  arrangement    Arrangement?   @relation("ArrangementAssets", fields: [arrangementId], references: [id], onDelete: Restrict)
+  bundle         Bundle?        @relation("BundleAssets", fields: [bundleId], references: [id], onDelete: Restrict)
+  activeVersion  AssetVersion?  @relation("ActiveVersion", fields: [activeVersionId], references: [id], onDelete: Restrict)
+  versions       AssetVersion[] @relation("AssetVersions")
+  rightsProofFor Arrangement?   @relation("RightsProof")
+
+  @@index([arrangementId, kind])
+  @@index([bundleId, kind])
+}
+
+/// Immutable. A replacement upload is always a new row with a new random storage key.
+model AssetVersion {
+  id                 String             @id @default(uuid()) @db.Uuid
+  assetId            String             @db.Uuid
+  versionNumber      Int
+  /// Admin metadata only. Never used in storage keys or customer-facing output.
+  originalFilename   String
+  storageProvider    String
+  storageStore       StorageStore
+  /// Generated random key (UUID based). Never contains customer/PII data.
+  storageKey         String             @unique
+  declaredMimeType   String
+  mimeType           String?
+  declaredBytes      BigInt
+  bytes              BigInt?
+  declaredSha256     String?            @db.Char(64)
+  sha256             String?            @db.Char(64)
+  status             AssetVersionStatus @default(UPLOADING)
+  validationErrors   Json?
+  validationWarnings Json?
+  technicalMetadata  Json?
+  uploadedByStaffId  String?            @db.Uuid
+  uploadUrlExpiresAt DateTime?
+  uploadedAt         DateTime?
+  validatedAt        DateTime?
+  supersededAt       DateTime?
+  createdAt          DateTime           @default(now())
+
+  asset             Asset              @relation("AssetVersions", fields: [assetId], references: [id], onDelete: Restrict)
+  activeFor         Asset?             @relation("ActiveVersion")
+  uploadedBy        StaffAccount?      @relation(fields: [uploadedByStaffId], references: [id], onDelete: SetNull)
+  importItems       ImportBatchItem[]
+  encodingJobs      EncodingJob[]
+  deliveryArtifacts DeliveryArtifact[]
+
+  @@unique([assetId, versionNumber])
+  @@index([sha256])
+  @@index([status])
+}
+
+// ───────────────────────────────────────────────────────────────────────────────
+// Bulk import
+// ───────────────────────────────────────────────────────────────────────────────
+
+enum ImportBatchStatus {
+  DRAFT
+  UPLOADING
+  VALIDATING
+  REVIEW_REQUIRED
+  READY
+  COMPLETED
+  FAILED
+}
+
+enum ImportItemStatus {
+  QUEUED
+  UPLOADING
+  UPLOADED
+  VALIDATING
+  READY
+  NEEDS_REVIEW
+  FAILED
+  SKIPPED
+}
+
+model ImportBatch {
+  id               String            @id @default(uuid()) @db.Uuid
+  label            String?
+  createdByStaffId String            @db.Uuid
+  status           ImportBatchStatus @default(DRAFT)
+  totalItems       Int               @default(0)
+  uploadedItems    Int               @default(0)
+  validItems       Int               @default(0)
+  failedItems      Int               @default(0)
+  /// Dry-run plan snapshot shown to the admin before confirmation.
+  dryRunSummary    Json?
+  manifestFilename String?
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  confirmedAt      DateTime?
+  completedAt      DateTime?
+
+  createdBy    StaffAccount        @relation(fields: [createdByStaffId], references: [id], onDelete: Restrict)
+  items        ImportBatchItem[]
+  metadataRows ImportMetadataRow[]
+
+  @@index([createdAt])
+}
+
+/// Auditable snapshot of the exact CSV row used for an import.
+model ImportMetadataRow {
+  id                     String   @id @default(uuid()) @db.Uuid
+  importBatchId          String   @db.Uuid
+  rowNumber              Int
+  raw                    Json
+  normalized             Json?
+  errors                 Json?
+  warnings               Json?
+  sku                    String?
+  /// Resolved on apply: existing arrangement matched by SKU, or the newly created draft.
+  resultingArrangementId String?  @db.Uuid
+  createdAt              DateTime @default(now())
+
+  importBatch ImportBatch       @relation(fields: [importBatchId], references: [id], onDelete: Cascade)
+  items       ImportBatchItem[]
+
+  @@unique([importBatchId, rowNumber])
+}
+
+model ImportBatchItem {
+  id                      String           @id @default(uuid()) @db.Uuid
+  importBatchId           String           @db.Uuid
+  originalFilename        String
+  /// Relative folder path when picked via folder selection.
+  relativePath            String?
+  detectedAssetKind       AssetKind?
+  targetArrangementId     String?          @db.Uuid
+  targetSku               String?
+  metadataRowId           String?          @db.Uuid
+  storageStore            StorageStore?
+  storageKey              String?          @unique
+  declaredMimeType        String?
+  declaredBytes           BigInt?
+  declaredSha256          String?          @db.Char(64)
+  bytes                   BigInt?
+  sha256                  String?          @db.Char(64)
+  status                  ImportItemStatus @default(QUEUED)
+  validationErrors        Json?
+  validationWarnings      Json?
+  technicalMetadata       Json?
+  attemptCount            Int              @default(0)
+  resultingAssetVersionId String?          @db.Uuid
+  createdAt               DateTime         @default(now())
+  updatedAt               DateTime         @updatedAt
+
+  importBatch           ImportBatch        @relation(fields: [importBatchId], references: [id], onDelete: Cascade)
+  targetArrangement     Arrangement?       @relation(fields: [targetArrangementId], references: [id], onDelete: SetNull)
+  metadataRow           ImportMetadataRow? @relation(fields: [metadataRowId], references: [id], onDelete: SetNull)
+  resultingAssetVersion AssetVersion?      @relation(fields: [resultingAssetVersionId], references: [id], onDelete: SetNull)
+
+  @@index([importBatchId, status])
+  @@index([sha256])
+}
+
+// ───────────────────────────────────────────────────────────────────────────────
+// Device-bound delivery pipeline (player API is a later phase)
+// ───────────────────────────────────────────────────────────────────────────────
+
+enum EncodingJobStatus {
+  QUEUED
+  RUNNING
+  SUCCEEDED
+  FAILED
+}
+
+/// Versioned reference to the proprietary encoding/protection scheme. Holds a *reference*
+/// to secret material (KMS / secret-manager id), never raw keys.
+model ProtectionProfile {
+  id        String   @id @default(uuid()) @db.Uuid
+  name      String
+  version   String
+  /// e.g. "kms://projects/…/keys/dmi-v3" or "env:ENCODER_PROFILE_V3". Never a key.
+  secretRef String
+  config    Json?
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+
+  @@unique([name, version])
+}
+
+model EncodingJob {
+  id                       String            @id @default(uuid()) @db.Uuid
+  arrangementId            String            @db.Uuid
+  sourceAssetVersionId     String            @db.Uuid
+  customerId               String            @db.Uuid
+  /// Future device/player registration reference (opaque).
+  deviceRegistrationRef    String?
+  encoderVersion           String
+  protectionProfileVersion String
+  status                   EncodingJobStatus @default(QUEUED)
+  attemptCount             Int               @default(0)
+  errorCode                String?
+  /// Sanitized — never contains secrets, command lines or key material.
+  errorMessage             String?
+  deliveryArtifactId       String?           @unique @db.Uuid
+  createdAt                DateTime          @default(now())
+  startedAt                DateTime?
+  finishedAt               DateTime?
+  updatedAt                DateTime          @updatedAt
+
+  arrangement        Arrangement       @relation(fields: [arrangementId], references: [id], onDelete: Restrict)
+  sourceAssetVersion AssetVersion      @relation(fields: [sourceAssetVersionId], references: [id], onDelete: Restrict)
+  customer           Customer          @relation(fields: [customerId], references: [id], onDelete: Restrict)
+  deliveryArtifact   DeliveryArtifact? @relation(fields: [deliveryArtifactId], references: [id], onDelete: SetNull)
+
+  @@index([status, createdAt])
+}
+
+/// Derived, private, device-bound output. NOT a master.
+model DeliveryArtifact {
+  id                        String   @id @default(uuid()) @db.Uuid
+  arrangementId             String   @db.Uuid
+  sourceAssetVersionId      String   @db.Uuid
+  customerId                String   @db.Uuid
+  deviceRegistrationRef     String?
+  encoderVersion            String
+  protectionProfileVersion  String
+  storageProvider           String
+  /// Always in the DELIVERIES store.
+  outputObjectKey           String   @unique
+  bytes                     BigInt
+  sha256                    String   @db.Char(64)
+  regeneratedFromArtifactId String?  @db.Uuid
+  createdAt                 DateTime @default(now())
+
+  arrangement        Arrangement        @relation(fields: [arrangementId], references: [id], onDelete: Restrict)
+  sourceAssetVersion AssetVersion       @relation(fields: [sourceAssetVersionId], references: [id], onDelete: Restrict)
+  customer           Customer           @relation(fields: [customerId], references: [id], onDelete: Restrict)
+  regeneratedFrom    DeliveryArtifact?  @relation("Regeneration", fields: [regeneratedFromArtifactId], references: [id], onDelete: SetNull)
+  regenerations      DeliveryArtifact[] @relation("Regeneration")
+  encodingJob        EncodingJob?
+
+  @@index([customerId, arrangementId, sourceAssetVersionId, deviceRegistrationRef, encoderVersion, protectionProfileVersion])
+}
+
+// ───────────────────────────────────────────────────────────────────────────────
+// Commerce
+// ───────────────────────────────────────────────────────────────────────────────
+
+model Bundle {
+  id          String        @id @default(uuid()) @db.Uuid
+  sku         String        @unique
+  slug        String        @unique
+  title       String
+  subtitle    String?
+  description String?
+  status      CatalogStatus @default(DRAFT)
+  currency    String        @default("EUR") @db.Char(3)
+  /// Price for the complete collection.
+  priceCents  Int
+  featured    Boolean       @default(false)
+  publishedAt DateTime?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  items     BundleItem[]
+  assets    Asset[]      @relation("BundleAssets")
+  cartItems CartItem[]
+
+  @@index([status, featured])
+}
+
+model BundleItem {
+  id            String @id @default(uuid()) @db.Uuid
+  bundleId      String @db.Uuid
+  arrangementId String @db.Uuid
+  position      Int
+
+  bundle      Bundle      @relation(fields: [bundleId], references: [id], onDelete: Cascade)
+  arrangement Arrangement @relation(fields: [arrangementId], references: [id], onDelete: Restrict)
+
+  @@unique([bundleId, arrangementId])
+  @@index([arrangementId])
+}
+
+enum CartItemType {
+  ARRANGEMENT
+  BUNDLE
+}
+
+/// Server-authoritative cart. Anonymous carts are keyed by an opaque cookie token and
+/// merged into the customer's cart on sign-in.
+model Cart {
+  id             String   @id @default(uuid()) @db.Uuid
+  customerId     String?  @unique @db.Uuid
+  anonymousToken String?  @unique
+  currency       String   @default("EUR") @db.Char(3)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  customer Customer?  @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  items    CartItem[]
+}
+
+model CartItem {
+  id                 String       @id @default(uuid()) @db.Uuid
+  cartId             String       @db.Uuid
+  itemType           CartItemType
+  arrangementId      String?      @db.Uuid
+  bundleId           String?      @db.Uuid
+  /// Price the customer saw when adding; used to explain price changes.
+  lastSeenPriceCents Int
+  addedAt            DateTime     @default(now())
+
+  cart        Cart         @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  arrangement Arrangement? @relation(fields: [arrangementId], references: [id], onDelete: Cascade)
+  bundle      Bundle?      @relation(fields: [bundleId], references: [id], onDelete: Cascade)
+
+  @@unique([cartId, arrangementId])
+  @@unique([cartId, bundleId])
+}
+
+enum OrderStatus {
+  PENDING_PAYMENT
+  PAID
+  FULFILLED
+  PARTIALLY_REFUNDED
+  REFUNDED
+  CANCELED
+  FAILED
+}
+
+/// Immutable financial snapshot once created; only status/payment fields move.
+model Order {
+  id                    String      @id @default(uuid()) @db.Uuid
+  /// Human-friendly sequential number (shown as DMI-000123).
+  number                Int         @unique @default(autoincrement())
+  customerId            String      @db.Uuid
+  status                OrderStatus @default(PENDING_PAYMENT)
+  currency              String      @db.Char(3)
+  /// Sum of normal retail value of everything acquired.
+  retailTotalCents      Int
+  discountCents         Int
+  totalCents            Int
+  refundedCents         Int         @default(0)
+  /// Deterministic hash of the priced cart; reused pending orders must match it.
+  pricingHash           String
+  pricingSnapshot       Json
+  customerEmailSnapshot String
+  stripePaymentIntentId String?     @unique
+  stripeChargeId        String?
+  paidAt                DateTime?
+  fulfilledAt           DateTime?
+  canceledAt            DateTime?
+  receiptSentAt         DateTime?
+  createdAt             DateTime    @default(now())
+  updatedAt             DateTime    @updatedAt
+
+  customer        Customer              @relation(fields: [customerId], references: [id], onDelete: Restrict)
+  items           OrderItem[]
+  allocations     OrderItemAllocation[]
+  refunds         Refund[]
+  royaltyEntries  RoyaltyLedgerEntry[]
+  billingSnapshot OrderBillingSnapshot?
+  supportTickets  SupportTicket[]
+
+  @@index([customerId, status])
+  @@index([createdAt])
+}
+
+model OrderItem {
+  id                     String       @id @default(uuid()) @db.Uuid
+  orderId                String       @db.Uuid
+  position               Int
+  itemType               CartItemType
+  arrangementId          String?      @db.Uuid
+  bundleId               String?      @db.Uuid
+  skuSnapshot            String
+  titleSnapshot          String
+  /// Retail value of the arrangements actually acquired through this line.
+  retailValueCents       Int
+  /// Amount charged for this line.
+  chargedCents           Int
+  bundlePriceCents       Int?
+  bundleRetailTotalCents Int?
+  bundleItemCount        Int?
+  /// Arrangement ids in the bundle the customer already owned (excluded from charge).
+  excludedArrangementIds String[]     @default([])
+
+  order       Order                 @relation(fields: [orderId], references: [id], onDelete: Restrict)
+  allocations OrderItemAllocation[]
+
+  @@index([orderId])
+}
+
+/// One acquired arrangement within an order line, with its exact revenue + royalty split.
+model OrderItemAllocation {
+  id                String       @id @default(uuid()) @db.Uuid
+  orderId           String       @db.Uuid
+  orderItemId       String       @db.Uuid
+  arrangementId     String       @db.Uuid
+  arrangerId        String       @db.Uuid
+  skuSnapshot       String
+  titleSnapshot     String
+  retailValueCents  Int
+  allocatedCents    Int
+  royaltyBasis      RoyaltyBasis
+  royaltyRateBps    Int
+  royaltyFixedCents Int?
+  royaltyCents      Int
+  refundedCents     Int          @default(0)
+  refundedAt        DateTime?
+
+  order             Order                @relation(fields: [orderId], references: [id], onDelete: Restrict)
+  orderItem         OrderItem            @relation(fields: [orderItemId], references: [id], onDelete: Restrict)
+  entitlementSource EntitlementSource?
+  refundAllocations RefundAllocation[]
+  royaltyEntries    RoyaltyLedgerEntry[]
+
+  @@index([orderId])
+  @@index([arrangementId])
+  @@index([arrangerId])
+}
+
+enum EntitlementStatus {
+  ACTIVE
+  REVOKED
+}
+
+enum EntitlementSourceType {
+  PURCHASE
+  BUNDLE
+  ADMIN_GRANT
+  PROMOTION
+  LEGACY_IMPORT
+}
+
+/// What a customer may use. The future player reads this — never order history.
+model Entitlement {
+  id             String            @id @default(uuid()) @db.Uuid
+  customerId     String            @db.Uuid
+  arrangementId  String            @db.Uuid
+  status         EntitlementStatus @default(ACTIVE)
+  firstGrantedAt DateTime          @default(now())
+  revokedAt      DateTime?
+  updatedAt      DateTime          @updatedAt
+
+  customer    Customer            @relation(fields: [customerId], references: [id], onDelete: Restrict)
+  arrangement Arrangement         @relation(fields: [arrangementId], references: [id], onDelete: Restrict)
+  sources     EntitlementSource[]
+
+  @@unique([customerId, arrangementId])
+  @@index([customerId, status])
+}
+
+model EntitlementSource {
+  id                String                @id @default(uuid()) @db.Uuid
+  entitlementId     String                @db.Uuid
+  sourceType        EntitlementSourceType
+  /// Set for PURCHASE / BUNDLE sources. Unique: one allocation grants at most once.
+  orderAllocationId String?               @unique @db.Uuid
+  /// Free-form reference for grants / promotions / legacy imports.
+  sourceReference   String?
+  grantedByStaffId  String?               @db.Uuid
+  grantReason       String?
+  grantedAt         DateTime              @default(now())
+  revokedAt         DateTime?
+  revokeReason      String?
+  revokedByStaffId  String?               @db.Uuid
+
+  entitlement     Entitlement          @relation(fields: [entitlementId], references: [id], onDelete: Cascade)
+  orderAllocation OrderItemAllocation? @relation(fields: [orderAllocationId], references: [id], onDelete: Restrict)
+
+  @@index([entitlementId])
+}
+
+enum RefundStatus {
+  PENDING
+  SUCCEEDED
+  FAILED
+  CANCELED
+}
+
+model Refund {
+  id                 String       @id @default(uuid()) @db.Uuid
+  orderId            String       @db.Uuid
+  stripeRefundId     String?      @unique
+  amountCents        Int
+  currency           String       @db.Char(3)
+  status             RefundStatus @default(PENDING)
+  reason             String?
+  requestedByStaffId String?      @db.Uuid
+  createdAt          DateTime     @default(now())
+  completedAt        DateTime?
+  /// Set once entitlement revocation + ledger reversal have been applied (idempotency).
+  appliedAt          DateTime?
+
+  order          Order                @relation(fields: [orderId], references: [id], onDelete: Restrict)
+  allocations    RefundAllocation[]
+  royaltyEntries RoyaltyLedgerEntry[]
+
+  @@index([orderId])
+}
+
+model RefundAllocation {
+  id           String @id @default(uuid()) @db.Uuid
+  refundId     String @db.Uuid
+  allocationId String @db.Uuid
+  amountCents  Int
+
+  refund     Refund              @relation(fields: [refundId], references: [id], onDelete: Cascade)
+  allocation OrderItemAllocation @relation(fields: [allocationId], references: [id], onDelete: Restrict)
+
+  @@unique([refundId, allocationId])
+}
+
+/// Every Stripe event id seen. The primary key makes webhook handling idempotent.
+model StripeEvent {
+  id           String    @id
+  type         String
+  livemode     Boolean
+  receivedAt   DateTime  @default(now())
+  processedAt  DateTime?
+  errorMessage String?
+}
+
+enum RoyaltyEntryType {
+  SALE
+  REFUND
+  ADJUSTMENT
+}
+
+enum PayoutBatchStatus {
+  DRAFT
+  APPROVED
+  PAID
+  CANCELED
+}
+
+model RoyaltyLedgerEntry {
+  id              String           @id @default(uuid()) @db.Uuid
+  arrangerId      String           @db.Uuid
+  arrangementId   String           @db.Uuid
+  orderId         String?          @db.Uuid
+  allocationId    String?          @db.Uuid
+  refundId        String?          @db.Uuid
+  entryType       RoyaltyEntryType
+  /// Signed: SALE positive, REFUND negative.
+  amountCents     Int
+  /// Net revenue this entry was computed from (signed like amountCents).
+  netRevenueCents Int
+  currency        String           @db.Char(3)
+  basisSnapshot   RoyaltyBasis
+  rateBpsSnapshot Int
+  occurredAt      DateTime         @default(now())
+  payoutBatchId   String?          @db.Uuid
+  note            String?
+  /// "sale:<allocationId>" | "refund:<refundId>:<allocationId>" | "adj:<uuid>" — idempotency.
+  idempotencyKey  String           @unique
+
+  arranger    Arranger             @relation(fields: [arrangerId], references: [id], onDelete: Restrict)
+  order       Order?               @relation(fields: [orderId], references: [id], onDelete: Restrict)
+  allocation  OrderItemAllocation? @relation(fields: [allocationId], references: [id], onDelete: Restrict)
+  refund      Refund?              @relation(fields: [refundId], references: [id], onDelete: Restrict)
+  payoutBatch PayoutBatch?         @relation(fields: [payoutBatchId], references: [id], onDelete: SetNull)
+
+  @@index([arrangerId, occurredAt])
+}
+
+model PayoutBatch {
+  id               String            @id @default(uuid()) @db.Uuid
+  arrangerId       String            @db.Uuid
+  periodStart      DateTime
+  periodEnd        DateTime
+  status           PayoutBatchStatus @default(DRAFT)
+  totalCents       Int
+  currency         String            @db.Char(3)
+  createdByStaffId String            @db.Uuid
+  createdAt        DateTime          @default(now())
+  paidAt           DateTime?
+
+  arranger Arranger             @relation(fields: [arrangerId], references: [id], onDelete: Restrict)
+  entries  RoyaltyLedgerEntry[]
+}
+
+// ───────────────────────────────────────────────────────────────────────────────
+// Operations
+// ───────────────────────────────────────────────────────────────────────────────
+
+enum AuditActorType {
+  STAFF
+  CUSTOMER
+  SYSTEM
+  STRIPE
+}
+
+model AuditLog {
+  id              String         @id @default(uuid()) @db.Uuid
+  actorType       AuditActorType
+  actorStaffId    String?        @db.Uuid
+  actorCustomerId String?        @db.Uuid
+  action          String
+  entityType      String
+  entityId        String?
+  /// Sanitized context. Never secrets, signed URLs or storage credentials.
+  metadata        Json?
+  createdAt       DateTime       @default(now())
+
+  @@index([entityType, entityId])
+  @@index([createdAt])
+  @@index([action])
+}
+
+model ShopSetting {
+  key       String   @id
+  value     Json
+  updatedAt DateTime @updatedAt
+}
+
+/// Fixed-window rate limiting that works across serverless instances.
+model RateLimitBucket {
+  key         String
+  windowStart DateTime
+  count       Int      @default(0)
+
+  @@id([key, windowStart])
+  @@index([windowStart])
+}
