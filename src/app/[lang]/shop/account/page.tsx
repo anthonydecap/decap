@@ -45,6 +45,7 @@ export default async function AccountPage({ params }: { params: Promise<{ lang: 
               </p>
               <div className="mt-6 flex flex-col gap-3 border-t border-neutral-200 pt-6 text-sm">
                 <Link href={shopPath(urlLang, "/account/library")} className="font-semibold text-neutral-950 hover:underline">{t.libraryTitle}</Link>
+                <Link href={shopPath(urlLang, "/account/players")} className="font-semibold text-neutral-950 hover:underline">{t.playersTitle}</Link>
                 <Link href={`${shopPath(urlLang, "/account/onboarding")}?returnTo=${encodeURIComponent(shopPath(urlLang, "/account"))}`} className="text-neutral-600 hover:text-neutral-950">
                   {t.onboardingTitle}
                 </Link>
