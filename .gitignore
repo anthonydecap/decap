@@ -134,3 +134,13 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Prisma client (generated)
+src/generated/
+
+# Local shop object storage (dev driver)
+.shop-storage/
+
+# Playwright
+/test-results/
+/playwright-report/

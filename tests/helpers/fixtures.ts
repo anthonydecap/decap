@@ -58,7 +58,7 @@ export async function makeCustomer(opts: { verified?: boolean; onboarded?: boole
   return { customer, session };
 }
 
-export async function makeStaff(role: "ADMIN" | "CATALOG_MANAGER" | "FINANCE" = "ADMIN") {
+export async function makeStaff(role: "SUPER_ADMIN" | "ADMIN" | "SUPPORT" | "CATALOG_MANAGER" | "FINANCE" = "ADMIN") {
   const sub = `auth0|staff-${randomUUID()}`;
   const staff = await shopDb().staffAccount.create({ data: { authSubject: sub, role, email: `${role.toLowerCase()}@dmi.test` } });
   return { staff, session: { sub, email: staff.email!, email_verified: true, amr: ["mfa"] } as SessionUser };
