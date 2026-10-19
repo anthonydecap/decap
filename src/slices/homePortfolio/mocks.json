@@ -1,0 +1,125 @@
+[
+  {
+    "slice_type": "home_portfolio",
+    "slice_label": null,
+    "variation": "default",
+    "version": "initial",
+    "primary": {
+      "title": "Crafting Orchestras,",
+      "title_accent": "Our Portfolio",
+      "body": [
+        {
+          "type": "paragraph",
+          "text": "From bespoke orchestrions to automated instruments, each piece pairs precise engineering with musical craft.",
+          "spans": []
+        }
+      ],
+      "link_label": "Our portfolio",
+      "link": {
+        "link_type": "Web",
+        "url": "https://decap.be"
+      },
+      "image_fit": "Cover",
+      "background_color": "#0a0a0a"
+    },
+    "items": [
+      {
+        "image": {
+          "dimensions": {
+            "width": 1200,
+            "height": 900
+          },
+          "alt": null,
+          "copyright": null,
+          "url": "https://picsum.photos/seed/orch-0/1200/900",
+          "id": "orch-0",
+          "edit": {
+            "x": 0,
+            "y": 0,
+            "zoom": 1,
+            "background": "transparent"
+          }
+        },
+        "name": "Mahogany Grand",
+        "caption": "Orchestrion",
+        "link": {
+          "link_type": "Web",
+          "url": "https://decap.be"
+        }
+      },
+      {
+        "image": {
+          "dimensions": {
+            "width": 1200,
+            "height": 900
+          },
+          "alt": null,
+          "copyright": null,
+          "url": "https://picsum.photos/seed/orch-1/1200/900",
+          "id": "orch-1",
+          "edit": {
+            "x": 0,
+            "y": 0,
+            "zoom": 1,
+            "background": "transparent"
+          }
+        },
+        "name": "Isabella",
+        "caption": "Custom build",
+        "link": {
+          "link_type": "Web",
+          "url": "https://decap.be"
+        }
+      },
+      {
+        "image": {
+          "dimensions": {
+            "width": 1200,
+            "height": 900
+          },
+          "alt": null,
+          "copyright": null,
+          "url": "https://picsum.photos/seed/orch-2/1200/900",
+          "id": "orch-2",
+          "edit": {
+            "x": 0,
+            "y": 0,
+            "zoom": 1,
+            "background": "transparent"
+          }
+        },
+        "name": "Black and Gold",
+        "caption": "Dance organ",
+        "link": {
+          "link_type": "Web",
+          "url": "https://decap.be"
+        }
+      },
+      {
+        "image": {
+          "dimensions": {
+            "width": 1200,
+            "height": 900
+          },
+          "alt": null,
+          "copyright": null,
+          "url": "https://picsum.photos/seed/orch-3/1200/900",
+          "id": "orch-3",
+          "edit": {
+            "x": 0,
+            "y": 0,
+            "zoom": 1,
+            "background": "transparent"
+          }
+        },
+        "name": "Heritage",
+        "caption": "Concert orchestrion",
+        "link": {
+          "link_type": "Web",
+          "url": "https://decap.be"
+        }
+      }
+    ],
+    "id": "home_portfolio$mock"
+  }
+]

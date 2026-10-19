@@ -8,6 +8,10 @@ import BlogGrid from "./blogGrid";
 export const components = {
   content_artists: dynamic(() => import("./contentArtists")),
   home_artists: dynamic(() => import("./homeArtists")),
+  home_hero: dynamic(() => import("./homeHero")),
+  home_portfolio: dynamic(() => import("./homePortfolio")),
+  home_feature: dynamic(() => import("./homeFeature")),
+  home_showcase: dynamic(() => import("./homeShowcase")),
   bento_grid: dynamic(() => import("./bentoGrid")),
   blog_rich_text: dynamic(() => import("./blogRichText")),
   blog_image: dynamic(() => import("./blogImage")),

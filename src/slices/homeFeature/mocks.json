@@ -1,0 +1,58 @@
+[
+  {
+    "slice_type": "home_feature",
+    "slice_label": null,
+    "variation": "default",
+    "version": "initial",
+    "primary": {
+      "title": "Instruments",
+      "title_accent": "",
+      "body": [
+        {
+          "type": "paragraph",
+          "text": "Custom orchestrions tailored to your sound, and ready-to-play automated instruments controlled over MIDI. They perform on their own or together as one orchestra.",
+          "spans": []
+        }
+      ],
+      "link_label": "Discover",
+      "link": {
+        "link_type": "Web",
+        "url": "https://decap.be"
+      },
+      "illustration": {
+        "dimensions": {
+          "width": 900,
+          "height": 1100
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "https://picsum.photos/seed/decap-instrument/900/1100",
+        "id": "decap-instrument",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      },
+      "illustration_style": "Photo",
+      "image_side": "Image left",
+      "background_color": "#0a0a0a"
+    },
+    "items": [
+      {
+        "point_title": "MIDI controlled",
+        "point_text": "Driven by computer-controlled systems using MIDI."
+      },
+      {
+        "point_title": "Plays alone",
+        "point_text": "Performs autonomously as a standalone instrument."
+      },
+      {
+        "point_title": "Plays together",
+        "point_text": "Connects with other DECAP instruments into one orchestra."
+      }
+    ],
+    "id": "home_feature$mock"
+  }
+]

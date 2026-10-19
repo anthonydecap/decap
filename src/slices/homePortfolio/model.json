@@ -1,0 +1,105 @@
+{
+  "id": "home_portfolio",
+  "type": "SharedSlice",
+  "name": "HomePortfolio",
+  "description": "Heading and intro over an asymmetric gallery of instruments",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Heading and intro over an asymmetric gallery of instruments",
+      "imageUrl": "",
+      "primary": {
+        "background_color": {
+          "type": "Color",
+          "config": {
+            "label": "Background color (dark \u2192 dark theme, light \u2192 light theme)",
+            "placeholder": "#0a0a0a"
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Headline line 1",
+            "placeholder": "Crafting Orchestras,"
+          }
+        },
+        "title_accent": {
+          "type": "Text",
+          "config": {
+            "label": "Headline line 2 (muted tone)",
+            "placeholder": "Our Portfolio"
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Intro",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "link_label": {
+          "type": "Text",
+          "config": {
+            "label": "Link label",
+            "placeholder": "Our portfolio"
+          }
+        },
+        "link": {
+          "type": "Link",
+          "config": {
+            "label": "Link",
+            "allowTargetBlank": true,
+            "select": null
+          }
+        },
+        "image_fit": {
+          "type": "Select",
+          "config": {
+            "label": "Image fit (Contain for product renders, Cover for photos)",
+            "options": [
+              "Contain",
+              "Cover"
+            ],
+            "default_value": "Contain"
+          }
+        }
+      },
+      "items": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "name": {
+          "type": "Text",
+          "config": {
+            "label": "Name",
+            "placeholder": "Isabella"
+          }
+        },
+        "caption": {
+          "type": "Text",
+          "config": {
+            "label": "Caption (short)",
+            "placeholder": "Custom orchestrion"
+          }
+        },
+        "link": {
+          "type": "Link",
+          "config": {
+            "label": "Link (optional)",
+            "allowTargetBlank": true,
+            "select": null
+          }
+        }
+      }
+    }
+  ]
+}

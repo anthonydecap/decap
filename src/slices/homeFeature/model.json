@@ -1,0 +1,108 @@
+{
+  "id": "home_feature",
+  "type": "SharedSlice",
+  "name": "HomeFeature",
+  "description": "Illustration and copy side by side, with optional key points and a link",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Illustration and copy side by side, with optional key points and a link",
+      "imageUrl": "",
+      "primary": {
+        "background_color": {
+          "type": "Color",
+          "config": {
+            "label": "Background color (dark \u2192 dark theme, light \u2192 light theme)",
+            "placeholder": "#0a0a0a"
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Headline line 1",
+            "placeholder": "Instruments"
+          }
+        },
+        "title_accent": {
+          "type": "Text",
+          "config": {
+            "label": "Headline line 2 (optional, muted tone)",
+            "placeholder": ""
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "link_label": {
+          "type": "Text",
+          "config": {
+            "label": "Link label",
+            "placeholder": "Discover"
+          }
+        },
+        "link": {
+          "type": "Link",
+          "config": {
+            "label": "Link",
+            "allowTargetBlank": true,
+            "select": null
+          }
+        },
+        "illustration": {
+          "type": "Image",
+          "config": {
+            "label": "Illustration",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "illustration_style": {
+          "type": "Select",
+          "config": {
+            "label": "Illustration style (Line art is inverted on dark backgrounds)",
+            "options": [
+              "Line art",
+              "Photo"
+            ],
+            "default_value": "Line art"
+          }
+        },
+        "image_side": {
+          "type": "Select",
+          "config": {
+            "label": "Image side",
+            "options": [
+              "Image left",
+              "Image right"
+            ],
+            "default_value": "Image left"
+          }
+        }
+      },
+      "items": {
+        "point_title": {
+          "type": "Text",
+          "config": {
+            "label": "Point title",
+            "placeholder": "MIDI controlled"
+          }
+        },
+        "point_text": {
+          "type": "Text",
+          "config": {
+            "label": "Point text",
+            "placeholder": ""
+          }
+        }
+      }
+    }
+  ]
+}

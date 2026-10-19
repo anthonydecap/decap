@@ -4,14 +4,13 @@
 The SmartValveStory slice is a scroll-based storytelling component that explains "How It Works" through four immersive steps. It's designed to replace the old mental model with a new understanding: SmartValve doesn't just open/close — it sculpts airflow with precision.
 
 ## Features
-- **Scroll-triggered animations**: Steps fade in/out based on scroll position
-- **Video/Image support**: Each step can have a video (auto-plays when active) or static image
-- **Consistent aspect ratio**: 4:3 aspect ratio for all media to ensure visual consistency
-- **Auto-play videos**: Videos automatically play/pause based on which step is active
-- **Custom background color**: Set any hex color code using Prismic's color picker
-- **Generous spacing**: Steps have ample breathing room (80-128px between steps)
-- **Mobile responsive**: One step per screen on mobile, smooth scrolling
-- **Reduced motion support**: Respects `prefers-reduced-motion` for accessibility
+- **Horizontal player**: one wide media stage on top, the steps in a row underneath
+- **Auto-advance**: each step's rule fills while its video plays, then the next step starts; image-only steps hold for 6 seconds
+- **Click to jump**: every step is a button; a play/pause control sits on the stage
+- **Unframed media**: no border or background, so black video blends into the section (on dark sections the media uses `mix-blend-mode: lighten`, so pure-black video takes on the section colour)
+- **Lazy video**: a step's video only loads the first time it becomes active; playback pauses when the section scrolls out of view (HLS via hls.js)
+- **Mobile**: the step row becomes a swipeable strip that follows the active step
+- **Reduced motion**: starts paused and crossfades are instant under `prefers-reduced-motion`
 
 ## Usage
 

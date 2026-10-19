@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { createLocaleRedirect, pathnameHasLocale } from "@/i18n";
+import { auth0 } from "@/modules/shop/auth/auth0";
 
 /** Paths that must not be treated as `/:lang` (matcher excludes these so proxy did not run). */
 function shouldSkipLocaleRedirect(pathname: string): boolean {
@@ -15,13 +16,49 @@ function shouldSkipLocaleRedirect(pathname: string): boolean {
   );
 }
 
+/** DMI shop routes that live outside the `/:lang` tree. */
+function isShopSystemPath(pathname: string): boolean {
+  return (
+    pathname.startsWith("/auth/") ||
+    pathname === "/admin" ||
+    pathname.startsWith("/admin/") ||
+    pathname.startsWith("/api/shop/") ||
+    pathname.startsWith("/api/admin/") ||
+    pathname.startsWith("/api/stripe/")
+  );
+}
+
+/** Shop pages that use the Auth0 session (rolling session refresh). */
+function usesShopSession(pathname: string): boolean {
+  return /^\/[a-z]{2}\/(shop|software)(\/|$)/.test(pathname) || pathname.startsWith("/admin") || pathname.startsWith("/api/shop/") || pathname.startsWith("/api/admin/");
+}
+
 export async function proxy(request: NextRequest) {
-  if (shouldSkipLocaleRedirect(request.nextUrl.pathname)) {
+  const { pathname } = request.nextUrl;
+  if (shouldSkipLocaleRedirect(pathname)) {
     return NextResponse.next();
+  }
+
+  // Auth0 Universal Login routes: /auth/login, /auth/logout, /auth/callback, …
+  if (pathname.startsWith("/auth/")) {
+    return auth0().middleware(request);
+  }
+
+  // Stripe webhooks: raw body, no session, no locale.
+  if (pathname.startsWith("/api/stripe/")) {
+    return NextResponse.next();
+  }
+
+  if (isShopSystemPath(pathname)) {
+    return auth0().middleware(request);
   }
 
   if (!pathnameHasLocale(request)) {
     return createLocaleRedirect(request);
+  }
+
+  if (usesShopSession(pathname)) {
+    return auth0().middleware(request);
   }
 
   return NextResponse.next();

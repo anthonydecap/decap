@@ -3,6 +3,7 @@
 The canonical reference for how slices should look and be built in this project. The
 **Smart Valve** slice set is the agreed "winning" style — this document distills its design
 language into rules every slice (existing and future) should follow.
+The same system in the agent-friendly DESIGN.md format lives in [DESIGN.md](DESIGN.md).
 
 Last updated: 2026-07-10
 
