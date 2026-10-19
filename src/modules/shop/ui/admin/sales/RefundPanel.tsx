@@ -15,6 +15,16 @@ export type RefundableAllocation = {
   sourceActive: boolean;
 };
 
+/** A software license order line (refunded per line, not per allocation). */
+export type RefundableSoftwareLine = {
+  id: string;
+  title: string;
+  refundableCents: number;
+  /** e.g. "LIC-10482", or null when no license was created for the line. */
+  licenseLabel: string | null;
+  licenseStatus: string | null;
+};
+
 type Mode = "full" | "selected";
 type Step = "edit" | "confirm";
 
@@ -23,16 +33,18 @@ export function RefundPanel({
   orderNumber,
   currency,
   allocations,
+  softwareLines = [],
 }: {
   orderId: string;
   orderNumber: string;
   currency: string;
   allocations: RefundableAllocation[];
+  softwareLines?: RefundableSoftwareLine[];
 }) {
   const router = useRouter();
   const ids = useId();
   const [mode, setMode] = useState<Mode>("full");
-  const [selected, setSelected] = useState<Set<string>>(() => new Set(allocations.map((a) => a.id)));
+  const [selected, setSelected] = useState<Set<string>>(() => new Set([...allocations.map((a) => a.id), ...softwareLines.map((l) => l.id)]));
   const [reason, setReason] = useState("");
   const [step, setStep] = useState<Step>("edit");
   const [busy, setBusy] = useState(false);
@@ -44,9 +56,22 @@ export function RefundPanel({
     () => (mode === "full" ? allocations : allocations.filter((a) => selected.has(a.id))),
     [mode, allocations, selected],
   );
-  const amountCents = chosen.reduce((s, a) => s + a.refundableCents, 0);
+  const chosenLines = useMemo(
+    () => (mode === "full" ? softwareLines : softwareLines.filter((l) => selected.has(l.id))),
+    [mode, softwareLines, selected],
+  );
+  const chosenCount = chosen.length + chosenLines.length;
+  const amountCents = chosen.reduce((s, a) => s + a.refundableCents, 0) + chosenLines.reduce((s, l) => s + l.refundableCents, 0);
   const reasonValid = reason.trim().length >= 3;
-  const canContinue = reasonValid && chosen.length > 0 && amountCents > 0;
+  const canContinue = reasonValid && chosenCount > 0 && amountCents > 0;
+  const hasMusic = allocations.length > 0;
+  const hasSoftware = softwareLines.length > 0;
+  const itemsLabel = [
+    chosen.length ? `${chosen.length} arrangement${chosen.length === 1 ? "" : "s"}` : null,
+    chosenLines.length ? `${chosenLines.length} software license${chosenLines.length === 1 ? "" : "s"}` : null,
+  ]
+    .filter(Boolean)
+    .join(" and ");
 
   function toggle(id: string) {
     setSelected((prev) => {
@@ -63,7 +88,14 @@ export function RefundPanel({
     try {
       const res = await apiFetch<{ id: string; status: string; amountCents: number }>(
         `/api/admin/shop/orders/${orderId}/refund`,
-        { body: { reason: reason.trim(), ...(mode === "selected" ? { allocationIds: chosen.map((a) => a.id) } : {}) } },
+        {
+          body: {
+            reason: reason.trim(),
+            // Selected mode sends only the non-empty lists; omitting both means a full refund.
+            ...(mode === "selected" && chosen.length ? { allocationIds: chosen.map((a) => a.id) } : {}),
+            ...(mode === "selected" && chosenLines.length ? { orderItemIds: chosenLines.map((l) => l.id) } : {}),
+          },
+        },
       );
       setResult({ status: res.status, amountCents: res.amountCents });
       setStep("edit");
@@ -78,17 +110,26 @@ export function RefundPanel({
     }
   }
 
-  if (allocations.length === 0) {
+  if (allocations.length === 0 && softwareLines.length === 0) {
     return <p className="text-sm text-neutral-500">Everything on this order has already been refunded.</p>;
   }
 
   return (
     <div className="flex flex-col gap-5">
-      <Notice>
-        A refund revokes only the library access granted by this order. Arrangements the customer also owns through
-        another purchase, collection or grant stay in their library. A file already delivered to an offline device
-        cannot be remotely erased; revoking stops future downloads and re-delivery.
-      </Notice>
+      {hasMusic && (
+        <Notice>
+          A refund revokes only the library access granted by this order. Arrangements the customer also owns through
+          another purchase, collection or grant stay in their library. A file already delivered to an offline device
+          cannot be remotely erased; revoking stops future downloads and re-delivery.
+        </Notice>
+      )}
+      {hasSoftware && (
+        <Notice>
+          Refunding a software license revokes the license and blocks any future activation. The order, the license
+          and its installation history are kept. An already activated offline copy may keep working with its local
+          activation; the refund cannot switch it off remotely.
+        </Notice>
+      )}
 
       {result && (
         <Notice tone="success">
@@ -128,12 +169,37 @@ export function RefundPanel({
                 onChange={() => setMode("selected")}
                 className="accent-neutral-950"
               />
-              Selected arrangements only
+              {hasSoftware && hasMusic ? "Selected items only" : hasSoftware ? "Selected software licenses only" : "Selected arrangements only"}
             </label>
           </fieldset>
 
-          {mode === "selected" && (
-            <ul className="flex flex-col divide-y divide-neutral-100 rounded-xl border border-neutral-200">
+          {mode === "selected" && hasSoftware && (
+            <ul className="flex flex-col divide-y divide-neutral-100 rounded-xl border border-neutral-200" aria-label="Software licenses">
+              {softwareLines.map((l) => (
+                <li key={l.id}>
+                  <label className="flex cursor-pointer items-start gap-3 px-4 py-3 text-sm sm:items-center">
+                    <input
+                      type="checkbox"
+                      checked={selected.has(l.id)}
+                      onChange={() => toggle(l.id)}
+                      className="mt-0.5 accent-neutral-950 sm:mt-0"
+                    />
+                    <span className="min-w-0 flex-1">
+                      <span className="block truncate font-medium text-neutral-950">{l.title}</span>
+                      <span className="block text-xs text-neutral-500">
+                        Software license{l.licenseLabel ? ` ${l.licenseLabel}` : ""}
+                        {l.licenseStatus && `, ${l.licenseStatus.replace(/_/g, " ").toLowerCase()}`}. Refunding revokes it.
+                      </span>
+                    </span>
+                    <span className="tabular-nums text-neutral-800">{formatMoney(l.refundableCents, currency)}</span>
+                  </label>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {mode === "selected" && hasMusic && (
+            <ul className="flex flex-col divide-y divide-neutral-100 rounded-xl border border-neutral-200" aria-label="Arrangements">
               {allocations.map((a) => (
                 <li key={a.id}>
                   <label className="flex cursor-pointer items-start gap-3 px-4 py-3 text-sm sm:items-center">
@@ -173,7 +239,7 @@ export function RefundPanel({
             />
           </Field>
 
-          {touched && chosen.length === 0 && <Notice tone="error">Select at least one arrangement to refund.</Notice>}
+          {touched && chosenCount === 0 && <Notice tone="error">Select at least one item to refund.</Notice>}
 
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-sm text-neutral-600">
@@ -186,8 +252,8 @@ export function RefundPanel({
         <div className="flex flex-col gap-4 rounded-xl border border-neutral-950 p-4 sm:p-5">
           <p className="text-sm text-neutral-800">
             Refund <span className="font-semibold tabular-nums text-neutral-950">{formatMoney(amountCents, currency)}</span> on{" "}
-            {orderNumber} for {chosen.length} arrangement{chosen.length === 1 ? "" : "s"}? This sends the refund to Stripe
-            and cannot be undone.
+            {orderNumber} for {itemsLabel}? This sends the refund to Stripe and cannot be undone.
+            {chosenLines.length > 0 && " The refunded software licenses are revoked and can no longer be activated."}
           </p>
           <p className="text-sm text-neutral-600">Reason: {reason.trim()}</p>
           <div className="flex flex-col gap-2 sm:flex-row sm:justify-end">

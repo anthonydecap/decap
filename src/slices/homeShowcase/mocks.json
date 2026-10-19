@@ -1,0 +1,64 @@
+[
+  {
+    "slice_type": "home_showcase",
+    "slice_label": null,
+    "variation": "default",
+    "version": "initial",
+    "primary": {
+      "title": "Virtual",
+      "title_accent": "Orchestrion",
+      "body": [
+        {
+          "type": "paragraph",
+          "text": "A MIDI, audio and video player that brings the DECAP orchestrion to your screen and drives your real instrument.",
+          "spans": []
+        }
+      ],
+      "primary_cta_label": "Download",
+      "primary_cta_link": {
+        "link_type": "Web",
+        "url": "https://decap.be"
+      },
+      "secondary_cta_label": "Learn more",
+      "secondary_cta_link": {
+        "link_type": "Web",
+        "url": "https://decap.be"
+      },
+      "media_image": {
+        "dimensions": {
+          "width": 1600,
+          "height": 900
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "https://picsum.photos/seed/virtual-orchestrion/1600/900",
+        "id": "virtual-orchestrion",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      },
+      "mux_playback_id": "",
+      "media_fit": "Cover",
+      "media_caption": "",
+      "background_color": "#0a0a0a"
+    },
+    "items": [
+      {
+        "highlight_title": "MIDI, audio and video",
+        "highlight_text": "Plays your library in sync."
+      },
+      {
+        "highlight_title": "Drives real instruments",
+        "highlight_text": "Connects to DECAP orchestrions."
+      },
+      {
+        "highlight_title": "Free trial",
+        "highlight_text": "Try it before you buy a license."
+      }
+    ],
+    "id": "home_showcase$mock"
+  }
+]

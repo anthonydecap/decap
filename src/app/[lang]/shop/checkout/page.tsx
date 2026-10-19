@@ -4,6 +4,7 @@ import { Container } from "@/components/Container";
 import { resolveUrlLang } from "@/i18n";
 import { loginUrl } from "@/modules/shop/auth/auth0";
 import { checkoutReadiness, getCurrentCustomer } from "@/modules/shop/auth/session";
+import { storefrontPlayerContext } from "@/modules/shop/services/storefront-player";
 import { CheckoutClient } from "@/modules/shop/ui/store/CheckoutClient";
 import { shopCopy, shopPath } from "@/modules/shop/ui/store/copy";
 
@@ -24,6 +25,8 @@ export default async function CheckoutPage({ params }: { params: Promise<{ lang:
   }
 
   const publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ?? "";
+  // Names for the "This music license is for <player>" summary (server-validated players).
+  const { players } = await storefrontPlayerContext(customer.id);
 
   return (
     <section className="py-12 sm:py-16">
@@ -42,7 +45,7 @@ export default async function CheckoutPage({ params }: { params: Promise<{ lang:
             </a>
           </div>
         ) : (
-          <CheckoutClient lang={urlLang} publishableKey={publishableKey} testMode={publishableKey.startsWith("pk_test_")} />
+          <CheckoutClient lang={urlLang} publishableKey={publishableKey} testMode={publishableKey.startsWith("pk_test_")} players={players} />
         )}
       </Container>
     </section>

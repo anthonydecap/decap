@@ -6,7 +6,7 @@ import { prepareCheckout } from "@/modules/shop/services/checkout";
 import { activeEntitlementArrangementIds, adminGrantEntitlement } from "@/modules/shop/services/entitlements";
 import { fulfillPaymentIntent } from "@/modules/shop/services/fulfillment";
 import { createRefund } from "@/modules/shop/services/refunds";
-import { fakeStripe, makeArrangement, makeBundle, makeCustomer, makeStaff, resetDb, signInAs, useMemoryStorage } from "../helpers/fixtures";
+import { fakeStripe, makeArrangement, makeBundle, makeBuyer, makeStaff, resetDb, signInAs, useMemoryStorage } from "../helpers/fixtures";
 
 let stripeFake: ReturnType<typeof fakeStripe>;
 
@@ -18,7 +18,7 @@ beforeEach(async () => {
 });
 
 async function paidBundleOrder() {
-  const { customer } = await makeCustomer();
+  const { customer } = await makeBuyer();
   const a = await makeArrangement({ priceCents: 1000, royaltyRateBps: 3000 });
   const b = await makeArrangement({ priceCents: 1000, royaltyRateBps: 3000 });
   const bundle = await makeBundle({ priceCents: 1600, arrangementIds: [a.arrangement.id, b.arrangement.id] });
@@ -75,7 +75,7 @@ describe("refunds", () => {
     signInAs(catalogManager.session);
     expect((await refundPOST(req(), params)).status).toBe(403);
 
-    const { session: customerSession } = await makeCustomer();
+    const { session: customerSession } = await makeBuyer();
     signInAs(customerSession);
     expect((await refundPOST(req(), params)).status).toBe(403);
 

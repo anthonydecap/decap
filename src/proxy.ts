@@ -30,7 +30,7 @@ function isShopSystemPath(pathname: string): boolean {
 
 /** Shop pages that use the Auth0 session (rolling session refresh). */
 function usesShopSession(pathname: string): boolean {
-  return /^\/[a-z]{2}\/shop(\/|$)/.test(pathname) || pathname.startsWith("/admin") || pathname.startsWith("/api/shop/") || pathname.startsWith("/api/admin/");
+  return /^\/[a-z]{2}\/(shop|software)(\/|$)/.test(pathname) || pathname.startsWith("/admin") || pathname.startsWith("/api/shop/") || pathname.startsWith("/api/admin/");
 }
 
 export async function proxy(request: NextRequest) {

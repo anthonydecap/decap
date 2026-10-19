@@ -1,0 +1,97 @@
+{
+  "id": "home_hero",
+  "type": "SharedSlice",
+  "name": "HomeHero",
+  "description": "Home hero: two-tone headline, intro, two CTAs and a large illustration",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Home hero: two-tone headline, intro, two CTAs and a large illustration",
+      "imageUrl": "",
+      "primary": {
+        "background_color": {
+          "type": "Color",
+          "config": {
+            "label": "Background color (dark \u2192 dark theme, light \u2192 light theme)",
+            "placeholder": "#0a0a0a"
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Headline line 1",
+            "placeholder": "Heritage of"
+          }
+        },
+        "title_accent": {
+          "type": "Text",
+          "config": {
+            "label": "Headline line 2 (muted tone)",
+            "placeholder": "Innovation"
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Intro (max ~20 words)",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "primary_cta_label": {
+          "type": "Text",
+          "config": {
+            "label": "Primary button label",
+            "placeholder": "Explore"
+          }
+        },
+        "primary_cta_link": {
+          "type": "Link",
+          "config": {
+            "label": "Primary button link",
+            "allowTargetBlank": true,
+            "select": null
+          }
+        },
+        "secondary_cta_label": {
+          "type": "Text",
+          "config": {
+            "label": "Secondary button label",
+            "placeholder": ""
+          }
+        },
+        "secondary_cta_link": {
+          "type": "Link",
+          "config": {
+            "label": "Secondary button link",
+            "allowTargetBlank": true,
+            "select": null
+          }
+        },
+        "illustration": {
+          "type": "Image",
+          "config": {
+            "label": "Illustration",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "illustration_style": {
+          "type": "Select",
+          "config": {
+            "label": "Illustration style (Line art is inverted on dark backgrounds)",
+            "options": [
+              "Line art",
+              "Photo"
+            ],
+            "default_value": "Line art"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

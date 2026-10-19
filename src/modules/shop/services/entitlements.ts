@@ -3,13 +3,17 @@ import type { EntitlementSourceType } from "@/generated/shop-prisma/client";
 import { shopDb, type ShopTx } from "../db";
 import { ShopError } from "../errors";
 import { audit } from "./audit";
+import { recordActivity } from "./crm";
 
 /**
- * Entitlement = "may this customer use this arrangement?"  (one row per customer+arrangement)
+ * Entitlement = commercial acquisition history: "this customer acquired this arrangement"
+ * (one row per customer+arrangement).
  * EntitlementSource = "why" (purchase, bundle, grant, promotion, legacy import), many per row.
  *
- * An entitlement is ACTIVE while at least one unrevoked source remains; revoking a source
- * never touches the others. The future player reads entitlements, never order history.
+ * Since phase 4 an entitlement no longer authorizes playback on its own: the right to have
+ * an arrangement delivered to a player is a MusicLicense (services/music-licenses.ts). An
+ * entitlement is ACTIVE while at least one unrevoked source remains; revoking a source never
+ * touches the others, but does end the music license that source created.
  */
 
 export type GrantInput = {
@@ -87,7 +91,12 @@ export async function activeEntitlementArrangementIds(customerId: string, tx?: S
   return new Set(rows.map((r) => r.arrangementId));
 }
 
-/** Admin: manual grant. No fake paid order is created. */
+/**
+ * Admin: manual grant to the account. No fake paid order is created. With `playerId` the
+ * music is licensed to that player; without, it is kept as an unassigned license (the
+ * customer or support assigns it later) unless the customer already has it somewhere.
+ * Prefer `grantMusic` (player-first, several arrangements, skip report) for new code.
+ */
 export async function adminGrantEntitlement(input: {
   staffId: string;
   customerId: string;
@@ -95,12 +104,22 @@ export async function adminGrantEntitlement(input: {
   reason: string;
   sourceType?: "ADMIN_GRANT" | "PROMOTION" | "LEGACY_IMPORT";
   reference?: string;
+  playerId?: string | null;
 }) {
   return shopDb().$transaction(async (tx) => {
     const customer = await tx.customer.findUnique({ where: { id: input.customerId } });
     if (!customer) throw new ShopError("NOT_FOUND", "Customer not found");
     const arrangement = await tx.arrangement.findUnique({ where: { id: input.arrangementId } });
     if (!arrangement) throw new ShopError("NOT_FOUND", "Arrangement not found");
+    // No player named: a customer with exactly one active player gets it there.
+    if (input.playerId === undefined) {
+      const only = await tx.registeredPlayer.findMany({ where: { customerId: input.customerId, status: "ACTIVE", playerType: { supportsMusicLibrary: true } }, select: { id: true }, take: 2 });
+      if (only.length === 1) input = { ...input, playerId: only[0]!.id };
+    }
+    if (input.playerId) {
+      const player = await tx.registeredPlayer.findFirst({ where: { id: input.playerId, customerId: input.customerId, status: { not: "RETIRED" }, playerType: { supportsMusicLibrary: true } } });
+      if (!player) throw new ShopError("NOT_FOUND", "That player cannot receive music for this customer");
+    }
     const result = await grantEntitlementSource(tx, {
       customerId: input.customerId,
       arrangementId: input.arrangementId,
@@ -109,11 +128,30 @@ export async function adminGrantEntitlement(input: {
       grantReason: input.reason,
       sourceReference: input.reference ?? null,
     });
+    const { createMusicLicense, liveLicense } = await import("./music-licenses");
+    const hasLicense = input.playerId
+      ? await liveLicense(tx, input.playerId, input.arrangementId)
+      : await tx.musicLicense.findFirst({ where: { customerId: input.customerId, arrangementId: input.arrangementId, status: { in: ["ACTIVE", "TRANSFER_PENDING", "UNASSIGNED"] } } });
+    if (!hasLicense) {
+      await createMusicLicense(tx, {
+        customerId: input.customerId, arrangementId: input.arrangementId, playerId: input.playerId ?? null,
+        source: input.sourceType ?? "ADMIN_GRANT", entitlementId: result.entitlement.id, entitlementSourceId: result.source.id,
+        staffId: input.staffId, reason: input.reason,
+      });
+    }
+    await recordActivity({
+      tx,
+      customerId: input.customerId,
+      type: "entitlement.granted",
+      summary: `Granted "${arrangement.displayTitle}" (${(input.sourceType ?? "ADMIN_GRANT").replace("_", " ").toLowerCase()}): ${input.reason}`,
+      staffId: input.staffId,
+      metadata: { arrangementId: arrangement.id, sourceType: input.sourceType ?? "ADMIN_GRANT", playerId: input.playerId ?? null },
+    });
     await audit(
       { type: "STAFF", staffId: input.staffId },
       "entitlement.grant",
       { type: "Entitlement", id: result.entitlement.id },
-      { customerId: input.customerId, arrangementId: input.arrangementId, sourceType: input.sourceType ?? "ADMIN_GRANT", reason: input.reason },
+      { customerId: input.customerId, arrangementId: input.arrangementId, sourceType: input.sourceType ?? "ADMIN_GRANT", reason: input.reason, playerId: input.playerId ?? null },
       tx,
     );
     return result;
@@ -124,6 +162,23 @@ export async function adminGrantEntitlement(input: {
 export async function adminRevokeEntitlementSource(input: { staffId: string; sourceId: string; reason: string }) {
   return shopDb().$transaction(async (tx) => {
     const entitlement = await revokeEntitlementSource(tx, input.sourceId, input.reason, input.staffId);
+    // The music license this source created (wherever it moved since) ends with it.
+    const { currentLicenseInLineage, setLicenseEnded } = await import("./music-licenses");
+    for (const l of await tx.musicLicense.findMany({ where: { entitlementSourceId: input.sourceId }, select: { id: true } })) {
+      const current = await currentLicenseInLineage(tx, l.id);
+      if (current && current.status !== "REVOKED" && current.status !== "RETIRED") {
+        await setLicenseEnded(tx, current.id, "REVOKED", { staffId: input.staffId, reason: input.reason, fromPlayerId: current.licensedPlayerId });
+      }
+    }
+    const arrangement = await tx.arrangement.findUnique({ where: { id: entitlement.arrangementId }, select: { displayTitle: true } });
+    await recordActivity({
+      tx,
+      customerId: entitlement.customerId,
+      type: "entitlement.revoked",
+      summary: `Revoked one source of "${arrangement?.displayTitle ?? "arrangement"}"${entitlement.status === "REVOKED" ? ", no longer in the library" : ", still owned through another source"}: ${input.reason}`,
+      staffId: input.staffId,
+      metadata: { arrangementId: entitlement.arrangementId, resultingStatus: entitlement.status },
+    });
     await audit(
       { type: "STAFF", staffId: input.staffId },
       "entitlement.revoke_source",
@@ -135,7 +190,10 @@ export async function adminRevokeEntitlementSource(input: { staffId: string; sou
   });
 }
 
-/** Customer library: ACTIVE entitlements joined with arrangement metadata (no asset keys). */
+/**
+ * Account-level acquisition history: ACTIVE entitlements joined with arrangement metadata
+ * (no asset keys). Not a playback library: see `playerLibrary` / `customerMusic`.
+ */
 export async function customerLibrary(customerId: string) {
   return shopDb().entitlement.findMany({
     where: { customerId, status: "ACTIVE" },

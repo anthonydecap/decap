@@ -183,7 +183,7 @@ describe("Transferring a player", () => {
     const { customer: other } = await makeCustomer();
     const player = await createPlayer({ actorStaffId: staff.id, customerId: customer.id, playerTypeId: type.id, registrationCode: "MOVE-1" });
 
-    await transferPlayer({ actorStaffId: staff.id, playerId: player.id, toCustomerId: other.id, reason: "Sold on" });
+    await transferPlayer({ actorStaffId: staff.id, playerId: player.id, toCustomerId: other.id, reason: "Sold on", libraryPolicy: "PLAYER_ONLY" });
 
     const row = await shopDb().registeredPlayer.findUniqueOrThrow({ where: { id: player.id } });
     expect(row.customerId).toBe(other.id);

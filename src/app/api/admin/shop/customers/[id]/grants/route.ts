@@ -17,6 +17,7 @@ export const POST = adminRoute<{ id: string }>("entitlements:grant", async (req,
     reason: input.reason,
     sourceType: input.sourceType,
     reference: input.reference,
+    playerId: input.playerId ?? null,
   });
   return NextResponse.json({ entitlementId: result.entitlement.id, sourceId: result.source.id }, { status: 201 });
 });

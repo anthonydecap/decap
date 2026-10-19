@@ -3,11 +3,14 @@ import { notFound } from "next/navigation";
 import { roleHasPermission } from "@/modules/shop/auth/session";
 import { shopDb } from "@/modules/shop/db";
 import { getOrderAdmin } from "@/modules/shop/services/admin-ops";
+import { existingPlayers } from "@/modules/shop/services/music-admin-ui";
+import { licenseNumber } from "@/modules/shop/services/software-licensing";
 import { guardStaffPage } from "@/modules/shop/ui/admin/guard";
 import { NoAccess } from "@/modules/shop/ui/admin/NoAccess";
 import { EmptyState, Notice, PageHeader, Panel, Stat, StatusBadge, Table, td, th, tr } from "@/modules/shop/ui/admin/primitives";
 import { customerName, humanize, royaltyTermsLabel, sourceTypeLabel } from "@/modules/shop/ui/admin/sales/labels";
-import { RefundPanel, type RefundableAllocation } from "@/modules/shop/ui/admin/sales/RefundPanel";
+import { RefundPanel, type RefundableAllocation, type RefundableSoftwareLine } from "@/modules/shop/ui/admin/sales/RefundPanel";
+import { SoftwareBadge } from "@/modules/shop/ui/admin/software-activations/labels";
 import { formatDateTime, formatMoney } from "@/modules/shop/ui/format";
 
 export const dynamic = "force-dynamic";
@@ -35,7 +38,45 @@ export default async function AdminOrderPage({ params }: { params: Promise<{ id:
 
   const canRefund = roleHasPermission(guard.ctx.staff.role, "orders:refund");
   const canSeeCustomer = roleHasPermission(guard.ctx.staff.role, "customers:read");
+  const canSeeSoftware = canSeeCustomer && roleHasPermission(guard.ctx.staff.role, "software:read");
+  const canSeePlayers = roleHasPermission(guard.ctx.staff.role, "players:read");
   const cur = order.currency;
+
+  const softwareItems = order.items.filter((i) => i.itemType === "SOFTWARE_LICENSE");
+  const refundIds = order.refunds.map((r) => r.id);
+  const [licenses, refundLines, targetPlayers] = await Promise.all([
+    softwareItems.length
+      ? shopDb().softwareLicense.findMany({
+          where: { orderItemId: { in: softwareItems.map((i) => i.id) } },
+          select: { id: true, number: true, status: true, orderItemId: true, revokedAt: true },
+        })
+      : Promise.resolve([]),
+    softwareItems.length && refundIds.length
+      ? shopDb().refundOrderItem.findMany({ where: { refundId: { in: refundIds } }, select: { id: true, refundId: true, orderItemId: true, amountCents: true } })
+      : Promise.resolve([]),
+    canSeePlayers ? existingPlayers(order.items.map((i) => i.targetPlayerId).filter((v): v is string => Boolean(v))) : Promise.resolve(new Map<string, { id: string; name: string }>()),
+  ]);
+
+  /** "For: Living Room Piano ••••91PL", from the purchase-time snapshot; linked while the player exists. */
+  const targetLine = (item: (typeof order.items)[number]) => {
+    if (!item.targetPlayerId && !item.targetPlayerNameSnapshot) return null;
+    const label = [item.targetPlayerNameSnapshot ?? "A player", item.targetRegistrationMaskedSnapshot].filter(Boolean).join(" ");
+    const current = item.targetPlayerId ? targetPlayers.get(item.targetPlayerId) : undefined;
+    return (
+      <span className="mt-1 block">
+        For:{" "}
+        {current ? (
+          <Link href={`/admin/shop/players/${current.id}`} className="font-medium text-neutral-950 hover:underline">{label}</Link>
+        ) : (
+          <span className="font-medium text-neutral-950">{label}</span>
+        )}
+        {current && current.name !== item.targetPlayerNameSnapshot && <span className="text-neutral-500"> (now {current.name})</span>}
+        {item.targetPlayerId && canSeePlayers && !current && <span className="text-neutral-500"> (player no longer exists)</span>}
+      </span>
+    );
+  };
+  const licenseByItem = new Map(licenses.map((l) => [l.orderItemId, l]));
+  const itemTitle = new Map(order.items.map((i) => [i.id, i.titleSnapshot]));
 
   const allAllocations = order.items.flatMap((i) => i.allocations);
   const allocationLabel = new Map(allAllocations.map((a) => [a.id, `${a.skuSnapshot} ${a.titleSnapshot}`]));
@@ -57,6 +98,19 @@ export default async function AdminOrderPage({ params }: { params: Promise<{ id:
       refundableCents: a.allocatedCents - a.refundedCents,
       sourceActive: Boolean(a.entitlementSource && !a.entitlementSource.revokedAt),
     }));
+
+  const softwareRefundable: RefundableSoftwareLine[] = softwareItems
+    .filter((i) => i.chargedCents - i.refundedCents > 0)
+    .map((i) => {
+      const lic = licenseByItem.get(i.id);
+      return {
+        id: i.id,
+        title: i.titleSnapshot,
+        refundableCents: i.chargedCents - i.refundedCents,
+        licenseLabel: lic ? licenseNumber(lic.number) : null,
+        licenseStatus: lic?.status ?? null,
+      };
+    });
 
   const name = customerName(order.customer);
 
@@ -121,13 +175,68 @@ export default async function AdminOrderPage({ params }: { params: Promise<{ id:
               <dt className="text-neutral-500">Arrangements</dt>
               <dd className="mt-0.5 tabular-nums text-neutral-900">{allAllocations.length}</dd>
             </div>
+            {softwareItems.length > 0 && (
+              <div>
+                <dt className="text-neutral-500">Software licenses</dt>
+                <dd className="mt-0.5 tabular-nums text-neutral-900">{softwareItems.length}</dd>
+              </div>
+            )}
           </dl>
         </Panel>
       </div>
 
       <h2 className="mb-4 mt-10 font-display text-xl font-bold text-neutral-950">Line items</h2>
       <div className="flex flex-col gap-6">
-        {order.items.map((item) => (
+        {order.items.map((item) => item.itemType === "SOFTWARE_LICENSE" ? (
+          <Panel
+            key={item.id}
+            title={item.titleSnapshot}
+            description={
+              <span>
+                Software license, charged <span className="tabular-nums">{formatMoney(item.chargedCents, cur)}</span>
+                {targetLine(item)}
+              </span>
+            }
+          >
+            {(() => {
+              const lic = licenseByItem.get(item.id);
+              return (
+                <dl className="grid grid-cols-1 gap-4 text-sm sm:grid-cols-4">
+                  <div>
+                    <dt className="text-neutral-500">Charged</dt>
+                    <dd className="mt-0.5 tabular-nums text-neutral-950">{formatMoney(item.chargedCents, cur)}</dd>
+                  </div>
+                  <div>
+                    <dt className="text-neutral-500">Refunded</dt>
+                    <dd className="mt-0.5 tabular-nums text-neutral-950">
+                      {item.refundedCents > 0 ? formatMoney(item.refundedCents, cur) : <span className="text-neutral-400">0</span>}
+                    </dd>
+                  </div>
+                  <div className="sm:col-span-2">
+                    <dt className="text-neutral-500">License</dt>
+                    <dd className="mt-0.5 flex flex-wrap items-center gap-2 text-neutral-950">
+                      {lic ? (
+                        <>
+                          {canSeeSoftware ? (
+                            <Link className="font-medium hover:underline" href={`/admin/shop/customers/${order.customer.id}?tab=software#license-${lic.id}`}>
+                              {licenseNumber(lic.number)}
+                            </Link>
+                          ) : (
+                            <span className="font-medium">{licenseNumber(lic.number)}</span>
+                          )}
+                          <SoftwareBadge kind="license" status={lic.status} />
+                          {lic.revokedAt && <span className="text-xs text-neutral-500">revoked {formatDateTime(lic.revokedAt)}</span>}
+                        </>
+                      ) : (
+                        <span className="text-neutral-400">Not created yet. Licenses are created when the order is fulfilled.</span>
+                      )}
+                    </dd>
+                  </div>
+                </dl>
+              );
+            })()}
+          </Panel>
+        ) : (
           <Panel
             key={item.id}
             padded={false}
@@ -137,6 +246,7 @@ export default async function AdminOrderPage({ params }: { params: Promise<{ id:
                 {item.itemType === "BUNDLE" ? "Collection" : "Arrangement"} {item.skuSnapshot}, charged{" "}
                 <span className="tabular-nums">{formatMoney(item.chargedCents, cur)}</span> for{" "}
                 <span className="tabular-nums">{formatMoney(item.retailValueCents, cur)}</span> retail value
+                {targetLine(item)}
               </span>
             }
           >
@@ -184,6 +294,9 @@ export default async function AdminOrderPage({ params }: { params: Promise<{ id:
                           <td className={`${td} max-w-[18rem]`}>
                             <p className="truncate font-medium text-neutral-950">{a.titleSnapshot}</p>
                             <p className="text-xs text-neutral-500">{a.skuSnapshot}</p>
+                            {a.additionalPlayer && (
+                              <span className="mt-1 inline-flex rounded-full bg-neutral-100 px-2 py-0.5 text-xs font-semibold text-neutral-700">Additional-player price</span>
+                            )}
                           </td>
                           <td className={`${td} text-right tabular-nums`}>{formatMoney(a.retailValueCents, cur)}</td>
                           <td className={`${td} text-right tabular-nums`}>{formatMoney(a.allocatedCents, cur)}</td>
@@ -227,7 +340,7 @@ export default async function AdminOrderPage({ params }: { params: Promise<{ id:
           ) : pendingRefund ? (
             <Notice>A refund on this order is still pending at Stripe. Wait for it to finish before starting another.</Notice>
           ) : (
-            <RefundPanel orderId={order.id} orderNumber={order.orderNumber} currency={cur} allocations={refundable} />
+            <RefundPanel orderId={order.id} orderNumber={order.orderNumber} currency={cur} allocations={refundable} softwareLines={softwareRefundable} />
           )}
         </Panel>
       )}
@@ -251,6 +364,18 @@ export default async function AdminOrderPage({ params }: { params: Promise<{ id:
                     {r.completedAt && `, completed ${formatDateTime(r.completedAt)}`}
                   </p>
                   {r.stripeRefundId && <p className="break-all font-mono text-xs text-neutral-500">{r.stripeRefundId}</p>}
+                  {refundLines.some((l) => l.refundId === r.id) && (
+                    <ul className="flex flex-col gap-1 text-xs text-neutral-600">
+                      {refundLines
+                        .filter((l) => l.refundId === r.id)
+                        .map((l) => (
+                          <li key={l.id} className="flex justify-between gap-3">
+                            <span className="truncate">Software license: {itemTitle.get(l.orderItemId) ?? l.orderItemId}</span>
+                            <span className="tabular-nums">{formatMoney(l.amountCents, r.currency)}</span>
+                          </li>
+                        ))}
+                    </ul>
+                  )}
                   {r.allocations.length > 0 && (
                     <ul className="flex flex-col gap-1 text-xs text-neutral-600">
                       {r.allocations.map((ra) => (

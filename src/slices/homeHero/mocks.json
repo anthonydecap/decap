@@ -1,0 +1,49 @@
+[
+  {
+    "slice_type": "home_hero",
+    "slice_label": null,
+    "variation": "default",
+    "version": "initial",
+    "primary": {
+      "title": "Heritage of",
+      "title_accent": "Innovation",
+      "body": [
+        {
+          "type": "paragraph",
+          "text": "Automated orchestrions, engineered in Belgium and played around the world.",
+          "spans": []
+        }
+      ],
+      "primary_cta_label": "Explore",
+      "primary_cta_link": {
+        "link_type": "Web",
+        "url": "https://decap.be"
+      },
+      "secondary_cta_label": "Contact us",
+      "secondary_cta_link": {
+        "link_type": "Web",
+        "url": "https://decap.be"
+      },
+      "illustration": {
+        "dimensions": {
+          "width": 1200,
+          "height": 1000
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "https://picsum.photos/seed/decap-hero/1200/1000",
+        "id": "decap-hero",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      },
+      "illustration_style": "Photo",
+      "background_color": "#0a0a0a"
+    },
+    "items": [],
+    "id": "home_hero$mock"
+  }
+]

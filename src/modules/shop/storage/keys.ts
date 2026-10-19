@@ -18,5 +18,5 @@ export function generateObjectKey(store: StoreName, category: string, extension:
 
 /** Defends routes that take a key: only our generated shape is ever accepted. */
 export function isGeneratedKey(key: string): boolean {
-  return /^(masters|deliveries|previews)\/[a-z0-9-]+\/\d{4}\/\d{2}\/[0-9a-f-]{36}(\.[a-z0-9]{1,8})?$/.test(key);
+  return /^(masters|deliveries|previews|support|documents|software)\/[a-z0-9-]+\/\d{4}\/\d{2}\/[0-9a-f-]{36}(\.[a-z0-9]{1,8})?$/.test(key);
 }

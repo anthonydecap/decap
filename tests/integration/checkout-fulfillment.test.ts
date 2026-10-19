@@ -9,7 +9,7 @@ import { prepareCheckout } from "@/modules/shop/services/checkout";
 import { activeEntitlementArrangementIds, adminGrantEntitlement } from "@/modules/shop/services/entitlements";
 import { fulfillPaymentIntent } from "@/modules/shop/services/fulfillment";
 import {
-  fakeStripe, makeArrangement, makeBundle, makeCustomer, makeStaff, resetDb, signInAs, succeededEvent, useMemoryStorage,
+  fakeStripe, makeArrangement, makeBundle, makeBuyer, makeStaff, resetDb, signInAs, succeededEvent, useMemoryStorage,
 } from "../helpers/fixtures";
 
 const stripeLib = new Stripe("sk_test_dummy_for_tests");
@@ -40,20 +40,20 @@ describe("checkout preparation", () => {
   it("requires Auth0 sign-in, a verified email and onboarding", async () => {
     expect((await preparePOST(prepareReq(), ctx({}))).status).toBe(401);
 
-    const unverified = await makeCustomer({ verified: false });
+    const unverified = await makeBuyer({ verified: false });
     signInAs(unverified.session);
     const r1 = await preparePOST(prepareReq(), ctx({}));
     expect(r1.status).toBe(403);
     expect((await r1.json()).error.code).toBe("EMAIL_NOT_VERIFIED");
 
-    const fresh = await makeCustomer({ onboarded: false });
+    const fresh = await makeBuyer({ onboarded: false });
     signInAs(fresh.session);
     const r2 = await preparePOST(prepareReq(), ctx({}));
     expect((await r2.json()).error.code).toBe("ONBOARDING_REQUIRED");
   });
 
   it("reprices server-side, snapshots the order and reuses it for identical carts", async () => {
-    const { customer, session } = await makeCustomer();
+    const { customer, session } = await makeBuyer();
     const { arrangement } = await makeArrangement({ priceCents: 1299 });
     await addToCart({ customerId: customer.id, anonymousToken: null }, { type: "ARRANGEMENT", arrangementId: arrangement.id });
     // A stale client-side price never matters: change the catalog price after adding.
@@ -80,7 +80,7 @@ describe("checkout preparation", () => {
   });
 
   it("refuses an empty cart and a cart whose items are all owned", async () => {
-    const { customer, session } = await makeCustomer();
+    const { customer, session } = await makeBuyer();
     signInAs(session);
     expect((await (await preparePOST(prepareReq(), ctx({}))).json()).error.code).toBe("CART_EMPTY");
 
@@ -100,7 +100,7 @@ describe("Stripe webhook", () => {
   });
 
   it("fulfills a paid order exactly once and the success API only reads state", async () => {
-    const { customer, session } = await makeCustomer();
+    const { customer, session } = await makeBuyer();
     const a = await makeArrangement({ priceCents: 1000 });
     const b = await makeArrangement({ priceCents: 2000 });
     const bundle = await makeBundle({ priceCents: 2400, arrangementIds: [a.arrangement.id, b.arrangement.id] });
@@ -138,7 +138,7 @@ describe("Stripe webhook", () => {
   });
 
   it("charges only the missing items when completing a partly-owned collection", async () => {
-    const { customer } = await makeCustomer();
+    const { customer } = await makeBuyer();
     const { staff } = await makeStaff();
     const items = await Promise.all([1000, 1500, 2500].map((p) => makeArrangement({ priceCents: p })));
     const ids = items.map((i) => i.arrangement.id);
@@ -165,7 +165,7 @@ describe("Stripe webhook", () => {
   });
 
   it("never grants when the paid amount does not match the snapshot", async () => {
-    const { customer } = await makeCustomer();
+    const { customer } = await makeBuyer();
     const { arrangement } = await makeArrangement({ priceCents: 1000 });
     await addToCart({ customerId: customer.id, anonymousToken: null }, { type: "ARRANGEMENT", arrangementId: arrangement.id });
     await prepareCheckout(customer);
@@ -177,12 +177,12 @@ describe("Stripe webhook", () => {
   });
 
   it("does not let one customer read another customer's order", async () => {
-    const owner = await makeCustomer();
+    const owner = await makeBuyer();
     const { arrangement } = await makeArrangement({ priceCents: 1000 });
     await addToCart({ customerId: owner.customer.id, anonymousToken: null }, { type: "ARRANGEMENT", arrangementId: arrangement.id });
     const prepared = await prepareCheckout(owner.customer);
 
-    const intruder = await makeCustomer();
+    const intruder = await makeBuyer();
     signInAs(intruder.session);
     const res = await orderGET(new Request("http://x"), ctx({ id: prepared.orderId }));
     expect(res.status).toBe(404);

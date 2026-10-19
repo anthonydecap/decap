@@ -21,5 +21,7 @@ export const POST = route(async (req) => {
     orderNumber: prepared.orderNumber,
     clientSecret: prepared.clientSecret,
     pricing: prepared.pricing,
+    // Zero total: already fulfilled on the server, no payment step.
+    free: prepared.free ?? false,
   });
 });

@@ -109,10 +109,93 @@ the files. Apply creates **DRAFT** arrangements only; publishing still goes thro
 `EncodingJob`, `DeliveryArtifact` and `ProtectionProfile` are modelled and `src/modules/shop/services/encoding.ts`
 runs jobs through an `EncoderAdapter` (wrap the existing encoder EXE in a worker that implements it). Output is
 written only to the `deliveries` store. There are deliberately **no** `/api/player/*` routes yet; the future player
-API should authenticate the device (Auth0 Device Authorization Flow), check the ACTIVE entitlement, then issue a
-short-lived download URL for the matching artifact.
+API should authenticate the customer, resolve the exact player from its `registrationIdentifier`, check it belongs
+to the customer and is ACTIVE, and return / deliver only that player's ACTIVE music licenses
+(`authorizeDelivery` in `encoding.ts`, `playerLibrary` in `music-licenses.ts`). An account-level entitlement never
+authorizes delivery on its own.
 
 Refunds and revocations stop future delivery. A file already delivered to an offline device cannot be erased remotely.
+
+## Phase 2: CRM, players, staff and support
+
+| Area | Where |
+|---|---|
+| Customer profile (individual / business, VAT, billing address) | `/{lang}/shop/account/profile`; collected at onboarding; required before checkout |
+| Order billing snapshot | written with every order (`OrderBillingSnapshot`), never recomputed |
+| Customer support | `/{lang}/shop/account/support` (new request, conversation, attachments) |
+| Staff support inbox | `/admin/shop/support` |
+| CRM workspace | `/admin/shop/customers/{id}` (overview, contact and billing, players, orders, library, support, notes and activity, tasks, documents) |
+| Tasks | `/admin/shop/tasks` and the dashboard |
+| Staff and invitations | `/admin/shop/staff` (SUPER_ADMIN) |
+
+- **Roles:** SUPER_ADMIN, ADMIN, SUPPORT, CATALOG_MANAGER, FINANCE, mapped to capabilities in `src/modules/shop/auth/session.ts`. Every route checks its capability server-side.
+- **First SUPER_ADMIN:** `npm run shop:staff -- --sub "<auth0 user_id>" --role SUPER_ADMIN`. Everything after that is done in `/admin/shop/staff`.
+- **Invitations:** a SUPER_ADMIN invites an email address; the person signs in with their own Auth0 account and accepts at the link. Access is only created when their *verified* email matches. Links expire after 7 days; only a hash of the token is stored.
+- **Activation keys** are encrypted with `SHOP_ACTIVATION_KEY_SECRET` (AES-256-GCM), revealed only through an explicit, audited action, never shown to customers.
+- **Attachments and documents** live in private `support/` and `documents/` namespaces, separate from music. Allowed: PDF, JPEG, PNG, WebP, text and MIDI, at most 4 MB per message (serverless request limit).
+- **Email** is notification only: set `RESEND_API_KEY` and `SHOP_EMAIL_FROM` to send real mail; otherwise messages are logged and invitation links are shown in the admin for manual sharing. Replies happen in the account, never by email.
+
+## Phase 3: software downloads, licenses and activation
+
+| Area | Where |
+|---|---|
+| Public software pages | `/{lang}/software`, `/{lang}/software/{slug}` (old WordPress links can redirect to `/software/dmi-player`, which forwards to `/en/...`) |
+| Download | `/api/shop/software/{slug}/download`: sign-in required; records a download and redirects to a 5-minute signed URL |
+| Customer hub | `/{lang}/shop/account/software` and `/{slug}`: status, re-download, enter registration code, reveal/copy activation key |
+| Admin | `/admin/shop/software` (products + releases), `/activations` (queue), `/licenses`, `/downloads`; CRM customer Software tab |
+
+- **Separate concepts:** a download is not a license; a license (`LIC-n`) is the right to use the product; an activation request (`ACT-n`) is a submitted registration code; an installation is an approved, activated machine with its encrypted activation key.
+- **Buying:** licenses use the normal cart and Stripe checkout. The license is created by the webhook only, as *pending activation*, and the customer is guided to submit the code from the software.
+- **Manual activation:** staff copy the registration code into the proprietary EXE (outside this system), paste the resulting key and approve. The key is encrypted (`SHOP_ACTIVATION_KEY_SECRET`), never emailed or logged, and revealed only on explicit request by the owner or by staff with `software:activation-key`. Each request also creates a CRM task.
+- **Conflicts and replacements:** a code already active elsewhere is flagged for review; moving it from another customer needs a SUPER_ADMIN. Replacing a computer retires the old installation; history is never overwritten.
+- **Releases** are immutable (new version = new row + new private key). Upload verifies size, SHA-256 and the installer signature (EXE/MSI/ZIP/PKG) and creates a draft; *publish* and *mark current* are separate actions. Nothing uploaded is executed.
+- **Refunds** revoke the license and block new activations; orders and installation history are kept. Already activated offline copies keep their local license state.
+- **RegisteredPlayer** (Phase 2) stays the registry of physical DMI players; a software installation can optionally point at the player it runs on.
+
+## Phase 4: player-bound music licensing
+
+**A player is software.** Software is bought, downloaded and activated the same way for every
+product (Virtual Orchestrion €899, MIDI Mapper €150 in the seed). A product that a music-capable
+player type points at (Virtual Orchestrion) is a *player program*: every activated copy becomes a
+player automatically (`services/player-sync.ts`), and the music a customer buys is licensed to it.
+Retiring / suspending / refunding the installation does the same to the player; an approved
+computer replacement moves its music. MIDI Mapper is a tool and never receives music. Music can
+only be bought signed in and for an active player (`allowAssignLater` is off by default); without
+one, the shop shows what to get or finish activating instead of an Add button.
+
+Music is licensed **per registered player**. `Entitlement` stays the account's acquisition history (purchase,
+bundle, grant, legacy); `MusicLicense` is the right to deliver one arrangement to one player. Delivery, the
+player library, duplicate checks and pricing read `MusicLicense` only.
+
+| Area | Where |
+|---|---|
+| Customer | `/{lang}/shop/account` (My DMI), `/account/players/{id}`, `/account/players/{id}/music`, `/account/music`, `/{lang}/shop/help/music-licensing` |
+| Shopping | "Buying music for" player context (cookie `dmi_player`, `?player=`), player-aware cards, product, collection, cart (grouped per player) and checkout |
+| Admin | `/admin/shop/players`, `/admin/shop/players/{id}`, `/admin/shop/music`, `/admin/shop/music/transfers`, `/admin/shop/music/migration`, `/admin/shop/settings/music-policy`, CRM customer Players and Music tabs |
+| Services | `services/music-licenses.ts` (players as targets, licenses, grants, assignment, starter music), `music-transfers.ts` (move / copy / replace / ownership), `music-shop.ts` (storefront context), `music-admin.ts`, `music-policy.ts` |
+
+- **One live license per player + arrangement** (partial unique index). History rows (RETIRED / REVOKED) are never deleted; moves create a continuation row (`originalMusicLicenseId`) plus `MusicLicenseEvent`s and one `MusicLicenseTransfer` (`TRF-n`).
+- **Cart:** each music line has a target player. One eligible player: chosen automatically. Several: the customer must choose. None: "assign later" when the policy allows it (the license is `UNASSIGNED` and the customer places it once; after that only staff can move it). Free music goes through the same fulfillment without Stripe.
+- **Pricing:** per player. Already on that player = excluded; on another of the customer's players (or bought for another player in the same cart) = additional-player price; not compatible with the player type's system profiles = not sold. Collections complete per player. Royalties use the amount actually paid.
+- **Policy** (`ShopSetting music.policy`, edited in the admin): additional-player strategy (`NO_DISCOUNT` default, percentage or fixed price), allow assign later, require an active software license for music, resale policy (`ADMIN_DECIDES` default), replacement policy (`MANUAL_DECISION` default). No transfer fee is charged yet.
+- **Staff workflows** (customers cannot self-transfer): replace player (library moves, old RETIRED, new ACTIVE), transfer library (MOVE, or COPY = unpaid additional licenses that need `music:grant` and a reason), move a player to another customer (library follows the resale policy), grant music to a player, revoke a license. All audited and on the CRM timeline. Offline copies already delivered are not erased by any of these.
+- **Starter music:** a player type can name a starter collection; activating a player of that type licenses it once (`PLAYER_STARTER_PACK`, no order).
+- **Player types:** `supportsMusicLibrary` (MIDI Mapper style tools off), linked software product, starter collection, compatible system profiles (none = everything is compatible).
+
+### Legacy migration
+
+```bash
+npm run shop:migrate-music              # dry run: report only, writes nothing (JSON report in the repo root, git-ignored)
+npm run shop:migrate-music -- --apply   # idempotent; re-running creates nothing new
+```
+
+Rules: one eligible ACTIVE player = licensed to it (`LEGACY_MIGRATION`); several players = a player-bound delivery
+artifact for exactly one of them decides, otherwise **needs review** (never guessed); no player = waiting, and the
+music lands on the customer's first player when it is activated. Review items are resolved in
+`/admin/shop/music/migration`. Take a Neon backup / branch before `--apply` on production.
+
+Applied to the Neon database on 2026-10-12 (1 customer, 2 legacy purchases, both assigned). On 2026-10-13 the Neon
+shop database was reset and reseeded for the player-is-software model (CSV backup of every table taken first).
 
 ## Tests
 

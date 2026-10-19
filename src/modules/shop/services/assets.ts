@@ -10,7 +10,7 @@ import type { MidiMetadata } from "../domain/midi";
 import { shopConfig } from "../config";
 import { shopDb, type ShopTx } from "../db";
 import { ShopError } from "../errors";
-import { storage, type UploadTarget } from "../storage";
+import { storage, type StoreName, type UploadTarget } from "../storage";
 import { generateObjectKey } from "../storage/keys";
 import { signTicket } from "../storage/tickets";
 import { audit } from "./audit";
@@ -49,7 +49,7 @@ export function checkUploadPolicy(kind: AssetKindValue, filename: string, bytes:
 }
 
 export async function issueUploadTarget(args: {
-  store: "MASTERS" | "PREVIEWS" | "DELIVERIES";
+  store: StoreName;
   key: string;
   contentType: string;
   bytes: number;

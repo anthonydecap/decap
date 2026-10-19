@@ -4,12 +4,18 @@ import { notFound } from "next/navigation";
 import { Container } from "@/components/Container";
 import { FadeIn } from "@/components/FadeIn";
 import { resolveUrlLang } from "@/i18n";
+import { Check } from "@phosphor-icons/react/ssr";
 import { getCurrentCustomer } from "@/modules/shop/auth/session";
 import { getArrangementDetail } from "@/modules/shop/services/catalog";
+import { arrangementStateByPlayer, type ShopPlayerContext } from "@/modules/shop/services/music-shop";
+import { playerJourney } from "@/modules/shop/services/player-products";
+import { storefrontPlayerContext } from "@/modules/shop/services/storefront-player";
 import { formatDuration, formatMoney } from "@/modules/shop/ui/format";
-import { AddToCartButton } from "@/modules/shop/ui/store/AddToCartButton";
 import { Artwork } from "@/modules/shop/ui/store/Artwork";
 import { shopCopy, shopPath } from "@/modules/shop/ui/store/copy";
+import { playerCopy, playerLinks } from "@/modules/shop/ui/store/copy-player";
+import { LicenseNote, NoPlayerPurchase, SignedOutPurchase } from "@/modules/shop/ui/store/PurchaseGates";
+import { PurchasePicker } from "@/modules/shop/ui/store/PurchasePicker";
 import { PreviewButton, PreviewProgress } from "@/modules/shop/ui/store/PreviewPlayer";
 
 export const dynamic = "force-dynamic";
@@ -26,13 +32,24 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   };
 }
 
-export default async function ArrangementPage({ params }: { params: Promise<Params> }) {
+export default async function ArrangementPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<Params>;
+  searchParams: Promise<{ player?: string | string[] }>;
+}) {
   const { lang, slug } = await params;
+  const { player } = await searchParams;
   const urlLang = resolveUrlLang(lang);
   const t = shopCopy(urlLang);
   const customer = await getCurrentCustomer();
-  const a = await getArrangementDetail(slug, customer?.id);
+  const ctx = customer ? await storefrontPlayerContext(customer.id, player) : null;
+  const a = await getArrangementDetail(slug, ctx);
   if (!a) notFound();
+  const byPlayer = ctx && ctx.players.length > 0 ? await arrangementStateByPlayer(ctx, a) : [];
+  const journey = ctx && ctx.players.length === 0 ? await playerJourney(ctx.customerId) : null;
+  const selected = byPlayer.find((s) => s.player.id === ctx?.selectedPlayerId) ?? null;
 
   const facts: [string, string][] = [];
   const dur = formatDuration(a.durationSeconds);
@@ -52,8 +69,11 @@ export default async function ArrangementPage({ params }: { params: Promise<Para
           <FadeIn className="lg:col-span-6">
             <div className="relative">
               <Artwork src={a.coverUrl} title={a.title} subtitle={a.originalArtist} rounded="rounded-3xl" eager />
-              {a.owned && (
-                <span className="absolute right-4 top-4 rounded-full bg-white px-3 py-1 text-xs font-semibold text-neutral-950">{t.ownedShort}</span>
+              {(selected ? selected.state === "LICENSED" : a.player.state === "LICENSED") && (
+                <span className="absolute right-4 top-4 inline-flex items-center gap-1 rounded-full bg-white px-3 py-1 text-xs font-semibold text-neutral-950">
+                  <Check size={12} weight="bold" aria-hidden />
+                  {playerCopy(urlLang).licensed}
+                </span>
               )}
             </div>
             {a.previewAudioUrl ? (
@@ -90,10 +110,7 @@ export default async function ArrangementPage({ params }: { params: Promise<Para
               </Link>
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-6">
-              <p className="font-display text-3xl font-bold text-neutral-950">{formatMoney(a.priceCents, a.currency, urlLang)}</p>
-              <AddToCartButton lang={urlLang} owned={a.owned} item={{ type: "ARRANGEMENT", arrangementId: a.id }} />
-            </div>
+            <PurchasePanel lang={urlLang} a={a} ctx={ctx} byPlayer={byPlayer} journey={journey} />
             <p className="mt-3 text-xs text-neutral-500">{t.vatNote} SKU {a.sku}</p>
 
             {facts.length > 0 && (
@@ -162,5 +179,41 @@ export default async function ArrangementPage({ params }: { params: Promise<Para
         </div>
       </Container>
     </section>
+  );
+}
+
+type Detail = NonNullable<Awaited<ReturnType<typeof getArrangementDetail>>>;
+type PlayerState = Awaited<ReturnType<typeof arrangementStateByPlayer>>[number];
+
+/**
+ * Price + "Where will this play?" + one button. Signed out: sign in. No player yet: how to
+ * get one (never a dead end). Otherwise the picker, fed with server-computed state and
+ * price per player.
+ */
+function PurchasePanel({ lang, a, ctx, byPlayer, journey }: {
+  journey: Awaited<ReturnType<typeof playerJourney>>;
+  lang: string;
+  a: Detail;
+  ctx: ShopPlayerContext | null;
+  byPlayer: PlayerState[];
+}) {
+  const item = { type: "ARRANGEMENT" as const, arrangementId: a.id };
+  if (!ctx) return <SignedOutPurchase lang={lang} priceCents={a.priceCents} currency={a.currency} returnTo={shopPath(lang, `/arrangements/${a.slug}`)} />;
+  if (ctx.players.length === 0) {
+    return <NoPlayerPurchase lang={lang} priceCents={a.priceCents} currency={a.currency} item={item} alreadyBought={a.player.state === "LICENSED"} assignLaterAllowed={ctx.assignLaterAllowed} journey={journey} />;
+  }
+  return (
+    <>
+      <PurchasePicker
+        lang={lang}
+        item={item}
+        currency={a.currency}
+        retailCents={a.priceCents}
+        initialPlayerId={ctx.selectedPlayerId}
+        options={byPlayer.map((s) => ({ player: s.player, state: s.state, priceCents: s.priceCents }))}
+        libraryHrefs={Object.fromEntries(byPlayer.map((s) => [s.player.id, playerLinks.playerMusic(lang, s.player.id)]))}
+      />
+      <LicenseNote lang={lang} />
+    </>
   );
 }

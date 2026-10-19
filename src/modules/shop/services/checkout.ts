@@ -8,6 +8,8 @@ import { shopDb } from "../db";
 import { ShopError } from "../errors";
 import { audit } from "./audit";
 import { getPricedCart } from "./cart";
+import { requireCustomerMusicPlayer } from "./music-licenses";
+import { writeBillingSnapshot } from "./profile";
 import { stripe } from "./stripe";
 
 /**
@@ -30,18 +32,25 @@ export function pricingHash(pricing: CartPricingResult): string {
 export type PreparedCheckout = {
   orderId: string;
   orderNumber: string;
+  /** Empty for a free order, which is fulfilled immediately without Stripe. */
   clientSecret: string;
   pricing: CartPricingResult;
+  free?: boolean;
 };
 
 export async function prepareCheckout(customer: Customer): Promise<PreparedCheckout> {
   const db = shopDb();
   const { pricing } = await getPricedCart({ customerId: customer.id, anonymousToken: null });
+  // No checkout surprises: every music line must say which player receives it.
+  const unresolved = pricing.excluded.filter((e) => e.reason === "PLAYER_REQUIRED");
+  if (unresolved.length) {
+    throw new ShopError("PLAYER_REQUIRED", "Choose which player each item in your cart is for", { cartItemIds: unresolved.map((e) => e.cartItemId) });
+  }
   if (pricing.lines.length === 0) {
     throw new ShopError("CART_EMPTY", "There is nothing payable in your cart", { excluded: pricing.excluded });
   }
-  if (pricing.totalCents <= 0) {
-    throw new ShopError("INVALID_STATE", "Order total must be greater than zero");
+  if (pricing.totalCents < 0) {
+    throw new ShopError("INVALID_STATE", "Order total cannot be negative");
   }
   const hash = pricingHash(pricing);
 
@@ -70,6 +79,15 @@ export async function prepareCheckout(customer: Customer): Promise<PreparedCheck
   await Promise.all(
     order.staleIntentIds.map((id) => stripe().paymentIntents.cancel(id).catch(() => undefined)),
   );
+
+  // Free music still creates licenses for the chosen player, through the same fulfillment
+  // path as a paid order, just without a payment provider.
+  if (pricing.totalCents === 0) {
+    const { fulfillFreeOrder } = await import("./fulfillment");
+    await fulfillFreeOrder(order.order.id);
+    await audit({ type: "CUSTOMER", customerId: customer.id }, "checkout.free", { type: "Order", id: order.order.id }, { lineCount: pricing.lines.length });
+    return { orderId: order.order.id, orderNumber: formatOrderNumber(order.order.number), clientSecret: "", pricing, free: true };
+  }
 
   const clientSecret = await ensurePaymentIntent(order.order.id, customer);
   await audit({ type: "CUSTOMER", customerId: customer.id }, "checkout.prepare", { type: "Order", id: order.order.id }, {
@@ -101,6 +119,18 @@ async function createOrderSnapshot(
   for (const id of arrangementIds) {
     if (byId.get(id)?.status !== "PUBLISHED") throw new ShopError("UNAVAILABLE", "An item in your cart is no longer available");
   }
+  // Final server-side check of every target player (ownership, ACTIVE, music-capable).
+  const targetIds = [...new Set(pricing.lines.map((l) => l.targetPlayerId).filter(Boolean) as string[])];
+  const targets = new Map<string, { name: string; masked: string }>();
+  for (const id of targetIds) {
+    const p = await requireCustomerMusicPlayer(customer.id, id, tx);
+    targets.set(id, { name: p.name, masked: p.maskedRegistration });
+  }
+  const softwareIds = pricing.lines.filter((l) => l.type === "SOFTWARE_LICENSE").map((l) => l.refId);
+  if (softwareIds.length) {
+    const ok = await tx.softwareProduct.count({ where: { id: { in: softwareIds }, status: "ACTIVE" } });
+    if (ok !== new Set(softwareIds).size) throw new ShopError("UNAVAILABLE", "A software license in your cart is no longer on sale");
+  }
 
   const order = await tx.order.create({
     data: {
@@ -114,6 +144,7 @@ async function createOrderSnapshot(
       customerEmailSnapshot: customer.email,
     },
   });
+  await writeBillingSnapshot(tx, order.id, customer);
 
   for (const [position, line] of pricing.lines.entries()) {
     const item = await tx.orderItem.create({
@@ -123,6 +154,7 @@ async function createOrderSnapshot(
         itemType: line.type,
         arrangementId: line.type === "ARRANGEMENT" ? line.refId : null,
         bundleId: line.type === "BUNDLE" ? line.refId : null,
+        softwareProductId: line.type === "SOFTWARE_LICENSE" ? line.refId : null,
         skuSnapshot: line.sku,
         titleSnapshot: line.title,
         retailValueCents: line.retailValueCents,
@@ -131,8 +163,12 @@ async function createOrderSnapshot(
         bundleRetailTotalCents: line.bundle?.retailTotalCents ?? null,
         bundleItemCount: line.bundle?.itemCount ?? null,
         excludedArrangementIds: line.bundle?.excludedArrangementIds ?? [],
+        targetPlayerId: line.targetPlayerId ?? null,
+        targetPlayerNameSnapshot: line.targetPlayerId ? targets.get(line.targetPlayerId)!.name : null,
+        targetRegistrationMaskedSnapshot: line.targetPlayerId ? targets.get(line.targetPlayerId)!.masked : null,
       },
     });
+    if (!line.allocations.length) continue;
     await tx.orderItemAllocation.createMany({
       data: line.allocations.map((a) => {
         const arr = byId.get(a.arrangementId)!;
@@ -149,7 +185,9 @@ async function createOrderSnapshot(
           royaltyBasis: terms.basis,
           royaltyRateBps: terms.rateBps,
           royaltyFixedCents: terms.fixedCents,
+          // Royalty on what was actually paid for this copy (additional-player price included).
           royaltyCents: computeRoyaltyCents(a.allocatedCents, terms),
+          additionalPlayer: a.additionalPlayer ?? false,
         };
       }),
     });
@@ -235,8 +273,11 @@ export async function getOrderForCustomer(orderId: string, customerId: string) {
         orderBy: { position: "asc" },
         select: {
           id: true, itemType: true, titleSnapshot: true, skuSnapshot: true, chargedCents: true, retailValueCents: true,
-          bundleItemCount: true, excludedArrangementIds: true,
-          allocations: { select: { arrangementId: true, titleSnapshot: true, allocatedCents: true, refundedCents: true } },
+          bundleItemCount: true, excludedArrangementIds: true, softwareProductId: true,
+          targetPlayerId: true, targetPlayerNameSnapshot: true, targetRegistrationMaskedSnapshot: true,
+          softwareProduct: { select: { name: true, slug: true } },
+          softwareLicense: { select: { id: true, number: true, status: true } },
+          allocations: { select: { arrangementId: true, titleSnapshot: true, allocatedCents: true, refundedCents: true, additionalPlayer: true } },
         },
       },
     },
@@ -250,10 +291,15 @@ export async function listOrdersForCustomer(customerId: string) {
     orderBy: { createdAt: "desc" },
     select: {
       id: true, number: true, status: true, currency: true, totalCents: true, refundedCents: true, createdAt: true,
-      _count: { select: { allocations: true } },
+      _count: { select: { allocations: true, items: { where: { itemType: "SOFTWARE_LICENSE" } } } },
     },
   });
-  return rows.map((r) => ({ ...r, orderNumber: formatOrderNumber(r.number) }));
+  return rows.map((r) => ({
+    ...r,
+    orderNumber: formatOrderNumber(r.number),
+    arrangementCount: r._count.allocations,
+    softwareLicenseCount: r._count.items,
+  }));
 }
 
 export const checkoutConfig = {

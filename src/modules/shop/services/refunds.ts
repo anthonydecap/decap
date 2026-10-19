@@ -4,13 +4,17 @@ import { computeRoyaltyReversalCents } from "../domain/royalty";
 import { shopDb } from "../db";
 import { ShopError } from "../errors";
 import { audit } from "./audit";
+import { recordActivity } from "./crm";
+import { revokeLicenseForRefund } from "./software-licensing";
 import { revokeEntitlementSource } from "./entitlements";
+import { revokeLicenseForRefundedAllocation } from "./music-licenses";
 import { stripe } from "./stripe";
 
 /**
  * Refunds (Stripe test mode). Refunds are per allocation (a whole arrangement within an
  * order line). Applying a refund:
  *   - revokes only the EntitlementSource rows created by those allocations,
+ *   - revokes the player MusicLicense each allocation created (following any transfer),
  *   - keeps an Entitlement ACTIVE when another valid source remains,
  *   - books negative royalty ledger entries,
  *   - never deletes order history.
@@ -21,14 +25,16 @@ import { stripe } from "./stripe";
 export async function createRefund(input: {
   staffId: string;
   orderId: string;
-  /** Omit for a full refund of everything still refundable. */
+  /** Omit both for a full refund of everything still refundable. */
   allocationIds?: string[];
+  /** Non-music lines (software licenses). */
+  orderItemIds?: string[];
   reason: string;
 }) {
   const db = shopDb();
   const order = await db.order.findUnique({
     where: { id: input.orderId },
-    include: { allocations: true },
+    include: { allocations: true, items: { where: { itemType: "SOFTWARE_LICENSE" } } },
   });
   if (!order) throw new ShopError("NOT_FOUND", "Order not found");
   if (!["FULFILLED", "PARTIALLY_REFUNDED", "PAID"].includes(order.status) || !order.stripePaymentIntentId) {
@@ -37,14 +43,20 @@ export async function createRefund(input: {
   const pendingCount = await db.refund.count({ where: { orderId: order.id, status: "PENDING" } });
   if (pendingCount > 0) throw new ShopError("CONFLICT", "A refund for this order is still pending");
 
+  const full = !input.allocationIds && !input.orderItemIds;
   const selected = order.allocations.filter(
-    (a) => (!input.allocationIds || input.allocationIds.includes(a.id)) && a.allocatedCents - a.refundedCents > 0,
+    (a) => (full || input.allocationIds?.includes(a.id)) && a.allocatedCents - a.refundedCents > 0,
   );
-  if (input.allocationIds && selected.length !== input.allocationIds.length) {
+  const selectedLines = order.items.filter(
+    (i) => (full || input.orderItemIds?.includes(i.id)) && i.chargedCents - i.refundedCents > 0,
+  );
+  if ((input.allocationIds && selected.length !== input.allocationIds.length) || (input.orderItemIds && selectedLines.length !== input.orderItemIds.length)) {
     throw new ShopError("VALIDATION_FAILED", "Some selected items are not refundable");
   }
-  if (selected.length === 0) throw new ShopError("INVALID_STATE", "Nothing left to refund on this order");
-  const amountCents = selected.reduce((s, a) => s + (a.allocatedCents - a.refundedCents), 0);
+  if (selected.length === 0 && selectedLines.length === 0) throw new ShopError("INVALID_STATE", "Nothing left to refund on this order");
+  const amountCents =
+    selected.reduce((s, a) => s + (a.allocatedCents - a.refundedCents), 0) +
+    selectedLines.reduce((s, i) => s + (i.chargedCents - i.refundedCents), 0);
   if (amountCents <= 0) throw new ShopError("INVALID_STATE", "Nothing left to refund on this order");
 
   const refund = await db.refund.create({
@@ -55,6 +67,7 @@ export async function createRefund(input: {
       reason: input.reason,
       requestedByStaffId: input.staffId,
       allocations: { create: selected.map((a) => ({ allocationId: a.id, amountCents: a.allocatedCents - a.refundedCents })) },
+      orderItems: { create: selectedLines.map((i) => ({ orderItemId: i.id, amountCents: i.chargedCents - i.refundedCents })) },
     },
   });
   await audit({ type: "STAFF", staffId: input.staffId }, "refund.requested", { type: "Refund", id: refund.id }, {
@@ -112,7 +125,7 @@ export async function applyRefund(refundId: string) {
 
     const refund = await tx.refund.findUniqueOrThrow({
       where: { id: refundId },
-      include: { allocations: { include: { allocation: { include: { entitlementSource: true } } } } },
+      include: { allocations: { include: { allocation: { include: { entitlementSource: true } } } }, orderItems: true },
     });
     await tx.$queryRaw`SELECT "id" FROM "Order" WHERE "id" = ${refund.orderId}::uuid FOR UPDATE`;
 
@@ -127,6 +140,9 @@ export async function applyRefund(refundId: string) {
       if (a.entitlementSource && !a.entitlementSource.revokedAt) {
         await revokeEntitlementSource(tx, a.entitlementSource.id, `refund:${refund.id}`, refund.requestedByStaffId);
       }
+      // The playback license this allocation paid for (wherever it was moved since) stops
+      // authorizing future deliveries. Order, allocation and license history all stay.
+      await revokeLicenseForRefundedAllocation(tx, a.id, refund.id, refund.requestedByStaffId);
 
       // Royalty reversal: proportional, and exact on the final refund of an allocation.
       const previous = await tx.royaltyLedgerEntry.aggregate({
@@ -156,6 +172,13 @@ export async function applyRefund(refundId: string) {
       });
     }
 
+    // Software lines: license revoked, installations kept as history.
+    for (const line of refund.orderItems) {
+      const item = await tx.orderItem.findUniqueOrThrow({ where: { id: line.orderItemId } });
+      await tx.orderItem.update({ where: { id: item.id }, data: { refundedCents: Math.min(item.refundedCents + line.amountCents, item.chargedCents) } });
+      await revokeLicenseForRefund(tx, item.id, refund.id, refund.requestedByStaffId);
+    }
+
     const order = await tx.order.findUniqueOrThrow({ where: { id: refund.orderId } });
     const refundedCents = Math.min(order.refundedCents + refund.amountCents, order.totalCents);
     await tx.order.update({
@@ -166,8 +189,16 @@ export async function applyRefund(refundId: string) {
       where: { id: refund.id },
       data: { status: "SUCCEEDED", completedAt: new Date(), appliedAt: new Date() },
     });
+    await recordActivity({
+      tx,
+      customerId: order.customerId,
+      type: "order.refunded",
+      summary: `Refunded ${(refund.amountCents / 100).toFixed(2)} ${refund.currency} on order DMI-${String(order.number).padStart(6, "0")}${refund.allocations.length ? ` (${refund.allocations.length} arrangement${refund.allocations.length === 1 ? "" : "s"} no longer licensed)` : ""}${refund.orderItems.length ? ` (${refund.orderItems.length} software license${refund.orderItems.length === 1 ? "" : "s"} revoked)` : ""}`,
+      staffId: refund.requestedByStaffId,
+      metadata: { orderId: order.id, refundId: refund.id, amountCents: refund.amountCents },
+    });
     await audit({ type: "SYSTEM" }, "refund.applied", { type: "Refund", id: refund.id }, {
-      orderId: order.id, amountCents: refund.amountCents, allocationCount: refund.allocations.length,
+      orderId: order.id, amountCents: refund.amountCents, allocationCount: refund.allocations.length, softwareLines: refund.orderItems.length,
     }, tx);
   });
 }

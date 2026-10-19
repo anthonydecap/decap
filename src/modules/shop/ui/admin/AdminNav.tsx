@@ -8,8 +8,19 @@ import { List, X } from "@phosphor-icons/react";
 
 type NavItem = { href: string; label: string; permission?: string };
 
+/** Spec order (section 25). Items the role cannot use are not rendered at all. */
 const SECTIONS: { title: string; items: NavItem[] }[] = [
-  { title: "Overview", items: [{ href: "/admin/shop", label: "Dashboard" }] },
+  {
+    title: "Operations",
+    items: [
+      { href: "/admin/shop", label: "Dashboard" },
+      { href: "/admin/shop/customers", label: "Customers", permission: "customers:read" },
+      { href: "/admin/shop/support", label: "Support", permission: "support:read" },
+      { href: "/admin/shop/tasks", label: "Tasks", permission: "crm:write" },
+      { href: "/admin/shop/orders", label: "Orders", permission: "orders:read" },
+      { href: "/admin/shop/royalties", label: "Royalties", permission: "royalties:read" },
+    ],
+  },
   {
     title: "Catalog",
     items: [
@@ -22,27 +33,59 @@ const SECTIONS: { title: string; items: NavItem[] }[] = [
     ],
   },
   {
-    title: "Sales",
+    title: "Software",
     items: [
-      { href: "/admin/shop/orders", label: "Orders", permission: "orders:read" },
-      { href: "/admin/shop/customers", label: "Customers", permission: "customers:read" },
-      { href: "/admin/shop/player-types", label: "Player types", permission: "players:read" },
-      { href: "/admin/shop/royalties", label: "Royalties", permission: "royalties:read" },
+      { href: "/admin/shop/software", label: "Products", permission: "software:read" },
+      { href: "/admin/shop/software/activations", label: "Activations", permission: "software:activations-read" },
+      { href: "/admin/shop/software/licenses", label: "Licenses", permission: "software:licenses-read" },
+      { href: "/admin/shop/software/downloads", label: "Downloads", permission: "software:downloads-read" },
     ],
   },
   {
-    title: "System",
+    title: "Players & music",
+    items: [
+      { href: "/admin/shop/players", label: "Players", permission: "players:read" },
+      { href: "/admin/shop/music", label: "Music licenses", permission: "music:read" },
+      { href: "/admin/shop/music/transfers", label: "Transfers", permission: "music:read" },
+      { href: "/admin/shop/music/migration", label: "Music migration", permission: "music:migration" },
+      { href: "/admin/shop/player-types", label: "Player types", permission: "players:read" },
+      { href: "/admin/shop/settings/music-policy", label: "Licensing policy", permission: "music:read" },
+    ],
+  },
+  {
+    title: "Admin",
     items: [
       { href: "/admin/shop/staff", label: "Staff", permission: "staff:read" },
+      { href: "/admin/shop/customer-tags", label: "Customer tags", permission: "crm:write" },
       { href: "/admin/shop/audit", label: "Audit log", permission: "audit:read" },
     ],
   },
 ];
 
+const ALL_HREFS = SECTIONS.flatMap((s) => s.items.map((i) => i.href));
+
+const matches = (pathname: string, href: string) => pathname === href || pathname.startsWith(`${href}/`);
+
+/**
+ * The most specific nav entry for the path: on /admin/shop/software/activations/x only
+ * "Activations" is active, not "Products" (/admin/shop/software). The dashboard matches
+ * its exact path only.
+ */
+function activeHref(pathname: string): string | null {
+  if (pathname === "/admin/shop") return "/admin/shop";
+  let best: string | null = null;
+  for (const href of ALL_HREFS) {
+    if (href === "/admin/shop") continue;
+    if (matches(pathname, href) && (!best || href.length > best.length)) best = href;
+  }
+  return best;
+}
+
 export function AdminNav({ permissions, staffLabel, role }: { permissions: string[]; staffLabel: string; role: string }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const allowed = new Set(permissions);
+  const current = activeHref(pathname);
 
   const nav = (
     <nav className="flex flex-col gap-6" aria-label="Shop administration">
@@ -54,7 +97,7 @@ export function AdminNav({ permissions, staffLabel, role }: { permissions: strin
             <p className="px-3 text-xs font-medium text-neutral-400">{section.title}</p>
             <ul className="mt-2 flex flex-col gap-0.5">
               {items.map((item) => {
-                const active = item.href === "/admin/shop" ? pathname === item.href : pathname.startsWith(item.href);
+                const active = item.href === current;
                 return (
                   <li key={item.href}>
                     <Link

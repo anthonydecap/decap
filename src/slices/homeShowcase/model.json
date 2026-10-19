@@ -1,0 +1,126 @@
+{
+  "id": "home_showcase",
+  "type": "SharedSlice",
+  "name": "HomeShowcase",
+  "description": "A product told through a wide screenshot or video, with highlights",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "A product told through a wide screenshot or video, with highlights",
+      "imageUrl": "",
+      "primary": {
+        "background_color": {
+          "type": "Color",
+          "config": {
+            "label": "Background color (dark \u2192 dark theme, light \u2192 light theme)",
+            "placeholder": "#0a0a0a"
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Headline line 1",
+            "placeholder": "Virtual"
+          }
+        },
+        "title_accent": {
+          "type": "Text",
+          "config": {
+            "label": "Headline line 2 (muted tone)",
+            "placeholder": "Orchestrion"
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "primary_cta_label": {
+          "type": "Text",
+          "config": {
+            "label": "Primary button label",
+            "placeholder": ""
+          }
+        },
+        "primary_cta_link": {
+          "type": "Link",
+          "config": {
+            "label": "Primary button link",
+            "allowTargetBlank": true,
+            "select": null
+          }
+        },
+        "secondary_cta_label": {
+          "type": "Text",
+          "config": {
+            "label": "Secondary button label",
+            "placeholder": ""
+          }
+        },
+        "secondary_cta_link": {
+          "type": "Link",
+          "config": {
+            "label": "Secondary button link",
+            "allowTargetBlank": true,
+            "select": null
+          }
+        },
+        "media_image": {
+          "type": "Image",
+          "config": {
+            "label": "Screenshot / image (also the video poster)",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "mux_playback_id": {
+          "type": "Text",
+          "config": {
+            "label": "Mux playback ID or HLS URL (optional video)",
+            "placeholder": ""
+          }
+        },
+        "media_fit": {
+          "type": "Select",
+          "config": {
+            "label": "Image fit",
+            "options": [
+              "Cover",
+              "Contain"
+            ],
+            "default_value": "Cover"
+          }
+        },
+        "media_caption": {
+          "type": "Text",
+          "config": {
+            "label": "Caption (optional)",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {
+        "highlight_title": {
+          "type": "Text",
+          "config": {
+            "label": "Highlight title",
+            "placeholder": ""
+          }
+        },
+        "highlight_text": {
+          "type": "Text",
+          "config": {
+            "label": "Highlight text",
+            "placeholder": ""
+          }
+        }
+      }
+    }
+  ]
+}

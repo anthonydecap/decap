@@ -7,10 +7,15 @@ import { FadeIn } from "@/components/FadeIn";
 import { resolveUrlLang } from "@/i18n";
 import { getCurrentCustomer } from "@/modules/shop/auth/session";
 import { getBundleDetail } from "@/modules/shop/services/catalog";
+import { bundleQuoteForPlayer, type BundleQuote, type ShopPlayerContext } from "@/modules/shop/services/music-shop";
+import { playerJourney } from "@/modules/shop/services/player-products";
+import { storefrontPlayerContext } from "@/modules/shop/services/storefront-player";
 import { formatDuration, formatMoney } from "@/modules/shop/ui/format";
-import { AddToCartButton } from "@/modules/shop/ui/store/AddToCartButton";
 import { Artwork } from "@/modules/shop/ui/store/Artwork";
 import { shopCopy, shopPath } from "@/modules/shop/ui/store/copy";
+import { playerCopy, playerLinks } from "@/modules/shop/ui/store/copy-player";
+import { LicenseNote, NoPlayerPurchase, SignedOutPurchase } from "@/modules/shop/ui/store/PurchaseGates";
+import { PurchasePicker, type PickOption } from "@/modules/shop/ui/store/PurchasePicker";
 import { PreviewButton } from "@/modules/shop/ui/store/PreviewPlayer";
 
 export const dynamic = "force-dynamic";
@@ -23,15 +28,37 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   return b ? { title: b.title, description: b.subtitle ?? undefined } : { title: "Not found" };
 }
 
-export default async function CollectionPage({ params }: { params: Promise<Params> }) {
+export default async function CollectionPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<Params>;
+  searchParams: Promise<{ player?: string | string[] }>;
+}) {
   const { lang, slug } = await params;
+  const { player } = await searchParams;
   const urlLang = resolveUrlLang(lang);
   const t = shopCopy(urlLang);
+  const tp = playerCopy(urlLang);
   const customer = await getCurrentCustomer();
-  const b = await getBundleDetail(slug, customer?.id);
+  const ctx = customer ? await storefrontPlayerContext(customer.id, player) : null;
+  const b = await getBundleDetail(slug, ctx);
   if (!b) notFound();
   const money = (c: number) => formatMoney(c, b.currency, urlLang);
-  const partial = b.ownedCount > 0 && !b.allOwned && b.completion;
+  // Completion price for every player, priced exactly like the cart (server-side).
+  const quotes = ctx && b.items.length > 0
+    ? await Promise.all(ctx.players.map(async (p) => ({ player: p, quote: await bundleQuoteForPlayer(ctx.customerId, b.id, p.id) })))
+    : [];
+  const journey = ctx && ctx.players.length === 0 ? await playerJourney(ctx.customerId) : null;
+  const quote = quotes.find((q) => q.player.id === ctx?.selectedPlayerId)?.quote ?? null;
+  const itemState = (item: (typeof b.items)[number]) => {
+    if (item.player.state === "LICENSED") return { kind: "licensed" as const };
+    if (quote?.available) {
+      const cents = quote.allocations[item.id];
+      return cents === undefined ? { kind: "unavailable" as const } : { kind: "price" as const, cents };
+    }
+    return { kind: "price" as const, cents: item.priceCents };
+  };
 
   return (
     <section className="py-12 sm:py-16 lg:py-20">
@@ -49,42 +76,15 @@ export default async function CollectionPage({ params }: { params: Promise<Param
               {b.subtitle && <p className="mt-3 text-xl text-neutral-600">{b.subtitle}</p>}
               {b.description && <p className="mt-6 max-w-prose whitespace-pre-line leading-relaxed text-neutral-600">{b.description}</p>}
 
-              {/* Pricing story */}
-              <div className="mt-10 rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm sm:p-8">
-                <dl className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-                  <div>
-                    <dt className="text-sm text-neutral-500">{t.normalTotal}</dt>
-                    <dd className="mt-1 text-lg text-neutral-500 line-through">{money(b.retailTotalCents)}</dd>
-                  </div>
-                  <div>
-                    <dt className="text-sm text-neutral-500">{t.collectionPrice}</dt>
-                    <dd className="mt-1 font-display text-2xl font-bold text-neutral-950">{money(b.priceCents)}</dd>
-                  </div>
-                  <div>
-                    <dt className="text-sm text-neutral-500">{t.youSave}</dt>
-                    <dd className="mt-1 text-lg font-semibold text-neutral-950">{money(b.savingCents)}</dd>
-                  </div>
-                </dl>
-
-                {b.allOwned ? (
-                  <p className="mt-6 border-t border-neutral-200 pt-6 text-neutral-700">{t.allOwned}</p>
-                ) : partial ? (
-                  <div className="mt-6 flex flex-col gap-4 border-t border-neutral-200 pt-6 sm:flex-row sm:items-center sm:justify-between">
-                    <div>
-                      <p className="text-sm font-semibold text-neutral-950">{t.youOwnXofY(b.ownedCount, b.itemCount)}</p>
-                      <p className="mt-1 text-neutral-600">
-                        {t.completeFor} <span className="font-semibold text-neutral-950">{money(b.completion!.payableCents)}</span>
-                      </p>
-                    </div>
-                    <AddToCartButton lang={urlLang} item={{ type: "BUNDLE", bundleId: b.id }} />
-                  </div>
-                ) : (
-                  <div className="mt-6 border-t border-neutral-200 pt-6">
-                    <AddToCartButton lang={urlLang} item={{ type: "BUNDLE", bundleId: b.id }} />
-                  </div>
-                )}
-                <p className="mt-4 text-xs text-neutral-500">{t.vatNote}</p>
-              </div>
+              <p className="mt-6 text-sm text-neutral-600">
+                {t.items(b.itemCount)}
+                <span className="mx-2 text-neutral-300" aria-hidden>|</span>
+                {t.normalTotal} <span className="line-through">{money(b.retailTotalCents)}</span>
+                <span className="mx-2 text-neutral-300" aria-hidden>|</span>
+                {t.youSave} <span className="font-semibold text-neutral-950">{money(b.savingCents)}</span>
+              </p>
+              <CollectionPurchase lang={urlLang} bundle={b} ctx={ctx} quotes={quotes} journey={journey} />
+              <p className="mt-3 text-xs text-neutral-500">{t.vatNote}</p>
             </FadeIn>
 
             <FadeIn className="mt-12">
@@ -108,13 +108,18 @@ export default async function CollectionPage({ params }: { params: Promise<Param
                       <p className="truncate text-sm text-neutral-600">{[item.originalArtist ?? item.workTitle, item.arrangerName].filter(Boolean).join(", ")}</p>
                     </div>
                     <span className="hidden w-12 text-right text-sm text-neutral-500 sm:block">{formatDuration(item.durationSeconds)}</span>
-                    {item.owned ? (
-                      <span className="inline-flex w-24 items-center justify-end gap-1 text-sm font-semibold text-neutral-950">
-                        <Check size={14} weight="bold" aria-hidden /> {t.ownedShort}
-                      </span>
-                    ) : (
-                      <span className="w-24 text-right text-sm text-neutral-500">{money(item.priceCents)}</span>
-                    )}
+                    {(() => {
+                      const st = itemState(item);
+                      if (st.kind === "licensed") {
+                        return (
+                          <span className="inline-flex w-28 items-center justify-end gap-1 text-sm font-semibold text-neutral-950">
+                            <Check size={14} weight="bold" aria-hidden /> {tp.licensed}
+                          </span>
+                        );
+                      }
+                      if (st.kind === "unavailable") return <span className="w-28 text-right text-sm text-neutral-500">{tp.itemNotAvailable}</span>;
+                      return <span className="w-28 text-right text-sm text-neutral-500">{money(st.cents)}</span>;
+                    })()}
                   </li>
                 ))}
               </ol>
@@ -123,5 +128,42 @@ export default async function CollectionPage({ params }: { params: Promise<Param
         </div>
       </Container>
     </section>
+  );
+}
+
+type Bundle = NonNullable<Awaited<ReturnType<typeof getBundleDetail>>>;
+
+/** Per player: what completing this collection costs and adds, then one button. */
+function CollectionPurchase({ lang, bundle: b, ctx, quotes, journey }: {
+  journey: Awaited<ReturnType<typeof playerJourney>>;
+  lang: string;
+  bundle: Bundle;
+  ctx: ShopPlayerContext | null;
+  quotes: { player: ShopPlayerContext["players"][number]; quote: BundleQuote }[];
+}) {
+  const item = { type: "BUNDLE" as const, bundleId: b.id };
+  if (!ctx) return <SignedOutPurchase lang={lang} priceCents={b.priceCents} currency={b.currency} returnTo={shopPath(lang, `/collections/${b.slug}`)} />;
+  if (ctx.players.length === 0) {
+    return <NoPlayerPurchase lang={lang} priceCents={b.priceCents} currency={b.currency} item={item} alreadyBought={b.allOwned} assignLaterAllowed={ctx.assignLaterAllowed} journey={journey} />;
+  }
+  const options: PickOption[] = quotes.map(({ player, quote: q }) => ({
+    player,
+    state: q.available ? (q.additionalPlayer > 0 ? "ADDITIONAL" : "AVAILABLE") : q.reason === "ALREADY_OWNED" ? "LICENSED" : "INCOMPATIBLE",
+    priceCents: q.chargedCents,
+    collection: { willAdd: q.willAdd, already: q.alreadyLicensed, notAvailable: q.incompatible, extra: q.additionalPlayer },
+  }));
+  return (
+    <>
+      <PurchasePicker
+        lang={lang}
+        item={item}
+        currency={b.currency}
+        retailCents={b.priceCents}
+        initialPlayerId={ctx.selectedPlayerId}
+        options={options}
+        libraryHrefs={Object.fromEntries(quotes.map(({ player }) => [player.id, playerLinks.playerMusic(lang, player.id)]))}
+      />
+      <LicenseNote lang={lang} />
+    </>
   );
 }

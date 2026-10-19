@@ -29,6 +29,21 @@ export default async function CheckoutCompletePage({
   if (!orderId || !/^[0-9a-f-]{36}$/i.test(orderId)) notFound();
   const order = await getOrderForCustomer(orderId, customer.id);
   if (!order) notFound();
+  const software = order.items
+    .filter((i) => i.itemType === "SOFTWARE_LICENSE" && i.softwareProduct)
+    .map((i) => ({ name: i.softwareProduct!.name, slug: i.softwareProduct!.slug }))
+    .filter((p, idx, list) => list.findIndex((x) => x.slug === p.slug) === idx);
+  const hasMusic = order.items.some((i) => i.itemType !== "SOFTWARE_LICENSE");
+  // Who each license is for, from the order's snapshots (stays right if a player is renamed).
+  const music = order.items
+    .filter((i) => i.itemType !== "SOFTWARE_LICENSE")
+    .map((i) => ({
+      id: i.id,
+      title: i.titleSnapshot,
+      playerId: i.targetPlayerId,
+      playerName: i.targetPlayerNameSnapshot,
+      maskedRegistration: i.targetRegistrationMaskedSnapshot,
+    }));
 
   return (
     <section className="py-16 sm:py-24">
@@ -39,6 +54,9 @@ export default async function CheckoutCompletePage({
             lang={urlLang}
             orderId={order.id}
             redirectStatus={redirect_status ?? null}
+            software={software}
+            hasMusic={hasMusic}
+            music={music}
             initial={{
               status: order.status,
               orderNumber: order.orderNumber,

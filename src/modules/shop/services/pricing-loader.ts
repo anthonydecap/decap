@@ -1,5 +1,5 @@
 import "server-only";
-import type { PricingCatalogArrangement, PricingCatalogBundle, PricingCartLine } from "../domain/cart-pricing";
+import type { PricingCatalogArrangement, PricingCatalogBundle, PricingCatalogSoftware, PricingCartLine } from "../domain/cart-pricing";
 import { shopDb, type ShopTx } from "../db";
 
 /** Loads exactly the catalog data cart pricing needs, straight from the database. */
@@ -7,6 +7,20 @@ export async function loadPricingCatalog(lines: readonly PricingCartLine[], tx?:
   const db = tx ?? shopDb();
   const arrangementIds = lines.filter((l) => l.type === "ARRANGEMENT").map((l) => (l as { arrangementId: string }).arrangementId);
   const bundleIds = lines.filter((l) => l.type === "BUNDLE").map((l) => (l as { bundleId: string }).bundleId);
+  const softwareIds = lines.filter((l) => l.type === "SOFTWARE_LICENSE").map((l) => (l as { softwareProductId: string }).softwareProductId);
+  const softwareRows = softwareIds.length
+    ? await db.softwareProduct.findMany({
+        where: { id: { in: softwareIds } },
+        select: { id: true, slug: true, name: true, status: true, defaultLicensePriceCents: true, currency: true },
+      })
+    : [];
+  const software = new Map<string, PricingCatalogSoftware>(
+    softwareRows.map((p) => [p.id, {
+      id: p.id, sku: `SW-${p.slug.toUpperCase()}`, title: `${p.name} license`,
+      purchasable: p.status === "ACTIVE" && p.defaultLicensePriceCents != null && p.defaultLicensePriceCents > 0,
+      priceCents: p.defaultLicensePriceCents ?? 0, currency: p.currency,
+    }]),
+  );
 
   const [arrangementRows, bundleRows] = await Promise.all([
     arrangementIds.length
@@ -46,5 +60,5 @@ export async function loadPricingCatalog(lines: readonly PricingCartLine[], tx?:
       })),
     }]),
   );
-  return { arrangements, bundles };
+  return { arrangements, bundles, software };
 }

@@ -8,7 +8,7 @@ import { enqueueEncodingJob, runEncodingJob, type EncoderAdapter } from "@/modul
 import type { UploadTarget } from "@/modules/shop/storage/types";
 import type { MemoryStorageService } from "@/modules/shop/storage/memory";
 import { buildMidi } from "../helpers/midi";
-import { makeArrangement, makeCustomer, makeStaff, resetDb, signInAs, useMemoryStorage } from "../helpers/fixtures";
+import { makeArrangement, makeCustomer, makePlayer, makeStaff, resetDb, signInAs, useMemoryStorage } from "../helpers/fixtures";
 
 let storage: MemoryStorageService;
 beforeEach(async () => {
@@ -125,22 +125,29 @@ describe("device-bound encoding pipeline", () => {
     encode: async ({ source, deviceBinding }) => new Uint8Array([...new TextEncoder().encode(`DMI:${deviceBinding}:`), ...source.subarray(0, 4)]),
   };
 
-  it("requires an ACTIVE entitlement and writes output only as a private DeliveryArtifact", async () => {
+  it("requires an ACTIVE player MusicLicense and writes output only as a private DeliveryArtifact", async () => {
     const { customer } = await makeCustomer();
     const { arrangement } = await makeArrangement({ priceCents: 999, storage });
+    const player = await makePlayer({ customerId: customer.id });
     await shopDb().protectionProfile.create({ data: { name: "dmi-protect", version: "p1", secretRef: "kms://dmi/p1" } });
-    const input = { customerId: customer.id, arrangementId: arrangement.id, deviceRegistrationRef: "dev-reg-7", encoderVersion: "legacy-exe-3.2", protectionProfileVersion: "p1" };
+    const input = { customerId: customer.id, playerId: player.id, arrangementId: arrangement.id, encoderVersion: "legacy-exe-3.2", protectionProfileVersion: "p1" };
 
     await expect(enqueueEncodingJob(input)).rejects.toMatchObject({ code: "FORBIDDEN" });
+    // An account-level entitlement alone does not authorize delivery any more.
     await shopDb().entitlement.create({ data: { customerId: customer.id, arrangementId: arrangement.id } });
+    await expect(enqueueEncodingJob(input)).rejects.toMatchObject({ code: "FORBIDDEN" });
+    await shopDb().musicLicense.create({ data: { customerId: customer.id, arrangementId: arrangement.id, licensedPlayerId: player.id, status: "ACTIVE", licenseSource: "ADMIN_GRANT" } });
 
     const { job } = await enqueueEncodingJob(input);
+    expect(job).toMatchObject({ registeredPlayerId: player.id, deviceRegistrationRef: player.registrationIdentifier });
     const mastersBefore = await shopDb().assetVersion.count();
     const done = await runEncodingJob(job!.id, adapter);
     expect(done.status).toBe("SUCCEEDED");
 
     const artifact = await shopDb().deliveryArtifact.findUniqueOrThrow({ where: { id: done.deliveryArtifactId! } });
     expect(artifact.outputObjectKey).toMatch(/^deliveries\/dmi\//);
+    expect(artifact.registeredPlayerId).toBe(player.id);
+    expect(artifact.musicLicenseId).not.toBeNull();
     expect(await storage.head({ store: "DELIVERIES", key: artifact.outputObjectKey })).not.toBeNull();
     expect(await shopDb().assetVersion.count()).toBe(mastersBefore); // no new "master" was created
 
@@ -154,8 +161,9 @@ describe("device-bound encoding pipeline", () => {
     const { customer } = await makeCustomer();
     const { arrangement } = await makeArrangement({ priceCents: 999, storage });
     await shopDb().protectionProfile.create({ data: { name: "dmi-protect", version: "p1", secretRef: "kms://dmi/p1" } });
-    await shopDb().entitlement.create({ data: { customerId: customer.id, arrangementId: arrangement.id } });
-    const { job } = await enqueueEncodingJob({ customerId: customer.id, arrangementId: arrangement.id, deviceRegistrationRef: "d", encoderVersion: "legacy-exe-3.2", protectionProfileVersion: "p1" });
+    const player = await makePlayer({ customerId: customer.id });
+    await shopDb().musicLicense.create({ data: { customerId: customer.id, arrangementId: arrangement.id, licensedPlayerId: player.id, status: "ACTIVE", licenseSource: "ADMIN_GRANT" } });
+    const { job } = await enqueueEncodingJob({ customerId: customer.id, playerId: player.id, arrangementId: arrangement.id, encoderVersion: "legacy-exe-3.2", protectionProfileVersion: "p1" });
 
     const failing: EncoderAdapter = { encoderVersion: "legacy-exe-3.2", encode: async () => { throw new Error("C:\\encoder\\run.exe crashed key=abc123"); } };
     const failed = await runEncodingJob(job!.id, failing);

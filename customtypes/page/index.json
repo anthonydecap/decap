@@ -218,6 +218,18 @@
             },
             "instrument_banner": {
               "type": "SharedSlice"
+            },
+            "home_hero": {
+              "type": "SharedSlice"
+            },
+            "home_portfolio": {
+              "type": "SharedSlice"
+            },
+            "home_feature": {
+              "type": "SharedSlice"
+            },
+            "home_showcase": {
+              "type": "SharedSlice"
             }
           }
         }

@@ -2,7 +2,8 @@
  * Storage port. The domain stores `storageProvider` + `storageStore` + `storageKey` only;
  * URLs are minted on demand, short-lived, and never persisted as identifiers.
  */
-export type StoreName = "MASTERS" | "DELIVERIES" | "PREVIEWS";
+/** SUPPORT and DOCUMENTS are private namespaces for ticket attachments and internal customer files. */
+export type StoreName = "MASTERS" | "DELIVERIES" | "PREVIEWS" | "SUPPORT" | "DOCUMENTS" | "SOFTWARE";
 
 export type ObjectRef = { store: StoreName; key: string };
 

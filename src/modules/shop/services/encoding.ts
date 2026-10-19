@@ -11,7 +11,9 @@ import { audit } from "./audit";
  * this is deliberately NOT implemented yet.
  *
  *   canonical SOURCE_DMI / SOURCE_MIDI AssetVersion
- *     + authorized customer (ACTIVE entitlement) + device registration reference
+ *     + ACTIVE MusicLicense for exactly this arrangement on exactly this ACTIVE player of the
+ *       customer (an account-level Entitlement alone never authorizes delivery)
+ *     + the player's registration identifier as the device binding
  *     + encoder version + protection profile
  *         → trusted encoder worker → private DeliveryArtifact (DELIVERIES store)
  *
@@ -44,28 +46,48 @@ export class EncoderError extends Error {
 const sanitize = (msg: string) =>
   msg.replace(/[A-Za-z]:\\[^\s]+|\/[^\s]+/g, "[path]").replace(/(key|secret|token)=\S+/gi, "$1=[redacted]").slice(0, 300);
 
+/**
+ * Delivery authorization (phase 4). Every check is server-side and every one must pass:
+ * player belongs to the customer, player is ACTIVE and music-capable, and an ACTIVE
+ * MusicLicense exists for this arrangement on this player. Returns the license and the
+ * device binding to use.
+ */
+export async function authorizeDelivery(input: { customerId: string; playerId: string; arrangementId: string }) {
+  const db = shopDb();
+  const player = await db.registeredPlayer.findFirst({
+    where: { id: input.playerId, customerId: input.customerId },
+    select: { id: true, status: true, registrationIdentifier: true, playerType: { select: { supportsMusicLibrary: true } } },
+  });
+  if (!player) throw new ShopError("FORBIDDEN", "Player not found for this customer");
+  if (player.status !== "ACTIVE" || !player.playerType.supportsMusicLibrary) throw new ShopError("FORBIDDEN", "Player is not active");
+  const license = await db.musicLicense.findFirst({
+    where: { licensedPlayerId: player.id, arrangementId: input.arrangementId, customerId: input.customerId, status: "ACTIVE" },
+    select: { id: true },
+  });
+  if (!license) throw new ShopError("FORBIDDEN", "This arrangement is not licensed for this player");
+  return { musicLicenseId: license.id, playerId: player.id, deviceRegistrationRef: player.registrationIdentifier };
+}
+
 export async function enqueueEncodingJob(input: {
   customerId: string;
+  playerId: string;
   arrangementId: string;
-  deviceRegistrationRef: string;
   encoderVersion: string;
   protectionProfileVersion: string;
 }) {
   const db = shopDb();
-  const entitlement = await db.entitlement.findUnique({
-    where: { customerId_arrangementId: { customerId: input.customerId, arrangementId: input.arrangementId } },
-  });
-  if (!entitlement || entitlement.status !== "ACTIVE") throw new ShopError("FORBIDDEN", "No active entitlement");
-
+  const auth = await authorizeDelivery(input);
   const source = await selectSourceVersion(input.arrangementId);
 
-  // Reuse an existing artifact for the same (source version, device, encoder, profile) tuple.
+  // Reuse an artifact only for the same (source version, player + binding, encoder, profile):
+  // a device-bound artifact is never served to another player.
   const cached = await db.deliveryArtifact.findFirst({
     where: {
       customerId: input.customerId,
       arrangementId: input.arrangementId,
       sourceAssetVersionId: source.id,
-      deviceRegistrationRef: input.deviceRegistrationRef,
+      registeredPlayerId: auth.playerId,
+      deviceRegistrationRef: auth.deviceRegistrationRef,
       encoderVersion: input.encoderVersion,
       protectionProfileVersion: input.protectionProfileVersion,
     },
@@ -78,7 +100,9 @@ export async function enqueueEncodingJob(input: {
       arrangementId: input.arrangementId,
       sourceAssetVersionId: source.id,
       customerId: input.customerId,
-      deviceRegistrationRef: input.deviceRegistrationRef,
+      registeredPlayerId: auth.playerId,
+      musicLicenseId: auth.musicLicenseId,
+      deviceRegistrationRef: auth.deviceRegistrationRef,
       encoderVersion: input.encoderVersion,
       protectionProfileVersion: input.protectionProfileVersion,
     },
@@ -149,6 +173,8 @@ export async function runEncodingJob(jobId: string, adapter: EncoderAdapter) {
           arrangementId: job.arrangementId,
           sourceAssetVersionId: job.sourceAssetVersionId,
           customerId: job.customerId,
+          registeredPlayerId: job.registeredPlayerId,
+          musicLicenseId: job.musicLicenseId,
           deviceRegistrationRef: job.deviceRegistrationRef,
           encoderVersion: job.encoderVersion,
           protectionProfileVersion: job.protectionProfileVersion,

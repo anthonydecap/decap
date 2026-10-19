@@ -4,6 +4,8 @@ import { shopConfig } from "../config";
 import { shopDb } from "../db";
 import { ShopError } from "../errors";
 import { auth0, type SessionUser } from "./auth0";
+import { recordActivity } from "../services/crm";
+import { hasCompleteBillingProfile } from "../services/profile";
 
 /**
  * Identity bridge: Auth0 session → local business records.
@@ -45,15 +47,18 @@ export async function upsertCustomerFromSession(user: SessionUser): Promise<Cust
   const existing = await db.customer.findUnique({ where: { authSubject: user.sub } });
   if (!existing) {
     try {
-      return await db.customer.create({
+      const created = await db.customer.create({
         data: {
           authSubject: user.sub,
           email,
           emailVerified,
           firstName: user.given_name ?? null,
           lastName: user.family_name ?? null,
+          customerSource: "WEBSITE",
         },
       });
+      await recordActivity({ customerId: created.id, type: "account.created", summary: "Created an account" }).catch(() => undefined);
+      return created;
     } catch {
       // Concurrent first request created it; read it back.
       return db.customer.findUniqueOrThrow({ where: { authSubject: user.sub } });
@@ -86,7 +91,11 @@ export type CheckoutReadiness =
 /** Checkout requires a verified email plus acceptance of the current Terms + Privacy versions. */
 export async function checkoutReadiness(customer: Customer): Promise<CheckoutReadiness> {
   if (!customer.emailVerified) return { ready: false, reason: "EMAIL_NOT_VERIFIED" };
-  if (!(await hasCurrentLegalAcceptance(customer.id)) || !customer.onboardingCompletedAt) {
+  if (
+    !customer.onboardingCompletedAt ||
+    !(await hasCurrentLegalAcceptance(customer.id)) ||
+    !(await hasCompleteBillingProfile(customer))
+  ) {
     return { ready: false, reason: "ONBOARDING_REQUIRED" };
   }
   return { ready: true };
@@ -136,11 +145,30 @@ export type StaffPermission =
   | "players:write"
   | "players:activation-key"
   | "players:transfer"
+  | "players:replace"
+  | "players:library-transfer"
+  | "music:read"
+  | "music:grant"
+  | "music:revoke"
+  | "music:transfer"
+  | "music:migration"
+  | "deliveries:read"
+  | "deliveries:regenerate"
   | "support:read"
   | "support:reply"
   | "support:assign"
   | "entitlements:grant"
   | "royalties:read"
+  | "software:read"
+  | "software:write"
+  | "software:release-write"
+  | "software:release-publish"
+  | "software:downloads-read"
+  | "software:licenses-read"
+  | "software:licenses-write"
+  | "software:activations-read"
+  | "software:activations-process"
+  | "software:activation-key"
   | "staff:read"
   | "staff:manage"
   | "audit:read"
@@ -155,8 +183,14 @@ export const ALL_PERMISSIONS: readonly StaffPermission[] = [
   "orders:read", "orders:refund",
   "customers:read", "customers:write", "crm:write",
   "players:read", "players:write", "players:activation-key", "players:transfer",
+  "players:replace", "players:library-transfer",
+  "music:read", "music:grant", "music:revoke", "music:transfer", "music:migration",
+  "deliveries:read", "deliveries:regenerate",
   "support:read", "support:reply", "support:assign",
   "entitlements:grant", "royalties:read",
+  "software:read", "software:write", "software:release-write", "software:release-publish",
+  "software:downloads-read", "software:licenses-read", "software:licenses-write",
+  "software:activations-read", "software:activations-process", "software:activation-key",
   "staff:read", "staff:manage",
   "audit:read", "settings:write",
 ] as const;
@@ -165,7 +199,8 @@ export const ALL_PERMISSIONS: readonly StaffPermission[] = [
  * Roles are coarse; capabilities are what the server checks. Three deliberate limits:
  *
  *  - only SUPER_ADMIN manages staff or moves a player to another customer, because both
- *    hand out or move access;
+ *    hand out or move access; ADMIN may replace a player or move/copy a music library within
+ *    one customer (every such action needs a reason and is audited);
  *  - CATALOG_MANAGER and FINANCE never get `players:activation-key`, which is the one
  *    capability that reveals a secret a customer could use;
  *  - SUPPORT may read orders but never refund them.
@@ -175,18 +210,34 @@ const ROLE_PERMISSIONS: Record<StaffRole, ReadonlySet<StaffPermission>> = {
   ADMIN: new Set<StaffPermission>([
     "catalog:write", "assets:upload", "assets:download-master", "imports:manage", "orders:read",
     "orders:refund", "customers:read", "customers:write", "crm:write",
-    "players:read", "players:write", "players:activation-key",
+    "players:read", "players:write", "players:activation-key", "players:replace", "players:library-transfer",
+    "music:read", "music:grant", "music:revoke", "music:transfer", "music:migration",
+    "deliveries:read", "deliveries:regenerate",
     "support:read", "support:reply", "support:assign",
     "entitlements:grant", "royalties:read", "staff:read", "audit:read", "settings:write",
+    "software:read", "software:write", "software:release-write", "software:release-publish", "software:downloads-read", "software:licenses-read", "software:licenses-write", "software:activations-read", "software:activations-process", "software:activation-key",
   ]),
+  // Support sees music and deliveries and resolves legacy assignments, but grants,
+  // revocations and transfers stay with ADMIN.
   SUPPORT: new Set<StaffPermission>([
     "customers:read", "customers:write", "crm:write",
     "players:read", "players:write", "players:activation-key",
+    "music:read", "music:migration", "deliveries:read",
     "support:read", "support:reply", "support:assign",
     "orders:read",
+    "software:read", "software:downloads-read", "software:licenses-read", "software:activations-read",
+    "software:activations-process", "software:activation-key",
   ]),
-  CATALOG_MANAGER: new Set<StaffPermission>(["catalog:write", "assets:upload", "imports:manage"]),
-  FINANCE: new Set<StaffPermission>(["orders:read", "orders:refund", "customers:read", "royalties:read"]),
+  // Products and releases only: never customer activation secrets.
+  CATALOG_MANAGER: new Set<StaffPermission>([
+    "catalog:write", "assets:upload", "imports:manage",
+    "software:read", "software:write", "software:release-write", "software:release-publish",
+  ]),
+  // Purchases and refunds, never activation keys.
+  FINANCE: new Set<StaffPermission>([
+    "orders:read", "orders:refund", "customers:read", "royalties:read", "music:read",
+    "software:read", "software:licenses-read", "software:downloads-read",
+  ]),
 };
 
 export function roleHasPermission(role: StaffRole, permission: StaffPermission): boolean {

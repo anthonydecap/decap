@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useId, useState } from "react";
 import { apiFetch, errorMessage } from "../../api";
@@ -8,6 +9,12 @@ import { btn, EmptyState, Field, inputClass, Notice, Panel, StatusBadge } from "
 
 export type PlayerCard = {
   id: string;
+  /** Friendly name, or type + masked registration when the customer has not named it. */
+  name: string;
+  maskedRegistration: string;
+  /** Live music licenses on this player; null when the viewer may not see music. */
+  licenseCount: number | null;
+  supportsMusicLibrary: boolean;
   typeName: string;
   registrationCode: string;
   registrationIdentifier: string;
@@ -61,12 +68,15 @@ export function CustomerPlayers({
   types,
   canWrite,
   canSeeActivationKey,
+  extras,
 }: {
   customerId: string;
   players: PlayerCard[];
   types: PlayerTypeOption[];
   canWrite: boolean;
   canSeeActivationKey: boolean;
+  /** Optional server-rendered content per player id (related tickets, documents). */
+  extras?: Record<string, React.ReactNode>;
 }) {
   const [adding, setAdding] = useState(false);
   return (
@@ -112,6 +122,7 @@ export function CustomerPlayers({
                 player={p}
                 canWrite={canWrite}
                 canSeeActivationKey={canSeeActivationKey}
+                extra={extras?.[p.id]}
               />
             ))}
           </ul>
@@ -125,10 +136,12 @@ function PlayerCardView({
   player,
   canWrite,
   canSeeActivationKey,
+  extra,
 }: {
   player: PlayerCard;
   canWrite: boolean;
   canSeeActivationKey: boolean;
+  extra?: React.ReactNode;
 }) {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
@@ -151,9 +164,15 @@ function PlayerCardView({
     <li className="rounded-2xl border border-neutral-200 bg-white p-4 sm:p-5">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div className="min-w-0">
-          <p className="font-medium text-neutral-950">
-            {player.typeName}
+          <p className="font-display text-base font-bold text-neutral-950">
+            <Link href={`/admin/shop/players/${player.id}`} className="hover:underline">{player.name}</Link>
             {player.adminLabel && <span className="ml-2 text-sm font-normal text-neutral-500">{player.adminLabel}</span>}
+          </p>
+          <p className="mt-0.5 text-sm text-neutral-600">
+            {player.typeName}, registration <span className="font-mono">{player.maskedRegistration}</span>
+            {!player.supportsMusicLibrary
+              ? ", cannot receive music"
+              : player.licenseCount !== null && `, ${player.licenseCount} music license${player.licenseCount === 1 ? "" : "s"}`}
           </p>
           <dl className="mt-2 grid grid-cols-1 gap-x-6 gap-y-1 text-sm sm:grid-cols-2">
             <div className="flex gap-2">
@@ -192,7 +211,10 @@ function PlayerCardView({
             )}
           </dl>
         </div>
-        <StatusBadge status={player.status} className="self-start" />
+        <div className="flex shrink-0 items-center gap-2 self-start">
+          <StatusBadge status={player.status} />
+          <Link href={`/admin/shop/players/${player.id}`} className={btn.secondary}>Open</Link>
+        </div>
       </div>
 
       {canSeeActivationKey && (
@@ -215,6 +237,7 @@ function PlayerCardView({
           <Notice tone="error">{error}</Notice>
         </div>
       )}
+      {extra && <div className="mt-4 border-t border-neutral-100 pt-4">{extra}</div>}
     </li>
   );
 }
@@ -223,7 +246,7 @@ function PlayerCardView({
  * The key is never sent with the page. It is fetched on demand, which is also what makes
  * the reveal auditable: one request, one staff member, one entry in the log.
  */
-function ActivationKey({ playerId, hasKey, canWrite }: { playerId: string; hasKey: boolean; canWrite: boolean }) {
+export function ActivationKey({ playerId, hasKey, canWrite }: { playerId: string; hasKey: boolean; canWrite: boolean }) {
   const router = useRouter();
   const id = useId();
   const [revealed, setRevealed] = useState<string | null>(null);

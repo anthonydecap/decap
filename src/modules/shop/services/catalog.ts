@@ -3,7 +3,7 @@ import type { Prisma } from "@/generated/shop-prisma/client";
 import { allocateBundle, BundleAllocationError } from "../domain/bundle-allocation";
 import { shopDb } from "../db";
 import { previewMediaUrl } from "./media";
-import { activeEntitlementArrangementIds } from "./entitlements";
+import { arrangementPlayerState, shopPlayerContext, type ArrangementPlayerState, type ShopPlayerContext } from "./music-shop";
 
 /**
  * Storefront read model. Everything returned here is safe for public JSON: no storage keys
@@ -61,10 +61,24 @@ export type ArrangementCard = {
   coverUrl: string | null;
   previewAudioUrl: string | null;
   previewVideoUrl: string | null;
+  /** Licensed for the shopper's selected player (or, without players, already bought). */
   owned: boolean;
+  /** Player-aware state and price for the selected player. */
+  player: ArrangementPlayerState;
 };
 
-async function toCard(row: CardRow, owned: ReadonlySet<string>): Promise<ArrangementCard> {
+/**
+ * Who is looking: nobody, a customer id (context resolved with the default player), or a
+ * resolved player context from the page.
+ */
+export type CatalogViewer = string | ShopPlayerContext | null | undefined;
+
+async function resolveViewer(viewer: CatalogViewer): Promise<ShopPlayerContext | null> {
+  if (!viewer) return null;
+  return typeof viewer === "string" ? shopPlayerContext(viewer) : viewer;
+}
+
+async function toCard(row: CardRow, ctx: ShopPlayerContext | null): Promise<ArrangementCard> {
   const byKind = (k: string) => row.assets.find((a) => a.kind === k)?.activeVersion ?? null;
   const [coverUrl, previewAudioUrl, previewVideoUrl] = await Promise.all([
     previewMediaUrl(byKind("COVER_IMAGE")),
@@ -90,7 +104,8 @@ async function toCard(row: CardRow, owned: ReadonlySet<string>): Promise<Arrange
     coverUrl,
     previewAudioUrl,
     previewVideoUrl,
-    owned: owned.has(row.id),
+    owned: ctx?.licensedOnSelected.has(row.id) ?? false,
+    player: arrangementPlayerState(ctx, row),
   };
 }
 
@@ -162,7 +177,7 @@ function orderBy(sort: CatalogQuery["sort"]): Prisma.ArrangementOrderByWithRelat
   }
 }
 
-export async function searchCatalog(query: CatalogQuery, customerId?: string | null) {
+export async function searchCatalog(query: CatalogQuery, viewer?: CatalogViewer) {
   const db = shopDb();
   const pageSize = Math.min(Math.max(query.pageSize ?? 24, 1), 60);
   const page = Math.max(query.page ?? 1, 1);
@@ -170,7 +185,7 @@ export async function searchCatalog(query: CatalogQuery, customerId?: string | n
   const [total, rows, owned] = await Promise.all([
     db.arrangement.count({ where }),
     db.arrangement.findMany({ where, select: cardSelect, orderBy: orderBy(query.sort), skip: (page - 1) * pageSize, take: pageSize }),
-    customerId ? activeEntitlementArrangementIds(customerId) : Promise.resolve(new Set<string>()),
+    resolveViewer(viewer),
   ]);
   return {
     items: await Promise.all(rows.map((r) => toCard(r, owned))),
@@ -211,8 +226,8 @@ export async function catalogFacets() {
   };
 }
 
-export async function featuredArrangements(customerId?: string | null, take = 8) {
-  const owned = customerId ? await activeEntitlementArrangementIds(customerId) : new Set<string>();
+export async function featuredArrangements(viewer?: CatalogViewer, take = 8) {
+  const owned = await resolveViewer(viewer);
   const rows = await shopDb().arrangement.findMany({
     where: { status: "PUBLISHED", featured: true },
     select: cardSelect,
@@ -222,8 +237,8 @@ export async function featuredArrangements(customerId?: string | null, take = 8)
   return Promise.all(rows.map((r) => toCard(r, owned)));
 }
 
-export async function newestArrangements(customerId?: string | null, take = 8) {
-  const owned = customerId ? await activeEntitlementArrangementIds(customerId) : new Set<string>();
+export async function newestArrangements(viewer?: CatalogViewer, take = 8) {
+  const owned = await resolveViewer(viewer);
   const rows = await shopDb().arrangement.findMany({
     where: { status: "PUBLISHED" },
     select: cardSelect,
@@ -233,7 +248,7 @@ export async function newestArrangements(customerId?: string | null, take = 8) {
   return Promise.all(rows.map((r) => toCard(r, owned)));
 }
 
-export async function getArrangementDetail(slug: string, customerId?: string | null) {
+export async function getArrangementDetail(slug: string, viewer?: CatalogViewer) {
   const db = shopDb();
   const row = await db.arrangement.findFirst({
     where: { slug, status: "PUBLISHED" },
@@ -256,7 +271,7 @@ export async function getArrangementDetail(slug: string, customerId?: string | n
     },
   });
   if (!row) return null;
-  const owned = customerId ? await activeEntitlementArrangementIds(customerId) : new Set<string>();
+  const owned = await resolveViewer(viewer);
   const card = await toCard(row, owned);
   return {
     ...card,
@@ -329,17 +344,30 @@ export async function publishedBundles(opts: { featuredOnly?: boolean; take?: nu
   return Promise.all(rows.map(toBundleSummary));
 }
 
-export async function getBundleDetail(slug: string, customerId?: string | null) {
+/**
+ * Bundle page. With a player context the completion price is computed by the cart pricing
+ * for the selected player (owned items excluded, additional-player copies discounted,
+ * incompatible items left out), so the page and the cart can never disagree.
+ */
+export async function getBundleDetail(slug: string, viewer?: CatalogViewer) {
   const row = await shopDb().bundle.findFirst({ where: { slug, status: "PUBLISHED" }, select: bundleSelect });
   if (!row) return null;
-  const owned = customerId ? await activeEntitlementArrangementIds(customerId) : new Set<string>();
+  const ctx = await resolveViewer(viewer);
   const summary = await toBundleSummary(row);
-  const items = await Promise.all(row.items.map((i) => toCard(i.arrangement, owned)));
+  const items = await Promise.all(row.items.map((i) => toCard(i.arrangement, ctx)));
   const ownedCount = items.filter((i) => i.owned).length;
 
-  let completion: { payableCents: number; payableRetailCents: number; allocations: Record<string, number> } | null = null;
+  let completion: { payableCents: number; payableRetailCents: number; allocations: Record<string, number>; additionalPlayer: number; incompatible: number } | null = null;
   let allOwned = false;
-  if (items.length > 0) {
+  if (items.length > 0 && ctx && (ctx.selectedPlayerId || ctx.players.length === 0)) {
+    const { bundleQuoteForPlayer } = await import("./music-shop");
+    const quote = await bundleQuoteForPlayer(ctx.customerId, row.id, ctx.selectedPlayerId);
+    if (quote.available) {
+      completion = { payableCents: quote.chargedCents, payableRetailCents: quote.retailValueCents, allocations: quote.allocations, additionalPlayer: quote.additionalPlayer, incompatible: quote.incompatible };
+    } else if (quote.reason === "ALREADY_OWNED") {
+      allOwned = true;
+    }
+  } else if (items.length > 0) {
     try {
       const r = allocateBundle({
         bundlePriceCents: row.priceCents,
@@ -350,6 +378,8 @@ export async function getBundleDetail(slug: string, customerId?: string | null) 
         payableCents: r.payableCents,
         payableRetailCents: r.payableRetailCents,
         allocations: Object.fromEntries(r.allocations.map((a) => [a.arrangementId, a.allocatedCents])),
+        additionalPlayer: 0,
+        incompatible: 0,
       };
     } catch (e) {
       if (e instanceof BundleAllocationError && e.code === "ALREADY_OWNED") allOwned = true;

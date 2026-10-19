@@ -5,7 +5,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Bag } from "@phosphor-icons/react";
 import { useCart } from "./CartProvider";
-import { shopCopy, shopPath } from "./copy";
+import { shopCopy, shopPath, softwarePath } from "./copy";
+import { dmiCopy } from "./copy-dmi";
+import { PlayerSwitcher } from "./ShoppingPlayer";
 
 /** Secondary navigation for the shop, sitting under the site header. */
 export function ShopNav({ lang, signedIn }: { lang: string; signedIn: boolean }) {
@@ -18,8 +20,9 @@ export function ShopNav({ lang, signedIn }: { lang: string; signedIn: boolean })
     { href: shopPath(lang), label: t.shop, exact: true },
     { href: shopPath(lang, "/browse"), label: t.browse },
     { href: shopPath(lang, "/collections"), label: t.collections },
-    ...(signedIn ? [{ href: shopPath(lang, "/account/library"), label: t.library }] : []),
+    { href: softwarePath(lang), label: t.navSoftware },
   ];
+  const inAccount = pathname.startsWith(shopPath(lang, "/account"));
 
   return (
     <div className="sticky top-0 z-30 border-b border-neutral-200 bg-white/90 backdrop-blur-sm">
@@ -43,9 +46,17 @@ export function ShopNav({ lang, signedIn }: { lang: string; signedIn: boolean })
           })}
         </nav>
         <div className="flex shrink-0 items-center gap-2">
+          {signedIn && !inAccount && <PlayerSwitcher lang={lang} />}
           {signedIn ? (
-            <Link href={shopPath(lang, "/account")} className="hidden rounded-full px-3 py-1.5 text-sm text-neutral-600 transition hover:text-neutral-950 sm:inline-block">
-              {t.account}
+            <Link
+              href={shopPath(lang, "/account")}
+              aria-current={inAccount ? "page" : undefined}
+              className={clsx(
+                "whitespace-nowrap rounded-full px-3 py-1.5 text-sm transition",
+                inAccount ? "bg-neutral-950 font-semibold text-white" : "text-neutral-600 hover:text-neutral-950",
+              )}
+            >
+              {dmiCopy(lang).myDmi}
             </Link>
           ) : (
             // Full navigation: Auth0 routes are handled by the proxy, not the client router.

@@ -108,21 +108,29 @@ model Customer {
   createdAt             DateTime  @default(now())
   updatedAt             DateTime  @updatedAt
 
-  legalAcceptances  LegalAcceptance[]
-  cart              Cart?
-  orders            Order[]
-  entitlements      Entitlement[]
-  encodingJobs      EncodingJob[]
-  deliveryArtifacts DeliveryArtifact[]
-  addresses         CustomerAddress[]
-  players           RegisteredPlayer[]
-  tags              CustomerTagAssignment[]
-  notes             CustomerNote[]
-  tasks             CustomerTask[]
-  communications    CommunicationLogEntry[]
-  activity          CustomerActivity[]
-  supportTickets    SupportTicket[]
-  supportMessages   SupportMessage[]
+  legalAcceptances      LegalAcceptance[]
+  cart                  Cart?
+  orders                Order[]
+  entitlements          Entitlement[]
+  encodingJobs          EncodingJob[]
+  deliveryArtifacts     DeliveryArtifact[]
+  addresses             CustomerAddress[]
+  players               RegisteredPlayer[]
+  tags                  CustomerTagAssignment[]
+  notes                 CustomerNote[]
+  tasks                 CustomerTask[]
+  communications        CommunicationLogEntry[]
+  activity              CustomerActivity[]
+  supportTickets        SupportTicket[]
+  supportMessages       SupportMessage[]
+  documents             CustomerDocument[]
+  softwareDownloads     SoftwareDownload[]
+  softwareLicenses      SoftwareLicense[]
+  softwareActivations   SoftwareActivationRequest[]
+  softwareInstallations SoftwareInstallation[]
+  musicLicenses         MusicLicense[]
+  musicTransfersOut     MusicLicenseTransfer[]      @relation("TransferCustomer")
+  musicTransfersIn      MusicLicenseTransfer[]      @relation("TransferNewCustomer")
 
   @@index([email])
   @@index([crmStatus])
@@ -149,15 +157,27 @@ model StaffAccount {
   createdByStaff StaffAccount?  @relation("StaffCreatedBy", fields: [createdByStaffId], references: [id], onDelete: SetNull)
   createdStaff   StaffAccount[] @relation("StaffCreatedBy")
 
-  playersCreated   RegisteredPlayer[]      @relation("PlayerCreatedBy")
-  playersUpdated   RegisteredPlayer[]      @relation("PlayerUpdatedBy")
-  notesWritten     CustomerNote[]
-  tasksCreated     CustomerTask[]          @relation("TaskCreatedBy")
-  tasksAssigned    CustomerTask[]          @relation("TaskAssignedTo")
-  communications   CommunicationLogEntry[]
-  activityRecorded CustomerActivity[]
-  ticketsAssigned  SupportTicket[]
-  supportMessages  SupportMessage[]
+  playersCreated          RegisteredPlayer[]          @relation("PlayerCreatedBy")
+  playersUpdated          RegisteredPlayer[]          @relation("PlayerUpdatedBy")
+  notesWritten            CustomerNote[]
+  tasksCreated            CustomerTask[]              @relation("TaskCreatedBy")
+  tasksAssigned           CustomerTask[]              @relation("TaskAssignedTo")
+  communications          CommunicationLogEntry[]
+  activityRecorded        CustomerActivity[]
+  ticketsAssigned         SupportTicket[]
+  supportMessages         SupportMessage[]
+  invitesSent             StaffInvite[]               @relation("StaffInvitedBy")
+  documentsUploaded       CustomerDocument[]          @relation("DocumentUploadedBy")
+  softwareReleasesCreated SoftwareRelease[]           @relation("SoftwareReleaseCreatedBy")
+  softwareLicensesCreated SoftwareLicense[]           @relation("SoftwareLicenseCreatedBy")
+  activationsAssigned     SoftwareActivationRequest[] @relation("ActivationAssignedTo")
+  activationsReviewed     SoftwareActivationRequest[] @relation("ActivationReviewedBy")
+  installationsCreated    SoftwareInstallation[]      @relation("InstallationCreatedBy")
+  installationsUpdated    SoftwareInstallation[]      @relation("InstallationUpdatedBy")
+  musicLicensesGranted    MusicLicense[]              @relation("MusicLicenseGrantedBy")
+  musicTransfersCreated   MusicLicenseTransfer[]      @relation("TransferCreatedBy")
+  musicTransfersApproved  MusicLicenseTransfer[]      @relation("TransferApprovedBy")
+  musicLicenseEvents      MusicLicenseEvent[]
 
   @@index([status])
   @@index([role])
@@ -251,7 +271,17 @@ model PlayerType {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
-  players RegisteredPlayer[]
+  players              RegisteredPlayer[]
+  /// Only types that support a music library may receive music licenses (MIDI tools never do).
+  supportsMusicLibrary Boolean            @default(true)
+  /// Software that runs this player (shown as "Software licensed").
+  softwareProductId    String?            @db.Uuid
+  /// Optional starter music granted when a player of this type becomes ACTIVE.
+  starterBundleId      String?            @db.Uuid
+  softwareProduct      SoftwareProduct?   @relation(fields: [softwareProductId], references: [id], onDelete: SetNull)
+  starterBundle        Bundle?            @relation("PlayerTypeStarter", fields: [starterBundleId], references: [id], onDelete: SetNull)
+  /// Arrangements are compatible with this type when they share a profile (or are generic).
+  systemProfiles       SystemProfile[]
 
   @@index([active])
 }
@@ -295,12 +325,24 @@ model RegisteredPlayer {
   createdByStaff StaffAccount? @relation("PlayerCreatedBy", fields: [createdByStaffId], references: [id], onDelete: SetNull)
   updatedByStaff StaffAccount? @relation("PlayerUpdatedBy", fields: [updatedByStaffId], references: [id], onDelete: SetNull)
 
-  tickets SupportTicket[]
-  tasks   CustomerTask[]
+  tickets               SupportTicket[]
+  tasks                 CustomerTask[]
+  documents             CustomerDocument[]
+  softwareInstallations SoftwareInstallation[]
+  /// Customer-chosen label ("Living Room Piano"). Never an identity.
+  friendlyName          String?
+  musicLicenses         MusicLicense[]
+  transfersFrom         MusicLicenseTransfer[] @relation("TransferFromPlayer")
+  transfersTo           MusicLicenseTransfer[] @relation("TransferToPlayer")
+  cartItems             CartItem[]
+  orderItems            OrderItem[]
+  deliveryArtifacts     DeliveryArtifact[]
+  encodingJobs          EncodingJob[]
 
   @@index([customerId, status])
   @@index([serialNumber])
   @@index([playerTypeId])
+  @@index([friendlyName])
 }
 
 // ───────────────────────────────────────────────────────────────────────────────
@@ -394,15 +436,18 @@ model CustomerTask {
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
 
-  customer       Customer          @relation(fields: [customerId], references: [id], onDelete: Cascade)
-  player         RegisteredPlayer? @relation(fields: [registeredPlayerId], references: [id], onDelete: SetNull)
-  ticket         SupportTicket?    @relation(fields: [supportTicketId], references: [id], onDelete: SetNull)
-  assignedStaff  StaffAccount?     @relation("TaskAssignedTo", fields: [assignedStaffId], references: [id], onDelete: SetNull)
-  createdByStaff StaffAccount?     @relation("TaskCreatedBy", fields: [createdByStaffId], references: [id], onDelete: SetNull)
+  customer                    Customer                   @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  player                      RegisteredPlayer?          @relation(fields: [registeredPlayerId], references: [id], onDelete: SetNull)
+  ticket                      SupportTicket?             @relation(fields: [supportTicketId], references: [id], onDelete: SetNull)
+  assignedStaff               StaffAccount?              @relation("TaskAssignedTo", fields: [assignedStaffId], references: [id], onDelete: SetNull)
+  createdByStaff              StaffAccount?              @relation("TaskCreatedBy", fields: [createdByStaffId], references: [id], onDelete: SetNull)
+  softwareActivationRequestId String?                    @db.Uuid
+  softwareActivationRequest   SoftwareActivationRequest? @relation(fields: [softwareActivationRequestId], references: [id], onDelete: SetNull)
 
   @@index([customerId, status])
   @@index([assignedStaffId, status, dueAt])
   @@index([status, dueAt])
+  @@index([softwareActivationRequestId])
 }
 
 /// Contact that happened outside the ticket system, typed in afterwards by staff.
@@ -453,6 +498,8 @@ model CustomerActivity {
 // ───────────────────────────────────────────────────────────────────────────────
 
 enum SupportCategory {
+  SOFTWARE_ACTIVATION
+  SOFTWARE_PROBLEM
   PLAYER_REGISTRATION
   PLAYER_PROBLEM
   MUSIC_DOWNLOAD
@@ -527,13 +574,22 @@ model SupportTicket {
   arrangement   Arrangement?      @relation(fields: [arrangementId], references: [id], onDelete: SetNull)
   assignedStaff StaffAccount?     @relation(fields: [assignedStaffId], references: [id], onDelete: SetNull)
 
-  messages SupportMessage[]
-  tasks    CustomerTask[]
+  messages                    SupportMessage[]
+  tasks                       CustomerTask[]
+  softwareProductId           String?                    @db.Uuid
+  softwareLicenseId           String?                    @db.Uuid
+  softwareInstallationId      String?                    @db.Uuid
+  softwareActivationRequestId String?                    @db.Uuid
+  softwareProduct             SoftwareProduct?           @relation(fields: [softwareProductId], references: [id], onDelete: SetNull)
+  softwareLicense             SoftwareLicense?           @relation(fields: [softwareLicenseId], references: [id], onDelete: SetNull)
+  softwareInstallation        SoftwareInstallation?      @relation(fields: [softwareInstallationId], references: [id], onDelete: SetNull)
+  softwareActivationRequest   SoftwareActivationRequest? @relation(fields: [softwareActivationRequestId], references: [id], onDelete: SetNull)
 
   @@index([status, priority, updatedAt])
   @@index([customerId, status])
   @@index([assignedStaffId, status])
   @@index([registeredPlayerId])
+  @@index([softwareLicenseId])
 }
 
 model SupportMessage {
@@ -661,6 +717,7 @@ model SystemProfile {
   updatedAt    DateTime @updatedAt
 
   compatibilities ArrangementCompatibility[]
+  playerTypes     PlayerType[]
 }
 
 model ArrangementCompatibility {
@@ -737,6 +794,7 @@ model Arrangement {
   deliveryArtifacts DeliveryArtifact[]
   supportTickets    SupportTicket[]
   importItems       ImportBatchItem[]
+  musicLicenses     MusicLicense[]
 
   @@index([status, featured])
   @@index([arrangerId])
@@ -992,6 +1050,10 @@ model EncodingJob {
   sourceAssetVersion AssetVersion      @relation(fields: [sourceAssetVersionId], references: [id], onDelete: Restrict)
   customer           Customer          @relation(fields: [customerId], references: [id], onDelete: Restrict)
   deliveryArtifact   DeliveryArtifact? @relation(fields: [deliveryArtifactId], references: [id], onDelete: SetNull)
+  musicLicenseId     String?           @db.Uuid
+  registeredPlayerId String?           @db.Uuid
+  musicLicense       MusicLicense?     @relation(fields: [musicLicenseId], references: [id], onDelete: SetNull)
+  registeredPlayer   RegisteredPlayer? @relation(fields: [registeredPlayerId], references: [id], onDelete: SetNull)
 
   @@index([status, createdAt])
 }
@@ -1019,8 +1081,13 @@ model DeliveryArtifact {
   regeneratedFrom    DeliveryArtifact?  @relation("Regeneration", fields: [regeneratedFromArtifactId], references: [id], onDelete: SetNull)
   regenerations      DeliveryArtifact[] @relation("Regeneration")
   encodingJob        EncodingJob?
+  musicLicenseId     String?            @db.Uuid
+  registeredPlayerId String?            @db.Uuid
+  musicLicense       MusicLicense?      @relation(fields: [musicLicenseId], references: [id], onDelete: SetNull)
+  registeredPlayer   RegisteredPlayer?  @relation(fields: [registeredPlayerId], references: [id], onDelete: SetNull)
 
   @@index([customerId, arrangementId, sourceAssetVersionId, deviceRegistrationRef, encoderVersion, protectionProfileVersion])
+  @@index([musicLicenseId])
 }
 
 // ───────────────────────────────────────────────────────────────────────────────
@@ -1043,9 +1110,10 @@ model Bundle {
   createdAt   DateTime      @default(now())
   updatedAt   DateTime      @updatedAt
 
-  items     BundleItem[]
-  assets    Asset[]      @relation("BundleAssets")
-  cartItems CartItem[]
+  items                 BundleItem[]
+  assets                Asset[]      @relation("BundleAssets")
+  cartItems             CartItem[]
+  starterForPlayerTypes PlayerType[] @relation("PlayerTypeStarter")
 
   @@index([status, featured])
 }
@@ -1066,6 +1134,7 @@ model BundleItem {
 enum CartItemType {
   ARRANGEMENT
   BUNDLE
+  SOFTWARE_LICENSE
 }
 
 /// Server-authoritative cart. Anonymous carts are keyed by an opaque cookie token and
@@ -1092,12 +1161,19 @@ model CartItem {
   lastSeenPriceCents Int
   addedAt            DateTime     @default(now())
 
-  cart        Cart         @relation(fields: [cartId], references: [id], onDelete: Cascade)
-  arrangement Arrangement? @relation(fields: [arrangementId], references: [id], onDelete: Cascade)
-  bundle      Bundle?      @relation(fields: [bundleId], references: [id], onDelete: Cascade)
+  cart              Cart              @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  arrangement       Arrangement?      @relation(fields: [arrangementId], references: [id], onDelete: Cascade)
+  bundle            Bundle?           @relation(fields: [bundleId], references: [id], onDelete: Cascade)
+  softwareProductId String?           @db.Uuid
+  softwareProduct   SoftwareProduct?  @relation(fields: [softwareProductId], references: [id], onDelete: Cascade)
+  /// Music lines: the player this music is for. Null = "assign later" (when policy allows).
+  targetPlayerId    String?           @db.Uuid
+  targetPlayer      RegisteredPlayer? @relation(fields: [targetPlayerId], references: [id], onDelete: Cascade)
 
-  @@unique([cartId, arrangementId])
-  @@unique([cartId, bundleId])
+  // One music line per (cart, arrangement|bundle, target player incl. "assign later") is
+  // enforced by partial unique indexes in the phase 4 migration SQL.
+  @@unique([cartId, softwareProductId])
+  @@index([cartId])
 }
 
 enum OrderStatus {
@@ -1136,13 +1212,15 @@ model Order {
   createdAt             DateTime    @default(now())
   updatedAt             DateTime    @updatedAt
 
-  customer        Customer              @relation(fields: [customerId], references: [id], onDelete: Restrict)
-  items           OrderItem[]
-  allocations     OrderItemAllocation[]
-  refunds         Refund[]
-  royaltyEntries  RoyaltyLedgerEntry[]
-  billingSnapshot OrderBillingSnapshot?
-  supportTickets  SupportTicket[]
+  customer         Customer              @relation(fields: [customerId], references: [id], onDelete: Restrict)
+  items            OrderItem[]
+  allocations      OrderItemAllocation[]
+  refunds          Refund[]
+  royaltyEntries   RoyaltyLedgerEntry[]
+  billingSnapshot  OrderBillingSnapshot?
+  supportTickets   SupportTicket[]
+  softwareLicenses SoftwareLicense[]
+  musicLicenses    MusicLicense[]
 
   @@index([customerId, status])
   @@index([createdAt])
@@ -1167,8 +1245,20 @@ model OrderItem {
   /// Arrangement ids in the bundle the customer already owned (excluded from charge).
   excludedArrangementIds String[]     @default([])
 
-  order       Order                 @relation(fields: [orderId], references: [id], onDelete: Restrict)
-  allocations OrderItemAllocation[]
+  order                            Order                 @relation(fields: [orderId], references: [id], onDelete: Restrict)
+  allocations                      OrderItemAllocation[]
+  softwareProductId                String?               @db.Uuid
+  /// Software lines: refunded amount (music lines use allocations).
+  refundedCents                    Int                   @default(0)
+  softwareProduct                  SoftwareProduct?      @relation(fields: [softwareProductId], references: [id], onDelete: Restrict)
+  softwareLicense                  SoftwareLicense?
+  refundLines                      RefundOrderItem[]
+  /// Player targeting at purchase time. Snapshots never change after a rename/transfer.
+  targetPlayerId                   String?               @db.Uuid
+  targetPlayerNameSnapshot         String?
+  targetRegistrationMaskedSnapshot String?
+  targetPlayer                     RegisteredPlayer?     @relation(fields: [targetPlayerId], references: [id], onDelete: SetNull)
+  musicLicenses                    MusicLicense[]
 
   @@index([orderId])
 }
@@ -1196,6 +1286,9 @@ model OrderItemAllocation {
   entitlementSource EntitlementSource?
   refundAllocations RefundAllocation[]
   royaltyEntries    RoyaltyLedgerEntry[]
+  /// True when sold at the additional-player price (already licensed on another player).
+  additionalPlayer  Boolean              @default(false)
+  musicLicense      MusicLicense?
 
   @@index([orderId])
   @@index([arrangementId])
@@ -1225,9 +1318,10 @@ model Entitlement {
   revokedAt      DateTime?
   updatedAt      DateTime          @updatedAt
 
-  customer    Customer            @relation(fields: [customerId], references: [id], onDelete: Restrict)
-  arrangement Arrangement         @relation(fields: [arrangementId], references: [id], onDelete: Restrict)
-  sources     EntitlementSource[]
+  customer      Customer            @relation(fields: [customerId], references: [id], onDelete: Restrict)
+  arrangement   Arrangement         @relation(fields: [arrangementId], references: [id], onDelete: Restrict)
+  sources       EntitlementSource[]
+  musicLicenses MusicLicense[]
 
   @@unique([customerId, arrangementId])
   @@index([customerId, status])
@@ -1250,6 +1344,7 @@ model EntitlementSource {
 
   entitlement     Entitlement          @relation(fields: [entitlementId], references: [id], onDelete: Cascade)
   orderAllocation OrderItemAllocation? @relation(fields: [orderAllocationId], references: [id], onDelete: Restrict)
+  musicLicenses   MusicLicense[]
 
   @@index([entitlementId])
 }
@@ -1278,6 +1373,7 @@ model Refund {
   order          Order                @relation(fields: [orderId], references: [id], onDelete: Restrict)
   allocations    RefundAllocation[]
   royaltyEntries RoyaltyLedgerEntry[]
+  orderItems     RefundOrderItem[]
 
   @@index([orderId])
 }
@@ -1405,4 +1501,535 @@ model RateLimitBucket {
 
   @@id([key, windowStart])
   @@index([windowStart])
+}
+
+// ───────────────────────────────────────────────────────────────────────────────
+// Phase 2b: staff invitations and private customer documents
+// ───────────────────────────────────────────────────────────────────────────────
+
+/// An invitation to join the staff. The invitee signs in with their own Auth0 identity;
+/// the StaffAccount is created for that `sub` only if the verified email matches.
+model StaffInvite {
+  id               String    @id @default(uuid()) @db.Uuid
+  email            String
+  role             StaffRole
+  /// SHA-256 of the one-time token; the token itself is only ever in the invitation link.
+  tokenHash        String    @unique @db.Char(64)
+  invitedByStaffId String?   @db.Uuid
+  expiresAt        DateTime
+  acceptedAt       DateTime?
+  acceptedStaffId  String?   @db.Uuid
+  revokedAt        DateTime?
+  createdAt        DateTime  @default(now())
+
+  invitedBy StaffAccount? @relation("StaffInvitedBy", fields: [invitedByStaffId], references: [id], onDelete: SetNull)
+
+  @@index([email])
+}
+
+/// Internal files about a customer or one of their players (service sheets, paperwork,
+/// photos). Private storage under `documents/`, never mixed with music or support files.
+model CustomerDocument {
+  id                 String   @id @default(uuid()) @db.Uuid
+  customerId         String   @db.Uuid
+  registeredPlayerId String?  @db.Uuid
+  title              String
+  fileName           String
+  contentType        String
+  sizeBytes          Int
+  storageKey         String   @unique
+  uploadedByStaffId  String?  @db.Uuid
+  createdAt          DateTime @default(now())
+
+  customer   Customer          @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  player     RegisteredPlayer? @relation(fields: [registeredPlayerId], references: [id], onDelete: SetNull)
+  uploadedBy StaffAccount?     @relation("DocumentUploadedBy", fields: [uploadedByStaffId], references: [id], onDelete: SetNull)
+
+  @@index([customerId, createdAt])
+  @@index([registeredPlayerId])
+}
+
+// ───────────────────────────────────────────────────────────────────────────────
+// Phase 3: Software (downloads, trial, licenses, manual activation)
+//
+// Separate from music. RegisteredPlayer stays the registry of *physical* DMI players
+// (serial, warranty, dealer); a SoftwareInstallation may optionally point at the machine
+// it runs on. Downloads, licenses, activation requests and installations are distinct:
+// a download is not a license, a license is not an installation.
+// ───────────────────────────────────────────────────────────────────────────────
+
+enum SoftwareProductStatus {
+  DRAFT
+  ACTIVE
+  DISCONTINUED
+  ARCHIVED
+}
+
+enum SoftwareLicenseType {
+  PERPETUAL
+}
+
+enum SoftwarePlatform {
+  WINDOWS
+  MACOS
+  LINUX
+}
+
+enum SoftwareArchitecture {
+  X64
+  X86
+  ARM64
+  UNIVERSAL
+}
+
+enum SoftwareReleaseChannel {
+  STABLE
+  BETA
+  LEGACY
+}
+
+enum SoftwareReleaseStatus {
+  /// Upload issued but not verified yet.
+  UPLOADING
+  /// Verified binary, not visible to customers.
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum SoftwareDownloadSource {
+  SOFTWARE_PAGE
+  ACCOUNT
+  ADMIN
+  OTHER
+}
+
+enum SoftwareLicenseStatus {
+  PENDING_ACTIVATION
+  ACTIVE
+  SUSPENDED
+  REVOKED
+}
+
+enum SoftwareLicenseSource {
+  PURCHASE
+  ADMIN
+  LEGACY_IMPORT
+  PROMOTION
+}
+
+enum SoftwareActivationStatus {
+  SUBMITTED
+  IN_REVIEW
+  WAITING_FOR_CUSTOMER
+  APPROVED
+  REJECTED
+  CANCELLED
+}
+
+enum SoftwareInstallationStatus {
+  ACTIVE
+  SUSPENDED
+  DEACTIVATED
+  RETIRED
+}
+
+model SoftwareProduct {
+  id                        String                @id @default(uuid()) @db.Uuid
+  slug                      String                @unique
+  name                      String
+  shortDescription          String?
+  description               String?
+  systemRequirements        String?
+  status                    SoftwareProductStatus @default(DRAFT)
+  trialAvailable            Boolean               @default(true)
+  licenseRequiredForFullUse Boolean               @default(true)
+  /// Denormalised from the current STABLE release; recomputed on publish / mark current.
+  currentVersion            String?
+  licenseType               SoftwareLicenseType   @default(PERPETUAL)
+  /// Null = no license on sale.
+  defaultLicensePriceCents  Int?
+  currency                  String                @default("EUR") @db.Char(3)
+  defaultMaxActivations     Int                   @default(1)
+  /// Customer-facing activation instructions ("Open DMI Player → Settings → Registration").
+  activationInstructions    String?
+  coverImageKey             String?
+  iconKey                   String?
+  sortOrder                 Int                   @default(0)
+  createdAt                 DateTime              @default(now())
+  updatedAt                 DateTime              @updatedAt
+  publishedAt               DateTime?
+
+  releases           SoftwareRelease[]
+  downloads          SoftwareDownload[]
+  licenses           SoftwareLicense[]
+  activationRequests SoftwareActivationRequest[]
+  installations      SoftwareInstallation[]
+  cartItems          CartItem[]
+  orderItems         OrderItem[]
+  supportTickets     SupportTicket[]
+  playerTypes        PlayerType[]
+
+  @@index([status, sortOrder])
+}
+
+/// Immutable installer binary. A new build is always a new release row + new storage key.
+model SoftwareRelease {
+  id                String                 @id @default(uuid()) @db.Uuid
+  softwareProductId String                 @db.Uuid
+  version           String
+  platform          SoftwarePlatform       @default(WINDOWS)
+  architecture      SoftwareArchitecture   @default(X64)
+  releaseChannel    SoftwareReleaseChannel @default(STABLE)
+  status            SoftwareReleaseStatus  @default(UPLOADING)
+  releaseNotes      String?
+  minimumOsVersion  String?
+  storageProvider   String
+  /// Private `software/` namespace; random UUID key (no enumeration).
+  storageKey        String                 @unique
+  originalFilename  String
+  declaredBytes     BigInt
+  fileSizeBytes     BigInt?
+  declaredSha256    String?                @db.Char(64)
+  sha256            String?                @db.Char(64)
+  validationErrors  Json?
+  isCurrent         Boolean                @default(false)
+  isDownloadable    Boolean                @default(true)
+  createdByStaffId  String?                @db.Uuid
+  uploadedAt        DateTime?
+  publishedAt       DateTime?
+  archivedAt        DateTime?
+  createdAt         DateTime               @default(now())
+  updatedAt         DateTime               @updatedAt
+
+  product   SoftwareProduct    @relation(fields: [softwareProductId], references: [id], onDelete: Restrict)
+  createdBy StaffAccount?      @relation("SoftwareReleaseCreatedBy", fields: [createdByStaffId], references: [id], onDelete: SetNull)
+  downloads SoftwareDownload[]
+
+  @@unique([softwareProductId, version, platform, architecture, releaseChannel])
+  @@index([softwareProductId, status, isCurrent])
+}
+
+/// An installer download event. Not proof of ownership.
+model SoftwareDownload {
+  id                String                 @id @default(uuid()) @db.Uuid
+  customerId        String                 @db.Uuid
+  softwareProductId String                 @db.Uuid
+  softwareReleaseId String                 @db.Uuid
+  source            SoftwareDownloadSource @default(OTHER)
+  downloadedAt      DateTime               @default(now())
+
+  customer Customer        @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  product  SoftwareProduct @relation(fields: [softwareProductId], references: [id], onDelete: Restrict)
+  release  SoftwareRelease @relation(fields: [softwareReleaseId], references: [id], onDelete: Restrict)
+
+  @@index([customerId, downloadedAt])
+  @@index([softwareProductId, downloadedAt])
+  @@index([softwareReleaseId])
+}
+
+/// The commercial right to use the full product.
+model SoftwareLicense {
+  id                String                @id @default(uuid()) @db.Uuid
+  /// Human number shown as LIC-10001.
+  number            Int                   @unique @default(autoincrement())
+  customerId        String                @db.Uuid
+  softwareProductId String                @db.Uuid
+  orderId           String?               @db.Uuid
+  /// One license per purchased order line (idempotent webhook fulfillment).
+  orderItemId       String?               @unique @db.Uuid
+  status            SoftwareLicenseStatus @default(PENDING_ACTIVATION)
+  licenseType       SoftwareLicenseType   @default(PERPETUAL)
+  maxActivations    Int                   @default(1)
+  licenseSource     SoftwareLicenseSource
+  sourceReference   String?
+  notes             String?
+  purchasedAt       DateTime              @default(now())
+  activatedAt       DateTime?
+  suspendedAt       DateTime?
+  revokedAt         DateTime?
+  statusReason      String?
+  createdByStaffId  String?               @db.Uuid
+  createdAt         DateTime              @default(now())
+  updatedAt         DateTime              @updatedAt
+
+  customer           Customer                    @relation(fields: [customerId], references: [id], onDelete: Restrict)
+  product            SoftwareProduct             @relation(fields: [softwareProductId], references: [id], onDelete: Restrict)
+  order              Order?                      @relation(fields: [orderId], references: [id], onDelete: Restrict)
+  orderItem          OrderItem?                  @relation(fields: [orderItemId], references: [id], onDelete: Restrict)
+  createdBy          StaffAccount?               @relation("SoftwareLicenseCreatedBy", fields: [createdByStaffId], references: [id], onDelete: SetNull)
+  activationRequests SoftwareActivationRequest[]
+  installations      SoftwareInstallation[]
+  supportTickets     SupportTicket[]
+
+  @@index([customerId, softwareProductId])
+  @@index([status])
+}
+
+/// A customer's registration code waiting for manual processing with the proprietary EXE.
+model SoftwareActivationRequest {
+  id                     String                   @id @default(uuid()) @db.Uuid
+  /// Shown as ACT-10001.
+  number                 Int                      @unique @default(autoincrement())
+  softwareLicenseId      String                   @db.Uuid
+  softwareProductId      String                   @db.Uuid
+  customerId             String                   @db.Uuid
+  registrationCode       String
+  status                 SoftwareActivationStatus @default(SUBMITTED)
+  /// Another ACTIVE installation already uses this registration code: staff must review.
+  conflictInstallationId String?                  @db.Uuid
+  /// For a replacement: the installation to retire when this one is approved.
+  replacesInstallationId String?                  @db.Uuid
+  customerMessage        String?
+  /// Visible to the customer when staff asks for information.
+  infoRequest            String?
+  adminNotes             String?
+  rejectionReason        String?
+  assignedStaffId        String?                  @db.Uuid
+  reviewedByStaffId      String?                  @db.Uuid
+  reviewedAt             DateTime?
+  softwareInstallationId String?                  @unique @db.Uuid
+  submittedAt            DateTime                 @default(now())
+  createdAt              DateTime                 @default(now())
+  updatedAt              DateTime                 @updatedAt
+
+  license        SoftwareLicense       @relation(fields: [softwareLicenseId], references: [id], onDelete: Restrict)
+  product        SoftwareProduct       @relation(fields: [softwareProductId], references: [id], onDelete: Restrict)
+  customer       Customer              @relation(fields: [customerId], references: [id], onDelete: Restrict)
+  assignedStaff  StaffAccount?         @relation("ActivationAssignedTo", fields: [assignedStaffId], references: [id], onDelete: SetNull)
+  reviewedBy     StaffAccount?         @relation("ActivationReviewedBy", fields: [reviewedByStaffId], references: [id], onDelete: SetNull)
+  installation   SoftwareInstallation? @relation("ActivationInstallation", fields: [softwareInstallationId], references: [id], onDelete: SetNull)
+  supportTickets SupportTicket[]
+  tasks          CustomerTask[]
+
+  @@index([status, submittedAt])
+  @@index([customerId])
+  @@index([registrationCode])
+  @@index([softwareLicenseId])
+}
+
+/// An approved, activated installation. Never overwritten; replaced ones are RETIRED.
+model SoftwareInstallation {
+  id                     String                     @id @default(uuid()) @db.Uuid
+  customerId             String                     @db.Uuid
+  softwareProductId      String                     @db.Uuid
+  softwareLicenseId      String                     @db.Uuid
+  /// Optional: the physical DMI player this software runs on.
+  registeredPlayerId     String?                    @db.Uuid
+  registrationCode       String
+  /// What a future API will authenticate on. Starts equal to the code; never the key.
+  registrationIdentifier String
+  /// AES-256-GCM (see services/activation-key.ts). Never selected by list queries.
+  activationKeyEncrypted String?
+  status                 SoftwareInstallationStatus @default(ACTIVE)
+  label                  String?
+  activatedAt            DateTime?
+  suspendedAt            DateTime?
+  retiredAt              DateTime?
+  retiredReason          String?
+  createdByStaffId       String?                    @db.Uuid
+  updatedByStaffId       String?                    @db.Uuid
+  createdAt              DateTime                   @default(now())
+  updatedAt              DateTime                   @updatedAt
+
+  customer          Customer                   @relation(fields: [customerId], references: [id], onDelete: Restrict)
+  product           SoftwareProduct            @relation(fields: [softwareProductId], references: [id], onDelete: Restrict)
+  license           SoftwareLicense            @relation(fields: [softwareLicenseId], references: [id], onDelete: Restrict)
+  registeredPlayer  RegisteredPlayer?          @relation(fields: [registeredPlayerId], references: [id], onDelete: SetNull)
+  createdBy         StaffAccount?              @relation("InstallationCreatedBy", fields: [createdByStaffId], references: [id], onDelete: SetNull)
+  updatedBy         StaffAccount?              @relation("InstallationUpdatedBy", fields: [updatedByStaffId], references: [id], onDelete: SetNull)
+  activationRequest SoftwareActivationRequest? @relation("ActivationInstallation")
+  supportTickets    SupportTicket[]
+
+  @@index([customerId])
+  @@index([softwareLicenseId, status])
+  @@index([registrationCode])
+  @@index([registrationIdentifier])
+}
+
+/// Refund of a non-music order line (e.g. a software license).
+model RefundOrderItem {
+  id          String @id @default(uuid()) @db.Uuid
+  refundId    String @db.Uuid
+  orderItemId String @db.Uuid
+  amountCents Int
+
+  refund    Refund    @relation(fields: [refundId], references: [id], onDelete: Cascade)
+  orderItem OrderItem @relation(fields: [orderItemId], references: [id], onDelete: Restrict)
+
+  @@unique([refundId, orderItemId])
+}
+
+// ───────────────────────────────────────────────────────────────────────────────
+// Phase 4: player-bound music licensing
+//
+// Entitlement = commercial acquisition history (purchase, bundle, grant, legacy).
+// MusicLicense = the right to have ONE arrangement delivered/encoded for ONE registered
+// player. Delivery checks MusicLicense, never Entitlement alone. History is never deleted:
+// moves and replacements retire the old license row and create a new one linked by
+// `originalMusicLicenseId`, with a MusicLicenseEvent trail and a MusicLicenseTransfer record.
+// ───────────────────────────────────────────────────────────────────────────────
+
+enum MusicLicenseStatus {
+  /// Bought before a player was chosen (or legacy, awaiting assignment). Not deliverable.
+  UNASSIGNED
+  ACTIVE
+  TRANSFER_PENDING
+  RETIRED
+  REVOKED
+}
+
+enum MusicLicenseSource {
+  PURCHASE
+  BUNDLE
+  ADDITIONAL_PLAYER_PURCHASE
+  ADMIN_GRANT
+  PROMOTION
+  CUSTOMER_SERVICE
+  PLAYER_STARTER_PACK
+  LEGACY_IMPORT
+  LEGACY_MIGRATION
+  TRANSFER
+  REPLACEMENT_TRANSFER
+}
+
+enum MusicLicenseEventType {
+  CREATED
+  ASSIGNED
+  TRANSFERRED_OUT
+  TRANSFERRED_IN
+  RETIRED
+  REVOKED
+  REACTIVATED
+}
+
+enum MusicTransferType {
+  HARDWARE_REPLACEMENT
+  WARRANTY_REPLACEMENT
+  COMPUTER_REPLACEMENT
+  UPGRADE
+  CUSTOMER_PLAYER_TRANSFER
+  PLAYER_RESALE
+  ADMIN_CORRECTION
+  OTHER
+}
+
+enum MusicTransferMode {
+  /// Licenses leave the old player (replacement / migration).
+  MOVE
+  /// Additional licenses on the new player; the old player keeps its music.
+  COPY
+  /// Ownership of a player changes customer (library follows or not, per policy).
+  PLAYER_OWNERSHIP
+}
+
+enum MusicTransferStatus {
+  PENDING
+  COMPLETED
+  CANCELLED
+}
+
+model MusicLicense {
+  id                     String             @id @default(uuid()) @db.Uuid
+  customerId             String             @db.Uuid
+  arrangementId          String             @db.Uuid
+  entitlementId          String?            @db.Uuid
+  licensedPlayerId       String?            @db.Uuid
+  status                 MusicLicenseStatus
+  licenseSource          MusicLicenseSource
+  orderId                String?            @db.Uuid
+  orderItemId            String?            @db.Uuid
+  /// One playback license per paid allocation (idempotent fulfillment).
+  orderAllocationId      String?            @unique @db.Uuid
+  entitlementSourceId    String?            @db.Uuid
+  /// For licenses created by a move/replacement: the license it continues.
+  originalMusicLicenseId String?            @db.Uuid
+  pricePaidCents         Int?
+  currency               String?            @db.Char(3)
+  grantedByStaffId       String?            @db.Uuid
+  reason                 String?
+  /// Set for legacy migration rows that need staff review (multiple players).
+  needsReview            Boolean            @default(false)
+  assignedAt             DateTime?
+  activatedAt            DateTime?
+  retiredAt              DateTime?
+  transferredAt          DateTime?
+  revokedAt              DateTime?
+  statusReason           String?
+  createdAt              DateTime           @default(now())
+  updatedAt              DateTime           @updatedAt
+
+  customer          Customer             @relation(fields: [customerId], references: [id], onDelete: Restrict)
+  arrangement       Arrangement          @relation(fields: [arrangementId], references: [id], onDelete: Restrict)
+  entitlement       Entitlement?         @relation(fields: [entitlementId], references: [id], onDelete: SetNull)
+  licensedPlayer    RegisteredPlayer?    @relation(fields: [licensedPlayerId], references: [id], onDelete: Restrict)
+  order             Order?               @relation(fields: [orderId], references: [id], onDelete: Restrict)
+  orderItem         OrderItem?           @relation(fields: [orderItemId], references: [id], onDelete: Restrict)
+  orderAllocation   OrderItemAllocation? @relation(fields: [orderAllocationId], references: [id], onDelete: Restrict)
+  entitlementSource EntitlementSource?   @relation(fields: [entitlementSourceId], references: [id], onDelete: SetNull)
+  original          MusicLicense?        @relation("MusicLicenseLineage", fields: [originalMusicLicenseId], references: [id], onDelete: SetNull)
+  continuations     MusicLicense[]       @relation("MusicLicenseLineage")
+  grantedBy         StaffAccount?        @relation("MusicLicenseGrantedBy", fields: [grantedByStaffId], references: [id], onDelete: SetNull)
+  events            MusicLicenseEvent[]
+  deliveryArtifacts DeliveryArtifact[]
+  encodingJobs      EncodingJob[]
+
+  // A partial unique index (one ACTIVE/TRANSFER_PENDING license per player+arrangement)
+  // is created in the migration SQL; Prisma cannot express it.
+  @@index([customerId, status])
+  @@index([licensedPlayerId, status])
+  @@index([arrangementId])
+  @@index([needsReview])
+}
+
+model MusicLicenseEvent {
+  id             String                @id @default(uuid()) @db.Uuid
+  musicLicenseId String                @db.Uuid
+  type           MusicLicenseEventType
+  fromPlayerId   String?               @db.Uuid
+  toPlayerId     String?               @db.Uuid
+  transferId     String?               @db.Uuid
+  staffId        String?               @db.Uuid
+  reason         String?
+  createdAt      DateTime              @default(now())
+
+  musicLicense MusicLicense          @relation(fields: [musicLicenseId], references: [id], onDelete: Cascade)
+  transfer     MusicLicenseTransfer? @relation(fields: [transferId], references: [id], onDelete: SetNull)
+  staff        StaffAccount?         @relation(fields: [staffId], references: [id], onDelete: SetNull)
+
+  @@index([musicLicenseId, createdAt])
+}
+
+model MusicLicenseTransfer {
+  id                String              @id @default(uuid()) @db.Uuid
+  /// Shown as TRF-1001.
+  number            Int                 @unique @default(autoincrement())
+  type              MusicTransferType
+  mode              MusicTransferMode
+  status            MusicTransferStatus @default(COMPLETED)
+  fromPlayerId      String              @db.Uuid
+  toPlayerId        String?             @db.Uuid
+  customerId        String              @db.Uuid
+  newCustomerId     String?             @db.Uuid
+  /// PLAYER_AND_LIBRARY | PLAYER_ONLY for ownership transfers.
+  libraryPolicy     String?
+  reason            String
+  notes             String?
+  licenseCount      Int                 @default(0)
+  createdByStaffId  String              @db.Uuid
+  approvedByStaffId String?             @db.Uuid
+  createdAt         DateTime            @default(now())
+  completedAt       DateTime?
+
+  fromPlayer  RegisteredPlayer    @relation("TransferFromPlayer", fields: [fromPlayerId], references: [id], onDelete: Restrict)
+  toPlayer    RegisteredPlayer?   @relation("TransferToPlayer", fields: [toPlayerId], references: [id], onDelete: Restrict)
+  customer    Customer            @relation("TransferCustomer", fields: [customerId], references: [id], onDelete: Restrict)
+  newCustomer Customer?           @relation("TransferNewCustomer", fields: [newCustomerId], references: [id], onDelete: Restrict)
+  createdBy   StaffAccount        @relation("TransferCreatedBy", fields: [createdByStaffId], references: [id], onDelete: Restrict)
+  approvedBy  StaffAccount?       @relation("TransferApprovedBy", fields: [approvedByStaffId], references: [id], onDelete: SetNull)
+  events      MusicLicenseEvent[]
+
+  @@index([customerId, createdAt])
+  @@index([fromPlayerId])
+  @@index([toPlayerId])
 }

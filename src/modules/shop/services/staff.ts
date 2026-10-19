@@ -1,8 +1,10 @@
 import "server-only";
+import { createHash, randomBytes } from "node:crypto";
 import type { StaffAccount, StaffRole, StaffStatus } from "@/generated/shop-prisma/client";
 import { shopDb } from "../db";
 import { ShopError, notFound } from "../errors";
 import { audit } from "./audit";
+import { appUrl, notify } from "./email";
 
 /**
  * Staff administration.
@@ -142,4 +144,83 @@ export async function changeStaffStatus(input: {
     reason: input.reason ?? null,
   });
   return updated;
+}
+
+// ─── Invitations ─────────────────────────────────────────────────────────────
+
+const INVITE_TTL_MS = 7 * 86400000;
+const hashToken = (t: string) => createHash("sha256").update(t).digest("hex");
+
+/**
+ * Invites someone who has no account yet. The invitee signs in (or signs up) with their own
+ * Auth0 identity; the StaffAccount is created for that `sub` only when their *verified*
+ * email equals the invited address. No password is ever created or stored here.
+ */
+export async function createStaffInvite(input: { actorStaffId: string; email: string; role: StaffRole }) {
+  const db = shopDb();
+  const email = input.email.trim().toLowerCase();
+  const existingStaff = await db.staffAccount.findFirst({ where: { email: { equals: email, mode: "insensitive" } } });
+  if (existingStaff) throw new ShopError("CONFLICT", "That person already has a staff account");
+  const token = randomBytes(32).toString("base64url");
+  const invite = await db.$transaction(async (tx) => {
+    await tx.staffInvite.updateMany({ where: { email, acceptedAt: null, revokedAt: null }, data: { revokedAt: new Date() } });
+    const inv = await tx.staffInvite.create({
+      data: { email, role: input.role, tokenHash: hashToken(token), invitedByStaffId: input.actorStaffId, expiresAt: new Date(Date.now() + INVITE_TTL_MS) },
+    });
+    await audit({ type: "STAFF", staffId: input.actorStaffId }, "staff.invited", { type: "StaffInvite", id: inv.id }, { role: input.role }, tx);
+    return inv;
+  });
+  const link = appUrl(`/en/shop/staff-invite/${token}`);
+  const emailed = await notify({
+    to: email,
+    subject: "You have been invited to the DMI shop administration",
+    text: `You have been invited to join the DMI shop team as ${input.role.replace("_", " ").toLowerCase()}. Sign in or create an account with this email address to accept. The invitation is valid for 7 days.`,
+    actionUrl: link,
+    actionLabel: "Accept the invitation",
+  });
+  // The link is returned once so it can be copied when no email provider is configured.
+  return { invite, link, emailed };
+}
+
+export async function listStaffInvites() {
+  return shopDb().staffInvite.findMany({
+    where: { acceptedAt: null, revokedAt: null, expiresAt: { gt: new Date() } },
+    orderBy: { createdAt: "desc" },
+    include: { invitedBy: { select: { displayName: true, email: true } } },
+  });
+}
+
+export async function revokeStaffInvite(input: { actorStaffId: string; inviteId: string }) {
+  const r = await shopDb().staffInvite.updateMany({ where: { id: input.inviteId, acceptedAt: null, revokedAt: null }, data: { revokedAt: new Date() } });
+  if (!r.count) throw notFound("Invitation");
+  await audit({ type: "STAFF", staffId: input.actorStaffId }, "staff.invite_revoked", { type: "StaffInvite", id: input.inviteId });
+}
+
+export async function describeInvite(token: string) {
+  const inv = await shopDb().staffInvite.findUnique({ where: { tokenHash: hashToken(token) } });
+  if (!inv || inv.revokedAt || inv.acceptedAt || inv.expiresAt < new Date()) return null;
+  return { email: inv.email, role: inv.role, expiresAt: inv.expiresAt };
+}
+
+/** Called by the signed-in invitee. Links the invitation to their Auth0 identity. */
+export async function acceptStaffInvite(input: { token: string; authSubject: string; email: string | undefined; emailVerified: boolean; name?: string | null }) {
+  const db = shopDb();
+  return db.$transaction(async (tx) => {
+    const inv = await tx.staffInvite.findUnique({ where: { tokenHash: hashToken(input.token) } });
+    if (!inv || inv.revokedAt || inv.acceptedAt || inv.expiresAt < new Date()) {
+      throw new ShopError("NOT_FOUND", "This invitation is no longer valid. Ask for a new one.");
+    }
+    if (!input.emailVerified || (input.email ?? "").toLowerCase() !== inv.email) {
+      throw new ShopError("FORBIDDEN", `Sign in with ${inv.email} (verified) to accept this invitation.`);
+    }
+    if (await tx.staffAccount.findUnique({ where: { authSubject: input.authSubject } })) {
+      throw new ShopError("CONFLICT", "This account already has staff access.");
+    }
+    const staff = await tx.staffAccount.create({
+      data: { authSubject: input.authSubject, email: inv.email, role: inv.role, status: "ACTIVE", displayName: input.name ?? null, createdByStaffId: inv.invitedByStaffId },
+    });
+    await tx.staffInvite.update({ where: { id: inv.id }, data: { acceptedAt: new Date(), acceptedStaffId: staff.id } });
+    await audit({ type: "STAFF", staffId: staff.id }, "staff.invite_accepted", { type: "StaffAccount", id: staff.id }, { role: inv.role, inviteId: inv.id }, tx);
+    return staff;
+  });
 }

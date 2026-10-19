@@ -4,25 +4,37 @@ import { FadeIn, FadeInStagger } from "@/components/FadeIn";
 import { resolveUrlLang } from "@/i18n";
 import { getCurrentCustomer } from "@/modules/shop/auth/session";
 import { catalogFacets, featuredArrangements, newestArrangements, publishedBundles } from "@/modules/shop/services/catalog";
+import { storefrontPlayerContext } from "@/modules/shop/services/storefront-player";
 import { formatDuration, formatMoney } from "@/modules/shop/ui/format";
 import { AddToCartButton } from "@/modules/shop/ui/store/AddToCartButton";
 import { ArrangementCard } from "@/modules/shop/ui/store/ArrangementCard";
 import { Artwork } from "@/modules/shop/ui/store/Artwork";
 import { BundleCard } from "@/modules/shop/ui/store/BundleCard";
 import { shopCopy, shopPath } from "@/modules/shop/ui/store/copy";
+import { playerCopy, playerLinks } from "@/modules/shop/ui/store/copy-player";
 import { PreviewButton } from "@/modules/shop/ui/store/PreviewPlayer";
 import { SearchForm } from "@/modules/shop/ui/store/SearchForm";
 
 export const dynamic = "force-dynamic";
 
-export default async function ShopLandingPage({ params }: { params: Promise<{ lang: string }> }) {
+export default async function ShopLandingPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ lang: string }>;
+  searchParams: Promise<{ player?: string | string[] }>;
+}) {
   const { lang } = await params;
+  const { player } = await searchParams;
   const urlLang = resolveUrlLang(lang);
   const t = shopCopy(urlLang);
+  const tp = playerCopy(urlLang);
   const customer = await getCurrentCustomer();
+  const ctx = customer ? await storefrontPlayerContext(customer.id, player) : null;
+  const playerId = ctx ? ctx.selectedPlayerId : undefined;
   const [featured, newest, bundles, facets] = await Promise.all([
-    featuredArrangements(customer?.id, 4),
-    newestArrangements(customer?.id, 6),
+    featuredArrangements(ctx, 4),
+    newestArrangements(ctx, 6),
     publishedBundles({ take: 4 }),
     catalogFacets(),
   ]);
@@ -57,7 +69,7 @@ export default async function ShopLandingPage({ params }: { params: Promise<{ la
                   </div>
                 </Link>
               ) : heroPick ? (
-                <ArrangementCard item={heroPick} lang={urlLang} />
+                <ArrangementCard item={heroPick} lang={urlLang} playerId={playerId} />
               ) : null}
             </FadeIn>
           </div>
@@ -84,7 +96,7 @@ export default async function ShopLandingPage({ params }: { params: Promise<{ la
             </FadeIn>
             <FadeInStagger faster className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
               {featuredList.map((item) => (
-                <FadeIn key={item.id}><ArrangementCard item={item} lang={urlLang} /></FadeIn>
+                <FadeIn key={item.id}><ArrangementCard item={item} lang={urlLang} playerId={playerId} /></FadeIn>
               ))}
             </FadeInStagger>
           </Container>
@@ -150,8 +162,24 @@ export default async function ShopLandingPage({ params }: { params: Promise<{ la
                           </p>
                         </div>
                         <p className="hidden w-14 text-right text-sm text-neutral-500 sm:block">{formatDuration(item.durationSeconds)}</p>
-                        <p className="w-20 text-right text-sm font-semibold text-neutral-950">{formatMoney(item.priceCents, item.currency, urlLang)}</p>
-                        <AddToCartButton lang={urlLang} size="sm" owned={item.owned} item={{ type: "ARRANGEMENT", arrangementId: item.id }} className="hidden sm:flex" />
+                        <p className="w-24 text-right text-sm font-semibold text-neutral-950">
+                          {item.player.state === "LICENSED" ? (
+                            <span className="font-normal text-neutral-600">{tp.licensed}</span>
+                          ) : (
+                            formatMoney(item.player.state === "ADDITIONAL" ? item.player.priceCents : item.priceCents, item.currency, urlLang)
+                          )}
+                        </p>
+                        {item.player.state !== "INCOMPATIBLE" && (
+                          <AddToCartButton
+                            lang={urlLang}
+                            size="sm"
+                            owned={item.player.state === "LICENSED"}
+                            licensedHref={playerId ? playerLinks.playerMusic(urlLang, playerId) : undefined}
+                            targetPlayerId={playerId}
+                            item={{ type: "ARRANGEMENT", arrangementId: item.id }}
+                            className="hidden sm:flex"
+                          />
+                        )}
                       </li>
                   ))}
                 </ul>

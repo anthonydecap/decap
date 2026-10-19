@@ -1,11 +1,14 @@
 import "server-only";
 import type Stripe from "stripe";
 import { shopConfig } from "../config";
-import { shopDb } from "../db";
+import { shopDb, type ShopTx } from "../db";
 import { audit } from "./audit";
 import { clearPurchasedFromCart } from "./cart";
 import { formatOrderNumber } from "./checkout";
+import { recordActivity } from "./crm";
+import { createLicensesForOrder, notifyLicensesPurchased } from "./software-licensing";
 import { grantEntitlementSource } from "./entitlements";
+import { createLicenseForAllocation } from "./music-licenses";
 import { getMailer } from "./mailer";
 import { applyRefund, syncRefundFromStripe } from "./refunds";
 
@@ -79,7 +82,8 @@ export async function handleStripeEvent(event: Stripe.Event): Promise<{ duplicat
   }
 }
 
-type LockedOrder = { id: string; status: string; totalCents: number; currency: string; customerId: string };
+type LockedOrder = { id: string; number: number; status: string; totalCents: number; currency: string; customerId: string };
+const orderNumber = (o: LockedOrder) => o.number;
 
 export async function fulfillPaymentIntent(pi: Pick<Stripe.PaymentIntent, "id" | "amount_received" | "currency" | "metadata" | "latest_charge" | "status">) {
   const db = shopDb();
@@ -92,7 +96,7 @@ export async function fulfillPaymentIntent(pi: Pick<Stripe.PaymentIntent, "id" |
 
   const result = await db.$transaction(async (tx) => {
     const rows = await tx.$queryRaw<LockedOrder[]>`
-      SELECT "id", "status"::text AS "status", "totalCents", "currency", "customerId"
+      SELECT "id", "number", "status"::text AS "status", "totalCents", "currency", "customerId"
       FROM "Order" WHERE "id" = ${orderId}::uuid FOR UPDATE`;
     const order = rows[0];
     if (!order) return { fulfilled: false as const, reason: "ORDER_NOT_FOUND" };
@@ -117,19 +121,58 @@ export async function fulfillPaymentIntent(pi: Pick<Stripe.PaymentIntent, "id" |
       where: { id: order.id },
       data: { status: "PAID", paidAt: new Date(), stripePaymentIntentId: pi.id, stripeChargeId: chargeId },
     });
+    return fulfillLockedOrder(tx, order, { paymentIntentId: pi.id });
+  });
 
+  await afterFulfillment(orderId, result);
+  return result;
+}
+
+/** A zero-total order (free music): same fulfillment, no payment provider involved. */
+export async function fulfillFreeOrder(orderId: string) {
+  const result = await shopDb().$transaction(async (tx) => {
+    const rows = await tx.$queryRaw<LockedOrder[]>`
+      SELECT "id", "number", "status"::text AS "status", "totalCents", "currency", "customerId"
+      FROM "Order" WHERE "id" = ${orderId}::uuid FOR UPDATE`;
+    const order = rows[0];
+    if (!order) return { fulfilled: false as const, reason: "ORDER_NOT_FOUND" };
+    if (order.status !== "PENDING_PAYMENT") return { fulfilled: false as const, reason: "ALREADY_FULFILLED" };
+    if (order.totalCents !== 0) throw new Error("fulfillFreeOrder called for a paid order");
+    await tx.order.update({ where: { id: order.id }, data: { status: "PAID", paidAt: new Date() } });
+    return fulfillLockedOrder(tx, order, { paymentIntentId: null });
+  });
+  await afterFulfillment(orderId, result);
+  return result;
+}
+
+/**
+ * Grants everything a paid order bought, inside the caller's transaction with the order row
+ * locked: EntitlementSource (acquisition history) + MusicLicense for the target player (the
+ * playback right) per allocation, royalty ledger, software licenses, timeline. Idempotent:
+ * every write is keyed on the allocation / order line.
+ */
+async function fulfillLockedOrder(tx: ShopTx, order: LockedOrder, meta: { paymentIntentId: string | null }) {
     const allocations = await tx.orderItemAllocation.findMany({
       where: { orderId: order.id },
-      include: { orderItem: { select: { itemType: true, bundleId: true } } },
+      include: { orderItem: { select: { itemType: true, bundleId: true, arrangementId: true, targetPlayerId: true, targetPlayerNameSnapshot: true } } },
     });
 
     for (const a of allocations) {
-      await grantEntitlementSource(tx, {
+      const { entitlement, source } = await grantEntitlementSource(tx, {
         customerId: order.customerId,
         arrangementId: a.arrangementId,
         sourceType: a.orderItem.itemType === "BUNDLE" ? "BUNDLE" : "PURCHASE",
         orderAllocationId: a.id,
         sourceReference: a.orderItem.bundleId ? `bundle:${a.orderItem.bundleId}` : null,
+      });
+      await createLicenseForAllocation(tx, {
+        customerId: order.customerId,
+        currency: order.currency,
+        orderId: order.id,
+        allocation: a,
+        orderItem: a.orderItem,
+        entitlementId: entitlement.id,
+        entitlementSourceId: source.id,
       });
     }
 
@@ -150,24 +193,46 @@ export async function fulfillPaymentIntent(pi: Pick<Stripe.PaymentIntent, "id" |
       skipDuplicates: true,
     });
 
+    const licenses = await createLicensesForOrder(tx, order);
     await tx.order.update({ where: { id: order.id }, data: { status: "FULFILLED", fulfilledAt: new Date() } });
-    await audit({ type: "STRIPE" }, "order.fulfilled", { type: "Order", id: order.id }, {
-      paymentIntentId: pi.id, allocationCount: allocations.length,
+    await tx.customer.updateMany({
+      where: { id: order.customerId, crmStatus: { in: ["PROSPECT", "CUSTOMER", "INACTIVE"] } },
+      data: { crmStatus: "ACTIVE" },
+    });
+    // "Music purchased for Living Room Piano": one readable line per order.
+    const players = [...new Set(allocations.map((a) => a.orderItem.targetPlayerNameSnapshot ?? "a player chosen later"))];
+    await recordActivity({
+      tx,
+      customerId: order.customerId,
+      type: "order.paid",
+      summary: `${order.totalCents === 0 ? "Claimed free" : "Paid"} order ${formatOrderNumber(Number(orderNumber(order)))}${allocations.length ? ` (${allocations.length} arrangement${allocations.length === 1 ? "" : "s"} for ${players.join(", ")})` : ""}`,
+      metadata: { orderId: order.id, totalCents: order.totalCents, currency: order.currency },
+    });
+    await audit({ type: meta.paymentIntentId ? "STRIPE" : "SYSTEM" }, "order.fulfilled", { type: "Order", id: order.id }, {
+      paymentIntentId: meta.paymentIntentId, allocationCount: allocations.length,
     }, tx);
 
+    const items = await tx.orderItem.findMany({
+      where: { orderId: order.id },
+      select: { arrangementId: true, bundleId: true, softwareProductId: true, targetPlayerId: true },
+    });
     return {
       fulfilled: true as const,
       customerId: order.customerId,
-      arrangementIds: allocations.map((a) => a.arrangementId),
-      bundleIds: [...new Set(allocations.map((a) => a.orderItem.bundleId).filter(Boolean) as string[])],
+      purchased: items,
+      licenses,
     };
-  });
+}
 
+async function afterFulfillment(
+  orderId: string,
+  result: { fulfilled: true; customerId: string; purchased: Parameters<typeof clearPurchasedFromCart>[1]; licenses: Awaited<ReturnType<typeof createLicensesForOrder>> } | { fulfilled: false; reason: string },
+) {
   if (result.fulfilled) {
-    await clearPurchasedFromCart(result.customerId, result.arrangementIds, result.bundleIds).catch(() => undefined);
+    await clearPurchasedFromCart(result.customerId, result.purchased).catch(() => undefined);
+    await notifyLicensesPurchased(result.customerId, result.licenses).catch(() => undefined);
     await sendReceipt(orderId).catch(() => undefined);
   }
-  return result;
 }
 
 async function sendReceipt(orderId: string) {
@@ -182,8 +247,11 @@ async function sendReceipt(orderId: string) {
     orderNumber: formatOrderNumber(order.number),
     totalCents: order.totalCents,
     currency: order.currency,
-    items: order.items.map((i) => ({ title: i.titleSnapshot, chargedCents: i.chargedCents })),
-    libraryUrl: `${shopConfig.appBaseUrl}/en/shop/account/library`,
+    items: order.items.map((i) => ({
+      title: i.targetPlayerNameSnapshot ? `${i.titleSnapshot} (for ${i.targetPlayerNameSnapshot})` : i.titleSnapshot,
+      chargedCents: i.chargedCents,
+    })),
+    libraryUrl: `${shopConfig.appBaseUrl}/en/shop/account/music`,
   });
   await db.order.update({ where: { id: orderId }, data: { receiptSentAt: new Date() } });
 }

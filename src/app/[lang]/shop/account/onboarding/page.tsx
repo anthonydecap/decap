@@ -5,6 +5,7 @@ import { resolveUrlLang } from "@/i18n";
 import { loginUrl } from "@/modules/shop/auth/auth0";
 import { getCurrentCustomer } from "@/modules/shop/auth/session";
 import { shopConfig } from "@/modules/shop/config";
+import { profileDefaults } from "@/modules/shop/ui/store/account-server";
 import { shopCopy, shopPath } from "@/modules/shop/ui/store/copy";
 import { OnboardingForm } from "@/modules/shop/ui/store/OnboardingForm";
 
@@ -26,6 +27,7 @@ export default async function OnboardingPage({
   const safeReturn = returnTo && returnTo.startsWith("/") && !returnTo.startsWith("//") ? returnTo : shopPath(urlLang, "/account");
   const customer = await getCurrentCustomer();
   if (!customer) redirect(loginUrl(`${shopPath(urlLang, "/account/onboarding")}?returnTo=${encodeURIComponent(safeReturn)}`));
+  const defaults = await profileDefaults(customer.id);
 
   return (
     <section className="py-12 sm:py-16 lg:py-20">
@@ -40,11 +42,7 @@ export default async function OnboardingPage({
               versions={shopConfig.legalVersions}
               termsUrl={process.env.SHOP_TERMS_URL ?? `/${urlLang}/terms-of-sale`}
               privacyUrl={process.env.SHOP_PRIVACY_URL ?? `/${urlLang}/privacy-policy`}
-              defaults={{
-                firstName: customer.firstName ?? "",
-                lastName: customer.lastName ?? "",
-                countryCode: customer.countryCode ?? "",
-              }}
+              defaults={defaults}
             />
           </div>
         </div>

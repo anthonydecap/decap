@@ -28,6 +28,10 @@ export const POST = route(async (req) => {
   const result = await handleUploadPresigned({
     body,
     request: req,
+    // The SDK requires a webhook key up front, but it is only used to verify Blob's
+    // "upload-completed" callbacks. We never register callbacks and reject that event type
+    // above; uploads are verified by our own finalize step instead. A configured key wins.
+    webhookPublicKey: process.env.BLOB_WEBHOOK_PUBLIC_KEY || "unused-no-upload-callbacks",
     getSignedToken: async (pathname, clientPayload) => {
       const ticket = clientPayload ? verifyTicket(clientPayload, shopConfig.uploadTicketSecret) : null;
       if (!ticket) throw new ShopError("UPLOAD_EXPIRED", "Upload ticket expired or invalid");

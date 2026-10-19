@@ -46,6 +46,10 @@ export async function makeCustomer(opts: { verified?: boolean; onboarded?: boole
     },
   });
   if (opts.onboarded !== false) {
+    // Onboarding now captures a structured billing address (required for checkout).
+    await shopDb().customerAddress.create({
+      data: { customerId: customer.id, type: "BILLING", isDefault: true, name: "Maren Holtz", addressLine1: "Rue des Tanneurs 14", postalCode: "1000", city: "Brussels", countryCode: "BE" },
+    });
     const v = shopConfig.legalVersions;
     await shopDb().legalAcceptance.createMany({
       data: [
@@ -203,4 +207,39 @@ export function succeededEvent(pi: { id: string; amount: number; currency: strin
       },
     },
   };
+}
+
+let playerCounter = 0;
+
+/** A player type that can receive music unless told otherwise. */
+export async function makePlayerType(opts: { supportsMusicLibrary?: boolean; code?: string; systemProfileIds?: string[]; starterBundleId?: string } = {}) {
+  const code = opts.code ?? `TYPE_${++playerCounter}_${randomUUID().slice(0, 4)}`;
+  return shopDb().playerType.create({
+    data: {
+      code, name: opts.supportsMusicLibrary === false ? "MIDI Mapper" : "DMI Player",
+      supportsMusicLibrary: opts.supportsMusicLibrary ?? true,
+      starterBundleId: opts.starterBundleId ?? null,
+      ...(opts.systemProfileIds ? { systemProfiles: { connect: opts.systemProfileIds.map((id) => ({ id })) } } : {}),
+    },
+  });
+}
+
+/** A registered player straight in the database (ACTIVE by default). */
+export async function makePlayer(opts: { customerId: string; playerTypeId?: string; status?: "PENDING" | "ACTIVE" | "SUSPENDED" | "RETIRED"; friendlyName?: string }) {
+  const typeId = opts.playerTypeId ?? (await makePlayerType()).id;
+  const code = `REG${String(++playerCounter).padStart(5, "0")}${randomUUID().slice(0, 4).toUpperCase()}`;
+  const status = opts.status ?? "ACTIVE";
+  return shopDb().registeredPlayer.create({
+    data: {
+      customerId: opts.customerId, playerTypeId: typeId, registrationCode: code, registrationIdentifier: code,
+      friendlyName: opts.friendlyName ?? null, status, registeredAt: new Date(), activatedAt: status === "ACTIVE" ? new Date() : null,
+    },
+  });
+}
+
+/** A customer who can buy music: onboarded, with one ACTIVE player. */
+export async function makeBuyer(opts: Parameters<typeof makeCustomer>[0] = {}) {
+  const made = await makeCustomer(opts);
+  const player = await makePlayer({ customerId: made.customer.id });
+  return { ...made, player };
 }

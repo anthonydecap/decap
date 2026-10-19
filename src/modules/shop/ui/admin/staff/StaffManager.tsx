@@ -19,7 +19,7 @@ export type StaffRow = {
 
 type Candidate = { authSubject: string; email: string | null; name: string | null };
 
-const ROLES = [
+export const STAFF_ROLES = [
   { value: "SUPER_ADMIN", label: "Super admin", help: "Everything, plus staff and player transfers." },
   { value: "ADMIN", label: "Admin", help: "Day-to-day operations across the shop." },
   { value: "SUPPORT", label: "Support", help: "Customers, players and tickets. Reads orders, cannot refund." },
@@ -40,7 +40,7 @@ const STATUS_ACTIONS: Record<string, { to: "ACTIVE" | "SUSPENDED" | "DISABLED"; 
 };
 
 function roleLabel(value: string) {
-  return ROLES.find((r) => r.value === value)?.label ?? value;
+  return STAFF_ROLES.find((r) => r.value === value)?.label ?? value;
 }
 
 /**
@@ -166,7 +166,7 @@ function StaffRowView({ row, isSelf, isLastSuperAdmin }: { row: StaffRow; isSelf
               className={`${inputClass} w-auto py-1.5`}
               disabled={busy}
             >
-              {ROLES.map((r) => (
+              {STAFF_ROLES.map((r) => (
                 <option key={r.value} value={r.value}>
                   {r.label}
                 </option>
@@ -338,9 +338,9 @@ function PromotePanel() {
               autoComplete="off"
             />
           </Field>
-          <Field label="Role" htmlFor={`${id}-role`} help={ROLES.find((r) => r.value === role)?.help}>
+          <Field label="Role" htmlFor={`${id}-role`} help={STAFF_ROLES.find((r) => r.value === role)?.help}>
             <select id={`${id}-role`} value={role} onChange={(e) => setRole(e.target.value)} className={inputClass}>
-              {ROLES.map((r) => (
+              {STAFF_ROLES.map((r) => (
                 <option key={r.value} value={r.value}>
                   {r.label}
                 </option>

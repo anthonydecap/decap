@@ -183,6 +183,32 @@ async function main() {
     });
   }
 
+  // Two programs, bought the same way. Virtual Orchestrion is a player: every activated copy
+  // becomes a player and the music a customer buys is licensed to it. MIDI Mapper is a tool.
+  // They start ACTIVE so licenses can be sold right away; upload installers from the admin.
+  for (const sw of [
+    { slug: "virtual-orchestrion", name: "Virtual Orchestrion", shortDescription: "The DMI player: your music library, played on your instrument.", price: 89900,
+      instructions: "Open Virtual Orchestrion, go to Settings, then Registration, and copy the Registration Code shown there.", sortOrder: 0 },
+    { slug: "midi-mapper", name: "MIDI Mapper", shortDescription: "Map MIDI files to your instrument's layout.", price: 15000,
+      instructions: "Open MIDI Mapper, go to Help, then Registration, and copy the Registration Code shown there.", sortOrder: 1 },
+  ]) {
+    await db.softwareProduct.upsert({
+      where: { slug: sw.slug },
+      create: {
+        slug: sw.slug, name: sw.name, shortDescription: sw.shortDescription, status: "ACTIVE", trialAvailable: true, sortOrder: sw.sortOrder,
+        licenseRequiredForFullUse: true, defaultLicensePriceCents: sw.price, systemRequirements: "Windows 10 or 11 (64-bit)",
+        activationInstructions: sw.instructions,
+      },
+      update: { name: sw.name, defaultLicensePriceCents: sw.price },
+    });
+  }
+  const player = await db.softwareProduct.findUniqueOrThrow({ where: { slug: "virtual-orchestrion" } });
+  await db.playerType.upsert({
+    where: { code: "VIRTUAL_ORCHESTRION" },
+    create: { code: "VIRTUAL_ORCHESTRION", name: "Virtual Orchestrion", description: "Virtual Orchestrion activated on a computer", supportsMusicLibrary: true, softwareProductId: player.id },
+    update: { softwareProductId: player.id, supportsMusicLibrary: true, active: true },
+  });
+
   const adminSub = process.env.SHOP_SEED_ADMIN_SUB;
   if (adminSub) {
     await db.staffAccount.upsert({

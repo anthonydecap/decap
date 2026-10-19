@@ -16,7 +16,9 @@ export type ShopErrorCode =
   | "PAYMENT_PROVIDER_ERROR"
   | "STORAGE_ERROR"
   | "UPLOAD_EXPIRED"
-  | "INVALID_STATE";
+  | "INVALID_STATE"
+  /** Music needs a target player (or the chosen player cannot receive music). */
+  | "PLAYER_REQUIRED";
 
 const STATUS: Record<ShopErrorCode, number> = {
   UNAUTHENTICATED: 401,
@@ -36,6 +38,7 @@ const STATUS: Record<ShopErrorCode, number> = {
   STORAGE_ERROR: 502,
   UPLOAD_EXPIRED: 410,
   INVALID_STATE: 409,
+  PLAYER_REQUIRED: 409,
 };
 
 export class ShopError extends Error {

@@ -6,6 +6,7 @@ import { resolveUrlLang } from "@/i18n";
 import { getCurrentCustomer } from "@/modules/shop/auth/session";
 import { catalogQuerySchema } from "@/modules/shop/schemas";
 import { catalogFacets, searchCatalog } from "@/modules/shop/services/catalog";
+import { storefrontPlayerContext } from "@/modules/shop/services/storefront-player";
 import { toCatalogQuery } from "@/modules/shop/ui/catalog-params";
 import { ArrangementGrid } from "@/modules/shop/ui/store/ArrangementCard";
 import { shopCopy, shopPath } from "@/modules/shop/ui/store/copy";
@@ -26,16 +27,18 @@ export default async function BrowsePage({ params, searchParams }: { params: Pro
   const raw = Object.fromEntries(
     Object.entries(await searchParams).map(([k, v]) => [k, Array.isArray(v) ? v[0] : v]).filter(([, v]) => v !== "" && v != null),
   );
-  const parsed = catalogQuerySchema.safeParse(raw);
+  const { player, ...filters } = raw;
+  const parsed = catalogQuerySchema.safeParse(filters);
   const p = parsed.success ? parsed.data : {};
   const customer = await getCurrentCustomer();
-  const [result, facets] = await Promise.all([searchCatalog(toCatalogQuery(p), customer?.id), catalogFacets()]);
+  const ctx = customer ? await storefrontPlayerContext(customer.id, player) : null;
+  const [result, facets] = await Promise.all([searchCatalog(toCatalogQuery(p), ctx), catalogFacets()]);
   const action = shopPath(urlLang, "/browse");
   const pageHref = (page: number) => {
     const qs = new URLSearchParams({ ...(raw as Record<string, string>), page: String(page) });
     return `${action}?${qs.toString()}`;
   };
-  const hasFilters = Object.keys(raw).some((k) => k !== "page" && k !== "sort");
+  const hasFilters = Object.keys(raw).some((k) => k !== "page" && k !== "sort" && k !== "player");
 
   return (
     <section className="py-12 sm:py-16">
@@ -157,7 +160,7 @@ export default async function BrowsePage({ params, searchParams }: { params: Pro
                 {hasFilters && <Link href={action} className="mt-6 inline-block rounded-full border-2 border-neutral-950 px-6 py-2 text-sm font-semibold text-neutral-950 transition hover:bg-neutral-950 hover:text-white">{t.clearFilters}</Link>}
               </div>
             ) : (
-              <ArrangementGrid items={result.items} lang={urlLang} />
+              <ArrangementGrid items={result.items} lang={urlLang} playerId={ctx ? ctx.selectedPlayerId : undefined} />
             )}
             {result.pageCount > 1 && (
               <nav className="mt-12 flex items-center justify-between border-t border-neutral-200 pt-6 text-sm" aria-label="Pagination">

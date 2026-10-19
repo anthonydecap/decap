@@ -8,7 +8,8 @@ export const dynamic = "force-dynamic";
 
 /**
  * Moves a player to another customer. SUPER_ADMIN only (via players:transfer), needs a
- * reason, and lands on both customers' timelines. Never a quiet edit of customerId: this
+ * reason, and lands on both customers' timelines. The music on it follows the central
+ * resale policy (`libraryPolicy` is only accepted while that policy is ADMIN_DECIDES). Never a quiet edit of customerId: this
  * changes who may use the machine.
  */
 export const POST = adminRoute<{ id: string }>("players:transfer", async (req, { params, staff }) => {
@@ -19,6 +20,7 @@ export const POST = adminRoute<{ id: string }>("players:transfer", async (req, {
     playerId: uuidParam(id),
     toCustomerId: input.toCustomerId,
     reason: input.reason,
+    libraryPolicy: input.libraryPolicy,
   });
   return NextResponse.json({ playerId: moved.id, customerId: moved.customerId });
 });

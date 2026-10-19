@@ -100,3 +100,26 @@ export async function cartIdentity(customerId: string | null, opts: { create: bo
 export function clientIp(req: Request) {
   return (req.headers.get("x-forwarded-for") ?? "").split(",")[0]!.trim() || "unknown";
 }
+
+/**
+ * multipart/form-data with a JSON `payload` field plus `files`. The whole request is capped
+ * at 4 MB (serverless request limit), so attachments are validated again per file later.
+ */
+export async function parseMultipart<T>(req: Request, schema: ZodType<T>, maxBytes = 4 * 1024 * 1024): Promise<{ data: T; files: File[] }> {
+  const length = Number(req.headers.get("content-length") ?? 0);
+  if (length > maxBytes + 64 * 1024) throw new ShopError("VALIDATION_FAILED", "Attachments are limited to 4 MB per message");
+  const type = req.headers.get("content-type") ?? "";
+  if (!type.startsWith("multipart/form-data")) {
+    return { data: await parseJson(req, schema), files: [] };
+  }
+  const form = await req.formData();
+  let payload: unknown = {};
+  try {
+    payload = JSON.parse(String(form.get("payload") ?? "{}"));
+  } catch {
+    throw new ShopError("VALIDATION_FAILED", "Invalid form payload");
+  }
+  const files = form.getAll("files").filter((f): f is File => typeof f === "object" && f !== null && "arrayBuffer" in f && (f as File).size > 0);
+  if (files.reduce((s, f) => s + f.size, 0) > maxBytes) throw new ShopError("VALIDATION_FAILED", "Attachments are limited to 4 MB per message");
+  return { data: schema.parse(payload), files };
+}

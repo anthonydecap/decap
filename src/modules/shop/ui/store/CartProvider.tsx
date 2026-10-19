@@ -4,7 +4,23 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState } 
 import type { CartPricingResult, ExcludedLine, PricingNotice } from "../../domain/cart-pricing";
 import { apiFetch } from "../api";
 
-export type CartState = { cartId: string | null; pricing: CartPricingResult; itemCount: number };
+/** One of the customer's players that can receive music (as returned by the cart API). */
+export type CartPlayer = { id: string; name: string; typeName: string; maskedRegistration: string };
+
+export type CartState = {
+  cartId: string | null;
+  pricing: CartPricingResult;
+  itemCount: number;
+  /** The customer's eligible players (empty for anonymous carts). */
+  players?: CartPlayer[];
+  /** Music may be bought now and assigned to a player later. */
+  assignLaterAllowed?: boolean;
+};
+
+export type CartAddRequest =
+  | { type: "ARRANGEMENT"; arrangementId: string; targetPlayerId?: string | null }
+  | { type: "BUNDLE"; bundleId: string; targetPlayerId?: string | null }
+  | { type: "SOFTWARE_LICENSE"; softwareProductId: string };
 
 type CartContextValue = {
   cart: CartState | null;
@@ -14,10 +30,15 @@ type CartContextValue = {
   /** Price changes the server reported since the page loaded. */
   priceNotices: Extract<PricingNotice, { code: "PRICE_CHANGED" }>[];
   refresh: () => Promise<void>;
-  add: (item: { type: "ARRANGEMENT"; arrangementId: string } | { type: "BUNDLE"; bundleId: string }) => Promise<void>;
+  add: (item: CartAddRequest) => Promise<void>;
   remove: (cartItemId: string) => Promise<void>;
-  /** ids currently in the cart (charged or covered) */
-  contains: (refId: string) => boolean;
+  /** "This line is for player P" (only while the line is in the cart). */
+  setTarget: (cartItemId: string, playerId: string) => Promise<void>;
+  /**
+   * Whether an item is in the cart (charged or covered). With a player id (or null for
+   * "assign later") only lines for that target count; without one, any target does.
+   */
+  contains: (refId: string, playerId?: string | null) => boolean;
 };
 
 const CartContext = createContext<CartContextValue | null>(null);
@@ -67,12 +88,23 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     apply(await apiFetch<CartState>("/api/shop/cart", { method: "DELETE", body: { cartItemId } }));
   }, [apply]);
 
+  const setTarget = useCallback(async (cartItemId: string, playerId: string) => {
+    apply(await apiFetch<CartState>("/api/shop/cart", { method: "PATCH", body: { cartItemId, playerId } }));
+  }, [apply]);
+
   const value = useMemo<CartContextValue>(() => {
     const ids = new Set<string>();
-    for (const l of cart?.pricing.lines ?? []) ids.add(l.refId);
-    for (const e of cart?.pricing.excluded ?? []) if (!e.removeFromCart) ids.add(e.refId);
-    return { cart, loading, removedNotices, priceNotices, refresh, add, remove, contains: (id) => ids.has(id) };
-  }, [cart, loading, removedNotices, priceNotices, refresh, add, remove]);
+    const keys = new Set<string>();
+    const track = (refId: string, target: string | null | undefined) => {
+      ids.add(refId);
+      keys.add(`${refId}|${target ?? ""}`);
+    };
+    for (const l of cart?.pricing.lines ?? []) track(l.refId, l.targetPlayerId);
+    for (const e of cart?.pricing.excluded ?? []) if (!e.removeFromCart) track(e.refId, e.targetPlayerId);
+    const contains = (refId: string, playerId?: string | null) =>
+      playerId === undefined ? ids.has(refId) : keys.has(`${refId}|${playerId ?? ""}`);
+    return { cart, loading, removedNotices, priceNotices, refresh, add, remove, setTarget, contains };
+  }, [cart, loading, removedNotices, priceNotices, refresh, add, remove, setTarget]);
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }

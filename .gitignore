@@ -144,3 +144,4 @@ src/generated/
 # Playwright
 /test-results/
 /playwright-report/
+music-migration-*.json
