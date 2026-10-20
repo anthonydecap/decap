@@ -26,10 +26,19 @@ const TYPES = Object.fromEntries(
   ["page", "project"].map((t) => [t, JSON.parse(readFileSync(join(ROOT, "customtypes", t, "index.json"), "utf8"))]),
 );
 
-/** Blocks a rich text field does not allow (e.g. a list in a card text) become paragraphs. */
+/**
+ * Blocks a rich text field does not allow (e.g. a list in a card text) become paragraphs, and
+ * spans it does not allow (e.g. a link where only bold is enabled) are dropped.
+ */
 function fitToAllowedBlocks(blocks, multi, where) {
   if (!multi) return blocks;
   const allowed = new Set(multi.split(","));
+  const spanAllowed = (t) => allowed.has(t);
+  blocks = blocks.map((b) => {
+    const spans = b.spans.filter((sp) => spanAllowed(sp.type));
+    if (spans.length !== b.spans.length) console.warn(`  ⚠ ${where}: dropped ${b.spans.length - spans.length} span(s) this field does not allow`);
+    return { ...b, spans };
+  });
   return blocks.map((b) => {
     if (allowed.has(b.type)) return b;
     console.warn(`  ⚠ ${where}: ${b.type} not allowed here, written as a paragraph`);

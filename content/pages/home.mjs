@@ -135,7 +135,7 @@ export default {
       copyItemsFrom: { type: "page", uid: "home" },
       primary: {
         title: "Also played on stage",
-        description: "Our organs and instruments mostly play in homes, bars and dance halls. These artists take them on stage. [See the projects](/work).",
+        description: "Our organs and instruments mostly play in homes, bars and dance halls. These artists take them on stage.",
       },
       items: [
         { artist_name: "Pat Metheny" },

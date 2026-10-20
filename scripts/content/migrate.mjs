@@ -121,6 +121,14 @@ if (dry) {
   console.log("\nDry run: nothing sent.");
 } else {
   const write = prismic.createWriteClient(repo, { writeToken });
+  // Save IDs of created drafts even when a later step fails, so a re-run updates them.
+  const saveIds = () => {
+    for (const { document } of migration._documents) {
+      if (document.id && document.uid) ids[key(document.type, document.uid, document.lang)] = document.id;
+    }
+    writeFileSync(ID_FILE, JSON.stringify(ids, null, 2) + "\n");
+  };
+  process.on("exit", saveIds);
   await write.migrate(migration, {
     reporter: (event) => {
       if (event.type === "documents:created" || event.type === "documents:updated" || event.type === "end") {
@@ -128,9 +136,5 @@ if (dry) {
       }
     },
   });
-  for (const { document } of migration._documents) {
-    if (document.id && document.uid) ids[key(document.type, document.uid, document.lang)] = document.id;
-  }
-  writeFileSync(ID_FILE, JSON.stringify(ids, null, 2) + "\n");
   console.log("\nDone. Review the drafts in Prismic → Releases → Migration release, then publish.");
 }
