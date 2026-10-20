@@ -25,6 +25,7 @@ function Office({
   )
 }
 
+/** The workshop on the Langepad, home of Decap Herentals and Atelier Frank Decap. */
 export function Offices({
   invert = false,
   ...props
@@ -32,19 +33,17 @@ export function Offices({
   return (
     <ul role="list" {...props}>
       <li>
-        <Office name="Copenhagen" invert={invert}>
-          1 Carlsberg Gate
+        <Office name="Decap Herentals" invert={invert}>
+          Langepad 51C
           <br />
-          1260, København, Denmark
+          2200 Herentals, Belgium
         </Office>
       </li>
       <li>
-        <Office name="Billund" invert={invert}>
-          24 Lego Allé
-          <br />
-          7190, Billund, Denmark
+        <Office name="Atelier Frank Decap" invert={invert}>
+          Organ restoration, on the same site
         </Office>
       </li>
     </ul>
   )
-} 
+}
