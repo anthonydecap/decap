@@ -19,7 +19,6 @@ import { prismicLinkHref, type LinkLike } from '@/lib/prismic-link'
 import { Container } from './Container'
 import { Logo, Logomark } from './Logo'
 import { Offices } from './Offices'
-import { SocialMedia } from './SocialMedia'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { pathForHome } from '@/lib/locale-path'
 import type { UrlLocale } from '@/i18n'
@@ -329,7 +328,7 @@ function HeaderInner({
                 <div className="grid grid-cols-1 gap-y-10 pt-10 pb-16 sm:grid-cols-2 sm:pt-16">
                   <div>
                     <h2 className="font-display text-base font-semibold text-white">
-                      Our offices
+                      The workshop
                     </h2>
                     <Offices
                       invert
@@ -338,9 +337,17 @@ function HeaderInner({
                   </div>
                   <div className="sm:border-l sm:border-transparent sm:pl-16">
                     <h2 className="font-display text-base font-semibold text-white">
-                      Follow us
+                      Get in touch
                     </h2>
-                    <SocialMedia className="mt-6" invert />
+                    <p className="mt-6 text-sm text-neutral-300">
+                      <a href="tel:+3214224494" className="transition hover:text-white">
+                        +32 14 22 44 94
+                      </a>
+                      <br />
+                      <a href="mailto:info@decap.be" className="transition hover:text-white">
+                        info@decap.be
+                      </a>
+                    </p>
                   </div>
                 </div>
               </Container>
