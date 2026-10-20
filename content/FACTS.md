@@ -214,3 +214,8 @@ Existing Prismic pages (keep): `accordion`, `pipes`, `percussion-unit`, `mallet-
 - **L'Explorateur**: based in Toulouse; modular, so no fixed number of pipes.
 - **Analytics**: Google Analytics (consent banner needed). No newsletter.
 - 1977 and 2000 milestones still to be verified by Tony (keep as stated).
+- **Most customers are private**: people who have a Decap organ or instrument at home, in their
+  bar or café, or in a dance hall. Artists are a minority: never make the site look artist-only.
+- **Artists who worked with Decap organs/instruments** (all confirmed real): Guido Belcanto, Gamut
+  Inc, Maxime Denuc, Yves Rechsteiner, Stephan Eicher, Pat Metheny, Walter Hus, Circus Ronaldo.
+  Mention them by name (artist slider with existing portraits); no full case study needed.

@@ -88,6 +88,9 @@ export function buildSlice(slice, where) {
   if (!model) throw new Error(`${where}: unknown slice "${slice.type}"`);
   const variation = model.variations.find((v) => v.id === (slice.variation ?? "default"));
   return {
+    // `copyItemsFrom: { type, uid }` keeps the items (with their images) of the same slice on an
+    // existing published document; migrate.mjs puts them before this slice's own items.
+    ...(slice.copyItemsFrom ? { __copyItemsFrom: slice.copyItemsFrom } : {}),
     slice_type: slice.type,
     slice_label: null,
     variation: variation.id,

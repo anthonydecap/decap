@@ -32,7 +32,7 @@ if (process.argv[1] === import.meta.filename) {
   for (const { file, content } of await loadContent()) {
     try {
       const doc = buildDocument(content);
-      if (write) writeFileSync(join(out, `${doc.uid}.json`), JSON.stringify(doc));
+      if (write) writeFileSync(join(out, `${doc.uid}.json`), JSON.stringify(doc, (k, v) => (k === "__copyItemsFrom" ? undefined : v)));
       const json = JSON.stringify(content);
       for (const m of json.matchAll(/\[TO CHECK:([^\]]*)\]/g)) todos.push(`${file}: ${m[1].trim()}`);
       const meta = content.meta_title?.length ?? 0;

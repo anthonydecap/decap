@@ -4,6 +4,8 @@ import { PrismicNextLink, PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText, type JSXMapSerializer } from "@prismicio/react";
 import { Container } from "@/components/Container";
 import { FadeIn } from "@/components/FadeIn";
+import { MediaPlaceholder } from "@/components/MediaSlot";
+import { isFilled } from "@prismicio/client";
 
 const components: JSXMapSerializer = {
   hyperlink: ({ node, children }) => (
@@ -56,14 +58,18 @@ const HomeArtists: FC<HomeArtistsProps> = ({ slice }) => {
                   className="w-[220px] shrink-0 lg:w-[240px]"
                 >
                   <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-neutral-800">
-                    {artist.artist_portrait ? (
-                      <PrismicNextImage
-                        field={artist.artist_portrait}
-                        className="h-full w-full object-cover"
-                        alt=""
-                      />
-                    ) : null}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
+                    {isFilled.image(artist.artist_portrait) ? (
+                      <>
+                        <PrismicNextImage
+                          field={artist.artist_portrait}
+                          className="h-full w-full object-cover"
+                          alt=""
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
+                      </>
+                    ) : (
+                      <MediaPlaceholder tone="dark" brief={`Portrait of ${artist.artist_name || "the artist"}, ideally with the Decap instrument, 4:5`} />
+                    )}
                   </div>
 
                   <div className="mt-4 text-center">

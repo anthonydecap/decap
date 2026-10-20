@@ -61,9 +61,28 @@ function dropForeignImages(node) {
 const migration = prismic.createMigration();
 const plan = [];
 
+/** Resolves `copyItemsFrom`: existing items (e.g. artist portraits) go first. */
+function resolveCopiedItems(doc) {
+  for (const slice of doc.data.slices) {
+    const from = slice.__copyItemsFrom;
+    delete slice.__copyItemsFrom;
+    if (!from) continue;
+    const source = find(from.type, from.uid, from.lang ?? doc.lang);
+    const existingSlice = source?.data.slices?.find((s) => s.slice_type === slice.slice_type);
+    if (!existingSlice) {
+      console.log(`  ⚠ ${doc.uid}: no ${slice.slice_type} on ${from.type}/${from.uid} to copy items from`);
+      continue;
+    }
+    const names = new Set(existingSlice.items.map((i) => JSON.stringify(Object.values(i).filter((v) => typeof v === "string"))));
+    const own = slice.items.filter((i) => !names.has(JSON.stringify(Object.values(i).filter((v) => typeof v === "string"))));
+    slice.items = [...structuredClone(existingSlice.items), ...own];
+  }
+}
+
 for (const { content } of await loadContent()) {
   if (only.length && !only.includes(content.uid)) continue;
   const doc = buildDocument(content);
+  resolveCopiedItems(doc);
   const current = find(doc.type, doc.uid, doc.lang);
   if (current) {
     current.data = doc.data;
