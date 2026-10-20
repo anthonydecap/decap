@@ -187,4 +187,31 @@ describe("Stripe webhook", () => {
     const res = await orderGET(new Request("http://x"), ctx({ id: prepared.orderId }));
     expect(res.status).toBe(404);
   });
+
+  it("never cancels an order Stripe already took money for, even without a webhook", async () => {
+    const { customer, session } = await makeBuyer();
+    const a = await makeArrangement({ priceCents: 1000 });
+    const b = await makeArrangement({ priceCents: 2000 });
+    await addToCart({ customerId: customer.id, anonymousToken: null }, { type: "ARRANGEMENT", arrangementId: a.arrangement.id });
+    const first = await prepareCheckout(customer);
+    // Paid in Stripe, but the webhook never arrives.
+    const pi = [...stripeFake.intents.values()][0]! as Record<string, unknown>;
+    Object.assign(pi, { status: "succeeded", amount_received: pi.amount, latest_charge: "ch_paid" });
+
+    // The success page asks for the order: the server checks Stripe and fulfills it.
+    signInAs(session);
+    const status = await (await orderGET(new Request("http://x"), ctx({ id: first.orderId }))).json();
+    expect(status.fulfilled).toBe(true);
+
+    // A second paid order, then a new checkout with a different cart: the paid one is fulfilled, not cancelled.
+    await addToCart({ customerId: customer.id, anonymousToken: null }, { type: "ARRANGEMENT", arrangementId: b.arrangement.id });
+    const second = await prepareCheckout(customer);
+    const pi2 = stripeFake.intents.get((await shopDb().order.findUniqueOrThrow({ where: { id: second.orderId } })).stripePaymentIntentId!)! as Record<string, unknown>;
+    Object.assign(pi2, { status: "succeeded", amount_received: pi2.amount, latest_charge: "ch_paid_2" });
+    const c = await makeArrangement({ priceCents: 500 });
+    await addToCart({ customerId: customer.id, anonymousToken: null }, { type: "ARRANGEMENT", arrangementId: c.arrangement.id });
+    await prepareCheckout(customer);
+    expect((await shopDb().order.findUniqueOrThrow({ where: { id: second.orderId } })).status).toBe("FULFILLED");
+    expect(stripeFake.calls.some((x) => x.method === "paymentIntents.cancel" && x.args[0] === pi2.id)).toBe(false);
+  });
 });

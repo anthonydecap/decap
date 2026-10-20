@@ -19,6 +19,8 @@
     "shop:seed": "tsx prisma/seed.ts",
     "shop:staff": "tsx scripts/shop-staff.ts",
     "shop:migrate-music": "tsx scripts/migrate-music-licenses.ts",
+    "shop:stripe": "sh -c 'set -a; [ -f .env ] && . ./.env; [ -f .env.local ] && . ./.env.local; STRIPE_API_KEY=$STRIPE_SECRET_KEY ${STRIPE_CLI:-$HOME/.local/bin/stripe} listen --forward-to localhost:3000/api/stripe/webhook'",
+    "shop:reconcile-payments": "tsx --conditions=react-server scripts/reconcile-payments.ts",
     "stripe:listen": "set -a && . ./.env && set +a && ${STRIPE_CLI:-$HOME/.local/bin/stripe} listen --api-key $STRIPE_SECRET_KEY --forward-to localhost:3000/api/stripe/webhook --events payment_intent.succeeded,payment_intent.payment_failed,payment_intent.canceled,refund.created,refund.updated,refund.failed,charge.refunded"
   },
   "dependencies": {

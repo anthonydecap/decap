@@ -64,8 +64,13 @@ Customers and staff are linked to Auth0 by the `sub` claim only, never by email.
 ## Stripe (test mode)
 
 - Embedded Payment Element + PaymentIntents. The server reprices the cart and snapshots an immutable order before creating the intent.
-- **Only the webhook fulfills.** Configure an endpoint at `https://<domain>/api/stripe/webhook` with events
+- **The webhook fulfills.** Configure an endpoint at `https://<domain>/api/stripe/webhook` with events
   `payment_intent.succeeded`, `payment_intent.payment_failed`, `payment_intent.canceled`, `refund.created`, `refund.updated`, `refund.failed`, `charge.refunded`.
+- **Local development:** run `npm run shop:stripe` next to `npm run dev`. It forwards Stripe events to
+  `localhost:3000/api/stripe/webhook`; its signing secret is the `STRIPE_WEBHOOK_SECRET` in `.env`.
+- **Safety net for missed webhooks:** the server asks Stripe directly (never trusting the browser) when the
+  customer returns from payment, before a new checkout cancels older pending orders, and when staff open an
+  order. A paid order is fulfilled, never cancelled. `npm run shop:reconcile-payments` checks all pending orders.
 - Test card `4242 4242 4242 4242`, any future date, any CVC. `4000 0025 0000 3155` triggers 3-D Secure.
 - Live keys are refused unless `SHOP_ALLOW_LIVE_STRIPE=true`.
 - **Not handled yet:** VAT/OSS calculation for EU digital sales. Prices are shown "VAT included where applicable". Stripe Tax can be added to the PaymentIntent step when you are ready.

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { roleHasPermission } from "@/modules/shop/auth/session";
 import { shopDb } from "@/modules/shop/db";
 import { getOrderAdmin } from "@/modules/shop/services/admin-ops";
+import { reconcileOrderPayment } from "@/modules/shop/services/payment-reconcile";
 import { existingPlayers } from "@/modules/shop/services/music-admin-ui";
 import { licenseNumber } from "@/modules/shop/services/software-licensing";
 import { guardStaffPage } from "@/modules/shop/ui/admin/guard";
@@ -33,6 +34,9 @@ export default async function AdminOrderPage({ params }: { params: Promise<{ id:
   if (!guard.ok) return <NoAccess reason={guard.reason} returnTo={path} />;
   if (!UUID.test(id)) notFound();
 
+  // A pending or cancelled order with a PaymentIntent: check Stripe so staff never see a
+  // paid order as unpaid just because a webhook was missed.
+  if (/^[0-9a-f-]{36}$/i.test(id)) await reconcileOrderPayment(id).catch(() => undefined);
   const order = await getOrderAdmin(id);
   if (!order) notFound();
 
