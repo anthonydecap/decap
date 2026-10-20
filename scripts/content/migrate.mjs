@@ -84,6 +84,32 @@ function resolveCopiedItems(doc) {
  * Fills image slots from content/images.mjs: `{ url, alt }` uploads the file to Prismic (each URL
  * once), `{ artist, alt }` reuses that artist's portrait from the home page's artist slider.
  */
+/** Existing media library assets by filename, so an image is uploaded only once across runs. */
+async function loadExistingAssets() {
+  const byName = new Map();
+  if (!writeToken) return byName;
+  let cursor = "";
+  do {
+    const res = await fetch(`https://asset-api.prismic.io/assets?limit=100${cursor ? `&cursor=${cursor}` : ""}`, {
+      headers: { authorization: `Bearer ${writeToken}`, repository: repo },
+    });
+    if (!res.ok) break;
+    const page = await res.json();
+    for (const a of page.items ?? []) if (!byName.has(a.filename)) byName.set(a.filename, a);
+    cursor = page.items?.length ? page.cursor : "";
+  } while (cursor);
+  return byName;
+}
+const existingAssets = await loadExistingAssets();
+const assetField = (a, alt) => ({
+  id: a.id,
+  url: a.url,
+  alt: alt ?? a.alt ?? null,
+  copyright: a.credits ?? null,
+  dimensions: { width: a.width, height: a.height },
+  edit: { x: 0, y: 0, zoom: 1, background: "transparent" },
+});
+
 const homeArtists = find("page", "home", "en-us")?.data.slices?.find((s) => s.slice_type === "home_artists")?.items ?? [];
 function applyImages(doc) {
   for (const [slot, img] of Object.entries(imageMap[doc.uid] ?? {})) {
@@ -97,7 +123,8 @@ function applyImages(doc) {
       else console.log(`  ⚠ ${doc.uid} ${slot}: no portrait for ${img.artist}`);
     } else {
       const filename = decodeURIComponent(img.url.split("/").pop());
-      target.image = migration.createAsset(img.url, filename, { alt: img.alt });
+      const existing = existingAssets.get(filename);
+      target.image = existing ? assetField(existing, img.alt) : migration.createAsset(img.url, filename, { alt: img.alt });
     }
   }
 }

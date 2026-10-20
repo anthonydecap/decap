@@ -82,7 +82,7 @@ export default {
     "1": { url: "https://orchestrionix.com/wp-content/uploads/2023/08/image-6-1.png", alt: "Archive photos: an early Decap delivery truck, a Monte Carlo organ and a family portrait" },
     "2.9": { url: "https://orchestrionix.com/wp-content/uploads/2023/08/Products-AccordionPedestal-05.jpg", alt: "Accordion Pedestal" },
     "2.11": { url: "https://orchestrionix.com/wp-content/uploads/2023/08/20221008_mohaibalazs_074-2-1.png", alt: "Organ pipe parts from the CNC" },
-    "2.12": { url: "https://orchestrionix.com/wp-content/uploads/2023/08/20221008_mohaibalazs_074-1-2-1.png", alt: "Render of L'Explorateur, a modular transportable organ" },
+    "2.12": { url: "https://orchestrionix.com/wp-content/uploads/2023/08/20221008_mohaibalazs_074-2-2.jpeg", alt: "A stage production with L'Explorateur" },
     "3": { url: "https://orchestrionix.com/wp-content/uploads/2023/08/20221008_mohaibalazs_074-2.jpeg", alt: "Historic Decap orchestrion fa\u00e7ade with the Decap name" },
   },
   "work": {
@@ -94,7 +94,7 @@ export default {
     "1.5": { url: "https://orchestrionix.com/wp-content/uploads/2023/10/Trailer_2023-Oct-07_10-13-09PM-000_CustomizedView1077535285-1.png", alt: "Orchestrion, trailer design" },
     "1.6": { url: "https://orchestrionix.com/wp-content/uploads/2023/09/PIJPUNIT_2023-Sep-10_01-34-16PM-000_CustomizedView4543563871_small.png", alt: "Render of a Pipe Cube" },
     "1.7": { url: "https://orchestrionix.com/wp-content/uploads/2023/08/decap-protfolio-img2.png", alt: "Decap organ with lit fa\u00e7ade" },
-    "3.0": { artist: "Yves Rechsteiner", alt: "Yves Rechsteiner" },
+    "3.0": { url: "https://orchestrionix.com/wp-content/uploads/2023/08/image-6-1.jpeg", alt: "A stage production with L'Explorateur" },
     "3.1": { url: "https://orchestrionix.com/wp-content/uploads/2023/08/20221008_mohaibalazs_074-2-1.jpeg", alt: "Stephan Eicher und die Automaten on stage" },
     "3.2": { url: "https://orchestrionix.com/wp-content/uploads/2023/08/20221008_mohaibalazs_074-1-1.jpeg", alt: "The orchestrion room at the House of Music Hungary" },
     "3.3": { url: "https://orchestrionix.com/wp-content/uploads/2023/08/20221008_mohaibalazs_074-1-2.jpeg", alt: "BELEM: Didier Laloy and Kathy Adam with Walter Hus" },
@@ -126,8 +126,8 @@ export default {
     "2": { url: "https://orchestrionix.com/wp-content/uploads/2023/08/20221008_mohaibalazs_074-3-2.jpeg", alt: "Walter Hus in front of the pipes" },
   },
   "yves-rechsteiner": {
-    "0": { artist: "Yves Rechsteiner", alt: "Yves Rechsteiner" },
-    "1": { url: "https://orchestrionix.com/wp-content/uploads/2023/08/20221008_mohaibalazs_074-1-2-1.png", alt: "Render of L'Explorateur, modular transportable organ" },
+    "0": { url: "https://orchestrionix.com/wp-content/uploads/2023/08/20221008_mohaibalazs_074-2-2.jpeg", alt: "A stage production with L'Explorateur: four dancers in front of the organ" },
+    "1": { url: "https://orchestrionix.com/wp-content/uploads/2023/08/20221008_mohaibalazs_074-3-3.jpeg", alt: "Dancers on stage in front of L'Explorateur, an organist at the console" },
     "2": { url: "https://orchestrionix.com/wp-content/uploads/2023/08/d.png", alt: "Render of a SmartValve" },
   },
 };
