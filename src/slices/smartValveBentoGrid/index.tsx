@@ -10,8 +10,8 @@ import {
 } from "@prismicio/react";
 import { Container } from "@/components/Container";
 import { FadeIn, FadeInStagger } from "@/components/FadeIn";
+import { SMARTVALVE_GRADIENT } from "@/lib/brand";
 
-const SMARTVALVE_GRADIENT = ["#3b82f6", "#a855f7", "#ec4899", "#ef4444", "#f97316", "#eab308"];
 
 function getGradient(index: number): string {
   const i = index % 6;

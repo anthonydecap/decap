@@ -53,6 +53,11 @@ export async function proxy(request: NextRequest) {
     return auth0().middleware(request);
   }
 
+  // Other API routes (contact, Prismic preview/revalidate webhook): never locale-prefixed.
+  if (pathname.startsWith("/api/")) {
+    return NextResponse.next();
+  }
+
   if (!pathnameHasLocale(request)) {
     return createLocaleRedirect(request);
   }

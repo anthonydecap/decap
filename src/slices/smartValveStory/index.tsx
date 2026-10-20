@@ -21,9 +21,9 @@ import { Pause, Play } from "@phosphor-icons/react";
 import { Container } from "@/components/Container";
 import { FadeIn } from "@/components/FadeIn";
 import clsx from "clsx";
+import { SMARTVALVE_GRADIENT } from "@/lib/brand";
 
 /** SmartValve gradient — stretched across all step rules so together they read as one line */
-const SMARTVALVE_GRADIENT = ["#3b82f6", "#a855f7", "#ec4899", "#ef4444", "#f97316", "#eab308"];
 const FULL_GRADIENT = `linear-gradient(to right, ${SMARTVALVE_GRADIENT.join(", ")})`;
 
 /** How long a step without video stays on screen before advancing */

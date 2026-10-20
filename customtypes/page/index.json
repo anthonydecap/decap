@@ -22,6 +22,20 @@
           "single": "heading1"
         }
       },
+      "theme": {
+        "type": "Select",
+        "config": {
+          "label": "Page style",
+          "placeholder": "decap = standard light. smartvalve = dark + gradient (SmartValve only). orchestrionix = brass accent (Brass Core only). atelier = Atelier Frank Decap.",
+          "options": [
+            "decap",
+            "smartvalve",
+            "orchestrionix",
+            "atelier"
+          ],
+          "default_value": "decap"
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

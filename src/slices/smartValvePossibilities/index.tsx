@@ -12,9 +12,9 @@ import { Container } from "@/components/Container";
 import { FadeIn, FadeInStagger } from "@/components/FadeIn";
 
 import clsx from "clsx";
+import { SMARTVALVE_GRADIENT } from "@/lib/brand";
 
 /** SmartValve gradient — distributed across cards so together they form the complete gradient */
-const SMARTVALVE_GRADIENT = ["#3b82f6", "#a855f7", "#ec4899", "#ef4444", "#f97316", "#eab308"];
 
 function getGradientForCard(index: number, total: number): string {
   if (total <= 0) return `linear-gradient(to right, ${SMARTVALVE_GRADIENT[0]}, ${SMARTVALVE_GRADIENT[1]})`;

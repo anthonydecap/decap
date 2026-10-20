@@ -10,7 +10,7 @@
         "type": "Text",
         "config": {
           "label": "Site Name",
-          "placeholder": "Studio"
+          "placeholder": "Decap"
         }
       },
       "logo": {
@@ -104,25 +104,47 @@
           }
         }
       },
-      "newsletter_title": {
+      "company_name": {
         "type": "Text",
         "config": {
-          "label": "Newsletter Title",
-          "placeholder": "Newsletter"
+          "label": "Company name",
+          "placeholder": "Decap Herentals"
         }
       },
-      "newsletter_description": {
+      "company_address": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Address",
+          "placeholder": "Langepad 51C, 2200 Herentals, Belgium",
+          "multi": "paragraph"
+        }
+      },
+      "company_phone": {
         "type": "Text",
         "config": {
-          "label": "Newsletter Description",
-          "placeholder": "Subscribe to get the latest design news, articles, resources and inspiration."
+          "label": "Phone",
+          "placeholder": "+32 14 22 44 94"
+        }
+      },
+      "company_email": {
+        "type": "Text",
+        "config": {
+          "label": "Email",
+          "placeholder": "info@decap.be"
+        }
+      },
+      "company_vat": {
+        "type": "Text",
+        "config": {
+          "label": "VAT / company number",
+          "placeholder": "BE 0450.352.984"
         }
       },
       "copyright_text": {
         "type": "Text",
         "config": {
           "label": "Copyright Text",
-          "placeholder": "© Studio Agency Inc."
+          "placeholder": "\u00a9 Decap Herentals"
         }
       }
     }
