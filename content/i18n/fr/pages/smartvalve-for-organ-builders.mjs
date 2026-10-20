@@ -1,0 +1,201 @@
+/** SmartValve for organ builders, French (Prismic page "smartvalve-for-organ-builders"): the B2B page. No prices, no competitor names. */
+export default {
+  type: "page",
+  uid: "smartvalve-for-organ-builders",
+  lang: "fr-fr",
+  title: "SmartValve pour facteurs d'orgues",
+  theme: "smartvalve",
+  meta_title: "Soupape proportionnelle pour tuyaux d'orgue | SmartValve",
+  meta_description:
+    "SmartValve : une soupape proportionnelle pour tuyaux d'orgue avec son propre processeur. Vent régulé par tuyau, jeux numériques, MIDI optique, orgues neufs.",
+  slices: [
+    {
+      type: "site_hero",
+      primary: {
+        layout: "Split",
+        eyebrow: "SmartValve pour facteurs d'orgues",
+        title: "Une soupape proportionnelle avec un processeur dans chaque soupape",
+        intro:
+          "SmartValve règle le vent de chaque tuyau séparément, plus de 1 000 fois par seconde. Vos tuyaux gardent leur voix ; l'orgue gagne en dynamique, en expression, et en jeux définis dans le logiciel. Conçue et construite par Decap à Herentals, et éprouvée sur scène en concert.",
+        primary_cta_label: "Demander la documentation technique",
+        primary_cta_link: "#contact-form",
+        secondary_cta_label: "Découvrir SmartValve",
+        secondary_cta_link: "/smartvalve",
+        note: "Pour les orgues neufs, et pour les orgues existants en remplaçant les chapes. Prix sur demande.",
+        image_brief: "A row of SmartValves mounted under pipes on a wind chest, dark background, low side light, portrait 4:5",
+      },
+    },
+    {
+      type: "site_facts",
+      primary: {
+        layout: "Stats",
+      },
+      items: [
+        { value: "1 000×", label: "par seconde, le vent de chaque tuyau est mesuré et corrigé" },
+        { value: "0–200 %", label: "de pression de vent par tuyau, enregistrée dans la soupape" },
+        { value: "4 ms", label: "de temps de réponse" },
+        { value: "200 m+", label: "de MIDI optique, 100 fois plus rapide que le MIDI classique" },
+      ],
+    },
+    {
+      type: "site_card_grid",
+      primary: {
+        eyebrow: "Trois générations de soupapes",
+        title: "De l'ouvert-fermé au contrôle de chaque tuyau",
+        intro:
+          "Les transmissions électriques ont longtemps traité la soupape de tuyau comme un interrupteur. Les soupapes plus récentes suivent la touche. SmartValve va un pas plus loin : elle règle le vent lui-même.",
+        columns: "3",
+        card_style: "Text cards",
+      },
+      items: [
+        {
+          tag: "Génération 1",
+          title: "Soupape tout ou rien",
+          body: "Un électroaimant ouvre la soupape entièrement ou la ferme. Fiable et simple, mais chaque note parle de la même façon, quelle que soit la manière de jouer la touche.",
+        },
+        {
+          tag: "Génération 2",
+          title: "Soupape qui suit la position",
+          body: "L'ouverture de la soupape suit la course de la touche : l'organiste façonne l'attaque. Une fois la touche enfoncée, le tuyau reste où il est.",
+        },
+        {
+          tag: "SmartValve",
+          title: "Régulation du vent en boucle fermée",
+          body: "Un processeur dans chaque soupape régule le vent de son tuyau, pendant l'attaque et pendant toute la durée de la note. Elle peut suivre la touche, ou tout ce que vous lui attribuez.",
+        },
+      ],
+    },
+    {
+      type: "site_text_media",
+      primary: {
+        eyebrow: "À chaque tuyau son vent",
+        title: "Mesuré et corrigé pendant que la note sonne",
+        body:
+          "SmartValve est assez petite pour se placer sur la chape, à quelques millimètres du pied du tuyau. Son processeur mesure la chute de pression en entrée et ouvre davantage pour la compenser, plus de 1 000 fois par seconde. Quand de nombreux tuyaux parlent en même temps, chaque tuyau garde son vent. Dans L'Explorateur, les régulateurs de vent sont ainsi devenus inutiles : une soufflerie et une caisse de distribution suffisent.\n\nLa pression de base de chaque tuyau est enregistrée dans la soupape, de 0 à 200 %. Une partie du réglage qui se faisait autrefois au banc d'harmonisation peut ainsi se faire, et se refaire, dans le logiciel.",
+        media_side: "Image right",
+        aspect: "Landscape 4:3",
+        image_brief: "Close-up of one SmartValve with its electronics visible, dark background, 4:3",
+      },
+      items: [
+        { point: "Régulé à quelques millimètres du pied du tuyau" },
+        { point: "Une émission stable quand de nombreux tuyaux sonnent ensemble" },
+        { point: "Pression de base par tuyau enregistrée dans la soupape" },
+      ],
+    },
+    {
+      type: "site_text_media",
+      primary: {
+        eyebrow: "La position de la touche, ou autre chose",
+        title: "Attribuez n'importe quel MIDI à n'importe quel tuyau",
+        body:
+          "SmartValve est entièrement numérique : c'est vous qui décidez de ce qui la commande. Associez la position de la touche à l'ouverture de la soupape, et elle se comporte exactement comme une soupape qui suit la position. Associez la vélocité, l'aftertouch, un contrôleur ou une courbe d'automation d'un séquenceur, et le même tuyau fait ce qu'aucune soupape mécanique ne peut faire.\n\n- Crescendo et decrescendo sur une note tenue\n- Vibrato et trémolo par tuyau, et non par sommier\n- Courbes de pression, attaque (slope) et extinction (decay) pour chaque note\n- Le comportement classique tout ou rien quand la musique le demande",
+        media_side: "Image left",
+        aspect: "Landscape 4:3",
+        image_brief: "Screen of the SmartValve software with a pressure curve, next to an organ keyboard, 4:3",
+        tone: "Tinted",
+      },
+    },
+    {
+      type: "site_text_media",
+      primary: {
+        eyebrow: "Jeux numériques",
+        title: "Des jeux définis dans le logiciel, en toute combinaison",
+        body:
+          "Comme chaque tuyau a son propre processeur et sa propre adresse, un jeu n'est plus figé dans le sommier. Avec notre logiciel, vous attribuez n'importe quelle combinaison de tuyaux à un jeu, chaque tuyau avec ses propres réglages de pression. Dans un orgue entièrement construit sur SmartValve, le nombre de combinaisons est pratiquement illimité ; quand SmartValve complète un orgue existant, le système de commande d'origine peut imposer des limites, et nous l'examinons projet par projet.\n\nL'orgue n'est pas terminé le jour de la livraison : des jeux peuvent être ajoutés ou modifiés plus tard, sans toucher au sommier.",
+        media_side: "Image right",
+        aspect: "Landscape 4:3",
+        image_brief: "Screenshot of the stop configuration in the SmartValve software, pipes grouped into stops, 4:3",
+      },
+      items: [
+        { point: "N'importe quelle combinaison de tuyaux forme un jeu" },
+        { point: "Réglages de pression par tuyau, par jeu" },
+        { point: "Les jeux restent modifiables après l'installation" },
+      ],
+    },
+    {
+      type: "site_text_media",
+      primary: {
+        eyebrow: "MIDI optique",
+        title: "De la console au sommier par la lumière",
+        body:
+          "Les SmartValves sont reliées par MIDI optique : plus de 100 fois la vitesse du MIDI classique, sur des distances de 200 m et plus. La lumière ne transporte aucune perturbation électrique : la console peut se placer là où l'orgue en a besoin. [En savoir plus sur SmartValve](/smartvalve).",
+        media_side: "Image left",
+        aspect: "Landscape 4:3",
+        image_brief: "Optical MIDI cable plugged into a SmartValve controller, glowing connector, dark background, 4:3",
+      },
+    },
+    {
+      type: "site_quote",
+      primary: {
+        quote: "Cette technologie transforme en substance un orgue à tuyaux en synthétiseur physique.",
+        name: "Studio 31, Basel",
+        role: "À propos de L'Explorateur, l'orgue de concert transportable équipé d'une SmartValve sur chaque tuyau",
+      },
+    },
+    {
+      type: "site_steps",
+      primary: {
+        eyebrow: "Travailler avec nous",
+        title: "De la première question à l'orgue qui joue",
+      },
+      items: [
+        { title: "Présentez-nous le projet", body: "Un orgue neuf ou existant, les sommiers, le nombre de tuyaux et ce que l'instrument doit pouvoir faire." },
+        { title: "Documentation technique", body: "Spécifications, dimensions et câblage pour votre projet, pour que votre équipe puisse juger de l'intégration." },
+        { title: "Démonstration", body: "Écoutez SmartValve sur de vrais tuyaux, dans notre atelier de Herentals ou en visioconférence." },
+        { title: "Accompagnement à l'intégration", body: "Nous accompagnons votre équipe pour l'installation, la configuration des soupapes et les jeux numériques." },
+      ],
+    },
+    {
+      type: "site_faq",
+      primary: {
+        title: "Les questions des facteurs d'orgues",
+      },
+      items: [
+        {
+          question: "SmartValve peut-elle se comporter comme une soupape classique ?",
+          answer: "Oui. SmartValve est entièrement numérique : elle peut fonctionner en tout ou rien, suivre la position de la touche, ou réagir à la vélocité, à l'aftertouch et à tout autre MIDI que vous lui attribuez. Vous choisissez par tuyau et par jeu.",
+        },
+        {
+          question: "Peut-on l'installer dans un orgue existant ?",
+          answer: "Oui. Les SmartValves se montent sur une chape : un orgue existant peut donc être converti en remplaçant ses chapes. Dans un orgue entièrement équipé de SmartValve, tout se règle dans le logiciel ; quand SmartValve complète une installation existante, les limites de son système de commande d'origine s'appliquent. Nous étudions chaque projet au préalable.",
+        },
+        {
+          question: "Quelles consoles et quels systèmes de commande fonctionnent avec SmartValve ?",
+          answer: "Tout ce qui parle MIDI : une console avec sortie MIDI, un séquenceur ou un ordinateur. Grâce au MIDI optique, la console peut se trouver à 200 m ou plus.",
+        },
+        {
+          question: "Que sont les jeux numériques ?",
+          answer: "Des jeux définis dans le logiciel plutôt que dans le sommier. Vous attribuez n'importe quelle combinaison de tuyaux à un jeu, avec ses propres réglages de pression, et vous pouvez modifier les jeux après l'installation.",
+        },
+        {
+          question: "SmartValve a-t-elle fait ses preuves ?",
+          answer: "Oui. SmartValve joue dans L'Explorateur, l'orgue de concert transportable d'Yves Rechsteiner équipé d'une SmartValve sur chaque tuyau : plus de 30 concerts depuis 2023, et monté en moins de deux heures après l'arrivée du camion. [Lire l'étude de cas](/work/yves-rechsteiner).",
+        },
+        {
+          question: "Combien cela coûte-t-il ?",
+          answer: "Cela dépend du nombre de tuyaux et du projet. Présentez-nous votre orgue et nous vous envoyons une proposition.",
+        },
+      ],
+    },
+    {
+      type: "contact_form",
+      primary: {
+        eyebrow: "Pour les facteurs d'orgues",
+        title: "Demandez la documentation ou une démonstration",
+        intro: "Parlez-nous de votre atelier et de votre projet. Nous vous répondons personnellement.",
+        recipient: "decap",
+        topics: "Documentation technique, Démonstration, Proposition pour un projet, Question d'intégration",
+        default_topic: "Documentation technique",
+        show_phone: true,
+        show_location: false,
+        message_placeholder: "Votre atelier, l'orgue (neuf ou existant), les sommiers, le nombre de tuyaux et ce que vous attendez de SmartValve…",
+        submit_label: "Envoyer la demande",
+        success_title: "Merci",
+        success_body: "Votre demande nous est bien parvenue. Nous vous répondons personnellement avec les informations demandées.",
+        aside_title: "Decap Herentals",
+        aside_body:
+          "Langepad 51C, 2200 Herentals, Belgique\n\n+32 14 22 44 94\n\n[info@decap.be](mailto:info@decap.be)\n\nSmartValve est conçue, construite et programmée dans notre propre atelier.",
+      },
+    },
+  ],
+};
