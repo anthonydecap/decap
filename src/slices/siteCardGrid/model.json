@@ -1,0 +1,153 @@
+{
+  "id": "site_card_grid",
+  "type": "SharedSlice",
+  "name": "SiteCardGrid",
+  "description": "Grid of cards linking to products or pages, with optional tag (e.g. Orchestrionix) and price.",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": "Small label above the title"
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "intro": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Intro",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "columns": {
+          "type": "Select",
+          "config": {
+            "label": "Columns",
+            "options": [
+              "3",
+              "2",
+              "4"
+            ],
+            "default_value": "3"
+          }
+        },
+        "card_style": {
+          "type": "Select",
+          "config": {
+            "label": "Card style",
+            "options": [
+              "Image cards",
+              "Text cards"
+            ],
+            "default_value": "Image cards"
+          }
+        },
+        "cta_label": {
+          "type": "Text",
+          "config": {
+            "label": "Link under the grid: label",
+            "placeholder": ""
+          }
+        },
+        "cta_link": {
+          "type": "Link",
+          "config": {
+            "label": "Link under the grid",
+            "allowTargetBlank": true,
+            "select": null
+          }
+        },
+        "tone": {
+          "type": "Select",
+          "config": {
+            "label": "Section tone",
+            "options": [
+              "Default",
+              "Tinted",
+              "Dark band"
+            ],
+            "default_value": "Default"
+          }
+        }
+      },
+      "items": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "image_brief": {
+          "type": "Text",
+          "config": {
+            "label": "Photo brief (shown while the image is empty)",
+            "placeholder": "e.g. Accordion Pedestal, front view, black backdrop, 4:3"
+          }
+        },
+        "tag": {
+          "type": "Text",
+          "config": {
+            "label": "Tag",
+            "placeholder": "e.g. Orchestrionix"
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Text",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "price": {
+          "type": "Text",
+          "config": {
+            "label": "Price",
+            "placeholder": "e.g. From € 4,950 excl. VAT"
+          }
+        },
+        "link_label": {
+          "type": "Text",
+          "config": {
+            "label": "Link label",
+            "placeholder": "Discover"
+          }
+        },
+        "link": {
+          "type": "Link",
+          "config": {
+            "label": "Link",
+            "allowTargetBlank": true,
+            "select": null
+          }
+        }
+      }
+    }
+  ]
+}

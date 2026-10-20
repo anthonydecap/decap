@@ -1,0 +1,120 @@
+{
+  "id": "organ_composer",
+  "type": "SharedSlice",
+  "name": "OrganComposer",
+  "description": "Interactive organ configurator: start from a design, choose options, send as an enquiry.",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": "Small label above the title"
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "intro": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Intro",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "bespoke_note": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Bespoke note under the composer",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "success_title": {
+          "type": "Text",
+          "config": {
+            "label": "Success title",
+            "placeholder": "Your starting point is on its way"
+          }
+        },
+        "success_body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Success text",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "tone": {
+          "type": "Select",
+          "config": {
+            "label": "Section tone",
+            "options": [
+              "Default",
+              "Tinted",
+              "Dark band"
+            ],
+            "default_value": "Default"
+          }
+        }
+      },
+      "items": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Design render",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "image_brief": {
+          "type": "Text",
+          "config": {
+            "label": "Photo brief (shown while the render is empty)",
+            "placeholder": "e.g. Accordion Pedestal, front view, black backdrop, 4:3"
+          }
+        },
+        "name": {
+          "type": "Text",
+          "config": {
+            "label": "Design name",
+            "placeholder": ""
+          }
+        },
+        "kind": {
+          "type": "Select",
+          "config": {
+            "label": "Kind",
+            "options": [
+              "Modular",
+              "Bespoke"
+            ],
+            "default_value": "Modular"
+          }
+        },
+        "description": {
+          "type": "Text",
+          "config": {
+            "label": "Short description",
+            "placeholder": ""
+          }
+        }
+      }
+    }
+  ]
+}

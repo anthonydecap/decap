@@ -41,13 +41,46 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "foundation": {
+            "site_hero": {
               "type": "SharedSlice"
             },
-            "gradient_bento_grid": {
+            "site_text_media": {
               "type": "SharedSlice"
             },
-            "midi": {
+            "site_card_grid": {
+              "type": "SharedSlice"
+            },
+            "site_steps": {
+              "type": "SharedSlice"
+            },
+            "site_timeline": {
+              "type": "SharedSlice"
+            },
+            "site_facts": {
+              "type": "SharedSlice"
+            },
+            "site_quote": {
+              "type": "SharedSlice"
+            },
+            "site_faq": {
+              "type": "SharedSlice"
+            },
+            "site_cta": {
+              "type": "SharedSlice"
+            },
+            "site_downloads": {
+              "type": "SharedSlice"
+            },
+            "site_sound": {
+              "type": "SharedSlice"
+            },
+            "site_video": {
+              "type": "SharedSlice"
+            },
+            "contact_form": {
+              "type": "SharedSlice"
+            },
+            "organ_composer": {
               "type": "SharedSlice"
             },
             "home_landing": {
@@ -120,9 +153,6 @@
               "type": "SharedSlice"
             },
             "home_artists": {
-              "type": "SharedSlice"
-            },
-            "feature": {
               "type": "SharedSlice"
             },
             "content": {

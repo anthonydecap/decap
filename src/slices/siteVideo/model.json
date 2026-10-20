@@ -1,0 +1,82 @@
+{
+  "id": "site_video",
+  "type": "SharedSlice",
+  "name": "SiteVideo",
+  "description": "A YouTube or Vimeo video, loaded only when played (privacy friendly).",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": "Small label above the title"
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "intro": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Intro",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "video": {
+          "type": "Embed",
+          "config": {
+            "label": "YouTube or Vimeo URL"
+          }
+        },
+        "caption": {
+          "type": "Text",
+          "config": {
+            "label": "Caption",
+            "placeholder": ""
+          }
+        },
+        "poster": {
+          "type": "Image",
+          "config": {
+            "label": "Poster image (optional)",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "video_brief": {
+          "type": "Text",
+          "config": {
+            "label": "Video brief (shown while no video is set)",
+            "placeholder": ""
+          }
+        },
+        "tone": {
+          "type": "Select",
+          "config": {
+            "label": "Section tone",
+            "options": [
+              "Default",
+              "Tinted",
+              "Dark band"
+            ],
+            "default_value": "Default"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

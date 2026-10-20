@@ -494,6 +494,26 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
+/**
+ * Content for Project (Work) documents: a case study at /:lang/work/:uid.
+ * Same page builder as Page, plus card fields for the Work overview.
+ */
+interface ProjectDocumentData extends PageDocumentData {
+  /** One-sentence summary for the Work overview card. API ID: project.summary */
+  summary: prismic.KeyTextField;
+  /** Card image for the Work overview. API ID: project.card_image */
+  card_image: prismic.ImageField<never>;
+  /** Client or artist. API ID: project.client */
+  client: prismic.KeyTextField;
+  /** Year. API ID: project.year */
+  year: prismic.KeyTextField;
+  /** Location. API ID: project.location */
+  location: prismic.KeyTextField;
+}
+
+export type ProjectDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<ProjectDocumentData>, "project", Lang>;
+
 type ProductDocumentDataSlicesSlice =
   | ContentIntroSlice
   | ContentHeroSlice
@@ -913,6 +933,7 @@ export type AllDocumentTypes =
   | BlogDocument
   | BlogOverviewDocument
   | PageDocument
+  | ProjectDocument
   | ProductDocument
   | SettingsDocument
   | SuccessPageDocument
