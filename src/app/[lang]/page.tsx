@@ -11,6 +11,8 @@ import {
 import { prismicErrorFromUnknown, prismicLog } from "@/lib/prismic-debug";
 import { prismicGetByUID } from "@/lib/prismic-get-by-uid";
 import { createSliceContext } from "@/lib/slice-context";
+import { resolvePageTheme } from "@/lib/brand";
+import { PageThemeScope } from "@/components/PageThemeScope";
 import {
   buildLocaleMetadataAlternates,
 } from "@/lib/locale-alternates";
@@ -63,12 +65,16 @@ export default async function Home({ params }: { params: Promise<Params> }) {
     sliceCount: home.data.slices?.length ?? 0,
   });
 
+  const theme = resolvePageTheme(home.data.theme);
+
   return (
-    <SliceZone
-      slices={home.data.slices}
-      components={components}
-      context={createSliceContext(urlLang)}
-    />
+    <PageThemeScope theme={theme}>
+      <SliceZone
+        slices={home.data.slices}
+        components={components}
+        context={createSliceContext(urlLang, { theme })}
+      />
+    </PageThemeScope>
   );
 }
 

@@ -8,6 +8,7 @@ import {
 } from "@prismicio/react";
 import { Container } from "@/components/Container";
 import { FadeIn, FadeInStagger } from "@/components/FadeIn";
+import { smartValveGradient } from "@/lib/brand";
 
 /**
  * Props for `SmartValveLanding`.
@@ -50,7 +51,7 @@ const SmartValveLanding: FC<SmartValveLandingProps> = ({ slice }) => {
               {/* Subtitle */}
               {subtitle && (
                 <FadeIn>
-                  <p className="text-2xl sm:text-3xl lg:text-4xl font-semibold leading-relaxed text-transparent bg-clip-text mb-6 drop-shadow-lg" style={{ backgroundImage: 'linear-gradient(to right, #3b82f6, #a855f7, #ec4899, #ef4444, #f97316, #eab308)' }}>
+                  <p className="text-2xl sm:text-3xl lg:text-4xl font-semibold leading-relaxed text-transparent bg-clip-text mb-6 drop-shadow-lg" style={{ backgroundImage: smartValveGradient() }}>
                     {subtitle}
                   </p>
                 </FadeIn>

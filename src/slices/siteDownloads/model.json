@@ -1,0 +1,84 @@
+{
+  "id": "site_downloads",
+  "type": "SharedSlice",
+  "name": "SiteDownloads",
+  "description": "Downloadable files: dimension drawings, manuals, software trials.",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": "Small label above the title"
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "intro": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Intro",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "tone": {
+          "type": "Select",
+          "config": {
+            "label": "Section tone",
+            "options": [
+              "Default",
+              "Tinted",
+              "Dark band"
+            ],
+            "default_value": "Default"
+          }
+        }
+      },
+      "items": {
+        "label": {
+          "type": "Text",
+          "config": {
+            "label": "File name shown",
+            "placeholder": "Dimensions (PDF)"
+          }
+        },
+        "description": {
+          "type": "Text",
+          "config": {
+            "label": "Short description",
+            "placeholder": ""
+          }
+        },
+        "file": {
+          "type": "Link",
+          "config": {
+            "label": "File",
+            "allowTargetBlank": true,
+            "select": "media"
+          }
+        },
+        "file_type": {
+          "type": "Text",
+          "config": {
+            "label": "File type",
+            "placeholder": "PDF"
+          }
+        }
+      }
+    }
+  ]
+}

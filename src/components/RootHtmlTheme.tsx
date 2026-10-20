@@ -2,7 +2,6 @@
 
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import clsx from "clsx";
 import { isLocaleHomePathname, resolveUrlLang } from "@/i18n";
 
 /**
@@ -18,10 +17,9 @@ export function RootHtmlTheme() {
     const html = document.documentElement;
 
     html.lang = urlLang === "fr" ? "fr" : "en";
-    html.className = clsx(
-      "h-full text-base antialiased",
-      isHome ? "bg-white" : "bg-neutral-950",
-    );
+    // Toggle only the chrome background: <html> also carries font variable classes from the root layout.
+    html.classList.toggle("bg-white", isHome);
+    html.classList.toggle("bg-neutral-950", !isHome);
   }, [pathname]);
 
   return null;

@@ -22,7 +22,8 @@ export function localizeAppPath(
   path: string,
   urlLang: UrlLocale = DEFAULT_URL_LANG,
 ): string {
-  if (!path || path === "#") return path;
+  // Empty, "#" and in-page anchors ("#contact-form") stay as they are.
+  if (!path || path.startsWith("#")) return path;
   if (/^[a-z][a-z0-9+.-]*:/i.test(path)) return path;
   if (pathHasLocalePrefix(path)) return path;
 

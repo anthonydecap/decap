@@ -8,7 +8,10 @@ import { prismicLinkHref, urlLangFromPathname, type LinkLike } from "@/lib/prism
 import { Container } from "./Container";
 import { FadeIn } from "./FadeIn";
 import { Logo } from "./Logo";
+import { openCookieSettings } from "./Analytics";
 import { PrismicNextImage } from "@prismicio/next";
+import { PrismicRichText } from "@prismicio/react";
+import { isFilled } from "@prismicio/client";
 
 type FooterSection = {
   section_title: string;
@@ -21,8 +24,11 @@ type FooterSection = {
 interface FooterSettings {
   data?: {
     footer_sections?: FooterSection[];
-    newsletter_title?: string;
-    newsletter_description?: string;
+    company_name?: string;
+    company_address?: any;
+    company_phone?: string;
+    company_email?: string;
+    company_vat?: string;
     copyright_text?: string;
     logo?: any;
     site_name?: string;
@@ -31,27 +37,35 @@ interface FooterSettings {
 
 const defaultFooterSections: FooterSection[] = [
   {
-    section_title: "Work",
+    section_title: "Organs",
     section_links: [
-      { link_text: "Our Work", link_url: { url: "/work" } },
-      { link_text: "Case Studies", link_url: { url: "/case-studies" } },
-      { link_text: "Process", link_url: { url: "/process" } },
+      { link_text: "New organs", link_url: { url: "/organs" } },
+      { link_text: "Organ Composer", link_url: { url: "/organ-composer" } },
+      { link_text: "MIDI conversion", link_url: { url: "/midi-conversion" } },
+      { link_text: "Organ pipes", link_url: { url: "/organ-pipes" } },
+      { link_text: "Restoration", link_url: { url: "/frank-decap" } },
     ],
   },
   {
-    section_title: "Company",
+    section_title: "Instruments",
     section_links: [
+      { link_text: "Accordion Pedestal & Cube", link_url: { url: "/accordion" } },
+      { link_text: "Pipe Cube", link_url: { url: "/pipes" } },
+      { link_text: "Percussion Unit", link_url: { url: "/percussion-unit" } },
+      { link_text: "Mallet Percussion", link_url: { url: "/mallet-percussion" } },
+      { link_text: "Bellow Organ", link_url: { url: "/bellow-organ" } },
+      { link_text: "Brass Core", link_url: { url: "/brass-core" } },
+    ],
+  },
+  {
+    section_title: "Decap",
+    section_links: [
+      { link_text: "SmartValve", link_url: { url: "/smartvalve" } },
+      { link_text: "Software", link_url: { url: "/software" } },
+      { link_text: "Work", link_url: { url: "/work" } },
       { link_text: "About", link_url: { url: "/about" } },
-      { link_text: "Blog", link_url: { url: "/blog" } },
-      { link_text: "Contact us", link_url: { url: "/contact" } },
-    ],
-  },
-  {
-    section_title: "Connect",
-    section_links: [
-      { link_text: "Facebook", link_url: { url: "#" } },
-      { link_text: "Instagram", link_url: { url: "#" } },
-      { link_text: "Twitter", link_url: { url: "#" } },
+      { link_text: "Journal", link_url: { url: "/blog" } },
+      { link_text: "Contact", link_url: { url: "/contact" } },
     ],
   },
 ];
@@ -95,14 +109,15 @@ export function Footer({
   /** e.g. mt-0 when wrapped in a surface that already provides spacing */
   className?: string;
 }) {
+  const pathname = usePathname();
   const footerSections =
     settings?.data?.footer_sections || defaultFooterSections;
-  const newsletterTitle = settings?.data?.newsletter_title || "Newsletter";
-  const newsletterDescription =
-    settings?.data?.newsletter_description ||
-    "Subscribe to get the latest design news, articles, resources and inspiration.";
-  const copyrightText =
-    settings?.data?.copyright_text || "© Studio Agency Inc.";
+  const d = settings?.data;
+  const companyName = d?.company_name || "Decap Herentals";
+  const companyPhone = d?.company_phone || "+32 14 22 44 94";
+  const companyEmail = d?.company_email || "info@decap.be";
+  const companyVat = d?.company_vat || "BE 0450.352.984";
+  const copyrightText = d?.copyright_text || "© Decap Herentals";
   const logo = settings?.data?.logo;
   // const siteName = settings?.data?.site_name || 'Studio'
 
@@ -115,27 +130,32 @@ export function Footer({
         <div className="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2">
           <Navigation sections={footerSections} />
           <div className="flex lg:justify-end">
-            <div className="max-w-sm">
+            <address className="max-w-sm text-sm not-italic text-neutral-700">
               <h2 className="font-display text-sm font-semibold tracking-wider text-neutral-950">
-                {newsletterTitle}
+                {companyName}
               </h2>
-              <p className="mt-4 text-sm text-neutral-700">
-                {newsletterDescription}
+              <div className="mt-4 space-y-1">
+                {d?.company_address && isFilled.richText(d.company_address) ? (
+                  <PrismicRichText field={d.company_address} />
+                ) : (
+                  <p>
+                    Langepad 51C
+                    <br />
+                    2200 Herentals, Belgium
+                  </p>
+                )}
+              </div>
+              <p className="mt-4">
+                <a href={`tel:${companyPhone.replace(/[^+\d]/g, "")}`} className="transition hover:text-neutral-950">
+                  {companyPhone}
+                </a>
+                <br />
+                <a href={`mailto:${companyEmail}`} className="transition hover:text-neutral-950">
+                  {companyEmail}
+                </a>
               </p>
-              <form className="mt-6 flex">
-                <input
-                  type="email"
-                  placeholder="Email address"
-                  className="min-w-0 flex-auto appearance-none border-b border-neutral-300 bg-transparent px-0 py-2 text-sm text-neutral-950 focus:border-neutral-950 focus:outline-none"
-                />
-                <button
-                  type="submit"
-                  className="ml-4 inline-flex items-center font-medium text-neutral-950 hover:text-neutral-700"
-                >
-                  Subscribe
-                </button>
-              </form>
-            </div>
+              <p className="mt-4 text-neutral-500">{companyVat}</p>
+            </address>
           </div>
         </div>
         <div className="mt-24 mb-20 flex flex-wrap items-end justify-between gap-x-6 gap-y-4 border-t border-neutral-950/10 pt-12">
@@ -146,9 +166,17 @@ export function Footer({
               <Logo className="h-8" fillOnHover />
             )}
           </Link>
-          <p className="text-sm text-neutral-700">
-            {copyrightText} {new Date().getFullYear()}
-          </p>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-neutral-700">
+            <Link href={prismicLinkHref({ url: "/privacy-policy" }, "#", urlLangFromPathname(pathname))} className="transition hover:text-neutral-950">
+              Privacy policy
+            </Link>
+            <button type="button" onClick={openCookieSettings} className="transition hover:text-neutral-950">
+              Cookie settings
+            </button>
+            <p>
+              {copyrightText} {new Date().getFullYear()}
+            </p>
+          </div>
         </div>
         </FadeIn>
       </Container>

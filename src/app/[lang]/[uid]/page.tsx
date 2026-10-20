@@ -12,6 +12,8 @@ import {
 } from "@/i18n";
 import { prismicGetByUID } from "@/lib/prismic-get-by-uid";
 import { createSliceContext } from "@/lib/slice-context";
+import { resolvePageTheme } from "@/lib/brand";
+import { PageThemeScope } from "@/components/PageThemeScope";
 import { buildLocaleMetadataAlternates } from "@/lib/locale-alternates";
 import { existingLocalePathsFromDocument } from "@/lib/locale-path";
 import { createClient } from "@/prismicio";
@@ -30,12 +32,16 @@ export default async function Page({ params }: { params: Promise<Params> }) {
     lang: prismicLang,
   }).catch(() => notFound());
 
+  const theme = resolvePageTheme(page.data.theme);
+
   return (
-    <SliceZone
-      slices={page.data.slices}
-      components={components}
-      context={createSliceContext(urlLang)}
-    />
+    <PageThemeScope theme={theme}>
+      <SliceZone
+        slices={page.data.slices}
+        components={components}
+        context={createSliceContext(urlLang, { theme })}
+      />
+    </PageThemeScope>
   );
 }
 

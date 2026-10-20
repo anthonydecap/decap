@@ -11,6 +11,7 @@ import {
 import { Container } from "@/components/Container";
 import { FadeIn, FadeInStagger } from "@/components/FadeIn";
 import clsx from "clsx";
+import { SMARTVALVE_GRADIENT, smartValveGradient } from "@/lib/brand";
 
 // Icons for SmartProcessor cards: organ stops, update, id
 const IconMap = {
@@ -76,7 +77,6 @@ const components: JSXMapSerializer = {
 type SmartProcessorProps = SliceComponentProps<any>;
 
 /** SmartValve gradient — distributed across cards so together they form the complete gradient */
-const SMARTVALVE_GRADIENT = ["#3b82f6", "#a855f7", "#ec4899", "#ef4444", "#f97316", "#eab308"];
 
 function getGradientForCard(index: number, total: number): string {
   if (total <= 0) return `linear-gradient(to right, ${SMARTVALVE_GRADIENT[0]}, ${SMARTVALVE_GRADIENT[1]})`;
@@ -402,8 +402,7 @@ const SmartProcessor: FC<SmartProcessorProps> = ({ slice }) => {
                     <div
                       className="relative z-10 px-7 py-1 text-transparent bg-clip-text"
                       style={{
-                        backgroundImage:
-                          "linear-gradient(to right, #3b82f6, #a855f7, #ec4899, #ef4444, #f97316, #eab308)",
+                        backgroundImage: smartValveGradient(),
                       }}
                     >
                       smART

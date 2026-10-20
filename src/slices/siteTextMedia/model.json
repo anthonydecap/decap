@@ -1,0 +1,124 @@
+{
+  "id": "site_text_media",
+  "type": "SharedSlice",
+  "name": "SiteTextMedia",
+  "description": "Text next to an image or a short looping video clip, with optional bullet points and a link.",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": ""
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,heading3,strong,em,hyperlink,list-item,o-list-item"
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "video": {
+          "type": "Link",
+          "config": {
+            "label": "Looping video clip (mp4, optional, plays muted)",
+            "allowTargetBlank": true,
+            "select": "media"
+          }
+        },
+        "image_brief": {
+          "type": "Text",
+          "config": {
+            "label": "Photo brief (shown while the image is empty)",
+            "placeholder": "e.g. Accordion Pedestal, front view, black backdrop, 4:3"
+          }
+        },
+        "media_side": {
+          "type": "Select",
+          "config": {
+            "label": "Media side",
+            "options": [
+              "Image right",
+              "Image left"
+            ],
+            "default_value": "Image right"
+          }
+        },
+        "aspect": {
+          "type": "Select",
+          "config": {
+            "label": "Media shape",
+            "options": [
+              "Landscape 4:3",
+              "Square",
+              "Portrait 4:5",
+              "Wide 16:9"
+            ],
+            "default_value": "Landscape 4:3"
+          }
+        },
+        "cta_label": {
+          "type": "Text",
+          "config": {
+            "label": "Link label",
+            "placeholder": ""
+          }
+        },
+        "cta_link": {
+          "type": "Link",
+          "config": {
+            "label": "Link",
+            "allowTargetBlank": true,
+            "select": null
+          }
+        },
+        "tone": {
+          "type": "Select",
+          "config": {
+            "label": "Section tone",
+            "options": [
+              "Default",
+              "Tinted",
+              "Dark band"
+            ],
+            "default_value": "Default"
+          }
+        }
+      },
+      "items": {
+        "point": {
+          "type": "Text",
+          "config": {
+            "label": "Bullet point",
+            "placeholder": ""
+          }
+        }
+      }
+    }
+  ]
+}

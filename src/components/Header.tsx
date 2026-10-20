@@ -23,6 +23,7 @@ import { SocialMedia } from './SocialMedia'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { pathForHome } from '@/lib/locale-path'
 import type { UrlLocale } from '@/i18n'
+import { DEFAULT_NAVIGATION } from '@/lib/site-nav'
 
 const HeaderContext = createContext<{
   logoHovered: boolean
@@ -239,12 +240,9 @@ function HeaderInner({
   const navRef = useRef<React.ElementRef<'div'>>(null)
   const shouldReduceMotion = useReducedMotion()
 
-  const navigationItems = settings?.data?.navigation || [
-    { label: 'Our Work', link: { url: '/work' } },
-    { label: 'About Us', link: { url: '/about' } },
-    { label: 'Our Process', link: { url: '/process' } },
-    { label: 'Blog', link: { url: '/blog' } },
-  ]
+  const navigationItems = settings?.data?.navigation?.length
+    ? settings.data.navigation
+    : DEFAULT_NAVIGATION
 
   useEffect(() => {
     function onClick(event: MouseEvent) {

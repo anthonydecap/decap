@@ -1,0 +1,84 @@
+{
+  "id": "site_sound",
+  "type": "SharedSlice",
+  "name": "SiteSound",
+  "description": "Audio recordings of an instrument, so visitors can hear it.",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": "Small label above the title"
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "intro": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Intro",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "tone": {
+          "type": "Select",
+          "config": {
+            "label": "Section tone",
+            "options": [
+              "Default",
+              "Tinted",
+              "Dark band"
+            ],
+            "default_value": "Default"
+          }
+        }
+      },
+      "items": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Recording title",
+            "placeholder": ""
+          }
+        },
+        "description": {
+          "type": "Text",
+          "config": {
+            "label": "What you hear",
+            "placeholder": ""
+          }
+        },
+        "audio": {
+          "type": "Link",
+          "config": {
+            "label": "Audio file (mp3)",
+            "allowTargetBlank": true,
+            "select": "media"
+          }
+        },
+        "audio_brief": {
+          "type": "Text",
+          "config": {
+            "label": "Recording brief (shown while the file is empty)",
+            "placeholder": "e.g. 45 seconds, slow waltz, close microphone"
+          }
+        }
+      }
+    }
+  ]
+}

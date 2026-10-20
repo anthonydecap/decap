@@ -47,6 +47,132 @@
   --color-neutral-950: #0a0a0a;
 }
 
+/*
+ * Page styles (see src/lib/brand.ts). A page wrapper sets data-theme; theme-aware slices use
+ * the semantic utilities below (bg-page, text-ink, text-ink-muted, bg-surface, border-line,
+ * text-accent, bg-accent, decoration-accent-soft, .site-heading) so one slice works in every style.
+ * --page-base / --page-tint repeat the bg / surface values so a tinted band can swap them.
+ * Text colors meet WCAG AA on their page background.
+ */
+:root,
+[data-theme="decap"] {
+  --page-bg: #ffffff;
+  --page-ink: #0a0a0a;
+  --page-ink-muted: #525252;
+  --page-surface: #f5f5f7;
+  --page-base: #ffffff;
+  --page-tint: #f5f5f7;
+  --page-line: #e5e5e5;
+  --page-accent: #0a0a0a;
+  --page-accent-contrast: #ffffff;
+  --page-accent-soft: #d4d4d4;
+  --page-heading-font: var(--font-display);
+  --page-heading-variation: "wdth" 125;
+  --page-heading-weight: 700;
+  --page-heading-tracking: -0.02em;
+  --gradient-smartvalve: linear-gradient(to right, #3b82f6, #a855f7, #ec4899, #ef4444, #f97316, #eab308);
+}
+
+[data-theme="smartvalve"] {
+  --page-bg: #0a0a0a;
+  --page-ink: #ffffff;
+  --page-ink-muted: #d4d4d4;
+  --page-surface: #171717;
+  --page-base: #0a0a0a;
+  --page-tint: #171717;
+  --page-line: #262626;
+  --page-accent: #ffffff;
+  --page-accent-contrast: #0a0a0a;
+  --page-accent-soft: #404040;
+}
+
+/* Orchestrionix (Brass Core): the standard light style with a brass accent. #cca483 is the
+   heritage Orchestrionix copper, decorative only (too light for text on white). */
+[data-theme="orchestrionix"] {
+  --page-accent: #8c5e30;
+  --page-accent-contrast: #ffffff;
+  --page-accent-soft: #cca483;
+}
+
+/* Atelier Frank Decap: warm paper, walnut ink, aged brass, a classic serif. */
+[data-theme="atelier"] {
+  --page-bg: #f5efe4;
+  --page-ink: #2a2017;
+  --page-ink-muted: #6b5b4b;
+  --page-surface: #ede4d3;
+  --page-base: #f5efe4;
+  --page-tint: #ede4d3;
+  --page-line: #dccfb8;
+  --page-accent: #7a5426;
+  --page-accent-contrast: #f5efe4;
+  --page-accent-soft: #b08d57;
+  --page-heading-font: var(--font-atelier), Georgia, "Times New Roman", serif;
+  --page-heading-variation: normal;
+  --page-heading-weight: 500;
+  --page-heading-tracking: -0.01em;
+}
+
+/* Section tones inside any page style: a dark band ("inverse") or a tinted band ("surface"). */
+[data-tone="inverse"] {
+  --page-bg: #0a0a0a;
+  --page-ink: #ffffff;
+  --page-ink-muted: #a3a3a3;
+  --page-surface: #171717;
+  --page-base: #0a0a0a;
+  --page-tint: #171717;
+  --page-line: #262626;
+  --page-accent: #ffffff;
+  --page-accent-contrast: #0a0a0a;
+  --page-accent-soft: #525252;
+}
+[data-theme="orchestrionix"] [data-tone="inverse"] {
+  --page-accent: #cca483;
+  --page-accent-contrast: #0a0a0a;
+  --page-accent-soft: #8c5e30;
+}
+[data-theme="atelier"] [data-tone="inverse"] {
+  --page-bg: #2a2017;
+  --page-ink: #f5efe4;
+  --page-ink-muted: #cbbba3;
+  --page-surface: #3a2d21;
+  --page-base: #2a2017;
+  --page-tint: #3a2d21;
+  --page-line: #4a3a2b;
+  --page-accent: #d9b77e;
+  --page-accent-contrast: #2a2017;
+  --page-accent-soft: #8a6a3a;
+}
+/* Tinted band: page and card colors swap, so cards stay distinct from the band. */
+[data-tone="surface"] {
+  --page-bg: var(--page-tint);
+  --page-surface: var(--page-base);
+}
+
+/* Headings in the page style's typeface (Mona Sans wide, or the Atelier serif). */
+.site-heading {
+  font-family: var(--page-heading-font);
+  font-variation-settings: var(--page-heading-variation);
+  font-weight: var(--page-heading-weight);
+  letter-spacing: var(--page-heading-tracking);
+  text-wrap: balance;
+}
+
+@theme inline {
+  --color-page: var(--page-bg);
+  --color-ink: var(--page-ink);
+  --color-ink-muted: var(--page-ink-muted);
+  --color-surface: var(--page-surface);
+  --color-line: var(--page-line);
+  --color-accent: var(--page-accent);
+  --color-accent-contrast: var(--page-accent-contrast);
+  --color-accent-soft: var(--page-accent-soft);
+}
+
+/* A faint paper grain on Atelier pages (pure CSS, no image request). */
+[data-theme="atelier"] .atelier-paper {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .16 0 0 0 0 .12 0 0 0 0 .08 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
 /* Global styles */
 html {
   scroll-behavior: smooth;

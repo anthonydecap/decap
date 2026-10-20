@@ -12,6 +12,7 @@ export function buildPrismicRoutes(): Route[] {
     routes.push(
       { type: "page", lang: prismicLang, uid: "home", path: `/${urlLang}` },
       { type: "page", lang: prismicLang, path: `/${urlLang}/:uid` },
+      { type: "project", lang: prismicLang, path: `/${urlLang}/work/:uid` },
       { type: "blog_overview", lang: prismicLang, path: `/${urlLang}/blog` },
       { type: "blog", lang: prismicLang, path: `/${urlLang}/blog/:uid` },
     );

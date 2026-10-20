@@ -8,6 +8,7 @@ import { shopDb } from "../db";
 import { ShopError } from "../errors";
 import { audit } from "./audit";
 import { getPricedCart } from "./cart";
+import { reconcileCustomerOrders } from "./payment-reconcile";
 import { requireCustomerMusicPlayer } from "./music-licenses";
 import { writeBillingSnapshot } from "./profile";
 import { stripe } from "./stripe";
@@ -40,6 +41,10 @@ export type PreparedCheckout = {
 
 export async function prepareCheckout(customer: Customer): Promise<PreparedCheckout> {
   const db = shopDb();
+  // Never cancel an order Stripe already took money for (or is still processing): ask Stripe
+  // first, fulfill what was paid, and keep anything we could not check out of the clean-up.
+  const checked = await reconcileCustomerOrders(customer.id);
+  const keep = new Set([...checked].filter(([, r]) => r !== "UNPAID" && r !== "SKIPPED").map(([id]) => id));
   const { pricing } = await getPricedCart({ customerId: customer.id, anonymousToken: null });
   // No checkout surprises: every music line must say which player receives it.
   const unresolved = pricing.excluded.filter((e) => e.reason === "PLAYER_REQUIRED");
@@ -58,7 +63,7 @@ export async function prepareCheckout(customer: Customer): Promise<PreparedCheck
   const order = await db.$transaction(async (tx) => {
     await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtext(${`checkout:${customer.id}`}))`;
     const pending = await tx.order.findMany({
-      where: { customerId: customer.id, status: "PENDING_PAYMENT" },
+      where: { customerId: customer.id, status: "PENDING_PAYMENT", id: { notIn: [...keep] } },
       orderBy: { createdAt: "desc" },
     });
     const reusable = pending.find((o) => o.pricingHash === hash && o.createdAt.getTime() > Date.now() - 23 * 3600 * 1000);

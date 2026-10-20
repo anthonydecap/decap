@@ -1,0 +1,346 @@
+{
+  "id": "project",
+  "label": "Project (Work)",
+  "format": "page",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID",
+          "placeholder": ""
+        }
+      },
+      "title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Title",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "heading1"
+        }
+      },
+      "theme": {
+        "type": "Select",
+        "config": {
+          "label": "Page style",
+          "placeholder": "decap = standard light. smartvalve = dark + gradient (SmartValve only). orchestrionix = brass accent (Brass Core only). atelier = Atelier Frank Decap.",
+          "options": [
+            "decap",
+            "smartvalve",
+            "orchestrionix",
+            "atelier"
+          ],
+          "default_value": "decap"
+        }
+      },
+      "summary": {
+        "type": "Text",
+        "config": {
+          "label": "Card summary (Work overview)",
+          "placeholder": "One sentence: what we built, for whom"
+        }
+      },
+      "card_image": {
+        "type": "Image",
+        "config": {
+          "label": "Card image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "client": {
+        "type": "Text",
+        "config": {
+          "label": "Client / artist",
+          "placeholder": "Pat Metheny"
+        }
+      },
+      "year": {
+        "type": "Text",
+        "config": {
+          "label": "Year",
+          "placeholder": "2010"
+        }
+      },
+      "location": {
+        "type": "Text",
+        "config": {
+          "label": "Location",
+          "placeholder": "Budapest, Hungary"
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "site_hero": {
+              "type": "SharedSlice"
+            },
+            "site_text_media": {
+              "type": "SharedSlice"
+            },
+            "site_card_grid": {
+              "type": "SharedSlice"
+            },
+            "site_steps": {
+              "type": "SharedSlice"
+            },
+            "site_timeline": {
+              "type": "SharedSlice"
+            },
+            "site_facts": {
+              "type": "SharedSlice"
+            },
+            "site_quote": {
+              "type": "SharedSlice"
+            },
+            "site_faq": {
+              "type": "SharedSlice"
+            },
+            "site_cta": {
+              "type": "SharedSlice"
+            },
+            "site_downloads": {
+              "type": "SharedSlice"
+            },
+            "site_sound": {
+              "type": "SharedSlice"
+            },
+            "site_video": {
+              "type": "SharedSlice"
+            },
+            "contact_form": {
+              "type": "SharedSlice"
+            },
+            "organ_composer": {
+              "type": "SharedSlice"
+            },
+            "home_landing": {
+              "type": "SharedSlice"
+            },
+            "home_choice": {
+              "type": "SharedSlice"
+            },
+            "smart_valve_endorsees": {
+              "type": "SharedSlice"
+            },
+            "smart_valve_quote": {
+              "type": "SharedSlice"
+            },
+            "smart_valve_chest_3_d": {
+              "type": "SharedSlice"
+            },
+            "smart_valve_chest": {
+              "type": "SharedSlice"
+            },
+            "smart_valve_bento_grid": {
+              "type": "SharedSlice"
+            },
+            "smart_valve_icon_blocks": {
+              "type": "SharedSlice"
+            },
+            "smart_valve_story": {
+              "type": "SharedSlice"
+            },
+            "smart_valve_optical_midi": {
+              "type": "SharedSlice"
+            },
+            "smart_valve_tech_description": {
+              "type": "SharedSlice"
+            },
+            "feature_blocks": {
+              "type": "SharedSlice"
+            },
+            "smart_valve_video_hero": {
+              "type": "SharedSlice"
+            },
+            "smart_valve_image_hero": {
+              "type": "SharedSlice"
+            },
+            "smart_valve_video": {
+              "type": "SharedSlice"
+            },
+            "modal_blocks": {
+              "type": "SharedSlice"
+            },
+            "smart_valve_pipe_animation": {
+              "type": "SharedSlice"
+            },
+            "smart_valve_transport": {
+              "type": "SharedSlice"
+            },
+            "stylized_image": {
+              "type": "SharedSlice"
+            },
+            "smart_valve_blogs": {
+              "type": "SharedSlice"
+            },
+            "smart_valve_blogs_advanced": {
+              "type": "SharedSlice"
+            },
+            "product": {
+              "type": "SharedSlice"
+            },
+            "content_artists": {
+              "type": "SharedSlice"
+            },
+            "home_artists": {
+              "type": "SharedSlice"
+            },
+            "content": {
+              "type": "SharedSlice"
+            },
+            "bento_grid": {
+              "type": "SharedSlice"
+            },
+            "content_intro": {
+              "type": "SharedSlice"
+            },
+            "content_contact": {
+              "type": "SharedSlice"
+            },
+            "content_hero": {
+              "type": "SharedSlice"
+            },
+            "success": {
+              "type": "SharedSlice"
+            },
+            "smart_valve_possibilities": {
+              "type": "SharedSlice"
+            },
+            "smart_valve_processor": {
+              "type": "SharedSlice"
+            },
+            "smart_valve_landing": {
+              "type": "SharedSlice"
+            },
+            "instrument_header": {
+              "type": "SharedSlice"
+            },
+            "instrument_showcase": {
+              "type": "SharedSlice"
+            },
+            "instrument_bento": {
+              "type": "SharedSlice"
+            },
+            "instrument_feature": {
+              "type": "SharedSlice"
+            },
+            "instrument_split": {
+              "type": "SharedSlice"
+            },
+            "instrument_applications": {
+              "type": "SharedSlice"
+            },
+            "instrument_connectivity": {
+              "type": "SharedSlice"
+            },
+            "instrument_highlights": {
+              "type": "SharedSlice"
+            },
+            "instrument_specs": {
+              "type": "SharedSlice"
+            },
+            "instrument_faq": {
+              "type": "SharedSlice"
+            },
+            "instrument_cta": {
+              "type": "SharedSlice"
+            },
+            "core_accessories": {
+              "type": "SharedSlice"
+            },
+            "core_bento": {
+              "type": "SharedSlice"
+            },
+            "core_demo_video": {
+              "type": "SharedSlice"
+            },
+            "core_faq": {
+              "type": "SharedSlice"
+            },
+            "core_hero": {
+              "type": "SharedSlice"
+            },
+            "core_specs": {
+              "type": "SharedSlice"
+            },
+            "core_testimonial": {
+              "type": "SharedSlice"
+            },
+            "core_3_d": {
+              "type": "SharedSlice"
+            },
+            "instrument_statement": {
+              "type": "SharedSlice"
+            },
+            "instrument_stats": {
+              "type": "SharedSlice"
+            },
+            "instrument_gallery": {
+              "type": "SharedSlice"
+            },
+            "instrument_steps": {
+              "type": "SharedSlice"
+            },
+            "instrument_quote": {
+              "type": "SharedSlice"
+            },
+            "instrument_logos": {
+              "type": "SharedSlice"
+            },
+            "instrument_media_text": {
+              "type": "SharedSlice"
+            },
+            "instrument_banner": {
+              "type": "SharedSlice"
+            },
+            "home_hero": {
+              "type": "SharedSlice"
+            },
+            "home_portfolio": {
+              "type": "SharedSlice"
+            },
+            "home_feature": {
+              "type": "SharedSlice"
+            },
+            "home_showcase": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    },
+    "SEO & Metadata": {
+      "meta_title": {
+        "type": "Text",
+        "config": {
+          "label": "Meta Title",
+          "placeholder": "A title of the page used for social media and search engines"
+        }
+      },
+      "meta_description": {
+        "type": "Text",
+        "config": {
+          "label": "Meta Description",
+          "placeholder": "A brief summary of the page"
+        }
+      },
+      "meta_image": {
+        "type": "Image",
+        "config": {
+          "label": "Meta Image",
+          "constraint": {
+            "width": 2400,
+            "height": 1260
+          },
+          "thumbnails": []
+        }
+      }
+    }
+  }
+}

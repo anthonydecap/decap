@@ -5,7 +5,18 @@ The canonical reference for how slices should look and be built in this project.
 language into rules every slice (existing and future) should follow.
 The same system in the agent-friendly DESIGN.md format lives in [DESIGN.md](DESIGN.md).
 
-Last updated: 2026-07-10
+Last updated: 2026-10-20
+
+> **2026-10 update: page styles and Site slices.** Every Prismic page now picks a *page style*
+> (`theme` field): **decap** (standard light), **smartvalve** (dark + gradient, SmartValve only),
+> **orchestrionix** (light + brass accent, Brass Core only) and **atelier** (warm ivory + serif,
+> Atelier Frank Decap only). New generic slices (`site*`, `contactForm`, `organComposer`) use the
+> semantic utilities `bg-page`, `text-ink`, `text-ink-muted`, `bg-surface`, `border-line`,
+> `text-accent`, `bg-accent`, `text-accent-contrast`, `bg-accent-soft` and the `.site-heading`
+> class instead of `neutral-*`, so they render correctly in every style. Section tones:
+> Default / Tinted / Dark band. Shared helpers: `src/lib/site-ui.tsx`; images through
+> `MediaSlot` (placeholder with a photo brief while empty). Tokens: `src/app/globals.css`;
+> gradient: `src/lib/brand.ts`. The rules below still apply to the product slice families.
 
 ---
 

@@ -6,6 +6,21 @@ import SmartValveBlogsAdvanced from "./smartValveBlogsAdvanced";
 import BlogGrid from "./blogGrid";
 
 export const components = {
+  site_hero: dynamic(() => import("./siteHero")),
+  site_text_media: dynamic(() => import("./siteTextMedia")),
+  site_card_grid: dynamic(() => import("./siteCardGrid")),
+  site_steps: dynamic(() => import("./siteSteps")),
+  site_timeline: dynamic(() => import("./siteTimeline")),
+  site_facts: dynamic(() => import("./siteFacts")),
+  site_quote: dynamic(() => import("./siteQuote")),
+  site_faq: dynamic(() => import("./siteFaq")),
+  site_cta: dynamic(() => import("./siteCta")),
+  site_downloads: dynamic(() => import("./siteDownloads")),
+  site_sound: dynamic(() => import("./siteSound")),
+  site_video: dynamic(() => import("./siteVideo")),
+  contact_form: dynamic(() => import("./contactForm")),
+  organ_composer: dynamic(() => import("./organComposer")),
+
   content_artists: dynamic(() => import("./contentArtists")),
   home_artists: dynamic(() => import("./homeArtists")),
   home_hero: dynamic(() => import("./homeHero")),

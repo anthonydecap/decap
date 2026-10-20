@@ -1,4 +1,5 @@
 import type { BlogPost } from "@/lib/blog-utils";
+import type { PageTheme } from "@/lib/brand";
 import {
   DEFAULT_PRISMIC_LANG,
   DEFAULT_URL_LANG,
@@ -15,6 +16,8 @@ export type SliceZoneContext = {
   /** @deprecated Use `urlLang`. Kept so older context shapes still work. */
   lang?: UrlLocale;
   relatedPosts?: BlogPost[];
+  /** The page style the slices render in (Prismic `page.theme`). */
+  theme?: PageTheme;
 };
 
 export function createSliceContext(

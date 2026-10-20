@@ -145,3 +145,4 @@ src/generated/
 /test-results/
 /playwright-report/
 music-migration-*.json
+.content-build/

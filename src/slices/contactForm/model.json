@@ -1,0 +1,139 @@
+{
+  "id": "contact_form",
+  "type": "SharedSlice",
+  "name": "ContactForm",
+  "description": "Enquiry form. Recipient is fixed on the server: Decap or Atelier Frank Decap.",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": "Small label above the title"
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "intro": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Intro",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "recipient": {
+          "type": "Select",
+          "config": {
+            "label": "Send to",
+            "options": [
+              "decap",
+              "frank"
+            ],
+            "default_value": "decap"
+          }
+        },
+        "topics": {
+          "type": "Text",
+          "config": {
+            "label": "Topics (comma separated)",
+            "placeholder": "General question, New organ, Instruments, MIDI conversion, Software"
+          }
+        },
+        "default_topic": {
+          "type": "Text",
+          "config": {
+            "label": "Preselected topic (optional)",
+            "placeholder": ""
+          }
+        },
+        "show_phone": {
+          "type": "Boolean",
+          "config": {
+            "label": "Ask for phone number",
+            "default_value": true
+          }
+        },
+        "show_location": {
+          "type": "Boolean",
+          "config": {
+            "label": "Ask for location",
+            "default_value": false
+          }
+        },
+        "message_placeholder": {
+          "type": "Text",
+          "config": {
+            "label": "Message placeholder",
+            "placeholder": ""
+          }
+        },
+        "submit_label": {
+          "type": "Text",
+          "config": {
+            "label": "Submit label",
+            "placeholder": "Send message"
+          }
+        },
+        "success_title": {
+          "type": "Text",
+          "config": {
+            "label": "Success title",
+            "placeholder": "Thank you"
+          }
+        },
+        "success_body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Success text",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "aside_title": {
+          "type": "Text",
+          "config": {
+            "label": "Side panel title",
+            "placeholder": ""
+          }
+        },
+        "aside_body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Side panel text (address, hours, …)",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,heading3,strong,em,hyperlink,list-item,o-list-item"
+          }
+        },
+        "tone": {
+          "type": "Select",
+          "config": {
+            "label": "Section tone",
+            "options": [
+              "Default",
+              "Tinted",
+              "Dark band"
+            ],
+            "default_value": "Default"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

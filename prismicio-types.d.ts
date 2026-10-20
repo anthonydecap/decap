@@ -428,6 +428,18 @@ interface PageDocumentData {
   title: prismic.RichTextField;
 
   /**
+   * Page style field in *Page*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: decap = standard light. smartvalve = dark + gradient (SmartValve only). orchestrionix = brass accent (Brass Core only). atelier = Atelier Frank Decap.
+   * - **Default Value**: decap
+   * - **API ID Path**: page.theme
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  theme: prismic.SelectField<"decap" | "smartvalve" | "orchestrionix" | "atelier", "filled">;
+
+  /**
    * Slice Zone field in *Page*
    *
    * - **Field Type**: Slice Zone
@@ -481,6 +493,26 @@ interface PageDocumentData {
  */
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
+
+/**
+ * Content for Project (Work) documents: a case study at /:lang/work/:uid.
+ * Same page builder as Page, plus card fields for the Work overview.
+ */
+interface ProjectDocumentData extends PageDocumentData {
+  /** One-sentence summary for the Work overview card. API ID: project.summary */
+  summary: prismic.KeyTextField;
+  /** Card image for the Work overview. API ID: project.card_image */
+  card_image: prismic.ImageField<never>;
+  /** Client or artist. API ID: project.client */
+  client: prismic.KeyTextField;
+  /** Year. API ID: project.year */
+  year: prismic.KeyTextField;
+  /** Location. API ID: project.location */
+  location: prismic.KeyTextField;
+}
+
+export type ProjectDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<ProjectDocumentData>, "project", Lang>;
 
 type ProductDocumentDataSlicesSlice =
   | ContentIntroSlice
@@ -715,27 +747,7 @@ interface SettingsDocumentData {
     Simplify<SettingsDocumentDataFooterSectionsItem>
   >;
 
-  /**
-   * Newsletter Title field in *Settings*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Newsletter
-   * - **API ID Path**: settings.newsletter_title
-   * - **Tab**: Footer
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  newsletter_title: prismic.KeyTextField;
 
-  /**
-   * Newsletter Description field in *Settings*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Subscribe to get the latest design news, articles, resources and inspiration.
-   * - **API ID Path**: settings.newsletter_description
-   * - **Tab**: Footer
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  newsletter_description: prismic.KeyTextField;
 
   /**
    * Copyright Text field in *Settings*
@@ -747,6 +759,21 @@ interface SettingsDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
   copyright_text: prismic.KeyTextField;
+
+  /** Company name in the footer (e.g. Decap Herentals). API ID: settings.company_name */
+  company_name: prismic.KeyTextField;
+
+  /** Workshop address in the footer. API ID: settings.company_address */
+  company_address: prismic.RichTextField;
+
+  /** Phone in the footer. API ID: settings.company_phone */
+  company_phone: prismic.KeyTextField;
+
+  /** Email in the footer. API ID: settings.company_email */
+  company_email: prismic.KeyTextField;
+
+  /** VAT / company number in the footer. API ID: settings.company_vat */
+  company_vat: prismic.KeyTextField;
 }
 
 /**
@@ -906,6 +933,7 @@ export type AllDocumentTypes =
   | BlogDocument
   | BlogOverviewDocument
   | PageDocument
+  | ProjectDocument
   | ProductDocument
   | SettingsDocument
   | SuccessPageDocument
