@@ -21,7 +21,7 @@ export default {
         eyebrow: "Work · 2025",
         title: "L'Explorateur: a mobile concert organ with SmartValve on every pipe",
         intro:
-          "Swiss organist Yves Rechsteiner wanted an organ he could take to venues that have none. We built L'Explorateur: a transportable pipe organ in which every pipe has its own SmartValve. The result is the world's first wind synthesizer. [TO CHECK: confirm L'Explorateur = the 2025 organ]",
+          "Swiss organist Yves Rechsteiner wanted an organ he could take to venues that have none. We built L'Explorateur: a transportable pipe organ in which every pipe has its own SmartValve. The result is the world's first wind synthesizer.",
         primary_cta_label: "About SmartValve",
         primary_cta_link: "/smartvalve",
         secondary_cta_label: "All projects",

@@ -14,11 +14,10 @@ Regenerate this list: `node scripts/content/todo.mjs`.
 ## Contact Decap Herentals (/contact)
 
 - [ ] typical response time
-- [ ] info@decap.be?
 - [ ] confirm visits by appointment only, and opening hours
 - [ ] typical response time, e.g. within two working days
 - [ ] confirm what visitors can see and hear
-- [ ] delivery and installation outside Belgium, shipping countries and how costs are quoted
+- [ ] installation outside Belgium, shipping countries and how costs are quoted
 
 ## Atelier Frank Decap (/frank-decap)
 
@@ -35,14 +34,9 @@ Regenerate this list: `node scripts/content/todo.mjs`.
 - [ ] typical reply time
 - [ ] Frank's phone, email and atelier address, if he wants them published
 
-## Decap Herentals (/)
-
-- [ ] one line on what Decap built for Pat Metheny
-
 ## Self-playing instruments (/instruments)
 
-- [ ] current price
-- [ ] countries we ship to, delivery times, packaging and whether we install on site
+- [ ] countries we ship to, packaging and whether we install on site
 
 ## MIDI conversion (/midi-conversion)
 
@@ -57,10 +51,6 @@ Regenerate this list: `node scripts/content/todo.mjs`.
 - [ ] trial limitations and duration
 - [ ] trial download URL and buying flow
 
-## Orchestrionix (/orchestrionix)
-
-- [ ] current price
-
 ## Organ Composer (/organ-composer)
 
 - [ ] typical reply time
@@ -72,16 +62,13 @@ Regenerate this list: `node scripts/content/todo.mjs`.
 
 ## Organs (/organs)
 
-- [ ] confirm this is L'Explorateur, Yves Rechsteiner's mobile concert organ
 - [ ] whether customers can visit the workshop during production
 - [ ] what delivery includes: installation on site, instruction, warranty, service
-- [ ] typical lead time for a modular and for a bespoke organ
 
 ## Privacy policy (/privacy-policy)
 
 - [ ] have this notice reviewed before launch
 - [ ] date
-- [ ] info@decap.be?
 - [ ] provider (Resend?) and whether data is transferred outside the EU, e.g. to the US, and on which safeguards
 - [ ] Frank's role as controller for his enquiries
 - [ ] confirm no newsletter or mailing list
@@ -105,7 +92,6 @@ Regenerate this list: `node scripts/content/todo.mjs`.
 
 ## Work (/work)
 
-- [ ] one line on what Decap built for Pat Metheny
 - [ ] one line per piece: year, size, where it plays
 
 ## Circus Ronaldo (/work/circus-ronaldo)
@@ -131,17 +117,13 @@ Regenerate this list: `node scripts/content/todo.mjs`.
 
 ## Pat Metheny (/work/pat-metheny)
 
-- [ ] rewrite once project details are confirmed
-- [ ] one sentence on what Decap built or supplied for Pat Metheny
 - [ ] year
 - [ ] location
-- [ ] one or two sentences on what Decap built or supplied for Pat Metheny, and when
+- [ ] which productions and years
 - [ ] photo and usage rights
-- [ ] Decap's part in it, if any: which instruments or components came from Herentals, and when
-- [ ] what the brief asked for, and what made it possible, e.g. velocity control, repetition speed
+- [ ] which instruments were in the orchestrion and how it was controlled
 - [ ] archive photo
-- [ ] instruments or components supplied
-- [ ] how the instruments were driven
+- [ ] names
 - [ ] find a video with permission to embed
 
 ## Stephan Eicher und die Automaten (/work/stephan-eicher)
@@ -167,7 +149,6 @@ Regenerate this list: `node scripts/content/todo.mjs`.
 ## Yves Rechsteiner: L'Explorateur (/work/yves-rechsteiner)
 
 - [ ] where L'Explorateur is based
-- [ ] confirm L'Explorateur = the 2025 organ
 - [ ] transport details, set-up time, number of pipes and ranks
 - [ ] exact wording and attribution of the source
 - [ ] video and permission to embed

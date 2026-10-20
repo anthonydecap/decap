@@ -79,7 +79,7 @@ export default {
           tag: "Orchestrionix",
           title: "Brass Core",
           body: "Makes a real trumpet or trombone sound from an audio signal. No music library: you supply the performance. No drilling or changes to the instrument.",
-          price: "€ 799 [TO CHECK: current price] · ships from stock",
+          price: "€ 2,599 · ships from stock",
           link_label: "Brass Core",
           link: "/brass-core",
           image_brief: "Brass Core clamped to a trumpet, side view on a dark backdrop, 4:3",
@@ -168,7 +168,7 @@ export default {
         },
         {
           question: "Do you deliver outside Belgium?",
-          answer: "[TO CHECK: countries we ship to, delivery times, packaging and whether we install on site]",
+          answer: "[TO CHECK: countries we ship to, packaging and whether we install on site]",
         },
       ],
     },

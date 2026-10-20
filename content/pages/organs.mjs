@@ -68,7 +68,7 @@ export default {
         eyebrow: "What we build",
         title: "Dance, fair, street and concert organs",
         body:
-          "### Dance organs\nFor dance halls, cafés and event rooms. Decap dance organs have controllable sensitivity and volume, so they fit the room instead of filling it. That is why Guido Belcanto could tour one in his theatre show *Balzaal der Gebroken Harten* in 2008.\n\n### Fair organs\nFor fairgrounds, carousels and showmen: built to be transported and to be heard outdoors.\n\n### Street organs\nFor the street, for festivals and for collectors who want an organ that travels.\n\n### Church and concert organs\nIn 2025 we built SmartValve into the first transportable church organ, with every pipe controlled on its own. [TO CHECK: confirm this is L'Explorateur, Yves Rechsteiner's mobile concert organ]\n\nWe build for dance halls, cafés, fairgrounds, collectors, museums and churches.",
+          "### Dance organs\nFor dance halls, cafés and event rooms. Decap dance organs have controllable sensitivity and volume, so they fit the room instead of filling it. That is why Guido Belcanto could tour one in his theatre show *Balzaal der Gebroken Harten* in 2008.\n\n### Fair organs\nFor fairgrounds, carousels and showmen: built to be transported and to be heard outdoors.\n\n### Street organs\nFor the street, for festivals and for collectors who want an organ that travels.\n\n### Church and concert organs\nIn 2025 we built SmartValve into the first transportable church organ, with every pipe controlled on its own. That organ is [L'Explorateur](/work/yves-rechsteiner), the mobile concert organ of Swiss organist Yves Rechsteiner.\n\nWe build for dance halls, cafés, fairgrounds, collectors, museums and churches.",
         media_side: "Image right",
         aspect: "Portrait 4:5",
         image_brief:
@@ -197,11 +197,6 @@ export default {
           question: "What does a new organ cost?",
           answer:
             "Every organ is quoted on its own, because the price follows your choices: the size, pipes or digital sound, the front instruments, the façade. A digital or modular organ costs less than a bespoke pipe organ, and you can reuse pipes or instruments you already have. Send us your starting point and we reply with a first idea and a quote.",
-        },
-        {
-          question: "How long does it take to build an organ?",
-          answer:
-            "[TO CHECK: typical lead time for a modular and for a bespoke organ] We confirm the planning after the design and 3D render are approved.",
         },
         {
           question: "What is the difference between 105 and 121 keys?",

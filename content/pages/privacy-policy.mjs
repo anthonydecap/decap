@@ -28,7 +28,7 @@ export default {
         {
           question: "Who is responsible for your data",
           answer:
-            "The controller is **DECAP TONY BV**, Langepad 51C, 2200 Herentals, Belgium, company number BE 0450.352.984, trading as Decap Herentals.\n\nFor any privacy question, write to [TO CHECK: info@decap.be?] or call +32 14 22 44 94.",
+            "The controller is **DECAP TONY BV**, Langepad 51C, 2200 Herentals, Belgium, company number BE 0450.352.984, trading as Decap Herentals.\n\nFor any privacy question, write to [info@decap.be](mailto:info@decap.be) or call +32 14 22 44 94.",
         },
         {
           question: "What we collect through the enquiry form",
@@ -56,7 +56,7 @@ export default {
         {
           question: "Your rights",
           answer:
-            "Under the GDPR you can ask us to:\n\n- show you the personal data we hold about you\n- correct it\n- delete it\n- limit how we use it\n- give it to you in a portable format\n\nYou can also object to processing based on our legitimate interest. Send your request to [TO CHECK: info@decap.be?]. We answer within one month.",
+            "Under the GDPR you can ask us to:\n\n- show you the personal data we hold about you\n- correct it\n- delete it\n- limit how we use it\n- give it to you in a portable format\n\nYou can also object to processing based on our legitimate interest. Send your request to [info@decap.be](mailto:info@decap.be). We answer within one month.",
         },
         {
           question: "Complaints",

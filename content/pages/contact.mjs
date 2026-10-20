@@ -35,7 +35,7 @@ export default {
         success_body: "We read every message in the workshop and reply personally. [TO CHECK: typical response time]",
         aside_title: "Visit the workshop",
         aside_body:
-          "**Decap Herentals**, Langepad 51C, 2200 Herentals, Belgium\n\n**Phone:** +32 14 22 44 94\n\n**Email:** [TO CHECK: info@decap.be?]\n\nVisits by appointment. [TO CHECK: confirm visits by appointment only, and opening hours]\n\nDECAP TONY BV · BE 0450.352.984\n\nRestoring a historic organ? Contact [Atelier Frank Decap](/frank-decap) directly.",
+          "**Decap Herentals**, Langepad 51C, 2200 Herentals, Belgium\n\n**Phone:** +32 14 22 44 94\n\n**Email:** [info@decap.be](mailto:info@decap.be)\n\nVisits by appointment. [TO CHECK: confirm visits by appointment only, and opening hours]\n\nDECAP TONY BV · BE 0450.352.984\n\nRestoring a historic organ? Contact [Atelier Frank Decap](/frank-decap) directly.",
       },
     },
     {
@@ -58,7 +58,7 @@ export default {
         {
           question: "Do you deliver outside Belgium?",
           answer:
-            "Our instruments play with artists and in venues across Europe. [TO CHECK: delivery and installation outside Belgium, shipping countries and how costs are quoted]",
+            "Our instruments play with artists and in venues across Europe. [TO CHECK: installation outside Belgium, shipping countries and how costs are quoted]",
         },
         {
           question: "Who restores historic organs?",

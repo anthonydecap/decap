@@ -77,7 +77,7 @@ export default {
         },
         {
           title: "Pat Metheny",
-          body: "[TO CHECK: one line on what Decap built for Pat Metheny]",
+          body: "An orchestrion from Herentals, toured around the world in several productions.",
           link_label: "Read the case study",
           link: "/work/pat-metheny",
           image_brief: "Pat Metheny with Decap instruments on stage, 4:3",

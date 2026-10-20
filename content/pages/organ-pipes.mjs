@@ -1,19 +1,19 @@
-/** Organ pipes page (Prismic page "organ-pipes"): wooden pipes from our own CNC, made within days. A headline product. */
+/** Organ pipes page (Prismic page "organ-pipes"): wooden pipes from our own CNC, ready in days, not months. A headline product. */
 export default {
   type: "page",
   uid: "organ-pipes",
   title: "Organ pipes",
   theme: "decap",
-  meta_title: "Wooden Organ Pipes, Made Within Days | Decap",
+  meta_title: "Wooden Organ Pipes, Ready Within a Week | Decap",
   meta_description:
-    "Almost any wooden organ pipe, milled on our own CNC and ready to ship within days. Standard scales or your own measurements, for DIY builds and organs.",
+    "Almost any wooden organ pipe, milled on our own CNC and ready to ship within a week. Standard scales or your own measurements, for DIY builds and organs.",
   slices: [
     {
       type: "site_hero",
       primary: {
         layout: "Split",
         eyebrow: "The only workshop in the world that does this",
-        title: "Wooden organ pipes, made within days",
+        title: "Wooden organ pipes, ready in days, not months",
         intro:
           "We are the only company in the world that developed CNC manufacturing of organ pipes in-house. Almost any wooden pipe, in our standard scales or to your own measurements, milled, assembled and ready to ship within days.",
         primary_cta_label: "Order pipes",
@@ -32,7 +32,7 @@ export default {
         tone: "Tinted",
       },
       items: [
-        { value: "Days", label: "from order to shipping for most wooden pipes" },
+        { value: "1 week", label: "or less from order to shipping, depending on the ranks" },
         { value: "Any size", label: "our standard scales or your own measurements" },
         { value: "6 octaves", label: "Bourdon range, MIDI 24 to 96" },
         { value: "2016", label: "our first pipes from our own CNC" },
@@ -89,7 +89,7 @@ export default {
       },
       items: [
         { point: "5-axis CNC, G-code from our own PipeCreator software" },
-        { point: "Ready to ship within days" },
+        { point: "Ready in a few days to a week, depending on the ranks" },
         { point: "Voiced by our voicers, or delivered for you to voice" },
       ],
     },
@@ -145,7 +145,7 @@ export default {
       items: [
         {
           question: "How fast can you deliver?",
-          answer: "Most wooden pipes are milled, assembled and ready to ship within days. For large orders or voicing we give you a date with the quote.",
+          answer: "Within a few days to a week, depending on the ranks you order. We confirm the date with the quote.",
         },
         {
           question: "Can I order a single pipe?",
@@ -187,7 +187,7 @@ export default {
         success_body: "We will reply with a quote and a shipping date, usually within a few working days.",
         aside_title: "Good to know",
         aside_body:
-          "- Standard scales or your own measurements\n- Ready to ship within days for most pipes\n- Voiced or ready to voice\n- Chests, MIDI conversion and SmartValve on request",
+          "- Standard scales or your own measurements\n- Ready in a few days to a week, depending on the ranks\n- Voiced or ready to voice\n- Chests, MIDI conversion and SmartValve on request",
       },
     },
   ],

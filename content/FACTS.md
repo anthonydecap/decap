@@ -9,7 +9,7 @@ page), do not invent it: write `[TO CHECK: …]` in the copy instead. Items mark
 - **Decap Herentals**: organ builders and makers of self-playing and MIDI-controlled instruments.
 - Workshop: Langepad 51C, 2200 Herentals, Belgium. Phone +32 14 22 44 94.
 - Legal entity: DECAP TONY BV, company number 0450.352.984.
-- Email for the website: `[TO CHECK: info@decap.be?]` (old site used info@orchestrionix.com).
+- Email for the website: **info@decap.be**.
 - Run by **Tony Decap**, fourth generation.
 - **Frank Decap**, Tony's brother, runs his own separate business: **Atelier Frank Decap**, a master
   craftsman dedicated to organ restoration. He also installs Decap MIDI conversion units. Frank has
@@ -34,7 +34,7 @@ page), do not invent it: write `[TO CHECK: …]` in the copy instead. Items mark
 | 2004 | The Accordion Pedestal is introduced. | user |
 | 2008 | Flemish singer **Guido Belcanto** tours a Decap dance organ in his theatre show *Balzaal der Gebroken Harten*, made possible because Decap organs have controllable sensitivity and volume. (A profile lists the show as Belcanto with Lady Angelina, Vitalski and "Decaporgel".) | user; frontstagefestivals.com |
 | 2016 | First organ pipes milled on CNC, a process developed entirely in-house (PipeCreator software). | user |
-| 2025 | SmartValve built into the first transportable church organ, with every pipe individually controlled: the world's first **wind synthesizer**. This is **L'Explorateur**, the mobile concert organ of Swiss organist **Yves Rechsteiner** (third-party description: "a modular organ… developed by Tony Decap" whose valve technology "essentially turns a pipe organ into a physical synthesizer"; played e.g. Lyon, Chapelle de la Trinité, 14 Nov 2025). `[TO CHECK: confirm L'Explorateur = the 2025 organ]` | user; studio31 blog; Bachtrack |
+| 2025 | SmartValve built into the first transportable church organ, with every pipe individually controlled: the world's first **wind synthesizer**. This is **L'Explorateur**, the mobile concert organ of Swiss organist **Yves Rechsteiner** (third-party description: "a modular organ… developed by Tony Decap" whose valve technology "essentially turns a pipe organ into a physical synthesizer"; played e.g. Lyon, Chapelle de la Trinité, 14 Nov 2025). (confirmed by Decap) | user; studio31 blog; Bachtrack |
 
 Phrase to use: *"Organ builders since 1895. Decap Herentals since 1933."*
 Story line: every generation reinvented the organ (Frans founded the workshop, François went
@@ -58,6 +58,8 @@ digital, Tony brought MIDI and SmartValve).
 
 - New organs: dance organs, fair organs, street organs, church/concert organs; for dance halls,
   cafés, fairgrounds, collectors, museums, churches.
+- **Never mention delivery or lead times** on the site (organs, instruments). Exception: organ
+  pipes ship within a few days to a week, depending on the ranks.
 - Two routes: **modular** (customer picks from proven modules) or **fully bespoke**.
 - Standard scales: **105 and 121 keys**, but anything is possible.
 - **Keys are no limit:** the Virtual Orchestrion player adds missing ranks virtually with
@@ -80,7 +82,7 @@ digital, Tony brought MIDI and SmartValve).
 
 ### Organ pipes (Decap product): a headline message
 - **Decap is the world's only company that developed CNC manufacturing of organ pipes in-house**
-  (user's claim; use it). **Almost any wooden pipe can be made within days, ready to ship.**
+  (user's claim; use it). **Almost any wooden pipe can be made and shipped within a few days to a week, depending on the ranks.**
 - Sizing: our own standard scales, or the customer's own measurements.
 - For everyone: DIY projects, your own organ (new ranks, replacements, extensions), organ builders
   and restorers. Customers can buy only pipes, or pipes plus wind chests and more from Decap.
@@ -134,7 +136,7 @@ Existing Prismic pages (keep): `accordion`, `pipes`, `percussion-unit`, `mallet-
   12 V DC, 2 A; 120 × 90 × 70 mm. Accessories: trumpet clamp, trombone clamp.
 - Users: theatres, sound designers, museums, studios, collectors. Testimonial on page: Circus Ronaldo.
 - **Brass Core is one of the few off-the-shelf products: it ships immediately when in stock.**
-  Show its price. Stripe product price: € 799 `[TO CHECK: current price]`.
+  Show its price: **€ 2,599** (confirmed; the shop's Stripe product still says € 799 and must be corrected).
 
 ## SmartValve (existing Prismic page `smartvalve`, keep)
 
@@ -158,8 +160,8 @@ Existing Prismic pages (keep): `accordion`, `pipes`, `percussion-unit`, `mallet-
 
 ## Work (projects and artists)
 
-- **Pat Metheny**: may be named. `[TO CHECK: what Decap built/supplied, and when]`. (His
-  *Orchestrion* project, 2010, used acoustic instruments played by solenoids and pneumatics.)
+- **Pat Metheny**: Decap built an orchestrion for Pat Metheny, which he toured the world with in
+  several productions. Details (which productions, years) `[TO CHECK]`.
 - **Stephan Eicher**: "Und die Automaten" tour with automated instruments; album *Ode*.
 - **Yves Rechsteiner**: L'Explorateur, mobile concert organ for venues without an organ; SmartValve
   per-pipe control; "physical synthesizer". 2025.

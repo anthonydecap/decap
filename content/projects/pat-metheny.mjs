@@ -1,4 +1,4 @@
-/** Work case study (Prismic project "pat-metheny"). Facts are thin: every detail of the Decap contribution is still [TO CHECK]. */
+/** Work case study (Prismic project "pat-metheny"): the orchestrion Decap built, which Pat Metheny toured the world with. */
 export default {
   type: "project",
   uid: "pat-metheny",
@@ -6,9 +6,9 @@ export default {
   theme: "decap",
   meta_title: "Pat Metheny and Decap | Work | Decap Herentals",
   meta_description:
-    "Pat Metheny and Decap Herentals: acoustic instruments played by machine, built in our Herentals workshop. [TO CHECK: rewrite once project details are confirmed]",
+    "Decap Herentals built an orchestrion for jazz guitarist Pat Metheny. He took it on world tours in several productions. The story behind the instrument.",
   fields: {
-    summary: "[TO CHECK: one sentence on what Decap built or supplied for Pat Metheny]",
+    summary: "An orchestrion built in Herentals, toured around the world in several of his productions.",
     client: "Pat Metheny",
     year: "[TO CHECK: year]",
     location: "[TO CHECK: location]",
@@ -19,8 +19,8 @@ export default {
       primary: {
         layout: "Split",
         eyebrow: "Work",
-        title: "Pat Metheny and Decap",
-        intro: "[TO CHECK: one or two sentences on what Decap built or supplied for Pat Metheny, and when]",
+        title: "An orchestrion for Pat Metheny",
+        intro: "We built an orchestrion for Pat Metheny. He took it on tour around the world, in several of his productions. [TO CHECK: which productions and years]",
         primary_cta_label: "All projects",
         primary_cta_link: "/work",
         image_brief: "Pat Metheny with the Decap instrument(s) on stage or in the studio, 4:3 [TO CHECK: photo and usage rights]",
@@ -30,9 +30,9 @@ export default {
       type: "site_text_media",
       primary: {
         eyebrow: "The project",
-        title: "Acoustic instruments, played by machine",
+        title: "Built to tour the world",
         body:
-          "Pat Metheny's *Orchestrion* project (2010) put acoustic instruments on stage that were played by solenoids and pneumatics.\n\n[TO CHECK: Decap's part in it, if any: which instruments or components came from Herentals, and when]\n\n[TO CHECK: what the brief asked for, and what made it possible, e.g. velocity control, repetition speed]",
+          "An orchestrion is a band of acoustic instruments played by machine. Pat Metheny plays alongside it on stage: the instruments respond to his playing and his arrangements, night after night, in a different hall every evening.\n\nThat asks a lot of an instrument. It has to travel, survive set-up and breakdown, and play with the timing and dynamics of a jazz musician. [TO CHECK: which instruments were in the orchestrion and how it was controlled]",
         media_side: "Image right",
         aspect: "Landscape 4:3",
         image_brief: "The Decap-built instrument from this project in the Herentals workshop before shipping, 4:3 [TO CHECK: archive photo]",
@@ -47,9 +47,8 @@ export default {
       },
       items: [
         { label: "Artist", value: "Pat Metheny" },
-        { label: "Year", value: "[TO CHECK: year]" },
-        { label: "Built by Decap", value: "[TO CHECK: instruments or components supplied]" },
-        { label: "Control", value: "[TO CHECK: how the instruments were driven]" },
+        { label: "Built by Decap", value: "An orchestrion" },
+        { label: "Used in", value: "World tours, several productions [TO CHECK: names]" },
       ],
     },
     {

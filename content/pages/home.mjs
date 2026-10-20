@@ -66,7 +66,7 @@ export default {
       type: "site_text_media",
       primary: {
         eyebrow: "Organ pipes",
-        title: "Almost any wooden pipe, ready to ship within days",
+        title: "Almost any wooden pipe, ready to ship within a week",
         body:
           "We are the only company in the world that developed CNC manufacturing of organ pipes in-house. Our standard scales or your own measurements, drawn in 3D and milled on our own CNC.\n\nFor a DIY build, an extra rank for your organ, or a complete set of pipes and wind chests.",
         media_side: "Image right",
@@ -77,7 +77,7 @@ export default {
         tone: "Dark band",
       },
       items: [
-        { point: "Ready to ship within days" },
+        { point: "Ready in a few days to a week, depending on the ranks" },
         { point: "Standard scales or your own sizing" },
         { point: "Voiced, or ready for you to voice" },
       ],
@@ -126,7 +126,7 @@ export default {
         cta_link: "/work",
       },
       items: [
-        { title: "Pat Metheny", body: "[TO CHECK: one line on what Decap built for Pat Metheny]", link_label: "Read more", link: "/work/pat-metheny", image_brief: "Pat Metheny with Decap instruments on stage, 4:3" },
+        { title: "Pat Metheny", body: "An orchestrion from Herentals, toured around the world in several productions.", link_label: "Read more", link: "/work/pat-metheny", image_brief: "Pat Metheny with Decap instruments on stage, 4:3" },
         { title: "Yves Rechsteiner", body: "L'Explorateur, a mobile concert organ with SmartValve on every pipe.", link_label: "Read more", link: "/work/yves-rechsteiner", image_brief: "L'Explorateur set up in a chapel, 4:3" },
         { title: "Stephan Eicher", body: "Automated instruments for the tour Stephan Eicher und die Automaten.", link_label: "Read more", link: "/work/stephan-eicher", image_brief: "Stephan Eicher on stage with the automated instruments, 4:3" },
         { title: "House of Music Hungary", body: "A robot orchestra for the Creative Sound Space in Budapest.", link_label: "Read more", link: "/work/house-of-music-hungary", image_brief: "The robot orchestra in the Creative Sound Space, Budapest, 4:3" },
