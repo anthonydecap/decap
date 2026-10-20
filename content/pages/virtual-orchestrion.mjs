@@ -17,7 +17,7 @@ export default {
         intro:
           "Virtual Orchestrion plays MIDI, audio and video and sends every instrument its part: Decap organs and self-playing instruments, and QRS pianos. On screen you follow the music as an animated orchestrion or as a scrolling book.",
         primary_cta_label: "Get it in the shop",
-        primary_cta_link: "/shop",
+        primary_cta_link: "/software/virtual-orchestrion",
         secondary_cta_label: "Self-playing instruments",
         secondary_cta_link: "/instruments",
         note: "Included with every new Decap organ.",
@@ -60,7 +60,7 @@ export default {
       items: [
         {
           title: "Install the player",
-          body: "Buy Virtual Orchestrion in the [shop](/shop), download it and install it on your computer.",
+          body: "Buy Virtual Orchestrion in the [shop](/software/virtual-orchestrion), download it and install it on your computer.",
         },
         {
           title: "Connect your instruments",
@@ -135,7 +135,7 @@ export default {
         },
         {
           question: "Where do I buy it?",
-          answer: "In the [Decap shop](/shop), where you buy and download it. With a new Decap organ it is included.",
+          answer: "In the [Decap shop](/software/virtual-orchestrion), where you buy and download it. With a new Decap organ it is included.",
         },
       ],
     },
@@ -146,7 +146,7 @@ export default {
         title: "Get Virtual Orchestrion",
         body: "Buy and download Virtual Orchestrion in the shop, connect your instruments and press play.",
         primary_cta_label: "Get it in the shop",
-        primary_cta_link: "/shop",
+        primary_cta_link: "/software/virtual-orchestrion",
         secondary_cta_label: "Visit the shop",
         secondary_cta_link: "/shop",
         tone: "Dark band",

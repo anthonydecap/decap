@@ -698,7 +698,8 @@ const en = {
 };
 
 /** Path of the public software catalog (outside the shop tree). */
-export const softwarePath = (lang: string, path = "") => `/${lang}/software${path}`;
+/** Software catalog lives in the shop (/shop/software); product pages stay at /software/<slug>. */
+export const softwarePath = (lang: string, path = "") => (path ? `/${lang}/software${path}` : `/${lang}/shop/software`);
 
 export type ShopCopy = typeof en;
 

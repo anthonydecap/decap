@@ -3,6 +3,7 @@ import type { PageTheme } from "@/lib/brand";
 import {
   DEFAULT_PRISMIC_LANG,
   DEFAULT_URL_LANG,
+  resolveUrlLang,
   urlLangToPrismic,
   type PrismicLocale,
   type UrlLocale,
@@ -24,9 +25,7 @@ export function createSliceContext(
   urlLang: string,
   extra?: Omit<SliceZoneContext, "urlLang" | "prismicLang" | "lang">,
 ): SliceZoneContext {
-  const resolvedUrlLang = (
-    urlLang === "en" || urlLang === "fr" ? urlLang : DEFAULT_URL_LANG
-  ) as UrlLocale;
+  const resolvedUrlLang = resolveUrlLang(urlLang);
   const prismicLang =
     urlLangToPrismic(resolvedUrlLang) ?? DEFAULT_PRISMIC_LANG;
 

@@ -17,7 +17,7 @@ export default {
         intro:
           "Arranging for a street organ or pipe organ usually means writing blind until the music reaches the instrument. MIDIMapper takes the MIDI from your arranging software, routes it through your own maps and plays it with real organ samples. What you hear while arranging is much closer to what the organ will play.",
         primary_cta_label: "Get the free trial in the shop",
-        primary_cta_link: "/shop",
+        primary_cta_link: "/software/midi-mapper",
         secondary_cta_label: "All Decap software",
         secondary_cta_link: "/software",
         note: "Full licence € 150 excl. VAT. Free trial and licence in the shop.",
@@ -113,7 +113,7 @@ export default {
         {
           question: "How do I buy the full licence?",
           answer:
-            "In the [shop](/shop): € 150 excl. VAT. The free trial is there too, so you can try MIDIMapper with your own arrangements first.",
+            "In the [shop](/software/midi-mapper): € 150 excl. VAT. The free trial is there too, so you can try MIDIMapper with your own arrangements first.",
         },
       ],
     },
@@ -126,9 +126,9 @@ export default {
         price: "€ 150",
         price_note: "excl. VAT, full licence",
         primary_cta_label: "Get the free trial in the shop",
-        primary_cta_link: "/shop",
+        primary_cta_link: "/software/midi-mapper",
         secondary_cta_label: "Buy in the shop",
-        secondary_cta_link: "/shop",
+        secondary_cta_link: "/software/midi-mapper",
         tone: "Dark band",
       },
     },
