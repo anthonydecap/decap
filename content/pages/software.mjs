@@ -55,14 +55,14 @@ export default {
       type: "site_text_media",
       primary: {
         eyebrow: "Music shop",
-        title: "Arrangements ready for the player",
+        title: "Arrangements for the player: coming soon",
         body:
-          "Arrangers sell their arrangements for Decap instruments in our music shop. Every file is copy-protected and formatted for Virtual Orchestrion, so it plays on the instruments you have connected.\n\nA marketplace where arrangers sell their own work is coming soon. Arranging for Decap instruments? [Register your interest](/contact).",
+          "Soon our shop will also sell arrangements for Decap instruments, from our own library and from independent arrangers. Every file will be copy-protected and formatted for Virtual Orchestrion, so it plays on the instruments you have connected.\n\nArranging for Decap instruments? [Register your interest](/contact).",
         media_side: "Image right",
         aspect: "Landscape 4:3",
-        cta_label: "Browse the music shop",
+        cta_label: "Visit the shop",
         cta_link: "/shop",
-        image_brief: "Screenshot of the music shop page with a few arrangements listed, 4:3",
+        image_brief: "Virtual Orchestrion playing an arrangement in book view, screen filling the frame, 4:3",
         tone: "Tinted",
       },
     },

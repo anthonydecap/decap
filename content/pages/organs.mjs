@@ -212,7 +212,7 @@ export default {
         {
           question: "Where does the music come from?",
           answer:
-            "From a digital card in the Virtual Orchestrion player: a whole music library instead of racks of books. Arrangers sell copy-protected arrangements in the music shop. You can also play the organ live over MIDI.",
+            "From a digital card in the Virtual Orchestrion player: a whole music library instead of racks of books. Copy-protected arrangements in our shop are coming soon. You can also play the organ live over MIDI.",
         },
         {
           question: "Do you deliver organs outside Belgium?",

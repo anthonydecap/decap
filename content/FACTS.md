@@ -201,8 +201,8 @@ Existing Prismic pages (keep): `accordion`, `pipes`, `percussion-unit`, `mallet-
   case by case: he is a real expert.
 - **Shop is crucial**: Virtual Orchestrion and MIDIMapper are sold through the shop (/shop).
   No prices/OS details needed. MIDIMapper trial: the same download as the old site, via the shop.
-- **Arranger marketplace**: "coming soon".
-- **Bellow Organ**: no battery, no book reader. Key versions: don't state.
+- **Arrangements in the shop** (Decap's own and from arrangers): **coming soon**. Today the shop sells software.
+- **Bellow Organ**: can run on battery (suitable for street use); no book reader. Key versions: don't state.
 - **Stephan Eicher**: several instruments / orchestrion units for different productions ("Stephan
   Eicher und die Automaten"); details may be found online.
 - **House of Music Hungary**: Decap built almost all instruments for the interactive room (Creative

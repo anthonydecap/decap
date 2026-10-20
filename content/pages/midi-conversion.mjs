@@ -39,7 +39,7 @@ export default {
       items: [
         { point: "The book or roll operation stays completely intact" },
         { point: "Book and MIDI can play at the same time" },
-        { point: "Arrangements from the Virtual Orchestrion music shop, or live over MIDI" },
+        { point: "Play MIDI arrangements through Virtual Orchestrion, or play live over MIDI" },
       ],
     },
     {

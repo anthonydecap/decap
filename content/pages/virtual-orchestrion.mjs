@@ -6,7 +6,7 @@ export default {
   theme: "decap",
   meta_title: "Virtual Orchestrion Player Software | Decap Herentals",
   meta_description:
-    "One player for your whole Decap ensemble and QRS pianos. Animated orchestrion and book views, missing ranks added virtually, and a shop full of arrangements.",
+    "One player for your whole Decap ensemble and QRS pianos. Animated orchestrion and book views, missing ranks added virtually. Available in the Decap shop.",
   slices: [
     {
       type: "site_hero",
@@ -68,7 +68,7 @@ export default {
         },
         {
           title: "Choose your music",
-          body: "Buy copy-protected arrangements in the [music shop](/shop), or play your own MIDI, audio and video files.",
+          body: "Play your own MIDI, audio and video files. Copy-protected arrangements in our shop are coming soon.",
         },
         {
           title: "Press play",
@@ -89,7 +89,7 @@ export default {
         { label: "Views", value: "Animated orchestrion and book view" },
         { label: "Virtual instruments", value: "Up to 8 VSTi and 8 DXi" },
         { label: "Missing ranks", value: "Added virtually with samples recorded in our workshop" },
-        { label: "Music", value: "Copy-protected arrangements from the Decap music shop" },
+        { label: "Music", value: "Your own MIDI, audio and video files; shop arrangements coming soon" },
         { label: "Where to buy", value: "In the Decap shop" },
       ],
     },
@@ -147,7 +147,7 @@ export default {
         body: "Buy and download Virtual Orchestrion in the shop, connect your instruments and press play.",
         primary_cta_label: "Get it in the shop",
         primary_cta_link: "/shop",
-        secondary_cta_label: "Browse the music shop",
+        secondary_cta_label: "Visit the shop",
         secondary_cta_link: "/shop",
         tone: "Dark band",
       },

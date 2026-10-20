@@ -129,9 +129,9 @@ export default {
       type: "site_text_media",
       primary: {
         eyebrow: "Player and music",
-        title: "One player and a shop full of arrangements",
+        title: "One player for the whole ensemble",
         body:
-          "Virtual Orchestrion is the player for the whole Decap ensemble. It sends each instrument its part and shows the music as an animated orchestrion or as a book. When an arrangement calls for ranks your instrument does not have, the player adds them with samples we recorded in our own workshop.\n\nArrangers sell arrangements for Decap instruments in our [music shop](/shop), copy-protected and ready for the player.",
+          "Virtual Orchestrion is the player for the whole Decap ensemble. It sends each instrument its part and shows the music as an animated orchestrion or as a book. When an arrangement calls for ranks your instrument does not have, the player adds them with samples we recorded in our own workshop.\n\nA music shop with copy-protected arrangements for Decap instruments is coming soon.",
         media_side: "Image left",
         aspect: "Landscape 4:3",
         cta_label: "Virtual Orchestrion",
@@ -180,7 +180,7 @@ export default {
         body: "A café, a stage, a museum or the street: describe the place and the music. We reply with the instrument or combination we would choose, and a quote.",
         primary_cta_label: "Request a quote",
         primary_cta_link: "/contact",
-        secondary_cta_label: "Browse the music shop",
+        secondary_cta_label: "Visit the shop",
         secondary_cta_link: "/shop",
         tone: "Dark band",
       },

@@ -15,7 +15,7 @@ export default {
         eyebrow: "Bellow Organ",
         title: "A hand-turned organ with every note of the scale",
         intro:
-          "Our Bellow Organ is a hand-turned street organ for buskers, collectors and anyone who wants to play outdoors. It is 100% chromatic, plays from a built-in Virtual Orchestrion player and comes as a kit or fully assembled.",
+          "Our Bellow Organ is a hand-turned street organ for buskers, collectors and anyone who wants to play outdoors. It is 100% chromatic, plays from a built-in Virtual Orchestrion player and comes as a kit or fully assembled. It can run on battery, so it plays wherever you take it.",
         primary_cta_label: "Request a quote",
         primary_cta_link: "/contact",
         secondary_cta_label: "All instruments",
@@ -110,6 +110,7 @@ export default {
         layout: "Spec list",
       },
       items: [
+        { label: "Power", value: "Can run on battery" },
         { label: "Scale", value: "100% chromatic" },
         { label: "Frame", value: "Aluminium" },
         { label: "Panels", value: "High-gloss wood veneer, or blank pre-cut panels to decorate yourself" },
