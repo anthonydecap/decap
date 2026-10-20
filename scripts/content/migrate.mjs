@@ -26,6 +26,8 @@ const writeToken = process.env.PRISMIC_WRITE_TOKEN;
 const args = process.argv.slice(2);
 const dry = args.includes("--dry");
 const updatesOnly = args.includes("--updates-only");
+/** Skip the translated menus/footers (e.g. when a translated settings draft already exists in Prismic). */
+const noSettings = args.includes("--no-settings");
 const only = args.filter((a) => !a.startsWith("--"));
 if (!writeToken && !dry) throw new Error("PRISMIC_WRITE_TOKEN is missing (put it in .env.local)");
 
@@ -182,7 +184,7 @@ if (!only.length) {
 }
 
 // Menu and footer per language: update the translated settings, or create them linked to English.
-if (!only.length) {
+if (!only.length && !noSettings) {
   const enSettings = existing.find((d) => d.type === "settings" && d.lang === "en-us");
   for (const lang of SETTINGS_LANGS) {
     if (!translationLangs.has(lang)) continue;

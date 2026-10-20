@@ -1,0 +1,135 @@
+/** Work overview, French (Prismic page "work"): instruments in homes and bars first, then artists and case studies. */
+export default {
+  type: "page",
+  uid: "work",
+  lang: "fr-fr",
+  title: "Réalisations",
+  theme: "decap",
+  meta_title: "Nos réalisations : orgues et orchestrions | Decap Herentals",
+  meta_description:
+    "Orgues et orchestrions Decap : chez des particuliers, dans des bars et salles de danse du monde entier, et sur scène avec Pat Metheny ou Stephan Eicher.",
+  slices: [
+    {
+      type: "site_hero",
+      primary: {
+        layout: "Centered",
+        eyebrow: "Réalisations",
+        title: "Orgues et orchestrions à la maison, au café et sur scène",
+        intro:
+          "La plupart de nos orgues et instruments jouent chez des particuliers : au salon, dans des cafés, des bars et des salles de danse, partout dans le monde. Certains partent en tournée avec des artistes. En voici une sélection.",
+      },
+    },
+    {
+      type: "site_card_grid",
+      primary: {
+        eyebrow: "Pour les particuliers",
+        title: "À la maison, au café et dans les collections",
+        intro: "Une sélection d'orgues et d'orchestrions sortis de notre atelier de Herentals pour des clients particuliers.",
+        columns: "4",
+        card_style: "Image cards",
+      },
+      items: [
+        { title: "Château d'accordéons", image_brief: "The Accordion castle, front view on a plain backdrop, 4:3" },
+        { title: "Accordion Pedestal, blanc nacré", image_brief: "Pearl-white Accordion Pedestal against a dark backdrop, three-quarter view, 4:3" },
+        { title: "Orchestrion, blanc nacré", image_brief: "Pearl-white orchestrion, front view, workshop wall behind, 4:3" },
+        { title: "Orchestrion à double accordéon", image_brief: "Orchestrion with two accordions, front view, 4:3" },
+        { title: "Orchestrion, design arrondi années 70", image_brief: "Orchestrion with rounded 1970s-style case, three-quarter view, 4:3" },
+        { title: "Orchestrion, version remorque", image_brief: "Orchestrion built into a trailer, side panel open, outdoors, 4:3" },
+        { title: "Pipe Cube", image_brief: "Pipe Cube on a table, black backdrop, pipes visible, 4:3" },
+        { title: "Orgue", image_brief: "Finished Decap organ façade, front view, 4:3" },
+      ],
+    },
+    {
+      type: "home_artists",
+      copyItemsFrom: { type: "page", uid: "home" },
+      primary: {
+        title: "Joués par des artistes",
+        description: "Des compositeurs, des groupes et des compagnies de théâtre qui jouent nos orgues et instruments sur scène et en studio.",
+      },
+      items: [
+        { artist_name: "Pat Metheny" },
+        { artist_name: "Walter Hus" },
+        { artist_name: "Circus Ronaldo" },
+      ],
+    },
+    {
+      type: "site_card_grid",
+      primary: {
+        eyebrow: "Projets en détail",
+        title: "Quelques projets racontés en entier",
+        columns: "3",
+        card_style: "Image cards",
+      },
+      items: [
+        {
+          tag: "Orgue de concert · 2025",
+          title: "Yves Rechsteiner : L'Explorateur",
+          body: "Un orgue de concert transportable avec SmartValve sur chaque tuyau : le premier synthétiseur à vent.",
+          link_label: "Lire l'étude de cas",
+          link: "/work/yves-rechsteiner",
+          image_brief: "L'Explorateur set up in a chapel, 4:3",
+        },
+        {
+          tag: "Tournée et album",
+          title: "Stephan Eicher und die Automaten",
+          body: "Des instruments acoustiques automatiques en tournée avec Stephan Eicher, et sur son album Ode.",
+          link_label: "Lire l'étude de cas",
+          link: "/work/stephan-eicher",
+          image_brief: "Stephan Eicher on stage with the automated instruments, 4:3",
+        },
+        {
+          tag: "Musée · Budapest",
+          title: "House of Music Hungary",
+          body: "Presque tous les instruments de l'orchestre robotisé du Creative Sound Space, avec Medence Design.",
+          link_label: "Lire l'étude de cas",
+          link: "/work/house-of-music-hungary",
+          image_brief: "The robot orchestra in the Creative Sound Space, Budapest, 4:3 (photo Mohai Balázs)",
+        },
+        {
+          tag: "Orchestrion",
+          title: "Walter Hus, BELEM et The Mekanics",
+          body: "Des unités de tuyaux transportables, une unité de percussion et un accordéon pour l'orchestre mécanique de Walter Hus.",
+          link_label: "Lire l'étude de cas",
+          link: "/work/walter-hus-belem",
+          image_brief: "BELEM on stage in front of the mechanical orchestra, 4:3",
+        },
+        {
+          tag: "Orgue de danse · 2008",
+          title: "Guido Belcanto",
+          body: "Un orgue Belcanto construit sur mesure pour Balzaal der Gebroken Harten, en tournée dans les plus grandes salles des centres culturels belges.",
+          link_label: "Lire l'étude de cas",
+          link: "/work/guido-belcanto",
+          image_brief: "Guido Belcanto on stage with the Decap dance organ, 4:3",
+        },
+        {
+          tag: "Cirque",
+          title: "Circus Ronaldo",
+          body: "Des instruments sur mesure intégrés aux décors de plusieurs productions, et Brass Core pour des cuivres en direct.",
+          link_label: "Lire l'étude de cas",
+          link: "/work/circus-ronaldo",
+          image_brief: "The Decap organ in the Circus Ronaldo tent, 4:3",
+        },
+        {
+          title: "Pat Metheny",
+          body: "Un orchestrion venu de Herentals, emmené en tournée dans le monde entier dans de nombreuses productions, jusqu'à son dernier concert en Belgique, à BOZAR.",
+          link_label: "Lire l'étude de cas",
+          link: "/work/pat-metheny",
+          image_brief: "Pat Metheny with Decap instruments on stage, 4:3",
+        },
+      ],
+    },
+    {
+      type: "site_cta",
+      primary: {
+        eyebrow: "Votre projet",
+        title: "Dites-nous où il jouera",
+        body: "Salon, bar, salle de danse ou scène : décrivez la salle et la musique. Nous vous répondons avec des questions et une première idée.",
+        primary_cta_label: "Décrire votre projet",
+        primary_cta_link: "/contact",
+        secondary_cta_label: "Composer votre orgue",
+        secondary_cta_link: "/organ-composer",
+        tone: "Dark band",
+      },
+    },
+  ],
+};

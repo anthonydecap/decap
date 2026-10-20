@@ -1,0 +1,135 @@
+/** Work overview (Prismic page "work"), German. */
+export default {
+  type: "page",
+  uid: "work",
+  lang: "de-de",
+  title: "Projekte",
+  theme: "decap",
+  meta_title: "Projekte: Orgeln und Orchestrien | Decap Herentals",
+  meta_description:
+    "Decap-Orgeln und Orchestrien spielen weltweit in Wohnzimmern, Bars und Tanzsälen, und auf der Bühne mit Pat Metheny, Stephan Eicher und Yves Rechsteiner.",
+  slices: [
+    {
+      type: "site_hero",
+      primary: {
+        layout: "Centered",
+        eyebrow: "Projekte",
+        title: "Orgeln und Orchestrien zu Hause, in Bars und auf der Bühne",
+        intro:
+          "Die meisten unserer Orgeln und Instrumente spielen für private Besitzer: in Wohnzimmern, Cafés, Bars und Tanzsälen, auf der ganzen Welt. Einige gehen mit Künstlern auf Tournee. Hier eine Auswahl.",
+      },
+    },
+    {
+      type: "site_card_grid",
+      primary: {
+        eyebrow: "Für private Besitzer",
+        title: "Zu Hause, in Bars und Sammlungen",
+        intro: "Eine Auswahl an Orgeln und Orchestrien, die unsere Werkstatt in Herentals für Privatkunden verlassen haben.",
+        columns: "4",
+        card_style: "Image cards",
+      },
+      items: [
+        { title: "Akkordeon-Schloss", image_brief: "The Accordion castle, front view on a plain backdrop, 4:3" },
+        { title: "Accordion Pedestal, perlweiß", image_brief: "Pearl-white Accordion Pedestal against a dark backdrop, three-quarter view, 4:3" },
+        { title: "Orchestrion, perlweiß", image_brief: "Pearl-white orchestrion, front view, workshop wall behind, 4:3" },
+        { title: "Orchestrion mit Doppelakkordeon", image_brief: "Orchestrion with two accordions, front view, 4:3" },
+        { title: "Orchestrion im runden 70er-Jahre-Design", image_brief: "Orchestrion with rounded 1970s-style case, three-quarter view, 4:3" },
+        { title: "Orchestrion im Anhänger", image_brief: "Orchestrion built into a trailer, side panel open, outdoors, 4:3" },
+        { title: "Pipe Cube", image_brief: "Pipe Cube on a table, black backdrop, pipes visible, 4:3" },
+        { title: "Orgel", image_brief: "Finished Decap organ façade, front view, 4:3" },
+      ],
+    },
+    {
+      type: "home_artists",
+      copyItemsFrom: { type: "page", uid: "home" },
+      primary: {
+        title: "Gespielt von Künstlern",
+        description: "Komponisten, Bands und Theatergruppen, die unsere Orgeln und Instrumente auf der Bühne und im Studio spielen.",
+      },
+      items: [
+        { artist_name: "Pat Metheny" },
+        { artist_name: "Walter Hus" },
+        { artist_name: "Circus Ronaldo" },
+      ],
+    },
+    {
+      type: "site_card_grid",
+      primary: {
+        eyebrow: "Projekte im Detail",
+        title: "Einige Projekte, ausführlich erzählt",
+        columns: "3",
+        card_style: "Image cards",
+      },
+      items: [
+        {
+          tag: "Konzertorgel · 2025",
+          title: "Yves Rechsteiner: L'Explorateur",
+          body: "Eine transportable Konzertorgel mit SmartValve an jeder Pfeife: der erste Windsynthesizer.",
+          link_label: "Zum Projekt",
+          link: "/work/yves-rechsteiner",
+          image_brief: "L'Explorateur set up in a chapel, 4:3",
+        },
+        {
+          tag: "Tournee und Album",
+          title: "Stephan Eicher und die Automaten",
+          body: "Selbstspielende akustische Instrumente auf Tournee mit Stephan Eicher und auf seinem Album Ode.",
+          link_label: "Zum Projekt",
+          link: "/work/stephan-eicher",
+          image_brief: "Stephan Eicher on stage with the automated instruments, 4:3",
+        },
+        {
+          tag: "Museum · Budapest",
+          title: "House of Music Hungary",
+          body: "Fast alle Instrumente des Roboterorchesters im Creative Sound Space, gemeinsam mit Medence Design.",
+          link_label: "Zum Projekt",
+          link: "/work/house-of-music-hungary",
+          image_brief: "The robot orchestra in the Creative Sound Space, Budapest, 4:3 (photo Mohai Balázs)",
+        },
+        {
+          tag: "Orchestrion",
+          title: "Walter Hus, BELEM und The Mekanics",
+          body: "Transportable Pfeifeneinheiten, eine Percussion Unit und ein Akkordeon für das mechanische Orchester von Walter Hus.",
+          link_label: "Zum Projekt",
+          link: "/work/walter-hus-belem",
+          image_brief: "BELEM on stage in front of the mechanical orchestra, 4:3",
+        },
+        {
+          tag: "Tanzorgel · 2008",
+          title: "Guido Belcanto",
+          body: "Eine eigens gebaute Belcanto-Orgel für Balzaal der Gebroken Harten, auf Tournee durch die größten Säle der belgischen Kulturzentren.",
+          link_label: "Zum Projekt",
+          link: "/work/guido-belcanto",
+          image_brief: "Guido Belcanto on stage with the Decap dance organ, 4:3",
+        },
+        {
+          tag: "Zirkus",
+          title: "Circus Ronaldo",
+          body: "Maßgefertigte Instrumente, eingebaut in die Kulissen mehrerer Produktionen, und Brass Core für live gespielte Blechbläser.",
+          link_label: "Zum Projekt",
+          link: "/work/circus-ronaldo",
+          image_brief: "The Decap organ in the Circus Ronaldo tent, 4:3",
+        },
+        {
+          title: "Pat Metheny",
+          body: "Ein Orchestrion aus Herentals, mit dem er in vielen Produktionen um die Welt tourte, bis zu seinem letzten Konzert in Belgien im BOZAR.",
+          link_label: "Zum Projekt",
+          link: "/work/pat-metheny",
+          image_brief: "Pat Metheny with Decap instruments on stage, 4:3",
+        },
+      ],
+    },
+    {
+      type: "site_cta",
+      primary: {
+        eyebrow: "Ihr Projekt",
+        title: "Sagen Sie uns, wo sie spielen soll",
+        body: "Wohnzimmer, Bar, Tanzsaal oder Bühne: Beschreiben Sie den Raum und die Musik. Wir antworten mit Fragen und einer ersten Idee.",
+        primary_cta_label: "Projekt beschreiben",
+        primary_cta_link: "/contact",
+        secondary_cta_label: "Orgel zusammenstellen",
+        secondary_cta_link: "/organ-composer",
+        tone: "Dark band",
+      },
+    },
+  ],
+};

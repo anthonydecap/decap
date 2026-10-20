@@ -1,72 +1,58 @@
-import { useId } from 'react'
 import clsx from 'clsx'
 
-export function Logomark({
-  invert = false,
-  filled = false,
-  ...props
-}: React.ComponentPropsWithoutRef<'svg'> & {
-  invert?: boolean
-  filled?: boolean
-}) {
-  const id = useId()
+/** The DECAP wordmark (letters D, E, C, A, P), from the original brand SVG. */
+const LETTERS = [
+  "M20.16 10.71C20.16 15.68 17.87 18.87 13.28 20.26C12.1 20.61 11.04 20.79 10.08 20.79H0V0.630005H10.08C11.04 0.630005 12.1 0.810005 13.28 1.16C17.87 2.55 20.16 5.74001 20.16 10.71ZM17.64 10.71C17.64 6.98 15.92 4.59 12.47 3.55C11.6 3.28 10.8 3.15 10.08 3.15H2.52V18.27H10.08C10.8 18.27 11.6 18.14 12.47 17.87C15.91 16.83 17.64 14.44 17.64 10.71Z",
+  "M28.93 20.79V0.630005H46.28V3.15H31.45V13.23H43.76V15.75H31.45V18.27H46.28V20.79H28.93Z",
+  "M63 21.27C57.18 21.27 52.44 16.53 52.44 10.71C52.44 4.89002 57.17 0.150024 63 0.150024C66.63 0.150024 69.97 1.98002 71.92 5.05002L69.85 6.36002C68.35 4.00002 65.79 2.59002 63 2.59002C58.53 2.59002 54.89 6.23002 54.89 10.7C54.89 15.17 58.53 18.81 63 18.81C65.79 18.81 68.35 17.4 69.85 15.04L71.92 16.35C69.97 19.42 66.63 21.25 63 21.25V21.27Z",
+  "M99.54 20.79H97.02V15.75H81.9V20.79H79.38V10.08C79.38 9.12 79.56 8.06 79.91 6.88C81.3 2.29 84.49 0 89.46 0C94.43 0 97.62 2.29 99.01 6.88C99.36 8.06 99.54 9.12 99.54 10.08V20.79ZM97.02 13.23V10.08C97.02 9.36 96.89 8.56 96.62 7.69C95.58 4.25 93.19 2.52 89.46 2.52C85.73 2.52 83.34 4.24 82.3 7.69C82.03 8.56 81.9 9.36 81.9 10.08V13.23H97.02Z",
+  "M128.8 8.19C128.8 11.92 127.08 14.31 123.63 15.35C122.76 15.62 121.96 15.75 121.24 15.75H111.16V20.79H108.64V0.630005H121.24C121.96 0.630005 122.76 0.760005 123.63 1.03C127.07 2.07 128.8 4.46 128.8 8.19ZM126.28 8.19C126.28 6.71 125.81 5.5 124.87 4.56C123.93 3.62 122.72 3.15 121.24 3.15H111.16V13.23H121.24C122.72 13.23 123.93 12.76 124.87 11.82C125.81 10.88 126.28 9.67 126.28 8.19Z",
+]
 
+type LogoProps = React.ComponentPropsWithoutRef<'svg'> & {
+  invert?: boolean
+  /** Kept for API compatibility with the template header/footer. */
+  filled?: boolean
+  fillOnHover?: boolean
+}
+
+/** Drops the template-only props so they don't end up on the <svg>. */
+function svgProps({ filled, fillOnHover, ...rest }: Omit<LogoProps, 'invert' | 'className'>) {
+  void filled
+  void fillOnHover
+  return rest
+}
+
+/** Full DECAP wordmark. Dark on light backgrounds, white with `invert`. */
+export function Logo({ invert = false, className, ...rest }: LogoProps) {
+  const props = svgProps(rest)
   return (
-    <svg viewBox="0 0 32 32" aria-hidden="true" {...props}>
-      <rect
-        clipPath={`url(#${id}-clip)`}
-        className={clsx(
-          'h-8 transition-all duration-300',
-          invert ? 'fill-white' : 'fill-neutral-950',
-          filled ? 'w-8' : 'w-0 group-hover/logo:w-8',
-        )}
-      />
-      <use
-        href={`#${id}-path`}
-        className={invert ? 'stroke-white' : 'stroke-neutral-950'}
-        fill="none"
-        strokeWidth="1.5"
-      />
-      <defs>
-        <path
-          id={`${id}-path`}
-          d="M3.25 26v.75H7c1.305 0 2.384-.21 3.346-.627.96-.415 1.763-1.02 2.536-1.752.695-.657 1.39-1.443 2.152-2.306l.233-.263c.864-.975 1.843-2.068 3.071-3.266 1.209-1.18 2.881-1.786 4.621-1.786h5.791V5.25H25c-1.305 0-2.384.21-3.346.627-.96.415-1.763 1.02-2.536 1.751-.695.658-1.39 1.444-2.152 2.307l-.233.263c-.864.975-1.843 2.068-3.071 3.266-1.209 1.18-2.881 1.786-4.621 1.786H3.25V26Z"
-        />
-        <clipPath id={`${id}-clip`}>
-          <use href={`#${id}-path`} />
-        </clipPath>
-      </defs>
+    <svg
+      viewBox="0 0 129 22"
+      role="img"
+      aria-label="Decap"
+      className={clsx(invert ? 'fill-white' : 'fill-neutral-950', 'transition-colors', className)}
+      {...props}
+    >
+      {LETTERS.map((d) => (
+        <path key={d.slice(0, 12)} d={d} />
+      ))}
     </svg>
   )
 }
 
-export function Logo({
-  className,
-  invert = false,
-  filled = false,
-  fillOnHover = false,
-  ...props
-}: React.ComponentPropsWithoutRef<'svg'> & {
-  invert?: boolean
-  filled?: boolean
-  fillOnHover?: boolean
-}) {
+/** Compact mark for small screens: the D of the wordmark. */
+export function Logomark({ invert = false, className, ...rest }: LogoProps) {
+  const props = svgProps(rest)
   return (
     <svg
-      viewBox="0 0 130 32"
-      aria-hidden="true"
-      className={clsx(fillOnHover && 'group/logo', className)}
+      viewBox="-1 -0.5 22.2 22.2"
+      role="img"
+      aria-label="Decap"
+      className={clsx(invert ? 'fill-white' : 'fill-neutral-950', className)}
       {...props}
     >
-      <Logomark
-        preserveAspectRatio="xMinYMid meet"
-        invert={invert}
-        filled={filled}
-      />
-      <path
-        className={invert ? 'fill-white' : 'fill-neutral-950'}
-        d="M52.928 23.716c5.184 0 7.992-1.992 7.992-5.28 0-3.888-2.688-4.8-7.512-5.376-3.36-.408-4.728-.672-4.728-2.448 0-1.464 1.44-2.376 3.912-2.376 2.4 0 3.936.864 4.104 2.784h3.576c-.24-3.288-3-5.232-7.536-5.232-4.728 0-7.68 1.896-7.68 5.208 0 3.48 2.712 4.464 7.416 5.04 3.216.408 4.8.648 4.8 2.664 0 1.584-1.392 2.544-4.224 2.544-3.048 0-4.68-1.176-4.752-3.288H44.6c.072 3.408 2.616 5.76 8.328 5.76Zm14.175-.216h3.312v-2.928h-1.968c-.84 0-1.272-.24-1.272-1.104v-6.144h3.24v-2.592h-3.24V6.676l-3.36.648v3.408h-2.496v2.592h2.496v7.2c0 2.04 1.248 2.976 3.288 2.976Zm10.078.216c2.16 0 4.104-1.008 4.944-2.64h.168l.144 2.424h3.288V10.732h-3.432v6.336c0 2.4-1.584 4.032-3.984 4.032-2.328 0-3.264-1.368-3.264-3.936v-6.432h-3.432v7.032c0 4.416 2.256 5.952 5.568 5.952Zm16.24.048c2.52 0 4.2-1.008 4.944-2.496h.168l.072 2.232h3.264V6.004h-3.408v7.008h-.168c-.792-1.56-2.592-2.52-4.848-2.52-3.816 0-6.384 2.592-6.384 6.624 0 4.056 2.568 6.648 6.36 6.648Zm1.032-2.616c-2.472 0-3.96-1.536-3.96-4.032s1.488-4.008 3.96-4.008 3.984 1.512 3.984 3.648v.744c0 2.136-1.536 3.648-3.984 3.648Zm9.485-12.216h3.408V6.004h-3.408v2.928Zm0 14.568h3.408V10.732h-3.408V23.5Zm12.481.24c4.584 0 7.56-2.52 7.56-6.624 0-4.152-3-6.624-7.56-6.624s-7.56 2.52-7.56 6.624c0 4.128 3.024 6.624 7.56 6.624Zm0-2.64c-2.592 0-4.128-1.56-4.128-3.984s1.536-3.984 4.128-3.984c2.616 0 4.152 1.536 4.152 3.984 0 2.424-1.56 3.984-4.152 3.984Zm8.794 2.4h3.384v-2.88h-3.384v2.88Z"
-      />
+      <path d={LETTERS[0]} />
     </svg>
   )
-} 
+}

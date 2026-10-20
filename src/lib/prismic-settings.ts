@@ -1,4 +1,3 @@
-import { DEFAULT_NAVIGATION } from "@/lib/site-nav";
 import { createClient, repositoryName } from "@/prismicio";
 import { urlLangToPrismic } from "@/i18n";
 import { prismicErrorFromUnknown, prismicLog } from "@/lib/prismic-debug";
@@ -40,11 +39,10 @@ export async function getSettings(lang?: string) {
 export const defaultSettings = {
   data: {
     site_name: "Decap",
-    contact_button_text: "Contact",
     contact_button_link: { url: "/contact" },
     logo: null,
-    navigation: DEFAULT_NAVIGATION,
-    // Footer sections and company details fall back to the defaults in Footer.tsx.
+    // Menu, contact label, footer sections and company details fall back to the translated
+    // defaults in Header/Footer (lib/site-nav) for the current language.
     copyright_text: "© Decap Herentals",
   },
 };
