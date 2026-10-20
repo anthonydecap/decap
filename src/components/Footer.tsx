@@ -8,6 +8,7 @@ import { prismicLinkHref, urlLangFromPathname, type LinkLike } from "@/lib/prism
 import { Container } from "./Container";
 import { FadeIn } from "./FadeIn";
 import { Logo } from "./Logo";
+import { openCookieSettings } from "./Analytics";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 import { isFilled } from "@prismicio/client";
@@ -108,6 +109,7 @@ export function Footer({
   /** e.g. mt-0 when wrapped in a surface that already provides spacing */
   className?: string;
 }) {
+  const pathname = usePathname();
   const footerSections =
     settings?.data?.footer_sections || defaultFooterSections;
   const d = settings?.data;
@@ -164,9 +166,17 @@ export function Footer({
               <Logo className="h-8" fillOnHover />
             )}
           </Link>
-          <p className="text-sm text-neutral-700">
-            {copyrightText} {new Date().getFullYear()}
-          </p>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-neutral-700">
+            <Link href={prismicLinkHref({ url: "/privacy-policy" }, "#", urlLangFromPathname(pathname))} className="transition hover:text-neutral-950">
+              Privacy policy
+            </Link>
+            <button type="button" onClick={openCookieSettings} className="transition hover:text-neutral-950">
+              Cookie settings
+            </button>
+            <p>
+              {copyrightText} {new Date().getFullYear()}
+            </p>
+          </div>
         </div>
         </FadeIn>
       </Container>

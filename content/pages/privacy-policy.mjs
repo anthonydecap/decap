@@ -1,4 +1,4 @@
-/** Privacy notice (Prismic page "privacy-policy"): sections as an accordion; to be reviewed before launch. */
+/** Privacy notice (Prismic page "privacy-policy"): sections as an accordion. */
 export default {
   type: "page",
   uid: "privacy-policy",
@@ -15,8 +15,8 @@ export default {
         eyebrow: "Privacy",
         title: "Privacy policy for decap.be",
         intro:
-          "[TO CHECK: have this notice reviewed before launch]\n\nThis notice explains what personal data we process when you use this website, why, and what rights you have. We keep it short and only collect what we need to answer you.",
-        note: "Last updated: [TO CHECK: date]",
+          "This notice explains what personal data we process when you use this website, why, and what rights you have. We keep it short and only collect what we need to answer you.",
+        note: "Last updated: October 2026",
       },
     },
     {
@@ -33,25 +33,27 @@ export default {
         {
           question: "What we collect through the enquiry form",
           answer:
-            "When you send an enquiry, we receive:\n\n- your name\n- your email address\n- your phone number, if you give it\n- your location, if you give it\n- the topic and your message\n\nThe form is sent to us by email through an email service provider. [TO CHECK: provider (Resend?) and whether data is transferred outside the EU, e.g. to the US, and on which safeguards]\n\nMessages for Atelier Frank Decap, sent from the [Frank Decap page](/frank-decap), go to Frank Decap, who runs a separate business. [TO CHECK: Frank's role as controller for his enquiries]",
+            "When you send an enquiry, we receive:\n\n- your name\n- your email address\n- your phone number, if you give it\n- your location, if you give it\n- the topic and your message\n\nThe form is sent to us by email through Resend, an email service provider that processes the message on our behalf. Resend may process data outside the European Union, such as in the United States; such transfers rely on the safeguards the GDPR requires.\n\nMessages for Atelier Frank Decap, sent from the [Frank Decap page](/frank-decap), go to Frank Decap, who runs a separate business and handles those messages himself.",
         },
         {
           question: "Why we use it, and on what legal basis",
           answer:
-            "We use your details only to answer your enquiry and, if you ask us to, to prepare a quotation or an order. The legal basis is the steps you ask us to take before a possible contract and our legitimate interest in answering messages sent to us (GDPR article 6(1)(b) and (f)).\n\nWe do not sell your data and we do not use it for newsletters unless you ask. [TO CHECK: confirm no newsletter or mailing list]",
+            "We use your details only to answer your enquiry and, if you ask us to, to prepare a quotation or an order. The legal basis is the steps you ask us to take before a possible contract and our legitimate interest in answering messages sent to us (GDPR article 6(1)(b) and (f)).\n\nWe do not sell your data. We do not send newsletters and do not keep a mailing list.",
         },
         {
           question: "How long we keep it",
-          answer: "[TO CHECK: retention period for enquiries, e.g. two years after our last contact, longer if an order follows, as required by accounting law]",
+          answer:
+            "We keep your enquiry as long as we need it to answer you and to follow up on it. After that we delete it. If an order follows, we keep the data linked to the order for as long as accounting law requires.",
         },
         {
           question: "Shop accounts and orders",
           answer:
-            "If you create an account or order in our shop, we process the data needed for the order, payment and delivery. That is described in the shop terms. [TO CHECK: link to shop terms; payment provider (Stripe) and what it receives]",
+            "If you create an account or order in our shop, we process the data needed for the order, payment and delivery. Payments are handled by Stripe. Orders and payments are described in the terms of our [shop](/shop).",
         },
         {
           question: "Cookies and analytics",
-          answer: "[TO CHECK: which cookies the site sets, whether an analytics tool is used, which one, and whether a consent banner is needed]",
+          answer:
+            "We use Google Analytics, provided by Google Ireland Ltd., to see how visitors use the site. It only runs if you accept it in the cookie banner. If you decline, no analytics cookies are set. Google may process data outside the European Union, such as in the United States.\n\nThe site also stores your cookie choice, so the banner does not appear on every page.",
         },
         {
           question: "Your rights",

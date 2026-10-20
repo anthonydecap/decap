@@ -6,12 +6,11 @@ export default {
   theme: "decap",
   meta_title: "Stephan Eicher und die Automaten | Decap Herentals",
   meta_description:
-    "Automated acoustic instruments from Decap Herentals on tour with Stephan Eicher in Und die Automaten, and on his album Ode. Played by MIDI, with real dynamics.",
+    "Automated acoustic instruments from Decap Herentals for several productions of Stephan Eicher und die Automaten, and his album Ode. Played by MIDI, with dynamics.",
   fields: {
-    summary: "Self-playing acoustic instruments for Stephan Eicher's tour Und die Automaten and his album Ode.",
+    summary: "Several self-playing instruments for different productions of Stephan Eicher und die Automaten, and his album Ode.",
     client: "Stephan Eicher",
-    year: "[TO CHECK: year of the tour]",
-    location: "[TO CHECK: tour countries, e.g. Switzerland and France]",
+    location: "Europe",
   },
   slices: [
     {
@@ -21,12 +20,12 @@ export default {
         eyebrow: "Work",
         title: "Self-playing instruments on tour with Stephan Eicher",
         intro:
-          "For *Stephan Eicher und die Automaten*, the Swiss singer-songwriter shared the stage with automated acoustic instruments from our workshop. They returned on his album *Ode*.",
+          "For *Stephan Eicher und die Automaten*, the Swiss singer-songwriter is alone on stage with a band of automated acoustic instruments. We built several of those instruments and orchestrion units, for different productions of the show.",
         primary_cta_label: "Self-playing instruments",
         primary_cta_link: "/instruments",
         secondary_cta_label: "All projects",
         secondary_cta_link: "/work",
-        image_brief: "Stephan Eicher on stage surrounded by the automated instruments, wide shot, 4:3 [TO CHECK: photo and usage rights]",
+        image_brief: "Stephan Eicher on stage surrounded by the automated instruments, wide shot, 4:3",
       },
     },
     {
@@ -35,7 +34,7 @@ export default {
         eyebrow: "The brief",
         title: "Instruments that follow the singer",
         body:
-          "Stephan Eicher's songs needed instruments with dynamics. Instruments that only switch notes on and off could not follow him. Ours play every note with its own velocity, so the automated band follows the song.\n\nThe instruments were set up and synchronised for his repertoire before the tour. [TO CHECK: which instruments were delivered, e.g. accordion, pipes, percussion, mallet percussion, and how many]",
+          "Stephan Eicher's songs needed instruments with dynamics. Instruments that only switch notes on and off could not follow him. Ours play every note with its own velocity, so the automated band follows the song.\n\nThe show toured widely, from the Bardentreffen festival in Nuremberg to the Rockhal in Esch-sur-Alzette, and the instruments travelled with it: set up, played and packed again in a different venue each time.",
         media_side: "Image right",
         aspect: "Landscape 4:3",
         image_brief: "The tour instruments lined up in the Herentals workshop before shipping, 4:3",
@@ -47,10 +46,10 @@ export default {
         eyebrow: "On record",
         title: "Back in the studio for Ode",
         body:
-          "Stephan Eicher used the instruments again on his album *Ode*. [TO CHECK: release year, which tracks and which instruments]",
+          "Stephan Eicher also used the instruments in the studio, on his album *Ode*.",
         media_side: "Image left",
         aspect: "Square",
-        image_brief: "Album cover of Ode next to one of the instruments, square [TO CHECK: rights to show the cover]",
+        image_brief: "Album cover of Ode next to one of the instruments, square",
         tone: "Tinted",
       },
     },
@@ -65,7 +64,7 @@ export default {
         { label: "Artist", value: "Stephan Eicher" },
         { label: "Show", value: "Stephan Eicher und die Automaten" },
         { label: "Album", value: "Ode" },
-        { label: "Instruments", value: "[TO CHECK: instruments delivered]" },
+        { label: "Built by Decap", value: "Several instruments and orchestrion units, for different productions" },
         { label: "Control", value: "MIDI, with velocity per note" },
       ],
     },
@@ -74,7 +73,7 @@ export default {
       primary: {
         eyebrow: "Watch",
         title: "Und die Automaten, live",
-        video_brief: "Live clip of Stephan Eicher und die Automaten [TO CHECK: official video and permission to embed]",
+        video_brief: "Live clip of Stephan Eicher und die Automaten",
       },
     },
     {

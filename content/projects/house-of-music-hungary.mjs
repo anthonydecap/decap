@@ -26,7 +26,7 @@ export default {
         primary_cta_link: "/instruments",
         secondary_cta_label: "All projects",
         secondary_cta_link: "/work",
-        note: "Photos: Mohai Balázs, 2022 [TO CHECK: usage rights]",
+        note: "Photos: Mohai Balázs, 2022",
         image_brief: "The robot orchestra in the Creative Sound Space, wide shot with visitors, 4:3 (photo Mohai Balázs)",
       },
     },
@@ -36,7 +36,7 @@ export default {
         eyebrow: "The project",
         title: "Eight installations, one robot orchestra",
         body:
-          "Medence Design created the Creative Sound Space as eight installations that let visitors explore sound. For the robot orchestra they used automated instruments from Decap. [TO CHECK: Decap's exact scope: which instruments we built, and whether we also did the control software]\n\nThe space has been open since 2022.",
+          "Medence Design created the Creative Sound Space as eight installations that let visitors explore sound. We built almost all the instruments of the interactive room, the robot orchestra included. The control software that runs the space was made by others.\n\nThe space has been open since 2022.",
         media_side: "Image right",
         aspect: "Landscape 4:3",
         image_brief: "Close-up of the marimba and glockenspiel of the robot orchestra, 4:3 (photo Mohai Balázs)",
@@ -83,7 +83,7 @@ export default {
       primary: {
         eyebrow: "Watch",
         title: "The robot orchestra playing",
-        video_brief: "Clip of a Robotorgona concert in the Creative Sound Space [TO CHECK: video and permission to embed]",
+        video_brief: "Clip of a Robotorgona concert in the Creative Sound Space",
       },
     },
     {

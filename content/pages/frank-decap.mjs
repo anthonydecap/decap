@@ -6,7 +6,7 @@ export default {
   theme: "atelier",
   meta_title: "Organ Restoration | Atelier Frank Decap",
   meta_description:
-    "Atelier Frank Decap restores historic book and roll organs, dance, fair and street organs, and installs Decap MIDI units. Send Frank photos of your organ.",
+    "Atelier Frank Decap restores historic book and roll organs, dance, fair and street organs, builds pipes by hand and installs Decap MIDI units. Write to Frank.",
   slices: [
     {
       type: "site_hero",
@@ -28,7 +28,7 @@ export default {
         eyebrow: "Who restores your organ",
         title: "One family, two workshops",
         body:
-          "The Decap family has worked with organs since 1895. Tony Decap builds new organs and develops the technology in Herentals. His brother Frank chose the other side of the craft: keeping historic organs playing as their builders intended.\n\nAtelier Frank Decap is Frank's own business, separate from Decap Herentals. When you write to him, you deal with the person who will do the work. [TO CHECK: where the atelier is located, and a line from Frank on how he learned the trade]",
+          "The Decap family has worked with organs since 1895. Tony Decap builds new organs and develops the technology in Herentals. His brother Frank chose the other side of the craft: keeping historic organs playing as their builders intended.\n\nAtelier Frank Decap is Frank's own business, separate from Decap Herentals. When you write to him, you deal with the person who will do the work.\n\nThe atelier is on the same site as Decap Herentals, the Decap organ factory on the Langepad in Herentals.",
         media_side: "Image right",
         aspect: "Landscape 4:3",
         image_brief: "Wide shot of Frank's atelier: workbench, hand tools on the wall, an organ case opened up in the background; 4:3",
@@ -39,7 +39,7 @@ export default {
       primary: {
         eyebrow: "What Frank restores",
         title: "From the bellows to the façade",
-        intro: "Typical restoration work in the atelier. [TO CHECK: confirm scope with Frank]",
+        intro: "Typical work in the atelier.",
         columns: "3",
         card_style: "Text cards",
       },
@@ -49,7 +49,8 @@ export default {
         { title: "Pneumatic actions", body: "Pouches, valves and tubing, so every note speaks again." },
         { title: "Bellows and wind", body: "Bellows and reservoirs made airtight, so the organ holds steady wind." },
         { title: "Voicing", body: "Pipes voiced and tuned back to the organ's original character." },
-        { title: "Cases and figures", body: "The case, the façade and the animated figures that make an organ recognisable." },
+        { title: "Cases", body: "The case and the façade that make an organ recognisable." },
+        { title: "Traditional pipe building", body: "New pipes made by hand, the traditional way, to match an organ's original pipework." },
       ],
     },
     {
@@ -77,15 +78,15 @@ export default {
       items: [
         {
           title: "Photos and a first look",
-          body: "Send a few lines about your organ through the form below. When Frank replies, you can send him photos of the case, the façade, the key frame and anything that no longer works. They tell him a lot before he travels.",
+          body: "Send a few lines about your organ through the form below. When Frank replies, you can send him photos of the case, the façade, the key frame and anything that no longer works. They tell him a lot before he sees the organ.",
         },
         {
           title: "Inspection",
-          body: "Frank looks at the organ itself, on site or in the atelier, to see what it needs and what is still original. [TO CHECK: whether Frank charges for inspection or travel]",
+          body: "Frank looks at the organ itself to see what it needs and what is still original. Every organ is different, so Frank decides case by case whether he comes to you or the organ comes to the atelier.",
         },
         {
           title: "Written proposal",
-          body: "You receive a written proposal describing the work Frank recommends, so you know what will be done before anything starts. [TO CHECK: does the proposal include price and planning]",
+          body: "You receive a written proposal describing the work Frank recommends, so you know what will be done before anything starts. What it covers depends on the organ and the work it needs.",
         },
         {
           title: "Restoration",
@@ -93,7 +94,7 @@ export default {
         },
         {
           title: "Voicing and delivery",
-          body: "Frank voices and tunes the organ and returns it to you playing. [TO CHECK: whether Frank delivers and sets up the organ on site]",
+          body: "Frank voices and tunes the organ and returns it to you playing. Whether he sets it up on site is agreed for each organ.",
         },
       ],
     },
@@ -102,24 +103,23 @@ export default {
       primary: {
         eyebrow: "Before and after",
         title: "From the atelier",
-        intro: "[TO CHECK: which restorations Frank is happy to show, with the owner's permission]",
         columns: "3",
         card_style: "Image cards",
       },
       items: [
         {
-          title: "[TO CHECK: organ name], before",
-          body: "[TO CHECK: one line on the state it arrived in]",
+          title: "Before",
+          body: "An organ as it arrived in the atelier.",
           image_brief: "An organ as it arrived in the atelier, front view, same position and angle as the 'after' photo; 4:3",
         },
         {
-          title: "[TO CHECK: organ name], after",
-          body: "[TO CHECK: one line on the work done]",
+          title: "After",
+          body: "The same organ, restored and playing again.",
           image_brief: "The same organ after restoration, shot from the exact same spot and height as the 'before' photo; 4:3",
         },
         {
           title: "In the atelier",
-          body: "[TO CHECK: one line on a detail of the work]",
+          body: "Restoration in progress, part by part, by hand.",
           image_brief: "Close-up of restoration in progress, e.g. new leather on a pneumatic pouch board or a bellows being re-covered, warm light; 4:3",
         },
       ],
@@ -140,10 +140,10 @@ export default {
           "Make or builder of the organ, number of keys, book or roll, and its condition. Photos help: you can send them when Frank replies.",
         submit_label: "Send to Frank",
         success_title: "Thank you",
-        success_body: "Your message is with Frank. He replies personally; have your photos of the organ ready. [TO CHECK: typical reply time]",
+        success_body: "Your message is with Frank. He replies personally; have your photos of the organ ready.",
         aside_title: "Reaching Frank",
         aside_body:
-          "Atelier Frank Decap is independent from Decap Herentals. The quickest way to reach Frank is this form. [TO CHECK: Frank's phone, email and atelier address, if he wants them published]\n\nFor a new organ, pipes or MIDI units, contact [Decap Herentals](/contact).",
+          "Atelier Frank Decap is independent from Decap Herentals. The easiest way to reach Frank is this form.\n\n**Phone:** [TO CHECK: Frank's phone number]\n\n**Atelier:** Langepad 51C, 2200 Herentals, Belgium, on the same site as Decap Herentals.\n\nFor a new organ, pipes or MIDI units, contact [Decap Herentals](/contact).",
       },
     },
   ],

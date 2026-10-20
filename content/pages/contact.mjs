@@ -1,4 +1,4 @@
-/** Contact page (Prismic page "contact"): enquiry form to the Herentals workshop, address and visiting details. */
+/** Contact page (Prismic page "contact"): enquiry form to the Herentals workshop, address and contact details. */
 export default {
   type: "page",
   uid: "contact",
@@ -32,10 +32,10 @@ export default {
           "For a new organ: where will it play, what music, and roughly what size or budget? For MIDI conversion: which organ and how many keys?",
         submit_label: "Send enquiry",
         success_title: "Thank you, your enquiry is on its way",
-        success_body: "We read every message in the workshop and reply personally. [TO CHECK: typical response time]",
-        aside_title: "Visit the workshop",
+        success_body: "We read every message in the workshop and reply personally.",
+        aside_title: "The workshop",
         aside_body:
-          "**Decap Herentals**, Langepad 51C, 2200 Herentals, Belgium\n\n**Phone:** +32 14 22 44 94\n\n**Email:** [info@decap.be](mailto:info@decap.be)\n\nVisits by appointment. [TO CHECK: confirm visits by appointment only, and opening hours]\n\nDECAP TONY BV · BE 0450.352.984\n\nRestoring a historic organ? Contact [Atelier Frank Decap](/frank-decap) directly.",
+          "**Decap Herentals**, Langepad 51C, 2200 Herentals, Belgium\n\n**Phone:** +32 14 22 44 94\n\n**Email:** [info@decap.be](mailto:info@decap.be)\n\nDECAP TONY BV · BE 0450.352.984\n\nRestoring a historic organ? Contact [Atelier Frank Decap](/frank-decap) directly.",
       },
     },
     {
@@ -47,18 +47,14 @@ export default {
       },
       items: [
         {
-          question: "How soon will I hear back?",
-          answer: "[TO CHECK: typical response time, e.g. within two working days]",
-        },
-        {
           question: "Can I visit the workshop in Herentals?",
           answer:
-            "Yes, by appointment. Send us a message or call +32 14 22 44 94 to agree a day. In the workshop you can see organs in progress, hear our self-playing instruments and talk through your plans face to face. [TO CHECK: confirm what visitors can see and hear]",
+            "The workshop is not open for show visits: it is where the organs are built. From time to time we hold open days. If we build an organ for you, you visit the workshop several times during the build to see how it is coming along.",
         },
         {
           question: "Do you deliver outside Belgium?",
           answer:
-            "Our instruments play with artists and in venues across Europe. [TO CHECK: installation outside Belgium, shipping countries and how costs are quoted]",
+            "Yes, we ship worldwide. Decap organs and instruments play in Japan, the US, Australia, Asia and across Europe. Shipping and installation depend on the project and are part of your quote.",
         },
         {
           question: "Who restores historic organs?",

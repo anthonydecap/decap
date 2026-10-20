@@ -111,7 +111,6 @@ export default {
       },
       items: [
         { label: "Scale", value: "100% chromatic" },
-        { label: "Keys", value: "45 or 52 [TO CHECK: available key versions]" },
         { label: "Frame", value: "Aluminium" },
         { label: "Panels", value: "High-gloss wood veneer, or blank pre-cut panels to decorate yourself" },
         { label: "Pressure regulation", value: "Mechanical, SmartValve per chest or SmartValve per pipe" },
@@ -119,7 +118,6 @@ export default {
         { label: "MIDI", value: "Master or slave with other Decap instruments" },
         { label: "Drive", value: "Hand-turned; optional motor" },
         { label: "Supply", value: "Kit or pre-assembled" },
-        { label: "Dimensions and weight", value: "[TO CHECK: dimensions and weight]" },
         { label: "Price", value: "On quote: depends on the number of ranks, panels and kit or finished" },
       ],
     },
@@ -132,13 +130,13 @@ export default {
       items: [
         {
           title: "Turned by hand",
-          description: "A street organ tune, cranked by hand. [TO CHECK: title of the piece]",
+          description: "Recording to come: a street organ tune on the Bellow Organ, cranked by hand.",
           audio_brief:
             "Phone or handheld recorder 2 m in front of the organ, quiet room or calm street, one full tune, crank noise allowed",
         },
         {
           title: "With SmartValve per pipe",
-          description: "The same organ with pressure controlled pipe by pipe. [TO CHECK: title of the piece]",
+          description: "Recording to come: the same organ, with pressure controlled pipe by pipe.",
           audio_brief:
             "Same position and level as the first recording, a slow piece where swells and vibrato are clearly audible",
         },
@@ -154,12 +152,7 @@ export default {
         {
           question: "Is this a barrel organ or a street organ?",
           answer:
-            "It is a hand-turned street organ: turning the wheel works the bellows. The music comes from the built-in Virtual Orchestrion player rather than a pinned barrel. [TO CHECK: is a book or roll reader available as an option?]",
-        },
-        {
-          question: "Is it suitable for busking?",
-          answer:
-            "That is what it is designed for: you turn the wheel, the built-in player supplies the music. [TO CHECK: weight, power supply or battery for the player, transport options such as a cart]",
+            "It is a hand-turned street organ: turning the wheel works the bellows. The music comes from the built-in Virtual Orchestrion player rather than a pinned barrel.",
         },
         {
           question: "Why does 100% chromatic matter?",
@@ -185,7 +178,7 @@ export default {
       type: "site_cta",
       primary: {
         eyebrow: "Planning a bellow organ?",
-        title: "Choose your keys, panels and pressure system",
+        title: "Choose your ranks, panels and pressure system",
         body: "Tell us whether you want a kit or a finished organ, how many ranks to start with and how you will use it. We reply with a configuration and a quote.",
         primary_cta_label: "Request a quote",
         primary_cta_link: "/contact",

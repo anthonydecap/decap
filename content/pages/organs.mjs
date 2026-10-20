@@ -15,12 +15,12 @@ export default {
         eyebrow: "Organ builders since 1895",
         title: "New dance organs, fair organs and street organs, built in Herentals",
         intro:
-          "We design and build organs for dance halls, cafés, fairgrounds, streets, churches and collections. Start from our proven modules or have every detail made for you. Pipes, digital sound or both, with the front instruments Decap organs have carried since 1933.",
+          "We design and build organs for dance halls, cafés, fairgrounds, streets, churches and collections. Start from our proven modules or have every detail made for you. Pipes, digital sound or both, with the front instruments Decap organs have carried since 1933. Decap organs play all over the world, from Japan to the US and Australia.",
         primary_cta_label: "Compose your organ",
         primary_cta_link: "/organ-composer",
         secondary_cta_label: "Request a consultation",
         secondary_cta_link: "/contact",
-        note: "Decap Herentals since 1933. Fourth generation, one workshop.",
+        note: "Decap Herentals since 1933. Fourth generation, one workshop, organs all over the world.",
         image_brief:
           "A finished Decap dance organ façade, shot straight on from chest height with the whole front in frame, lights on, room lights dimmed; portrait 4:5",
       },
@@ -78,6 +78,7 @@ export default {
         { point: "Modular or fully bespoke" },
         { point: "Standard scales of 105 and 121 keys, other sizes possible" },
         { point: "Pipes, digital sound, or both combined" },
+        { point: "Playing all over the world: Japan, the US, Australia, Asia and Europe" },
       ],
     },
     {
@@ -171,7 +172,7 @@ export default {
         },
         {
           title: "Production",
-          body: "We build the organ in our workshop in Herentals: case, wind system, pipes from our own CNC, front instruments and electronics. [TO CHECK: whether customers can visit the workshop during production]",
+          body: "We build the organ in our workshop in Herentals: case, wind system, pipes from our own CNC, front instruments and electronics. During the build you visit the workshop several times to see the status of your organ.",
           image_brief: "An organ case under construction in the Herentals workshop, tools and timber around it, wide shot, 4:3",
         },
         {
@@ -181,7 +182,7 @@ export default {
         },
         {
           title: "Delivery",
-          body: "We deliver the organ ready to play, with the Virtual Orchestrion player and your music on card. [TO CHECK: what delivery includes: installation on site, instruction, warranty, service]",
+          body: "We deliver the organ ready to play, with the Virtual Orchestrion player and your music on card. Warranty is always included. Shipping and installation depend on the project, in Belgium or abroad.",
           image_brief: "A finished organ being wheeled out of the workshop doors or loaded into a van, 4:3",
         },
       ],
@@ -212,6 +213,11 @@ export default {
           question: "Where does the music come from?",
           answer:
             "From a digital card in the Virtual Orchestrion player: a whole music library instead of racks of books. Arrangers sell copy-protected arrangements in the music shop. You can also play the organ live over MIDI.",
+        },
+        {
+          question: "Do you deliver organs outside Belgium?",
+          answer:
+            "Yes. Decap organs play all over the world: in Japan, the US, Australia, Asia and across Europe. Shipping and installation are part of the quote and depend on the project. Warranty is always included.",
         },
         {
           question: "Can you restore my old organ or add MIDI to it?",

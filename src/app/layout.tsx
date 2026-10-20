@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fraunces } from "next/font/google";
 import { getSiteOrigin } from "@/lib/site-url";
 import { RootHtmlTheme } from "@/components/RootHtmlTheme";
+import { Analytics } from "@/components/Analytics";
 import "./globals.css";
 
 // Serif for Atelier Frank Decap pages only (see the "atelier" page style in globals.css).
@@ -24,6 +25,7 @@ export default function RootLayout({
       <body className="flex min-h-full flex-col">
         <RootHtmlTheme />
         {children}
+        <Analytics />
       </body>
     </html>
   );

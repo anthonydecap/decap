@@ -18,7 +18,7 @@ export default {
           "Aloïs Decap started renting out organs around Antwerp in 1895. His son Frans founded Decap Herentals in 1933. Today Tony Decap, the fourth generation, builds organs, self-playing instruments and the electronics that drive them in the same town.",
         primary_cta_label: "Our organs",
         primary_cta_link: "/organs",
-        secondary_cta_label: "Visit the workshop",
+        secondary_cta_label: "Contact the workshop",
         secondary_cta_link: "/contact",
         image_brief:
           "Tony Decap at the workbench in the Herentals workshop, an organ façade in progress behind him, natural light, portrait 4:5",

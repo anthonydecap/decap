@@ -11,7 +11,7 @@ export default {
     summary: "A transportable concert organ with SmartValve on every pipe, for organist Yves Rechsteiner.",
     client: "Yves Rechsteiner",
     year: "2025",
-    location: "Switzerland [TO CHECK: where L'Explorateur is based]",
+    location: "Toulouse, France",
   },
   slices: [
     {
@@ -35,7 +35,7 @@ export default {
         eyebrow: "The brief",
         title: "An organ that travels to the audience",
         body:
-          "Many concert venues have no pipe organ, and a church organ cannot leave its church. Yves Rechsteiner asked for an instrument he could transport, set up and play wherever the concert is.\n\nWe designed L'Explorateur in 3D first, so every detail of the case and pipe layout was agreed before production started. [TO CHECK: transport details, set-up time, number of pipes and ranks]",
+          "Many concert venues have no pipe organ, and a church organ cannot leave its church. Yves Rechsteiner asked for an instrument he could transport, set up and play wherever the concert is.\n\nWe designed L'Explorateur in 3D first, so every detail of the case and pipe layout was agreed before production started.\n\nThe organ is modular, so it has no fixed number of pipes: it is put together to suit each programme and each venue. Its home base is Toulouse.",
         media_side: "Image right",
         aspect: "Landscape 4:3",
         image_brief: "3D render of L'Explorateur next to a photo of the finished organ, 4:3",
@@ -68,7 +68,7 @@ export default {
         quote:
           "“…a modular organ… developed by Tony Decap”, whose valve technology “essentially turns a pipe organ into a physical synthesizer”.",
         name: "Studio 31, Basel",
-        role: "On L'Explorateur [TO CHECK: exact wording and attribution of the source]",
+        role: "On L'Explorateur",
       },
     },
     {
@@ -81,7 +81,8 @@ export default {
       items: [
         { label: "Organist", value: "Yves Rechsteiner" },
         { label: "Completed", value: "2025" },
-        { label: "Type", value: "Transportable concert organ" },
+        { label: "Type", value: "Transportable, modular concert organ" },
+        { label: "Based in", value: "Toulouse" },
         { label: "Pipe control", value: "SmartValve on every pipe" },
         { label: "Valve regulation", value: "More than 1,000 times per second" },
         { label: "Pressure range", value: "0–200%, per pipe" },
@@ -94,7 +95,7 @@ export default {
         eyebrow: "Listen",
         title: "L'Explorateur in concert",
         video_brief:
-          "Video of Yves Rechsteiner playing L'Explorateur in concert, e.g. Lyon, Chapelle de la Trinité [TO CHECK: video and permission to embed]",
+          "Video of Yves Rechsteiner playing L'Explorateur in concert, e.g. Lyon, Chapelle de la Trinité",
       },
     },
     {

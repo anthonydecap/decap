@@ -133,7 +133,7 @@ export default {
         },
         {
           question: "Does the conversion work on roll organs and orchestrions?",
-          answer: "The unit is made for organs and orchestrions driven by books or piano rolls. [TO CHECK: limits, e.g. organs with mechanical rather than pneumatic key frames]",
+          answer: "The unit is made for organs and orchestrions driven by books or piano rolls. Every conversion is made to measure for the organ, so we check each organ before we confirm it is suitable. Send us photos of the key frame and the scale.",
         },
         {
           question: "Can the organ play together with a self-playing piano?",

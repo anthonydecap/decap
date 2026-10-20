@@ -6,12 +6,11 @@ export default {
   theme: "decap",
   meta_title: "Circus Ronaldo and Decap Organs | Decap Herentals",
   meta_description:
-    "Circus Ronaldo plays a Decap organ in its shows and uses Brass Core from Decap Herentals. See the organ in the ring and what Brass Core adds to a live show.",
+    "Bespoke instruments from Decap Herentals, built into the sets of several Circus Ronaldo productions, and Brass Core for live brass without a player on stage.",
   fields: {
-    summary: "A Decap organ in the ring, and Brass Core for live brass without a player.",
+    summary: "Bespoke instruments built into the sets of several productions, and Brass Core for live brass without a player.",
     client: "Circus Ronaldo",
-    year: "[TO CHECK: year]",
-    location: "Belgium [TO CHECK]",
+    location: "Belgium",
   },
   slices: [
     {
@@ -19,14 +18,14 @@ export default {
       primary: {
         layout: "Split",
         eyebrow: "Work",
-        title: "A Decap organ in the ring with Circus Ronaldo",
+        title: "Instruments built into the set for Circus Ronaldo",
         intro:
-          "Circus Ronaldo plays a Decap organ in its shows, built by Tony Decap. The company also uses Brass Core, our robotic brass player. [TO CHECK: organ type, year and which shows]",
+          "For several Circus Ronaldo productions we built fully bespoke instruments, made to sit inside the set itself. The company also uses Brass Core, our robotic brass player.",
         primary_cta_label: "About Brass Core",
         primary_cta_link: "/brass-core",
         secondary_cta_label: "All projects",
         secondary_cta_link: "/work",
-        image_brief: "The Decap organ in the Circus Ronaldo tent, performers in front, 4:3 [TO CHECK: photo and usage rights]",
+        image_brief: "The Decap organ in the Circus Ronaldo tent, performers in front, 4:3",
       },
     },
     {
@@ -44,7 +43,7 @@ export default {
         eyebrow: "Brass Core",
         title: "Live brass, played from an audio signal",
         body:
-          "Brass Core puts a real trumpet or trombone on stage and plays it from your own audio or MIDI. A voice-coil motor in a pressure chamber replaces the player's lips, and the instrument's own resonance shapes the tone. No drilling, no changes to the instrument. [TO CHECK: how Circus Ronaldo uses Brass Core in the show]",
+          "Brass Core puts a real trumpet or trombone on stage and plays it from your own audio or MIDI. A voice-coil motor in a pressure chamber replaces the player's lips, and the instrument's own resonance shapes the tone. No drilling, no changes to the instrument.\n\nCircus Ronaldo uses it for its automated brass section.",
         media_side: "Image right",
         aspect: "Landscape 4:3",
         cta_label: "Brass Core — Orchestrionix",
@@ -56,7 +55,9 @@ export default {
     {
       type: "site_quote",
       primary: {
-        quote: "[TO CHECK: Circus Ronaldo testimonial, copy exactly from the Brass Core page]",
+        quote:
+          "The Brass Core has become the beating heart of our automated brass section. We didn't want to just play brass music through the PA - we wanted the audience to feel it, like a real band was right there on stage.\n\nPeople often ask us where the brass band is hiding - that's how convincing it is. It's not just sound. It's presence.",
+        role: "On Brass Core",
         name: "Circus Ronaldo",
       },
     },

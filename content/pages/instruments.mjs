@@ -168,7 +168,7 @@ export default {
         },
         {
           question: "Do you deliver outside Belgium?",
-          answer: "[TO CHECK: countries we ship to, packaging and whether we install on site]",
+          answer: "Yes, we ship worldwide. Decap instruments play in Europe, Japan, the US, Australia and across Asia. Shipping is part of your quote.",
         },
       ],
     },

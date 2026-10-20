@@ -176,3 +176,41 @@ Existing Prismic pages (keep): `accordion`, `pipes`, `percussion-unit`, `mallet-
 - Portfolio pieces (titles only): Accordion castle, Accordion pedestal pearl white, Orchestrion
   Pearl White, Orchestrion dual accordion, Orchestrion rounded 70's design, Orchestrion trailer
   design, Pipe cube, Organ.
+
+## Answers from Decap (2026-10-20) — these override anything above
+
+- **Pat Metheny**: Decap built an orchestrion Pat Metheny toured the world with, in many
+  productions. Example: his last concert in Belgium, at **BOZAR** (Brussels), had it. Exact
+  productions/years unknown: do not list them.
+- **Organ delivery**: warranty is always included; shipping, installation etc. depend on the project
+  (keep it vague).
+- **Workshop visits during a build**: yes, several status visits during the process.
+- **Worldwide**: Decap organs are all over the world: Japan, the US, Australia, Asia and more.
+  Shipping and installation abroad are possible.
+- **Pipes are sold as complete ranks** (no single pipes). Ready in a few days to a week depending on
+  the ranks.
+- **MIDI conversion** is bespoke to each organ, so suitability depends on the organ.
+- **Visitors**: no show visits; Decap has held open days in the past. Do not invite drop-in visits;
+  mention open days only as "from time to time".
+- **No reply times** anywhere.
+- **Frank Decap**: his atelier is on the same site as Decap Herentals (the Decap organ factory,
+  Langepad, Herentals). His phone will be published (number provided later: keep one
+  `[TO CHECK: Frank's phone number]`). Scope: book and roll organs, dance/fair/street organs,
+  pneumatic actions, bellows, voicing, cases — **not really figures** — and **traditional pipe
+  building, superb quality**. Inspection, travel, proposal content and on-site set-up are decided
+  case by case: he is a real expert.
+- **Shop is crucial**: Virtual Orchestrion and MIDIMapper are sold through the shop (/shop).
+  No prices/OS details needed. MIDIMapper trial: the same download as the old site, via the shop.
+- **Arranger marketplace**: "coming soon".
+- **Bellow Organ**: no battery, no book reader. Key versions: don't state.
+- **Stephan Eicher**: several instruments / orchestrion units for different productions ("Stephan
+  Eicher und die Automaten"); details may be found online.
+- **House of Music Hungary**: Decap built almost all instruments for the interactive room (Creative
+  Sound Space); not the software.
+- **Walter Hus / BELEM**: transportable pipe units, a percussion unit and an accordion, around 2017.
+- **Guido Belcanto**: a fully custom "Belcanto organ", toured Belgium's largest cultural centres.
+- **Circus Ronaldo**: multiple productions with fully bespoke instruments built into the sets
+  (décors). The Brass Core testimonial on the Brass Core page may be reused.
+- **L'Explorateur**: based in Toulouse; modular, so no fixed number of pipes.
+- **Analytics**: Google Analytics (consent banner needed). No newsletter.
+- 1977 and 2000 milestones still to be verified by Tony (keep as stated).

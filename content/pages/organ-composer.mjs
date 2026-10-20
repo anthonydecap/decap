@@ -30,7 +30,7 @@ export default {
           "Want something none of these designs show? Choose **Start from scratch** and describe your idea in the message. Bespoke organs start with a consultation and a 3D render, so nothing is fixed until you have seen it.",
         success_title: "Your starting point is on its way",
         success_body:
-          "Thank you. Your choices are with us in Herentals. We reply with questions and a first idea. [TO CHECK: typical reply time]",
+          "Thank you. Your choices are with us in Herentals. We reply with questions and a first idea.",
       },
       items: [
         {

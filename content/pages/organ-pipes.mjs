@@ -52,8 +52,8 @@ export default {
       type: "site_card_grid",
       primary: {
         eyebrow: "Who orders our pipes",
-        title: "One pipe or a complete wind system",
-        intro: "Buy only the pipes, or the pipes and the chests to put them on. We make the parts you need and leave the rest to you.",
+        title: "One rank or a complete wind system",
+        intro: "Buy only the ranks, or the ranks and the chests to put them on. We make the parts you need and leave the rest to you.",
         columns: "4",
         card_style: "Text cards",
       },
@@ -64,7 +64,7 @@ export default {
         },
         {
           title: "Your own organ",
-          body: "An extra rank, a replacement for a broken pipe, or a missing octave: made to match what is already there.",
+          body: "An extra rank or a replacement rank, made to match what is already there.",
         },
         {
           title: "Organ builders and restorers",
@@ -148,12 +148,12 @@ export default {
           answer: "Within a few days to a week, depending on the ranks you order. We confirm the date with the quote.",
         },
         {
-          question: "Can I order a single pipe?",
-          answer: "Yes: a replacement or a missing pipe is a normal order for us. [TO CHECK: minimum order, if any]",
+          question: "Do you sell single pipes?",
+          answer: "No. We make pipes as complete ranks, so every pipe in the rank is cut, voiced and matched with the next.",
         },
         {
           question: "Can I send my own measurements?",
-          answer: "Yes. Send inside width and depth, length, mouth dimensions and wind pressure, or a drawing or sample pipe, and we make the pipe to match.",
+          answer: "Yes. Send inside width and depth, length, mouth dimensions and wind pressure, or a drawing or sample pipe, and we make the rank to match.",
         },
         {
           question: "Voiced or unvoiced?",
@@ -165,7 +165,7 @@ export default {
         },
         {
           question: "Do you ship outside Belgium?",
-          answer: "[TO CHECK: shipping countries and how pipes are packed]",
+          answer: "Yes, we ship worldwide. Shipping is part of your quote.",
         },
       ],
     },
@@ -173,7 +173,7 @@ export default {
       type: "contact_form",
       primary: {
         eyebrow: "Order pipes",
-        title: "Send us your list of pipes",
+        title: "Send us your list of ranks",
         intro: "Tell us what you need. We reply with a quote and a shipping date.",
         recipient: "decap",
         topics: "Organ pipes, Pipes and wind chests",
@@ -181,13 +181,13 @@ export default {
         show_phone: true,
         show_location: false,
         message_placeholder:
-          "Pipe types (e.g. Bourdon, Flute), note range, number of pipes, wind pressure, standard scale or your own measurements, voiced or unvoiced…",
+          "Which ranks (e.g. Bourdon, Flute), note range of each rank, wind pressure, standard scale or your own measurements, voiced or unvoiced…",
         submit_label: "Request a quote",
-        success_title: "Your pipe list has arrived",
-        success_body: "We will reply with a quote and a shipping date, usually within a few working days.",
+        success_title: "Your list of ranks has arrived",
+        success_body: "We will reply with a quote and a shipping date.",
         aside_title: "Good to know",
         aside_body:
-          "- Standard scales or your own measurements\n- Ready in a few days to a week, depending on the ranks\n- Voiced or ready to voice\n- Chests, MIDI conversion and SmartValve on request",
+          "- Sold as complete ranks\n- Standard scales or your own measurements\n- Ready in a few days to a week, depending on the ranks\n- Voiced or ready to voice\n- Chests, MIDI conversion and SmartValve on request\n- Shipped worldwide",
       },
     },
   ],

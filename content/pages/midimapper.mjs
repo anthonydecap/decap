@@ -16,11 +16,11 @@ export default {
         title: "Hear your organ arrangement with real organ samples",
         intro:
           "Arranging for a street organ or pipe organ usually means writing blind until the music reaches the instrument. MIDIMapper takes the MIDI from your arranging software, routes it through your own maps and plays it with real organ samples. What you hear while arranging is much closer to what the organ will play.",
-        primary_cta_label: "Download the free trial",
-        primary_cta_link: "/contact",
+        primary_cta_label: "Get the free trial in the shop",
+        primary_cta_link: "/shop",
         secondary_cta_label: "All Decap software",
         secondary_cta_link: "/software",
-        note: "Full licence € 150 excl. VAT. [TO CHECK: trial download URL]",
+        note: "Full licence € 150 excl. VAT. Free trial and licence in the shop.",
         image_brief: "Laptop with the MIDIMapper map editor open next to a MIDI keyboard on a desk, portrait 4:5",
       },
     },
@@ -85,21 +85,6 @@ export default {
       ],
     },
     {
-      type: "site_downloads",
-      primary: {
-        eyebrow: "Download",
-        title: "Try MIDIMapper for free",
-        intro: "The trial download is about 86 MB. [TO CHECK: trial limitations and system requirements]",
-      },
-      items: [
-        {
-          label: "MIDIMapper free trial",
-          description: "Installer, about 86 MB",
-          file_type: "[TO CHECK: file type]",
-        },
-      ],
-    },
-    {
       type: "site_faq",
       primary: {
         eyebrow: "Questions",
@@ -128,11 +113,7 @@ export default {
         {
           question: "How do I buy the full licence?",
           answer:
-            "Install the free trial and follow its steps to get your registration code. Send the code to us and we send you the licence details. [TO CHECK: buy via shop?]",
-        },
-        {
-          question: "What does the trial include?",
-          answer: "[TO CHECK: trial limitations and duration]",
+            "In the [shop](/shop): € 150 excl. VAT. The free trial is there too, so you can try MIDIMapper with your own arrangements first.",
         },
       ],
     },
@@ -141,13 +122,13 @@ export default {
       primary: {
         eyebrow: "MIDIMapper",
         title: "Hear your next arrangement before the organ does",
-        body: "Download the free trial and connect it to your DAW. When you are ready, buy the full licence with the registration code from the trial. [TO CHECK: trial download URL and buying flow]",
+        body: "Download the free trial from the shop and connect it to your DAW. When you are ready, buy the full licence in the shop.",
         price: "€ 150",
         price_note: "excl. VAT, full licence",
-        primary_cta_label: "Download the free trial",
-        primary_cta_link: "/contact",
-        secondary_cta_label: "Send your registration code",
-        secondary_cta_link: "/contact",
+        primary_cta_label: "Get the free trial in the shop",
+        primary_cta_link: "/shop",
+        secondary_cta_label: "Buy in the shop",
+        secondary_cta_link: "/shop",
         tone: "Dark band",
       },
     },
