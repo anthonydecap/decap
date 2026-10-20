@@ -7,12 +7,14 @@ import { SliceZone } from "@prismicio/react";
 
 import {
   DEFAULT_PRISMIC_LANG,
+  LOCALE_OG,
   prismicLangToUrl,
   resolveUrlLang,
   urlLangToPrismic,
 } from "@/i18n";
 import { prismicGetByUID } from "@/lib/prismic-get-by-uid";
 import { createSliceContext } from "@/lib/slice-context";
+import { fallbackToDefaultLocale } from "@/lib/locale-fallback";
 import { resolvePageTheme } from "@/lib/brand";
 import { PageThemeScope } from "@/components/PageThemeScope";
 import { buildLocaleMetadataAlternates } from "@/lib/locale-alternates";
@@ -29,9 +31,9 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   const prismicLang = urlLangToPrismic(urlLang) ?? DEFAULT_PRISMIC_LANG;
 
   const client = createClient();
-  const page = await prismicGetByUID(client, "project", uid, {
-    lang: prismicLang,
-  }).catch(() => notFound());
+  const page =
+    (await prismicGetByUID(client, "project", uid, { lang: prismicLang }).catch(() => null)) ??
+    (await fallbackToDefaultLocale("project", uid, urlLang));
 
   const theme = resolvePageTheme(page.data.theme);
 
@@ -69,7 +71,7 @@ export async function generateMetadata({
     openGraph: {
       title: page.data.meta_title ?? undefined,
       images: [{ url: page.data.meta_image.url ?? "" }],
-      locale: urlLang === "fr" ? "fr_FR" : "en_US",
+      locale: LOCALE_OG[urlLang],
     },
   };
 }

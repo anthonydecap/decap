@@ -28,8 +28,9 @@ function Office({
 /** The workshop on the Langepad, home of Decap Herentals and Atelier Frank Decap. */
 export function Offices({
   invert = false,
+  atelierLine = 'Organ restoration, on the same site',
   ...props
-}: React.ComponentPropsWithoutRef<'ul'> & { invert?: boolean }) {
+}: React.ComponentPropsWithoutRef<'ul'> & { invert?: boolean; atelierLine?: string }) {
   return (
     <ul role="list" {...props}>
       <li>
@@ -41,7 +42,7 @@ export function Offices({
       </li>
       <li>
         <Office name="Atelier Frank Decap" invert={invert}>
-          Organ restoration, on the same site
+          {atelierLine}
         </Office>
       </li>
     </ul>

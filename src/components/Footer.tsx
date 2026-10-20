@@ -8,7 +8,9 @@ import { prismicLinkHref, urlLangFromPathname, type LinkLike } from "@/lib/prism
 import { Container } from "./Container";
 import { FadeIn } from "./FadeIn";
 import { Logo } from "./Logo";
+import { defaultFooterSections } from "@/lib/site-nav";
 import { openCookieSettings } from "./Analytics";
+import { useUiCopy } from "@/lib/ui-copy";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 import { isFilled } from "@prismicio/client";
@@ -35,40 +37,6 @@ interface FooterSettings {
   };
 }
 
-const defaultFooterSections: FooterSection[] = [
-  {
-    section_title: "Organs",
-    section_links: [
-      { link_text: "New organs", link_url: { url: "/organs" } },
-      { link_text: "Organ Composer", link_url: { url: "/organ-composer" } },
-      { link_text: "MIDI conversion", link_url: { url: "/midi-conversion" } },
-      { link_text: "Organ pipes", link_url: { url: "/organ-pipes" } },
-      { link_text: "Restoration", link_url: { url: "/frank-decap" } },
-    ],
-  },
-  {
-    section_title: "Instruments",
-    section_links: [
-      { link_text: "Accordion Pedestal & Cube", link_url: { url: "/accordion" } },
-      { link_text: "Pipe Cube", link_url: { url: "/pipes" } },
-      { link_text: "Percussion Unit", link_url: { url: "/percussion-unit" } },
-      { link_text: "Mallet Percussion", link_url: { url: "/mallet-percussion" } },
-      { link_text: "Bellow Organ", link_url: { url: "/bellow-organ" } },
-      { link_text: "Brass Core", link_url: { url: "/brass-core" } },
-    ],
-  },
-  {
-    section_title: "Decap",
-    section_links: [
-      { link_text: "SmartValve", link_url: { url: "/smartvalve" } },
-      { link_text: "Software", link_url: { url: "/software" } },
-      { link_text: "Work", link_url: { url: "/work" } },
-      { link_text: "About", link_url: { url: "/about" } },
-      { link_text: "Journal", link_url: { url: "/blog" } },
-      { link_text: "Contact", link_url: { url: "/contact" } },
-    ],
-  },
-];
 
 function Navigation({ sections }: { sections: FooterSection[] }) {
   const pathname = usePathname();
@@ -110,8 +78,10 @@ export function Footer({
   className?: string;
 }) {
   const pathname = usePathname();
-  const footerSections =
-    settings?.data?.footer_sections || defaultFooterSections;
+  const ui = useUiCopy().cookie;
+  const footerSections = settings?.data?.footer_sections?.length
+    ? settings.data.footer_sections
+    : defaultFooterSections(urlLangFromPathname(pathname ?? "/"));
   const d = settings?.data;
   const companyName = d?.company_name || "Decap Herentals";
   const companyPhone = d?.company_phone || "+32 14 22 44 94";
@@ -163,15 +133,15 @@ export function Footer({
             {logo ? (
               <PrismicNextImage field={logo} className="h-8 w-auto" alt="" />
             ) : (
-              <Logo className="h-8" fillOnHover />
+              <Logo className="h-6" />
             )}
           </Link>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-neutral-700">
             <Link href={prismicLinkHref({ url: "/privacy-policy" }, "#", urlLangFromPathname(pathname))} className="transition hover:text-neutral-950">
-              Privacy policy
+              {ui.privacy}
             </Link>
             <button type="button" onClick={openCookieSettings} className="transition hover:text-neutral-950">
-              Cookie settings
+              {ui.settings}
             </button>
             <p>
               {copyrightText} {new Date().getFullYear()}

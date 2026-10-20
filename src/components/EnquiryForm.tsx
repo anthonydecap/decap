@@ -2,6 +2,7 @@
 
 import { useId, useState } from "react";
 import clsx from "clsx";
+import { useUiCopy } from "@/lib/ui-copy";
 
 /**
  * The website enquiry form, posting to /api/contact. Used by the ContactForm slice and the Organ
@@ -31,11 +32,12 @@ export function EnquiryForm({
   showPhone = true,
   showLocation = false,
   messagePlaceholder,
-  submitLabel = "Send message",
+  submitLabel,
   details,
   success,
 }: EnquiryFormProps) {
   const id = useId();
+  const t = useUiCopy().form;
   const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [error, setError] = useState("");
 
@@ -50,7 +52,7 @@ export function EnquiryForm({
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
           to,
-          topic: String(form.get("topic") || defaultTopic || topics[0] || "General question"),
+          topic: String(form.get("topic") || defaultTopic || topics[0] || t.defaultTopic),
           name: form.get("name"),
           email: form.get("email"),
           phone: form.get("phone") || "",
@@ -61,13 +63,11 @@ export function EnquiryForm({
           page: window.location.pathname,
         }),
       });
-      if (!res.ok) {
-        const body = await res.json().catch(() => ({}));
-        throw new Error(body.error || "Your message could not be sent.");
-      }
+      // Server messages are English; show the translated message instead.
+      if (!res.ok) throw new Error(t.error);
       setState("sent");
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Your message could not be sent.");
+      setError(err instanceof Error ? err.message : t.error);
       setState("error");
     }
   }
@@ -80,7 +80,7 @@ export function EnquiryForm({
     <form onSubmit={onSubmit} className="space-y-6" noValidate={false}>
       {topics.length > 1 && (
         <fieldset>
-          <legend className={label}>What is it about?</legend>
+          <legend className={label}>{t.topic}</legend>
           <div className="mt-3 flex flex-wrap gap-2">
             {topics.map((t, i) => (
               <label key={t} className="cursor-pointer">
@@ -102,17 +102,17 @@ export function EnquiryForm({
 
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
-          <label htmlFor={`${id}-name`} className={label}>Name</label>
+          <label htmlFor={`${id}-name`} className={label}>{t.name}</label>
           <input id={`${id}-name`} name="name" required autoComplete="name" className={clsx(fieldClass, "mt-2")} />
         </div>
         <div>
-          <label htmlFor={`${id}-email`} className={label}>Email</label>
+          <label htmlFor={`${id}-email`} className={label}>{t.email}</label>
           <input id={`${id}-email`} name="email" type="email" required autoComplete="email" className={clsx(fieldClass, "mt-2")} />
         </div>
         {showPhone && (
           <div>
             <label htmlFor={`${id}-phone`} className={label}>
-              Phone <span className="font-normal text-ink-muted">(optional)</span>
+              {t.phone} <span className="font-normal text-ink-muted">{t.optional}</span>
             </label>
             <input id={`${id}-phone`} name="phone" type="tel" autoComplete="tel" className={clsx(fieldClass, "mt-2")} />
           </div>
@@ -120,7 +120,7 @@ export function EnquiryForm({
         {showLocation && (
           <div>
             <label htmlFor={`${id}-location`} className={label}>
-              Where is the organ? <span className="font-normal text-ink-muted">(city, country)</span>
+              {t.location} <span className="font-normal text-ink-muted">{t.locationHint}</span>
             </label>
             <input id={`${id}-location`} name="location" autoComplete="address-level2" className={clsx(fieldClass, "mt-2")} />
           </div>
@@ -128,7 +128,7 @@ export function EnquiryForm({
       </div>
 
       <div>
-        <label htmlFor={`${id}-message`} className={label}>Message</label>
+        <label htmlFor={`${id}-message`} className={label}>{t.message}</label>
         <textarea
           id={`${id}-message`}
           name="message"
@@ -158,7 +158,7 @@ export function EnquiryForm({
         disabled={state === "sending"}
         className="inline-flex items-center justify-center rounded-full bg-accent px-8 py-3 text-base font-semibold text-accent-contrast transition hover:opacity-90 disabled:opacity-60"
       >
-        {state === "sending" ? "Sending…" : submitLabel}
+        {state === "sending" ? t.sending : submitLabel || t.send}
       </button>
     </form>
   );

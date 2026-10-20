@@ -1,16 +1,16 @@
-/** Work case study (Prismic project "yves-rechsteiner"): L'Explorateur, the mobile concert organ with SmartValve on every pipe. */
+/** Work case study (Prismic project "yves-rechsteiner"): L'Explorateur, the most complete case. Facts and quotes from Yves Rechsteiner's article "About the Explorateur". */
 export default {
   type: "project",
   uid: "yves-rechsteiner",
   title: "Yves Rechsteiner: L'Explorateur",
   theme: "decap",
-  meta_title: "L'Explorateur Mobile Concert Organ | Decap Herentals",
+  meta_title: "L'Explorateur: Transportable Concert Organ | Decap",
   meta_description:
-    "L'Explorateur, the mobile concert organ of Yves Rechsteiner: a transportable pipe organ with SmartValve on every pipe, the first wind synthesizer. Built 2025.",
+    "L'Explorateur, Yves Rechsteiner's transportable pipe organ with SmartValve on every pipe: 12 modules, set up in under two hours, over 30 performances since 2023.",
   fields: {
-    summary: "A transportable concert organ with SmartValve on every pipe, for organist Yves Rechsteiner.",
-    client: "Yves Rechsteiner",
-    year: "2025",
+    summary: "A transportable concert organ with wind control on every pipe: set up in under two hours, more than 30 performances since 2023.",
+    client: "Yves Rechsteiner, Toulouse les Orgues",
+    year: "2021–2026",
     location: "Toulouse, France",
   },
   slices: [
@@ -18,95 +18,202 @@ export default {
       type: "site_hero",
       primary: {
         layout: "Split",
-        eyebrow: "Work · 2025",
-        title: "L'Explorateur: a mobile concert organ with SmartValve on every pipe",
+        eyebrow: "Work · Yves Rechsteiner",
+        title: "L'Explorateur: a transportable concert organ with SmartValve on every pipe",
         intro:
-          "Swiss organist Yves Rechsteiner wanted an organ he could take to venues that have none. We built L'Explorateur: a transportable pipe organ in which every pipe has its own SmartValve. The result is the world's first wind synthesizer.",
-        primary_cta_label: "About SmartValve",
-        primary_cta_link: "/smartvalve",
-        secondary_cta_label: "All projects",
-        secondary_cta_link: "/work",
-        image_brief: "L'Explorateur set up in a chapel, Yves Rechsteiner at the console, wide shot, 4:3",
-      },
-    },
-    {
-      type: "site_text_media",
-      primary: {
-        eyebrow: "The brief",
-        title: "An organ that travels to the audience",
-        body:
-          "Many concert venues have no pipe organ, and a church organ cannot leave its church. Yves Rechsteiner asked for an instrument he could transport, set up and play wherever the concert is.\n\nWe designed L'Explorateur in 3D first, so every detail of the case and pipe layout was agreed before production started.\n\nThe organ is modular, so it has no fixed number of pipes: it is put together to suit each programme and each venue. Its home base is Toulouse.",
-        media_side: "Image right",
-        aspect: "Landscape 4:3",
-        image_brief: "3D render of L'Explorateur next to a photo of the finished organ, 4:3",
-      },
-    },
-    {
-      type: "site_text_media",
-      primary: {
-        eyebrow: "The technology",
-        title: "Every pipe with its own valve and processor",
-        body:
-          "A traditional organ valve is open or closed. In L'Explorateur each pipe has its own SmartValve, which regulates the airflow more than 1,000 times per second. That gives the organist control over every single note:",
-        media_side: "Image left",
-        aspect: "Landscape 4:3",
-        cta_label: "How SmartValve works",
-        cta_link: "/smartvalve",
-        image_brief: "Close-up of the SmartValves under the pipes inside L'Explorateur, dark background, 4:3",
-        tone: "Tinted",
-      },
-      items: [
-        { point: "Pressure from 0 to 200%, stored per pipe" },
-        { point: "4 ms response, with PID feedback" },
-        { point: "Vibrato, slope, decay and LFO effects per note" },
-        { point: "Optical MIDI: 100 times MIDI speed, over cables of 200 m and more" },
-      ],
-    },
-    {
-      type: "site_quote",
-      primary: {
-        quote:
-          "“…a modular organ… developed by Tony Decap”, whose valve technology “essentially turns a pipe organ into a physical synthesizer”.",
-        name: "Studio 31, Basel",
-        role: "On L'Explorateur",
+          "Organist Yves Rechsteiner wanted a pipe organ that could play wherever the music is, not only in churches. Together we built L'Explorateur: twelve modules that travel in one van, set up in under two hours, with the wind of every pipe under control. Rechsteiner calls the result a physical synthesizer.",
+        primary_cta_label: "SmartValve for organ builders",
+        primary_cta_link: "/smartvalve-for-organ-builders",
+        secondary_cta_label: "About SmartValve",
+        secondary_cta_link: "/smartvalve",
+        image_brief: "L'Explorateur on stage with dancers in front, wide shot, 4:3",
       },
     },
     {
       type: "site_facts",
       primary: {
-        eyebrow: "At a glance",
-        title: "L'Explorateur",
+        layout: "Stats",
+        tone: "Tinted",
+      },
+      items: [
+        { value: "< 2 h", label: "from the truck arriving to playing" },
+        { value: "30+", label: "performances since 2023" },
+        { value: "12", label: "modules, in one 20 m³ van" },
+        { value: "0", label: "wind regulators: one blower and a distribution box" },
+      ],
+    },
+    {
+      type: "site_text_media",
+      primary: {
+        eyebrow: "The idea",
+        title: "An organ for every stage, not only for churches",
+        body:
+          "In 2013 Yves Rechsteiner became artistic director of Toulouse les Orgues. His idea: a pipe organ that could leave the church. *“The aim was to have an instrument performing out of churches for any musical project with pipe organ.”*\n\nIn 2017 the project stopped for financial reasons. Two years later Rechsteiner saw a teaser of Stephan Eicher's show *Die Automaten*, built with Decap instruments, and met Tony Decap. Tony had experience with movable pipe organs and had already developed his own wind control. Rechsteiner ordered a MIDI-controlled instrument.",
+        media_side: "Image left",
+        aspect: "Landscape 4:3",
+        image_brief: "Dancers on stage in front of L'Explorateur, an organist at the console, 4:3",
+      },
+    },
+    {
+      type: "site_timeline",
+      primary: {
+        eyebrow: "Timeline",
+        title: "From idea to wind synthesizer",
+      },
+      items: [
+        { year: "2013", title: "The idea", body: "Yves Rechsteiner, new artistic director of Toulouse les Orgues, wants an organ that can perform outside churches." },
+        { year: "2017", title: "On hold", body: "The transportable organ project stops for financial reasons." },
+        { year: "2019", title: "Meeting Tony Decap", body: "Through a teaser of Stephan Eicher's *Die Automaten*. Rechsteiner orders a MIDI-controlled instrument." },
+        { year: "2021", title: "Construction starts", body: "During the build, Decap proposes something new: control the wind not per wind chest, but per pipe." },
+        { year: "2023", title: "First performances", body: "After two years of work and research, L'Explorateur plays with the first generation of valves. The performances begin." },
+        { year: "2023–2025", title: "SmartValve", body: "Tony Decap designs the second generation, SmartValve, and the module electronics are rebuilt around it.", highlight: true },
+        { year: "2025", title: "The first wind synthesizer", body: "SmartValve in concert: every pipe of a transportable church organ controlled on its own. Among the concerts, a Moondog tribute in Lyon's Chapelle de la Trinité.", highlight: true },
+        { year: "2026", title: "Next steps", body: "New valves and wind chests, console software, tonal adjustment and a free-reed rank from an 1830 Muller *orgue expressif*." },
+      ],
+    },
+    {
+      type: "site_text_media",
+      primary: {
+        eyebrow: "The technology",
+        title: "Wind control per pipe, not per wind chest",
+        body:
+          "In a classic organ, all pipes on a wind chest share the same wind. In L'Explorateur every pipe has its own SmartValve, a few millimetres from the pipe foot. The valve measures the pressure drop on its input side and opens further to compensate, so every pipe keeps its wind when many pipes sound at once.\n\nThe first valves were small loudspeakers converted into valves. SmartValve, the second generation, was designed by Tony Decap and produced industrially. For the organist it means control over each note: *“you can define the nature of the attack of the sound.”*",
+        media_side: "Image right",
+        aspect: "Landscape 4:3",
+        cta_label: "How SmartValve works",
+        cta_link: "/smartvalve",
+        image_brief: "Close-up of the SmartValves under the pipes inside L'Explorateur, dark background, 4:3",
+      },
+      items: [
+        { point: "One valve and one processor per pipe" },
+        { point: "Pressure measured and corrected at the pipe foot" },
+        { point: "No wind regulators: a blower and a distribution box are enough" },
+      ],
+    },
+    {
+      type: "site_text_media",
+      primary: {
+        eyebrow: "Built to travel",
+        title: "One van, twelve modules, under two hours",
+        body:
+          "From the start, L'Explorateur had two limits: it had to fit in a 20 m³ van and weigh no more than 1,200 kg. Every technical choice followed from that.\n\nThe organ is divided into modules that are carried in, placed and connected. Because SmartValve makes wind regulators unnecessary, the wind system is only a blower and a distribution box. *“For L'Explorateur it means an easy setup of less than 2 hours from the truck arriving to playing.”*",
+        media_side: "Image left",
+        aspect: "Landscape 4:3",
+        image_brief: "L'Explorateur modules being unloaded from the van or set up in a hall, 4:3",
+        tone: "Tinted",
+      },
+      items: [
+        { point: "Fits in a 20 m³ van" },
+        { point: "Maximum 1,200 kg" },
+        { point: "Modules rebuilt to identical standard dimensions" },
+      ],
+    },
+    {
+      type: "site_text_media",
+      primary: {
+        eyebrow: "In the room",
+        title: "The placement becomes part of the sound",
+        body:
+          "Because the modules are separate, they can stand together like one organ, or apart as independent divisions around the audience. Each placement changes how the instrument meets the room. *“The same Flute module has a different sound when placed in the front, on the side or behind another module.”*",
+        media_side: "Image right",
+        aspect: "Landscape 4:3",
+        image_brief: "L'Explorateur modules spread around a hall or chapel, audience in between, wide shot, 4:3",
+      },
+    },
+    {
+      type: "site_facts",
+      primary: {
+        eyebrow: "Stop list",
+        title: "The original disposition",
+        intro: "As planned at the start. The instrument keeps evolving: see “What comes next”.",
         layout: "Spec list",
       },
       items: [
-        { label: "Organist", value: "Yves Rechsteiner" },
-        { label: "Completed", value: "2025" },
-        { label: "Type", value: "Transportable, modular concert organ" },
-        { label: "Based in", value: "Toulouse" },
-        { label: "Pipe control", value: "SmartValve on every pipe" },
-        { label: "Valve regulation", value: "More than 1,000 times per second" },
-        { label: "Pressure range", value: "0–200%, per pipe" },
-        { label: "In concert", value: "Lyon, Chapelle de la Trinité, 14 November 2025" },
+        { label: "Bourdon", value: "16′ to 4′" },
+        { label: "Principal", value: "8′ to 1′" },
+        { label: "Flute", value: "8′ to 1′", note: "pipes from the second octave" },
+        { label: "Wooden Traverse Flute", value: "8′", note: "pipes from the second octave" },
+        { label: "Salicional", value: "8′" },
+        { label: "Gamba", value: "8′ and 4′", note: "pipes from the second octave" },
+        { label: "Nasard", value: "" },
+        { label: "Tierce", value: "" },
+        { label: "Trompette", value: "16′ to 4′", note: "new free reeds in the first two octaves" },
       ],
+    },
+    {
+      type: "site_text_media",
+      primary: {
+        eyebrow: "The pipework",
+        title: "Old pipes, a new life",
+        body:
+          "Most of the pipework is second-hand, from the late 19th and early 20th century, and was voiced by Jean Daldosso. New free-reed pipes were made by Orgelbau Orglez in Brittany: free reeds change their dynamics without changing pitch, a perfect match for wind control per pipe.\n\nWith SmartValve, one rank can do far more than it was built for: fifty Flute pipes give a whole range of colours through the wind alone.",
+        media_side: "Image left",
+        aspect: "Landscape 4:3",
+        image_brief: "Close-up of old wooden and metal pipes standing on a module of L'Explorateur, 4:3",
+      },
+    },
+    {
+      type: "site_card_grid",
+      primary: {
+        eyebrow: "On stage",
+        title: "From Fauré's Requiem to MIDI residencies",
+        intro: "Since 2023 L'Explorateur has played more than 30 performances, in churches, museums, theatres and concert halls.",
+        columns: "3",
+        card_style: "Text cards",
+      },
+      items: [
+        {
+          title: "Repertoire",
+          body: "Vierne's *Messe solennelle*, Fauré's *Requiem*, vocal music by Thierry Escaich and Poulenc's *Organ Concerto*.",
+        },
+        {
+          title: "Concerts",
+          body: "In churches, museums, theatres and auditoriums. In November 2025, a Moondog tribute in the Chapelle de la Trinité in Lyon.",
+        },
+        {
+          title: "Residencies",
+          body: "For Toulouse les Orgues, the Berlin duo Gamut and Toronto artist George Rahi worked with L'Explorateur as a MIDI-controlled organ.",
+        },
+      ],
+    },
+    {
+      type: "site_quote",
+      primary: {
+        quote: "All of them acknowledge the high level of quality, performance and response of Tony Decap's smART valve.",
+        name: "Yves Rechsteiner",
+        role: "On the organ builders who have seen L'Explorateur",
+      },
+    },
+    {
+      type: "site_text_media",
+      primary: {
+        eyebrow: "What comes next",
+        title: "An instrument that keeps growing",
+        body:
+          "L'Explorateur is not finished, and that is the point.\n\n- **Osmose keyboard:** the wind pressure follows the key, so the organist plays with a piano or clavichord technique.\n- **Console software:** a tool to programme attack, development and vibrato per sound, inspired by ADSR envelopes.\n- **Polyphone pipes** for the bass of the Principal and Salicional: several notes from one pipe.\n- **New swell boxes** designed by Tony Decap, for the softest dynamics.\n- **A lighter 16′ Ophicléide**, and a free-reed rank from an 1830 Muller *orgue expressif*.",
+        media_side: "Image right",
+        aspect: "Landscape 4:3",
+        image_brief: "Yves Rechsteiner at the console of L'Explorateur with a laptop beside the keyboard, 4:3",
+        tone: "Tinted",
+      },
     },
     {
       type: "site_video",
       primary: {
-        eyebrow: "Listen",
+        eyebrow: "Watch",
         title: "L'Explorateur in concert",
-        video_brief:
-          "Video of Yves Rechsteiner playing L'Explorateur in concert, e.g. Lyon, Chapelle de la Trinité",
+        video_brief: "Video of Yves Rechsteiner playing L'Explorateur in concert, e.g. Lyon, Chapelle de la Trinité",
       },
     },
     {
       type: "site_cta",
       primary: {
-        eyebrow: "SmartValve for your organ",
-        title: "Give every pipe its own dynamics",
-        body: "SmartValve works in new organs and in our instruments. Tell us about your organ and we will tell you what is possible.",
-        primary_cta_label: "Discover SmartValve",
-        primary_cta_link: "/smartvalve",
-        secondary_cta_label: "Request a consultation",
+        eyebrow: "For organ builders and organists",
+        title: "Give every pipe its own wind",
+        body: "SmartValve is available for new organs and, by replacing the pipe panels, for existing ones. Tell us about your project.",
+        primary_cta_label: "SmartValve for organ builders",
+        primary_cta_link: "/smartvalve-for-organ-builders",
+        secondary_cta_label: "Contact Decap",
         secondary_cta_link: "/contact",
         tone: "Dark band",
       },

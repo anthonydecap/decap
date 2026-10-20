@@ -5,6 +5,7 @@ import Link from "next/link";
 import Script from "next/script";
 import { usePathname } from "next/navigation";
 import { localizeAppPath, urlLangFromPathname } from "@/lib/prismic-link";
+import { useUiCopy } from "@/lib/ui-copy";
 
 /**
  * Google Analytics with a consent banner. Nothing from Google loads until the visitor accepts;
@@ -43,6 +44,7 @@ export function Analytics() {
   const [ready, setReady] = useState(false);
   const [open, setOpen] = useState(false);
   const pathname = usePathname() ?? "/";
+  const t = useUiCopy().cookie;
 
   useEffect(() => {
     const stored = readConsent();
@@ -87,12 +89,12 @@ export function Analytics() {
           className="fixed inset-x-4 bottom-4 z-50 mx-auto max-w-lg rounded-2xl border border-neutral-200 bg-white p-5 text-neutral-950 shadow-2xl sm:inset-x-auto sm:right-6 sm:bottom-6"
         >
           <p className="text-sm leading-relaxed text-neutral-700">
-            We use Google Analytics to see which pages are read, only if you agree. No advertising cookies.{" "}
+            {t.text}{" "}
             <Link
               href={localizeAppPath("/privacy-policy", urlLangFromPathname(pathname))}
               className="font-medium text-neutral-950 underline underline-offset-4"
             >
-              Privacy policy
+              {t.privacy}
             </Link>
           </p>
           <div className="mt-4 flex gap-3">
@@ -101,14 +103,14 @@ export function Analytics() {
               onClick={() => choose("granted")}
               className="rounded-full bg-neutral-950 px-5 py-2 text-sm font-semibold text-white transition hover:bg-neutral-800"
             >
-              Accept
+              {t.accept}
             </button>
             <button
               type="button"
               onClick={() => choose("denied")}
               className="rounded-full border border-neutral-300 px-5 py-2 text-sm font-semibold text-neutral-950 transition hover:border-neutral-950"
             >
-              Decline
+              {t.decline}
             </button>
           </div>
         </div>

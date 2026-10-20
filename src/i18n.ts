@@ -8,7 +8,21 @@ import type { NextRequest } from "next/server";
 export const PRISMIC_TO_URL_LOCALE = {
   "en-us": "en",
   "fr-fr": "fr",
+  "nl-be": "nl",
+  "de-de": "de",
 } as const;
+
+/** Full language names, in their own language (language switcher, metadata). */
+export const LOCALE_NAMES: Record<UrlLocale, string> = {
+  en: "English",
+  fr: "Français",
+  nl: "Nederlands",
+  de: "Deutsch",
+};
+
+/** BCP 47 language tag per URL segment (`<html lang>`, Open Graph locale). */
+export const LOCALE_HTML_LANG: Record<UrlLocale, string> = { en: "en", fr: "fr", nl: "nl", de: "de" };
+export const LOCALE_OG: Record<UrlLocale, string> = { en: "en_US", fr: "fr_FR", nl: "nl_BE", de: "de_DE" };
 
 export type PrismicLocale = keyof typeof PRISMIC_TO_URL_LOCALE;
 export type UrlLocale = (typeof PRISMIC_TO_URL_LOCALE)[PrismicLocale];

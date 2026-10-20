@@ -23,6 +23,8 @@ import { createClient } from "@/prismicio";
 export const PRISMIC_TO_HREFLANG: Record<PrismicLocale, string> = {
   "en-us": "en-US",
   "fr-fr": "fr-FR",
+  "nl-be": "nl-BE",
+  "de-de": "de-DE",
 };
 
 export type LocaleAlternatePaths = Record<UrlLocale, string>;
@@ -61,6 +63,9 @@ async function fetchDocumentForRoute(parsed: ParsedLocalizedPath) {
     case "page":
       if (!parsed.uid || parsed.uid === "home") return null;
       return prismicGetByUID(client, "page", parsed.uid, { lang: prismicLang });
+    case "project":
+      if (!parsed.uid) return null;
+      return prismicGetByUID(client, "project", parsed.uid, { lang: prismicLang });
     case "blog_post":
       if (!parsed.uid) return null;
       return prismicGetByUID(client, "blog", parsed.uid, { lang: prismicLang });

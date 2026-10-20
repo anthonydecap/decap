@@ -1,4 +1,7 @@
+"use client";
+
 import clsx from "clsx";
+import { useUiCopy } from "@/lib/ui-copy";
 import { isFilled, type ImageField } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 
@@ -35,6 +38,8 @@ export function MediaSlot({
   priority?: boolean;
 }) {
   const filled = !!field && isFilled.image(field);
+  // Portrait images (e.g. an Accordion Pedestal) in a landscape slot are shown whole, not cropped.
+  const portrait = filled && field.dimensions && field.dimensions.height > field.dimensions.width * 1.15;
 
   return (
     <div className={clsx("relative overflow-hidden", aspect, rounded, className)}>
@@ -44,7 +49,7 @@ export function MediaSlot({
           fill
           sizes={sizes}
           priority={priority}
-          className={clsx("object-cover", imgClassName)}
+          className={clsx(portrait ? "bg-surface object-contain" : "object-cover", imgClassName)}
           fallbackAlt=""
         />
       ) : (
@@ -55,10 +60,12 @@ export function MediaSlot({
 }
 
 export function MediaPlaceholder({ brief, tone, kind = "Photo" }: { brief: string; tone?: "light" | "dark"; kind?: "Photo" | "Video" | "Audio" }) {
+  const t = useUiCopy();
+  const label = kind === "Audio" ? t.audioToCome : kind === "Video" ? t.videoToCome : t.photoToCome;
   return (
     <div
       role="img"
-      aria-label={`${kind} to come: ${brief}`}
+      aria-label={`${label}: ${brief}`}
       className={clsx(
         "absolute inset-0 flex flex-col justify-between border border-dashed p-5 sm:p-6",
         tone === "dark"
@@ -79,7 +86,7 @@ export function MediaPlaceholder({ brief, tone, kind = "Photo" }: { brief: strin
             <path d="M3 8h3l2-3h8l2 3h3v11H3zM12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" />
           )}
         </svg>
-        {kind} to come
+        {label}
       </span>
       <span className="max-w-sm text-sm leading-relaxed">{brief}</span>
     </div>

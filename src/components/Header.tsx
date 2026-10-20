@@ -22,7 +22,8 @@ import { Offices } from './Offices'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { pathForHome } from '@/lib/locale-path'
 import type { UrlLocale } from '@/i18n'
-import { DEFAULT_NAVIGATION } from '@/lib/site-nav'
+import { CONTACT_LABEL, defaultNavigation } from '@/lib/site-nav'
+import { useUiCopy } from '@/lib/ui-copy'
 
 const HeaderContext = createContext<{
   logoHovered: boolean
@@ -67,7 +68,7 @@ function HeaderContent({
 }) {
   const { logoHovered, setLogoHovered } = useContext(HeaderContext)!
 
-  const contactButtonText = settings?.data?.contact_button_text || 'Contact us'
+  const contactButtonText = settings?.data?.contact_button_text || CONTACT_LABEL[urlLang]
   const contactButtonUrl = prismicLinkHref(
     settings?.data?.contact_button_link,
     '/contact',
@@ -93,12 +94,12 @@ function HeaderContent({
           ) : (
             <>
               <Logomark
-                className="h-8 sm:hidden"
+                className="h-7 sm:hidden"
                 invert={invert}
                 filled={logoHovered}
               />
               <Logo
-                className="hidden h-8 sm:block"
+                className="hidden h-6 sm:block"
                 invert={invert}
                 filled={logoHovered}
               />
@@ -239,9 +240,10 @@ function HeaderInner({
   const navRef = useRef<React.ElementRef<'div'>>(null)
   const shouldReduceMotion = useReducedMotion()
 
+  const ui = useUiCopy().menu
   const navigationItems = settings?.data?.navigation?.length
     ? settings.data.navigation
-    : DEFAULT_NAVIGATION
+    : defaultNavigation(urlLang)
 
   useEffect(() => {
     function onClick(event: MouseEvent) {
@@ -328,16 +330,17 @@ function HeaderInner({
                 <div className="grid grid-cols-1 gap-y-10 pt-10 pb-16 sm:grid-cols-2 sm:pt-16">
                   <div>
                     <h2 className="font-display text-base font-semibold text-white">
-                      The workshop
+                      {ui.workshop}
                     </h2>
                     <Offices
+                      atelierLine={ui.atelier}
                       invert
                       className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2"
                     />
                   </div>
                   <div className="sm:border-l sm:border-transparent sm:pl-16">
                     <h2 className="font-display text-base font-semibold text-white">
-                      Get in touch
+                      {ui.contact}
                     </h2>
                     <p className="mt-6 text-sm text-neutral-300">
                       <a href="tel:+3214224494" className="transition hover:text-white">

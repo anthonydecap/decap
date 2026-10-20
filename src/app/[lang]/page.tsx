@@ -4,6 +4,8 @@ import { asText } from "@prismicio/client";
 import { SliceZone } from "@prismicio/react";
 
 import {
+  LOCALE_OG,
+  LOCALE_PATH_PREFIXES,
   DEFAULT_PRISMIC_LANG,
   resolveUrlLang,
   urlLangToPrismic,
@@ -11,6 +13,7 @@ import {
 import { prismicErrorFromUnknown, prismicLog } from "@/lib/prismic-debug";
 import { prismicGetByUID } from "@/lib/prismic-get-by-uid";
 import { createSliceContext } from "@/lib/slice-context";
+import { fallbackToDefaultLocale } from "@/lib/locale-fallback";
 import { resolvePageTheme } from "@/lib/brand";
 import { PageThemeScope } from "@/components/PageThemeScope";
 import {
@@ -23,7 +26,7 @@ import { components } from "@/slices";
 export const revalidate = 3600;
 
 export function generateStaticParams() {
-  return [{ lang: "en" }, { lang: "fr" }];
+  return LOCALE_PATH_PREFIXES.map((lang) => ({ lang }));
 }
 
 type Params = { lang: string };
@@ -55,6 +58,8 @@ export default async function Home({ params }: { params: Promise<Params> }) {
         prismicLang,
       },
     );
+    // Home not translated yet: English instead of an error.
+    if (urlLang !== "en") await fallbackToDefaultLocale("page", "home", urlLang);
     throw err;
   }
 
@@ -107,7 +112,7 @@ export async function generateMetadata({
     openGraph: {
       title: home.data.meta_title ?? undefined,
       images: [{ url: home.data.meta_image.url ?? "" }],
-      locale: urlLang === "fr" ? "fr_FR" : "en_US",
+      locale: LOCALE_OG[urlLang],
     },
   };
 }

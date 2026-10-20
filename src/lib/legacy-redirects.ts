@@ -81,9 +81,6 @@ export function legacyRedirects(): Redirect[] {
     add(`/:lang(nl|fr|de)${from}`, to);
   }
 
-  // Old Dutch and German roots (the new site has no NL/DE yet).
-  add("/:lang(nl|de)", "/");
-
   // Everything else on orchestrionix.com: the Orchestrionix page on decap.be.
   rules.push({ source: "/:path*", destination: `${CANONICAL}/en/orchestrionix`, permanent: true, has: [{ type: "host", value: ORCHESTRIONIX_HOST }] });
   return rules;

@@ -1,5 +1,6 @@
 import {
   DEFAULT_URL_LANG,
+  LOCALE_PATH_PREFIXES,
   prismicLangToUrl,
   resolveUrlLang,
   type UrlLocale,
@@ -10,6 +11,7 @@ export type LocalizedRouteKind =
   | "page"
   | "blog_overview"
   | "blog_post"
+  | "project"
   | "other";
 
 export type ParsedLocalizedPath = {
@@ -61,6 +63,15 @@ export function parseLocalizedPath(pathname: string): ParsedLocalizedPath | null
       urlLang,
       kind: "home",
       pathWithoutLocale: "/",
+    };
+  }
+
+  if (rest[0] === "work" && rest[1]) {
+    return {
+      urlLang,
+      kind: "project",
+      uid: rest[1],
+      pathWithoutLocale: `/work/${rest[1]}`,
     };
   }
 
@@ -148,6 +159,9 @@ function pathForPrismicRef(ref: {
   if (ref.type === "page") {
     return pathForPage(urlLang, ref.uid);
   }
+  if (ref.type === "project") {
+    return `/${urlLang}/work/${ref.uid}`;
+  }
   if (ref.type === "blog") {
     return pathForBlogPost(urlLang, ref.uid);
   }
@@ -164,7 +178,7 @@ export function withFallbackPaths(
   currentPathname: string,
   currentUrlLang: UrlLocale,
 ): Record<UrlLocale, string> {
-  const all: UrlLocale[] = ["en", "fr"];
+  const all = LOCALE_PATH_PREFIXES as readonly UrlLocale[];
   const result = {} as Record<UrlLocale, string>;
 
   for (const urlLang of all) {
@@ -173,8 +187,9 @@ export function withFallbackPaths(
     } else if (urlLang === currentUrlLang) {
       result[urlLang] = currentPathname;
     } else {
-      // Different slug per locale — never reuse the other language's UID.
-      result[urlLang] = pathForHome(urlLang);
+      // Same path in the other language. Translations keep the English UID; an untranslated
+      // page redirects to English on the server (see lib/locale-fallback.ts).
+      result[urlLang] = swapUrlLangInPathname(currentPathname, urlLang);
     }
   }
 

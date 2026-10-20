@@ -144,6 +144,32 @@ Existing Prismic pages (keep): `accordion`, `pipes`, `percussion-unit`, `mallet-
   pressure 0–200% stored per pipe; 4 ms response; PID feedback; optical MIDI cable (100× MIDI speed,
   200 m+); LFO effects, vibrato, slope, decay. Proven in L'Explorateur (2025).
 - Optical MIDI is an accessory of SmartValve.
+- **SmartValve is fully digital:** every valve has its own processor, and every pipe is individually
+  addressable. With Decap's software, **stops are defined in software ("digital stops")**: any
+  combination of pipes can form a stop, in practically unlimited combinations, each pipe with its
+  own pressure settings. (user, 2026-10-20)
+- **SmartValve retrofit:** valves are fitted to a pipe panel, so an existing organ can be retrofitted
+  by replacing its pipe panels. In a full SmartValve organ everything is software (stops and
+  mappings unlimited); when SmartValve extends an existing organ, the limits of the original
+  controller/control system apply, case by case. SmartValve is extremely small (exact dimensions to be supplied by
+  Decap). (user, 2026-10-20)
+- **From Yves Rechsteiner's own article** ("About the Explorateur", studio31.bearblog.dev): idea in
+  2013 (artistic director of Toulouse les Orgues); met Tony Decap in 2019 through a teaser of
+  Stephan Eicher's Die Automaten; construction from 2021; first valve generation (IPU) after two
+  years; SmartValve developed end 2023 to end 2025, designed by Tony Decap. The valve regulates the
+  wind "a few millimetres from the pipe's foot": it measures the pressure drop on the input side and
+  opens further to compensate, so pressure stays stable when many pipes sound. No regulators
+  needed: a blower and a distribution box. Set-up with SmartValve "less than 2 hours from the truck
+  arriving to playing". Built to fit a 20 m³ van, max. 1,200 kg. More than 30 performances since
+  2023 (churches, museums, theatres; repertoire incl. Vierne, Fauré, Poulenc's Organ Concerto).
+  Residencies with the duo Gamut (Berlin) and George Rahi (Toronto). Rechsteiner: organ builders
+  consider SmartValve a high-performing, responsive solution.
+- **Any MIDI can be mapped to SmartValve:** e.g. the key position can drive the valve opening, so
+  SmartValve can behave exactly like a position-following ("linear") valve, as one mapping among
+  countless others (velocity, aftertouch, CC, pressure curves, LFOs…). (user, 2026-10-20)
+- **For organ builders (B2B):** no public prices. Message: the technology is available and goes
+  further than any other valve. Never name competitors (e.g. Orgelpunkt Linear Valve L1) on the site;
+  compare categories (on/off valve, position-following valve, closed-loop SmartValve) instead.
 
 ## Software
 

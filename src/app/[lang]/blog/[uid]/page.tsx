@@ -12,6 +12,7 @@ import { createSliceContext } from "@/lib/slice-context";
 import { buildLocaleMetadataAlternates } from "@/lib/locale-alternates";
 import { existingLocalePathsFromDocument } from "@/lib/locale-path";
 import { createClient } from "@/prismicio";
+import { LOCALE_OG } from "@/i18n";
 import { Container } from "@/components/Container";
 import { SliceZone } from "@prismicio/react";
 import { components } from "@/slices";
@@ -40,7 +41,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
         title: postData.meta_title || "Blog Post",
         description: postData.meta_description || "Read our latest blog post",
         images: postData.meta_image?.url ? [postData.meta_image.url] : [],
-        locale: urlLang === "fr" ? "fr_FR" : "en_US",
+        locale: LOCALE_OG[urlLang],
       },
     };
   } catch {
