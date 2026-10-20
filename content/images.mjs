@@ -127,7 +127,11 @@ export default {
   },
   "yves-rechsteiner": {
     "0": { url: "https://orchestrionix.com/wp-content/uploads/2023/08/20221008_mohaibalazs_074-2-2.jpeg", alt: "A stage production with L'Explorateur: four dancers in front of the organ" },
-    "1": { url: "https://orchestrionix.com/wp-content/uploads/2023/08/20221008_mohaibalazs_074-3-3.jpeg", alt: "Dancers on stage in front of L'Explorateur, an organist at the console" },
-    "2": { url: "https://orchestrionix.com/wp-content/uploads/2023/08/d.png", alt: "Render of a SmartValve" },
+    "2": { url: "https://orchestrionix.com/wp-content/uploads/2023/08/20221008_mohaibalazs_074-3-3.jpeg", alt: "Dancers on stage in front of L'Explorateur, an organist at the console" },
+    "4": { url: "https://orchestrionix.com/wp-content/uploads/2023/08/d.png", alt: "Render of a SmartValve" },
+    "5": { url: "https://orchestrionix.com/wp-content/uploads/2023/08/20221008_mohaibalazs_074-1-2-1.png", alt: "Render of L'Explorateur's transportable modules" },
+    "6": { url: "https://orchestrionix.com/wp-content/uploads/2023/08/image-6-1.jpeg", alt: "L'Explorateur's modules on stage, with dancers and smoke" },
+    "8": { url: "https://orchestrionix.com/wp-content/uploads/2023/08/20221008_mohaibalazs_074-3-1-1.png", alt: "Render of L'Explorateur's modules and pipework" },
   },
+
 };
