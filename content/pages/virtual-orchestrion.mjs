@@ -1,0 +1,157 @@
+/** Virtual Orchestrion product page (Prismic page "virtual-orchestrion"): Decap's player software and music shop. */
+export default {
+  type: "page",
+  uid: "virtual-orchestrion",
+  title: "Virtual Orchestrion",
+  theme: "decap",
+  meta_title: "Virtual Orchestrion Player Software | Decap Herentals",
+  meta_description:
+    "One player for your whole Decap ensemble and QRS pianos. Animated orchestrion and book views, missing ranks added virtually, and a shop full of arrangements.",
+  slices: [
+    {
+      type: "site_hero",
+      primary: {
+        layout: "Split",
+        eyebrow: "Virtual Orchestrion",
+        title: "Virtual Orchestrion: one player for your whole orchestrion",
+        intro:
+          "Virtual Orchestrion plays MIDI, audio and video and sends every instrument its part: Decap organs and self-playing instruments, and QRS pianos. On screen you follow the music as an animated orchestrion or as a scrolling book.",
+        primary_cta_label: "Get Virtual Orchestrion",
+        primary_cta_link: "/contact",
+        secondary_cta_label: "Browse the music shop",
+        secondary_cta_link: "/shop",
+        note: "[TO CHECK: price/licensing and download route]",
+        image_brief: "Laptop showing the animated orchestrion view, next to an Accordion Pedestal, plain backdrop, portrait 4:5",
+      },
+    },
+    {
+      type: "site_text_media",
+      primary: {
+        eyebrow: "One ensemble",
+        title: "Every instrument plays its own part",
+        body:
+          "Connect an [Accordion Pedestal](/accordion), a [Percussion Unit](/percussion-unit), [Pipes](/pipes) or a complete organ, and Virtual Orchestrion drives them together from one arrangement. It also drives QRS pianos, so a player piano can join the band.\n\nWhatever you have not connected can still sound: the player hosts up to 8 VSTi and 8 DXi virtual instruments for the remaining parts.",
+        media_side: "Image right",
+        aspect: "Landscape 4:3",
+        image_brief: "Several Decap instruments in a row with a laptop running Virtual Orchestrion in front, workshop, 4:3",
+      },
+    },
+    {
+      type: "site_text_media",
+      primary: {
+        eyebrow: "Keys are no limit",
+        title: "A smaller organ that plays larger scales",
+        body:
+          "When an arrangement calls for ranks your organ does not have, Virtual Orchestrion adds them virtually, with samples we recorded in our own workshop. A 105-key organ plays 121-key music.\n\nSo you choose the instrument that fits your room and budget, and still play the full repertoire.",
+        media_side: "Image left",
+        aspect: "Landscape 4:3",
+        cta_label: "New organs",
+        cta_link: "/organs",
+        image_brief: "Screenshot of the book view with real and virtual ranks shown in different colours, 4:3",
+        tone: "Tinted",
+      },
+    },
+    {
+      type: "site_steps",
+      primary: {
+        eyebrow: "How it works",
+        title: "From arrangement to sound in four steps",
+      },
+      items: [
+        {
+          title: "Install the player",
+          body: "Install Virtual Orchestrion on your computer. [TO CHECK: system requirements and download/licence route]",
+        },
+        {
+          title: "Connect your instruments",
+          body: "Connect your Decap instruments or QRS piano over MIDI. Parts without an instrument go to the virtual instruments you load.",
+        },
+        {
+          title: "Choose your music",
+          body: "Buy copy-protected arrangements in the [music shop](/shop), or play your own MIDI, audio and video files.",
+        },
+        {
+          title: "Press play",
+          body: "Every instrument plays its part. Follow along in the animated orchestrion view or the book view.",
+        },
+      ],
+    },
+    {
+      type: "site_facts",
+      primary: {
+        eyebrow: "At a glance",
+        title: "What Virtual Orchestrion does",
+        layout: "Spec list",
+      },
+      items: [
+        { label: "Plays", value: "MIDI, audio and video" },
+        { label: "Drives", value: "Decap organs and self-playing instruments, QRS pianos" },
+        { label: "Views", value: "Animated orchestrion and book view" },
+        { label: "Virtual instruments", value: "Up to 8 VSTi and 8 DXi" },
+        { label: "Missing ranks", value: "Added virtually with samples recorded in our workshop" },
+        { label: "Music", value: "Copy-protected arrangements from the Decap music shop" },
+        { label: "System requirements", value: "[TO CHECK: operating system and requirements]" },
+        { label: "Price", value: "[TO CHECK: price/licensing]" },
+      ],
+    },
+    {
+      type: "site_text_media",
+      primary: {
+        eyebrow: "For arrangers",
+        title: "Sell your arrangements in our music shop",
+        body:
+          "Arrangers sell their work to Decap owners through the music shop. Each arrangement is copy-protected and formatted to use everything the player can do, and it plays on real instruments as well as virtual ones.\n\nArranging for orchestrions or organs? Send us a few of your arrangements. [TO CHECK: arranger sign-up process and revenue share]",
+        media_side: "Image right",
+        aspect: "Landscape 4:3",
+        cta_label: "Apply as an arranger",
+        cta_link: "/contact",
+        image_brief: "Arranger at a desk with a DAW on screen and a MIDI keyboard, 4:3",
+      },
+    },
+    {
+      type: "site_faq",
+      primary: {
+        eyebrow: "Questions",
+        title: "About Virtual Orchestrion",
+      },
+      items: [
+        {
+          question: "Do I need a Decap instrument to use it?",
+          answer:
+            "No. With virtual instruments loaded, Virtual Orchestrion plays orchestrion music on your computer. Connect real instruments and they take over their parts.",
+        },
+        {
+          question: "Which instruments can it drive?",
+          answer:
+            "All Decap organs and self-playing instruments, and QRS pianos. See the [instruments](/instruments).",
+        },
+        {
+          question: "How does it add ranks my organ does not have?",
+          answer:
+            "When an arrangement uses a rank that is not in your organ, the player plays it with samples we recorded in our workshop. Your organ plays its own pipes; the missing ranks sound through speakers.",
+        },
+        {
+          question: "Is it included with a new organ?",
+          answer: "Yes. Every new Decap organ comes with the Virtual Orchestrion player, and the [Bellow Organ](/bellow-organ) has it built in.",
+        },
+        {
+          question: "What does it cost?",
+          answer: "[TO CHECK: price/licensing]",
+        },
+      ],
+    },
+    {
+      type: "site_cta",
+      primary: {
+        eyebrow: "Ready to play?",
+        title: "Get Virtual Orchestrion",
+        body: "Tell us which instruments you want to connect. We send you the player and a licence. [TO CHECK: actual purchase/download flow]",
+        primary_cta_label: "Get Virtual Orchestrion",
+        primary_cta_link: "/contact",
+        secondary_cta_label: "Browse the music shop",
+        secondary_cta_link: "/shop",
+        tone: "Dark band",
+      },
+    },
+  ],
+};

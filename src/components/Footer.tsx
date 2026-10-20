@@ -48,8 +48,8 @@ const defaultFooterSections: FooterSection[] = [
   {
     section_title: "Instruments",
     section_links: [
-      { link_text: "Accordion Pedestal & Cube", link_url: { url: "/accordion-pedestal" } },
-      { link_text: "Pipe Cube", link_url: { url: "/pipe-cube" } },
+      { link_text: "Accordion Pedestal & Cube", link_url: { url: "/accordion" } },
+      { link_text: "Pipe Cube", link_url: { url: "/pipes" } },
       { link_text: "Percussion Unit", link_url: { url: "/percussion-unit" } },
       { link_text: "Mallet Percussion", link_url: { url: "/mallet-percussion" } },
       { link_text: "Bellow Organ", link_url: { url: "/bellow-organ" } },

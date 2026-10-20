@@ -1,0 +1,122 @@
+/** Work overview (Prismic page "work"): artist and venue projects, plus portfolio pieces from the workshop. */
+export default {
+  type: "page",
+  uid: "work",
+  title: "Work",
+  theme: "decap",
+  meta_title: "Work: Organs and Orchestrions on Stage | Decap Herentals",
+  meta_description:
+    "Decap organs, orchestrions and instruments with Yves Rechsteiner, Stephan Eicher, Walter Hus, Guido Belcanto, Circus Ronaldo and House of Music Hungary.",
+  slices: [
+    {
+      type: "site_hero",
+      primary: {
+        layout: "Centered",
+        eyebrow: "Work",
+        title: "Decap organs and orchestrions on stage, on tour and in museums",
+        intro:
+          "Artists, composers and venues use our organs and self-playing instruments where acoustic sound has to play by itself, on cue and with real dynamics. These are some of the projects.",
+      },
+    },
+    {
+      type: "site_card_grid",
+      primary: {
+        eyebrow: "Projects",
+        title: "With artists and venues",
+        columns: "3",
+        card_style: "Image cards",
+      },
+      items: [
+        {
+          tag: "Concert organ · 2025",
+          title: "Yves Rechsteiner: L'Explorateur",
+          body: "A transportable concert organ with SmartValve on every pipe: the first wind synthesizer.",
+          link_label: "Read the case study",
+          link: "/work/yves-rechsteiner",
+          image_brief: "L'Explorateur set up in a chapel, 4:3",
+        },
+        {
+          tag: "Tour and album",
+          title: "Stephan Eicher und die Automaten",
+          body: "Self-playing acoustic instruments on tour with Stephan Eicher, and on his album Ode.",
+          link_label: "Read the case study",
+          link: "/work/stephan-eicher",
+          image_brief: "Stephan Eicher on stage with the automated instruments, 4:3",
+        },
+        {
+          tag: "Museum · Budapest",
+          title: "House of Music Hungary",
+          body: "A robot orchestra for the Creative Sound Space, with Medence Design.",
+          link_label: "Read the case study",
+          link: "/work/house-of-music-hungary",
+          image_brief: "The robot orchestra in the Creative Sound Space, Budapest, 4:3 (photo Mohai Balázs)",
+        },
+        {
+          tag: "Orchestrion",
+          title: "Walter Hus, BELEM and The Mekanics",
+          body: "A mechanical orchestra with accordion and cello, and the Decap orchestrion at Flagey.",
+          link_label: "Read the case study",
+          link: "/work/walter-hus-belem",
+          image_brief: "BELEM on stage in front of the mechanical orchestra, 4:3",
+        },
+        {
+          tag: "Dance organ · 2008",
+          title: "Guido Belcanto",
+          body: "A Decap dance organ on tour in the theatre show Balzaal der Gebroken Harten.",
+          link_label: "Read the case study",
+          link: "/work/guido-belcanto",
+          image_brief: "Guido Belcanto on stage with the Decap dance organ, 4:3",
+        },
+        {
+          tag: "Circus",
+          title: "Circus Ronaldo",
+          body: "A Decap organ in the ring, and Brass Core for live brass.",
+          link_label: "Read the case study",
+          link: "/work/circus-ronaldo",
+          image_brief: "The Decap organ in the Circus Ronaldo tent, 4:3",
+        },
+        {
+          title: "Pat Metheny",
+          body: "[TO CHECK: one line on what Decap built for Pat Metheny]",
+          link_label: "Read the case study",
+          link: "/work/pat-metheny",
+          image_brief: "Pat Metheny with Decap instruments on stage, 4:3",
+        },
+      ],
+    },
+    {
+      type: "site_card_grid",
+      primary: {
+        eyebrow: "From the workshop",
+        title: "Orchestrions, accordions and organs we have built",
+        intro: "A selection of instruments that left our Herentals workshop. [TO CHECK: one line per piece: year, size, where it plays]",
+        columns: "4",
+        card_style: "Image cards",
+        tone: "Tinted",
+      },
+      items: [
+        { title: "Accordion castle", image_brief: "The Accordion castle, front view on a plain backdrop, 4:3" },
+        { title: "Accordion Pedestal, pearl white", image_brief: "Pearl-white Accordion Pedestal against a dark backdrop, three-quarter view, 4:3" },
+        { title: "Orchestrion, pearl white", image_brief: "Pearl-white orchestrion, front view, workshop wall behind, 4:3" },
+        { title: "Orchestrion with dual accordion", image_brief: "Orchestrion with two accordions, front view, 4:3" },
+        { title: "Orchestrion, rounded 70's design", image_brief: "Orchestrion with rounded 1970s-style case, three-quarter view, 4:3" },
+        { title: "Orchestrion, trailer design", image_brief: "Orchestrion built into a trailer, side panel open, outdoors, 4:3" },
+        { title: "Pipe cube", image_brief: "Pipe Cube on a table, black backdrop, pipes visible, 4:3" },
+        { title: "Organ", image_brief: "Finished Decap organ façade, front view, 4:3" },
+      ],
+    },
+    {
+      type: "site_cta",
+      primary: {
+        eyebrow: "Your project",
+        title: "Tell us where it will play",
+        body: "Stage, museum, dance hall or church: describe the room and the music. We reply with questions and a first idea.",
+        primary_cta_label: "Describe your project",
+        primary_cta_link: "/contact",
+        secondary_cta_label: "Compose your organ",
+        secondary_cta_link: "/organ-composer",
+        tone: "Dark band",
+      },
+    },
+  ],
+};
