@@ -35,6 +35,8 @@ export function MediaSlot({
   priority?: boolean;
 }) {
   const filled = !!field && isFilled.image(field);
+  // Portrait images (e.g. an Accordion Pedestal) in a landscape slot are shown whole, not cropped.
+  const portrait = filled && field.dimensions && field.dimensions.height > field.dimensions.width * 1.15;
 
   return (
     <div className={clsx("relative overflow-hidden", aspect, rounded, className)}>
@@ -44,7 +46,7 @@ export function MediaSlot({
           fill
           sizes={sizes}
           priority={priority}
-          className={clsx("object-cover", imgClassName)}
+          className={clsx(portrait ? "bg-surface object-contain" : "object-cover", imgClassName)}
           fallbackAlt=""
         />
       ) : (

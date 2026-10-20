@@ -19,6 +19,7 @@ import * as prismic from "@prismicio/client";
 import { buildDocument, sanitizeExisting } from "./build-document.mjs";
 import { loadContent } from "./check.mjs";
 import { siteUpdates } from "./site-updates.mjs";
+import imageMap from "../../content/images.mjs";
 
 const repo = process.env.PRISMIC_REPOSITORY ?? "decap";
 const writeToken = process.env.PRISMIC_WRITE_TOKEN;
@@ -79,10 +80,33 @@ function resolveCopiedItems(doc) {
   }
 }
 
+/**
+ * Fills image slots from content/images.mjs: `{ url, alt }` uploads the file to Prismic (each URL
+ * once), `{ artist, alt }` reuses that artist's portrait from the home page's artist slider.
+ */
+const homeArtists = find("page", "home", "en-us")?.data.slices?.find((s) => s.slice_type === "home_artists")?.items ?? [];
+function applyImages(doc) {
+  for (const [slot, img] of Object.entries(imageMap[doc.uid] ?? {})) {
+    const [si, ii] = slot.split(".").map(Number);
+    const slice = doc.data.slices[si];
+    const target = ii === undefined ? slice?.primary : slice?.items?.[ii];
+    if (!target) throw new Error(`content/images.mjs: ${doc.uid} slot ${slot} does not exist`);
+    if (img.artist) {
+      const portrait = homeArtists.find((a) => a.artist_name === img.artist)?.artist_portrait;
+      if (portrait?.url) target.image = { ...portrait, alt: img.alt };
+      else console.log(`  ⚠ ${doc.uid} ${slot}: no portrait for ${img.artist}`);
+    } else {
+      const filename = decodeURIComponent(img.url.split("/").pop());
+      target.image = migration.createAsset(img.url, filename, { alt: img.alt });
+    }
+  }
+}
+
 for (const { content } of await loadContent()) {
   if (only.length && !only.includes(content.uid)) continue;
   const doc = buildDocument(content);
   resolveCopiedItems(doc);
+  applyImages(doc);
   const current = find(doc.type, doc.uid, doc.lang);
   if (current) {
     current.data = doc.data;
