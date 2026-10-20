@@ -7,6 +7,7 @@ import { type SliceComponentProps } from "@prismicio/react";
 import { FadeIn, FadeInStagger } from "@/components/FadeIn";
 import { MediaPlaceholder, MediaSlot } from "@/components/MediaSlot";
 import { Section, SectionHeader, toneFromSelect } from "@/lib/site-ui";
+import { useUiCopy } from "@/lib/ui-copy";
 
 /** Privacy-friendly player URL for YouTube or Vimeo, or null for other providers. */
 function playerUrl(embedUrl: string): string | null {
@@ -20,11 +21,12 @@ function playerUrl(embedUrl: string): string | null {
 /** A 16:9 video that loads the provider's player only after the visitor clicks play. */
 const SiteVideo: FC<SliceComponentProps<any>> = ({ slice }) => {
   const p = slice.primary;
+  const t = useUiCopy();
   const [active, setActive] = useState(false);
   const video = isFilled.embed(p.video) ? (p.video as any) : null;
   if (!video && !p.video_brief) return null;
 
-  const title = video?.title || p.title || "Video";
+  const title = video?.title || p.title || t.video;
   const src = video?.embed_url ? playerUrl(video.embed_url) : null;
   const canPlay = !!src || !!video?.html;
 
@@ -48,7 +50,7 @@ const SiteVideo: FC<SliceComponentProps<any>> = ({ slice }) => {
       // eslint-disable-next-line @next/next/no-img-element
       <img src={video.thumbnail_url} alt="" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
     ) : (
-      <MediaPlaceholder kind="Video" brief={p.video_brief || `Video: ${title}`} />
+      <MediaPlaceholder kind="Video" brief={p.video_brief || title} />
     );
     frame = (
       <>
@@ -57,7 +59,7 @@ const SiteVideo: FC<SliceComponentProps<any>> = ({ slice }) => {
           <button
             type="button"
             onClick={() => setActive(true)}
-            aria-label={`Play video: ${title}`}
+            aria-label={t.playVideo(title)}
             className="group absolute inset-0 flex items-center justify-center bg-black/10 transition hover:bg-black/20 focus-visible:outline-none"
           >
             <span className="flex h-20 w-20 items-center justify-center rounded-full bg-accent text-accent-contrast shadow-lg transition-transform duration-300 group-hover:scale-105 group-focus-visible:ring-4 group-focus-visible:ring-accent-soft sm:h-24 sm:w-24">

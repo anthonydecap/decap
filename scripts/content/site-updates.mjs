@@ -6,6 +6,54 @@ import { markdownToRichText } from "./markdown-to-rich-text.mjs";
 
 const web = (url) => ({ link_type: "Web", url });
 
+/** Menu and footer labels per language (paths stay the same; the site adds the language prefix). */
+export const NAV = {
+  "en-us": [["Organs", "/organs"], ["Organ pipes", "/organ-pipes"], ["Instruments", "/instruments"], ["SmartValve", "/smartvalve"], ["Software", "/software"], ["Work", "/work"], ["About", "/about"]],
+  "fr-fr": [["Orgues", "/organs"], ["Tuyaux d’orgue", "/organ-pipes"], ["Instruments", "/instruments"], ["SmartValve", "/smartvalve"], ["Logiciels", "/software"], ["Réalisations", "/work"], ["À propos", "/about"]],
+  "nl-be": [["Orgels", "/organs"], ["Orgelpijpen", "/organ-pipes"], ["Instrumenten", "/instruments"], ["SmartValve", "/smartvalve"], ["Software", "/software"], ["Realisaties", "/work"], ["Over ons", "/about"]],
+  "de-de": [["Orgeln", "/organs"], ["Orgelpfeifen", "/organ-pipes"], ["Instrumente", "/instruments"], ["SmartValve", "/smartvalve"], ["Software", "/software"], ["Projekte", "/work"], ["Über uns", "/about"]],
+};
+
+const FOOTER_I18N = {
+  "fr-fr": { contact: "Contact", sections: [
+    ["Orgues", [["Nouveaux orgues", "/organs"], ["Organ Composer", "/organ-composer"], ["Conversion MIDI", "/midi-conversion"], ["Tuyaux d’orgue", "/organ-pipes"], ["Restauration", "/frank-decap"]]],
+    ["Instruments", [["Accordion Pedestal & Cube", "/accordion"], ["Pipes", "/pipes"], ["Percussion Unit", "/percussion-unit"], ["Mallet Percussion", "/mallet-percussion"], ["Bellow Organ", "/bellow-organ"], ["Brass Core", "/brass-core"]]],
+    ["Decap", [["SmartValve", "/smartvalve"], ["Logiciels", "/software"], ["Réalisations", "/work"], ["À propos", "/about"], ["Journal", "/blog"], ["Contact", "/contact"]]],
+  ], address: "Langepad 51C\n2200 Herentals, Belgique" },
+  "nl-be": { contact: "Contact", sections: [
+    ["Orgels", [["Nieuwe orgels", "/organs"], ["Organ Composer", "/organ-composer"], ["MIDI-ombouw", "/midi-conversion"], ["Orgelpijpen", "/organ-pipes"], ["Restauratie", "/frank-decap"]]],
+    ["Instrumenten", [["Accordion Pedestal & Cube", "/accordion"], ["Pipes", "/pipes"], ["Percussion Unit", "/percussion-unit"], ["Mallet Percussion", "/mallet-percussion"], ["Bellow Organ", "/bellow-organ"], ["Brass Core", "/brass-core"]]],
+    ["Decap", [["SmartValve", "/smartvalve"], ["Software", "/software"], ["Realisaties", "/work"], ["Over ons", "/about"], ["Journal", "/blog"], ["Contact", "/contact"]]],
+  ], address: "Langepad 51C\n2200 Herentals, België" },
+  "de-de": { contact: "Kontakt", sections: [
+    ["Orgeln", [["Neue Orgeln", "/organs"], ["Organ Composer", "/organ-composer"], ["MIDI-Umbau", "/midi-conversion"], ["Orgelpfeifen", "/organ-pipes"], ["Restaurierung", "/frank-decap"]]],
+    ["Instrumente", [["Accordion Pedestal & Cube", "/accordion"], ["Pipes", "/pipes"], ["Percussion Unit", "/percussion-unit"], ["Mallet Percussion", "/mallet-percussion"], ["Bellow Organ", "/bellow-organ"], ["Brass Core", "/brass-core"]]],
+    ["Decap", [["SmartValve", "/smartvalve"], ["Software", "/software"], ["Projekte", "/work"], ["Über uns", "/about"], ["Journal", "/blog"], ["Kontakt", "/contact"]]],
+  ], address: "Langepad 51C\n2200 Herentals, Belgien" },
+};
+
+/** Settings data for a translated language (menu, footer, company details). */
+export function localizedSettingsData(lang) {
+  const f = FOOTER_I18N[lang];
+  return {
+    site_name: "Decap",
+    contact_button_text: f.contact,
+    contact_button_link: web("/contact"),
+    navigation: NAV[lang].map(([label, url]) => ({ label, link: web(url) })),
+    footer_sections: f.sections.map(([section_title, links]) => ({
+      section_title,
+      section_links: links.map(([link_text, url]) => ({ link_text, link_url: web(url) })),
+    })),
+    company_name: "Decap Herentals",
+    company_address: markdownToRichText(f.address),
+    company_phone: "+32 14 22 44 94",
+    company_email: "info@decap.be",
+    company_vat: "DECAP TONY BV · BE 0450.352.984",
+    copyright_text: "© Decap Herentals",
+  };
+}
+export const SETTINGS_LANGS = Object.keys(FOOTER_I18N);
+
 const footer = [
   ["Organs", [["New organs", "/organs"], ["Organ Composer", "/organ-composer"], ["MIDI conversion", "/midi-conversion"], ["Organ pipes", "/organ-pipes"], ["Restoration", "/frank-decap"]]],
   ["Instruments", [["Accordion Pedestal & Cube", "/accordion"], ["Pipes", "/pipes"], ["Percussion Unit", "/percussion-unit"], ["Mallet Percussion", "/mallet-percussion"], ["Bellow Organ", "/bellow-organ"], ["Brass Core", "/brass-core"]]],
@@ -63,15 +111,7 @@ export const siteUpdates = [
         site_name: "Decap",
         contact_button_text: "Contact",
         contact_button_link: web("/contact"),
-        navigation: [
-          ["Organs", "/organs"],
-          ["Organ pipes", "/organ-pipes"],
-          ["Instruments", "/instruments"],
-          ["SmartValve", "/smartvalve"],
-          ["Software", "/software"],
-          ["Work", "/work"],
-          ["About", "/about"],
-        ].map(([label, url]) => ({ label, link: web(url) })),
+        navigation: NAV["en-us"].map(([label, url]) => ({ label, link: web(url) })),
         footer_sections: footer.map(([section_title, links]) => ({
           section_title,
           section_links: links.map(([link_text, url]) => ({ link_text, link_url: web(url) })),

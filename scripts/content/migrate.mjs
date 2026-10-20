@@ -18,7 +18,7 @@ import { join } from "node:path";
 import * as prismic from "@prismicio/client";
 import { buildDocument, sanitizeExisting } from "./build-document.mjs";
 import { loadContent } from "./check.mjs";
-import { siteUpdates } from "./site-updates.mjs";
+import { SETTINGS_LANGS, localizedSettingsData, siteUpdates } from "./site-updates.mjs";
 import imageMap from "../../content/images.mjs";
 
 const repo = process.env.PRISMIC_REPOSITORY ?? "decap";
@@ -38,6 +38,8 @@ const ids = existsSync(ID_FILE) ? JSON.parse(readFileSync(ID_FILE, "utf8")) : {}
 const key = (type, uid, lang) => `${type}/${uid}/${lang}`;
 
 const read = prismic.createClient(repo);
+/** Languages enabled in the Prismic repository (Settings → Translations & locales). */
+const repoLangs = new Set((await read.getRepository()).languages.map((l) => l.id));
 const existing = await read.dangerouslyGetAll({ lang: "*" });
 const find = (type, uid, lang) => existing.find((d) => d.type === type && d.uid === uid && d.lang === lang);
 
@@ -61,6 +63,8 @@ function dropForeignImages(node) {
 
 const migration = prismic.createMigration();
 const plan = [];
+/** Languages that have translated content files: only those get translated settings. */
+const translationLangs = new Set();
 
 /** Resolves `copyItemsFrom`: existing items (e.g. artist portraits) go first. */
 function resolveCopiedItems(doc) {
@@ -68,7 +72,8 @@ function resolveCopiedItems(doc) {
     const from = slice.__copyItemsFrom;
     delete slice.__copyItemsFrom;
     if (!from) continue;
-    const source = find(from.type, from.uid, from.lang ?? doc.lang);
+    // Artist portraits are the same in every language: copy from the English page by default.
+    const source = find(from.type, from.uid, from.lang ?? "en-us");
     const existingSlice = source?.data.slices?.find((s) => s.slice_type === slice.slice_type);
     if (!existingSlice) {
       console.log(`  ⚠ ${doc.uid}: no ${slice.slice_type} on ${from.type}/${from.uid} to copy items from`);
@@ -132,6 +137,11 @@ function applyImages(doc) {
 for (const { content } of await loadContent()) {
   if (only.length && !only.includes(content.uid)) continue;
   const doc = buildDocument(content);
+  if (!repoLangs.has(doc.lang)) {
+    plan.push(`skip   ${doc.type}/${doc.uid} [${doc.lang}]: add this language in Prismic first`);
+    continue;
+  }
+  if (doc.lang !== "en-us") translationLangs.add(doc.lang);
   resolveCopiedItems(doc);
   applyImages(doc);
   const current = find(doc.type, doc.uid, doc.lang);
@@ -139,16 +149,20 @@ for (const { content } of await loadContent()) {
     current.data = doc.data;
     dropForeignImages(current.data);
     migration.updateDocument(current, doc.title);
-    plan.push(`update ${doc.type}/${doc.uid}`);
+    plan.push(`update ${doc.type}/${doc.uid}${doc.lang !== "en-us" ? ` [${doc.lang}]` : ""}`);
   } else if (ids[key(doc.type, doc.uid, doc.lang)]) {
     // Created by an earlier run and still a draft: update that draft.
     migration.updateDocument({ id: ids[key(doc.type, doc.uid, doc.lang)], type: doc.type, uid: doc.uid, lang: doc.lang, data: doc.data }, doc.title);
     plan.push(`update ${doc.type}/${doc.uid} (draft)`);
   } else if (updatesOnly) {
     plan.push(`skip   ${doc.type}/${doc.uid}: new page (--updates-only)`);
+  } else if (doc.lang !== "en-us" && !find(doc.type, doc.uid, "en-us")) {
+    plan.push(`skip   ${doc.type}/${doc.uid} [${doc.lang}]: publish the English page first`);
   } else {
-    migration.createDocument({ type: doc.type, uid: doc.uid, lang: doc.lang, data: doc.data }, doc.title);
-    plan.push(`create ${doc.type}/${doc.uid}`);
+    // A translation is linked to its English page, so the language switcher and hreflang find it.
+    const master = doc.lang !== "en-us" ? find(doc.type, doc.uid, "en-us") : undefined;
+    migration.createDocument({ type: doc.type, uid: doc.uid, lang: doc.lang, data: doc.data }, doc.title, master ? { masterLanguageDocument: master } : undefined);
+    plan.push(`create ${doc.type}/${doc.uid}${master ? ` [${doc.lang}]` : ""}`);
   }
 }
 
@@ -164,6 +178,23 @@ if (!only.length) {
     dropForeignImages(current.data);
     migration.updateDocument(current, update.title);
     plan.push(`update ${update.type}/${current.uid ?? "(single)"}: ${update.description}`);
+  }
+}
+
+// Menu and footer per language: update the translated settings, or create them linked to English.
+if (!only.length) {
+  const enSettings = existing.find((d) => d.type === "settings" && d.lang === "en-us");
+  for (const lang of SETTINGS_LANGS) {
+    if (!translationLangs.has(lang)) continue;
+    const current = existing.find((d) => d.type === "settings" && d.lang === lang);
+    if (current) {
+      current.data = localizedSettingsData(lang);
+      migration.updateDocument(current, `Settings (${lang})`);
+      plan.push(`update settings [${lang}]`);
+    } else if (enSettings && !updatesOnly) {
+      migration.createDocument({ type: "settings", lang, data: localizedSettingsData(lang) }, `Settings (${lang})`, { masterLanguageDocument: enSettings });
+      plan.push(`create settings [${lang}]`);
+    }
   }
 }
 

@@ -23,6 +23,7 @@ import { LanguageSwitcher } from './LanguageSwitcher'
 import { pathForHome } from '@/lib/locale-path'
 import type { UrlLocale } from '@/i18n'
 import { DEFAULT_NAVIGATION } from '@/lib/site-nav'
+import { useUiCopy } from '@/lib/ui-copy'
 
 const HeaderContext = createContext<{
   logoHovered: boolean
@@ -239,6 +240,7 @@ function HeaderInner({
   const navRef = useRef<React.ElementRef<'div'>>(null)
   const shouldReduceMotion = useReducedMotion()
 
+  const ui = useUiCopy().menu
   const navigationItems = settings?.data?.navigation?.length
     ? settings.data.navigation
     : DEFAULT_NAVIGATION
@@ -328,16 +330,17 @@ function HeaderInner({
                 <div className="grid grid-cols-1 gap-y-10 pt-10 pb-16 sm:grid-cols-2 sm:pt-16">
                   <div>
                     <h2 className="font-display text-base font-semibold text-white">
-                      The workshop
+                      {ui.workshop}
                     </h2>
                     <Offices
+                      atelierLine={ui.atelier}
                       invert
                       className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2"
                     />
                   </div>
                   <div className="sm:border-l sm:border-transparent sm:pl-16">
                     <h2 className="font-display text-base font-semibold text-white">
-                      Get in touch
+                      {ui.contact}
                     </h2>
                     <p className="mt-6 text-sm text-neutral-300">
                       <a href="tel:+3214224494" className="transition hover:text-white">

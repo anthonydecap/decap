@@ -5,6 +5,7 @@ import { type FC, useEffect, useRef, useState } from "react";
 import { isFilled } from "@prismicio/client";
 import { type SliceComponentProps } from "@prismicio/react";
 import { FadeIn, FadeInStagger } from "@/components/FadeIn";
+import { useUiCopy } from "@/lib/ui-copy";
 import { MediaPlaceholder } from "@/components/MediaSlot";
 import { Section, SectionHeader, cardClass, toneFromSelect } from "@/lib/site-ui";
 
@@ -18,6 +19,7 @@ function formatTime(seconds: number) {
 }
 
 function Player({ src, title, description }: { src: string; title: string; description?: string }) {
+  const t = useUiCopy();
   const audio = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [time, setTime] = useState(0);
@@ -57,7 +59,7 @@ function Player({ src, title, description }: { src: string; title: string; descr
       <button
         type="button"
         onClick={toggle}
-        aria-label={isPlaying ? `Pause “${title}”` : `Play “${title}”`}
+        aria-label={isPlaying ? t.pause(title) : t.play(title)}
         aria-pressed={isPlaying}
         className="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-accent text-accent-contrast transition hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:h-14 sm:w-14"
       >
@@ -81,7 +83,7 @@ function Player({ src, title, description }: { src: string; title: string; descr
               setTime(Number(e.target.value));
             }}
             disabled={!duration}
-            aria-label={`Seek in “${title}”`}
+            aria-label={t.seek(title)}
             aria-valuetext={`${formatTime(time)} of ${formatTime(duration)}`}
             className="h-1 flex-1 cursor-pointer accent-[var(--page-accent)] disabled:cursor-default"
           />
@@ -97,6 +99,7 @@ function Player({ src, title, description }: { src: string; title: string; descr
 /** Recordings with a small player each, so visitors can hear the instrument. */
 const SiteSound: FC<SliceComponentProps<any>> = ({ slice }) => {
   const p = slice.primary;
+  const t = useUiCopy();
   const items: any[] = (slice.items || []).filter((i: any) => i?.title || isFilled.link(i?.audio) || i?.audio_brief);
   if (items.length === 0) return null;
 
@@ -105,7 +108,7 @@ const SiteSound: FC<SliceComponentProps<any>> = ({ slice }) => {
       <SectionHeader eyebrow={p.eyebrow} title={p.title} intro={p.intro} />
       <FadeInStagger faster className="mx-auto mt-12 max-w-3xl space-y-3 sm:mt-16">
         {items.map((item, i) => {
-          const title = item.title || "Recording";
+          const title = item.title || t.recording;
           const src = isFilled.link(item.audio) ? (item.audio as any).url : null;
           return (
             <FadeIn key={i}>
@@ -113,7 +116,7 @@ const SiteSound: FC<SliceComponentProps<any>> = ({ slice }) => {
                 <Player src={src} title={title} description={item.description || undefined} />
               ) : (
                 <div className="relative h-28 overflow-hidden rounded-2xl lg:rounded-3xl">
-                  <MediaPlaceholder kind="Audio" brief={item.audio_brief || `Recording of “${title}”`} />
+                  <MediaPlaceholder kind="Audio" brief={item.audio_brief || title} />
                 </div>
               )}
             </FadeIn>

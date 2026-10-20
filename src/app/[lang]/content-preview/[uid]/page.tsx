@@ -7,6 +7,7 @@ import { PageThemeScope } from "@/components/PageThemeScope";
 import { resolvePageTheme } from "@/lib/brand";
 import { createSliceContext } from "@/lib/slice-context";
 import { components } from "@/slices";
+import { urlLangToPrismic } from "@/i18n";
 
 /**
  * Development only: renders a content file (content/pages, content/projects) before it is sent
@@ -17,7 +18,9 @@ export const dynamic = "force-dynamic";
 export default async function ContentPreview({ params }: { params: Promise<{ lang: string; uid: string }> }) {
   if (process.env.NODE_ENV === "production") notFound();
   const { lang, uid } = await params;
-  const file = join(process.cwd(), ".content-build", `${uid.replace(/[^a-z0-9-]/g, "")}.json`);
+  const prismicLang = urlLangToPrismic(lang) ?? "en-us";
+  const name = `${prismicLang === "en-us" ? "" : `${prismicLang}-`}${uid.replace(/[^a-z0-9-]/g, "")}`;
+  const file = join(process.cwd(), ".content-build", `${name}.json`);
   if (!existsSync(file)) notFound();
   const doc = JSON.parse(readFileSync(file, "utf8"));
   const theme = resolvePageTheme(doc.data.theme);

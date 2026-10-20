@@ -7,10 +7,12 @@ import { type SliceComponentProps } from "@prismicio/react";
 import clsx from "clsx";
 import { FadeIn, FadeInStagger } from "@/components/FadeIn";
 import { Section, SectionHeader, cardClass, toneFromSelect } from "@/lib/site-ui";
+import { useUiCopy } from "@/lib/ui-copy";
 
 /** Manuals, spec sheets and other files. Rows without a file stay visible as "Coming soon". */
 const SiteDownloads: FC<SliceComponentProps<any>> = ({ slice }) => {
   const p = slice.primary;
+  const t = useUiCopy();
   const items: any[] = (slice.items || []).filter((i: any) => i?.label);
   if (items.length === 0) return null;
 
@@ -46,17 +48,17 @@ const SiteDownloads: FC<SliceComponentProps<any>> = ({ slice }) => {
                     download
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`Download ${item.label}`}
+                    aria-label={`${t.download}: ${item.label}`}
                     className="inline-flex flex-none items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-accent-contrast transition hover:opacity-90"
                   >
                     <svg viewBox="0 0 16 16" className="h-4 w-4 fill-none stroke-current" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                       <path d="M8 2v8m0 0 3-3m-3 3L5 7M3 13h10" />
                     </svg>
-                    <span className="hidden sm:inline">Download</span>
+                    <span className="hidden sm:inline">{t.download}</span>
                   </a>
                 ) : (
                   <span aria-disabled="true" className="flex-none rounded-full border border-dashed border-line px-4 py-2 text-sm font-medium text-ink-muted">
-                    Coming soon
+                    {t.comingSoon}
                   </span>
                 )}
               </div>

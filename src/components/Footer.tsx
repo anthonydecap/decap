@@ -9,6 +9,7 @@ import { Container } from "./Container";
 import { FadeIn } from "./FadeIn";
 import { Logo } from "./Logo";
 import { openCookieSettings } from "./Analytics";
+import { useUiCopy } from "@/lib/ui-copy";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 import { isFilled } from "@prismicio/client";
@@ -110,6 +111,7 @@ export function Footer({
   className?: string;
 }) {
   const pathname = usePathname();
+  const ui = useUiCopy().cookie;
   const footerSections =
     settings?.data?.footer_sections || defaultFooterSections;
   const d = settings?.data;
@@ -168,10 +170,10 @@ export function Footer({
           </Link>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-neutral-700">
             <Link href={prismicLinkHref({ url: "/privacy-policy" }, "#", urlLangFromPathname(pathname))} className="transition hover:text-neutral-950">
-              Privacy policy
+              {ui.privacy}
             </Link>
             <button type="button" onClick={openCookieSettings} className="transition hover:text-neutral-950">
-              Cookie settings
+              {ui.settings}
             </button>
             <p>
               {copyrightText} {new Date().getFullYear()}

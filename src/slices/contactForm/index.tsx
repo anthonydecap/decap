@@ -6,11 +6,13 @@ import { isFilled } from "@prismicio/client";
 import { type SliceComponentProps } from "@prismicio/react";
 import { FadeIn, FadeInStagger } from "@/components/FadeIn";
 import { EnquiryForm } from "@/components/EnquiryForm";
+import { useUiCopy } from "@/lib/ui-copy";
 import { Section, SectionHeader, SiteRichText, cardClass, toneFromSelect } from "@/lib/site-ui";
 
 /** Enquiry form with an optional side panel (address, hours). Recipient is fixed per slice. */
 const ContactForm: FC<SliceComponentProps<any>> = ({ slice }) => {
   const p = slice.primary;
+  const t = useUiCopy().form;
   const topics = String(p.topics || "")
     .split(",")
     .map((t) => t.trim())
@@ -19,11 +21,11 @@ const ContactForm: FC<SliceComponentProps<any>> = ({ slice }) => {
 
   const success = (
     <div className={`${cardClass} p-8 sm:p-10`}>
-      <h3 className="site-heading text-2xl text-ink sm:text-3xl">{p.success_title || "Thank you"}</h3>
+      <h3 className="site-heading text-2xl text-ink sm:text-3xl">{p.success_title || t.thanksTitle}</h3>
       {isFilled.richText(p.success_body) ? (
         <SiteRichText field={p.success_body} className="mt-4 text-lg text-ink-muted" />
       ) : (
-        <p className="mt-4 text-lg text-ink-muted">We have received your message and will reply within two working days.</p>
+        <p className="mt-4 text-lg text-ink-muted">{t.thanksBody}</p>
       )}
     </div>
   );
