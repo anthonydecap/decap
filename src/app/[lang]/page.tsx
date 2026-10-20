@@ -93,12 +93,14 @@ export async function generateMetadata({
   const prismicLang = urlLangToPrismic(urlLang) ?? DEFAULT_PRISMIC_LANG;
   const client = createClient();
   const home = await prismicGetByUID(client, "page", "home", { lang: prismicLang }).catch(
-    (err) => {
+    async (err) => {
       prismicErrorFromUnknown("home: generateMetadata prismicGetByUID failed", err, {
         repository: repositoryName,
         urlLang,
         prismicLang,
       });
+      // Home not translated yet: same English fallback as the page itself.
+      if (urlLang !== "en") await fallbackToDefaultLocale("page", "home", urlLang);
       throw err;
     },
   );
