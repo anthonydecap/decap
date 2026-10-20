@@ -26,7 +26,13 @@ export const siteUpdates = [
       doc.data.meta_description =
         "Brass Core drives a real trumpet or trombone from an audio signal. A voice-coil embouchure, no modification to the instrument. An Orchestrionix instrument by Decap.";
       for (const s of doc.data.slices ?? []) {
-        if (s.slice_type === "core_hero") s.primary.subtitle = "Orchestrionix";
+        if (s.slice_type === "core_hero") {
+          s.primary.title = "Brass Core";
+          s.primary.subtitle = "Orchestrionix";
+          const text = "One of our few off-the-shelf products: when it is in stock, it ships straight away.";
+          const desc = s.primary.description ?? [];
+          if (!desc.some((b) => b.text === text)) s.primary.description = [...desc, { type: "paragraph", text, spans: [] }];
+        }
       }
     },
   },
@@ -59,6 +65,7 @@ export const siteUpdates = [
         contact_button_link: web("/contact"),
         navigation: [
           ["Organs", "/organs"],
+          ["Organ pipes", "/organ-pipes"],
           ["Instruments", "/instruments"],
           ["SmartValve", "/smartvalve"],
           ["Software", "/software"],

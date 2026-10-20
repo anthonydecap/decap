@@ -65,6 +65,26 @@ export default {
     {
       type: "site_text_media",
       primary: {
+        eyebrow: "Organ pipes",
+        title: "Almost any wooden pipe, ready to ship within days",
+        body:
+          "We are the only company in the world that developed CNC manufacturing of organ pipes in-house. Our standard scales or your own measurements, drawn in 3D and milled on our own CNC.\n\nFor a DIY build, an extra rank for your organ, or a complete set of pipes and wind chests.",
+        media_side: "Image right",
+        aspect: "Landscape 4:3",
+        cta_label: "Order organ pipes",
+        cta_link: "/organ-pipes",
+        image_brief: "Looping clip (mp4, 10–15 s): the CNC milling a pipe, then a row of finished pipes. Until then a photo of new pipes on the workbench, 4:3.",
+        tone: "Dark band",
+      },
+      items: [
+        { point: "Ready to ship within days" },
+        { point: "Standard scales or your own sizing" },
+        { point: "Voiced, or ready for you to voice" },
+      ],
+    },
+    {
+      type: "site_text_media",
+      primary: {
         eyebrow: "Keys are no limit",
         title: "A 105-key organ that plays 121-key music",
         body:

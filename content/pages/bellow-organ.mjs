@@ -120,7 +120,7 @@ export default {
         { label: "Drive", value: "Hand-turned; optional motor" },
         { label: "Supply", value: "Kit or pre-assembled" },
         { label: "Dimensions and weight", value: "[TO CHECK: dimensions and weight]" },
-        { label: "Price", value: "[TO CHECK: price]" },
+        { label: "Price", value: "On quote: depends on the number of ranks, panels and kit or finished" },
       ],
     },
     {
@@ -186,7 +186,7 @@ export default {
       primary: {
         eyebrow: "Planning a bellow organ?",
         title: "Choose your keys, panels and pressure system",
-        body: "Tell us whether you want a kit or a finished organ, how many ranks to start with and how you will use it. We reply with a configuration and a price.",
+        body: "Tell us whether you want a kit or a finished organ, how many ranks to start with and how you will use it. We reply with a configuration and a quote.",
         primary_cta_label: "Request a quote",
         primary_cta_link: "/contact",
         secondary_cta_label: "About SmartValve",

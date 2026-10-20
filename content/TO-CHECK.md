@@ -7,7 +7,6 @@ Regenerate this list: `node scripts/content/todo.mjs`.
 
 - [ ] available key versions
 - [ ] dimensions and weight
-- [ ] price
 - [ ] title of the piece
 - [ ] is a book or roll reader available as an option?
 - [ ] weight, power supply or battery for the player, transport options such as a cart
@@ -42,14 +41,12 @@ Regenerate this list: `node scripts/content/todo.mjs`.
 
 ## Self-playing instruments (/instruments)
 
-- [ ] price
 - [ ] current price
 - [ ] countries we ship to, delivery times, packaging and whether we install on site
 
 ## MIDI conversion (/midi-conversion)
 
 - [ ] limits, e.g. organs with mechanical rather than pneumatic key frames
-- [ ] price per unit
 
 ## MIDIMapper (/midimapper)
 
@@ -70,15 +67,14 @@ Regenerate this list: `node scripts/content/todo.mjs`.
 
 ## Organ pipes (/organ-pipes)
 
-- [ ] typical delivery time
-- [ ] price per pipe or per rank
+- [ ] minimum order, if any
+- [ ] shipping countries and how pipes are packed
 
 ## Organs (/organs)
 
 - [ ] confirm this is L'Explorateur, Yves Rechsteiner's mobile concert organ
 - [ ] whether customers can visit the workshop during production
 - [ ] what delivery includes: installation on site, instruction, warranty, service
-- [ ] indicative price range or 'from' price
 - [ ] typical lead time for a modular and for a bespoke organ
 
 ## Privacy policy (/privacy-policy)

@@ -196,7 +196,7 @@ export default {
         {
           question: "What does a new organ cost?",
           answer:
-            "That depends on the size, the sound (pipes, digital or both) and the front instruments. A digital or modular organ costs less than a bespoke pipe organ. [TO CHECK: indicative price range or 'from' price] Send us your starting point and we reply with a first idea and a price indication.",
+            "Every organ is quoted on its own, because the price follows your choices: the size, pipes or digital sound, the front instruments, the façade. A digital or modular organ costs less than a bespoke pipe organ, and you can reuse pipes or instruments you already have. Send us your starting point and we reply with a first idea and a quote.",
         },
         {
           question: "How long does it take to build an organ?",

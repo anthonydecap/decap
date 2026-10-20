@@ -13,6 +13,8 @@
  * replaced are not kept, so images added in Prismic after a migration must be re-added if you
  * re-run it for that page. Also applies the site-wide changes in ./site-updates.mjs.
  */
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
 import * as prismic from "@prismicio/client";
 import { buildDocument, sanitizeExisting } from "./build-document.mjs";
 import { loadContent } from "./check.mjs";
@@ -25,6 +27,14 @@ const dry = args.includes("--dry");
 const updatesOnly = args.includes("--updates-only");
 const only = args.filter((a) => !a.startsWith("--"));
 if (!writeToken && !dry) throw new Error("PRISMIC_WRITE_TOKEN is missing (put it in .env.local)");
+
+/**
+ * IDs of documents this script created. Drafts in the Migration release are invisible to the
+ * Content API, so without these a second run would create them again; with them it updates.
+ */
+const ID_FILE = join(import.meta.dirname, "..", "..", "content", "prismic-ids.json");
+const ids = existsSync(ID_FILE) ? JSON.parse(readFileSync(ID_FILE, "utf8")) : {};
+const key = (type, uid, lang) => `${type}/${uid}/${lang}`;
 
 const read = prismic.createClient(repo);
 const existing = await read.dangerouslyGetAll({ lang: "*" });
@@ -60,6 +70,10 @@ for (const { content } of await loadContent()) {
     dropForeignImages(current.data);
     migration.updateDocument(current, doc.title);
     plan.push(`update ${doc.type}/${doc.uid}`);
+  } else if (ids[key(doc.type, doc.uid, doc.lang)]) {
+    // Created by an earlier run and still a draft: update that draft.
+    migration.updateDocument({ id: ids[key(doc.type, doc.uid, doc.lang)], type: doc.type, uid: doc.uid, lang: doc.lang, data: doc.data }, doc.title);
+    plan.push(`update ${doc.type}/${doc.uid} (draft)`);
   } else if (updatesOnly) {
     plan.push(`skip   ${doc.type}/${doc.uid}: new page (--updates-only)`);
   } else {
@@ -95,5 +109,9 @@ if (dry) {
       }
     },
   });
+  for (const { document } of migration._documents) {
+    if (document.id && document.uid) ids[key(document.type, document.uid, document.lang)] = document.id;
+  }
+  writeFileSync(ID_FILE, JSON.stringify(ids, null, 2) + "\n");
   console.log("\nDone. Review the drafts in Prismic → Releases → Migration release, then publish.");
 }

@@ -151,8 +151,6 @@ export default {
         eyebrow: "Converting an organ?",
         title: "Tell us about your organ",
         body: "Send us the make, the number of keys and whether it plays books or rolls. We reply with the number of units you need and a quote.",
-        price: "[TO CHECK: price per unit]",
-        price_note: "excl. VAT, installation not included",
         primary_cta_label: "Request a quote",
         primary_cta_link: "/contact",
         secondary_cta_label: "Ask Frank about installation",

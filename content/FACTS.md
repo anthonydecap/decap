@@ -78,7 +78,13 @@ digital, Tony brought MIDI and SmartValve).
   systems that need 500 ms pre-delay).
 - Customers buy the units from Decap; installation by Atelier Frank Decap (or their own builder).
 
-### Organ pipes (Decap product)
+### Organ pipes (Decap product): a headline message
+- **Decap is the world's only company that developed CNC manufacturing of organ pipes in-house**
+  (user's claim; use it). **Almost any wooden pipe can be made within days, ready to ship.**
+- Sizing: our own standard scales, or the customer's own measurements.
+- For everyone: DIY projects, your own organ (new ranks, replacements, extensions), organ builders
+  and restorers. Customers can buy only pipes, or pipes plus wind chests and more from Decap.
+  "A lot of possibilities."
 - Wooden pipes: bourdons, flutes, violins, reed pipes. Made on 5-axis CNC with Decap's own
   **PipeCreator** software (generates the G-code); in-house since 2016.
 - Body in Ayous (Triplochiton scleroxylon): stable, pale yellow, virtually knot-free. Foot and mouth
@@ -113,7 +119,10 @@ Existing Prismic pages (keep): `accordion`, `pipes`, `percussion-unit`, `mallet-
   SmartValve per pipe; built-in Virtual Orchestrion player; works as MIDI master or slave with
   other Decap instruments; kit or pre-assembled; start with few pipes and add ranks later;
   optional motor drive. Renders show 45- and 52-key versions `[TO CHECK]`.
-- Prices: none known except below. Use `[TO CHECK: price]` where a "from" price would go.
+- **No prices for instruments, organs, MIDI conversion or pipes.** Every project is configured
+  around the customer's choices and quoted: e.g. a Chinese accordion costs far less to automate
+  than an Italian one; for pipe instruments customers can have Decap make the pipes or deliver
+  their own. Explain this instead of showing a price; the next step is a quote request.
 
 ## Orchestrionix: Brass Core (existing Prismic page `core`, to become `brass-core`)
 
@@ -124,7 +133,8 @@ Existing Prismic pages (keep): `accordion`, `pipes`, `percussion-unit`, `mallet-
 - Input: line-level audio (page lists 3.5 mm stereo line-in and mini XLR; external amplifier).
   12 V DC, 2 A; 120 × 90 × 70 mm. Accessories: trumpet clamp, trombone clamp.
 - Users: theatres, sound designers, museums, studios, collectors. Testimonial on page: Circus Ronaldo.
-- Stripe product price: €799 `[TO CHECK: current price]`.
+- **Brass Core is one of the few off-the-shelf products: it ships immediately when in stock.**
+  Show its price. Stripe product price: € 799 `[TO CHECK: current price]`.
 
 ## SmartValve (existing Prismic page `smartvalve`, keep)
 
