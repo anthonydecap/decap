@@ -11,41 +11,49 @@ export default {
       "file": "content/media/decap-balzaal-der-gebroken-harten-organ.jpg",
       "alt": "The Belcanto dance organ by Decap on stage in a Belgian cultural centre"
     },
-    "3": {
-      "url": "https://orchestrionix.com/wp-content/uploads/2023/08/20221008_mohaibalazs_074-2-1.png",
-      "alt": "Wooden organ pipe parts milled on the CNC"
-    },
-    "4": {
-      "url": "https://orchestrionix.com/wp-content/uploads/2023/08/Virtual-Organ-5-1.png",
-      "alt": "Virtual Orchestrion on two screens: orchestrion view and book view"
-    },
     "1.0": {
+      "file": "content/media/decap-tony-decap-and-francois-decap-belcanto-orgel-without-facade.jpg",
+      "alt": "Tony and François Decap with a dance organ in the Herentals workshop"
+    },
+    "1.1": {
+      "file": "content/media/decap-concert-pianist-and-red-accordion.jpg",
+      "alt": "A self-playing red accordion on a pedestal, on stage with a pianist"
+    },
+    "1.2": {
+      "url": "https://orchestrionix.com/wp-content/uploads/2023/08/20221008_mohaibalazs_074-3-2.png",
+      "alt": "Rows of wooden organ pipe parts from the CNC"
+    },
+    "1.3": {
+      "file": "content/media/decap-smartvalve-samples.jpg",
+      "alt": "SmartValves with their electronics"
+    },
+    "1.4": {
+      "url": "https://orchestrionix.com/wp-content/uploads/2023/10/TROMBONE-Samenstelling_01_2023-Oct-16_10-42-03PM-000_CustomizedView21586800008.png",
+      "alt": "Brass Core on a trombone"
+    },
+    "1.5": {
+      "file": "content/media/decap-frank-decap-organ-restoration-workshop-in-warm-light.jpg",
+      "alt": "Restoration in progress in Atelier Frank Decap"
+    },
+    "1.6": {
+      "url": "https://orchestrionix.com/wp-content/uploads/2023/08/Virtual-Organ-5-1.png",
+      "alt": "Virtual Orchestrion on two screens"
+    },
+    "2.0": {
       "url": "https://orchestrionix.com/wp-content/uploads/2023/08/Products-AccordionPedestal-05.jpg",
       "alt": "Accordion Pedestal with a real accordion"
     },
-    "1.1": {
+    "2.1": {
       "url": "https://orchestrionix.com/wp-content/uploads/2023/11/Products-Orchestrion-Complete-Notenkraker-01-1.jpg",
       "alt": "Pearl-white Decap orchestrion with accordion and drums"
     },
-    "1.2": {
+    "2.2": {
       "file": "content/media/decap-beat-machine-dance-organ.jpg",
       "alt": "A Decap dance organ with drums, accordions and pipes on a lit stage"
     },
-    "1.3": {
-      "file": "content/media/decap-concert-pianist-and-red-accordion.jpg",
-      "alt": "A pianist on stage with a self-playing red accordion on a pedestal"
-    },
-    "2.0": {
-      "url": "https://orchestrionix.com/wp-content/uploads/2023/10/Model_V02_2023-Oct-16_11-15-28PM-000_CustomizedView27364077015.png",
-      "alt": "Render of a modular Decap organ with accordion and drums"
-    },
-    "2.1": {
-      "url": "https://orchestrionix.com/wp-content/uploads/2023/08/Products-AccordionPedestal-01a-2.png",
-      "alt": "Render of the Accordion Pedestal"
-    },
-    "2.2": {
-      "file": "content/media/decap-smartvalve-samples.jpg",
-      "alt": "SmartValve samples with their electronics"
+    "2.3": {
+      "url": "https://orchestrionix.com/wp-content/uploads/2023/08/20221008_mohaibalazs_074-1-1.jpeg",
+      "alt": "The orchestrion room at the House of Music Hungary, Budapest"
     }
   },
   "instruments": {
@@ -84,10 +92,6 @@ export default {
     "1.4": {
       "url": "https://orchestrionix.com/wp-content/uploads/2023/09/52-Key_Chromatic_V01_2023-Sep-02_09-57-35PM-000_Customiz23edView816123377037.png",
       "alt": "Render of the hand-turned Bellow Organ"
-    },
-    "1.5": {
-      "url": "https://orchestrionix.com/wp-content/uploads/2023/08/Rectangle-60-1-3.png",
-      "alt": "Brass Core on a trumpet"
     }
   },
   "bellow-organ": {
@@ -484,6 +488,20 @@ export default {
     "3": {
       "file": "content/media/decap-smartvalve-samples.jpg",
       "alt": "SmartValves with their electronics"
+    }
+  },
+  "brass-core": {
+    "0": {
+      "url": "https://orchestrionix.com/wp-content/uploads/2023/10/TROMBONE-Samenstelling_01_2023-Oct-16_10-42-03PM-000_CustomizedView21586800008.png",
+      "alt": "Brass Core on a trombone"
+    },
+    "3": {
+      "url": "https://orchestrionix.com/wp-content/uploads/2023/08/Rectangle-62-1-3.png",
+      "alt": "Close-up of Brass Core on a trumpet"
+    },
+    "4": {
+      "url": "https://orchestrionix.com/wp-content/uploads/2023/08/s.png",
+      "alt": "Brass Core on a trumpet"
     }
   }
 };

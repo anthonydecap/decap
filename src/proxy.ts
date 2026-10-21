@@ -12,7 +12,9 @@ function shouldSkipLocaleRedirect(pathname: string): boolean {
     pathname === "/robots.txt" ||
     pathname === "/sitemap.xml" ||
     pathname.startsWith("/_next") ||
-    pathname.startsWith("/images/")
+    pathname.startsWith("/images/") ||
+    // Files from /public (3D models, videos, PDFs…): never locale-prefixed.
+    /\.[a-z0-9]{2,5}$/i.test(pathname)
   );
 }
 

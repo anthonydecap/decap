@@ -28,10 +28,10 @@ export default {
     {
       type: "site_card_grid",
       primary: {
-        eyebrow: "Zwei Familien",
-        title: "Musik inklusive oder von Ihnen gespielt",
+        eyebrow: "Die Instrumente",
+        title: "Musik inklusive, sofort spielbereit",
         intro:
-          "Die meisten unserer Instrumente kommen mit Player und Musik: einschalten, und sie spielen. **Brass Core** gehört zu Orchestrionix, unserer Linie für Musiker. Es hat keine Musikbibliothek: Sie steuern es mit Ihrem eigenen Audiosignal, und es ist eines der wenigen Produkte, die wir direkt ab Lager versenden.",
+          "Jedes Instrument hier kommt mit Player und Musik: einschalten, und es spielt. Sie suchen robotische Blechbläser ohne Musikbibliothek? Das ist [Brass Core](/brass-core), unser Orchestrionix-Instrument für Musiker.",
         columns: "3",
         card_style: "Image cards",
       },
@@ -75,15 +75,6 @@ export default {
           link_label: "Drehorgel",
           link: "/bellow-organ",
           image_brief: "Bellow Organ with veneer panels, three-quarter view showing the crank, plain backdrop, 4:3",
-        },
-        {
-          tag: "Orchestrionix",
-          title: "Brass Core",
-          body: "Bringt eine echte Trompete oder Posaune mit einem Audiosignal zum Klingen. Keine Musikbibliothek: Die Darbietung liefern Sie. Kein Bohren, keine Änderungen am Instrument.",
-          price: "2.599 € · ab Lager lieferbar",
-          link_label: "Brass Core",
-          link: "/brass-core",
-          image_brief: "Brass Core clamped to a trumpet, side view on a dark backdrop, 4:3",
         },
       ],
     },

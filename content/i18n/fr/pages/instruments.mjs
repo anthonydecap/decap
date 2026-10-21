@@ -28,10 +28,10 @@ export default {
     {
       type: "site_card_grid",
       primary: {
-        eyebrow: "Deux familles",
-        title: "Musique incluse, ou jouée par vous",
+        eyebrow: "Les instruments",
+        title: "Musique incluse, prêts à jouer",
         intro:
-          "La plupart de nos instruments sont livrés avec un lecteur et de la musique : allumez-les et ils jouent. **Brass Core** fait partie d'Orchestrionix, notre gamme pour les musiciens. Il n'a pas de bibliothèque musicale : vous le pilotez avec votre propre audio, et c'est l'un des rares produits que nous expédions directement depuis le stock.",
+          "Chaque instrument présenté ici est livré avec un lecteur et de la musique : allumez-le et il joue. Vous cherchez des cuivres robotisés sans bibliothèque musicale ? C'est [Brass Core](/brass-core), notre instrument Orchestrionix pour les musiciens.",
         columns: "3",
         card_style: "Image cards",
       },
@@ -75,15 +75,6 @@ export default {
           link_label: "Orgue à manivelle",
           link: "/bellow-organ",
           image_brief: "Bellow Organ with veneer panels, three-quarter view showing the crank, plain backdrop, 4:3",
-        },
-        {
-          tag: "Orchestrionix",
-          title: "Brass Core",
-          body: "Fait sonner une vraie trompette ou un vrai trombone à partir d'un signal audio. Pas de bibliothèque musicale : c'est vous qui fournissez l'interprétation. Sans perçage ni modification de l'instrument.",
-          price: "2 599 € · expédié depuis le stock",
-          link_label: "Brass Core",
-          link: "/brass-core",
-          image_brief: "Brass Core clamped to a trumpet, side view on a dark backdrop, 4:3",
         },
       ],
     },

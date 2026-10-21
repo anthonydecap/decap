@@ -144,6 +144,10 @@
 :root:has(main [data-theme] > [data-tone="surface"]:first-child) {
   --chrome-bg: var(--page-tint);
 }
+:root:has(main [data-theme] > [data-surface="light"]:first-child) {
+  --chrome-bg: #ffffff;
+  --chrome-ink: #0a0a0a;
+}
 
 /* Section tones inside any page style: a dark band ("inverse") or a tinted band ("surface"). */
 [data-tone="inverse"] {
@@ -206,6 +210,19 @@
 }
 .text-orchestrionix {
   background-image: var(--gradient-orchestrionix);
+}
+/* On a filled accent button the brand gradient would disappear into the button colour: plain text. */
+.bg-accent .text-orchestrionix,
+.bg-accent .text-smartvalve,
+[data-theme="orchestrionix"] .bg-accent .text-orchestrionix {
+  background-image: none;
+  color: inherit;
+}
+[data-theme="decap"] .bg-accent .text-smartvalve,
+[data-theme="atelier"] .bg-accent .text-smartvalve {
+  /* Black buttons on light pages carry the SmartValve rainbow well. */
+  background-image: var(--gradient-smartvalve);
+  color: transparent;
 }
 
 @theme inline {

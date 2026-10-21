@@ -1,0 +1,130 @@
+{
+  "id": "site_tiles",
+  "type": "SharedSlice",
+  "name": "SiteTiles",
+  "description": "Apple-style product tiles: full-width or half-width, each with its own style, a headline, one line and two links.",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "tone": {
+          "type": "Select",
+          "config": {
+            "label": "Section tone",
+            "options": [
+              "Default",
+              "Tinted",
+              "Dark band"
+            ],
+            "default_value": "Default"
+          }
+        }
+      },
+      "items": {
+        "size": {
+          "type": "Select",
+          "config": {
+            "label": "Size",
+            "options": [
+              "Full",
+              "Half"
+            ],
+            "default_value": "Full"
+          }
+        },
+        "style": {
+          "type": "Select",
+          "config": {
+            "label": "Tile style",
+            "options": [
+              "Light",
+              "Dark",
+              "SmartValve",
+              "Orchestrionix",
+              "Atelier"
+            ],
+            "default_value": "Light"
+          }
+        },
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow / product name",
+            "placeholder": ""
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Headline",
+            "placeholder": ""
+          }
+        },
+        "tagline": {
+          "type": "Text",
+          "config": {
+            "label": "One line",
+            "placeholder": ""
+          }
+        },
+        "note": {
+          "type": "Text",
+          "config": {
+            "label": "Small note",
+            "placeholder": "e.g. € 2,599 · ships from stock"
+          }
+        },
+        "primary_label": {
+          "type": "Text",
+          "config": {
+            "label": "Primary link label",
+            "placeholder": "Learn more"
+          }
+        },
+        "primary_link": {
+          "type": "Link",
+          "config": {
+            "label": "Primary link",
+            "allowTargetBlank": true,
+            "select": null
+          }
+        },
+        "secondary_label": {
+          "type": "Text",
+          "config": {
+            "label": "Secondary link label",
+            "placeholder": "Buy"
+          }
+        },
+        "secondary_link": {
+          "type": "Link",
+          "config": {
+            "label": "Secondary link",
+            "allowTargetBlank": true,
+            "select": null
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "image_brief": {
+          "type": "Text",
+          "config": {
+            "label": "Photo brief (shown while the image is empty)",
+            "placeholder": "e.g. Accordion Pedestal, front view, black backdrop, 4:3"
+          }
+        }
+      }
+    }
+  ]
+}

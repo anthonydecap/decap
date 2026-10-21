@@ -18,6 +18,7 @@ export const components = {
   site_downloads: dynamic(() => import("./siteDownloads")),
   site_sound: dynamic(() => import("./siteSound")),
   site_video: dynamic(() => import("./siteVideo")),
+  site_tiles: dynamic(() => import("./siteTiles")),
   contact_form: dynamic(() => import("./contactForm")),
   organ_composer: dynamic(() => import("./organComposer")),
 
