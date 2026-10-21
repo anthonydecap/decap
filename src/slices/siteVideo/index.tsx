@@ -29,6 +29,9 @@ const SiteVideo: FC<SliceComponentProps<any>> = ({ slice }) => {
   const title = video?.title || p.title || t.video;
   const src = video?.embed_url ? playerUrl(video.embed_url) : null;
   const canPlay = !!src || !!video?.html;
+  // Imported links may lack oEmbed data: derive the YouTube thumbnail from the video id.
+  const ytId = src?.match(/youtube-nocookie\.com\/embed\/([\w-]{6,})/)?.[1];
+  const youtubeThumb = ytId ? `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg` : null;
 
   let frame: React.ReactNode;
   if (active && src) {
@@ -46,9 +49,9 @@ const SiteVideo: FC<SliceComponentProps<any>> = ({ slice }) => {
   } else {
     const poster = isFilled.image(p.poster) ? (
       <MediaSlot field={p.poster} brief={p.video_brief || title} aspect="" rounded="" className="absolute inset-0" sizes="(min-width: 1280px) 1216px, 100vw" />
-    ) : video?.thumbnail_url ? (
+    ) : video?.thumbnail_url || youtubeThumb ? (
       // eslint-disable-next-line @next/next/no-img-element
-      <img src={video.thumbnail_url} alt="" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+      <img src={video?.thumbnail_url || youtubeThumb!} alt="" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
     ) : (
       <MediaPlaceholder kind="Video" brief={p.video_brief || title} />
     );

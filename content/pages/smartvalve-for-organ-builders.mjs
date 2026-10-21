@@ -95,6 +95,25 @@ export default {
       },
     },
     {
+      type: "site_video",
+      primary: {
+        eyebrow: "Artistic research",
+        title: "One pipe, many sounds",
+        intro: "With SmartValve a single pipe is no longer limited to one characteristic sound. Real-time control of the wind pressure opens a new palette of sounds from traditional organ pipes. Here Mauricio Silva Orendain, who researches microtonality, plays pipes through SmartValve with a MIDI gesture ring.",
+        video: "https://www.youtube.com/shorts/M4y9bnKHQeQ",
+        caption: "Mauricio Silva Orendain controls organ pipes through SmartValve with a MIDI gesture ring.",
+        video_brief: "Mauricio Silva Orendain playing pipes through SmartValve with a MIDI gesture ring",
+      },
+    },
+    {
+      type: "site_quote",
+      primary: {
+        quote: "SmartValve creates new and largely unexplored connections between digital languages and the physicality of the pipe as an acoustic sound generator. It opens the instrument to non-organists, and to theatre, sound installations and artistic research.",
+        name: "Mauricio Silva Orendain",
+        role: "Researcher in microtonality",
+      },
+    },
+    {
       type: "site_text_media",
       primary: {
         eyebrow: "Digital stops",

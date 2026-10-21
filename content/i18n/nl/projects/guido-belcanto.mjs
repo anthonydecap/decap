@@ -58,6 +58,16 @@ export default {
       ],
     },
     {
+      type: "site_video",
+      primary: {
+        eyebrow: "Bekijk",
+        title: "Guido Belcanto en het Belcanto-orgel",
+        intro: "Een fragment uit Balzaal der Gebroken Harten, met het Belcanto-orgel op het podium.",
+        video: "https://www.youtube.com/watch?v=0kfG-wFjMDk",
+        video_brief: "Guido Belcanto with the Belcanto organ on stage",
+      },
+    },
+    {
       type: "site_facts",
       primary: {
         eyebrow: "In een oogopslag",

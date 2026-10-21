@@ -75,6 +75,7 @@ export default {
       primary: {
         eyebrow: "Watch",
         title: "The Mekanics, live",
+        video: "https://www.youtube.com/watch?v=uIrJGwcmgwY",
         video_brief: "Live clip of BELEM and Walter Hus with the mechanical orchestra",
       },
     },

@@ -58,6 +58,16 @@ export default {
       ],
     },
     {
+      type: "site_video",
+      primary: {
+        eyebrow: "À voir",
+        title: "Guido Belcanto et l’orgue Belcanto",
+        intro: "Un extrait de Balzaal der Gebroken Harten, avec l’orgue Belcanto sur scène.",
+        video: "https://www.youtube.com/watch?v=0kfG-wFjMDk",
+        video_brief: "Guido Belcanto with the Belcanto organ on stage",
+      },
+    },
+    {
       type: "site_facts",
       primary: {
         eyebrow: "En bref",

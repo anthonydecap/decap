@@ -96,6 +96,25 @@ export default {
       },
     },
     {
+      type: "site_video",
+      primary: {
+        eyebrow: "Artistiek onderzoek",
+        title: "Eén pijp, veel klanken",
+        intro: "Met SmartValve is een pijp niet langer beperkt tot één karakteristieke klank. Realtime regeling van de winddruk opent een nieuw palet aan klanken uit traditionele orgelpijpen. Hier bespeelt Mauricio Silva Orendain, onderzoeker in microtonaliteit, pijpen via SmartValve met een MIDI-gebarenring.",
+        video: "https://www.youtube.com/shorts/M4y9bnKHQeQ",
+        caption: "Mauricio Silva Orendain bespeelt orgelpijpen via SmartValve met een MIDI-gebarenring.",
+        video_brief: "Mauricio Silva Orendain playing pipes through SmartValve with a MIDI gesture ring",
+      },
+    },
+    {
+      type: "site_quote",
+      primary: {
+        quote: "SmartValve legt nieuwe en grotendeels onontgonnen verbindingen tussen digitale talen en de fysieke eigenheid van de pijp als akoestische klankbron. Het opent het instrument voor niet-organisten, en voor theater, geluidsinstallaties en artistiek onderzoek.",
+        name: "Mauricio Silva Orendain",
+        role: "Onderzoeker in microtonaliteit",
+      },
+    },
+    {
       type: "site_text_media",
       primary: {
         eyebrow: "Digitale registers",

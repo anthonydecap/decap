@@ -96,6 +96,25 @@ export default {
       },
     },
     {
+      type: "site_video",
+      primary: {
+        eyebrow: "Künstlerische Forschung",
+        title: "Eine Pfeife, viele Klänge",
+        intro: "Mit SmartValve ist eine Pfeife nicht mehr auf einen charakteristischen Klang beschränkt. Die Echtzeitsteuerung des Winddrucks eröffnet eine neue Klangpalette aus traditionellen Orgelpfeifen. Hier spielt Mauricio Silva Orendain, der zur Mikrotonalität forscht, Pfeifen über SmartValve mit einem MIDI-Gestenring.",
+        video: "https://www.youtube.com/shorts/M4y9bnKHQeQ",
+        caption: "Mauricio Silva Orendain steuert Orgelpfeifen über SmartValve mit einem MIDI-Gestenring.",
+        video_brief: "Mauricio Silva Orendain playing pipes through SmartValve with a MIDI gesture ring",
+      },
+    },
+    {
+      type: "site_quote",
+      primary: {
+        quote: "SmartValve schafft neue, weitgehend unerforschte Verbindungen zwischen digitalen Sprachen und der Körperlichkeit der Pfeife als akustischem Klangerzeuger. Es öffnet das Instrument für Nicht-Organisten sowie für Theater, Klanginstallationen und künstlerische Forschung.",
+        name: "Mauricio Silva Orendain",
+        role: "Forscher im Bereich Mikrotonalität",
+      },
+    },
+    {
       type: "site_text_media",
       primary: {
         eyebrow: "Digitale Register",

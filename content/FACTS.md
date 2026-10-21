@@ -245,3 +245,9 @@ Existing Prismic pages (keep): `accordion`, `pipes`, `percussion-unit`, `mallet-
 - **Artists who worked with Decap organs/instruments** (all confirmed real): Guido Belcanto, Gamut
   Inc, Maxime Denuc, Yves Rechsteiner, Stephan Eicher, Pat Metheny, Walter Hus, Circus Ronaldo.
   Mention them by name (artist slider with existing portraits); no full case study needed.
+- **Videos (YouTube):** BELEM / Walter Hus / The Mekanics uIrJGwcmgwY; Gamut playing L'Explorateur
+  IvDFsVgjlno; Guido Belcanto with the Belcanto organ 0kfG-wFjMDk; Mauricio Silva Orendain
+  (researcher in microtonality) playing pipes through SmartValve with a MIDI gesture ring
+  (short M4y9bnKHQeQ). Points he wants highlighted: "One pipe, many sounds" (real-time wind
+  pressure gives one pipe a whole palette of sounds) and "connecting digital languages with acoustic
+  synthesis" (opens the instrument to non-organists, theatre, sound installations, artistic research).

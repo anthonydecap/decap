@@ -57,6 +57,16 @@ export default {
       ],
     },
     {
+      type: "site_video",
+      primary: {
+        eyebrow: "Watch",
+        title: "Guido Belcanto and the Belcanto organ",
+        intro: "A moment from Balzaal der Gebroken Harten, with the Belcanto organ on stage.",
+        video: "https://www.youtube.com/watch?v=0kfG-wFjMDk",
+        video_brief: "Guido Belcanto with the Belcanto organ on stage",
+      },
+    },
+    {
       type: "site_facts",
       primary: {
         eyebrow: "At a glance",
