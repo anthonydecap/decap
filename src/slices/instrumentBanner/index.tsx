@@ -23,7 +23,8 @@ const InstrumentBanner: FC<SliceComponentProps<any>> = ({ slice }) => {
 
   return (
     <div
-      className="relative flex min-h-[60vh] items-center justify-center overflow-hidden text-white lg:min-h-[70vh]"
+      data-surface="dark"
+      className="relative flex min-h-[60vh] items-center justify-center overflow-hidden bg-neutral-950 text-white lg:min-h-[70vh]"
       style={{ backgroundColor: muxUrl ? undefined : bg }}
     >
       {muxUrl ? (

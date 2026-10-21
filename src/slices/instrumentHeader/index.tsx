@@ -18,7 +18,8 @@ const InstrumentHeader: FC<SliceComponentProps<any>> = ({ slice }) => {
 
   return (
     <div
-      className="relative flex min-h-screen items-center justify-center overflow-hidden text-white"
+      data-surface="dark"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-neutral-950 text-white"
       style={{ backgroundColor: muxUrl ? undefined : bgColor }}
     >
       {muxUrl && (

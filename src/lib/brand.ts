@@ -25,12 +25,20 @@ export function smartValveGradient(direction = "to right") {
  *
  * - decap: the standard light, Apple-like style (default)
  * - smartvalve: dark + gradient, SmartValve and Optical MIDI only
- * - orchestrionix: light with a brass accent, Brass Core and /orchestrionix only
- * - atelier: warm ivory, serif headings, Atelier Frank Decap only
+ * - orchestrionix: dark with copper/brass, Brass Core and /orchestrionix only
+ * - atelier: the site typography in warm workshop colours, Atelier Frank Decap only
  */
 export const PAGE_THEMES = ["decap", "smartvalve", "orchestrionix", "atelier"] as const;
 export type PageTheme = (typeof PAGE_THEMES)[number];
 
 export function resolvePageTheme(value: unknown): PageTheme {
   return PAGE_THEMES.includes(value as PageTheme) ? (value as PageTheme) : "decap";
+}
+
+/** True for dark hex colours (luminance below 50%), e.g. to pick the header colour above a slice. */
+export function isDarkColor(hex: string | null | undefined): boolean {
+  const h = (hex ?? "").replace("#", "");
+  if (h.length !== 6) return true;
+  const [r, g, b] = [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16) / 255);
+  return 0.299 * r + 0.587 * g + 0.114 * b < 0.5;
 }

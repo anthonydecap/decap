@@ -53,6 +53,9 @@
  * text-accent, bg-accent, decoration-accent-soft, .site-heading) so one slice works in every style.
  * --page-base / --page-tint repeat the bg / surface values so a tinted band can swap them.
  * Text colors meet WCAG AA on their page background.
+ *
+ * Each style is also applied to :root when the page contains it (:root:has(...)), so the header,
+ * footer and menu, which live outside the page, follow the page style without JavaScript.
  */
 :root,
 [data-theme="decap"] {
@@ -70,10 +73,15 @@
   --page-heading-variation: "wdth" 125;
   --page-heading-weight: 700;
   --page-heading-tracking: -0.02em;
+  --menu-bg: #0a0a0a;
+  --menu-hover: #171717;
+  --menu-line: #262626;
   --gradient-smartvalve: linear-gradient(to right, #3b82f6, #a855f7, #ec4899, #ef4444, #f97316, #eab308);
+  --gradient-orchestrionix: linear-gradient(to right, #b07a45, #cca483, #f1dcb8, #cca483, #9a6a3a);
 }
 
-[data-theme="smartvalve"] {
+[data-theme="smartvalve"],
+:root:has(main [data-theme="smartvalve"]) {
   --page-bg: #0a0a0a;
   --page-ink: #ffffff;
   --page-ink-muted: #d4d4d4;
@@ -86,30 +94,59 @@
   --page-accent-soft: #404040;
 }
 
-/* Orchestrionix (Brass Core): the standard light style with a brass accent. #cca483 is the
-   heritage Orchestrionix copper, decorative only (too light for text on white). */
-[data-theme="orchestrionix"] {
-  --page-accent: #8c5e30;
-  --page-accent-contrast: #ffffff;
-  --page-accent-soft: #cca483;
+/* Orchestrionix (Brass Core): Decap's other high-tech line. Dark, with the heritage Orchestrionix
+   copper as accent and a brass gradient as its signature (counterpart of SmartValve's rainbow). */
+[data-theme="orchestrionix"],
+:root:has(main [data-theme="orchestrionix"]) {
+  --page-bg: #0c0a09;
+  --page-ink: #faf7f2;
+  --page-ink-muted: #c9bfb3;
+  --page-surface: #1a1613;
+  --page-base: #0c0a09;
+  --page-tint: #1a1613;
+  --page-line: #2e2722;
+  --page-accent: #cca483;
+  --page-accent-contrast: #0c0a09;
+  --page-accent-soft: #7a5a36;
+  --menu-bg: #0c0a09;
+  --menu-hover: #1a1613;
+  --menu-line: #2e2722;
 }
 
-/* Atelier Frank Decap: warm paper, walnut ink, aged brass, a classic serif. */
-[data-theme="atelier"] {
-  --page-bg: #f5efe4;
-  --page-ink: #2a2017;
-  --page-ink-muted: #6b5b4b;
-  --page-surface: #ede4d3;
-  --page-base: #f5efe4;
-  --page-tint: #ede4d3;
-  --page-line: #dccfb8;
-  --page-accent: #7a5426;
-  --page-accent-contrast: #f5efe4;
-  --page-accent-soft: #b08d57;
-  --page-heading-font: var(--font-atelier), Georgia, "Times New Roman", serif;
-  --page-heading-variation: normal;
-  --page-heading-weight: 500;
-  --page-heading-tracking: -0.01em;
+/* Atelier Frank Decap: the site's typography in warm workshop colours: off-white, dark wood, brass. */
+[data-theme="atelier"],
+:root:has(main [data-theme="atelier"]) {
+  --page-bg: #f7f3ec;
+  --page-ink: #1f1a14;
+  --page-ink-muted: #5c5348;
+  --page-surface: #eee7db;
+  --page-base: #f7f3ec;
+  --page-tint: #eee7db;
+  --page-line: #ddd3c2;
+  --page-accent: #1f1a14;
+  --page-accent-contrast: #f7f3ec;
+  --page-accent-soft: #b8975f;
+  --menu-bg: #241d16;
+  --menu-hover: #30271e;
+  --menu-line: #3d3226;
+}
+
+/* Header strip: the page colour, or the colour of the first section when that is dark or tinted. */
+:root {
+  --chrome-bg: var(--page-bg);
+  --chrome-ink: var(--page-ink);
+}
+:root:has(main [data-theme] > [data-surface="dark"]:first-child),
+:root:has(main [data-theme] > [data-tone="inverse"]:first-child) {
+  --chrome-bg: #0a0a0a;
+  --chrome-ink: #ffffff;
+}
+:root:has(main [data-theme] > [data-tone="surface"]:first-child) {
+  --chrome-bg: var(--page-tint);
+}
+:root:has(main [data-theme] > [data-surface="light"]:first-child) {
+  --chrome-bg: #ffffff;
+  --chrome-ink: #0a0a0a;
 }
 
 /* Section tones inside any page style: a dark band ("inverse") or a tinted band ("surface"). */
@@ -126,21 +163,25 @@
   --page-accent-soft: #525252;
 }
 [data-theme="orchestrionix"] [data-tone="inverse"] {
+  --page-bg: #000000;
+  --page-surface: #141110;
+  --page-base: #000000;
+  --page-tint: #141110;
   --page-accent: #cca483;
-  --page-accent-contrast: #0a0a0a;
-  --page-accent-soft: #8c5e30;
+  --page-accent-contrast: #0c0a09;
+  --page-accent-soft: #7a5a36;
 }
 [data-theme="atelier"] [data-tone="inverse"] {
-  --page-bg: #2a2017;
-  --page-ink: #f5efe4;
-  --page-ink-muted: #cbbba3;
-  --page-surface: #3a2d21;
-  --page-base: #2a2017;
-  --page-tint: #3a2d21;
-  --page-line: #4a3a2b;
-  --page-accent: #d9b77e;
-  --page-accent-contrast: #2a2017;
-  --page-accent-soft: #8a6a3a;
+  --page-bg: #241d16;
+  --page-ink: #f7f3ec;
+  --page-ink-muted: #cbbfae;
+  --page-surface: #30271e;
+  --page-base: #241d16;
+  --page-tint: #30271e;
+  --page-line: #3d3226;
+  --page-accent: #f7f3ec;
+  --page-accent-contrast: #241d16;
+  --page-accent-soft: #b8975f;
 }
 /* Tinted band: page and card colors swap, so cards stay distinct from the band. */
 [data-tone="surface"] {
@@ -148,13 +189,40 @@
   --page-surface: var(--page-base);
 }
 
-/* Headings in the page style's typeface (Mona Sans wide, or the Atelier serif). */
+/* Headings in the page style's typeface. */
 .site-heading {
   font-family: var(--page-heading-font);
   font-variation-settings: var(--page-heading-variation);
   font-weight: var(--page-heading-weight);
   letter-spacing: var(--page-heading-tracking);
   text-wrap: balance;
+}
+
+/* Brand names as text: SmartValve in its rainbow, Orchestrionix / Brass Core in brass. */
+.text-smartvalve,
+.text-orchestrionix {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.text-smartvalve {
+  background-image: var(--gradient-smartvalve);
+}
+.text-orchestrionix {
+  background-image: var(--gradient-orchestrionix);
+}
+/* On a filled accent button the brand gradient would disappear into the button colour: plain text. */
+.bg-accent .text-orchestrionix,
+.bg-accent .text-smartvalve,
+[data-theme="orchestrionix"] .bg-accent .text-orchestrionix {
+  background-image: none;
+  color: inherit;
+}
+[data-theme="decap"] .bg-accent .text-smartvalve,
+[data-theme="atelier"] .bg-accent .text-smartvalve {
+  /* Black buttons on light pages carry the SmartValve rainbow well. */
+  background-image: var(--gradient-smartvalve);
+  color: transparent;
 }
 
 @theme inline {
@@ -166,11 +234,11 @@
   --color-accent: var(--page-accent);
   --color-accent-contrast: var(--page-accent-contrast);
   --color-accent-soft: var(--page-accent-soft);
-}
-
-/* A faint paper grain on Atelier pages (pure CSS, no image request). */
-[data-theme="atelier"] .atelier-paper {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .16 0 0 0 0 .12 0 0 0 0 .08 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --color-chrome: var(--chrome-bg);
+  --color-chrome-ink: var(--chrome-ink);
+  --color-menu: var(--menu-bg);
+  --color-menu-hover: var(--menu-hover);
+  --color-menu-line: var(--menu-line);
 }
 
 /* Global styles */

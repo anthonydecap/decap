@@ -28,10 +28,10 @@ export default {
     {
       type: "site_card_grid",
       primary: {
-        eyebrow: "Twee families",
-        title: "Muziek inbegrepen, of door u bespeeld",
+        eyebrow: "De instrumenten",
+        title: "Muziek inbegrepen, klaar om te spelen",
         intro:
-          "De meeste van onze instrumenten worden geleverd met een speler en muziek: aanzetten en ze spelen. **Brass Core** hoort bij Orchestrionix, onze lijn voor muzikanten. Het heeft geen muziekbibliotheek: u stuurt het aan met uw eigen audio, en het is een van de weinige producten die we rechtstreeks uit voorraad leveren.",
+          "Elk instrument hier wordt geleverd met een speler en muziek: aanzetten en het speelt. Zoekt u robotisch koper zonder muziekbibliotheek? Dat is [Brass Core](/brass-core), ons Orchestrionix-instrument voor muzikanten.",
         columns: "3",
         card_style: "Image cards",
       },
@@ -75,15 +75,6 @@ export default {
           link_label: "Draaiorgel",
           link: "/bellow-organ",
           image_brief: "Bellow Organ with veneer panels, three-quarter view showing the crank, plain backdrop, 4:3",
-        },
-        {
-          tag: "Orchestrionix",
-          title: "Brass Core",
-          body: "Laat een echte trompet of trombone klinken vanuit een audiosignaal. Geen muziekbibliotheek: u levert de uitvoering. Geen boorwerk of aanpassingen aan het instrument.",
-          price: "€ 2.599 · uit voorraad leverbaar",
-          link_label: "Brass Core",
-          link: "/brass-core",
-          image_brief: "Brass Core clamped to a trumpet, side view on a dark backdrop, 4:3",
         },
       ],
     },

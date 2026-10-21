@@ -7,6 +7,7 @@ import { PrismicRichText, type JSXMapSerializer, type SliceComponentProps } from
 import clsx from "clsx";
 import { FadeIn, FadeInStagger } from "@/components/FadeIn";
 import { MediaSlot } from "@/components/MediaSlot";
+import { BrandText } from "@/components/BrandText";
 import { Section, SectionHeader, SiteButton, SiteLink, cardClass, siteRichText, toneFromSelect } from "@/lib/site-ui";
 
 const COLUMNS: Record<string, string> = {
@@ -58,7 +59,7 @@ const SiteCardGrid: FC<SliceComponentProps<any>> = ({ slice }) => {
                 <div className={clsx("flex flex-1 flex-col", withImages ? "px-2 pt-6 pb-2" : undefined)}>
                   {item.tag && (
                     <span className="mb-4 inline-flex self-start rounded-full border border-accent-soft px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
-                      {item.tag}
+                      <BrandText>{item.tag}</BrandText>
                     </span>
                   )}
                   {item.title && (

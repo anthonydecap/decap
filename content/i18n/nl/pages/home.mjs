@@ -25,6 +25,19 @@ export default {
       },
     },
     {
+      type: "site_tiles",
+      primary: {},
+      items: [
+        { size: "Full", style: "Light", eyebrow: "Orgels", title: "Dansorgels, op bestelling gebouwd.", tagline: "Dans-, kermis-, straat- en concertorgels uit onze werkplaats in Herentals. Modulair of volledig op maat.", primary_label: "Meer info", primary_link: "/organs", secondary_label: "Stel uw orgel samen", secondary_link: "/organ-composer", image_brief: "A finished Decap dance organ on stage, wide shot" },
+        { size: "Half", style: "Light", eyebrow: "Zelfspelende instrumenten", title: "Een echt accordeon. Dat zichzelf bespeelt.", tagline: "Accordeon, pijpen, drums en xylofoons, gespeeld via MIDI.", primary_label: "Meer info", primary_link: "/instruments", secondary_label: "Accordion Pedestal", secondary_link: "/accordion", image_brief: "Accordion Pedestal on stage" },
+        { size: "Half", style: "Dark", eyebrow: "Orgelpijpen", title: "Elke houten pijp. Binnen een week.", tagline: "Gefreesd op onze eigen CNC, in onze mensuren of de uwe.", primary_label: "Meer info", primary_link: "/organ-pipes", secondary_label: "Pijpen bestellen", secondary_link: "/organ-pipes#contact-form", image_brief: "New wooden pipe parts from the CNC" },
+        { size: "Full", style: "SmartValve", eyebrow: "SmartValve", title: "Elke pijp. Een eigen stem.", tagline: "Een processor in elk ventiel. Wind, dynamiek en registers, per pijp gestuurd.", primary_label: "Meer info", primary_link: "/smartvalve", secondary_label: "Voor orgelbouwers", secondary_link: "/smartvalve-for-organ-builders", image_brief: "SmartValves mounted in their wind chest" },
+        { size: "Full", style: "Orchestrionix", eyebrow: "Brass Core", title: "Een echte trompet. Bespeeld door klank.", tagline: "Een embouchure met voice coil voor trompet en trombone. Geen aanpassingen aan het instrument.", note: "€ 2.599 · uit voorraad leverbaar", primary_label: "Meer info", primary_link: "/brass-core", secondary_label: "Bestellen", secondary_link: "/brass-core#contact-form", image_brief: "Brass Core on a trombone, dark background" },
+        { size: "Half", style: "Atelier", eyebrow: "Atelier Frank Decap", title: "Historische orgels, met de hand gerestaureerd.", tagline: "Restauratie en MIDI-installatie, op hetzelfde terrein in Herentals.", primary_label: "Meer info", primary_link: "/frank-decap", secondary_label: "Stuur foto's van uw orgel", secondary_link: "/frank-decap#contact-form", image_brief: "Frank Decap at work in his atelier" },
+        { size: "Half", style: "Light", eyebrow: "Software", title: "Eén speler voor het hele ensemble.", tagline: "Virtual Orchestrion en MIDIMapper, in de Decap-shop.", primary_label: "Meer info", primary_link: "/software", secondary_label: "Bezoek de shop", secondary_link: "/shop", image_brief: "Virtual Orchestrion on two screens" },
+      ],
+    },
+    {
       type: "site_card_grid",
       primary: {
         eyebrow: "Waar ze spelen",
@@ -39,80 +52,6 @@ export default {
         { title: "Danszalen en evenementen", body: "Orgels met regelbaar volume die bij de ruimte passen, van een kleine zaal tot een festival.", image_brief: "Dance organ in a dance hall during an evening, 4:3" },
         { title: "Musea en podia", body: "Collecties, tentoonstellingen en artiesten op tournee: bekijk ons [werk](/work).", image_brief: "Decap orchestrion in a museum or on a stage, 4:3" },
       ],
-    },
-    {
-      type: "site_card_grid",
-      primary: {
-        eyebrow: "Wat we maken",
-        title: "Van een volledig dansorgel tot één register orgelpijpen",
-        columns: "2",
-        card_style: "Image cards",
-      },
-      items: [
-        {
-          title: "Nieuwe orgels",
-          body: "Dansorgels, kermisorgels, straatorgels en concertorgels. Vertrek van onze beproefde modules of laat elk detail voor u ontwerpen.",
-          link_label: "Orgels",
-          link: "/organs",
-          image_brief: "A finished Decap dance organ façade, front view, 4:3",
-        },
-        {
-          title: "Zelfspelende instrumenten",
-          body: "Een echt accordeon, pijpen, drums en xylofoons, aangestuurd via MIDI. Muziekbibliotheek inbegrepen, klaar om te spelen.",
-          link_label: "Instrumenten",
-          link: "/instruments",
-          image_brief: "Accordion Pedestal and Percussion Unit side by side, black backdrop, 4:3",
-        },
-        {
-          title: "SmartValve",
-          body: "Eén ventiel en één processor voor elke pijp. Elke noot krijgt zijn eigen winddruk, dynamiek en vibrato.",
-          link_label: "SmartValve",
-          link: "/smartvalve",
-          image_brief: "Close-up of a row of SmartValves on a wind chest, dark background, 4:3",
-        },
-        {
-          title: "Restauratie en MIDI-ombouw",
-          body: "Historische orgels gerestaureerd door Atelier Frank Decap, met onze MIDI-units als u zowel boek als MIDI wilt.",
-          link_label: "Atelier Frank Decap",
-          link: "/frank-decap",
-          image_brief: "Hands repairing the bellows of a historic organ, warm light, 4:3",
-        },
-      ],
-    },
-    {
-      type: "site_text_media",
-      primary: {
-        eyebrow: "Orgelpijpen",
-        title: "Bijna elke houten orgelpijp, verzendklaar binnen een week",
-        body:
-          "Wij zijn het enige bedrijf ter wereld dat de CNC-productie van orgelpijpen zelf heeft ontwikkeld. Onze standaardmensuren of uw eigen maten, in 3D getekend en gefreesd op onze eigen CNC.\n\nVoor een doe-het-zelfproject, een extra register voor uw orgel, of een volledige set pijpen met windladen.",
-        media_side: "Image right",
-        aspect: "Landscape 4:3",
-        cta_label: "Orgelpijpen bestellen",
-        cta_link: "/organ-pipes",
-        image_brief: "Looping clip (mp4, 10–15 s): the CNC milling a pipe, then a row of finished pipes. Until then a photo of new pipes on the workbench, 4:3.",
-        tone: "Dark band",
-      },
-      items: [
-        { point: "Klaar in enkele dagen tot een week, afhankelijk van de registers" },
-        { point: "Standaardmensuren of uw eigen maten" },
-        { point: "Geïntoneerd, of klaar om zelf te intoneren" },
-      ],
-    },
-    {
-      type: "site_text_media",
-      primary: {
-        eyebrow: "Het aantal toetsen is geen grens",
-        title: "Een orgel met 105 toetsen dat muziek voor 121 toetsen speelt",
-        body:
-          "Elk nieuw Decap-orgel wordt geleverd met onze Virtual Orchestrion-speler. Vraagt een arrangement registers die uw orgel niet heeft, dan voegt de speler ze virtueel toe, met samples die we in onze eigen werkplaats hebben opgenomen.\n\nZo kiest u het orgel dat bij uw ruimte en budget past, niet het orgel dat bij uw repertoire past.",
-        media_side: "Image left",
-        aspect: "Landscape 4:3",
-        cta_label: "Over Virtual Orchestrion",
-        cta_link: "/virtual-orchestrion",
-        image_brief: "Virtual Orchestrion on a touchscreen next to an organ, showing the animated book view, 4:3",
-        tone: "Tinted",
-      },
     },
     {
       type: "site_timeline",

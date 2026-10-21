@@ -9,8 +9,11 @@ Last updated: 2026-10-20
 
 > **2026-10 update: page styles and Site slices.** Every Prismic page now picks a *page style*
 > (`theme` field): **decap** (standard light), **smartvalve** (dark + gradient, SmartValve only),
-> **orchestrionix** (light + brass accent, Brass Core only) and **atelier** (warm ivory + serif,
-> Atelier Frank Decap only). New generic slices (`site*`, `contactForm`, `organComposer`) use the
+> **orchestrionix** (dark + copper/brass gradient, Brass Core and /orchestrionix) and **atelier**
+> (the site typography in warm workshop colours, Atelier Frank Decap). The header, footer and menu
+> follow the page style (`:root:has()` in globals.css); the header strip takes the colour of a dark
+> (`data-surface="dark"`), light or tinted first section. Brand names in labels use `BrandText`
+> (SmartValve rainbow, Brass Core/Orchestrionix brass). Homepage product tiles: `site_tiles`. New generic slices (`site*`, `contactForm`, `organComposer`) use the
 > semantic utilities `bg-page`, `text-ink`, `text-ink-muted`, `bg-surface`, `border-line`,
 > `text-accent`, `bg-accent`, `text-accent-contrast`, `bg-accent-soft` and the `.site-heading`
 > class instead of `neutral-*`, so they render correctly in every style. Section tones:

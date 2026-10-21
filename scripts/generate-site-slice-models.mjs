@@ -193,6 +193,27 @@ export const SITE_SLICES = {
     },
   }),
 
+  siteTiles: sliceModel({
+    id: "site_tiles",
+    name: "SiteTiles",
+    description: "Apple-style product tiles: full-width or half-width, each with its own style, a headline, one line and two links.",
+    primary: { tone: TONE() },
+    items: {
+      size: select("Size", ["Full", "Half"]),
+      style: select("Tile style", ["Light", "Dark", "SmartValve", "Orchestrionix", "Atelier"]),
+      eyebrow: text("Eyebrow / product name"),
+      title: text("Headline"),
+      tagline: text("One line"),
+      note: text("Small note", "e.g. € 2,599 · ships from stock"),
+      primary_label: text("Primary link label", "Learn more"),
+      primary_link: link("Primary link"),
+      secondary_label: text("Secondary link label", "Buy"),
+      secondary_link: link("Secondary link"),
+      image: image("Image"),
+      image_brief: BRIEF(),
+    },
+  }),
+
   contactForm: sliceModel({
     id: "contact_form",
     name: "ContactForm",

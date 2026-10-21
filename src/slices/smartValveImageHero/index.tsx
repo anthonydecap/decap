@@ -64,7 +64,8 @@ const SmartValveImageHero: FC<SmartValveImageHeroProps> = ({ slice }) => {
 
   return (
     <div
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      data-surface="dark"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-neutral-950"
       style={{ backgroundColor: background_image?.url ? undefined : bgColor }}
     >
       {background_image?.url && (

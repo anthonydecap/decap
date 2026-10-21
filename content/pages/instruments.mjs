@@ -27,10 +27,10 @@ export default {
     {
       type: "site_card_grid",
       primary: {
-        eyebrow: "Two families",
-        title: "Music included, or played by you",
+        eyebrow: "The instruments",
+        title: "Music included, ready to play",
         intro:
-          "Most of our instruments come with a player and music: switch them on and they play. **Brass Core** belongs to Orchestrionix, our line for musicians. It has no music library: you drive it with your own audio, and it is one of the few products we ship straight from stock.",
+          "Every instrument here comes with a player and music: switch it on and it plays. Looking for robotic brass without a music library? That is [Brass Core](/brass-core), our Orchestrionix instrument for musicians.",
         columns: "3",
         card_style: "Image cards",
       },
@@ -74,15 +74,6 @@ export default {
           link_label: "Hand-turned organ",
           link: "/bellow-organ",
           image_brief: "Bellow Organ with veneer panels, three-quarter view showing the crank, plain backdrop, 4:3",
-        },
-        {
-          tag: "Orchestrionix",
-          title: "Brass Core",
-          body: "Makes a real trumpet or trombone sound from an audio signal. No music library: you supply the performance. No drilling or changes to the instrument.",
-          price: "€ 2,599 · ships from stock",
-          link_label: "Brass Core",
-          link: "/brass-core",
-          image_brief: "Brass Core clamped to a trumpet, side view on a dark backdrop, 4:3",
         },
       ],
     },

@@ -10,7 +10,6 @@ import {
 } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { isLocaleHomePathname } from '@/i18n'
 import clsx from 'clsx'
 import { motion, MotionConfig, useReducedMotion } from 'framer-motion'
 import { PrismicNextImage } from '@prismicio/next'
@@ -20,6 +19,7 @@ import { Container } from './Container'
 import { Logo, Logomark } from './Logo'
 import { Offices } from './Offices'
 import { LanguageSwitcher } from './LanguageSwitcher'
+import { BrandText } from './BrandText'
 import { pathForHome } from '@/lib/locale-path'
 import type { UrlLocale } from '@/i18n'
 import { CONTACT_LABEL, defaultNavigation } from '@/lib/site-nav'
@@ -78,7 +78,7 @@ function HeaderContent({
 
   return (
     <Container>
-      <div className="flex items-center justify-between">
+      <div className={clsx('flex items-center justify-between', !invert && 'text-chrome-ink')}>
         <Link
           href={pathForHome(urlLang)}
           aria-label="Home"
@@ -114,7 +114,7 @@ function HeaderContent({
               'inline-flex rounded-full px-4 py-1.5 text-sm font-semibold transition',
               invert
                 ? 'bg-white text-neutral-950 hover:bg-neutral-200'
-                : 'bg-neutral-950 text-white hover:bg-neutral-800',
+                : 'bg-chrome-ink text-chrome hover:opacity-85',
             )}
           >
             <span className="relative top-px">{contactButtonText}</span>
@@ -127,7 +127,7 @@ function HeaderContent({
             aria-controls={panelId}
             className={clsx(
               'group -m-2.5 rounded-full p-2.5 transition',
-              invert ? 'hover:bg-white/10' : 'hover:bg-neutral-950/10',
+              invert ? 'hover:bg-white/10' : 'hover:bg-chrome-ink/10',
             )}
             aria-label="Toggle navigation"
           >
@@ -136,7 +136,7 @@ function HeaderContent({
                 'h-6 w-6',
                 invert
                   ? 'fill-white group-hover:fill-neutral-200'
-                  : 'fill-neutral-950 group-hover:fill-neutral-700',
+                  : 'fill-chrome-ink group-hover:opacity-70',
               )}
             />
           </button>
@@ -148,7 +148,7 @@ function HeaderContent({
 
 function NavigationRow({ children }: { children: React.ReactNode }) {
   return (
-    <div className="even:mt-px sm:bg-neutral-950">
+    <div className="even:mt-px sm:bg-menu">
       <Container>
         <div className="grid grid-cols-1 sm:grid-cols-2">{children}</div>
       </Container>
@@ -166,18 +166,18 @@ function NavigationItem({
   return (
     <Link
       href={href}
-      className="group relative isolate -mx-6 bg-neutral-950 px-6 py-10 even:mt-px sm:mx-0 sm:px-0 sm:py-16 sm:odd:pr-16 sm:even:mt-0 sm:even:border-l sm:even:border-neutral-800 sm:even:pl-16"
+      className="group relative isolate -mx-6 bg-menu px-6 py-10 even:mt-px sm:mx-0 sm:px-0 sm:py-16 sm:odd:pr-16 sm:even:mt-0 sm:even:border-l sm:even:border-menu-line sm:even:pl-16"
     >
       <div className="flex">
         <div className="self-center">
           <div className="flex items-center">
             <span className="text-white hover:text-neutral-200 transition">
-              {children}
+              {typeof children === 'string' ? <BrandText>{children}</BrandText> : children}
             </span>
           </div>
         </div>
       </div>
-      <span className="absolute inset-y-0 -z-10 w-screen bg-neutral-900 opacity-0 transition group-odd:right-0 group-even:left-0 group-hover:opacity-100" />
+      <span className="absolute inset-y-0 -z-10 w-screen bg-menu-hover opacity-0 transition group-odd:right-0 group-even:left-0 group-hover:opacity-100" />
     </Link>
   )
 }
@@ -230,8 +230,6 @@ function HeaderInner({
   settings?: Settings
   urlLang: UrlLocale
 }) {
-  const pathname = usePathname()
-  const isHome = isLocaleHomePathname(pathname)
   const panelId = useId()
   const [expanded, setExpanded] = useState(false)
   const [isTransitioning, setIsTransitioning] = useState(false)
@@ -280,7 +278,6 @@ function HeaderInner({
             icon={MenuIcon}
             toggleRef={openRef}
             expanded={expanded}
-            invert={isHome}
             settings={settings}
             urlLang={urlLang}
             onToggle={() => {
@@ -300,13 +297,13 @@ function HeaderInner({
           style={{ height: expanded ? 'auto' : '0.5rem' }}
           className={clsx(
             'relative z-50 overflow-hidden pt-2',
-            isHome && !expanded ? 'bg-white' : 'bg-neutral-950',
+            expanded ? 'bg-menu' : 'bg-neutral-950',
           )}
           aria-hidden={expanded ? undefined : 'true'}
           inert={expanded ? undefined : true}
         >
-          <motion.div layout className="bg-neutral-800">
-            <div ref={navRef} className="bg-neutral-950 pt-14 pb-16">
+          <motion.div layout className="bg-menu-line">
+            <div ref={navRef} className="bg-menu pt-14 pb-16">
               <HeaderContent
                 invert
                 panelId={panelId}
@@ -325,7 +322,7 @@ function HeaderInner({
               />
             </div>
             <Navigation items={navigationItems} urlLang={urlLang} />
-            <div className="relative bg-neutral-950 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-neutral-800">
+            <div className="relative bg-menu before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-menu-line">
               <Container>
                 <div className="grid grid-cols-1 gap-y-10 pt-10 pb-16 sm:grid-cols-2 sm:pt-16">
                   <div>

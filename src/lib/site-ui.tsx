@@ -9,6 +9,7 @@ import { PrismicRichText, type JSXMapSerializer } from "@prismicio/react";
 import { prismicLinkHref, urlLangFromPathname } from "@/lib/prismic-link";
 import { Container } from "@/components/Container";
 import { FadeIn } from "@/components/FadeIn";
+import { BrandText } from "@/components/BrandText";
 
 /*
  * Shared building blocks for the theme-aware "site" slices (hero, text_media, card_grid, …).
@@ -57,7 +58,9 @@ export function Section({
 
 export function Eyebrow({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <p className={clsx("text-sm font-semibold uppercase tracking-[0.2em] text-accent", className)}>{children}</p>
+    <p className={clsx("text-sm font-semibold uppercase tracking-[0.2em] text-accent", className)}>
+      {typeof children === "string" ? <BrandText>{children}</BrandText> : children}
+    </p>
   );
 }
 
@@ -198,7 +201,9 @@ export function SiteButton({
         className,
       )}
     >
-      {label}
+      <span>
+        <BrandText>{label}</BrandText>
+      </span>
       {variant === "text" && <span aria-hidden="true">→</span>}
     </SiteLink>
   );

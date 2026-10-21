@@ -24,6 +24,19 @@ export default {
       },
     },
     {
+      type: "site_tiles",
+      primary: {},
+      items: [
+        { size: "Full", style: "Light", eyebrow: "Organs", title: "Dance organs, built to order.", tagline: "Dance, fair, street and concert organs from our Herentals workshop. Modular or fully bespoke.", primary_label: "Learn more", primary_link: "/organs", secondary_label: "Compose your organ", secondary_link: "/organ-composer", image_brief: "A finished Decap dance organ on stage, wide shot" },
+        { size: "Half", style: "Light", eyebrow: "Self-playing instruments", title: "A real accordion. Playing itself.", tagline: "Accordion, pipes, drums and xylophones, played by MIDI.", primary_label: "Learn more", primary_link: "/instruments", secondary_label: "Accordion Pedestal", secondary_link: "/accordion", image_brief: "Accordion Pedestal on stage" },
+        { size: "Half", style: "Dark", eyebrow: "Organ pipes", title: "Any wooden pipe. Within a week.", tagline: "Milled on our own CNC, in our scales or yours.", primary_label: "Learn more", primary_link: "/organ-pipes", secondary_label: "Order pipes", secondary_link: "/organ-pipes#contact-form", image_brief: "New wooden pipe parts from the CNC" },
+        { size: "Full", style: "SmartValve", eyebrow: "SmartValve", title: "Every pipe. Its own voice.", tagline: "A processor in every valve. Wind, dynamics and stops, controlled per pipe.", primary_label: "Learn more", primary_link: "/smartvalve", secondary_label: "For organ builders", secondary_link: "/smartvalve-for-organ-builders", image_brief: "SmartValves mounted in their wind chest" },
+        { size: "Full", style: "Orchestrionix", eyebrow: "Brass Core", title: "A real trumpet. Played by sound.", tagline: "A voice-coil embouchure for trumpet and trombone. No changes to the instrument.", note: "€ 2,599 · ships from stock", primary_label: "Learn more", primary_link: "/brass-core", secondary_label: "Order", secondary_link: "/brass-core#contact-form", image_brief: "Brass Core on a trombone, dark background" },
+        { size: "Half", style: "Atelier", eyebrow: "Atelier Frank Decap", title: "Historic organs, restored by hand.", tagline: "Restoration and MIDI installation, on the same site in Herentals.", primary_label: "Learn more", primary_link: "/frank-decap", secondary_label: "Send photos of your organ", secondary_link: "/frank-decap#contact-form", image_brief: "Frank Decap at work in his atelier" },
+        { size: "Half", style: "Light", eyebrow: "Software", title: "One player for the whole ensemble.", tagline: "Virtual Orchestrion and MIDIMapper, in the Decap shop.", primary_label: "Learn more", primary_link: "/software", secondary_label: "Visit the shop", secondary_link: "/shop", image_brief: "Virtual Orchestrion on two screens" },
+      ],
+    },
+    {
       type: "site_card_grid",
       primary: {
         eyebrow: "Where they play",
@@ -38,80 +51,6 @@ export default {
         { title: "Dance halls and events", body: "Organs with controllable volume that fit the room, from a small hall to a festival.", image_brief: "Dance organ in a dance hall during an evening, 4:3" },
         { title: "Museums and stages", body: "Collections, exhibitions and artists on tour: see our [work](/work).", image_brief: "Decap orchestrion in a museum or on a stage, 4:3" },
       ],
-    },
-    {
-      type: "site_card_grid",
-      primary: {
-        eyebrow: "What we make",
-        title: "From a complete dance organ to a single rank of pipes",
-        columns: "2",
-        card_style: "Image cards",
-      },
-      items: [
-        {
-          title: "New organs",
-          body: "Dance, fair, street and concert organs. Start from our proven modules or have every detail designed for you.",
-          link_label: "Organs",
-          link: "/organs",
-          image_brief: "A finished Decap dance organ façade, front view, 4:3",
-        },
-        {
-          title: "Self-playing instruments",
-          body: "A real accordion, pipes, drums and xylophones, played by MIDI. Music library included, ready to play.",
-          link_label: "Instruments",
-          link: "/instruments",
-          image_brief: "Accordion Pedestal and Percussion Unit side by side, black backdrop, 4:3",
-        },
-        {
-          title: "SmartValve",
-          body: "One valve and one processor for every pipe. Each note gets its own pressure, dynamics and vibrato.",
-          link_label: "SmartValve",
-          link: "/smartvalve",
-          image_brief: "Close-up of a row of SmartValves on a wind chest, dark background, 4:3",
-        },
-        {
-          title: "Restoration and MIDI conversion",
-          body: "Historic organs restored by Atelier Frank Decap, with our MIDI conversion units when you want both book and MIDI.",
-          link_label: "Atelier Frank Decap",
-          link: "/frank-decap",
-          image_brief: "Hands repairing the bellows of a historic organ, warm light, 4:3",
-        },
-      ],
-    },
-    {
-      type: "site_text_media",
-      primary: {
-        eyebrow: "Organ pipes",
-        title: "Almost any wooden pipe, ready to ship within a week",
-        body:
-          "We are the only company in the world that developed CNC manufacturing of organ pipes in-house. Our standard scales or your own measurements, drawn in 3D and milled on our own CNC.\n\nFor a DIY build, an extra rank for your organ, or a complete set of pipes and wind chests.",
-        media_side: "Image right",
-        aspect: "Landscape 4:3",
-        cta_label: "Order organ pipes",
-        cta_link: "/organ-pipes",
-        image_brief: "Looping clip (mp4, 10–15 s): the CNC milling a pipe, then a row of finished pipes. Until then a photo of new pipes on the workbench, 4:3.",
-        tone: "Dark band",
-      },
-      items: [
-        { point: "Ready in a few days to a week, depending on the ranks" },
-        { point: "Standard scales or your own sizing" },
-        { point: "Voiced, or ready for you to voice" },
-      ],
-    },
-    {
-      type: "site_text_media",
-      primary: {
-        eyebrow: "Keys are no limit",
-        title: "A 105-key organ that plays 121-key music",
-        body:
-          "Every new Decap organ comes with our Virtual Orchestrion player. When an arrangement calls for ranks your organ does not have, the player adds them virtually, using samples we recorded in our own workshop.\n\nSo you choose the organ that fits your room and budget, not the one that fits your repertoire.",
-        media_side: "Image left",
-        aspect: "Landscape 4:3",
-        cta_label: "About Virtual Orchestrion",
-        cta_link: "/virtual-orchestrion",
-        image_brief: "Virtual Orchestrion on a touchscreen next to an organ, showing the animated book view, 4:3",
-        tone: "Tinted",
-      },
     },
     {
       type: "site_timeline",

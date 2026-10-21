@@ -84,7 +84,7 @@ export function LanguageSwitcher({ invert = false, className }: LanguageSwitcher
         onClick={() => setOpen((o) => !o)}
         className={clsx(
           "inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-semibold uppercase tracking-wide transition",
-          invert ? "text-white hover:bg-white/10" : "text-neutral-950 hover:bg-neutral-950/5",
+          invert ? "text-white hover:bg-white/10" : "text-chrome-ink hover:bg-chrome-ink/10",
         )}
       >
         <GlobeIcon className="h-4 w-4" />

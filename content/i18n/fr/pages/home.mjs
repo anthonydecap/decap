@@ -25,6 +25,19 @@ export default {
       },
     },
     {
+      type: "site_tiles",
+      primary: {},
+      items: [
+        { size: "Full", style: "Light", eyebrow: "Orgues", title: "Des orgues de danse, construits sur commande.", tagline: "Orgues de danse, de foire, de rue et de concert, sortis de notre atelier de Herentals. Modulaires ou entièrement sur mesure.", primary_label: "En savoir plus", primary_link: "/organs", secondary_label: "Composer votre orgue", secondary_link: "/organ-composer", image_brief: "A finished Decap dance organ on stage, wide shot" },
+        { size: "Half", style: "Light", eyebrow: "Instruments automatiques", title: "Un vrai accordéon. Qui joue tout seul.", tagline: "Accordéon, tuyaux, batterie et xylophones, joués par MIDI.", primary_label: "En savoir plus", primary_link: "/instruments", secondary_label: "Accordion Pedestal", secondary_link: "/accordion", image_brief: "Accordion Pedestal on stage" },
+        { size: "Half", style: "Dark", eyebrow: "Tuyaux d'orgue", title: "Tout tuyau en bois. En une semaine.", tagline: "Fraisés sur notre propre CNC, selon nos diapasons ou les vôtres.", primary_label: "En savoir plus", primary_link: "/organ-pipes", secondary_label: "Commander des tuyaux", secondary_link: "/organ-pipes#contact-form", image_brief: "New wooden pipe parts from the CNC" },
+        { size: "Full", style: "SmartValve", eyebrow: "SmartValve", title: "Chaque tuyau. Sa propre voix.", tagline: "Un processeur dans chaque soupape. Vent, dynamique et jeux, réglés tuyau par tuyau.", primary_label: "En savoir plus", primary_link: "/smartvalve", secondary_label: "Pour les facteurs d'orgues", secondary_link: "/smartvalve-for-organ-builders", image_brief: "SmartValves mounted in their wind chest" },
+        { size: "Full", style: "Orchestrionix", eyebrow: "Brass Core", title: "Une vraie trompette. Jouée par le son.", tagline: "Une embouchure à bobine mobile pour trompette et trombone. Sans modification de l'instrument.", note: "2 599 € · expédié depuis le stock", primary_label: "En savoir plus", primary_link: "/brass-core", secondary_label: "Commander", secondary_link: "/brass-core#contact-form", image_brief: "Brass Core on a trombone, dark background" },
+        { size: "Half", style: "Atelier", eyebrow: "Atelier Frank Decap", title: "Des orgues historiques, restaurés à la main.", tagline: "Restauration et installation MIDI, sur le même site à Herentals.", primary_label: "En savoir plus", primary_link: "/frank-decap", secondary_label: "Envoyez des photos de votre orgue", secondary_link: "/frank-decap#contact-form", image_brief: "Frank Decap at work in his atelier" },
+        { size: "Half", style: "Light", eyebrow: "Logiciels", title: "Un seul lecteur pour tout l'ensemble.", tagline: "Virtual Orchestrion et MIDIMapper, dans la boutique Decap.", primary_label: "En savoir plus", primary_link: "/software", secondary_label: "Visiter la boutique", secondary_link: "/shop", image_brief: "Virtual Orchestrion on two screens" },
+      ],
+    },
+    {
       type: "site_card_grid",
       primary: {
         eyebrow: "Où ils jouent",
@@ -39,80 +52,6 @@ export default {
         { title: "Salles de danse et événements", body: "Des orgues au volume réglable, adaptés à la salle, de la petite salle au festival.", image_brief: "Dance organ in a dance hall during an evening, 4:3" },
         { title: "Musées et scènes", body: "Collections, expositions et artistes en tournée : découvrez nos [réalisations](/work).", image_brief: "Decap orchestrion in a museum or on a stage, 4:3" },
       ],
-    },
-    {
-      type: "site_card_grid",
-      primary: {
-        eyebrow: "Ce que nous fabriquons",
-        title: "De l'orgue de danse complet à un seul jeu de tuyaux",
-        columns: "2",
-        card_style: "Image cards",
-      },
-      items: [
-        {
-          title: "Orgues neufs",
-          body: "Orgues de danse, de foire, de rue et de concert. Partez de nos modules éprouvés ou faites concevoir chaque détail pour vous.",
-          link_label: "Orgues",
-          link: "/organs",
-          image_brief: "A finished Decap dance organ façade, front view, 4:3",
-        },
-        {
-          title: "Instruments automatiques",
-          body: "Un vrai accordéon, des tuyaux, une batterie et des xylophones, joués par MIDI. Bibliothèque musicale incluse, prêts à jouer.",
-          link_label: "Instruments",
-          link: "/instruments",
-          image_brief: "Accordion Pedestal and Percussion Unit side by side, black backdrop, 4:3",
-        },
-        {
-          title: "SmartValve",
-          body: "Une soupape et un processeur pour chaque tuyau. Chaque note reçoit sa propre pression, sa dynamique et son vibrato.",
-          link_label: "SmartValve",
-          link: "/smartvalve",
-          image_brief: "Close-up of a row of SmartValves on a wind chest, dark background, 4:3",
-        },
-        {
-          title: "Restauration et conversion MIDI",
-          body: "Des orgues historiques restaurés par l'Atelier Frank Decap, avec nos modules de conversion MIDI si vous voulez à la fois le carton et le MIDI.",
-          link_label: "Atelier Frank Decap",
-          link: "/frank-decap",
-          image_brief: "Hands repairing the bellows of a historic organ, warm light, 4:3",
-        },
-      ],
-    },
-    {
-      type: "site_text_media",
-      primary: {
-        eyebrow: "Tuyaux d'orgue",
-        title: "Presque tous les tuyaux en bois, prêts à expédier en une semaine",
-        body:
-          "Nous sommes la seule entreprise au monde à avoir développé en interne la fabrication de tuyaux d'orgue sur CNC. Nos diapasons standard ou vos propres mesures, dessinés en 3D et fraisés sur notre propre CNC.\n\nPour une construction personnelle, un jeu supplémentaire pour votre orgue, ou un ensemble complet de tuyaux et de sommiers.",
-        media_side: "Image right",
-        aspect: "Landscape 4:3",
-        cta_label: "Commander des tuyaux d'orgue",
-        cta_link: "/organ-pipes",
-        image_brief: "Looping clip (mp4, 10–15 s): the CNC milling a pipe, then a row of finished pipes. Until then a photo of new pipes on the workbench, 4:3.",
-        tone: "Dark band",
-      },
-      items: [
-        { point: "Prêts en quelques jours à une semaine, selon les jeux" },
-        { point: "Diapasons standard ou vos propres dimensions" },
-        { point: "Harmonisés, ou prêts à être harmonisés par vous" },
-      ],
-    },
-    {
-      type: "site_text_media",
-      primary: {
-        eyebrow: "Le nombre de touches n'est pas une limite",
-        title: "Un orgue 105 touches qui joue la musique 121 touches",
-        body:
-          "Chaque nouvel orgue Decap est livré avec notre lecteur Virtual Orchestrion. Quand un arrangement demande des jeux que votre orgue n'a pas, le lecteur les ajoute virtuellement, avec des échantillons enregistrés dans notre propre atelier.\n\nVous choisissez donc l'orgue qui convient à votre salle et à votre budget, et non celui qui convient à votre répertoire.",
-        media_side: "Image left",
-        aspect: "Landscape 4:3",
-        cta_label: "À propos de Virtual Orchestrion",
-        cta_link: "/virtual-orchestrion",
-        image_brief: "Virtual Orchestrion on a touchscreen next to an organ, showing the animated book view, 4:3",
-        tone: "Tinted",
-      },
     },
     {
       type: "site_timeline",

@@ -8,27 +8,27 @@ const web = (url) => ({ link_type: "Web", url });
 
 /** Menu and footer labels per language (paths stay the same; the site adds the language prefix). */
 export const NAV = {
-  "en-us": [["Organs", "/organs"], ["Organ pipes", "/organ-pipes"], ["Instruments", "/instruments"], ["SmartValve", "/smartvalve"], ["Software", "/software"], ["Work", "/work"], ["About", "/about"]],
-  "fr-fr": [["Orgues", "/organs"], ["Tuyaux d’orgue", "/organ-pipes"], ["Instruments", "/instruments"], ["SmartValve", "/smartvalve"], ["Logiciels", "/software"], ["Réalisations", "/work"], ["À propos", "/about"]],
-  "nl-be": [["Orgels", "/organs"], ["Orgelpijpen", "/organ-pipes"], ["Instrumenten", "/instruments"], ["SmartValve", "/smartvalve"], ["Software", "/software"], ["Realisaties", "/work"], ["Over ons", "/about"]],
-  "de-de": [["Orgeln", "/organs"], ["Orgelpfeifen", "/organ-pipes"], ["Instrumente", "/instruments"], ["SmartValve", "/smartvalve"], ["Software", "/software"], ["Projekte", "/work"], ["Über uns", "/about"]],
+  "en-us": [["Organs", "/organs"], ["Organ pipes", "/organ-pipes"], ["Instruments", "/instruments"], ["SmartValve", "/smartvalve"], ["Brass Core", "/brass-core"], ["Software", "/software"], ["Work", "/work"], ["About", "/about"]],
+  "fr-fr": [["Orgues", "/organs"], ["Tuyaux d’orgue", "/organ-pipes"], ["Instruments", "/instruments"], ["SmartValve", "/smartvalve"], ["Brass Core", "/brass-core"], ["Logiciels", "/software"], ["Réalisations", "/work"], ["À propos", "/about"]],
+  "nl-be": [["Orgels", "/organs"], ["Orgelpijpen", "/organ-pipes"], ["Instrumenten", "/instruments"], ["SmartValve", "/smartvalve"], ["Brass Core", "/brass-core"], ["Software", "/software"], ["Realisaties", "/work"], ["Over ons", "/about"]],
+  "de-de": [["Orgeln", "/organs"], ["Orgelpfeifen", "/organ-pipes"], ["Instrumente", "/instruments"], ["SmartValve", "/smartvalve"], ["Brass Core", "/brass-core"], ["Software", "/software"], ["Projekte", "/work"], ["Über uns", "/about"]],
 };
 
 const FOOTER_I18N = {
   "fr-fr": { contact: "Contact", sections: [
     ["Orgues", [["Nouveaux orgues", "/organs"], ["Organ Composer", "/organ-composer"], ["Conversion MIDI", "/midi-conversion"], ["Tuyaux d’orgue", "/organ-pipes"], ["Restauration", "/frank-decap"]]],
-    ["Instruments", [["Accordion Pedestal & Cube", "/accordion"], ["Pipes", "/pipes"], ["Percussion Unit", "/percussion-unit"], ["Mallet Percussion", "/mallet-percussion"], ["Bellow Organ", "/bellow-organ"], ["Brass Core", "/brass-core"]]],
-    ["Decap", [["SmartValve", "/smartvalve"], ["Pour les facteurs d’orgues", "/smartvalve-for-organ-builders"], ["Logiciels", "/software"], ["Réalisations", "/work"], ["À propos", "/about"], ["Journal", "/blog"], ["Contact", "/contact"]]],
+    ["Instruments", [["Accordion Pedestal & Cube", "/accordion"], ["Pipes", "/pipes"], ["Percussion Unit", "/percussion-unit"], ["Mallet Percussion", "/mallet-percussion"], ["Bellow Organ", "/bellow-organ"]]],
+    ["Decap", [["SmartValve", "/smartvalve"], ["Pour les facteurs d’orgues", "/smartvalve-for-organ-builders"], ["Brass Core", "/brass-core"], ["Logiciels", "/software"], ["Réalisations", "/work"], ["À propos", "/about"], ["Journal", "/blog"], ["Contact", "/contact"]]],
   ], address: "Langepad 51C\n2200 Herentals, Belgique" },
   "nl-be": { contact: "Contact", sections: [
     ["Orgels", [["Nieuwe orgels", "/organs"], ["Organ Composer", "/organ-composer"], ["MIDI-ombouw", "/midi-conversion"], ["Orgelpijpen", "/organ-pipes"], ["Restauratie", "/frank-decap"]]],
-    ["Instrumenten", [["Accordion Pedestal & Cube", "/accordion"], ["Pipes", "/pipes"], ["Percussion Unit", "/percussion-unit"], ["Mallet Percussion", "/mallet-percussion"], ["Bellow Organ", "/bellow-organ"], ["Brass Core", "/brass-core"]]],
-    ["Decap", [["SmartValve", "/smartvalve"], ["Voor orgelbouwers", "/smartvalve-for-organ-builders"], ["Software", "/software"], ["Realisaties", "/work"], ["Over ons", "/about"], ["Journal", "/blog"], ["Contact", "/contact"]]],
+    ["Instrumenten", [["Accordion Pedestal & Cube", "/accordion"], ["Pipes", "/pipes"], ["Percussion Unit", "/percussion-unit"], ["Mallet Percussion", "/mallet-percussion"], ["Bellow Organ", "/bellow-organ"]]],
+    ["Decap", [["SmartValve", "/smartvalve"], ["Voor orgelbouwers", "/smartvalve-for-organ-builders"], ["Brass Core", "/brass-core"], ["Software", "/software"], ["Realisaties", "/work"], ["Over ons", "/about"], ["Journal", "/blog"], ["Contact", "/contact"]]],
   ], address: "Langepad 51C\n2200 Herentals, België" },
   "de-de": { contact: "Kontakt", sections: [
     ["Orgeln", [["Neue Orgeln", "/organs"], ["Organ Composer", "/organ-composer"], ["MIDI-Umbau", "/midi-conversion"], ["Orgelpfeifen", "/organ-pipes"], ["Restaurierung", "/frank-decap"]]],
-    ["Instrumente", [["Accordion Pedestal & Cube", "/accordion"], ["Pipes", "/pipes"], ["Percussion Unit", "/percussion-unit"], ["Mallet Percussion", "/mallet-percussion"], ["Bellow Organ", "/bellow-organ"], ["Brass Core", "/brass-core"]]],
-    ["Decap", [["SmartValve", "/smartvalve"], ["Für Orgelbauer", "/smartvalve-for-organ-builders"], ["Software", "/software"], ["Projekte", "/work"], ["Über uns", "/about"], ["Journal", "/blog"], ["Kontakt", "/contact"]]],
+    ["Instrumente", [["Accordion Pedestal & Cube", "/accordion"], ["Pipes", "/pipes"], ["Percussion Unit", "/percussion-unit"], ["Mallet Percussion", "/mallet-percussion"], ["Bellow Organ", "/bellow-organ"]]],
+    ["Decap", [["SmartValve", "/smartvalve"], ["Für Orgelbauer", "/smartvalve-for-organ-builders"], ["Brass Core", "/brass-core"], ["Software", "/software"], ["Projekte", "/work"], ["Über uns", "/about"], ["Journal", "/blog"], ["Kontakt", "/contact"]]],
   ], address: "Langepad 51C\n2200 Herentals, Belgien" },
 };
 
@@ -56,8 +56,8 @@ export const SETTINGS_LANGS = Object.keys(FOOTER_I18N);
 
 const footer = [
   ["Organs", [["New organs", "/organs"], ["Organ Composer", "/organ-composer"], ["MIDI conversion", "/midi-conversion"], ["Organ pipes", "/organ-pipes"], ["Restoration", "/frank-decap"]]],
-  ["Instruments", [["Accordion Pedestal & Cube", "/accordion"], ["Pipes", "/pipes"], ["Percussion Unit", "/percussion-unit"], ["Mallet Percussion", "/mallet-percussion"], ["Bellow Organ", "/bellow-organ"], ["Brass Core", "/brass-core"]]],
-  ["Decap", [["SmartValve", "/smartvalve"], ["For organ builders", "/smartvalve-for-organ-builders"], ["Software", "/software"], ["Work", "/work"], ["About", "/about"], ["Journal", "/blog"], ["Contact", "/contact"]]],
+  ["Instruments", [["Accordion Pedestal & Cube", "/accordion"], ["Pipes", "/pipes"], ["Percussion Unit", "/percussion-unit"], ["Mallet Percussion", "/mallet-percussion"], ["Bellow Organ", "/bellow-organ"]]],
+  ["Decap", [["SmartValve", "/smartvalve"], ["For organ builders", "/smartvalve-for-organ-builders"], ["Brass Core", "/brass-core"], ["Software", "/software"], ["Work", "/work"], ["About", "/about"], ["Journal", "/blog"], ["Contact", "/contact"]]],
 ];
 
 export const siteUpdates = [

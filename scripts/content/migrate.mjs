@@ -129,7 +129,11 @@ function applyImages(doc) {
     const [si, ii] = slot.split(".").map(Number);
     const slice = doc.data.slices[si];
     const target = ii === undefined ? slice?.primary : slice?.items?.[ii];
-    if (!target) throw new Error(`content/images.mjs: ${doc.uid} slot ${slot} does not exist`);
+    if (!target) {
+      // A translation that is not yet in step with the English structure: skip, don't fail.
+      if (doc.lang !== "en-us") continue;
+      throw new Error(`content/images.mjs: ${doc.uid} slot ${slot} does not exist`);
+    }
     if (img.artist) {
       const portrait = homeArtists.find((a) => a.artist_name === img.artist)?.artist_portrait;
       if (portrait?.url) target.image = { ...portrait, alt: img.alt };

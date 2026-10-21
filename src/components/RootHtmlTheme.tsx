@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { LOCALE_HTML_LANG, isLocaleHomePathname, resolveUrlLang } from "@/i18n";
+import { LOCALE_HTML_LANG, resolveUrlLang } from "@/i18n";
 
 /**
  * Sets <html lang> and page chrome background from the URL without `headers()`
@@ -13,13 +13,11 @@ export function RootHtmlTheme() {
 
   useEffect(() => {
     const urlLang = resolveUrlLang(pathname.split("/").filter(Boolean)[0] ?? "en");
-    const isHome = isLocaleHomePathname(pathname);
     const html = document.documentElement;
 
     html.lang = LOCALE_HTML_LANG[urlLang];
-    // Toggle only the chrome background: <html> also carries font variable classes from the root layout.
-    html.classList.toggle("bg-white", isHome);
-    html.classList.toggle("bg-neutral-950", !isHome);
+    // The frame around the rounded page sheet is always dark.
+    html.classList.add("bg-neutral-950");
   }, [pathname]);
 
   return null;

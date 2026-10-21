@@ -21,7 +21,7 @@ const api = (path, init = {}) =>
 
 const DEFAULT_SLICES = [
   "siteHero", "siteTextMedia", "siteCardGrid", "siteSteps", "siteTimeline", "siteFacts", "siteQuote",
-  "siteFaq", "siteCta", "siteDownloads", "siteSound", "siteVideo", "contactForm", "organComposer",
+  "siteFaq", "siteCta", "siteDownloads", "siteSound", "siteVideo", "siteTiles", "contactForm", "organComposer",
 ];
 const DEFAULT_TYPES = ["page", "project", "settings"];
 

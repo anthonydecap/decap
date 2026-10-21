@@ -8,7 +8,7 @@ import {
 } from "@prismicio/react";
 import { Container } from "@/components/Container";
 import { FadeIn, FadeInStagger } from "@/components/FadeIn";
-import { smartValveGradient } from "@/lib/brand";
+import { isDarkColor, smartValveGradient } from "@/lib/brand";
 
 /**
  * Props for `SmartValveLanding`.
@@ -29,7 +29,7 @@ const SmartValveLanding: FC<SmartValveLandingProps> = ({ slice }) => {
   const bgColor = background_color || "#0a0a0a";
 
   return (
-    <div className="relative overflow-hidden" style={{ backgroundColor: bgColor }}>
+    <div data-surface={isDarkColor(bgColor) ? "dark" : "light"} className="relative overflow-hidden" style={{ backgroundColor: bgColor }}>
       {/* Background Image with Apple-style animation */}
       <div className="absolute inset-0 mx-auto">
         <div 

@@ -8,6 +8,7 @@ import { prismicLinkHref, urlLangFromPathname, type LinkLike } from "@/lib/prism
 import { Container } from "./Container";
 import { FadeIn } from "./FadeIn";
 import { Logo } from "./Logo";
+import { BrandText } from "./BrandText";
 import { defaultFooterSections } from "@/lib/site-nav";
 import { openCookieSettings } from "./Analytics";
 import { useUiCopy } from "@/lib/ui-copy";
@@ -47,17 +48,17 @@ function Navigation({ sections }: { sections: FooterSection[] }) {
       <ul role="list" className="grid grid-cols-2 gap-8 sm:grid-cols-3">
         {sections.map((section, sectionIndex) => (
           <li key={sectionIndex}>
-            <div className="font-display text-sm font-semibold tracking-wider text-neutral-950">
+            <div className="font-display text-sm font-semibold tracking-wider text-ink">
               {section.section_title}
             </div>
-            <ul role="list" className="mt-4 text-sm text-neutral-700">
+            <ul role="list" className="mt-4 text-sm text-ink-muted">
               {section.section_links.map((link, linkIndex) => (
                 <li key={linkIndex} className="mt-4">
                   <Link
                     href={prismicLinkHref(link.link_url, "#", urlLang)}
-                    className="transition hover:text-neutral-950"
+                    className="transition hover:text-ink"
                   >
-                    {link.link_text}
+                    <BrandText>{link.link_text}</BrandText>
                   </Link>
                 </li>
               ))}
@@ -93,15 +94,15 @@ export function Footer({
 
   return (
     <footer
-      className={clsx("mt-24 w-full sm:mt-32 lg:mt-40", className)}
+      className={clsx("w-full bg-page pt-24 text-ink sm:pt-32 lg:pt-40", className)}
     >
       <Container>
         <FadeIn>
         <div className="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2">
           <Navigation sections={footerSections} />
           <div className="flex lg:justify-end">
-            <address className="max-w-sm text-sm not-italic text-neutral-700">
-              <h2 className="font-display text-sm font-semibold tracking-wider text-neutral-950">
+            <address className="max-w-sm text-sm not-italic text-ink-muted">
+              <h2 className="font-display text-sm font-semibold tracking-wider text-ink">
                 {companyName}
               </h2>
               <div className="mt-4 space-y-1">
@@ -116,19 +117,19 @@ export function Footer({
                 )}
               </div>
               <p className="mt-4">
-                <a href={`tel:${companyPhone.replace(/[^+\d]/g, "")}`} className="transition hover:text-neutral-950">
+                <a href={`tel:${companyPhone.replace(/[^+\d]/g, "")}`} className="transition hover:text-ink">
                   {companyPhone}
                 </a>
                 <br />
-                <a href={`mailto:${companyEmail}`} className="transition hover:text-neutral-950">
+                <a href={`mailto:${companyEmail}`} className="transition hover:text-ink">
                   {companyEmail}
                 </a>
               </p>
-              <p className="mt-4 text-neutral-500">{companyVat}</p>
+              <p className="mt-4 text-ink-muted">{companyVat}</p>
             </address>
           </div>
         </div>
-        <div className="mt-24 mb-20 flex flex-wrap items-end justify-between gap-x-6 gap-y-4 border-t border-neutral-950/10 pt-12">
+        <div className="mt-24 mb-20 flex flex-wrap items-end justify-between gap-x-6 gap-y-4 border-t border-line pt-12">
           <Link href="/" aria-label="Home">
             {logo ? (
               <PrismicNextImage field={logo} className="h-8 w-auto" alt="" />
@@ -136,11 +137,11 @@ export function Footer({
               <Logo className="h-6" />
             )}
           </Link>
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-neutral-700">
-            <Link href={prismicLinkHref({ url: "/privacy-policy" }, "#", urlLangFromPathname(pathname))} className="transition hover:text-neutral-950">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-ink-muted">
+            <Link href={prismicLinkHref({ url: "/privacy-policy" }, "#", urlLangFromPathname(pathname))} className="transition hover:text-ink">
               {ui.privacy}
             </Link>
-            <button type="button" onClick={openCookieSettings} className="transition hover:text-neutral-950">
+            <button type="button" onClick={openCookieSettings} className="transition hover:text-ink">
               {ui.settings}
             </button>
             <p>
