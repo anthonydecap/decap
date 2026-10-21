@@ -202,8 +202,10 @@ export default {
       type: "site_video",
       primary: {
         eyebrow: "Bekijk",
-        title: "L'Explorateur in concert",
-        video_brief: "Video of Yves Rechsteiner playing L'Explorateur in concert, e.g. Lyon, Chapelle de la Trinité",
+        title: "Gamut verkent L’Explorateur",
+        intro: "Het Berlijnse duo Gamut, in residentie voor Toulouse les Orgues, toont wat windregeling per pijp mogelijk maakt.",
+        video: "https://www.youtube.com/watch?v=IvDFsVgjlno",
+        video_brief: "Gamut playing L'Explorateur in residency",
       },
     },
     {

@@ -146,3 +146,6 @@ src/generated/
 /playwright-report/
 music-migration-*.json
 .content-build/
+
+# Graded photos uploaded to Prismic (originals stay with Decap)
+content/media/

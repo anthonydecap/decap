@@ -72,11 +72,14 @@ export default {
       ],
     },
     {
-      type: "site_video",
+      type: "site_cta",
       primary: {
-        eyebrow: "Video",
+        eyebrow: "Ansehen",
         title: "The Mekanics, live",
-        video_brief: "Live clip of BELEM and Walter Hus with the mechanical orchestra",
+        body: "BELEM und Walter Hus mit dem mechanischen Orchester. Das Video läuft auf YouTube.",
+        primary_cta_label: "Auf YouTube ansehen",
+        primary_cta_link: "https://www.youtube.com/watch?v=uIrJGwcmgwY",
+        tone: "Tinted",
       },
     },
     {

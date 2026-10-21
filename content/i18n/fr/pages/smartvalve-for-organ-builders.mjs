@@ -96,6 +96,25 @@ export default {
       },
     },
     {
+      type: "site_video",
+      primary: {
+        eyebrow: "Recherche artistique",
+        title: "Un tuyau, de nombreux sons",
+        intro: "Avec SmartValve, un tuyau n’est plus limité à un seul son caractéristique. Le contrôle en temps réel de la pression du vent ouvre une nouvelle palette de sons à partir de tuyaux d’orgue traditionnels. Ici, Mauricio Silva Orendain, chercheur en microtonalité, joue des tuyaux via SmartValve avec une bague gestuelle MIDI.",
+        video: "https://www.youtube.com/shorts/M4y9bnKHQeQ",
+        caption: "Mauricio Silva Orendain pilote des tuyaux d’orgue via SmartValve avec une bague gestuelle MIDI.",
+        video_brief: "Mauricio Silva Orendain playing pipes through SmartValve with a MIDI gesture ring",
+      },
+    },
+    {
+      type: "site_quote",
+      primary: {
+        quote: "SmartValve crée des liens nouveaux et encore largement inexplorés entre les langages numériques et la physicalité du tuyau comme générateur sonore acoustique. Il ouvre l’instrument aux non-organistes, au théâtre, aux installations sonores et à la recherche artistique.",
+        name: "Mauricio Silva Orendain",
+        role: "Chercheur en microtonalité",
+      },
+    },
+    {
       type: "site_text_media",
       primary: {
         eyebrow: "Jeux numériques",

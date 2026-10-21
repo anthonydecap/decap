@@ -43,6 +43,31 @@ export default {
       },
     },
     {
+      type: "site_card_grid",
+      primary: {
+        eyebrow: "Achter de schermen",
+        title: "Van vrachtwagen tot podium, elke avond",
+        intro: "Het Belcanto-orgel toerde langs de grootste zalen van de Belgische cultuurcentra. Elke voorstelling begon met de DECAP-ploeg die het orgel uitlaadde, opbouwde en stemde.",
+        columns: "3",
+        card_style: "Image cards",
+      },
+      items: [
+        { title: "Inladen", body: "Flightcases en orgelmodules gaan van de vrachtwagen naar het lege podium.", image_brief: "Backstage load-in with the DECAP crew, 4:3" },
+        { title: "Het orgel opbouwen", body: "Het modulaire podiumorgel wordt op zijn frame gemonteerd en bekabeld.", image_brief: "The modular stage organ being assembled, 4:3" },
+        { title: "Klaar voor de voorstelling", body: "Laatste controles onder de podiumlichten, enkele minuten voor het publiek binnenkomt.", image_brief: "The organ backstage under an amber spotlight, crew at work, 4:3" },
+      ],
+    },
+    {
+      type: "site_video",
+      primary: {
+        eyebrow: "Bekijk",
+        title: "Guido Belcanto en het Belcanto-orgel",
+        intro: "Een fragment uit Balzaal der Gebroken Harten, met het Belcanto-orgel op het podium.",
+        video: "https://www.youtube.com/watch?v=0kfG-wFjMDk",
+        video_brief: "Guido Belcanto with the Belcanto organ on stage",
+      },
+    },
+    {
       type: "site_facts",
       primary: {
         eyebrow: "In een oogopslag",

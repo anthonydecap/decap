@@ -102,7 +102,11 @@ async function loadExistingAssets() {
     });
     if (!res.ok) break;
     const page = await res.json();
-    for (const a of page.items ?? []) if (!byName.has(a.filename)) byName.set(a.filename, a);
+    // Duplicates (same filename): always use the oldest copy, so every run picks the same one.
+    for (const a of page.items ?? []) {
+      const known = byName.get(a.filename);
+      if (!known || a.created_at < known.created_at) byName.set(a.filename, a);
+    }
     cursor = page.items?.length ? page.cursor : "";
   } while (cursor);
   return byName;
@@ -117,6 +121,8 @@ const assetField = (a, alt) => ({
   edit: { x: 0, y: 0, zoom: 1, background: "transparent" },
 });
 
+const localUploads = new Map();
+
 const homeArtists = find("page", "home", "en-us")?.data.slices?.find((s) => s.slice_type === "home_artists")?.items ?? [];
 function applyImages(doc) {
   for (const [slot, img] of Object.entries(imageMap[doc.uid] ?? {})) {
@@ -128,6 +134,20 @@ function applyImages(doc) {
       const portrait = homeArtists.find((a) => a.artist_name === img.artist)?.artist_portrait;
       if (portrait?.url) target.image = { ...portrait, alt: img.alt };
       else console.log(`  ⚠ ${doc.uid} ${slot}: no portrait for ${img.artist}`);
+    } else if (img.file) {
+      // A local photo (content/media, not committed): uploaded once, then reused by filename.
+      const filename = img.file.split("/").pop();
+      const existing = existingAssets.get(filename);
+      if (existing) target.image = assetField(existing, img.alt);
+      else if (existsSync(join(import.meta.dirname, "..", "..", img.file))) {
+        // One upload per file per run, however often the photo is used.
+        if (!localUploads.has(filename)) {
+          const blob = new Blob([readFileSync(join(import.meta.dirname, "..", "..", img.file))], { type: "image/jpeg" });
+          localUploads.set(filename, migration.createAsset(blob, filename, { alt: img.alt }));
+        }
+        target.image = localUploads.get(filename);
+      }
+      else console.log(`  ⚠ ${doc.uid} ${slot}: ${img.file} not found and not in Prismic yet`);
     } else {
       const filename = decodeURIComponent(img.url.split("/").pop());
       const existing = existingAssets.get(filename);
