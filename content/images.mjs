@@ -28,8 +28,8 @@ export default {
       "alt": "Pearl-white Decap orchestrion with accordion and drums"
     },
     "1.2": {
-      "file": "content/media/decap-balzaal-der-gebroken-harten-backstage-organ-and-amber-spotlight-crew.jpg",
-      "alt": "A Decap organ backstage under an amber spotlight, crew at work"
+      "file": "content/media/decap-beat-machine-dance-organ.jpg",
+      "alt": "A Decap dance organ with drums, accordions and pipes on a lit stage"
     },
     "1.3": {
       "file": "content/media/decap-concert-pianist-and-red-accordion.jpg",
@@ -204,8 +204,8 @@ export default {
       "alt": "A Decap dance organ on stage"
     },
     "4": {
-      "url": "https://orchestrionix.com/wp-content/uploads/2023/11/Products-Orchestrion-Complete-Two-Acc-01.jpg",
-      "alt": "Accordions and drums in the front of a Decap orchestrion"
+      "file": "content/media/decap-beat-machine-dance-organ.jpg",
+      "alt": "Drums, accordions and pipes in the front of a Decap dance organ"
     },
     "5": {
       "url": "https://orchestrionix.com/wp-content/uploads/2023/08/decap-home-img3.png",
@@ -220,8 +220,8 @@ export default {
       "alt": "Render of a modular Decap organ"
     },
     "1.1": {
-      "url": "https://orchestrionix.com/wp-content/uploads/2023/10/cb0efde8-a27a-48f1-afd3-afb5a1fb60d2.png",
-      "alt": "Render of the bespoke organ Isabella"
+      "file": "content/media/decap-stained-glass-facade-panel-dancers.jpg",
+      "alt": "Lit stained-glass façade panel with a line of dancers, made for a bespoke Decap organ"
     },
     "1.2": {
       "url": "https://orchestrionix.com/wp-content/uploads/2023/08/20221008_mohaibalazs_074-2.jpeg",
@@ -282,8 +282,8 @@ export default {
       "alt": "Archive photo: François Decap at the delivery of a new organ"
     },
     "2.10": {
-      "file": "content/media/decap-balzaal-der-gebroken-harten-organ.jpg",
-      "alt": "The Belcanto organ on stage in Balzaal der Gebroken Harten"
+      "file": "content/media/decap-guido-belcanto-balzaal-der-gebroken-harten-poster.jpg",
+      "alt": "Poster of Balzaal der Gebroken Harten: Guido Belcanto dancing in front of the Decap organ"
     }
   },
   "work": {
@@ -342,9 +342,17 @@ export default {
     "3.6": {
       "url": "https://orchestrionix.com/wp-content/uploads/2023/08/Untitled-1-41.png",
       "alt": "Pat Metheny with his orchestrion"
+    },
+    "3.5": {
+      "file": "content/media/decap-circus-ronaldo-la-cucina-dell-arte-orchestrion-cart.jpg",
+      "alt": "Circus Ronaldo with the Decap orchestrion cart"
     }
   },
   "circus-ronaldo": {
+    "0": {
+      "file": "content/media/decap-circus-ronaldo-la-cucina-dell-arte-orchestrion-cart.jpg",
+      "alt": "Circus Ronaldo in La Cucina dell’Arte, with the Decap orchestrion cart on stage"
+    },
     "2": {
       "url": "https://orchestrionix.com/wp-content/uploads/2023/08/s.png",
       "alt": "Brass Core on a trumpet"
