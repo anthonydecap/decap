@@ -43,6 +43,21 @@ export default {
       },
     },
     {
+      type: "site_card_grid",
+      primary: {
+        eyebrow: "Dans les coulisses",
+        title: "Du camion à la scène, chaque soir",
+        intro: "L’orgue Belcanto a tourné dans les plus grandes salles des centres culturels de Belgique. Chaque spectacle commençait par l’équipe DECAP qui déchargeait, montait et accordait l’orgue.",
+        columns: "3",
+        card_style: "Image cards",
+      },
+      items: [
+        { title: "Déchargement", body: "Flight-cases et modules d’orgue passent du camion à la scène encore vide.", image_brief: "Backstage load-in with the DECAP crew, 4:3" },
+        { title: "Montage de l’orgue", body: "L’orgue de scène modulaire est assemblé et câblé sur son châssis.", image_brief: "The modular stage organ being assembled, 4:3" },
+        { title: "Prêt pour le spectacle", body: "Derniers réglages sous les projecteurs, quelques minutes avant l’entrée du public.", image_brief: "The organ backstage under an amber spotlight, crew at work, 4:3" },
+      ],
+    },
+    {
       type: "site_facts",
       primary: {
         eyebrow: "En bref",

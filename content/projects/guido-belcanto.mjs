@@ -42,6 +42,21 @@ export default {
       },
     },
     {
+      type: "site_card_grid",
+      primary: {
+        eyebrow: "Behind the scenes",
+        title: "From truck to stage, every evening",
+        intro: "The Belcanto organ toured the largest halls of Belgium's cultural centres. Every show began with the DECAP crew unloading, building and tuning the organ.",
+        columns: "3",
+        card_style: "Image cards",
+      },
+      items: [
+        { title: "Load-in", body: "Flight cases and organ modules come off the truck and onto the empty stage.", image_brief: "Backstage load-in with the DECAP crew, 4:3" },
+        { title: "Building the organ", body: "The modular stage organ is assembled and cabled on its frame.", image_brief: "The modular stage organ being assembled, 4:3" },
+        { title: "Ready for the show", body: "Last checks under the stage lights, minutes before the audience comes in.", image_brief: "The organ backstage under an amber spotlight, crew at work, 4:3" },
+      ],
+    },
+    {
       type: "site_facts",
       primary: {
         eyebrow: "At a glance",

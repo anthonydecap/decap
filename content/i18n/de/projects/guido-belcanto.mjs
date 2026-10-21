@@ -43,6 +43,21 @@ export default {
       },
     },
     {
+      type: "site_card_grid",
+      primary: {
+        eyebrow: "Hinter den Kulissen",
+        title: "Vom Lkw auf die Bühne, jeden Abend",
+        intro: "Die Belcanto-Orgel tourte durch die größten Säle der belgischen Kulturzentren. Jede Vorstellung begann damit, dass die DECAP-Crew die Orgel auslud, aufbaute und stimmte.",
+        columns: "3",
+        card_style: "Image cards",
+      },
+      items: [
+        { title: "Anlieferung", body: "Flightcases und Orgelmodule kommen vom Lkw auf die leere Bühne.", image_brief: "Backstage load-in with the DECAP crew, 4:3" },
+        { title: "Aufbau der Orgel", body: "Die modulare Bühnenorgel wird auf ihrem Gestell montiert und verkabelt.", image_brief: "The modular stage organ being assembled, 4:3" },
+        { title: "Bereit für die Show", body: "Letzte Kontrollen im Bühnenlicht, wenige Minuten bevor das Publikum kommt.", image_brief: "The organ backstage under an amber spotlight, crew at work, 4:3" },
+      ],
+    },
+    {
       type: "site_facts",
       primary: {
         eyebrow: "Auf einen Blick",
