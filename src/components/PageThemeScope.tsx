@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import type { PageTheme } from "@/lib/brand";
 
 /**
@@ -7,7 +6,7 @@ import type { PageTheme } from "@/lib/brand";
  */
 export function PageThemeScope({ theme, children }: { theme: PageTheme; children: React.ReactNode }) {
   return (
-    <div data-theme={theme} className={clsx("bg-page text-ink", theme === "atelier" && "atelier-paper")}>
+    <div data-theme={theme} className="bg-page text-ink">
       {children}
     </div>
   );

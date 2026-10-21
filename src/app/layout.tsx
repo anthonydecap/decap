@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
-import { Fraunces } from "next/font/google";
 import { getSiteOrigin } from "@/lib/site-url";
 import { RootHtmlTheme } from "@/components/RootHtmlTheme";
 import { Analytics } from "@/components/Analytics";
 import "./globals.css";
-
-// Serif for Atelier Frank Decap pages only (see the "atelier" page style in globals.css).
-const atelierSerif = Fraunces({ subsets: ["latin"], variable: "--font-atelier", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteOrigin()),
@@ -21,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`h-full text-base antialiased ${atelierSerif.variable}`}>
+    <html lang="en" suppressHydrationWarning className="h-full text-base antialiased">
       <body className="flex min-h-full flex-col">
         <RootHtmlTheme />
         {children}

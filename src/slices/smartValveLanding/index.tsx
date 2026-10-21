@@ -29,7 +29,7 @@ const SmartValveLanding: FC<SmartValveLandingProps> = ({ slice }) => {
   const bgColor = background_color || "#0a0a0a";
 
   return (
-    <div className="relative overflow-hidden" style={{ backgroundColor: bgColor }}>
+    <div data-surface="dark" className="relative overflow-hidden" style={{ backgroundColor: bgColor }}>
       {/* Background Image with Apple-style animation */}
       <div className="absolute inset-0 mx-auto">
         <div 

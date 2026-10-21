@@ -7,6 +7,7 @@ import { type SliceComponentProps } from "@prismicio/react";
 import clsx from "clsx";
 import { FadeIn } from "@/components/FadeIn";
 import { MediaSlot } from "@/components/MediaSlot";
+import { BrandText } from "@/components/BrandText";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import { Section, SectionHeader, SiteRichText, cardClass, toneFromSelect } from "@/lib/site-ui";
 import { useUiCopy, type UiCopy } from "@/lib/ui-copy";
@@ -112,7 +113,7 @@ const OrganComposer: FC<SliceComponentProps<any>> = ({ slice }) => {
                             on ? "border-accent bg-accent text-accent-contrast" : "border-line text-ink hover:border-ink",
                           )}
                         >
-                          {option}
+                          <BrandText>{option}</BrandText>
                         </button>
                       );
                     })}

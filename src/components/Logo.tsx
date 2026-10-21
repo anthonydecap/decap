@@ -31,7 +31,7 @@ export function Logo({ invert = false, className, ...rest }: LogoProps) {
       viewBox="0 0 129 22"
       role="img"
       aria-label="Decap"
-      className={clsx(invert ? 'fill-white' : 'fill-neutral-950', 'transition-colors', className)}
+      className={clsx(invert ? 'fill-white' : 'fill-current', 'transition-colors', className)}
       {...props}
     >
       {LETTERS.map((d) => (
@@ -49,7 +49,7 @@ export function Logomark({ invert = false, className, ...rest }: LogoProps) {
       viewBox="-1 -0.5 22.2 22.2"
       role="img"
       aria-label="Decap"
-      className={clsx(invert ? 'fill-white' : 'fill-neutral-950', className)}
+      className={clsx(invert ? 'fill-white' : 'fill-current', className)}
       {...props}
     >
       <path d={LETTERS[0]} />
