@@ -20,7 +20,7 @@ visitor around the workshop: precise, warm, a little proud, no sales pitch.
 4. **Lead with what the reader gets**, then how. Specs support claims; they don't replace them.
 5. **British English** spelling (colour, catalogue, centre), metric units, € with a space before
    the amount (€ 150), "excl. VAT".
-6. **Names exactly as in FACTS.md:** Decap, Decap Herentals, SmartValve, Brass Core, Orchestrionix,
+6. **Names exactly as in FACTS.md:** Decap, Decap Herentals, smARTvalve, Brass Core, Orchestrionix,
    Virtual Orchestrion, MIDIMapper, Atelier Frank Decap. Never IPU, uPhonic, VirtuPhonic,
    RhythmiCoil.
 7. **Never invent** customers, numbers, prices, dates or quotes. Use `[TO CHECK: …]`.

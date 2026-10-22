@@ -1,27 +1,27 @@
-/** SmartValve for organ builders (Prismic page "smartvalve-for-organ-builders"): the B2B page. No prices, no competitor names. */
+/** smARTvalve for organ builders (Prismic page "smartvalve-for-organ-builders"): the B2B page. No prices, no competitor names. */
 export default {
   type: "page",
   uid: "smartvalve-for-organ-builders",
-  title: "SmartValve for organ builders",
+  title: "smARTvalve for organ builders",
   theme: "smartvalve",
-  meta_title: "Proportional Pipe Valves for Organ Builders | SmartValve",
+  meta_title: "Proportional Pipe Valves for Organ Builders | smARTvalve",
   meta_description:
-    "SmartValve: a proportional organ pipe valve with its own processor. Closed-loop wind control per pipe, digital stops and optical MIDI, for new organs and retrofits.",
+    "smARTvalve: a proportional organ pipe valve with its own processor. Closed-loop wind control per pipe, digital stops and optical MIDI, for new organs and retrofits.",
   slices: [
     {
       type: "site_hero",
       primary: {
         layout: "Split",
-        eyebrow: "SmartValve for organ builders",
+        eyebrow: "smARTvalve for organ builders",
         title: "A proportional pipe valve with a processor in every valve",
         intro:
-          "SmartValve controls the wind to each pipe on its own, more than 1,000 times a second. Your pipes keep their voice; the organ gains dynamics, expression and stops that are set in software. Designed and built by Decap in Herentals, and proven on the concert stage.",
+          "smARTvalve controls the wind to each pipe on its own, more than 1,000 times a second. Your pipes keep their voice; the organ gains dynamics, expression and stops that are set in software. Designed and built by Decap in Herentals, and proven on the concert stage.",
         primary_cta_label: "Request technical documentation",
         primary_cta_link: "#contact-form",
-        secondary_cta_label: "Discover SmartValve",
+        secondary_cta_label: "Discover smARTvalve",
         secondary_cta_link: "/smartvalve",
         note: "For new organs, and for existing ones by replacing the pipe panels. Prices on request.",
-        image_brief: "A row of SmartValves mounted under pipes on a wind chest, dark background, low side light, portrait 4:5",
+        image_brief: "A row of smARTvalves mounted under pipes on a wind chest, dark background, low side light, portrait 4:5",
       },
     },
     {
@@ -42,7 +42,7 @@ export default {
         eyebrow: "Three generations of pipe valves",
         title: "From open-or-closed to every pipe under control",
         intro:
-          "Electric actions have long treated a pipe valve as a switch. Newer valves follow the key. SmartValve goes one step further: it controls the wind itself.",
+          "Electric actions have long treated a pipe valve as a switch. Newer valves follow the key. smARTvalve goes one step further: it controls the wind itself.",
         columns: "3",
         card_style: "Text cards",
       },
@@ -58,7 +58,7 @@ export default {
           body: "The valve opening follows the key travel, so the organist shapes the attack. Once the key is down, the pipe stays where it is.",
         },
         {
-          tag: "SmartValve",
+          tag: "smARTvalve",
           title: "Closed-loop wind control",
           body: "A processor in every valve regulates the wind to its pipe, during the attack and while the note sounds. It can follow the key, or anything else you map to it.",
         },
@@ -70,10 +70,10 @@ export default {
         eyebrow: "Every pipe, its own wind",
         title: "Measured and corrected while the note sounds",
         body:
-          "SmartValve is small enough to sit on the pipe panel, a few millimetres from the pipe foot. Its processor measures the pressure drop on the input side and opens further to compensate, more than 1,000 times a second. When many pipes speak at once, every pipe keeps its wind. In L'Explorateur that made wind regulators unnecessary: a blower and a distribution box are enough.\n\nThe base pressure of each pipe is stored in the valve, from 0 to 200%. So part of the regulation that used to happen at the voicing bench can be done, and redone, in software.",
+          "smARTvalve is small enough to sit on the pipe panel, a few millimetres from the pipe foot. Its processor measures the pressure drop on the input side and opens further to compensate, more than 1,000 times a second. When many pipes speak at once, every pipe keeps its wind. In L'Explorateur that made wind regulators unnecessary: a blower and a distribution box are enough.\n\nThe base pressure of each pipe is stored in the valve, from 0 to 200%. So part of the regulation that used to happen at the voicing bench can be done, and redone, in software.",
         media_side: "Image right",
         aspect: "Landscape 4:3",
-        image_brief: "Close-up of one SmartValve with its electronics visible, dark background, 4:3",
+        image_brief: "Close-up of one smARTvalve with its electronics visible, dark background, 4:3",
       },
       items: [
         { point: "Regulated a few millimetres from the pipe foot" },
@@ -87,10 +87,10 @@ export default {
         eyebrow: "Key position, or anything else",
         title: "Map any MIDI to any pipe",
         body:
-          "SmartValve is fully digital, so you decide what drives it. Map the key position to the valve opening and it behaves exactly like a position-following valve. Map velocity, aftertouch, a controller or an automation curve from a sequencer, and the same pipe does what no mechanical valve can.\n\n- Crescendo and decrescendo on a held note\n- Vibrato and tremolo per pipe, not per wind chest\n- Pressure curves, slope and decay for every note\n- Classic on/off behaviour where the music asks for it",
+          "smARTvalve is fully digital, so you decide what drives it. Map the key position to the valve opening and it behaves exactly like a position-following valve. Map velocity, aftertouch, a controller or an automation curve from a sequencer, and the same pipe does what no mechanical valve can.\n\n- Crescendo and decrescendo on a held note\n- Vibrato and tremolo per pipe, not per wind chest\n- Pressure curves, slope and decay for every note\n- Classic on/off behaviour where the music asks for it",
         media_side: "Image left",
         aspect: "Landscape 4:3",
-        image_brief: "Screen of the SmartValve software with a pressure curve, next to an organ keyboard, 4:3",
+        image_brief: "Screen of the smARTvalve software with a pressure curve, next to an organ keyboard, 4:3",
         tone: "Tinted",
       },
     },
@@ -99,16 +99,16 @@ export default {
       primary: {
         eyebrow: "Artistic research",
         title: "One pipe, many sounds",
-        intro: "With SmartValve a single pipe is no longer limited to one characteristic sound. Real-time control of the wind pressure opens a new palette of sounds from traditional organ pipes. Here Mauricio Silva Orendain, who researches microtonality, plays pipes through SmartValve with a MIDI gesture ring.",
+        intro: "With smARTvalve a single pipe is no longer limited to one characteristic sound. Real-time control of the wind pressure opens a new palette of sounds from traditional organ pipes. Here Mauricio Silva Orendain, who researches microtonality, plays pipes through smARTvalve with a MIDI gesture ring.",
         video: "https://www.youtube.com/shorts/M4y9bnKHQeQ",
-        caption: "Mauricio Silva Orendain controls organ pipes through SmartValve with a MIDI gesture ring.",
-        video_brief: "Mauricio Silva Orendain playing pipes through SmartValve with a MIDI gesture ring",
+        caption: "Mauricio Silva Orendain controls organ pipes through smARTvalve with a MIDI gesture ring.",
+        video_brief: "Mauricio Silva Orendain playing pipes through smARTvalve with a MIDI gesture ring",
       },
     },
     {
       type: "site_quote",
       primary: {
-        quote: "SmartValve creates new and largely unexplored connections between digital languages and the physicality of the pipe as an acoustic sound generator. It opens the instrument to non-organists, and to theatre, sound installations and artistic research.",
+        quote: "smARTvalve creates new and largely unexplored connections between digital languages and the physicality of the pipe as an acoustic sound generator. It opens the instrument to non-organists, and to theatre, sound installations and artistic research.",
         name: "Mauricio Silva Orendain",
         role: "Researcher in microtonality",
       },
@@ -119,10 +119,10 @@ export default {
         eyebrow: "Digital stops",
         title: "Stops set in software, in any combination",
         body:
-          "Because every pipe has its own processor and address, a stop is no longer fixed in the wind chest. With our software you assign any combination of pipes to a stop, each pipe with its own pressure settings. In an organ built fully on SmartValve, the number of combinations is practically unlimited; when SmartValve extends an existing organ, the original control system can set limits, and we look at that per project.\n\nThe organ is not finished on delivery day: stops can be added or changed later, without touching the chest.",
+          "Because every pipe has its own processor and address, a stop is no longer fixed in the wind chest. With our software you assign any combination of pipes to a stop, each pipe with its own pressure settings. In an organ built fully on smARTvalve, the number of combinations is practically unlimited; when smARTvalve extends an existing organ, the original control system can set limits, and we look at that per project.\n\nThe organ is not finished on delivery day: stops can be added or changed later, without touching the chest.",
         media_side: "Image right",
         aspect: "Landscape 4:3",
-        image_brief: "Screenshot of the stop configuration in the SmartValve software, pipes grouped into stops, 4:3",
+        image_brief: "Screenshot of the stop configuration in the smARTvalve software, pipes grouped into stops, 4:3",
       },
       items: [
         { point: "Any combination of pipes as a stop" },
@@ -136,10 +136,10 @@ export default {
         eyebrow: "Optical MIDI",
         title: "From the console to the chest over light",
         body:
-          "SmartValves are connected over Optical MIDI: more than 100 times the speed of classic MIDI, over distances of 200 m and more. Light carries no electrical interference, so the console can stand wherever the organ needs it. [Read more about SmartValve](/smartvalve).",
+          "smARTvalves are connected over Optical MIDI: more than 100 times the speed of classic MIDI, over distances of 200 m and more. Light carries no electrical interference, so the console can stand wherever the organ needs it. [Read more about smARTvalve](/smartvalve).",
         media_side: "Image left",
         aspect: "Landscape 4:3",
-        image_brief: "Optical MIDI cable plugged into a SmartValve controller, glowing connector, dark background, 4:3",
+        image_brief: "Optical MIDI cable plugged into a smARTvalve controller, glowing connector, dark background, 4:3",
       },
     },
     {
@@ -147,7 +147,7 @@ export default {
       primary: {
         quote: "This technology essentially turns a pipe organ into a physical synthesizer.",
         name: "Studio 31, Basel",
-        role: "On L'Explorateur, the transportable concert organ with SmartValve on every pipe",
+        role: "On L'Explorateur, the transportable concert organ with smARTvalve on every pipe",
       },
     },
     {
@@ -159,7 +159,7 @@ export default {
       items: [
         { title: "Tell us about the project", body: "A new organ or an existing one, the wind chests, the number of pipes and what you want the instrument to do." },
         { title: "Technical documentation", body: "Specifications, dimensions and wiring for your project, so your team can judge the integration." },
-        { title: "Demonstration", body: "Hear SmartValve on real pipes, in our Herentals workshop or by video call." },
+        { title: "Demonstration", body: "Hear smARTvalve on real pipes, in our Herentals workshop or by video call." },
         { title: "Integration support", body: "We support your team with the installation, the configuration of the valves and the digital stops." },
       ],
     },
@@ -170,15 +170,15 @@ export default {
       },
       items: [
         {
-          question: "Can SmartValve behave like a classic valve?",
-          answer: "Yes. SmartValve is fully digital: it can work as an on/off valve, follow the key position, or respond to velocity, aftertouch and any other MIDI you map to it. You choose per pipe and per stop.",
+          question: "Can smARTvalve behave like a classic valve?",
+          answer: "Yes. smARTvalve is fully digital: it can work as an on/off valve, follow the key position, or respond to velocity, aftertouch and any other MIDI you map to it. You choose per pipe and per stop.",
         },
         {
           question: "Can it go into an existing organ?",
-          answer: "Yes. SmartValves are mounted on a pipe panel, so an existing organ can be converted by replacing its pipe panels. In a full SmartValve organ everything is set in software; when SmartValve extends an existing installation, the limits of its original control system apply. We look at every project first.",
+          answer: "Yes. smARTvalves are mounted on a pipe panel, so an existing organ can be converted by replacing its pipe panels. In a full smARTvalve organ everything is set in software; when smARTvalve extends an existing installation, the limits of its original control system apply. We look at every project first.",
         },
         {
-          question: "Which consoles and control systems work with SmartValve?",
+          question: "Which consoles and control systems work with smARTvalve?",
           answer: "Anything that speaks MIDI: a console with MIDI output, a sequencer or a computer. Over Optical MIDI the console can be 200 m or more away.",
         },
         {
@@ -186,8 +186,8 @@ export default {
           answer: "Stops defined in software instead of in the wind chest. You assign any combination of pipes to a stop, with its own pressure settings, and you can change stops after installation.",
         },
         {
-          question: "Is SmartValve proven in practice?",
-          answer: "Yes. SmartValve plays in L'Explorateur, Yves Rechsteiner's transportable concert organ with SmartValve on every pipe: more than 30 performances since 2023, and set up in under two hours from the truck arriving. [Read the case study](/work/yves-rechsteiner).",
+          question: "Is smARTvalve proven in practice?",
+          answer: "Yes. smARTvalve plays in L'Explorateur, Yves Rechsteiner's transportable concert organ with smARTvalve on every pipe: more than 30 performances since 2023, and set up in under two hours from the truck arriving. [Read the case study](/work/yves-rechsteiner).",
         },
         {
           question: "What does it cost?",
@@ -206,7 +206,7 @@ export default {
         default_topic: "Technical documentation",
         show_phone: true,
         show_location: false,
-        message_placeholder: "Your workshop, the organ (new or existing), the wind chests, the number of pipes and what you would like SmartValve to do…",
+        message_placeholder: "Your workshop, the organ (new or existing), the wind chests, the number of pipes and what you would like smARTvalve to do…",
         submit_label: "Send request",
         success_title: "Thank you",
         success_body: "Your request is with us. We reply personally with the information you asked for.",

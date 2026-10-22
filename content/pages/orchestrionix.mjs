@@ -49,9 +49,9 @@ export default {
       },
       items: [
         {
-          title: "SmartValve",
-          body: "SmartValve is a Decap product: one valve and one processor for every organ pipe.",
-          link_label: "SmartValve",
+          title: "smARTvalve",
+          body: "smARTvalve is a Decap product: one valve and one processor for every organ pipe.",
+          link_label: "smARTvalve",
           link: "/smartvalve",
         },
         {

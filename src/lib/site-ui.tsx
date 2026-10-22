@@ -58,8 +58,15 @@ export function Section({
 
 export function Eyebrow({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <p className={clsx("text-sm font-semibold uppercase tracking-[0.2em] text-accent", className)}>
-      {typeof children === "string" ? <BrandText>{children}</BrandText> : children}
+    <p
+      className={clsx(
+        "text-sm font-semibold tracking-[0.2em] text-accent",
+        // Capitals would turn "smARTvalve" into "SMARTVALVE": keep the brand's own spelling.
+        typeof children === "string" && /smartvalve/i.test(children) ? "tracking-[0.08em]" : "uppercase",
+        className,
+      )}
+    >
+      {children}
     </p>
   );
 }

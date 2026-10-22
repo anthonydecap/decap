@@ -6,7 +6,7 @@ export default {
   theme: "decap",
   meta_title: "L'Explorateur: Transportable Concert Organ | Decap",
   meta_description:
-    "L'Explorateur, Yves Rechsteiner's transportable pipe organ with SmartValve on every pipe: 12 modules, set up in under two hours, over 30 performances since 2023.",
+    "L'Explorateur, Yves Rechsteiner's transportable pipe organ with smARTvalve on every pipe: 12 modules, set up in under two hours, over 30 performances since 2023.",
   fields: {
     summary: "A transportable concert organ with wind control on every pipe: set up in under two hours, more than 30 performances since 2023.",
     client: "Yves Rechsteiner, Toulouse les Orgues",
@@ -19,12 +19,12 @@ export default {
       primary: {
         layout: "Split",
         eyebrow: "Work · Yves Rechsteiner",
-        title: "L'Explorateur: a transportable concert organ with SmartValve on every pipe",
+        title: "L'Explorateur: a transportable concert organ with smARTvalve on every pipe",
         intro:
           "Organist Yves Rechsteiner wanted a pipe organ that could play wherever the music is, not only in churches. Together we built L'Explorateur: twelve modules that travel in one van, set up in under two hours, with the wind of every pipe under control. Rechsteiner calls the result a physical synthesizer.",
-        primary_cta_label: "SmartValve for organ builders",
+        primary_cta_label: "smARTvalve for organ builders",
         primary_cta_link: "/smartvalve-for-organ-builders",
-        secondary_cta_label: "About SmartValve",
+        secondary_cta_label: "About smARTvalve",
         secondary_cta_link: "/smartvalve",
         image_brief: "L'Explorateur on stage with dancers in front, wide shot, 4:3",
       },
@@ -66,8 +66,8 @@ export default {
         { year: "2019", title: "Meeting Tony Decap", body: "Through a teaser of Stephan Eicher's *Die Automaten*. Rechsteiner orders a MIDI-controlled instrument." },
         { year: "2021", title: "Construction starts", body: "During the build, Decap proposes something new: control the wind not per wind chest, but per pipe." },
         { year: "2023", title: "First performances", body: "After two years of work and research, L'Explorateur plays with the first generation of valves. The performances begin." },
-        { year: "2023–2025", title: "SmartValve", body: "Tony Decap designs the second generation, SmartValve, and the module electronics are rebuilt around it.", highlight: true },
-        { year: "2025", title: "The first wind synthesizer", body: "SmartValve in concert: every pipe of a transportable church organ controlled on its own. Among the concerts, a Moondog tribute in Lyon's Chapelle de la Trinité.", highlight: true },
+        { year: "2023–2025", title: "smARTvalve", body: "Tony Decap designs the second generation, smARTvalve, and the module electronics are rebuilt around it.", highlight: true },
+        { year: "2025", title: "The first wind synthesizer", body: "smARTvalve in concert: every pipe of a transportable church organ controlled on its own. Among the concerts, a Moondog tribute in Lyon's Chapelle de la Trinité.", highlight: true },
         { year: "2026", title: "Next steps", body: "New valves and wind chests, console software, tonal adjustment and a free-reed rank from an 1830 Muller *orgue expressif*." },
       ],
     },
@@ -77,12 +77,12 @@ export default {
         eyebrow: "The technology",
         title: "Wind control per pipe, not per wind chest",
         body:
-          "In a classic organ, all pipes on a wind chest share the same wind. In L'Explorateur every pipe has its own SmartValve, a few millimetres from the pipe foot. The valve measures the pressure drop on its input side and opens further to compensate, so every pipe keeps its wind when many pipes sound at once.\n\nThe first valves were small loudspeakers converted into valves. SmartValve, the second generation, was designed by Tony Decap and produced industrially. For the organist it means control over each note: *“you can define the nature of the attack of the sound.”*",
+          "In a classic organ, all pipes on a wind chest share the same wind. In L'Explorateur every pipe has its own smARTvalve, a few millimetres from the pipe foot. The valve measures the pressure drop on its input side and opens further to compensate, so every pipe keeps its wind when many pipes sound at once.\n\nThe first valves were small loudspeakers converted into valves. smARTvalve, the second generation, was designed by Tony Decap and produced industrially. For the organist it means control over each note: *“you can define the nature of the attack of the sound.”*",
         media_side: "Image right",
         aspect: "Landscape 4:3",
-        cta_label: "How SmartValve works",
+        cta_label: "How smARTvalve works",
         cta_link: "/smartvalve",
-        image_brief: "Close-up of the SmartValves under the pipes inside L'Explorateur, dark background, 4:3",
+        image_brief: "Close-up of the smARTvalves under the pipes inside L'Explorateur, dark background, 4:3",
       },
       items: [
         { point: "One valve and one processor per pipe" },
@@ -96,7 +96,7 @@ export default {
         eyebrow: "Built to travel",
         title: "One van, twelve modules, under two hours",
         body:
-          "From the start, L'Explorateur had two limits: it had to fit in a 20 m³ van and weigh no more than 1,200 kg. Every technical choice followed from that.\n\nThe organ is divided into modules that are carried in, placed and connected. Because SmartValve makes wind regulators unnecessary, the wind system is only a blower and a distribution box. *“For L'Explorateur it means an easy setup of less than 2 hours from the truck arriving to playing.”*",
+          "From the start, L'Explorateur had two limits: it had to fit in a 20 m³ van and weigh no more than 1,200 kg. Every technical choice followed from that.\n\nThe organ is divided into modules that are carried in, placed and connected. Because smARTvalve makes wind regulators unnecessary, the wind system is only a blower and a distribution box. *“For L'Explorateur it means an easy setup of less than 2 hours from the truck arriving to playing.”*",
         media_side: "Image left",
         aspect: "Landscape 4:3",
         image_brief: "L'Explorateur modules being unloaded from the van or set up in a hall, 4:3",
@@ -146,7 +146,7 @@ export default {
         eyebrow: "The pipework",
         title: "Old pipes, a new life",
         body:
-          "Most of the pipework is second-hand, from the late 19th and early 20th century, and was voiced by Jean Daldosso. New free-reed pipes were made by Orgelbau Orglez in Brittany: free reeds change their dynamics without changing pitch, a perfect match for wind control per pipe.\n\nWith SmartValve, one rank can do far more than it was built for: fifty Flute pipes give a whole range of colours through the wind alone.",
+          "Most of the pipework is second-hand, from the late 19th and early 20th century, and was voiced by Jean Daldosso. New free-reed pipes were made by Orgelbau Orglez in Brittany: free reeds change their dynamics without changing pitch, a perfect match for wind control per pipe.\n\nWith smARTvalve, one rank can do far more than it was built for: fifty Flute pipes give a whole range of colours through the wind alone.",
         media_side: "Image left",
         aspect: "Landscape 4:3",
         image_brief: "Close-up of old wooden and metal pipes standing on a module of L'Explorateur, 4:3",
@@ -212,8 +212,8 @@ export default {
       primary: {
         eyebrow: "For organ builders and organists",
         title: "Give every pipe its own wind",
-        body: "SmartValve is available for new organs and, by replacing the pipe panels, for existing ones. Tell us about your project.",
-        primary_cta_label: "SmartValve for organ builders",
+        body: "smARTvalve is available for new organs and, by replacing the pipe panels, for existing ones. Tell us about your project.",
+        primary_cta_label: "smARTvalve for organ builders",
         primary_cta_link: "/smartvalve-for-organ-builders",
         secondary_cta_label: "Contact Decap",
         secondary_cta_link: "/contact",

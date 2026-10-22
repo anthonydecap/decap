@@ -8,27 +8,27 @@ const web = (url) => ({ link_type: "Web", url });
 
 /** Menu and footer labels per language (paths stay the same; the site adds the language prefix). */
 export const NAV = {
-  "en-us": [["Organs", "/organs"], ["Organ pipes", "/organ-pipes"], ["Instruments", "/instruments"], ["SmartValve", "/smartvalve"], ["Brass Core", "/brass-core"], ["Software", "/software"], ["Work", "/work"], ["About", "/about"]],
-  "fr-fr": [["Orgues", "/organs"], ["Tuyaux d’orgue", "/organ-pipes"], ["Instruments", "/instruments"], ["SmartValve", "/smartvalve"], ["Brass Core", "/brass-core"], ["Logiciels", "/software"], ["Réalisations", "/work"], ["À propos", "/about"]],
-  "nl-be": [["Orgels", "/organs"], ["Orgelpijpen", "/organ-pipes"], ["Instrumenten", "/instruments"], ["SmartValve", "/smartvalve"], ["Brass Core", "/brass-core"], ["Software", "/software"], ["Realisaties", "/work"], ["Over ons", "/about"]],
-  "de-de": [["Orgeln", "/organs"], ["Orgelpfeifen", "/organ-pipes"], ["Instrumente", "/instruments"], ["SmartValve", "/smartvalve"], ["Brass Core", "/brass-core"], ["Software", "/software"], ["Projekte", "/work"], ["Über uns", "/about"]],
+  "en-us": [["Organs", "/organs"], ["Organ pipes", "/organ-pipes"], ["Instruments", "/instruments"], ["smARTvalve", "/smartvalve"], ["Brass Core", "/brass-core"], ["Software", "/software"], ["Work", "/work"], ["About", "/about"]],
+  "fr-fr": [["Orgues", "/organs"], ["Tuyaux d’orgue", "/organ-pipes"], ["Instruments", "/instruments"], ["smARTvalve", "/smartvalve"], ["Brass Core", "/brass-core"], ["Logiciels", "/software"], ["Réalisations", "/work"], ["À propos", "/about"]],
+  "nl-be": [["Orgels", "/organs"], ["Orgelpijpen", "/organ-pipes"], ["Instrumenten", "/instruments"], ["smARTvalve", "/smartvalve"], ["Brass Core", "/brass-core"], ["Software", "/software"], ["Realisaties", "/work"], ["Over ons", "/about"]],
+  "de-de": [["Orgeln", "/organs"], ["Orgelpfeifen", "/organ-pipes"], ["Instrumente", "/instruments"], ["smARTvalve", "/smartvalve"], ["Brass Core", "/brass-core"], ["Software", "/software"], ["Projekte", "/work"], ["Über uns", "/about"]],
 };
 
 const FOOTER_I18N = {
   "fr-fr": { contact: "Contact", sections: [
     ["Orgues", [["Nouveaux orgues", "/organs"], ["Organ Composer", "/organ-composer"], ["Conversion MIDI", "/midi-conversion"], ["Tuyaux d’orgue", "/organ-pipes"], ["Restauration", "/frank-decap"]]],
     ["Instruments", [["Accordion Pedestal & Cube", "/accordion"], ["Pipes", "/pipes"], ["Percussion Unit", "/percussion-unit"], ["Mallet Percussion", "/mallet-percussion"], ["Bellow Organ", "/bellow-organ"]]],
-    ["Decap", [["SmartValve", "/smartvalve"], ["Pour les facteurs d’orgues", "/smartvalve-for-organ-builders"], ["Brass Core", "/brass-core"], ["Logiciels", "/software"], ["Réalisations", "/work"], ["À propos", "/about"], ["Journal", "/blog"], ["Contact", "/contact"]]],
+    ["Decap", [["smARTvalve", "/smartvalve"], ["Pour les facteurs d’orgues", "/smartvalve-for-organ-builders"], ["Brass Core", "/brass-core"], ["Logiciels", "/software"], ["Réalisations", "/work"], ["À propos", "/about"], ["Journal", "/blog"], ["Contact", "/contact"]]],
   ], address: "Langepad 51C\n2200 Herentals, Belgique" },
   "nl-be": { contact: "Contact", sections: [
     ["Orgels", [["Nieuwe orgels", "/organs"], ["Organ Composer", "/organ-composer"], ["MIDI-ombouw", "/midi-conversion"], ["Orgelpijpen", "/organ-pipes"], ["Restauratie", "/frank-decap"]]],
     ["Instrumenten", [["Accordion Pedestal & Cube", "/accordion"], ["Pipes", "/pipes"], ["Percussion Unit", "/percussion-unit"], ["Mallet Percussion", "/mallet-percussion"], ["Bellow Organ", "/bellow-organ"]]],
-    ["Decap", [["SmartValve", "/smartvalve"], ["Voor orgelbouwers", "/smartvalve-for-organ-builders"], ["Brass Core", "/brass-core"], ["Software", "/software"], ["Realisaties", "/work"], ["Over ons", "/about"], ["Journal", "/blog"], ["Contact", "/contact"]]],
+    ["Decap", [["smARTvalve", "/smartvalve"], ["Voor orgelbouwers", "/smartvalve-for-organ-builders"], ["Brass Core", "/brass-core"], ["Software", "/software"], ["Realisaties", "/work"], ["Over ons", "/about"], ["Journal", "/blog"], ["Contact", "/contact"]]],
   ], address: "Langepad 51C\n2200 Herentals, België" },
   "de-de": { contact: "Kontakt", sections: [
     ["Orgeln", [["Neue Orgeln", "/organs"], ["Organ Composer", "/organ-composer"], ["MIDI-Umbau", "/midi-conversion"], ["Orgelpfeifen", "/organ-pipes"], ["Restaurierung", "/frank-decap"]]],
     ["Instrumente", [["Accordion Pedestal & Cube", "/accordion"], ["Pipes", "/pipes"], ["Percussion Unit", "/percussion-unit"], ["Mallet Percussion", "/mallet-percussion"], ["Bellow Organ", "/bellow-organ"]]],
-    ["Decap", [["SmartValve", "/smartvalve"], ["Für Orgelbauer", "/smartvalve-for-organ-builders"], ["Brass Core", "/brass-core"], ["Software", "/software"], ["Projekte", "/work"], ["Über uns", "/about"], ["Journal", "/blog"], ["Kontakt", "/contact"]]],
+    ["Decap", [["smARTvalve", "/smartvalve"], ["Für Orgelbauer", "/smartvalve-for-organ-builders"], ["Brass Core", "/brass-core"], ["Software", "/software"], ["Projekte", "/work"], ["Über uns", "/about"], ["Journal", "/blog"], ["Kontakt", "/contact"]]],
   ], address: "Langepad 51C\n2200 Herentals, Belgien" },
 };
 
@@ -57,7 +57,7 @@ export const SETTINGS_LANGS = Object.keys(FOOTER_I18N);
 const footer = [
   ["Organs", [["New organs", "/organs"], ["Organ Composer", "/organ-composer"], ["MIDI conversion", "/midi-conversion"], ["Organ pipes", "/organ-pipes"], ["Restoration", "/frank-decap"]]],
   ["Instruments", [["Accordion Pedestal & Cube", "/accordion"], ["Pipes", "/pipes"], ["Percussion Unit", "/percussion-unit"], ["Mallet Percussion", "/mallet-percussion"], ["Bellow Organ", "/bellow-organ"]]],
-  ["Decap", [["SmartValve", "/smartvalve"], ["For organ builders", "/smartvalve-for-organ-builders"], ["Brass Core", "/brass-core"], ["Software", "/software"], ["Work", "/work"], ["About", "/about"], ["Journal", "/blog"], ["Contact", "/contact"]]],
+  ["Decap", [["smARTvalve", "/smartvalve"], ["For organ builders", "/smartvalve-for-organ-builders"], ["Brass Core", "/brass-core"], ["Software", "/software"], ["Work", "/work"], ["About", "/about"], ["Journal", "/blog"], ["Contact", "/contact"]]],
 ];
 
 export const siteUpdates = [
@@ -86,9 +86,20 @@ export const siteUpdates = [
   },
   {
     type: "page",
+    uid: "brass-core",
+    title: "Brass Core",
+    description: "restored original Brass Core page: light page style",
+    apply(doc) {
+      // The original page (core_* slices, restored from Prismic history) is built for the light
+      // style; only switch when those slices are back, so a newer page is never touched.
+      if ((doc.data.slices ?? []).some((s) => s.slice_type === "core_hero")) doc.data.theme = "decap";
+    },
+  },
+  {
+    type: "page",
     uid: "smartvalve",
-    title: "SmartValve",
-    description: "SmartValve page style, link to the organ builders page",
+    title: "smARTvalve",
+    description: "smARTvalve page style, link to the organ builders page",
     apply(doc) {
       doc.data.theme = "smartvalve";
       const link = "/smartvalve-for-organ-builders";
@@ -103,9 +114,9 @@ export const siteUpdates = [
             version: "initial",
             primary: {
               eyebrow: "For organ builders",
-              title: "Build SmartValve into your next organ",
+              title: "Build smARTvalve into your next organ",
               body: markdownToRichText("Technical documentation, a demonstration and integration support for organ builders. Prices on request."),
-              primary_cta_label: "SmartValve for organ builders",
+              primary_cta_label: "smARTvalve for organ builders",
               primary_cta_link: web(link),
               secondary_cta_label: "Request documentation",
               secondary_cta_link: web(link + "#contact-form"),

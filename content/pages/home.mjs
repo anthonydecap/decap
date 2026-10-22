@@ -30,7 +30,7 @@ export default {
         { size: "Full", style: "Light", eyebrow: "Organs", title: "Dance organs, built to order.", tagline: "Dance, fair, street and concert organs from our Herentals workshop. Modular or fully bespoke.", primary_label: "Learn more", primary_link: "/organs", secondary_label: "Compose your organ", secondary_link: "/organ-composer", image_brief: "A finished Decap dance organ on stage, wide shot" },
         { size: "Half", style: "Light", eyebrow: "Self-playing instruments", title: "A real accordion. Playing itself.", tagline: "Accordion, pipes, drums and xylophones, played by MIDI.", primary_label: "Learn more", primary_link: "/instruments", secondary_label: "Accordion Pedestal", secondary_link: "/accordion", image_brief: "Accordion Pedestal on stage" },
         { size: "Half", style: "Dark", eyebrow: "Organ pipes", title: "Any wooden pipe. Within a week.", tagline: "Milled on our own CNC, in our scales or yours.", primary_label: "Learn more", primary_link: "/organ-pipes", secondary_label: "Order pipes", secondary_link: "/organ-pipes#contact-form", image_brief: "New wooden pipe parts from the CNC" },
-        { size: "Full", style: "SmartValve", eyebrow: "SmartValve", title: "Every pipe. Its own voice.", tagline: "A processor in every valve. Wind, dynamics and stops, controlled per pipe.", primary_label: "Learn more", primary_link: "/smartvalve", secondary_label: "For organ builders", secondary_link: "/smartvalve-for-organ-builders", image_brief: "SmartValves mounted in their wind chest" },
+        { size: "Full", style: "SmartValve", eyebrow: "smARTvalve", title: "Every pipe. Its own voice.", tagline: "A processor in every valve. Wind, dynamics and stops, controlled per pipe.", primary_label: "Learn more", primary_link: "/smartvalve", secondary_label: "For organ builders", secondary_link: "/smartvalve-for-organ-builders", image_brief: "smARTvalves mounted in their wind chest" },
         { size: "Full", style: "Orchestrionix", eyebrow: "Brass Core", title: "A real trumpet. Played by sound.", tagline: "A voice-coil embouchure for trumpet and trombone. No changes to the instrument.", note: "€ 2,599 · ships from stock", primary_label: "Learn more", primary_link: "/brass-core", secondary_label: "Order", secondary_link: "/brass-core#contact-form", image_brief: "Brass Core on a trombone, dark background" },
         { size: "Half", style: "Atelier", eyebrow: "Atelier Frank Decap", title: "Historic organs, restored by hand.", tagline: "Restoration and MIDI installation, on the same site in Herentals.", primary_label: "Learn more", primary_link: "/frank-decap", secondary_label: "Send photos of your organ", secondary_link: "/frank-decap#contact-form", image_brief: "Frank Decap at work in his atelier" },
         { size: "Half", style: "Light", eyebrow: "Software", title: "One player for the whole ensemble.", tagline: "Virtual Orchestrion and MIDIMapper, in the Decap shop.", primary_label: "Learn more", primary_link: "/software", secondary_label: "Visit the shop", secondary_link: "/shop", image_brief: "Virtual Orchestrion on two screens" },
@@ -58,7 +58,7 @@ export default {
         eyebrow: "Since 1895",
         title: "Every generation reinvented the organ",
         intro:
-          "Aloïs Decap started with a handful of rented organs. His son Frans founded Decap Herentals. François took it digital, Tony brought MIDI and SmartValve. [Read the full story](/about).",
+          "Aloïs Decap started with a handful of rented organs. His son Frans founded Decap Herentals. François took it digital, Tony brought MIDI and smARTvalve. [Read the full story](/about).",
       },
       items: [
         { year: "1895", title: "Aloïs Decap starts in organs", body: "He rents out and deals in small organs around Antwerp, delivered by dog cart." },
@@ -66,7 +66,7 @@ export default {
         { year: "1977", title: "The first digital dance organ", body: "François replaces pipes with digital sound, so cafés and dance halls with smaller budgets can have an organ." },
         { year: "2000", title: "MIDI comes to the dance organ", body: "Tony Decap puts a whole music library on one card, instead of racks of cardboard books." },
         { year: "2016", title: "Pipes from our own CNC", body: "We mill organ pipes on 5-axis CNC with PipeCreator, software we wrote ourselves." },
-        { year: "2025", title: "The first wind synthesizer", body: "SmartValve in a transportable church organ: every pipe controlled on its own.", highlight: true },
+        { year: "2025", title: "The first wind synthesizer", body: "smARTvalve in a transportable church organ: every pipe controlled on its own.", highlight: true },
       ],
     },
     {

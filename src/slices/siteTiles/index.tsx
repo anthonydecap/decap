@@ -20,7 +20,7 @@ const STYLES: Record<string, { tile: string; title: string; muted: string; butto
   Light: { tile: "bg-[#f5f5f7] text-neutral-950", title: "", muted: "text-neutral-600", button: "bg-neutral-950 text-white hover:bg-neutral-800", link: "text-neutral-950", tone: "light" },
   Dark: { tile: "bg-black text-white", title: "", muted: "text-neutral-400", button: "bg-white text-neutral-950 hover:bg-neutral-200", link: "text-white", tone: "dark" },
   SmartValve: { tile: "bg-black text-white", title: "text-smartvalve", muted: "text-neutral-400", button: "bg-white text-neutral-950 hover:bg-neutral-200", link: "text-white", tone: "dark" },
-  Orchestrionix: { tile: "bg-[#0c0a09] text-[#faf7f2]", title: "text-orchestrionix", muted: "text-[#c9bfb3]", button: "bg-[#cca483] text-[#0c0a09] hover:bg-[#d9b796]", link: "text-[#cca483]", tone: "dark" },
+  Orchestrionix: { tile: "bg-[#0c0a09] text-[#faf7f2]", title: "text-[#cca483]", muted: "text-[#c9bfb3]", button: "bg-[#cca483] text-[#0c0a09] hover:bg-[#d9b796]", link: "text-[#cca483]", tone: "dark" },
   Atelier: { tile: "bg-[#eee7db] text-[#1f1a14]", title: "", muted: "text-[#5c5348]", button: "bg-[#1f1a14] text-[#f7f3ec] hover:bg-[#30271e]", link: "text-[#1f1a14]", tone: "light" },
 };
 

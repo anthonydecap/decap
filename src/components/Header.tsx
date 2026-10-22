@@ -13,13 +13,12 @@ import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
 import { motion, MotionConfig, useReducedMotion } from 'framer-motion'
 import { PrismicNextImage } from '@prismicio/next'
-import { ImageField } from '@prismicio/client'
+import { ImageField, isFilled } from '@prismicio/client'
 import { prismicLinkHref, type LinkLike } from '@/lib/prismic-link'
 import { Container } from './Container'
 import { Logo, Logomark } from './Logo'
 import { Offices } from './Offices'
 import { LanguageSwitcher } from './LanguageSwitcher'
-import { BrandText } from './BrandText'
 import { pathForHome } from '@/lib/locale-path'
 import type { UrlLocale } from '@/i18n'
 import { CONTACT_LABEL, defaultNavigation } from '@/lib/site-nav'
@@ -85,7 +84,7 @@ function HeaderContent({
           onMouseEnter={() => setLogoHovered(true)}
           onMouseLeave={() => setLogoHovered(false)}
         >
-          {logo ? (
+          {logo && isFilled.image(logo) ? (
             <PrismicNextImage
               field={logo}
               className={clsx('h-8 w-auto', invert && 'brightness-0 invert')}
@@ -172,7 +171,7 @@ function NavigationItem({
         <div className="self-center">
           <div className="flex items-center">
             <span className="text-white hover:text-neutral-200 transition">
-              {typeof children === 'string' ? <BrandText>{children}</BrandText> : children}
+              {children}
             </span>
           </div>
         </div>

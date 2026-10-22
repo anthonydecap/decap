@@ -63,7 +63,7 @@ export default {
         {
           tag: "Concert organ · 2025",
           title: "Yves Rechsteiner: L'Explorateur",
-          body: "A transportable concert organ with SmartValve on every pipe: the first wind synthesizer.",
+          body: "A transportable concert organ with smARTvalve on every pipe: the first wind synthesizer.",
           link_label: "Read the case study",
           link: "/work/yves-rechsteiner",
           image_brief: "L'Explorateur set up in a chapel, 4:3",

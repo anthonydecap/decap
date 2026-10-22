@@ -72,7 +72,7 @@ export default {
         },
         {
           title: "Pipes and chests",
-          body: "Add wind chests from us, or go further with [MIDI conversion](/midi-conversion) or [SmartValve](/smartvalve) on every pipe.",
+          body: "Add wind chests from us, or go further with [MIDI conversion](/midi-conversion) or [smARTvalve](/smartvalve) on every pipe.",
         },
       ],
     },
@@ -161,7 +161,7 @@ export default {
         },
         {
           question: "Can you also make the wind chests?",
-          answer: "Yes. Order pipes and chests together, and add MIDI conversion or SmartValve if you want the organ to play from MIDI.",
+          answer: "Yes. Order pipes and chests together, and add MIDI conversion or smARTvalve if you want the organ to play from MIDI.",
         },
         {
           question: "Do you ship outside Belgium?",
@@ -187,7 +187,7 @@ export default {
         success_body: "We will reply with a quote and a shipping date.",
         aside_title: "Good to know",
         aside_body:
-          "- Sold as complete ranks\n- Standard scales or your own measurements\n- Ready in a few days to a week, depending on the ranks\n- Voiced or ready to voice\n- Chests, MIDI conversion and SmartValve on request\n- Shipped worldwide",
+          "- Sold as complete ranks\n- Standard scales or your own measurements\n- Ready in a few days to a week, depending on the ranks\n- Voiced or ready to voice\n- Chests, MIDI conversion and smARTvalve on request\n- Shipped worldwide",
       },
     },
   ],
