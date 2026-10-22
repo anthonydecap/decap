@@ -136,33 +136,39 @@ export default {
       ]
     },
     {
-      "type": "site_card_grid",
+      "type": "site_carousel",
       "primary": {
         "eyebrow": "Where they play",
         "title": "In living rooms, bars and dance halls",
-        "intro": "Most Decap organs and instruments belong to private owners. They play at home, in a café or bar, in a dance hall, all over the world.",
-        "columns": "4",
-        "card_style": "Image cards"
+        "intro": "Most Decap organs and instruments belong to private owners. They play at home, in a café or bar, in a dance hall, all over the world."
       },
       "items": [
         {
-          "title": "At home",
-          "body": "An Accordion Pedestal in the living room, or a complete orchestrion in the collection room.",
+          "eyebrow": "At home",
+          "title": "A real accordion in the living room.",
+          "image_position": "Center",
+          "link": "/accordion",
           "image_brief": "Accordion Pedestal in a living room at a customer's home, warm evening light, 4:3"
         },
         {
-          "title": "Bars and cafés",
-          "body": "A dance organ or orchestrion that draws people in and plays all evening on its own.",
+          "eyebrow": "Bars and cafés",
+          "title": "Plays all evening, on its own.",
+          "image_position": "Center",
+          "link": "/organs",
           "image_brief": "Decap organ in a café or bar with guests, 4:3"
         },
         {
-          "title": "Dance halls and events",
-          "body": "Organs with controllable volume that fit the room, from a small hall to a festival.",
+          "eyebrow": "Dance halls and events",
+          "title": "Sized for the room, from café to festival.",
+          "image_position": "Center",
+          "link": "/organs",
           "image_brief": "Dance organ in a dance hall during an evening, 4:3"
         },
         {
-          "title": "Museums and stages",
-          "body": "Collections, exhibitions and artists on tour: see our [work](/work).",
+          "eyebrow": "Museums and stages",
+          "title": "On tour and on display.",
+          "image_position": "Center",
+          "link": "/work",
           "image_brief": "Decap orchestrion in a museum or on a stage, 4:3"
         }
       ]

@@ -22,6 +22,8 @@ const en = {
   playVideo: (t: string) => `Play video: ${t}`,
   recording: "Recording",
   video: "Video",
+  previous: "Previous",
+  next: "Next",
 
   form: {
     topic: "What is it about?",
@@ -97,6 +99,8 @@ const fr: UiCopy = {
   playVideo: (t) => `Lire la vidéo : ${t}`,
   recording: "Enregistrement",
   video: "Vidéo",
+  previous: "Précédent",
+  next: "Suivant",
   form: {
     topic: "De quoi s’agit-il ?",
     name: "Nom",
@@ -166,6 +170,8 @@ const nl: UiCopy = {
   playVideo: (t) => `Video afspelen: ${t}`,
   recording: "Opname",
   video: "Video",
+  previous: "Vorige",
+  next: "Volgende",
   form: {
     topic: "Waarover gaat het?",
     name: "Naam",
@@ -235,6 +241,8 @@ const de: UiCopy = {
   playVideo: (t) => `Video abspielen: ${t}`,
   recording: "Aufnahme",
   video: "Video",
+  previous: "Zurück",
+  next: "Weiter",
   form: {
     topic: "Worum geht es?",
     name: "Name",

@@ -137,33 +137,39 @@ export default {
       ]
     },
     {
-      "type": "site_card_grid",
+      "type": "site_carousel",
       "primary": {
         "eyebrow": "Waar ze spelen",
         "title": "In woonkamers, bars en danszalen",
-        "intro": "De meeste Decap-orgels en -instrumenten zijn in handen van particulieren. Ze spelen thuis, in een café of bar, in een danszaal, over de hele wereld.",
-        "columns": "4",
-        "card_style": "Image cards"
+        "intro": "De meeste Decap-orgels en -instrumenten zijn in handen van particulieren. Ze spelen thuis, in een café of bar, in een danszaal, over de hele wereld."
       },
       "items": [
         {
-          "title": "Thuis",
-          "body": "Een Accordion Pedestal in de woonkamer, of een volledig orchestrion in de verzamelruimte.",
+          "eyebrow": "Thuis",
+          "title": "Een echt accordeon in de woonkamer.",
+          "image_position": "Center",
+          "link": "/accordion",
           "image_brief": "Accordion Pedestal in a living room at a customer's home, warm evening light, 4:3"
         },
         {
-          "title": "Bars en cafés",
-          "body": "Een dansorgel of orchestrion dat mensen binnenlokt en de hele avond zelf speelt.",
+          "eyebrow": "Bars en cafés",
+          "title": "Speelt de hele avond, helemaal alleen.",
+          "image_position": "Center",
+          "link": "/organs",
           "image_brief": "Decap organ in a café or bar with guests, 4:3"
         },
         {
-          "title": "Danszalen en evenementen",
-          "body": "Orgels met regelbaar volume die bij de ruimte passen, van een kleine zaal tot een festival.",
+          "eyebrow": "Danszalen en evenementen",
+          "title": "Op maat van de zaal, van café tot festival.",
+          "image_position": "Center",
+          "link": "/organs",
           "image_brief": "Dance organ in a dance hall during an evening, 4:3"
         },
         {
-          "title": "Musea en podia",
-          "body": "Collecties, tentoonstellingen en artiesten op tournee: bekijk ons [werk](/work).",
+          "eyebrow": "Musea en podia",
+          "title": "Op tournee en in het museum.",
+          "image_position": "Center",
+          "link": "/work",
           "image_brief": "Decap orchestrion in a museum or on a stage, 4:3"
         }
       ]

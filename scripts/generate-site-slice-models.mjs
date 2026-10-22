@@ -224,6 +224,21 @@ export const SITE_SLICES = {
     },
   }),
 
+  siteCarousel: sliceModel({
+    id: "site_carousel",
+    name: "SiteCarousel",
+    description: "Apple-style horizontal gallery of tall photo cards with a label and one line over the image.",
+    primary: { ...header(), tone: TONE() },
+    items: {
+      image: image("Photo"),
+      image_brief: BRIEF("photo"),
+      image_position: select("Image position", ["Center", "Top", "Bottom", "Left", "Right"]),
+      eyebrow: text("Label", "At home"),
+      title: text("One line", "An Accordion Pedestal in the living room."),
+      link: link("Link (optional)"),
+    },
+  }),
+
   contactForm: sliceModel({
     id: "contact_form",
     name: "ContactForm",

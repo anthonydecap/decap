@@ -137,33 +137,39 @@ export default {
       ]
     },
     {
-      "type": "site_card_grid",
+      "type": "site_carousel",
       "primary": {
         "eyebrow": "Où ils jouent",
         "title": "Au salon, au café et dans les salles de danse",
-        "intro": "La plupart des orgues et instruments Decap appartiennent à des particuliers. Ils jouent à la maison, dans un café ou un bar, dans une salle de danse, partout dans le monde.",
-        "columns": "4",
-        "card_style": "Image cards"
+        "intro": "La plupart des orgues et instruments Decap appartiennent à des particuliers. Ils jouent à la maison, dans un café ou un bar, dans une salle de danse, partout dans le monde."
       },
       "items": [
         {
-          "title": "À la maison",
-          "body": "Un Accordion Pedestal au salon, ou un orchestrion complet dans la pièce de collection.",
+          "eyebrow": "À la maison",
+          "title": "Un vrai accordéon au salon.",
+          "image_position": "Center",
+          "link": "/accordion",
           "image_brief": "Accordion Pedestal in a living room at a customer's home, warm evening light, 4:3"
         },
         {
-          "title": "Bars et cafés",
-          "body": "Un orgue de danse ou un orchestrion qui attire les gens et joue toute la soirée, tout seul.",
+          "eyebrow": "Bars et cafés",
+          "title": "Il joue toute la soirée, tout seul.",
+          "image_position": "Center",
+          "link": "/organs",
           "image_brief": "Decap organ in a café or bar with guests, 4:3"
         },
         {
-          "title": "Salles de danse et événements",
-          "body": "Des orgues au volume réglable, adaptés à la salle, de la petite salle au festival.",
+          "eyebrow": "Salles de danse et événements",
+          "title": "À la taille de la salle, du café au festival.",
+          "image_position": "Center",
+          "link": "/organs",
           "image_brief": "Dance organ in a dance hall during an evening, 4:3"
         },
         {
-          "title": "Musées et scènes",
-          "body": "Collections, expositions et artistes en tournée : découvrez nos [réalisations](/work).",
+          "eyebrow": "Musées et scènes",
+          "title": "En tournée et en exposition.",
+          "image_position": "Center",
+          "link": "/work",
           "image_brief": "Decap orchestrion in a museum or on a stage, 4:3"
         }
       ]

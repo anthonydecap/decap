@@ -1,0 +1,106 @@
+{
+  "id": "site_carousel",
+  "type": "SharedSlice",
+  "name": "SiteCarousel",
+  "description": "Apple-style horizontal gallery of tall photo cards with a label and one line over the image.",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": "Small label above the title"
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "intro": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Intro",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "tone": {
+          "type": "Select",
+          "config": {
+            "label": "Section tone",
+            "options": [
+              "Default",
+              "Tinted",
+              "Dark band"
+            ],
+            "default_value": "Default"
+          }
+        }
+      },
+      "items": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Photo",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "image_brief": {
+          "type": "Text",
+          "config": {
+            "label": "Photo brief (shown while the photo is empty)",
+            "placeholder": "e.g. Accordion Pedestal, front view, black backdrop, 4:3"
+          }
+        },
+        "image_position": {
+          "type": "Select",
+          "config": {
+            "label": "Image position",
+            "options": [
+              "Center",
+              "Top",
+              "Bottom",
+              "Left",
+              "Right"
+            ],
+            "default_value": "Center"
+          }
+        },
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Label",
+            "placeholder": "At home"
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "One line",
+            "placeholder": "An Accordion Pedestal in the living room."
+          }
+        },
+        "link": {
+          "type": "Link",
+          "config": {
+            "label": "Link (optional)",
+            "allowTargetBlank": true,
+            "select": null
+          }
+        }
+      }
+    }
+  ]
+}

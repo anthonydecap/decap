@@ -41,6 +41,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "site_carousel": {
+              "type": "SharedSlice"
+            },
             "site_tiles": {
               "type": "SharedSlice"
             },
