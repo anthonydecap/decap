@@ -6,7 +6,8 @@ import { isFilled } from "@prismicio/client";
 import { type SliceComponentProps } from "@prismicio/react";
 import clsx from "clsx";
 import { FadeIn } from "@/components/FadeIn";
-import { MediaSlot } from "@/components/MediaSlot";
+import { PrismicNextImage } from "@prismicio/next";
+import { MediaPlaceholder } from "@/components/MediaSlot";
 import { BrandText } from "@/components/BrandText";
 import { SiteLink, toneFromSelect } from "@/lib/site-ui";
 
@@ -24,17 +25,73 @@ const STYLES: Record<string, { tile: string; title: string; muted: string; butto
   Atelier: { tile: "bg-[#eee7db] text-[#1f1a14]", title: "", muted: "text-[#5c5348]", button: "bg-[#1f1a14] text-[#f7f3ec] hover:bg-[#30271e]", link: "text-[#1f1a14]", tone: "light" },
 };
 
+const POSITION: Record<string, string> = {
+  Center: "object-center",
+  Top: "object-top",
+  Bottom: "object-bottom",
+  Left: "object-left",
+  Right: "object-right",
+  "Top left": "object-left-top",
+  "Top right": "object-right-top",
+  "Bottom left": "object-left-bottom",
+  "Bottom right": "object-right-bottom",
+};
+/** Contain: the image sits in the lower part of the tile (the top is for the text), inset by size. */
+const CONTAIN_BOX: Record<string, string> = {
+  "100%": "inset-x-0 bottom-0 top-[40%]",
+  "85%": "inset-x-[7.5%] bottom-[4%] top-[42%]",
+  "70%": "inset-x-[15%] bottom-[6%] top-[46%]",
+  "55%": "inset-x-[22.5%] bottom-[8%] top-[50%]",
+};
+
+/**
+ * The tile's background image over the tile colour (so transparent PNGs sit on it). Editors pick
+ * Cover or Contain, a position and, for Contain, a size; an optional fade keeps the text legible.
+ */
+function TileBackground({ item, tone, brief, half }: { item: any; tone: "light" | "dark"; brief: string; half: boolean }) {
+  if (!isFilled.image(item.image)) {
+    return (
+      <div className="absolute inset-x-6 top-[48%] bottom-6">
+        <MediaPlaceholder brief={brief} tone={tone} />
+      </div>
+    );
+  }
+  const contain = item.image_fit === "Contain";
+  const position = POSITION[item.image_position] ?? "object-center";
+  const fade =
+    item.overlay === "Strong"
+      ? tone === "dark" ? "from-black/90 via-black/65" : "from-white/95 via-white/75"
+      : item.overlay === "Soft"
+        ? tone === "dark" ? "from-black/70 via-black/35" : "from-white/80 via-white/45"
+        : null;
+  return (
+    <>
+      <div className={clsx("absolute", contain ? CONTAIN_BOX[item.image_size] ?? CONTAIN_BOX["100%"] : "inset-0")}>
+        <PrismicNextImage
+          field={item.image}
+          fill
+          sizes={half ? "(min-width: 1024px) 50vw, 100vw" : "100vw"}
+          className={clsx(contain ? "object-contain" : "object-cover", position)}
+          fallbackAlt=""
+        />
+      </div>
+      {fade && <div className={clsx("absolute inset-x-0 top-0 h-2/3 bg-gradient-to-b to-transparent", fade)} />}
+    </>
+  );
+}
+
 function Tile({ item, half }: { item: any; half: boolean }) {
   const s = STYLES[item.style] ?? STYLES.Light;
   const brief = item.image_brief || `Image for “${item.title || item.eyebrow || "this tile"}”`;
   return (
     <FadeIn
       className={clsx(
-        "relative flex flex-col overflow-hidden rounded-3xl text-center",
+        "relative isolate flex flex-col overflow-hidden rounded-3xl text-center",
         s.tile,
         half ? "min-h-[520px] lg:min-h-[600px]" : "min-h-[560px] lg:min-h-[680px]",
       )}
     >
+      <TileBackground item={item} tone={s.tone} brief={brief} half={half} />
       <div className={clsx("relative z-10 px-6", half ? "pt-12 sm:pt-14" : "pt-14 sm:pt-16")}>
         {item.eyebrow && (
           <p className={clsx("text-base font-semibold sm:text-lg", s.title || "")}>
@@ -67,17 +124,8 @@ function Tile({ item, half }: { item: any; half: boolean }) {
         </div>
         {item.note && <p className={clsx("mt-4 text-sm", s.muted)}>{item.note}</p>}
       </div>
-      <div className="relative mt-8 flex-1">
-        <MediaSlot
-          field={item.image}
-          brief={brief}
-          aspect=""
-          rounded=""
-          tone={s.tone}
-          className="absolute inset-0"
-          sizes={half ? "(min-width: 1024px) 50vw, 100vw" : "100vw"}
-        />
-      </div>
+      {/* Spacer: keeps the tile's height when the image is a background. */}
+      <div className="flex-1" />
     </FadeIn>
   );
 }

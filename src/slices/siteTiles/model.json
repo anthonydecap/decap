@@ -112,9 +112,63 @@
         "image": {
           "type": "Image",
           "config": {
-            "label": "Image",
+            "label": "Background image (photo or transparent PNG)",
             "constraint": {},
             "thumbnails": []
+          }
+        },
+        "image_fit": {
+          "type": "Select",
+          "config": {
+            "label": "Image fit",
+            "options": [
+              "Cover",
+              "Contain"
+            ],
+            "default_value": "Cover"
+          }
+        },
+        "image_position": {
+          "type": "Select",
+          "config": {
+            "label": "Image position",
+            "options": [
+              "Center",
+              "Top",
+              "Bottom",
+              "Left",
+              "Right",
+              "Top left",
+              "Top right",
+              "Bottom left",
+              "Bottom right"
+            ],
+            "default_value": "Center"
+          }
+        },
+        "image_size": {
+          "type": "Select",
+          "config": {
+            "label": "Image size (with Contain)",
+            "options": [
+              "100%",
+              "85%",
+              "70%",
+              "55%"
+            ],
+            "default_value": "100%"
+          }
+        },
+        "overlay": {
+          "type": "Select",
+          "config": {
+            "label": "Text legibility over the image",
+            "options": [
+              "None",
+              "Soft",
+              "Strong"
+            ],
+            "default_value": "None"
           }
         },
         "image_brief": {
