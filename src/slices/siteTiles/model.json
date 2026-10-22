@@ -171,6 +171,66 @@
             "default_value": "None"
           }
         },
+        "blur": {
+          "type": "Select",
+          "config": {
+            "label": "Effect: blur",
+            "options": [
+              "None",
+              "Light",
+              "Medium",
+              "Heavy"
+            ],
+            "default_value": "None"
+          }
+        },
+        "dim": {
+          "type": "Select",
+          "config": {
+            "label": "Effect: dim (darkens on dark tiles, washes out on light tiles)",
+            "options": [
+              "None",
+              "Light",
+              "Medium",
+              "Heavy"
+            ],
+            "default_value": "None"
+          }
+        },
+        "color_effect": {
+          "type": "Select",
+          "config": {
+            "label": "Effect: colour",
+            "options": [
+              "None",
+              "Desaturate",
+              "Black & white",
+              "Warm"
+            ],
+            "default_value": "None"
+          }
+        },
+        "vignette": {
+          "type": "Boolean",
+          "config": {
+            "label": "Effect: vignette (darker edges)",
+            "default_value": false
+          }
+        },
+        "hover_zoom": {
+          "type": "Boolean",
+          "config": {
+            "label": "Effect: zoom in slightly on hover",
+            "default_value": false
+          }
+        },
+        "slow_zoom": {
+          "type": "Boolean",
+          "config": {
+            "label": "Effect: slow zoom (Ken Burns)",
+            "default_value": false
+          }
+        },
         "image_brief": {
           "type": "Text",
           "config": {

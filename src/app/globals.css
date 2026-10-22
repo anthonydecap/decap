@@ -249,6 +249,24 @@ body {
   text-wrap: balance;
 }
 
+/* Site tiles: optional slow zoom (Ken Burns) on the background image. */
+@keyframes tile-slow-zoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+.tile-slow-zoom {
+  animation: tile-slow-zoom 18s ease-in-out infinite alternate;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tile-slow-zoom {
+    animation: none;
+  }
+}
+
 @keyframes home-artists-reel {
   from {
     transform: translateX(0);

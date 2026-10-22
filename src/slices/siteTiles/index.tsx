@@ -36,6 +36,11 @@ const POSITION: Record<string, string> = {
   "Bottom left": "object-left-bottom",
   "Bottom right": "object-right-bottom",
 };
+/** Image effects, chosen per tile in Prismic. */
+const BLUR: Record<string, string> = { Light: "blur-[2px]", Medium: "blur-[6px]", Heavy: "blur-[14px]" };
+const DIM: Record<string, number> = { Light: 0.2, Medium: 0.4, Heavy: 0.6 };
+const COLOR: Record<string, string> = { Desaturate: "saturate-50", "Black & white": "grayscale", Warm: "sepia-[0.35] saturate-[0.9]" };
+
 /** Contain: the image sits in the lower part of the tile (the top is for the text), inset by size. */
 const CONTAIN_BOX: Record<string, string> = {
   "100%": "inset-x-0 bottom-0 top-[40%]",
@@ -64,17 +69,29 @@ function TileBackground({ item, tone, brief, half }: { item: any; tone: "light" 
       : item.overlay === "Soft"
         ? tone === "dark" ? "from-black/70 via-black/35" : "from-white/80 via-white/45"
         : null;
+  const blur = BLUR[item.blur] ?? null;
+  const dim = DIM[item.dim] ?? 0;
   return (
     <>
-      <div className={clsx("absolute", contain ? CONTAIN_BOX[item.image_size] ?? CONTAIN_BOX["100%"] : "inset-0")}>
-        <PrismicNextImage
-          field={item.image}
-          fill
-          sizes={half ? "(min-width: 1024px) 50vw, 100vw" : "100vw"}
-          className={clsx(contain ? "object-contain" : "object-cover", position)}
-          fallbackAlt=""
-        />
+      <div className={clsx("absolute overflow-hidden", contain ? CONTAIN_BOX[item.image_size] ?? CONTAIN_BOX["100%"] : "inset-0")}>
+        {/* Three layers, so the zooms don't override each other: hover zoom, slow zoom, blur margin. */}
+        <div className={clsx("absolute inset-0 transition-transform duration-700 ease-out", item.hover_zoom && "group-hover:scale-105")}>
+          <div className={clsx("absolute inset-0", item.slow_zoom && "tile-slow-zoom")}>
+            {/* A blurred image would show soft edges: scale it slightly so the blur stays inside. */}
+            <div className={clsx("absolute inset-0", blur && !contain && "scale-110")}>
+              <PrismicNextImage
+                field={item.image}
+                fill
+                sizes={half ? "(min-width: 1024px) 50vw, 100vw" : "100vw"}
+                className={clsx(contain ? "object-contain" : "object-cover", position, blur, COLOR[item.color_effect])}
+                fallbackAlt=""
+              />
+            </div>
+          </div>
+        </div>
       </div>
+      {dim > 0 && <div className={clsx("absolute inset-0", tone === "dark" ? "bg-black" : "bg-white")} style={{ opacity: dim }} />}
+      {item.vignette && <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(0,0,0,0.55)_100%)]" />}
       {fade && <div className={clsx("absolute inset-x-0 top-0 h-2/3 bg-gradient-to-b to-transparent", fade)} />}
     </>
   );
@@ -86,7 +103,7 @@ function Tile({ item, half }: { item: any; half: boolean }) {
   return (
     <FadeIn
       className={clsx(
-        "relative isolate flex flex-col overflow-hidden rounded-3xl text-center",
+        "group relative isolate flex flex-col overflow-hidden rounded-3xl text-center",
         s.tile,
         half ? "min-h-[520px] lg:min-h-[600px]" : "min-h-[560px] lg:min-h-[680px]",
       )}
