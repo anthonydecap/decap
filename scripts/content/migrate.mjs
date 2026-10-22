@@ -199,7 +199,12 @@ if (!only.length) {
       plan.push(`skip   ${update.type}/${update.uid ?? "(single)"}: not found`);
       continue;
     }
+    const before = JSON.stringify(current.data) + current.uid;
     update.apply(current);
+    if (JSON.stringify(current.data) + current.uid === before) {
+      plan.push(`skip   ${update.type}/${current.uid ?? "(single)"}: no change`);
+      continue;
+    }
     sanitizeExisting(current);
     dropForeignImages(current.data);
     migration.updateDocument(current, update.title);

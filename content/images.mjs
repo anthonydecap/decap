@@ -25,7 +25,7 @@ export default {
     },
     "1.3": {
       "file": "content/media/decap-smartvalve-samples.jpg",
-      "alt": "SmartValves with their electronics"
+      "alt": "smARTvalves with their electronics"
     },
     "1.4": {
       "url": "https://orchestrionix.com/wp-content/uploads/2023/10/TROMBONE-Samenstelling_01_2023-Oct-16_10-42-03PM-000_CustomizedView21586800008.png",
@@ -109,7 +109,7 @@ export default {
     },
     "3": {
       "file": "content/media/decap-smartvalves-in-their-windchest.jpg",
-      "alt": "SmartValves mounted in a wind chest"
+      "alt": "smARTvalves mounted in a wind chest"
     }
   },
   "midi-conversion": {
@@ -217,7 +217,7 @@ export default {
     },
     "6": {
       "file": "content/media/decap-smartvalves-in-their-windchest.jpg",
-      "alt": "SmartValves mounted in their wind chest"
+      "alt": "smARTvalves mounted in their wind chest"
     },
     "1.0": {
       "url": "https://orchestrionix.com/wp-content/uploads/2023/10/Model_V02_2023-Oct-16_11-15-28PM-000_CustomizedView27364077015.png",
@@ -443,7 +443,7 @@ export default {
     },
     "4": {
       "file": "content/media/decap-smartvalve-samples.jpg",
-      "alt": "SmartValves with their electronics"
+      "alt": "smARTvalves with their electronics"
     },
     "5": {
       "url": "https://orchestrionix.com/wp-content/uploads/2023/08/20221008_mohaibalazs_074-1-2-1.png",
@@ -483,25 +483,11 @@ export default {
   "smartvalve-for-organ-builders": {
     "0": {
       "file": "content/media/decap-smartvalves-in-their-windchest.jpg",
-      "alt": "SmartValves mounted in their wind chest"
+      "alt": "smARTvalves mounted in their wind chest"
     },
     "3": {
       "file": "content/media/decap-smartvalve-samples.jpg",
-      "alt": "SmartValves with their electronics"
-    }
-  },
-  "brass-core": {
-    "0": {
-      "url": "https://orchestrionix.com/wp-content/uploads/2023/10/TROMBONE-Samenstelling_01_2023-Oct-16_10-42-03PM-000_CustomizedView21586800008.png",
-      "alt": "Brass Core on a trombone"
-    },
-    "3": {
-      "url": "https://orchestrionix.com/wp-content/uploads/2023/08/Rectangle-62-1-3.png",
-      "alt": "Close-up of Brass Core on a trumpet"
-    },
-    "4": {
-      "url": "https://orchestrionix.com/wp-content/uploads/2023/08/s.png",
-      "alt": "Brass Core on a trumpet"
+      "alt": "smARTvalves with their electronics"
     }
   }
 };

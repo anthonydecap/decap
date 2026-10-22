@@ -6,7 +6,7 @@ export default {
   theme: "decap",
   meta_title: "About Us: Organ Builders Since 1895 | Decap Herentals",
   meta_description:
-    "Four generations of Decap organ builders. Aloïs Decap started in 1895, Frans founded Decap Herentals in 1933. Today Tony Decap builds organs and SmartValve.",
+    "Four generations of Decap organ builders. Aloïs Decap started in 1895, Frans founded Decap Herentals in 1933. Today Tony Decap builds organs and smARTvalve.",
   slices: [
     {
       type: "site_hero",
@@ -30,7 +30,7 @@ export default {
         eyebrow: "Decap Herentals",
         title: "One family, one trade, since 1895",
         body:
-          "Decap Herentals builds dance organs, fair organs, street organs and concert organs, and the self-playing instruments and MIDI technology that go with them. The workshop is on the Langepad in Herentals, Belgium.\n\nThe trade has passed from father to son four times. Each generation kept what worked and changed what no longer did: Frans gave the business its own workshop, François took the dance organ digital, and Tony brought MIDI and then SmartValve.",
+          "Decap Herentals builds dance organs, fair organs, street organs and concert organs, and the self-playing instruments and MIDI technology that go with them. The workshop is on the Langepad in Herentals, Belgium.\n\nThe trade has passed from father to son four times. Each generation kept what worked and changed what no longer did: Frans gave the business its own workshop, François took the dance organ digital, and Tony brought MIDI and then smARTvalve.",
         media_side: "Image right",
         aspect: "Landscape 4:3",
         image_brief: "Scan of archive photo of the Decap workshop in Herentals, early years, landscape 4:3",
@@ -124,7 +124,7 @@ export default {
         {
           year: "2025",
           title: "The first wind synthesizer",
-          body: "SmartValve goes into the first transportable church organ, with every pipe controlled on its own: L'Explorateur for Swiss organist Yves Rechsteiner. [Read the case study](/work/yves-rechsteiner).",
+          body: "smARTvalve goes into the first transportable church organ, with every pipe controlled on its own: L'Explorateur for Swiss organist Yves Rechsteiner. [Read the case study](/work/yves-rechsteiner).",
           highlight: true,
           image_brief: "L'Explorateur set up in a chapel, wide shot, 4:3",
         },
@@ -174,7 +174,7 @@ export default {
         { point: "Design and 3D render of every organ before production starts" },
         { point: "Wooden organ pipes milled on our 5-axis CNC, with PipeCreator software we wrote ourselves" },
         { point: "Voicing by our own voicers" },
-        { point: "SmartValve, MIDI conversion units and the control electronics for our instruments" },
+        { point: "smARTvalve, MIDI conversion units and the control electronics for our instruments" },
         { point: "Virtual Orchestrion and MIDIMapper software, written in-house" },
         { point: "Self-playing instruments: accordion, pipes, percussion and mallet percussion" },
       ],

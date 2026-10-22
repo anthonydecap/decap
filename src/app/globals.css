@@ -77,7 +77,6 @@
   --menu-hover: #171717;
   --menu-line: #262626;
   --gradient-smartvalve: linear-gradient(to right, #3b82f6, #a855f7, #ec4899, #ef4444, #f97316, #eab308);
-  --gradient-orchestrionix: linear-gradient(to right, #b07a45, #cca483, #f1dcb8, #cca483, #9a6a3a);
 }
 
 [data-theme="smartvalve"],
@@ -95,7 +94,7 @@
 }
 
 /* Orchestrionix (Brass Core): Decap's other high-tech line. Dark, with the heritage Orchestrionix
-   copper as accent and a brass gradient as its signature (counterpart of SmartValve's rainbow). */
+   copper as a solid accent (no gradient: that belongs to smARTvalve). */
 [data-theme="orchestrionix"],
 :root:has(main [data-theme="orchestrionix"]) {
   --page-bg: #0c0a09;
@@ -198,31 +197,12 @@
   text-wrap: balance;
 }
 
-/* Brand names as text: SmartValve in its rainbow, Orchestrionix / Brass Core in brass. */
-.text-smartvalve,
-.text-orchestrionix {
+/* "smARTvalve" in its rainbow: the only brand with a gradient (buttons, labels, badges, pills). */
+.text-smartvalve {
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-}
-.text-smartvalve {
   background-image: var(--gradient-smartvalve);
-}
-.text-orchestrionix {
-  background-image: var(--gradient-orchestrionix);
-}
-/* On a filled accent button the brand gradient would disappear into the button colour: plain text. */
-.bg-accent .text-orchestrionix,
-.bg-accent .text-smartvalve,
-[data-theme="orchestrionix"] .bg-accent .text-orchestrionix {
-  background-image: none;
-  color: inherit;
-}
-[data-theme="decap"] .bg-accent .text-smartvalve,
-[data-theme="atelier"] .bg-accent .text-smartvalve {
-  /* Black buttons on light pages carry the SmartValve rainbow well. */
-  background-image: var(--gradient-smartvalve);
-  color: transparent;
 }
 
 @theme inline {
@@ -267,6 +247,24 @@ body {
 
 .text-balance {
   text-wrap: balance;
+}
+
+/* Site tiles: optional slow zoom (Ken Burns) on the background image. */
+@keyframes tile-slow-zoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+.tile-slow-zoom {
+  animation: tile-slow-zoom 18s ease-in-out infinite alternate;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tile-slow-zoom {
+    animation: none;
+  }
 }
 
 @keyframes home-artists-reel {

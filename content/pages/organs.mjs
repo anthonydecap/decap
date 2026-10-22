@@ -68,7 +68,7 @@ export default {
         eyebrow: "What we build",
         title: "Dance, fair, street and concert organs",
         body:
-          "### Dance organs\nFor dance halls, cafés and event rooms. Decap dance organs have controllable sensitivity and volume, so they fit the room instead of filling it. That is why Guido Belcanto could tour one in his theatre show *Balzaal der Gebroken Harten* in 2008.\n\n### Fair organs\nFor fairgrounds, carousels and showmen: built to be transported and to be heard outdoors.\n\n### Street organs\nFor the street, for festivals and for collectors who want an organ that travels.\n\n### Church and concert organs\nIn 2025 we built SmartValve into the first transportable church organ, with every pipe controlled on its own. That organ is [L'Explorateur](/work/yves-rechsteiner), the mobile concert organ of Swiss organist Yves Rechsteiner.\n\nWe build for dance halls, cafés, fairgrounds, collectors, museums and churches.",
+          "### Dance organs\nFor dance halls, cafés and event rooms. Decap dance organs have controllable sensitivity and volume, so they fit the room instead of filling it. That is why Guido Belcanto could tour one in his theatre show *Balzaal der Gebroken Harten* in 2008.\n\n### Fair organs\nFor fairgrounds, carousels and showmen: built to be transported and to be heard outdoors.\n\n### Street organs\nFor the street, for festivals and for collectors who want an organ that travels.\n\n### Church and concert organs\nIn 2025 we built smARTvalve into the first transportable church organ, with every pipe controlled on its own. That organ is [L'Explorateur](/work/yves-rechsteiner), the mobile concert organ of Swiss organist Yves Rechsteiner.\n\nWe build for dance halls, cafés, fairgrounds, collectors, museums and churches.",
         media_side: "Image right",
         aspect: "Portrait 4:5",
         image_brief:
@@ -140,15 +140,15 @@ export default {
     {
       type: "site_text_media",
       primary: {
-        eyebrow: "SmartValve",
+        eyebrow: "smARTvalve",
         title: "Expression on every pipe",
         body:
-          "A new Decap organ with pipes can be built with SmartValve: one valve and one processor for every pipe. Each pipe gets its own stored pressure, from 0 to 200%, with a 4 ms response. That allows dynamics, vibrato, slope and decay per note, played over MIDI.\n\nIt is the technology in the 2025 transportable church organ, the first organ we call a wind synthesizer.",
+          "A new Decap organ with pipes can be built with smARTvalve: one valve and one processor for every pipe. Each pipe gets its own stored pressure, from 0 to 200%, with a 4 ms response. That allows dynamics, vibrato, slope and decay per note, played over MIDI.\n\nIt is the technology in the 2025 transportable church organ, the first organ we call a wind synthesizer.",
         media_side: "Image left",
         aspect: "Landscape 4:3",
-        cta_label: "How SmartValve works",
+        cta_label: "How smARTvalve works",
         cta_link: "/smartvalve",
-        image_brief: "Close-up of a row of SmartValves on a wind chest, dark background, low side light; 4:3",
+        image_brief: "Close-up of a row of smARTvalves on a wind chest, dark background, low side light; 4:3",
         tone: "Dark band",
       },
     },

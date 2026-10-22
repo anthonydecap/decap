@@ -46,7 +46,7 @@ export default {
         {
           tag: "Music included",
           title: "Pipes",
-          body: "Up to seven ranks of wooden or metal pipes with a built-in silent blower. Pressure effects over MIDI, with an upgrade to SmartValve control per pipe.",
+          body: "Up to seven ranks of wooden or metal pipes with a built-in silent blower. Pressure effects over MIDI, with an upgrade to smARTvalve control per pipe.",
           link_label: "Pipe Cube and Pedestal",
           link: "/pipes",
           image_brief: "Pipe Cube with front panel off so the pipes show, plain backdrop, 4:3",

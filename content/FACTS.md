@@ -34,18 +34,19 @@ page), do not invent it: write `[TO CHECK: …]` in the copy instead. Items mark
 | 2004 | The Accordion Pedestal is introduced. | user |
 | 2008 | Flemish singer **Guido Belcanto** tours a Decap dance organ in his theatre show *Balzaal der Gebroken Harten*, made possible because Decap organs have controllable sensitivity and volume. (A profile lists the show as Belcanto with Lady Angelina, Vitalski and "Decaporgel".) | user; frontstagefestivals.com |
 | 2016 | First organ pipes milled on CNC, a process developed entirely in-house (PipeCreator software). | user |
-| 2025 | SmartValve built into the first transportable church organ, with every pipe individually controlled: the world's first **wind synthesizer**. This is **L'Explorateur**, the mobile concert organ of Swiss organist **Yves Rechsteiner** (third-party description: "a modular organ… developed by Tony Decap" whose valve technology "essentially turns a pipe organ into a physical synthesizer"; played e.g. Lyon, Chapelle de la Trinité, 14 Nov 2025). (confirmed by Decap) | user; studio31 blog; Bachtrack |
+| 2025 | smARTvalve built into the first transportable church organ, with every pipe individually controlled: the world's first **wind synthesizer**. This is **L'Explorateur**, the mobile concert organ of Swiss organist **Yves Rechsteiner** (third-party description: "a modular organ… developed by Tony Decap" whose valve technology "essentially turns a pipe organ into a physical synthesizer"; played e.g. Lyon, Chapelle de la Trinité, 14 Nov 2025). (confirmed by Decap) | user; studio31 blog; Bachtrack |
 
 Phrase to use: *"Organ builders since 1895. Decap Herentals since 1933."*
 Story line: every generation reinvented the organ (Frans founded the workshop, François went
-digital, Tony brought MIDI and SmartValve).
+digital, Tony brought MIDI and smARTvalve).
 
 ## Brands and naming (strict)
 
 - **Decap** is the brand. Everything is a Decap product, made in Herentals.
-- **SmartValve** is a Decap product and Decap's flagship technology. Written "SmartValve" in new
-  copy (the existing SmartValve page uses the stylised "smARTvalve"; leave that page as is).
-  Old name **IPU / IPU-system = SmartValve**: never write IPU.
+- **smARTvalve** is a Decap product and Decap's flagship technology. **Always written "smARTvalve"**
+  (never SmartValve or Smartvalve); web addresses stay /smartvalve. Its rainbow gradient is used only
+  on buttons, labels, badges and pills, and no other brand gets a gradient.
+  Old name **IPU / IPU-system = smARTvalve**: never write IPU.
 - **Orchestrionix** is now only a label on **Brass Core**: Decap's line of robotic instruments for
   musicians (no music library included, played from your own audio/MIDI). Written
   "Brass Core — Orchestrionix" or "Orchestrionix Brass Core". orchestrionix.com redirects to
@@ -109,7 +110,7 @@ Existing Prismic pages (keep): `accordion`, `pipes`, `percussion-unit`, `mallet-
   Cube = compact, transport-friendly.
 - **Pipes (Pipe Cube / Pedestal)**: up to 7 ranks; built-in silent multistage blower; pressure FX
   over MIDI (pitch wheel, mod wheel, LFO vibrato, slope, decay); any wooden or metal pipes; upgrade
-  to SmartValve per-pipe control.
+  to smARTvalve per-pipe control.
 - **Percussion Unit**: drum kit plus tambourine, claves, woodblock, cowbell, shaker egg; full
   velocity 1–127, MIDI volume and expression; 70 ms repeat = 14 hits per second; LED in stick tips;
   plays GM drum note numbers; plug and play.
@@ -117,8 +118,8 @@ Existing Prismic pages (keep): `accordion`, `pipes`, `percussion-unit`, `mallet-
   of a few milliseconds; General MIDI.
 - **Bellow Organ** (hand-turned): 100% chromatic ("keep it chromatic and keep it simple": no notes
   left out, so music can be transposed); aluminium frame; swappable panels (veneer or blank
-  pre-cut panels to decorate yourself); pressure regulation mechanical, SmartValve per chest, or
-  SmartValve per pipe; built-in Virtual Orchestrion player; works as MIDI master or slave with
+  pre-cut panels to decorate yourself); pressure regulation mechanical, smARTvalve per chest, or
+  smARTvalve per pipe; built-in Virtual Orchestrion player; works as MIDI master or slave with
   other Decap instruments; kit or pre-assembled; start with few pipes and add ranks later;
   optional motor drive. Renders show 45- and 52-key versions `[TO CHECK]`.
 - **No prices for instruments, organs, MIDI conversion or pipes.** Every project is configured
@@ -138,38 +139,38 @@ Existing Prismic pages (keep): `accordion`, `pipes`, `percussion-unit`, `mallet-
 - **Brass Core is one of the few off-the-shelf products: it ships immediately when in stock.**
   Show its price: **€ 2,599** (confirmed; the shop's Stripe product still says € 799 and must be corrected).
 
-## SmartValve (existing Prismic page `smartvalve`, keep)
+## smARTvalve (existing Prismic page `smartvalve`, keep)
 
 - One valve per pipe with its own processor; airflow regulated more than 1,000 times per second;
   pressure 0–200% stored per pipe; 4 ms response; PID feedback; optical MIDI cable (100× MIDI speed,
   200 m+); LFO effects, vibrato, slope, decay. Proven in L'Explorateur (2025).
-- Optical MIDI is an accessory of SmartValve.
-- **SmartValve is fully digital:** every valve has its own processor, and every pipe is individually
+- Optical MIDI is an accessory of smARTvalve.
+- **smARTvalve is fully digital:** every valve has its own processor, and every pipe is individually
   addressable. With Decap's software, **stops are defined in software ("digital stops")**: any
   combination of pipes can form a stop, in practically unlimited combinations, each pipe with its
   own pressure settings. (user, 2026-10-20)
-- **SmartValve retrofit:** valves are fitted to a pipe panel, so an existing organ can be retrofitted
-  by replacing its pipe panels. In a full SmartValve organ everything is software (stops and
-  mappings unlimited); when SmartValve extends an existing organ, the limits of the original
-  controller/control system apply, case by case. SmartValve is extremely small (exact dimensions to be supplied by
+- **smARTvalve retrofit:** valves are fitted to a pipe panel, so an existing organ can be retrofitted
+  by replacing its pipe panels. In a full smARTvalve organ everything is software (stops and
+  mappings unlimited); when smARTvalve extends an existing organ, the limits of the original
+  controller/control system apply, case by case. smARTvalve is extremely small (exact dimensions to be supplied by
   Decap). (user, 2026-10-20)
 - **From Yves Rechsteiner's own article** ("About the Explorateur", studio31.bearblog.dev): idea in
   2013 (artistic director of Toulouse les Orgues); met Tony Decap in 2019 through a teaser of
   Stephan Eicher's Die Automaten; construction from 2021; first valve generation (IPU) after two
-  years; SmartValve developed end 2023 to end 2025, designed by Tony Decap. The valve regulates the
+  years; smARTvalve developed end 2023 to end 2025, designed by Tony Decap. The valve regulates the
   wind "a few millimetres from the pipe's foot": it measures the pressure drop on the input side and
   opens further to compensate, so pressure stays stable when many pipes sound. No regulators
-  needed: a blower and a distribution box. Set-up with SmartValve "less than 2 hours from the truck
+  needed: a blower and a distribution box. Set-up with smARTvalve "less than 2 hours from the truck
   arriving to playing". Built to fit a 20 m³ van, max. 1,200 kg. More than 30 performances since
   2023 (churches, museums, theatres; repertoire incl. Vierne, Fauré, Poulenc's Organ Concerto).
   Residencies with the duo Gamut (Berlin) and George Rahi (Toronto). Rechsteiner: organ builders
-  consider SmartValve a high-performing, responsive solution.
-- **Any MIDI can be mapped to SmartValve:** e.g. the key position can drive the valve opening, so
-  SmartValve can behave exactly like a position-following ("linear") valve, as one mapping among
+  consider smARTvalve a high-performing, responsive solution.
+- **Any MIDI can be mapped to smARTvalve:** e.g. the key position can drive the valve opening, so
+  smARTvalve can behave exactly like a position-following ("linear") valve, as one mapping among
   countless others (velocity, aftertouch, CC, pressure curves, LFOs…). (user, 2026-10-20)
 - **For organ builders (B2B):** no public prices. Message: the technology is available and goes
   further than any other valve. Never name competitors (e.g. Orgelpunkt Linear Valve L1) on the site;
-  compare categories (on/off valve, position-following valve, closed-loop SmartValve) instead.
+  compare categories (on/off valve, position-following valve, closed-loop smARTvalve) instead.
 
 ## Software
 
@@ -189,7 +190,7 @@ Existing Prismic pages (keep): `accordion`, `pipes`, `percussion-unit`, `mallet-
 - **Pat Metheny**: Decap built an orchestrion for Pat Metheny, which he toured the world with in
   several productions. Details (which productions, years) `[TO CHECK]`.
 - **Stephan Eicher**: "Und die Automaten" tour with automated instruments; album *Ode*.
-- **Yves Rechsteiner**: L'Explorateur, mobile concert organ for venues without an organ; SmartValve
+- **Yves Rechsteiner**: L'Explorateur, mobile concert organ for venues without an organ; smARTvalve
   per-pipe control; "physical synthesizer". 2025.
 - **House of Music Hungary** (Budapest), with Medence Design: "Creative Sound Space", eight
   installations, a robot orchestra; "Robotorgona" concerts with computer-controlled marimba,
@@ -247,7 +248,7 @@ Existing Prismic pages (keep): `accordion`, `pipes`, `percussion-unit`, `mallet-
   Mention them by name (artist slider with existing portraits); no full case study needed.
 - **Videos (YouTube):** BELEM / Walter Hus / The Mekanics uIrJGwcmgwY; Gamut playing L'Explorateur
   IvDFsVgjlno; Guido Belcanto with the Belcanto organ 0kfG-wFjMDk; Mauricio Silva Orendain
-  (researcher in microtonality) playing pipes through SmartValve with a MIDI gesture ring
+  (researcher in microtonality) playing pipes through smARTvalve with a MIDI gesture ring
   (short M4y9bnKHQeQ). Points he wants highlighted: "One pipe, many sounds" (real-time wind
   pressure gives one pipe a whole palette of sounds) and "connecting digital languages with acoustic
   synthesis" (opens the instrument to non-organists, theatre, sound installations, artistic research).

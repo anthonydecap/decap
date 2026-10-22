@@ -55,15 +55,15 @@ export default {
         eyebrow: "Pressure regulation",
         title: "Three ways to regulate the wind",
         body:
-          "Wind pressure shapes how the pipes speak. You choose how much control you want, from a traditional regulator to [SmartValve](/smartvalve) on every pipe.",
+          "Wind pressure shapes how the pipes speak. You choose how much control you want, from a traditional regulator to [smARTvalve](/smartvalve) on every pipe.",
         media_side: "Image right",
         aspect: "Square",
-        image_brief: "SmartValves mounted on the Bellow Organ's chest, close-up from above, square",
+        image_brief: "smARTvalves mounted on the Bellow Organ's chest, close-up from above, square",
       },
       items: [
         { point: "Mechanical: the traditional regulator" },
-        { point: "SmartValve per chest: one regulated pressure for the whole chest" },
-        { point: "SmartValve per pipe: its own pressure for every single pipe" },
+        { point: "smARTvalve per chest: one regulated pressure for the whole chest" },
+        { point: "smARTvalve per pipe: its own pressure for every single pipe" },
       ],
     },
     {
@@ -114,7 +114,7 @@ export default {
         { label: "Scale", value: "100% chromatic" },
         { label: "Frame", value: "Aluminium" },
         { label: "Panels", value: "High-gloss wood veneer, or blank pre-cut panels to decorate yourself" },
-        { label: "Pressure regulation", value: "Mechanical, SmartValve per chest or SmartValve per pipe" },
+        { label: "Pressure regulation", value: "Mechanical, smARTvalve per chest or smARTvalve per pipe" },
         { label: "Player", value: "Built-in Virtual Orchestrion" },
         { label: "MIDI", value: "Master or slave with other Decap instruments" },
         { label: "Drive", value: "Hand-turned; optional motor" },
@@ -136,7 +136,7 @@ export default {
             "Phone or handheld recorder 2 m in front of the organ, quiet room or calm street, one full tune, crank noise allowed",
         },
         {
-          title: "With SmartValve per pipe",
+          title: "With smARTvalve per pipe",
           description: "Recording to come: the same organ, with pressure controlled pipe by pipe.",
           audio_brief:
             "Same position and level as the first recording, a slow piece where swells and vibrato are clearly audible",
@@ -183,7 +183,7 @@ export default {
         body: "Tell us whether you want a kit or a finished organ, how many ranks to start with and how you will use it. We reply with a configuration and a quote.",
         primary_cta_label: "Request a quote",
         primary_cta_link: "/contact",
-        secondary_cta_label: "About SmartValve",
+        secondary_cta_label: "About smARTvalve",
         secondary_cta_link: "/smartvalve",
         tone: "Dark band",
       },

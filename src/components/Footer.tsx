@@ -8,7 +8,6 @@ import { prismicLinkHref, urlLangFromPathname, type LinkLike } from "@/lib/prism
 import { Container } from "./Container";
 import { FadeIn } from "./FadeIn";
 import { Logo } from "./Logo";
-import { BrandText } from "./BrandText";
 import { defaultFooterSections } from "@/lib/site-nav";
 import { openCookieSettings } from "./Analytics";
 import { useUiCopy } from "@/lib/ui-copy";
@@ -58,7 +57,7 @@ function Navigation({ sections }: { sections: FooterSection[] }) {
                     href={prismicLinkHref(link.link_url, "#", urlLang)}
                     className="transition hover:text-ink"
                   >
-                    <BrandText>{link.link_text}</BrandText>
+                    {link.link_text}
                   </Link>
                 </li>
               ))}
@@ -131,7 +130,7 @@ export function Footer({
         </div>
         <div className="mt-24 mb-20 flex flex-wrap items-end justify-between gap-x-6 gap-y-4 border-t border-line pt-12">
           <Link href="/" aria-label="Home">
-            {logo ? (
+            {logo && isFilled.image(logo) ? (
               <PrismicNextImage field={logo} className="h-8 w-auto" alt="" />
             ) : (
               <Logo className="h-6" />
