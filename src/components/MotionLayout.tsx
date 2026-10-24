@@ -23,7 +23,8 @@ export function MotionLayout({ children, settings }: MotionLayoutProps) {
       layout
       key={pathname}
       style={{ borderTopLeftRadius: 40, borderTopRightRadius: 40 }}
-      className="relative flex flex-auto overflow-hidden bg-chrome pt-14"
+      // overflow-clip, not -hidden: clips the rounded corners without breaking position: sticky.
+      className="relative flex flex-auto overflow-clip bg-chrome pt-14"
     >
       <motion.div layout className="relative isolate flex w-full flex-col pt-9">
         <main className="w-full flex-auto">{children}</main>

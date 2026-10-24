@@ -7,15 +7,14 @@ import { PrismicNextImage } from "@prismicio/next";
 import { type SliceComponentProps } from "@prismicio/react";
 import clsx from "clsx";
 import { Container } from "@/components/Container";
-import { FadeIn } from "@/components/FadeIn";
 import { MediaPlaceholder } from "@/components/MediaSlot";
-import { SiteLink, SiteRichText, toneFromSelect } from "@/lib/site-ui";
+import { SectionHeader, SiteLink, toneFromSelect } from "@/lib/site-ui";
 import { useUiCopy } from "@/lib/ui-copy";
 
 /*
- * Apple-style gallery ("Get to know …"): tall photo cards in a horizontal, snapping scroll row.
- * The first card lines up with the page content; the row bleeds off the right edge. A label and
- * one line sit over the top of each photo; arrow buttons scroll one card at a time.
+ * Apple-style photo cards with a label and one line over the photo. Up to four cards form one row
+ * inside the site container on desktop (same gaps and corners as the homepage tiles); below
+ * desktop, or with more cards, they swipe in a snapping row with arrow buttons.
  */
 
 const POSITION: Record<string, string> = {
@@ -51,7 +50,7 @@ function Card({ item }: { item: any }) {
           <PrismicNextImage
             field={item.image}
             fill
-            sizes="(min-width: 1024px) 400px, 80vw"
+            sizes="(min-width: 1024px) 25vw, 80vw"
             className={clsx("object-cover transition-transform duration-700 ease-out group-hover:scale-105", POSITION[item.image_position] ?? "object-center")}
             fallbackAlt=""
           />
@@ -62,7 +61,7 @@ function Card({ item }: { item: any }) {
       )}
       <div className="absolute inset-x-0 top-0 p-6 text-left sm:p-7">
         {item.eyebrow && <p className="text-sm font-semibold text-white/85">{item.eyebrow}</p>}
-        {item.title && <p className="site-heading mt-1.5 text-2xl leading-snug text-white sm:text-[1.65rem]">{item.title}</p>}
+        {item.title && <p className="site-heading mt-1.5 text-xl leading-snug text-white sm:text-2xl lg:text-xl xl:text-2xl">{item.title}</p>}
       </div>
     </div>
   );
@@ -97,41 +96,42 @@ const SiteCarousel: FC<SliceComponentProps<any>> = ({ slice }) => {
     const el = track.current;
     const card = el?.querySelector("li");
     if (!el || !card) return;
-    el.scrollBy({ left: dir * (card.getBoundingClientRect().width + 20), behavior: "smooth" });
+    el.scrollBy({ left: dir * (card.getBoundingClientRect().width + 16), behavior: "smooth" });
   };
 
   if (!items.length) return null;
   const tone = toneFromSelect(p.tone);
 
-  return (
-    <section data-tone={tone === "page" ? undefined : tone} className="overflow-hidden bg-page py-16 text-ink sm:py-24 lg:py-28">
-      <Container>
-        <FadeIn className="flex flex-wrap items-end justify-between gap-6">
-          <div className="max-w-3xl">
-            {p.eyebrow && <p className="text-sm font-semibold text-ink-muted">{p.eyebrow}</p>}
-            {p.title && <h2 className="site-heading mt-2 text-4xl leading-tight text-ink sm:text-5xl">{p.title}</h2>}
-            <SiteRichText field={p.intro} className="mt-4 text-lg leading-relaxed text-ink-muted" />
-          </div>
-          <div className="hidden gap-3 sm:flex">
-            <Arrow dir="prev" disabled={edge.start} onClick={() => scroll(-1)} />
-            <Arrow dir="next" disabled={edge.end} onClick={() => scroll(1)} />
-          </div>
-        </FadeIn>
-      </Container>
+  // Up to four cards: one neat row inside the container on desktop. More: a scrolling row.
+  const fits = items.length <= 4;
+  const cols = ["", "lg:grid-cols-1", "lg:grid-cols-2", "lg:grid-cols-3", "lg:grid-cols-4"][Math.min(items.length, 4)];
 
-      {/* The row starts at the content edge and runs off the right side of the screen. */}
-      <ul
-        ref={track}
-        onScroll={update}
-        className="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        style={{ paddingLeft: "max(1.5rem, calc((100vw - 80rem) / 2 + 2rem))", paddingRight: "1.5rem", scrollPaddingLeft: "max(1.5rem, calc((100vw - 80rem) / 2 + 2rem))" }}
-      >
-        {items.map((item, i) => (
-          <li key={i} className="w-[78vw] max-w-[400px] flex-none snap-start sm:w-[340px] lg:w-[400px]">
-            <Card item={item} />
-          </li>
-        ))}
-      </ul>
+  return (
+    <section data-tone={tone === "page" ? undefined : tone} className="bg-page py-16 text-ink sm:py-24 lg:py-28">
+      <Container>
+        <SectionHeader eyebrow={p.eyebrow} title={p.title} intro={p.intro} />
+
+        <div className={clsx("mt-12 flex justify-end gap-3 lg:mt-16", fits ? "lg:hidden" : "hidden sm:flex")}>
+          <Arrow dir="prev" disabled={edge.start} onClick={() => scroll(-1)} />
+          <Arrow dir="next" disabled={edge.end} onClick={() => scroll(1)} />
+        </div>
+
+        {/* Same container, gaps and corners as the homepage tiles; swipes below desktop. */}
+        <ul
+          ref={track}
+          onScroll={update}
+          className={clsx(
+            "mt-4 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth [scrollbar-width:none] sm:gap-4 [&::-webkit-scrollbar]:hidden",
+            fits && clsx("lg:mt-16 lg:grid lg:overflow-visible", cols),
+          )}
+        >
+          {items.map((item, i) => (
+            <li key={i} className={clsx("w-[78%] flex-none snap-start sm:w-[44%]", fits ? "lg:w-auto" : "lg:w-[31%]")}>
+              <Card item={item} />
+            </li>
+          ))}
+        </ul>
+      </Container>
     </section>
   );
 };

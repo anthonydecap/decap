@@ -22,7 +22,7 @@ export const SITE_SLICES = {
     name: "SiteHero",
     description: "Page hero (H1) with intro, two buttons and an image. Split, centered or full-bleed.",
     primary: {
-      layout: select("Layout", ["Split", "Centered", "Full-bleed image"]),
+      layout: select("Layout", ["Split", "Centered", "Full-bleed image", "Video showcase"]),
       eyebrow: text("Eyebrow"),
       title: text("Title (H1)"),
       intro: rich("Intro"),
@@ -31,7 +31,8 @@ export const SITE_SLICES = {
       secondary_cta_label: text("Secondary button label"),
       secondary_cta_link: link("Secondary button link"),
       note: text("Small note under the buttons"),
-      image: image("Image"),
+      image: image("Image (also the poster while a video loads)"),
+      mux_video: text("Mux video instead of the image (optional)", "https://stream.mux.com/….m3u8 or playback ID"),
       image_brief: BRIEF(),
       tone: TONE(),
     },

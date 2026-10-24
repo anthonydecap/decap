@@ -24,6 +24,8 @@ const en = {
   video: "Video",
   previous: "Previous",
   next: "Next",
+  filmPlay: "Play the video",
+  filmPause: "Pause the video",
 
   form: {
     topic: "What is it about?",
@@ -101,6 +103,8 @@ const fr: UiCopy = {
   video: "Vidéo",
   previous: "Précédent",
   next: "Suivant",
+  filmPlay: "Lire la vidéo",
+  filmPause: "Mettre la vidéo en pause",
   form: {
     topic: "De quoi s’agit-il ?",
     name: "Nom",
@@ -172,6 +176,8 @@ const nl: UiCopy = {
   video: "Video",
   previous: "Vorige",
   next: "Volgende",
+  filmPlay: "Video afspelen",
+  filmPause: "Video pauzeren",
   form: {
     topic: "Waarover gaat het?",
     name: "Naam",
@@ -243,6 +249,8 @@ const de: UiCopy = {
   video: "Video",
   previous: "Zurück",
   next: "Weiter",
+  filmPlay: "Video abspielen",
+  filmPause: "Video pausieren",
   form: {
     topic: "Worum geht es?",
     name: "Name",

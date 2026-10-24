@@ -37,7 +37,12 @@ export function MuxVideoLayer({ src, className }: MuxVideoLayerProps) {
     let hls: import("hls.js").default | null = null;
 
     const setup = async () => {
-      if (video.canPlayType("application/vnd.apple.mpegurl")) {
+      // hls.js first: some browsers (recent Chrome) claim native HLS but play it unreliably.
+      // Native playback only where hls.js can't run (older iPhone Safari).
+      const Hls = (await import("hls.js")).default;
+      if (destroyed) return;
+      if (!Hls.isSupported()) {
+        if (!video.canPlayType("application/vnd.apple.mpegurl")) return;
         video.src = src;
         try {
           await video.play();
@@ -46,8 +51,6 @@ export function MuxVideoLayer({ src, className }: MuxVideoLayerProps) {
         }
         return;
       }
-      const Hls = (await import("hls.js")).default;
-      if (destroyed || !Hls.isSupported()) return;
       hls = new Hls({ enableWorker: true, lowLatencyMode: true });
       hls.loadSource(src);
       hls.attachMedia(video);

@@ -7,13 +7,32 @@ import clsx from "clsx";
 import { Container } from "@/components/Container";
 import { FadeIn, FadeInStagger } from "@/components/FadeIn";
 import { MediaSlot } from "@/components/MediaSlot";
+import { MuxVideoLayer, resolveMuxHlsUrl } from "@/lib/mux-video";
+import { VideoShowcase } from "./VideoShowcase";
 import { Eyebrow, SiteButton, SiteRichText, toneFromSelect } from "@/lib/site-ui";
 
-/** Page hero with the page's H1. Layouts: Split (text + image), Centered, Full-bleed image. */
+/** The hero image, with an optional Mux video playing over it (the image stays as poster and fallback). */
+function HeroMedia({ video, className, rounded = "rounded-2xl lg:rounded-3xl", ...slot }: Parameters<typeof MediaSlot>[0] & { video: string | null }) {
+  return (
+    <div className={clsx("relative", className)}>
+      <MediaSlot {...slot} rounded={rounded} className={className && "h-full w-full"} />
+      {video && (
+        <div className={clsx("absolute inset-0 overflow-hidden motion-reduce:hidden", rounded)}>
+          <MuxVideoLayer src={video} className="absolute inset-0 h-full w-full" />
+        </div>
+      )}
+    </div>
+  );
+}
+
+/** Page hero with the page's H1. Layouts: Split (text + image), Centered, Full-bleed image, Video showcase. */
 const SiteHero: FC<SliceComponentProps<any>> = ({ slice }) => {
   const p = slice.primary;
   const layout = p.layout || "Split";
   const brief = p.image_brief || `Hero image for “${p.title || "this page"}”`;
+  const video = resolveMuxHlsUrl(p.mux_video);
+
+  if (layout === "Video showcase") return <VideoShowcase p={p} video={video} brief={brief} />;
 
   const buttons = (
     <div className={clsx("mt-10 flex flex-wrap items-center gap-4", layout !== "Split" && "justify-center")}>
@@ -40,8 +59,8 @@ const SiteHero: FC<SliceComponentProps<any>> = ({ slice }) => {
     return (
       <section data-tone="inverse" className="relative isolate overflow-hidden bg-page text-ink">
         <div className="absolute inset-0 -z-10">
-          <MediaSlot field={p.image} brief={brief} aspect="" rounded="" className="h-full w-full" sizes="100vw" priority tone="dark" />
-          {p.image?.url && <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />}
+          <HeroMedia video={video} field={p.image} brief={brief} aspect="" rounded="" className="h-full w-full" sizes="100vw" priority tone="dark" />
+          {(p.image?.url || video) && <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />}
         </div>
         <Container className="flex min-h-[80vh] items-end py-24 sm:py-32">
           <FadeIn className="mx-auto max-w-3xl text-center">{copy}</FadeIn>
@@ -59,9 +78,9 @@ const SiteHero: FC<SliceComponentProps<any>> = ({ slice }) => {
         {layout === "Centered" ? (
           <FadeInStagger faster>
             <FadeIn className="mx-auto max-w-3xl text-center">{copy}</FadeIn>
-            {(p.image?.url || p.image_brief) && (
+            {(p.image?.url || p.image_brief || video) && (
               <FadeIn className="mt-16 lg:mt-20">
-                <MediaSlot field={p.image} brief={brief} aspect="aspect-[16/9]" sizes="(min-width: 1280px) 1216px, 100vw" priority />
+                <HeroMedia video={video} field={p.image} brief={brief} aspect="aspect-[16/9]" sizes="(min-width: 1280px) 1216px, 100vw" priority />
               </FadeIn>
             )}
           </FadeInStagger>
@@ -69,7 +88,7 @@ const SiteHero: FC<SliceComponentProps<any>> = ({ slice }) => {
           <FadeInStagger faster className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <FadeIn>{copy}</FadeIn>
             <FadeIn>
-              <MediaSlot field={p.image} brief={brief} aspect="aspect-[4/5] sm:aspect-[4/3] lg:aspect-[4/5]" priority />
+              <HeroMedia video={video} field={p.image} brief={brief} aspect="aspect-[4/5] sm:aspect-[4/3] lg:aspect-[4/5]" priority />
             </FadeIn>
           </FadeInStagger>
         )}
