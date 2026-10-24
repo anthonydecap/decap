@@ -1,9 +1,8 @@
 "use client";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useRef, useState } from "react";
-import { motion, useMotionTemplate, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import clsx from "clsx";
+import { useLayoutEffect, useRef, useState } from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { Container } from "@/components/Container";
 import { MediaSlot } from "@/components/MediaSlot";
 import { MuxVideoLayer } from "@/lib/mux-video";
@@ -11,11 +10,20 @@ import { Eyebrow, SiteButton, SiteRichText } from "@/lib/site-ui";
 import { useUiCopy } from "@/lib/ui-copy";
 
 /*
- * "Video showcase" hero: a big headline with the film peeking up from below in a rounded frame.
- * While the visitor scrolls, the section pins and the frame opens up to the full screen; the
- * headline lifts away and the intro and buttons appear over the film. Reduced motion: a static
- * headline above a framed image.
+ * "Video showcase" hero: the copy on the left, the film on the right in a curved cinema screen.
+ * While the visitor scrolls, the section pins, the screen flattens and opens to the full window,
+ * holds for a moment, then goes back into its screen and the copy returns. Reduced motion: the
+ * same layout without the scroll animation.
  */
+
+type Box = { x0: number; y0: number; x1: number; y1: number; W: number; H: number };
+
+/** Screen shape: top and bottom edges bow inwards, like a wide cinema screen seen from the seats. */
+function screenPath(x0: number, y0: number, x1: number, y1: number, sag: number, r: number) {
+  const cx = (x0 + x1) / 2;
+  const c = sag * 2; // a quadratic curve reaches half its control point's offset
+  return `path("M ${x0} ${y0 + r} Q ${x0} ${y0} ${x0 + r} ${y0} Q ${cx} ${y0 + c} ${x1 - r} ${y0} Q ${x1} ${y0} ${x1} ${y0 + r} L ${x1} ${y1 - r} Q ${x1} ${y1} ${x1 - r} ${y1} Q ${cx} ${y1 - c} ${x0 + r} ${y1} Q ${x0} ${y1} ${x0} ${y1 - r} Z")`;
+}
 
 /** Pause / play for the film (autoplaying video needs a way to stop it). */
 function PauseButton({ scope }: { scope: React.RefObject<HTMLElement | null> }) {
@@ -42,38 +50,69 @@ function PauseButton({ scope }: { scope: React.RefObject<HTMLElement | null> }) 
   );
 }
 
+function Copy({ p }: { p: any }) {
+  return (
+    <>
+      {p.eyebrow && <Eyebrow>{p.eyebrow}</Eyebrow>}
+      <h1 className="site-heading mt-5 text-[2.5rem] leading-[1.03] text-ink sm:text-6xl lg:text-[4.25rem] xl:text-7xl">{p.title}</h1>
+      <SiteRichText field={p.intro} className="mt-6 hidden text-lg leading-relaxed text-ink-muted sm:block sm:text-xl" />
+      <div className="mt-8 flex flex-wrap items-center gap-4 lg:mt-10">
+        <SiteButton field={p.primary_cta_link} label={p.primary_cta_label} />
+        <SiteButton field={p.secondary_cta_link} label={p.secondary_cta_label} variant="secondary" />
+      </div>
+      {p.note && <p className="mt-6 text-sm text-ink-muted">{p.note}</p>}
+    </>
+  );
+}
+
 export function VideoShowcase({ p, video, brief }: { p: any; video: string | null; brief: string }) {
   const reduce = useReducedMotion();
   const section = useRef<HTMLElement>(null);
   const stage = useRef<HTMLDivElement>(null);
-  const [narrow, setNarrow] = useState(false);
+  const slot = useRef<HTMLDivElement>(null);
+  const [box, setBox] = useState<Box | null>(null);
 
-  useEffect(() => {
-    const mq = window.matchMedia("(max-width: 767px)");
-    const set = () => setNarrow(mq.matches);
-    set();
-    mq.addEventListener("change", set);
-    return () => mq.removeEventListener("change", set);
-  }, []);
+  // Where the screen rests: an empty box in the layout, measured relative to the pinned stage.
+  useLayoutEffect(() => {
+    if (reduce) return;
+    const measure = () => {
+      const s = stage.current?.getBoundingClientRect();
+      const b = slot.current?.getBoundingClientRect();
+      if (!s || !b) return;
+      setBox({ x0: b.left - s.left, y0: b.top - s.top, x1: b.right - s.left, y1: b.bottom - s.top, W: s.width, H: s.height });
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    if (stage.current) ro.observe(stage.current);
+    if (slot.current) ro.observe(slot.current);
+    return () => ro.disconnect();
+  }, [reduce]);
 
   const { scrollYProgress } = useScroll({ target: section, offset: ["start start", "end end"] });
 
-  // The frame: starts inset under the headline, opens to the full screen.
-  const open = useTransform(scrollYProgress, [0, 0.55], [0, 1], { clamp: true });
-  const top = useTransform(open, (k) => (narrow ? 50 : 46) * (1 - k));
-  const side = useTransform(open, (k) => (narrow ? 5 : 18) * (1 - k));
-  const bottom = useTransform(open, (k) => 5 * (1 - k));
-  const radius = useTransform(open, (k) => 28 * (1 - k));
-  const clip = useMotionTemplate`inset(${top}% ${side}% ${bottom}% round ${radius}px)`;
-  const filmScale = useTransform(open, [0, 1], [1.12, 1]);
-
-  // The headline lifts away; the intro, buttons and darkening come in once the film is open.
-  const headY = useTransform(scrollYProgress, [0, 0.25], ["0%", "-25%"]);
-  const headOpacity = useTransform(scrollYProgress, [0.02, 0.2], [1, 0]);
-  const shade = useTransform(scrollYProgress, [0.4, 0.7], [0, 1]);
-  const copyOpacity = useTransform(scrollYProgress, [0.55, 0.75], [0, 1]);
-  const copyY = useTransform(scrollYProgress, [0.55, 0.75], [32, 0]);
+  // 0 = in the cinema screen, 1 = the full window: out, hold, and back in.
+  const open = useTransform(scrollYProgress, [0.06, 0.36, 0.6, 0.9], [0, 1, 1, 0]);
+  const copyOpacity = useTransform(scrollYProgress, [0.06, 0.2, 0.76, 0.9], [1, 0, 0, 1]);
+  const copyX = useTransform(scrollYProgress, [0.06, 0.24, 0.72, 0.9], [0, -40, -40, 0]);
   const copyEvents = useTransform(copyOpacity, (o) => (o > 0.5 ? "auto" : "none"));
+  const pauseOpacity = useTransform(open, [0.8, 1], [0, 1]);
+  const pauseEvents = useTransform(pauseOpacity, (o) => (o > 0.5 ? "auto" : "none"));
+  const floorOpacity = useTransform(open, [0, 0.4], [1, 0]);
+
+  const clip = useTransform(open, (k) => {
+    if (!box) return "none";
+    const lerp = (a: number, b: number) => a + (b - a) * k;
+    const sag = (1 - k) * (box.y1 - box.y0) * 0.045;
+    return screenPath(lerp(box.x0, 0), lerp(box.y0, 0), lerp(box.x1, box.W), lerp(box.y1, box.H), sag, (1 - k) * 14);
+  });
+  // In the screen the film is scaled down to cover it, so the whole shot shows; it grows with it.
+  const filmScale = useTransform(open, (k) => {
+    if (!box) return 1;
+    const s0 = Math.max((box.x1 - box.x0) / box.W, (box.y1 - box.y0) / box.H) * 1.04;
+    return s0 + (1 - s0) * k;
+  });
+  const filmX = useTransform(open, (k) => (box ? ((box.x0 + box.x1) / 2 - box.W / 2) * (1 - k) : 0));
+  const filmY = useTransform(open, (k) => (box ? ((box.y0 + box.y1) / 2 - box.H / 2) * (1 - k) : 0));
 
   const film = video ? (
     <MuxVideoLayer src={video} className="absolute inset-0 h-full w-full" />
@@ -81,61 +120,60 @@ export function VideoShowcase({ p, video, brief }: { p: any; video: string | nul
     <MediaSlot field={p.image} brief={brief} aspect="" rounded="" className="absolute inset-0 h-full w-full" sizes="100vw" priority tone="dark" />
   );
 
-  const buttons = (
-    <div className="mt-8 flex flex-wrap items-center gap-4">
-      <SiteButton field={p.primary_cta_link} label={p.primary_cta_label} />
-      <SiteButton field={p.secondary_cta_link} label={p.secondary_cta_label} variant="secondary" />
-    </div>
-  );
-
   if (reduce) {
     return (
       <section className="bg-page pt-12 pb-16 text-ink sm:pt-16 sm:pb-24">
-        <Container className="text-center">
-          {p.eyebrow && <Eyebrow>{p.eyebrow}</Eyebrow>}
-          <h1 className="site-heading mx-auto mt-5 max-w-5xl text-5xl leading-[1.05] sm:text-6xl lg:text-7xl">{p.title}</h1>
-          <SiteRichText field={p.intro} className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted sm:text-xl" />
-          <div className="flex justify-center [&>div]:justify-center">{buttons}</div>
-          <MediaSlot field={p.image} brief={brief} aspect="aspect-[16/9]" className="mt-14" sizes="(min-width: 1280px) 1216px, 100vw" priority />
+        <Container>
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+            <div>
+              <Copy p={p} />
+            </div>
+            <MediaSlot field={p.image} brief={brief} aspect="aspect-[16/11]" priority />
+          </div>
         </Container>
       </section>
     );
   }
 
   return (
-    <section ref={section} className="relative h-[260vh] bg-page text-ink">
+    <section ref={section} className="relative h-[320vh] bg-page text-ink">
       <div ref={stage} className="sticky top-0 h-svh overflow-hidden">
-        {/* The film, revealed through an opening frame. */}
-        <motion.div style={{ clipPath: clip }} className="absolute inset-0 bg-neutral-950">
-          <motion.div style={{ scale: filmScale }} className="absolute inset-0">
-            {film}
-          </motion.div>
-          <motion.div style={{ opacity: shade }} className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10" />
-        </motion.div>
-
-        {/* Headline above the frame. */}
-        <motion.div style={{ y: headY, opacity: headOpacity }} className="relative">
-          <Container className={clsx("text-center", narrow ? "pt-10" : "pt-14 lg:pt-16")}>
-            {p.eyebrow && <Eyebrow>{p.eyebrow}</Eyebrow>}
-            <h1 className="site-heading mx-auto mt-5 max-w-5xl text-[2.6rem] leading-[1.02] sm:text-6xl lg:text-7xl xl:text-[5.25rem]">
-              {p.title}
-            </h1>
-          </Container>
-        </motion.div>
-
-        {/* Intro and buttons over the open film. */}
-        <motion.div data-tone="inverse" style={{ opacity: copyOpacity, y: copyY, pointerEvents: copyEvents }} className="absolute inset-x-0 bottom-0 pb-14 text-ink sm:pb-20">
-          <Container>
-            <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
-              <div className="max-w-xl">
-                <SiteRichText field={p.intro} className="text-lg leading-relaxed text-white/85 sm:text-xl" />
-                {buttons}
-                {p.note && <p className="mt-6 text-sm text-white/70">{p.note}</p>}
+        {/* Copy and the screen's resting place, centred a little high so the screen is fully
+            visible under the header before the section pins. */}
+        <div className="absolute inset-x-0 top-0 flex h-full items-start pt-8 lg:h-[84%] lg:items-center lg:pt-0">
+          <Container className="w-full">
+            <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+              <motion.div style={{ opacity: copyOpacity, x: copyX, pointerEvents: copyEvents }}>
+                <Copy p={p} />
+              </motion.div>
+              <div className="relative">
+                <div ref={slot} className="aspect-[16/11] w-full" />
+                {/* A soft shadow on the "floor" under the screen. */}
+                <motion.div
+                  style={{ opacity: floorOpacity }}
+                  className="absolute inset-x-[6%] -bottom-9 h-9 bg-[radial-gradient(closest-side,rgba(0,0,0,0.22),transparent)]"
+                />
               </div>
-              {video && <PauseButton scope={stage} />}
             </div>
           </Container>
+        </div>
+
+        {/* The film, seen through the cinema screen that opens to the full window. */}
+        <motion.div style={{ clipPath: clip, visibility: box ? "visible" : "hidden" }} className="pointer-events-none absolute inset-0">
+          <motion.div style={{ scale: filmScale, x: filmX, y: filmY }} className="absolute inset-0 bg-neutral-950">
+            {film}
+          </motion.div>
         </motion.div>
+
+        {video && (
+          <motion.div style={{ opacity: pauseOpacity, pointerEvents: pauseEvents }} className="absolute inset-x-0 bottom-0 pb-8 sm:pb-12">
+            <Container>
+              <div className="flex justify-end">
+                <PauseButton scope={stage} />
+              </div>
+            </Container>
+          </motion.div>
+        )}
       </div>
     </section>
   );
