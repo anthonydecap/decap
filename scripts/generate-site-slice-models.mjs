@@ -22,7 +22,7 @@ export const SITE_SLICES = {
     name: "SiteHero",
     description: "Page hero (H1) with intro, two buttons and an image. Split, centered or full-bleed.",
     primary: {
-      layout: select("Layout", ["Split", "Centered", "Full-bleed image"]),
+      layout: select("Layout", ["Split", "Centered", "Full-bleed image", "Video showcase"]),
       eyebrow: text("Eyebrow"),
       title: text("Title (H1)"),
       intro: rich("Intro"),

@@ -8,6 +8,7 @@ import { Container } from "@/components/Container";
 import { FadeIn, FadeInStagger } from "@/components/FadeIn";
 import { MediaSlot } from "@/components/MediaSlot";
 import { MuxVideoLayer, resolveMuxHlsUrl } from "@/lib/mux-video";
+import { VideoShowcase } from "./VideoShowcase";
 import { Eyebrow, SiteButton, SiteRichText, toneFromSelect } from "@/lib/site-ui";
 
 /** The hero image, with an optional Mux video playing over it (the image stays as poster and fallback). */
@@ -24,12 +25,14 @@ function HeroMedia({ video, className, rounded = "rounded-2xl lg:rounded-3xl", .
   );
 }
 
-/** Page hero with the page's H1. Layouts: Split (text + image), Centered, Full-bleed image. */
+/** Page hero with the page's H1. Layouts: Split (text + image), Centered, Full-bleed image, Video showcase. */
 const SiteHero: FC<SliceComponentProps<any>> = ({ slice }) => {
   const p = slice.primary;
   const layout = p.layout || "Split";
   const brief = p.image_brief || `Hero image for “${p.title || "this page"}”`;
   const video = resolveMuxHlsUrl(p.mux_video);
+
+  if (layout === "Video showcase") return <VideoShowcase p={p} video={video} brief={brief} />;
 
   const buttons = (
     <div className={clsx("mt-10 flex flex-wrap items-center gap-4", layout !== "Split" && "justify-center")}>

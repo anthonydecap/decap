@@ -19,7 +19,8 @@
             "options": [
               "Split",
               "Centered",
-              "Full-bleed image"
+              "Full-bleed image",
+              "Video showcase"
             ],
             "default_value": "Split"
           }
