@@ -141,8 +141,8 @@ export function VideoShowcase({ p, video, brief }: { p: any; video: string | nul
   const clip = useTransform(open, (k) => {
     if (!box) return "none";
     const lerp = (a: number, b: number) => a + (b - a) * k;
-    const sag = (1 - k) * (box.y1 - box.y0) * 0.045;
-    return screenPath(lerp(box.x0, 0), lerp(box.y0, 0), lerp(box.x1, box.W), lerp(box.y1, box.H), sag, (1 - k) * 14);
+    const sag = (1 - k) * (box.y1 - box.y0) * 0.022; // a gentle bow: reads as a cinema screen, not a wave
+    return screenPath(lerp(box.x0, 0), lerp(box.y0, 0), lerp(box.x1, box.W), lerp(box.y1, box.H), sag, 0); // square corners, like a real screen
   });
   // In the screen the film is scaled down to cover it, so the whole shot shows; it grows with it.
   const filmScale = useTransform(open, (k) => {
