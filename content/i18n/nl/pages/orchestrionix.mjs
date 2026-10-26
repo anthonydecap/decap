@@ -50,9 +50,9 @@ export default {
       },
       items: [
         {
-          title: "SmartValve",
-          body: "SmartValve is een Decap-product: één ventiel en één processor voor elke orgelpijp.",
-          link_label: "SmartValve",
+          title: "smARTvalve",
+          body: "smARTvalve is een Decap-product: één ventiel en één processor voor elke orgelpijp.",
+          link_label: "smARTvalve",
           link: "/smartvalve",
         },
         {

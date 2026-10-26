@@ -87,7 +87,7 @@ export default {
       items: [
         { label: "Lit", value: "MIDI, audio et vidéo" },
         { label: "Pilote", value: "Orgues et instruments automatiques Decap, pianos QRS" },
-        { label: "Vues", value: "Orchestrion animé et vue carton" },
+        { label: "Vues", value: "Orchestrion animé et vue carton", note: "La vue carton affiche le carton de musique de façon entièrement numérique, y compris pour les orgues convertis au MIDI" },
         { label: "Instruments virtuels", value: "Jusqu'à 8 VSTi et 8 DXi" },
         { label: "Jeux manquants", value: "Ajoutés virtuellement avec des échantillons enregistrés dans notre atelier" },
         { label: "Musique", value: "Vos propres fichiers MIDI, audio et vidéo ; arrangements de la boutique bientôt disponibles" },

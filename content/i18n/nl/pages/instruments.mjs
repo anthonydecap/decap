@@ -47,7 +47,7 @@ export default {
         {
           tag: "Muziek inbegrepen",
           title: "Pijpen",
-          body: "Tot zeven registers houten of metalen pijpen met een ingebouwde stille blazer. Winddrukeffecten via MIDI, uit te breiden naar SmartValve-sturing per pijp.",
+          body: "Tot zeven registers houten of metalen pijpen met een ingebouwde stille blazer. Winddrukeffecten via MIDI, uit te breiden naar smARTvalve-sturing per pijp.",
           link_label: "Pipe Cube en Pedestal",
           link: "/pipes",
           image_brief: "Pipe Cube with front panel off so the pipes show, plain backdrop, 4:3",

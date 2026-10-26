@@ -31,7 +31,7 @@ export default {
         eyebrow: "Warum umbauen",
         title: "Das Notenbuch bleibt. Die Musikbibliothek kommt dazu.",
         body:
-          "Notenbuch- und Rollensysteme machen diese Orgeln zu historischen Instrumenten, und viele Besitzer zögern, daran etwas zu ändern. Zu Recht: Bei einem Umbau soll die Orgel so unberührt wie möglich bleiben.\n\nUnsere Einheit ersetzt nichts. Notenbuch oder Notenrolle steuern die Orgel genau wie zuvor. MIDI kommt einfach hinzu. So spielen Sie Arrangements, die nie gestanzt wurden, spielen live über ein Keyboard oder lassen die Orgel mit anderen Instrumenten zusammenspielen.",
+          "Decap Herentals hat MIDI als Erster in die Orgel gebracht. Heute wird fast jede alte Orgel auf MIDI umgebaut, einfach weil es die bessere Art zu spielen ist: Ihre Orgel bekommt ein viel größeres Repertoire.\n\nNotenbuch- und Rollensysteme machen diese Orgeln zu historischen Instrumenten, und viele Besitzer zögern, daran etwas zu ändern. Zu Recht: Bei einem Umbau soll die Orgel so unberührt wie möglich bleiben. Unsere Einheit ersetzt nichts. Notenbuch oder Notenrolle steuern die Orgel genau wie zuvor. MIDI kommt einfach hinzu. So spielen Sie Arrangements, die nie gestanzt wurden, spielen live über ein Keyboard oder lassen die Orgel mit anderen Instrumenten zusammenspielen.",
         media_side: "Image right",
         aspect: "Landscape 4:3",
         image_brief:
@@ -42,6 +42,21 @@ export default {
         { point: "Notenbuch und MIDI können gleichzeitig spielen" },
         { point: "MIDI-Arrangements über Virtual Orchestrion abspielen oder live über MIDI spielen" },
       ],
+    },
+    {
+      type: "site_text_media",
+      primary: {
+        eyebrow: "Das Notenbuch auf dem Bildschirm",
+        title: "Die Romantik des Notenbuchs bleibt",
+        body:
+          "Als MIDI in die Orgel kam, zögerten viele Besitzer: Das gefaltete Notenbuch aus Karton, das durch die Orgel läuft, gehört zu ihrem Charme. Auch dafür haben wir eine Antwort. Unser Player Virtual Orchestrion zeigt das Notenbuch vollständig digital, so sehen Sie es laufen, während die Orgel über MIDI spielt.",
+        media_side: "Image left",
+        aspect: "Landscape 4:3",
+        cta_label: "Über Virtual Orchestrion",
+        cta_link: "/virtual-orchestrion",
+        image_brief: "Screen showing the digital book view of Virtual Orchestrion beside a converted book organ, 4:3",
+        tone: "Tinted",
+      },
     },
     {
       type: "site_facts",

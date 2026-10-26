@@ -30,7 +30,7 @@ export default {
         eyebrow: "Why convert",
         title: "Keep the book. Add the library.",
         body:
-          "Book and roll systems are what make these organs historic, and many owners are wary of changing them. Rightly so: if you convert, the organ should stay as untouched as possible.\n\nOur unit does not replace anything. The book or roll still drives the organ exactly as before. MIDI comes in alongside it, so you can play arrangements that were never punched, play live from a keyboard, or let the organ play together with other instruments.",
+          "Decap Herentals was the first to bring MIDI to the organ. Today almost every old organ is converted to MIDI, simply because it is the better way to play: it gives your organ a far wider repertoire.\n\nBook and roll systems are what make these organs historic, and many owners are wary of changing them. Rightly so: if you convert, the organ should stay as untouched as possible. Our unit does not replace anything. The book or roll still drives the organ exactly as before. MIDI comes in alongside it, so you can play arrangements that were never punched, play live from a keyboard, or let the organ play together with other instruments.",
         media_side: "Image right",
         aspect: "Landscape 4:3",
         image_brief:
@@ -41,6 +41,21 @@ export default {
         { point: "Book and MIDI can play at the same time" },
         { point: "Play MIDI arrangements through Virtual Orchestrion, or play live over MIDI" },
       ],
+    },
+    {
+      type: "site_text_media",
+      primary: {
+        eyebrow: "The book, on screen",
+        title: "Keep the romance of the book",
+        body:
+          "When MIDI first came to the organ, many owners held back: the folding cardboard book running through the organ is part of its charm. We have an answer for that too. Our Virtual Orchestrion player projects the book fully digitally, so you watch it run while the organ plays from MIDI.",
+        media_side: "Image left",
+        aspect: "Landscape 4:3",
+        cta_label: "About Virtual Orchestrion",
+        cta_link: "/virtual-orchestrion",
+        image_brief: "Screen showing the digital book view of Virtual Orchestrion beside a converted book organ, 4:3",
+        tone: "Tinted",
+      },
     },
     {
       type: "site_facts",

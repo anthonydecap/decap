@@ -7,7 +7,7 @@ export default {
   theme: "decap",
   meta_title: "L'Explorateur, orgue de concert transportable | Decap",
   meta_description:
-    "L'Explorateur, l'orgue transportable d'Yves Rechsteiner avec SmartValve sur chaque tuyau : 12 modules, monté en moins de 2 h, plus de 30 concerts depuis 2023.",
+    "L'Explorateur, l'orgue transportable d'Yves Rechsteiner avec smARTvalve sur chaque tuyau : 12 modules, monté en moins de 2 h, plus de 30 concerts depuis 2023.",
   fields: {
     summary: "Un orgue de concert transportable avec contrôle du vent sur chaque tuyau : monté en moins de deux heures, plus de 30 concerts depuis 2023.",
     client: "Yves Rechsteiner, Toulouse les Orgues",
@@ -20,12 +20,12 @@ export default {
       primary: {
         layout: "Split",
         eyebrow: "Réalisations · Yves Rechsteiner",
-        title: "L'Explorateur : un orgue de concert transportable avec SmartValve sur chaque tuyau",
+        title: "L'Explorateur : un orgue de concert transportable avec smARTvalve sur chaque tuyau",
         intro:
           "L'organiste Yves Rechsteiner voulait un orgue à tuyaux capable de jouer partout où se trouve la musique, pas seulement dans les églises. Ensemble, nous avons construit L'Explorateur : douze modules qui voyagent dans une seule camionnette, montés en moins de deux heures, avec le vent de chaque tuyau sous contrôle. Rechsteiner appelle le résultat un synthétiseur physique.",
-        primary_cta_label: "SmartValve pour facteurs d'orgues",
+        primary_cta_label: "smARTvalve pour facteurs d'orgues",
         primary_cta_link: "/smartvalve-for-organ-builders",
-        secondary_cta_label: "À propos de SmartValve",
+        secondary_cta_label: "À propos de smARTvalve",
         secondary_cta_link: "/smartvalve",
         image_brief: "L'Explorateur on stage with dancers in front, wide shot, 4:3",
       },
@@ -67,8 +67,8 @@ export default {
         { year: "2019", title: "La rencontre avec Tony Decap", body: "Grâce à la bande-annonce de *Die Automaten* de Stephan Eicher. Rechsteiner commande un instrument piloté en MIDI." },
         { year: "2021", title: "Début de la construction", body: "Pendant la construction, Decap propose une nouveauté : régler le vent non plus par sommier, mais par tuyau." },
         { year: "2023", title: "Premiers concerts", body: "Après deux ans de travail et de recherche, L'Explorateur joue avec la première génération de soupapes. Les concerts commencent." },
-        { year: "2023–2025", title: "SmartValve", body: "Tony Decap conçoit la deuxième génération, SmartValve, et l'électronique des modules est reconstruite autour d'elle.", highlight: true },
-        { year: "2025", title: "Le premier synthétiseur à vent", body: "SmartValve en concert : chaque tuyau d'un orgue d'église transportable commandé séparément. Parmi les concerts, un hommage à Moondog dans la Chapelle de la Trinité à Lyon.", highlight: true },
+        { year: "2023–2025", title: "smARTvalve", body: "Tony Decap conçoit la deuxième génération, smARTvalve, et l'électronique des modules est reconstruite autour d'elle.", highlight: true },
+        { year: "2025", title: "Le premier synthétiseur à vent", body: "smARTvalve en concert : chaque tuyau d'un orgue d'église transportable commandé séparément. Parmi les concerts, un hommage à Moondog dans la Chapelle de la Trinité à Lyon.", highlight: true },
         { year: "2026", title: "Les prochaines étapes", body: "Nouvelles soupapes et nouveaux sommiers, logiciel de console, ajustement de l'harmonisation et un jeu à anches libres provenant d'un *orgue expressif* Muller de 1830." },
       ],
     },
@@ -78,12 +78,12 @@ export default {
         eyebrow: "La technologie",
         title: "Le vent réglé par tuyau, pas par sommier",
         body:
-          "Dans un orgue classique, tous les tuyaux d'un sommier partagent le même vent. Dans L'Explorateur, chaque tuyau a sa propre SmartValve, à quelques millimètres du pied du tuyau. La soupape mesure la chute de pression en entrée et ouvre davantage pour la compenser : chaque tuyau garde son vent quand de nombreux tuyaux sonnent ensemble.\n\nLes premières soupapes étaient de petits haut-parleurs transformés en soupapes. SmartValve, la deuxième génération, a été conçue par Tony Decap et produite industriellement. Pour l'organiste, cela signifie le contrôle de chaque note : *« on peut définir la nature de l'attaque du son. »*",
+          "Dans un orgue classique, tous les tuyaux d'un sommier partagent le même vent. Dans L'Explorateur, chaque tuyau a sa propre smARTvalve, à quelques millimètres du pied du tuyau. La soupape mesure la chute de pression en entrée et ouvre davantage pour la compenser : chaque tuyau garde son vent quand de nombreux tuyaux sonnent ensemble.\n\nLes premières soupapes étaient de petits haut-parleurs transformés en soupapes. smARTvalve, la deuxième génération, a été conçue par Tony Decap et produite industriellement. Pour l'organiste, cela signifie le contrôle de chaque note : *« on peut définir la nature de l'attaque du son. »*",
         media_side: "Image right",
         aspect: "Landscape 4:3",
-        cta_label: "Comment fonctionne SmartValve",
+        cta_label: "Comment fonctionne smARTvalve",
         cta_link: "/smartvalve",
-        image_brief: "Close-up of the SmartValves under the pipes inside L'Explorateur, dark background, 4:3",
+        image_brief: "Close-up of the smARTvalves under the pipes inside L'Explorateur, dark background, 4:3",
       },
       items: [
         { point: "Une soupape et un processeur par tuyau" },
@@ -97,7 +97,7 @@ export default {
         eyebrow: "Conçu pour voyager",
         title: "Une camionnette, douze modules, moins de deux heures",
         body:
-          "Dès le départ, L'Explorateur avait deux limites : tenir dans une camionnette de 20 m³ et ne pas peser plus de 1 200 kg. Chaque choix technique en a découlé.\n\nL'orgue est divisé en modules que l'on porte, place et raccorde. Comme SmartValve rend les régulateurs de vent inutiles, l'alimentation en vent se résume à une soufflerie et une caisse de distribution. *« Pour L'Explorateur, cela signifie un montage facile de moins de 2 heures, de l'arrivée du camion aux premières notes. »*",
+          "Dès le départ, L'Explorateur avait deux limites : tenir dans une camionnette de 20 m³ et ne pas peser plus de 1 200 kg. Chaque choix technique en a découlé.\n\nL'orgue est divisé en modules que l'on porte, place et raccorde. Comme smARTvalve rend les régulateurs de vent inutiles, l'alimentation en vent se résume à une soufflerie et une caisse de distribution. *« Pour L'Explorateur, cela signifie un montage facile de moins de 2 heures, de l'arrivée du camion aux premières notes. »*",
         media_side: "Image left",
         aspect: "Landscape 4:3",
         image_brief: "L'Explorateur modules being unloaded from the van or set up in a hall, 4:3",
@@ -147,7 +147,7 @@ export default {
         eyebrow: "La tuyauterie",
         title: "De vieux tuyaux, une nouvelle vie",
         body:
-          "La plus grande partie de la tuyauterie est de seconde main, de la fin du XIXe et du début du XXe siècle, et a été harmonisée par Jean Daldosso. De nouveaux tuyaux à anches libres ont été fabriqués par Orgelbau Orglez en Bretagne : les anches libres changent de dynamique sans changer de hauteur, ce qui convient parfaitement au contrôle du vent par tuyau.\n\nAvec SmartValve, un jeu peut faire bien plus que ce pour quoi il a été construit : cinquante tuyaux de Flûte donnent toute une palette de couleurs, par le seul vent.",
+          "La plus grande partie de la tuyauterie est de seconde main, de la fin du XIXe et du début du XXe siècle, et a été harmonisée par Jean Daldosso. De nouveaux tuyaux à anches libres ont été fabriqués par Orgelbau Orglez en Bretagne : les anches libres changent de dynamique sans changer de hauteur, ce qui convient parfaitement au contrôle du vent par tuyau.\n\nAvec smARTvalve, un jeu peut faire bien plus que ce pour quoi il a été construit : cinquante tuyaux de Flûte donnent toute une palette de couleurs, par le seul vent.",
         media_side: "Image left",
         aspect: "Landscape 4:3",
         image_brief: "Close-up of old wooden and metal pipes standing on a module of L'Explorateur, 4:3",
@@ -213,8 +213,8 @@ export default {
       primary: {
         eyebrow: "Pour les facteurs d'orgues et les organistes",
         title: "Donnez à chaque tuyau son propre vent",
-        body: "SmartValve est disponible pour les orgues neufs et, en remplaçant les chapes, pour les orgues existants. Parlez-nous de votre projet.",
-        primary_cta_label: "SmartValve pour facteurs d'orgues",
+        body: "smARTvalve est disponible pour les orgues neufs et, en remplaçant les chapes, pour les orgues existants. Parlez-nous de votre projet.",
+        primary_cta_label: "smARTvalve pour facteurs d'orgues",
         primary_cta_link: "/smartvalve-for-organ-builders",
         secondary_cta_label: "Contacter Decap",
         secondary_cta_link: "/contact",

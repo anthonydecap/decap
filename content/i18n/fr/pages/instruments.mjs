@@ -47,7 +47,7 @@ export default {
         {
           tag: "Musique incluse",
           title: "Tuyaux",
-          body: "Jusqu'à sept jeux de tuyaux en bois ou en métal avec une soufflerie silencieuse intégrée. Effets de pression en MIDI, avec une évolution possible vers la commande SmartValve par tuyau.",
+          body: "Jusqu'à sept jeux de tuyaux en bois ou en métal avec une soufflerie silencieuse intégrée. Effets de pression en MIDI, avec une évolution possible vers la commande smARTvalve par tuyau.",
           link_label: "Pipe Cube et Pedestal",
           link: "/pipes",
           image_brief: "Pipe Cube with front panel off so the pipes show, plain backdrop, 4:3",

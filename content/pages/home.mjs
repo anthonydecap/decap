@@ -4,16 +4,16 @@ export default {
   "uid": "home",
   "title": "Decap Herentals",
   "theme": "decap",
-  "meta_title": "Dance Organs & Self-Playing Instruments | Decap",
-  "meta_description": "Organ builders since 1895. Decap Herentals builds dance, fair and street organs, self-playing accordions and the MIDI technology that drives them.",
+  "meta_title": "Dance Organs Built by Musicians | Decap Herentals",
+  "meta_description": "Real dance organs from Herentals, built by musicians since 1933: dynamics and volume control, orchestrions, self-playing instruments and smARTvalve.",
   "slices": [
     {
       "type": "site_hero",
       "primary": {
         "layout": "Split",
         "eyebrow": "Organ builders since 1895",
-        "title": "Dance organs and self-playing instruments, made in Herentals",
-        "intro": "Organs and self-playing instruments for homes, cafés, bars and dance halls, built by four generations of the Decap family in one workshop in Herentals, Belgium.",
+        "title": "Real dance organs, built by musicians in Herentals",
+        "intro": "We are musicians first. We learned to work wood so we could build organs, and for 90 years we have made the dance organ play with more feeling: dynamics, volume control, expression. Today our organs and self-playing instruments play in living rooms, cafés, dance halls and on stage.",
         "primary_cta_label": "Discover our organs",
         "primary_cta_link": "/organs",
         "secondary_cta_label": "Self-playing instruments",
@@ -29,8 +29,8 @@ export default {
           "size": "Full",
           "style": "Light",
           "eyebrow": "Organs",
-          "title": "Dance organs, built to order.",
-          "tagline": "Dance, fair, street and concert organs from our Herentals workshop. Modular or fully bespoke.",
+          "title": "Real dance organs, built to order.",
+          "tagline": "Organs made to dance to, from our Herentals workshop. Modular or fully bespoke.",
           "primary_label": "Learn more",
           "primary_link": "/organs",
           "secondary_label": "Compose your organ",
@@ -174,6 +174,20 @@ export default {
       ]
     },
     {
+      "type": "site_text_media",
+      "primary": {
+        "eyebrow": "Musicians first",
+        "title": "Organs that play with feeling",
+        "body": "A traditional organ hits every drum with the same force, and every pipe is simply on or off. On a Decap organ the drumstick hits hard or soft, the wind pressure changes per wind chest, ranks play vibrato and the whole organ is volume-controllable. smARTvalve takes this down to every single pipe.\n\nThat is why a Decap organ fits a living room as well as a theatre stage or a DJ set. With traditional mechanical technology it would not be possible.",
+        "media_side": "Image right",
+        "aspect": "Landscape 4:3",
+        "cta_label": "Why a Decap plays differently",
+        "cta_link": "/organs",
+        "image_brief": "Close-up of the drum kit in the front of a Decap organ mid-hit, stick in motion, warm stage light, 4:3",
+        "tone": "Tinted"
+      }
+    },
+    {
       "type": "site_timeline",
       "primary": {
         "eyebrow": "Since 1895",
@@ -199,8 +213,8 @@ export default {
         },
         {
           "year": "2000",
-          "title": "MIDI comes to the dance organ",
-          "body": "Tony Decap puts a whole music library on one card, instead of racks of cardboard books."
+          "title": "The first to bring MIDI to the organ",
+          "body": "Tony Decap puts a whole music library on one card, instead of racks of cardboard books. Today almost every old organ is converted to MIDI."
         },
         {
           "year": "2016",

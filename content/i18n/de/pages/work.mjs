@@ -64,7 +64,7 @@ export default {
         {
           tag: "Konzertorgel · 2025",
           title: "Yves Rechsteiner: L'Explorateur",
-          body: "Eine transportable Konzertorgel mit SmartValve an jeder Pfeife: der erste Windsynthesizer.",
+          body: "Eine transportable Konzertorgel mit smARTvalve an jeder Pfeife: der erste Windsynthesizer.",
           link_label: "Zum Projekt",
           link: "/work/yves-rechsteiner",
           image_brief: "L'Explorateur set up in a chapel, 4:3",

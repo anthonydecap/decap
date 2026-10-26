@@ -47,7 +47,7 @@ export default {
         {
           tag: "Musik inklusive",
           title: "Pfeifen",
-          body: "Bis zu sieben Register aus Holz- oder Metallpfeifen mit eingebautem, leisem Gebläse. Druckeffekte über MIDI, nachrüstbar auf SmartValve-Steuerung pro Pfeife.",
+          body: "Bis zu sieben Register aus Holz- oder Metallpfeifen mit eingebautem, leisem Gebläse. Druckeffekte über MIDI, nachrüstbar auf smARTvalve-Steuerung pro Pfeife.",
           link_label: "Pipe Cube und Pedestal",
           link: "/pipes",
           image_brief: "Pipe Cube with front panel off so the pipes show, plain backdrop, 4:3",

@@ -7,7 +7,7 @@ export default {
   theme: "decap",
   meta_title: "L'Explorateur: transportable Konzertorgel | Decap",
   meta_description:
-    "L'Explorateur, die transportable Pfeifenorgel von Yves Rechsteiner mit SmartValve an jeder Pfeife: 12 Module, Aufbau unter 2 h, über 30 Auftritte seit 2023.",
+    "L'Explorateur, die transportable Pfeifenorgel von Yves Rechsteiner mit smARTvalve an jeder Pfeife: 12 Module, Aufbau unter 2 h, über 30 Auftritte seit 2023.",
   fields: {
     summary: "Eine transportable Konzertorgel mit Windregelung an jeder Pfeife: aufgebaut in weniger als zwei Stunden, mehr als 30 Auftritte seit 2023.",
     client: "Yves Rechsteiner, Toulouse les Orgues",
@@ -20,12 +20,12 @@ export default {
       primary: {
         layout: "Split",
         eyebrow: "Projekte · Yves Rechsteiner",
-        title: "L'Explorateur: eine transportable Konzertorgel mit SmartValve an jeder Pfeife",
+        title: "L'Explorateur: eine transportable Konzertorgel mit smARTvalve an jeder Pfeife",
         intro:
           "Der Organist Yves Rechsteiner wollte eine Pfeifenorgel, die überall spielen kann, wo die Musik ist, nicht nur in Kirchen. Gemeinsam haben wir L'Explorateur gebaut: zwölf Module, die in einem Transporter reisen, aufgebaut in weniger als zwei Stunden, mit dem Wind jeder Pfeife unter Kontrolle. Rechsteiner nennt das Ergebnis einen physischen Synthesizer.",
-        primary_cta_label: "SmartValve für Orgelbauer",
+        primary_cta_label: "smARTvalve für Orgelbauer",
         primary_cta_link: "/smartvalve-for-organ-builders",
-        secondary_cta_label: "Über SmartValve",
+        secondary_cta_label: "Über smARTvalve",
         secondary_cta_link: "/smartvalve",
         image_brief: "L'Explorateur on stage with dancers in front, wide shot, 4:3",
       },
@@ -67,8 +67,8 @@ export default {
         { year: "2019", title: "Begegnung mit Tony Decap", body: "Über einen Teaser von Stephan Eichers *Die Automaten*. Rechsteiner bestellt ein MIDI-gesteuertes Instrument." },
         { year: "2021", title: "Baubeginn", body: "Während des Baus schlägt Decap etwas Neues vor: den Wind nicht pro Windlade zu regeln, sondern pro Pfeife." },
         { year: "2023", title: "Erste Auftritte", body: "Nach zwei Jahren Arbeit und Forschung spielt L'Explorateur mit der ersten Ventilgeneration. Die Auftritte beginnen." },
-        { year: "2023–2025", title: "SmartValve", body: "Tony Decap entwickelt die zweite Generation, SmartValve, und die Elektronik der Module wird darum herum neu aufgebaut.", highlight: true },
-        { year: "2025", title: "Der erste Windsynthesizer", body: "SmartValve im Konzert: Jede Pfeife einer transportablen Kirchenorgel wird einzeln gesteuert. Unter den Konzerten eine Hommage an Moondog in der Chapelle de la Trinité in Lyon.", highlight: true },
+        { year: "2023–2025", title: "smARTvalve", body: "Tony Decap entwickelt die zweite Generation, smARTvalve, und die Elektronik der Module wird darum herum neu aufgebaut.", highlight: true },
+        { year: "2025", title: "Der erste Windsynthesizer", body: "smARTvalve im Konzert: Jede Pfeife einer transportablen Kirchenorgel wird einzeln gesteuert. Unter den Konzerten eine Hommage an Moondog in der Chapelle de la Trinité in Lyon.", highlight: true },
         { year: "2026", title: "Nächste Schritte", body: "Neue Ventile und Windladen, Spieltisch-Software, klangliche Nachintonation und ein Durchschlagzungenregister aus einem Muller-*orgue expressif* von 1830." },
       ],
     },
@@ -78,12 +78,12 @@ export default {
         eyebrow: "Die Technik",
         title: "Windregelung pro Pfeife, nicht pro Windlade",
         body:
-          "In einer klassischen Orgel teilen sich alle Pfeifen einer Windlade denselben Wind. In L'Explorateur hat jede Pfeife ihr eigenes SmartValve, wenige Millimeter vom Pfeifenfuß entfernt. Das Ventil misst den Druckabfall auf der Eingangsseite und öffnet weiter, um ihn auszugleichen. So behält jede Pfeife ihren Wind, wenn viele Pfeifen gleichzeitig klingen.\n\nDie ersten Ventile waren kleine Lautsprecher, die zu Ventilen umgebaut wurden. SmartValve, die zweite Generation, wurde von Tony Decap entwickelt und industriell gefertigt. Für den Organisten bedeutet das Kontrolle über jeden Ton: *„man kann die Art der Ansprache des Klangs bestimmen.“*",
+          "In einer klassischen Orgel teilen sich alle Pfeifen einer Windlade denselben Wind. In L'Explorateur hat jede Pfeife ihr eigenes smARTvalve, wenige Millimeter vom Pfeifenfuß entfernt. Das Ventil misst den Druckabfall auf der Eingangsseite und öffnet weiter, um ihn auszugleichen. So behält jede Pfeife ihren Wind, wenn viele Pfeifen gleichzeitig klingen.\n\nDie ersten Ventile waren kleine Lautsprecher, die zu Ventilen umgebaut wurden. smARTvalve, die zweite Generation, wurde von Tony Decap entwickelt und industriell gefertigt. Für den Organisten bedeutet das Kontrolle über jeden Ton: *„man kann die Art der Ansprache des Klangs bestimmen.“*",
         media_side: "Image right",
         aspect: "Landscape 4:3",
-        cta_label: "So funktioniert SmartValve",
+        cta_label: "So funktioniert smARTvalve",
         cta_link: "/smartvalve",
-        image_brief: "Close-up of the SmartValves under the pipes inside L'Explorateur, dark background, 4:3",
+        image_brief: "Close-up of the smARTvalves under the pipes inside L'Explorateur, dark background, 4:3",
       },
       items: [
         { point: "Ein Ventil und ein Prozessor pro Pfeife" },
@@ -97,7 +97,7 @@ export default {
         eyebrow: "Gebaut zum Reisen",
         title: "Ein Transporter, zwölf Module, unter zwei Stunden",
         body:
-          "Von Anfang an hatte L'Explorateur zwei Grenzen: Es musste in einen 20-m³-Transporter passen und durfte nicht mehr als 1.200 kg wiegen. Jede technische Entscheidung folgte daraus.\n\nDie Orgel ist in Module aufgeteilt, die hineingetragen, aufgestellt und angeschlossen werden. Weil SmartValve Windregler überflüssig macht, besteht die Windanlage nur aus einem Gebläse und einem Verteilerkasten. *„Für L'Explorateur bedeutet das einen einfachen Aufbau von weniger als 2 Stunden, von der Ankunft des Lkw bis zum Spielen.“*",
+          "Von Anfang an hatte L'Explorateur zwei Grenzen: Es musste in einen 20-m³-Transporter passen und durfte nicht mehr als 1.200 kg wiegen. Jede technische Entscheidung folgte daraus.\n\nDie Orgel ist in Module aufgeteilt, die hineingetragen, aufgestellt und angeschlossen werden. Weil smARTvalve Windregler überflüssig macht, besteht die Windanlage nur aus einem Gebläse und einem Verteilerkasten. *„Für L'Explorateur bedeutet das einen einfachen Aufbau von weniger als 2 Stunden, von der Ankunft des Lkw bis zum Spielen.“*",
         media_side: "Image left",
         aspect: "Landscape 4:3",
         image_brief: "L'Explorateur modules being unloaded from the van or set up in a hall, 4:3",
@@ -147,7 +147,7 @@ export default {
         eyebrow: "Das Pfeifenwerk",
         title: "Alte Pfeifen, ein neues Leben",
         body:
-          "Der größte Teil des Pfeifenwerks stammt aus zweiter Hand, aus dem späten 19. und frühen 20. Jahrhundert, und wurde von Jean Daldosso intoniert. Neue Pfeifen mit Durchschlagzungen fertigte Orgelbau Orglez in der Bretagne: Durchschlagzungen ändern ihre Lautstärke, ohne die Tonhöhe zu ändern, ideal für die Windregelung pro Pfeife.\n\nMit SmartValve kann ein Register weit mehr, als wofür es gebaut wurde: Fünfzig Flötenpfeifen ergeben allein über den Wind eine ganze Palette an Klangfarben.",
+          "Der größte Teil des Pfeifenwerks stammt aus zweiter Hand, aus dem späten 19. und frühen 20. Jahrhundert, und wurde von Jean Daldosso intoniert. Neue Pfeifen mit Durchschlagzungen fertigte Orgelbau Orglez in der Bretagne: Durchschlagzungen ändern ihre Lautstärke, ohne die Tonhöhe zu ändern, ideal für die Windregelung pro Pfeife.\n\nMit smARTvalve kann ein Register weit mehr, als wofür es gebaut wurde: Fünfzig Flötenpfeifen ergeben allein über den Wind eine ganze Palette an Klangfarben.",
         media_side: "Image left",
         aspect: "Landscape 4:3",
         image_brief: "Close-up of old wooden and metal pipes standing on a module of L'Explorateur, 4:3",
@@ -213,8 +213,8 @@ export default {
       primary: {
         eyebrow: "Für Orgelbauer und Organisten",
         title: "Geben Sie jeder Pfeife ihren eigenen Wind",
-        body: "SmartValve ist erhältlich für neue Orgeln und, durch Ersetzen der Pfeifenstöcke, für bestehende. Erzählen Sie uns von Ihrem Projekt.",
-        primary_cta_label: "SmartValve für Orgelbauer",
+        body: "smARTvalve ist erhältlich für neue Orgeln und, durch Ersetzen der Pfeifenstöcke, für bestehende. Erzählen Sie uns von Ihrem Projekt.",
+        primary_cta_label: "smARTvalve für Orgelbauer",
         primary_cta_link: "/smartvalve-for-organ-builders",
         secondary_cta_label: "Decap kontaktieren",
         secondary_cta_link: "/contact",

@@ -64,7 +64,7 @@ export default {
         {
           tag: "Concertorgel · 2025",
           title: "Yves Rechsteiner: L'Explorateur",
-          body: "Een verplaatsbaar concertorgel met SmartValve op elke pijp: de eerste windsynthesizer.",
+          body: "Een verplaatsbaar concertorgel met smARTvalve op elke pijp: de eerste windsynthesizer.",
           link_label: "Lees de case study",
           link: "/work/yves-rechsteiner",
           image_brief: "L'Explorateur set up in a chapel, 4:3",

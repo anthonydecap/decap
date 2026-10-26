@@ -87,7 +87,7 @@ export default {
       items: [
         { label: "Spielt", value: "MIDI, Audio und Video" },
         { label: "Steuert", value: "Decap-Orgeln und selbstspielende Instrumente, QRS-Klaviere" },
-        { label: "Ansichten", value: "Animiertes Orchestrion und Notenbuchansicht" },
+        { label: "Ansichten", value: "Animiertes Orchestrion und Notenbuchansicht", note: "Die Notenbuchansicht zeigt das Notenbuch vollständig digital, auch für Orgeln, die auf MIDI umgebaut wurden" },
         { label: "Virtuelle Instrumente", value: "Bis zu 8 VSTi und 8 DXi" },
         { label: "Fehlende Register", value: "Virtuell ergänzt mit Samples aus unserer Werkstatt" },
         { label: "Musik", value: "Ihre eigenen MIDI-, Audio- und Videodateien; Arrangements im Shop folgen in Kürze" },

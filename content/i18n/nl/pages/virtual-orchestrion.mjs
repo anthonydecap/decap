@@ -87,7 +87,7 @@ export default {
       items: [
         { label: "Speelt af", value: "MIDI, audio en video" },
         { label: "Stuurt aan", value: "Decap-orgels en zelfspelende instrumenten, QRS-piano's" },
-        { label: "Weergaven", value: "Geanimeerd orchestrion en boekweergave" },
+        { label: "Weergaven", value: "Geanimeerd orchestrion en boekweergave", note: "De boekweergave toont het muziekboek volledig digitaal, ook voor orgels die naar MIDI zijn omgebouwd" },
         { label: "Virtuele instrumenten", value: "Tot 8 VSTi en 8 DXi" },
         { label: "Ontbrekende registers", value: "Virtueel toegevoegd met samples die in onze werkplaats zijn opgenomen" },
         { label: "Muziek", value: "Uw eigen MIDI-, audio- en videobestanden; arrangementen in de shop komen binnenkort" },

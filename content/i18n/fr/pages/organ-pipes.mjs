@@ -73,7 +73,7 @@ export default {
         },
         {
           title: "Tuyaux et sommiers",
-          body: "Ajoutez nos sommiers, ou allez plus loin avec la [conversion MIDI](/midi-conversion) ou [SmartValve](/smartvalve) sur chaque tuyau.",
+          body: "Ajoutez nos sommiers, ou allez plus loin avec la [conversion MIDI](/midi-conversion) ou [smARTvalve](/smartvalve) sur chaque tuyau.",
         },
       ],
     },
@@ -162,7 +162,7 @@ export default {
         },
         {
           question: "Pouvez-vous aussi fabriquer les sommiers ?",
-          answer: "Oui. Commandez tuyaux et sommiers ensemble, et ajoutez la conversion MIDI ou SmartValve si vous voulez que l'orgue joue en MIDI.",
+          answer: "Oui. Commandez tuyaux et sommiers ensemble, et ajoutez la conversion MIDI ou smARTvalve si vous voulez que l'orgue joue en MIDI.",
         },
         {
           question: "Expédiez-vous hors de Belgique ?",
@@ -188,7 +188,7 @@ export default {
         success_body: "Nous vous répondrons avec un devis et une date d'expédition.",
         aside_title: "Bon à savoir",
         aside_body:
-          "- Vendus par jeux complets\n- Diapasons standard ou vos propres mesures\n- Prêts en quelques jours à une semaine, selon les jeux\n- Harmonisés ou prêts à harmoniser\n- Sommiers, conversion MIDI et SmartValve sur demande\n- Expédiés dans le monde entier",
+          "- Vendus par jeux complets\n- Diapasons standard ou vos propres mesures\n- Prêts en quelques jours à une semaine, selon les jeux\n- Harmonisés ou prêts à harmoniser\n- Sommiers, conversion MIDI et smARTvalve sur demande\n- Expédiés dans le monde entier",
       },
     },
   ],

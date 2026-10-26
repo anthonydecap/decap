@@ -16,7 +16,7 @@ export default {
         eyebrow: "Logiciels",
         title: "Logiciels pour orchestrions, orgues et arrangeurs",
         intro:
-          "Nous écrivons les logiciels qui pilotent nos instruments. Virtual Orchestrion les fait jouer. MIDIMapper aide les arrangeurs à entendre ce qu'ils écrivent avant que cela n'arrive à l'orgue.",
+          "Tous nos logiciels sont développés en interne : des programmes CNC qui fraisent nos tuyaux au logiciel qui pilote nos instruments. Virtual Orchestrion les fait jouer. MIDIMapper aide les arrangeurs à entendre ce qu'ils écrivent avant que cela n'arrive à l'orgue.",
         primary_cta_label: "Virtual Orchestrion",
         primary_cta_link: "/virtual-orchestrion",
         secondary_cta_label: "MIDIMapper",

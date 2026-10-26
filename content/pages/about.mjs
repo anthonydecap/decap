@@ -6,7 +6,7 @@ export default {
   theme: "decap",
   meta_title: "About Us: Organ Builders Since 1895 | Decap Herentals",
   meta_description:
-    "Four generations of Decap organ builders. Aloïs Decap started in 1895, Frans founded Decap Herentals in 1933. Today Tony Decap builds organs and smARTvalve.",
+    "Four generations of Decap organ builders, musicians first. Frans founded Decap Herentals in 1933; today Tony Decap builds dance organs, orchestrions and smARTvalve.",
   slices: [
     {
       type: "site_hero",
@@ -15,7 +15,7 @@ export default {
         eyebrow: "Organ builders since 1895. Decap Herentals since 1933.",
         title: "Four generations of Decap organ builders in Herentals",
         intro:
-          "Aloïs Decap started renting out organs around Antwerp in 1895. His son Frans founded Decap Herentals in 1933. Today Tony Decap, the fourth generation, builds organs, self-playing instruments and the electronics that drive them in the same town.",
+          "Aloïs Decap started renting out organs around Antwerp in 1895. His son Frans founded Decap Herentals in 1933. Today Tony Decap, the fourth generation, builds dance organs, orchestrions, self-playing instruments and the technology that drives them in the same town.",
         primary_cta_label: "Our organs",
         primary_cta_link: "/organs",
         secondary_cta_label: "Contact the workshop",
@@ -30,11 +30,29 @@ export default {
         eyebrow: "Decap Herentals",
         title: "One family, one trade, since 1895",
         body:
-          "Decap Herentals builds dance organs, fair organs, street organs and concert organs, and the self-playing instruments and MIDI technology that go with them. The workshop is on the Langepad in Herentals, Belgium.\n\nThe trade has passed from father to son four times. Each generation kept what worked and changed what no longer did: Frans gave the business its own workshop, François took the dance organ digital, and Tony brought MIDI and then smARTvalve.",
+          "Decap Herentals is known for real dance organs: organs built for people to dance to. We have built street organs and barrel organs too, but dance organs are what we normally make. The workshop is on the Langepad in Herentals, Belgium.\n\nThe trade has passed from father to son four times. Each generation kept what worked and changed what no longer did: Frans gave the business its own workshop, François took the dance organ digital, and Tony brought MIDI and then smARTvalve.",
         media_side: "Image right",
         aspect: "Landscape 4:3",
         image_brief: "Scan of archive photo of the Decap workshop in Herentals, early years, landscape 4:3",
       },
+    },
+    {
+      type: "site_text_media",
+      primary: {
+        eyebrow: "Musicians first",
+        title: "We learned woodworking to build organs",
+        body:
+          "At heart we are musicians, not carpenters. We learned to work wood so we could build organs, but the music comes first. That set Decap apart then, and it still does.\n\nBetween 1960 and 1980, the golden age of the dance organ, there were some 120 dance cafés and dance halls across Belgium where people went to dance every day, each with its own dance organ. Since Decap Herentals began, we have chased one thing: an organ that plays better. More feeling, more control over volume and intensity, more dynamics, more musicality.",
+        media_side: "Image left",
+        aspect: "Landscape 4:3",
+        image_brief: "Scan of archive photo of a full Belgian dance hall in the 1960s or 70s with a Decap dance organ on the stage, 4:3",
+      },
+      items: [
+        { point: "Percussion played hard or soft, with adjustable timing" },
+        { point: "Wind pressure set per wind chest, ranks that play vibrato" },
+        { point: "Organs and orchestrions with volume control" },
+        { point: "smARTvalve: the same idea for every single pipe" },
+      ],
     },
     {
       type: "site_timeline",
@@ -98,8 +116,8 @@ export default {
         },
         {
           year: "2000",
-          title: "MIDI comes to the dance organ",
-          body: "Tony Decap brings MIDI to the dance organ. A whole music library fits on one digital card and replaces racks of cardboard music books.",
+          title: "The first to bring MIDI to the organ",
+          body: "Tony Decap brings MIDI to the organ. A whole music library fits on one digital card and replaces racks of cardboard music books. In the years that follow Decap builds more than dance organs: orchestrions, separate pipe chest units, automatic drums and other self-playing instruments.",
           highlight: true,
           image_brief: "Photo of a stack of cardboard book music next to a single memory card, on a workbench, 4:3",
         },
@@ -163,9 +181,9 @@ export default {
       type: "site_text_media",
       primary: {
         eyebrow: "The workshop today",
-        title: "Pipes, electronics and software, made in Herentals",
+        title: "From the CNC to the player, made in Herentals",
         body:
-          "Almost everything that goes into a Decap organ is made under our own roof.",
+          "Almost everything that goes into a Decap organ is made under our own roof. All our software is our own: the CNC programs that mill the pipes, the software that drives the instruments and the player that plays them.",
         media_side: "Image left",
         aspect: "Landscape 4:3",
         image_brief: "Wide shot of the Herentals workshop: CNC machine on one side, an organ in assembly on the other, 4:3",
@@ -175,7 +193,8 @@ export default {
         { point: "Wooden organ pipes milled on our 5-axis CNC, with PipeCreator software we wrote ourselves" },
         { point: "Voicing by our own voicers" },
         { point: "smARTvalve, MIDI conversion units and the control electronics for our instruments" },
-        { point: "Virtual Orchestrion and MIDIMapper software, written in-house" },
+        { point: "Virtual Orchestrion and MIDIMapper, our player and arranger software" },
+        { point: "Organs built as modular units in a façade: transportable and rebuildable" },
         { point: "Self-playing instruments: accordion, pipes, percussion and mallet percussion" },
       ],
     },

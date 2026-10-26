@@ -37,6 +37,24 @@ export default {
       ],
     },
     {
+      type: "site_text_media",
+      primary: {
+        eyebrow: "Why from Decap",
+        title: "Ninety years of dynamics, now in every pipe",
+        body:
+          "We are musicians first, and for 90 years we have worked on organs that play with more feeling. On our dance organs the drums play hard or soft, the wind pressure changes per wind chest and ranks play vibrato. smARTvalve is where that experience led: the same control, for every single pipe.\n\nFor us the church organ is one of the most beautiful and most musical instruments there is. While we developed smARTvalve, we could only dream of what it would do for one: more effects, more ways of playing, more colours.\n\nOur dance organ experience helps here too. Dance organs had to be transportable and rebuildable, so we build every organ as modular units in a façade. That is why a transportable church organ like L'Explorateur fits our workshop so well. And our wind chests are built for hard conditions, such as changes in temperature, because dance organs played in spiegeltents that were put up and taken down again and again.",
+        media_side: "Image right",
+        aspect: "Landscape 4:3",
+        image_brief: "A Decap dance organ façade split into its modular units in the workshop, ready for transport, 4:3",
+      },
+      items: [
+        { point: "Dynamic control of percussion and wind since the dance organ years" },
+        { point: "Modular, transportable construction" },
+        { point: "Wind chests built for changing temperatures and repeated set-ups" },
+        { point: "All software in-house: CNC programs, valve control and player" },
+      ],
+    },
+    {
       type: "site_card_grid",
       primary: {
         eyebrow: "Three generations of pipe valves",
@@ -212,7 +230,7 @@ export default {
         success_body: "Your request is with us. We reply personally with the information you asked for.",
         aside_title: "Decap Herentals",
         aside_body:
-          "Langepad 51C, 2200 Herentals, Belgium\n\n+32 14 22 44 94\n\n[info@decap.be](mailto:info@decap.be)\n\nSmartValve is designed, built and programmed in our own workshop.",
+          "Langepad 51C, 2200 Herentals, Belgium\n\n+32 14 22 44 94\n\n[info@decap.be](mailto:info@decap.be)\n\nsmARTvalve is designed, built and programmed in our own workshop.",
       },
     },
   ],

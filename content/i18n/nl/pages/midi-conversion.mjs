@@ -31,7 +31,7 @@ export default {
         eyebrow: "Waarom ombouwen",
         title: "Hou het boek. Voeg de bibliotheek toe.",
         body:
-          "Boek- en rolsystemen maken deze orgels historisch, en veel eigenaars zijn terughoudend om eraan te raken. Terecht: als u ombouwt, moet het orgel zo onaangetast mogelijk blijven.\n\nOnze unit vervangt niets. Het boek of de rol stuurt het orgel nog precies zoals vroeger. MIDI komt er gewoon bij, zodat u arrangementen kunt spelen die nooit geponst werden, live kunt spelen vanaf een keyboard, of het orgel kunt laten samenspelen met andere instrumenten.",
+          "Decap Herentals bracht als eerste MIDI naar het orgel. Vandaag is bijna elk oud orgel naar MIDI omgebouwd, gewoon omdat het de betere manier van spelen is: uw orgel krijgt een veel ruimer repertoire.\n\nBoek- en rolsystemen maken deze orgels historisch, en veel eigenaars zijn terughoudend om eraan te raken. Terecht: als u ombouwt, moet het orgel zo onaangetast mogelijk blijven. Onze unit vervangt niets. Het boek of de rol stuurt het orgel nog precies zoals vroeger. MIDI komt er gewoon bij, zodat u arrangementen kunt spelen die nooit geponst werden, live kunt spelen vanaf een keyboard, of het orgel kunt laten samenspelen met andere instrumenten.",
         media_side: "Image right",
         aspect: "Landscape 4:3",
         image_brief:
@@ -42,6 +42,21 @@ export default {
         { point: "Boek en MIDI kunnen tegelijk spelen" },
         { point: "Speel MIDI-arrangementen via Virtual Orchestrion, of speel live via MIDI" },
       ],
+    },
+    {
+      type: "site_text_media",
+      primary: {
+        eyebrow: "Het boek, op het scherm",
+        title: "Hou de romantiek van het boek",
+        body:
+          "Toen MIDI zijn intrede deed in het orgel, hielden veel eigenaars de boot af: het kartonnen vouwboek dat door het orgel loopt, hoort bij de charme. Ook daar hebben we een antwoord op. Onze Virtual Orchestrion-speler toont het boek volledig digitaal op het scherm, zodat u het ziet lopen terwijl het orgel via MIDI speelt.",
+        media_side: "Image left",
+        aspect: "Landscape 4:3",
+        cta_label: "Over Virtual Orchestrion",
+        cta_link: "/virtual-orchestrion",
+        image_brief: "Screen showing the digital book view of Virtual Orchestrion beside a converted book organ, 4:3",
+        tone: "Tinted",
+      },
     },
     {
       type: "site_facts",

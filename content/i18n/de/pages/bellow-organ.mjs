@@ -56,15 +56,15 @@ export default {
         eyebrow: "Druckregelung",
         title: "Drei Arten, den Wind zu regeln",
         body:
-          "Der Winddruck bestimmt, wie die Pfeifen ansprechen. Sie wählen, wie viel Kontrolle Sie möchten, vom traditionellen Regler bis zu [SmartValve](/smartvalve) an jeder Pfeife.",
+          "Der Winddruck bestimmt, wie die Pfeifen ansprechen. Sie wählen, wie viel Kontrolle Sie möchten, vom traditionellen Regler bis zu [smARTvalve](/smartvalve) an jeder Pfeife.",
         media_side: "Image right",
         aspect: "Square",
-        image_brief: "SmartValves mounted on the Bellow Organ's chest, close-up from above, square",
+        image_brief: "smARTvalves mounted on the Bellow Organ's chest, close-up from above, square",
       },
       items: [
         { point: "Mechanisch: der traditionelle Regler" },
-        { point: "SmartValve pro Windlade: ein geregelter Druck für die ganze Windlade" },
-        { point: "SmartValve pro Pfeife: ein eigener Druck für jede einzelne Pfeife" },
+        { point: "smARTvalve pro Windlade: ein geregelter Druck für die ganze Windlade" },
+        { point: "smARTvalve pro Pfeife: ein eigener Druck für jede einzelne Pfeife" },
       ],
     },
     {
@@ -115,7 +115,7 @@ export default {
         { label: "Tonskala", value: "100 % chromatisch" },
         { label: "Rahmen", value: "Aluminium" },
         { label: "Paneele", value: "Hochglänzendes Holzfurnier oder unbehandelte, vorgeschnittene Paneele zum Selbstgestalten" },
-        { label: "Druckregelung", value: "Mechanisch, SmartValve pro Windlade oder SmartValve pro Pfeife" },
+        { label: "Druckregelung", value: "Mechanisch, smARTvalve pro Windlade oder smARTvalve pro Pfeife" },
         { label: "Player", value: "Eingebautes Virtual Orchestrion" },
         { label: "MIDI", value: "Master oder Slave mit anderen Decap-Instrumenten" },
         { label: "Antrieb", value: "Handkurbel; optionaler Motor" },
@@ -137,7 +137,7 @@ export default {
             "Phone or handheld recorder 2 m in front of the organ, quiet room or calm street, one full tune, crank noise allowed",
         },
         {
-          title: "Mit SmartValve pro Pfeife",
+          title: "Mit smARTvalve pro Pfeife",
           description: "Aufnahme folgt: dieselbe Orgel, mit Pfeife für Pfeife geregeltem Druck.",
           audio_brief:
             "Same position and level as the first recording, a slow piece where swells and vibrato are clearly audible",
@@ -184,7 +184,7 @@ export default {
         body: "Sagen Sie uns, ob Sie einen Bausatz oder eine fertige Orgel möchten, mit wie vielen Registern Sie beginnen und wie Sie sie nutzen werden. Wir antworten mit einer Konfiguration und einem Angebot.",
         primary_cta_label: "Angebot anfragen",
         primary_cta_link: "/contact",
-        secondary_cta_label: "Über SmartValve",
+        secondary_cta_label: "Über smARTvalve",
         secondary_cta_link: "/smartvalve",
         tone: "Dark band",
       },

@@ -56,15 +56,15 @@ export default {
         eyebrow: "Régulation de pression",
         title: "Trois façons de réguler le vent",
         body:
-          "La pression du vent détermine la façon dont les tuyaux parlent. Vous choisissez le niveau de contrôle souhaité, du régulateur traditionnel à [SmartValve](/smartvalve) sur chaque tuyau.",
+          "La pression du vent détermine la façon dont les tuyaux parlent. Vous choisissez le niveau de contrôle souhaité, du régulateur traditionnel à [smARTvalve](/smartvalve) sur chaque tuyau.",
         media_side: "Image right",
         aspect: "Square",
-        image_brief: "SmartValves mounted on the Bellow Organ's chest, close-up from above, square",
+        image_brief: "smARTvalves mounted on the Bellow Organ's chest, close-up from above, square",
       },
       items: [
         { point: "Mécanique : le régulateur traditionnel" },
-        { point: "SmartValve par sommier : une pression régulée pour tout le sommier" },
-        { point: "SmartValve par tuyau : une pression propre pour chaque tuyau" },
+        { point: "smARTvalve par sommier : une pression régulée pour tout le sommier" },
+        { point: "smARTvalve par tuyau : une pression propre pour chaque tuyau" },
       ],
     },
     {
@@ -115,7 +115,7 @@ export default {
         { label: "Échelle", value: "100 % chromatique" },
         { label: "Châssis", value: "Aluminium" },
         { label: "Panneaux", value: "Placage bois haute brillance, ou panneaux vierges prédécoupés à décorer vous-même" },
-        { label: "Régulation de pression", value: "Mécanique, SmartValve par sommier ou SmartValve par tuyau" },
+        { label: "Régulation de pression", value: "Mécanique, smARTvalve par sommier ou smARTvalve par tuyau" },
         { label: "Lecteur", value: "Virtual Orchestrion intégré" },
         { label: "MIDI", value: "Maître ou esclave avec d'autres instruments Decap" },
         { label: "Entraînement", value: "À manivelle ; moteur en option" },
@@ -137,7 +137,7 @@ export default {
             "Phone or handheld recorder 2 m in front of the organ, quiet room or calm street, one full tune, crank noise allowed",
         },
         {
-          title: "Avec SmartValve par tuyau",
+          title: "Avec smARTvalve par tuyau",
           description: "Enregistrement à venir : le même orgue, avec une pression commandée tuyau par tuyau.",
           audio_brief:
             "Same position and level as the first recording, a slow piece where swells and vibrato are clearly audible",
@@ -184,7 +184,7 @@ export default {
         body: "Dites-nous si vous voulez un kit ou un orgue fini, avec combien de jeux commencer et comment vous l'utiliserez. Nous vous répondons avec une configuration et un devis.",
         primary_cta_label: "Demander un devis",
         primary_cta_link: "/contact",
-        secondary_cta_label: "À propos de SmartValve",
+        secondary_cta_label: "À propos de smARTvalve",
         secondary_cta_link: "/smartvalve",
         tone: "Dark band",
       },

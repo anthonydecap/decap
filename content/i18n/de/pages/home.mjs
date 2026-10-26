@@ -5,16 +5,16 @@ export default {
   "lang": "de-de",
   "title": "Decap Herentals",
   "theme": "decap",
-  "meta_title": "Tanzorgeln & selbstspielende Instrumente | Decap",
-  "meta_description": "Orgelbauer seit 1895. Decap Herentals baut Tanzorgeln, Jahrmarktorgeln, Straßenorgeln, selbstspielende Akkordeons und die MIDI-Technik, die sie steuert.",
+  "meta_title": "Echte Tanzorgeln, von Musikern gebaut | Decap Herentals",
+  "meta_description": "Echte Tanzorgeln aus Herentals, seit 1933 von Musikern gebaut. Mit Dynamik und Lautstärkeregelung, dazu Orchestrien, selbstspielende Instrumente und smARTvalve.",
   "slices": [
     {
       "type": "site_hero",
       "primary": {
         "layout": "Split",
         "eyebrow": "Orgelbauer seit 1895",
-        "title": "Tanzorgeln und selbstspielende Musikinstrumente aus Herentals",
-        "intro": "Orgeln und selbstspielende Musikinstrumente für Zuhause, Cafés, Bars und Tanzsäle, gebaut von vier Generationen der Familie Decap in einer Werkstatt in Herentals, Belgien.",
+        "title": "Echte Tanzorgeln, von Musikern gebaut in Herentals",
+        "intro": "Wir sind zuerst Musiker. Das Holzhandwerk haben wir gelernt, um Orgeln bauen zu können. Seit 90 Jahren bringen wir die Tanzorgel dazu, mit mehr Gefühl zu spielen: Dynamik, Lautstärkeregelung, Ausdruck. Heute spielen unsere Orgeln und selbstspielenden Instrumente in Wohnzimmern, Cafés, Tanzsälen und auf der Bühne.",
         "primary_cta_label": "Unsere Orgeln entdecken",
         "primary_cta_link": "/organs",
         "secondary_cta_label": "Selbstspielende Instrumente",
@@ -30,8 +30,8 @@ export default {
           "size": "Full",
           "style": "Light",
           "eyebrow": "Orgeln",
-          "title": "Tanzorgeln, auf Bestellung gebaut.",
-          "tagline": "Tanz-, Jahrmarkt-, Straßen- und Konzertorgeln aus unserer Werkstatt in Herentals. Modular oder ganz nach Maß.",
+          "title": "Echte Tanzorgeln, auf Bestellung gebaut.",
+          "tagline": "Orgeln, zu denen man tanzt, aus unserer Werkstatt in Herentals. Modular oder ganz nach Maß.",
           "primary_label": "Mehr erfahren",
           "primary_link": "/organs",
           "secondary_label": "Orgel zusammenstellen",
@@ -74,7 +74,7 @@ export default {
         {
           "size": "Full",
           "style": "SmartValve",
-          "eyebrow": "SmartValve",
+          "eyebrow": "smARTvalve",
           "title": "Jede Pfeife. Ihre eigene Stimme.",
           "tagline": "Ein Prozessor in jedem Ventil. Wind, Dynamik und Register, für jede Pfeife einzeln gesteuert.",
           "primary_label": "Mehr erfahren",
@@ -84,7 +84,7 @@ export default {
           "image_fit": "Cover",
           "image_position": "Center",
           "overlay": "Strong",
-          "image_brief": "SmartValves mounted in their wind chest"
+          "image_brief": "smARTvalves mounted in their wind chest"
         },
         {
           "size": "Full",
@@ -175,11 +175,25 @@ export default {
       ]
     },
     {
+      "type": "site_text_media",
+      "primary": {
+        "eyebrow": "Zuerst Musiker",
+        "title": "Orgeln, die mit Gefühl spielen",
+        "body": "Eine traditionelle Orgel schlägt jede Trommel mit derselben Kraft, und jede Pfeife ist einfach an oder aus. Bei einer Decap-Orgel schlägt der Trommelstock hart oder weich, der Winddruck ändert sich je Windlade, Register spielen Vibrato und die ganze Orgel ist in der Lautstärke regelbar. smARTvalve bringt das bis in jede einzelne Pfeife.\n\nDeshalb passt eine Decap-Orgel ins Wohnzimmer ebenso wie auf eine Theaterbühne oder in ein DJ-Set. Mit traditioneller mechanischer Technik wäre das nicht möglich.",
+        "media_side": "Image right",
+        "aspect": "Landscape 4:3",
+        "cta_label": "Warum eine Decap anders spielt",
+        "cta_link": "/organs",
+        "image_brief": "Close-up of the drum kit in the front of a Decap organ mid-hit, stick in motion, warm stage light, 4:3",
+        "tone": "Tinted"
+      }
+    },
+    {
       "type": "site_timeline",
       "primary": {
         "eyebrow": "Seit 1895",
         "title": "Jede Generation hat die Orgel neu erfunden",
-        "intro": "Aloïs Decap begann mit einer Handvoll Mietorgeln. Sein Sohn Frans gründete Decap Herentals. François machte die Orgel digital, Tony brachte MIDI und SmartValve. [Die ganze Geschichte lesen](/about)."
+        "intro": "Aloïs Decap begann mit einer Handvoll Mietorgeln. Sein Sohn Frans gründete Decap Herentals. François machte die Orgel digital, Tony brachte MIDI und smARTvalve. [Die ganze Geschichte lesen](/about)."
       },
       "items": [
         {
@@ -200,8 +214,8 @@ export default {
         },
         {
           "year": "2000",
-          "title": "MIDI kommt zur Tanzorgel",
-          "body": "Tony Decap bringt eine ganze Musikbibliothek auf eine einzige Karte, statt Regalen voller Kartonnoten."
+          "title": "Die Ersten mit MIDI in der Orgel",
+          "body": "Tony Decap bringt eine ganze Musikbibliothek auf eine einzige Karte, statt Regalen voller Kartonnoten. Heute wird fast jede alte Orgel auf MIDI umgebaut."
         },
         {
           "year": "2016",
@@ -211,7 +225,7 @@ export default {
         {
           "year": "2025",
           "title": "Der erste Windsynthesizer",
-          "body": "SmartValve in einer transportablen Kirchenorgel: jede Pfeife einzeln gesteuert.",
+          "body": "smARTvalve in einer transportablen Kirchenorgel: jede Pfeife einzeln gesteuert.",
           "highlight": true
         }
       ]

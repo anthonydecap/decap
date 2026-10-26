@@ -7,7 +7,7 @@ export default {
   theme: "decap",
   meta_title: "Over ons: orgelbouwers sinds 1895 | Decap Herentals",
   meta_description:
-    "Vier generaties orgelbouwers Decap. Aloïs Decap begon in 1895, Frans richtte in 1933 Decap Herentals op. Vandaag bouwt Tony Decap orgels en SmartValve.",
+    "Vier generaties orgelbouwers, eerst en vooral muzikanten. Frans stichtte Decap Herentals in 1933; nu bouwt Tony Decap dansorgels, orchestrions en smARTvalve.",
   slices: [
     {
       type: "site_hero",
@@ -16,7 +16,7 @@ export default {
         eyebrow: "Orgelbouwers sinds 1895. Decap Herentals sinds 1933.",
         title: "Vier generaties orgelbouwers Decap in Herentals",
         intro:
-          "Aloïs Decap begon in 1895 orgels te verhuren in de streek van Antwerpen. Zijn zoon Frans richtte in 1933 Decap Herentals op. Vandaag bouwt Tony Decap, de vierde generatie, in dezelfde stad orgels, zelfspelende instrumenten en de elektronica die ze aanstuurt.",
+          "Aloïs Decap begon in 1895 orgels te verhuren in de streek van Antwerpen. Zijn zoon Frans richtte in 1933 Decap Herentals op. Vandaag bouwt Tony Decap, de vierde generatie, in dezelfde stad dansorgels, orchestrions, zelfspelende instrumenten en de technologie die ze aanstuurt.",
         primary_cta_label: "Onze orgels",
         primary_cta_link: "/organs",
         secondary_cta_label: "Contacteer de werkplaats",
@@ -31,11 +31,29 @@ export default {
         eyebrow: "Decap Herentals",
         title: "Eén familie, één vak, sinds 1895",
         body:
-          "Decap Herentals bouwt dansorgels, kermisorgels, straatorgels en concertorgels, en de zelfspelende instrumenten en MIDI-techniek die erbij horen. De werkplaats ligt aan het Langepad in Herentals.\n\nHet vak ging vier keer over van vader op zoon. Elke generatie hield wat werkte en veranderde wat niet meer werkte: Frans gaf de zaak een eigen werkplaats, François maakte het dansorgel digitaal, en Tony bracht MIDI en daarna SmartValve.",
+          "Decap Herentals staat bekend om echte dansorgels: orgels gebouwd om op te dansen. We hebben ook straatorgels en draaiorgels gebouwd, maar dansorgels zijn wat we normaal maken. De werkplaats ligt aan het Langepad in Herentals.\n\nHet vak ging vier keer over van vader op zoon. Elke generatie hield wat werkte en veranderde wat niet meer werkte: Frans gaf de zaak een eigen werkplaats, François maakte het dansorgel digitaal, en Tony bracht MIDI en daarna smARTvalve.",
         media_side: "Image right",
         aspect: "Landscape 4:3",
         image_brief: "Scan of archive photo of the Decap workshop in Herentals, early years, landscape 4:3",
       },
+    },
+    {
+      type: "site_text_media",
+      primary: {
+        eyebrow: "Eerst en vooral muzikanten",
+        title: "We leerden hout bewerken om orgels te bouwen",
+        body:
+          "In de grond zijn we muzikanten, geen schrijnwerkers. We leerden met hout werken om orgels te kunnen bouwen, maar de muziek komt eerst. Dat maakte Decap toen anders, en dat doet het nog altijd.\n\nTussen 1960 en 1980, de gouden jaren van het dansorgel, waren er in België zo'n 120 baancafés en dancings waar de mensen elke dag gingen dansen, elk met een eigen dansorgel. Sinds het begin van Decap Herentals zoeken we één ding: een orgel dat beter speelt. Meer gevoel, meer controle over volume en intensiteit, meer dynamiek, meer muzikaliteit.",
+        media_side: "Image left",
+        aspect: "Landscape 4:3",
+        image_brief: "Scan of archive photo of a full Belgian dance hall in the 1960s or 70s with a Decap dance organ on the stage, 4:3",
+      },
+      items: [
+        { point: "Slagwerk dat hard of zacht speelt, met instelbare timing" },
+        { point: "Winddruk per windlade instelbaar, registers die vibrato spelen" },
+        { point: "Orgels en orchestrions met volumeregeling" },
+        { point: "smARTvalve: hetzelfde idee voor elke afzonderlijke pijp" },
+      ],
     },
     {
       type: "site_timeline",
@@ -99,8 +117,8 @@ export default {
         },
         {
           year: "2000",
-          title: "MIDI doet zijn intrede in het dansorgel",
-          body: "Tony Decap brengt MIDI naar het dansorgel. Een volledige muziekbibliotheek past op één digitale kaart en vervangt rekken vol kartonnen orgelboeken.",
+          title: "De eersten met MIDI in het orgel",
+          body: "Tony Decap brengt MIDI naar het orgel. Een volledige muziekbibliotheek past op één digitale kaart en vervangt rekken vol kartonnen orgelboeken. In de jaren daarna bouwt Decap meer dan dansorgels: orchestrions, losse pijpenkasten, automatische drums en andere zelfspelende instrumenten.",
           highlight: true,
           image_brief: "Photo of a stack of cardboard book music next to a single memory card, on a workbench, 4:3",
         },
@@ -125,7 +143,7 @@ export default {
         {
           year: "2025",
           title: "De eerste windsynthesizer",
-          body: "SmartValve gaat in het eerste verplaatsbare kerkorgel, met elke pijp afzonderlijk aangestuurd: L'Explorateur voor de Zwitserse organist Yves Rechsteiner. [Lees de case study](/work/yves-rechsteiner).",
+          body: "smARTvalve gaat in het eerste verplaatsbare kerkorgel, met elke pijp afzonderlijk aangestuurd: L'Explorateur voor de Zwitserse organist Yves Rechsteiner. [Lees de case study](/work/yves-rechsteiner).",
           highlight: true,
           image_brief: "L'Explorateur set up in a chapel, wide shot, 4:3",
         },
@@ -164,9 +182,9 @@ export default {
       type: "site_text_media",
       primary: {
         eyebrow: "De werkplaats vandaag",
-        title: "Pijpen, elektronica en software, gemaakt in Herentals",
+        title: "Van de CNC tot de speler, gemaakt in Herentals",
         body:
-          "Bijna alles wat in een Decap-orgel gaat, maken we onder ons eigen dak.",
+          "Bijna alles wat in een Decap-orgel gaat, maken we onder ons eigen dak. Al onze software is van eigen makelij: de CNC-programma's die de pijpen frezen, de software die de instrumenten aanstuurt en de speler die ze laat spelen.",
         media_side: "Image left",
         aspect: "Landscape 4:3",
         image_brief: "Wide shot of the Herentals workshop: CNC machine on one side, an organ in assembly on the other, 4:3",
@@ -175,8 +193,9 @@ export default {
         { point: "Ontwerp en 3D-render van elk orgel voordat de productie start" },
         { point: "Houten orgelpijpen gefreesd op onze 5-assige CNC, met PipeCreator-software die we zelf hebben geschreven" },
         { point: "Intonatie door onze eigen intoneurs" },
-        { point: "SmartValve, MIDI-ombouwunits en de sturingselektronica voor onze instrumenten" },
-        { point: "Virtual Orchestrion- en MIDIMapper-software, in eigen huis geschreven" },
+        { point: "smARTvalve, MIDI-ombouwunits en de sturingselektronica voor onze instrumenten" },
+        { point: "Virtual Orchestrion en MIDIMapper, onze speler- en arrangeersoftware" },
+        { point: "Orgels gebouwd als modulaire units in een façade: transporteerbaar en opnieuw op te bouwen" },
         { point: "Zelfspelende instrumenten: accordeon, pijpen, slagwerk en melodisch slagwerk" },
       ],
     },

@@ -16,7 +16,7 @@ export default {
         eyebrow: "Software",
         title: "Software voor orchestrions, orgels en arrangeurs",
         intro:
-          "We schrijven zelf de software die onze instrumenten aanstuurt. Virtual Orchestrion bespeelt ze. MIDIMapper laat arrangeurs horen wat ze schrijven voordat het bij het orgel komt.",
+          "Al onze software ontwikkelen we in eigen huis: van de CNC-programma's die onze pijpen frezen tot de software die onze instrumenten aanstuurt. Virtual Orchestrion bespeelt ze. MIDIMapper laat arrangeurs horen wat ze schrijven voordat het bij het orgel komt.",
         primary_cta_label: "Virtual Orchestrion",
         primary_cta_link: "/virtual-orchestrion",
         secondary_cta_label: "MIDIMapper",

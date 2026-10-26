@@ -56,15 +56,15 @@ export default {
         eyebrow: "Winddrukregeling",
         title: "Drie manieren om de wind te regelen",
         body:
-          "De winddruk bepaalt hoe de pijpen aanspreken. U kiest hoeveel controle u wilt, van een traditionele regulateur tot [SmartValve](/smartvalve) op elke pijp.",
+          "De winddruk bepaalt hoe de pijpen aanspreken. U kiest hoeveel controle u wilt, van een traditionele regulateur tot [smARTvalve](/smartvalve) op elke pijp.",
         media_side: "Image right",
         aspect: "Square",
-        image_brief: "SmartValves mounted on the Bellow Organ's chest, close-up from above, square",
+        image_brief: "smARTvalves mounted on the Bellow Organ's chest, close-up from above, square",
       },
       items: [
         { point: "Mechanisch: de traditionele regulateur" },
-        { point: "SmartValve per windlade: één geregelde druk voor de hele windlade" },
-        { point: "SmartValve per pijp: een eigen druk voor elke afzonderlijke pijp" },
+        { point: "smARTvalve per windlade: één geregelde druk voor de hele windlade" },
+        { point: "smARTvalve per pijp: een eigen druk voor elke afzonderlijke pijp" },
       ],
     },
     {
@@ -115,7 +115,7 @@ export default {
         { label: "Toonschaal", value: "100% chromatisch" },
         { label: "Frame", value: "Aluminium" },
         { label: "Panelen", value: "Hoogglanzend houtfineer, of blanco voorgesneden panelen om zelf te versieren" },
-        { label: "Winddrukregeling", value: "Mechanisch, SmartValve per windlade of SmartValve per pijp" },
+        { label: "Winddrukregeling", value: "Mechanisch, smARTvalve per windlade of smARTvalve per pijp" },
         { label: "Speler", value: "Ingebouwde Virtual Orchestrion" },
         { label: "MIDI", value: "Master of slave met andere Decap-instrumenten" },
         { label: "Aandrijving", value: "Met de hand gedraaid; optionele motor" },
@@ -137,7 +137,7 @@ export default {
             "Phone or handheld recorder 2 m in front of the organ, quiet room or calm street, one full tune, crank noise allowed",
         },
         {
-          title: "Met SmartValve per pijp",
+          title: "Met smARTvalve per pijp",
           description: "Opname volgt: hetzelfde orgel, met de druk pijp per pijp geregeld.",
           audio_brief:
             "Same position and level as the first recording, a slow piece where swells and vibrato are clearly audible",
@@ -184,7 +184,7 @@ export default {
         body: "Laat ons weten of u een bouwpakket of een afgewerkt orgel wilt, met hoeveel registers u wilt beginnen en hoe u het zult gebruiken. We antwoorden met een configuratie en een offerte.",
         primary_cta_label: "Vraag een offerte aan",
         primary_cta_link: "/contact",
-        secondary_cta_label: "Over SmartValve",
+        secondary_cta_label: "Over smARTvalve",
         secondary_cta_link: "/smartvalve",
         tone: "Dark band",
       },
