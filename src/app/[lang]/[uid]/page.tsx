@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import { notFound } from "next/navigation";
 
 import { asText } from "@prismicio/client";
 import { SliceZone } from "@prismicio/react";
@@ -13,7 +12,7 @@ import {
 } from "@/i18n";
 import { prismicGetByUID } from "@/lib/prismic-get-by-uid";
 import { createSliceContext } from "@/lib/slice-context";
-import { fallbackToDefaultLocale } from "@/lib/locale-fallback";
+import { fallbackToDefaultLocale, withFallbackParams } from "@/lib/locale-fallback";
 import { resolvePageTheme } from "@/lib/brand";
 import { PageThemeScope } from "@/components/PageThemeScope";
 import { buildLocaleMetadataAlternates } from "@/lib/locale-alternates";
@@ -57,9 +56,10 @@ export async function generateMetadata({
   const prismicLang = urlLangToPrismic(urlLang) ?? DEFAULT_PRISMIC_LANG;
 
   const client = createClient();
-  const page = await prismicGetByUID(client, "page", uid, {
-    lang: prismicLang,
-  }).catch(() => notFound());
+  // Same fallback as the page: an untranslated page redirects to English instead of a 404.
+  const page =
+    (await prismicGetByUID(client, "page", uid, { lang: prismicLang }).catch(() => null)) ??
+    (await fallbackToDefaultLocale("page", uid, urlLang));
 
   const localePaths = existingLocalePathsFromDocument(page);
 
@@ -79,10 +79,12 @@ export async function generateStaticParams() {
   const client = createClient();
   const pages = await client.getAllByType("page", { lang: "*" });
 
-  return pages
-    .filter((page) => page.uid !== "home")
-    .map((page) => ({
-      lang: prismicLangToUrl(page.lang),
-      uid: page.uid,
-    }));
+  return withFallbackParams(
+    pages
+      .filter((page) => page.uid !== "home")
+      .map((page) => ({
+        lang: prismicLangToUrl(page.lang),
+        uid: page.uid,
+      })),
+  );
 }
