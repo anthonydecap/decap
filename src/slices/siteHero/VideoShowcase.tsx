@@ -1,7 +1,7 @@
 "use client";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { Container } from "@/components/Container";
 import { MediaSlot } from "@/components/MediaSlot";
@@ -23,6 +23,44 @@ function screenPath(x0: number, y0: number, x1: number, y1: number, sag: number,
   const cx = (x0 + x1) / 2;
   const c = sag * 2; // a quadratic curve reaches half its control point's offset
   return `path("M ${x0} ${y0 + r} Q ${x0} ${y0} ${x0 + r} ${y0} Q ${cx} ${y0 + c} ${x1 - r} ${y0} Q ${x1} ${y0} ${x1} ${y0 + r} L ${x1} ${y1 - r} Q ${x1} ${y1} ${x1 - r} ${y1} Q ${cx} ${y1 - c} ${x0 + r} ${y1} Q ${x0} ${y1} ${x0} ${y1 - r} Z")`;
+}
+
+/**
+ * Cinema glow: the film's own colours spill onto the page around the screen. A tiny canvas copies
+ * the playing video (or the image) a few times a second; CSS blurs and enlarges it.
+ */
+function ScreenGlow({ scope, style }: { scope: React.RefObject<HTMLElement | null>; style?: any }) {
+  const canvas = useRef<HTMLCanvasElement>(null);
+  useEffect(() => {
+    const ctx = canvas.current?.getContext("2d");
+    if (!ctx) return;
+    let raf = 0;
+    let last = 0;
+    const tick = (t: number) => {
+      raf = requestAnimationFrame(tick);
+      if (t - last < 120) return;
+      last = t;
+      const src = scope.current?.querySelector<HTMLVideoElement | HTMLImageElement>("video, img");
+      if (!src || (src instanceof HTMLVideoElement ? src.readyState < 2 : !src.complete)) return;
+      try {
+        ctx.drawImage(src, 0, 0, 32, 18);
+      } catch {
+        /* source not ready */
+      }
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [scope]);
+  return (
+    <motion.canvas
+      ref={canvas}
+      width={32}
+      height={18}
+      aria-hidden="true"
+      style={style}
+      className="pointer-events-none absolute -inset-x-[8%] -inset-y-[8%] h-[116%] w-[116%] blur-[56px] brightness-125 saturate-[1.8]"
+    />
+  );
 }
 
 /** Pause / play for the film (autoplaying video needs a way to stop it). */
@@ -70,6 +108,7 @@ export function VideoShowcase({ p, video, brief }: { p: any; video: string | nul
   const section = useRef<HTMLElement>(null);
   const stage = useRef<HTMLDivElement>(null);
   const slot = useRef<HTMLDivElement>(null);
+  const filmRef = useRef<HTMLDivElement>(null);
   const [box, setBox] = useState<Box | null>(null);
 
   // Where the screen rests: an empty box in the layout, measured relative to the pinned stage.
@@ -97,13 +136,13 @@ export function VideoShowcase({ p, video, brief }: { p: any; video: string | nul
   const copyEvents = useTransform(copyOpacity, (o) => (o > 0.5 ? "auto" : "none"));
   const pauseOpacity = useTransform(open, [0.8, 1], [0, 1]);
   const pauseEvents = useTransform(pauseOpacity, (o) => (o > 0.5 ? "auto" : "none"));
-  const floorOpacity = useTransform(open, [0, 0.4], [1, 0]);
+  const glowOpacity = useTransform(open, [0, 0.4], [0.65, 0]);
 
   const clip = useTransform(open, (k) => {
     if (!box) return "none";
     const lerp = (a: number, b: number) => a + (b - a) * k;
-    const sag = (1 - k) * (box.y1 - box.y0) * 0.045;
-    return screenPath(lerp(box.x0, 0), lerp(box.y0, 0), lerp(box.x1, box.W), lerp(box.y1, box.H), sag, (1 - k) * 14);
+    const sag = (1 - k) * (box.y1 - box.y0) * 0.022; // a gentle bow: reads as a cinema screen, not a wave
+    return screenPath(lerp(box.x0, 0), lerp(box.y0, 0), lerp(box.x1, box.W), lerp(box.y1, box.H), sag, 0); // square corners, like a real screen
   });
   // In the screen the film is scaled down to cover it, so the whole shot shows; it grows with it.
   const filmScale = useTransform(open, (k) => {
@@ -143,16 +182,12 @@ export function VideoShowcase({ p, video, brief }: { p: any; video: string | nul
         <div className="absolute inset-x-0 top-0 flex h-full items-start pt-8 lg:h-[84%] lg:items-center lg:pt-0">
           <Container className="w-full">
             <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-              <motion.div style={{ opacity: copyOpacity, x: copyX, pointerEvents: copyEvents }}>
+              <motion.div style={{ opacity: copyOpacity, x: copyX, pointerEvents: copyEvents }} className="relative z-10">
                 <Copy p={p} />
               </motion.div>
               <div className="relative">
+                <ScreenGlow scope={filmRef} style={{ opacity: glowOpacity }} />
                 <div ref={slot} className="aspect-[16/11] w-full" />
-                {/* A soft shadow on the "floor" under the screen. */}
-                <motion.div
-                  style={{ opacity: floorOpacity }}
-                  className="absolute inset-x-[6%] -bottom-9 h-9 bg-[radial-gradient(closest-side,rgba(0,0,0,0.22),transparent)]"
-                />
               </div>
             </div>
           </Container>
@@ -160,7 +195,7 @@ export function VideoShowcase({ p, video, brief }: { p: any; video: string | nul
 
         {/* The film, seen through the cinema screen that opens to the full window. */}
         <motion.div style={{ clipPath: clip, visibility: box ? "visible" : "hidden" }} className="pointer-events-none absolute inset-0">
-          <motion.div style={{ scale: filmScale, x: filmX, y: filmY }} className="absolute inset-0 bg-neutral-950">
+          <motion.div ref={filmRef} style={{ scale: filmScale, x: filmX, y: filmY }} className="absolute inset-0 bg-neutral-950">
             {film}
           </motion.div>
         </motion.div>
