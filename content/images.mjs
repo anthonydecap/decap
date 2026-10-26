@@ -207,15 +207,15 @@ export default {
       "file": "content/media/decap-balzaal-der-gebroken-harten-organ.jpg",
       "alt": "A Decap dance organ on stage"
     },
-    "4": {
+    "5": {
       "file": "content/media/decap-beat-machine-dance-organ.jpg",
       "alt": "Drums, accordions and pipes in the front of a Decap dance organ"
     },
-    "5": {
+    "6": {
       "url": "https://orchestrionix.com/wp-content/uploads/2023/08/decap-home-img3.png",
       "alt": "Virtual Orchestrion screens"
     },
-    "6": {
+    "7": {
       "file": "content/media/decap-smartvalves-in-their-windchest.jpg",
       "alt": "smARTvalves mounted in their wind chest"
     },
@@ -231,19 +231,19 @@ export default {
       "url": "https://orchestrionix.com/wp-content/uploads/2023/08/20221008_mohaibalazs_074-2.jpeg",
       "alt": "Historic Decap orchestrion façade"
     },
-    "7.1": {
+    "8.1": {
       "url": "https://orchestrionix.com/wp-content/uploads/2023/10/Trailer_2023-Oct-07_10-13-09PM-000_CustomizedView1077535285-1.png",
       "alt": "3D render of a Decap orchestrion"
     },
-    "7.0": {
+    "8.0": {
       "file": "content/media/decap-tony-decap-and-francois-decap-belcanto-orgel-without-facade.jpg",
       "alt": "Tony Decap discussing an organ in the workshop"
     },
-    "7.2": {
+    "8.2": {
       "file": "content/media/decap-topside-of-a-valve-panel.jpg",
       "alt": "A valve panel in production in the Herentals workshop"
     },
-    "7.4": {
+    "8.4": {
       "file": "content/media/decap-frank-decap-antique-organ-loaded-into-van.jpg",
       "alt": "An organ being loaded into a van for delivery"
     }
@@ -257,35 +257,35 @@ export default {
       "url": "https://orchestrionix.com/wp-content/uploads/2023/08/image-6-1.png",
       "alt": "Archive photos: an early Decap delivery truck, a Monte Carlo organ and a family portrait"
     },
-    "3": {
+    "4": {
       "url": "https://orchestrionix.com/wp-content/uploads/2023/08/20221008_mohaibalazs_074-2.jpeg",
       "alt": "Historic Decap orchestrion façade with the Decap name"
     },
-    "4": {
+    "5": {
       "file": "content/media/decap-tony-decap-and-frank-decap-brothers.jpg",
       "alt": "Tony Decap and Frank Decap, brothers, in DECAP jackets"
     },
-    "5": {
+    "6": {
       "file": "content/media/decap-topside-of-a-valve-panel.jpg",
       "alt": "A CNC-milled valve panel in the Herentals workshop"
     },
-    "2.9": {
+    "3.9": {
       "url": "https://orchestrionix.com/wp-content/uploads/2023/08/Products-AccordionPedestal-05.jpg",
       "alt": "Accordion Pedestal"
     },
-    "2.11": {
+    "3.11": {
       "url": "https://orchestrionix.com/wp-content/uploads/2023/08/20221008_mohaibalazs_074-2-1.png",
       "alt": "Organ pipe parts from the CNC"
     },
-    "2.12": {
+    "3.12": {
       "url": "https://orchestrionix.com/wp-content/uploads/2023/08/20221008_mohaibalazs_074-2-2.jpeg",
       "alt": "A stage production with L'Explorateur"
     },
-    "2.6": {
+    "3.6": {
       "file": "content/media/decap-old-retro-of-francois-decap-and-the-delivery-of-a-new-organ.jpg",
       "alt": "Archive photo: François Decap at the delivery of a new organ"
     },
-    "2.10": {
+    "3.10": {
       "file": "content/media/decap-guido-belcanto-balzaal-der-gebroken-harten-poster.jpg",
       "alt": "Poster of Balzaal der Gebroken Harten: Guido Belcanto dancing in front of the Decap organ"
     }
@@ -485,7 +485,7 @@ export default {
       "file": "content/media/decap-smartvalves-in-their-windchest.jpg",
       "alt": "smARTvalves mounted in their wind chest"
     },
-    "3": {
+    "4": {
       "file": "content/media/decap-smartvalve-samples.jpg",
       "alt": "smARTvalves with their electronics"
     }
