@@ -5,18 +5,18 @@ export default {
   lang: "nl-be",
   title: "Orgels",
   theme: "decap",
-  meta_title: "Dansorgels, kermisorgels & straatorgels | Decap Herentals",
+  meta_title: "Dansorgels op bestelling gebouwd | Decap Herentals",
   meta_description:
-    "Nieuwe dansorgels, kermisorgels, straatorgels en concertorgels van Decap Herentals: modulair of volledig op maat, met pijpen, digitaal of beide. Sinds 1895.",
+    "Echte dansorgels van Decap Herentals, met dynamisch slagwerk, winddruk per windlade en volumeregeling. Modulair of op maat, met pijpen, digitaal of beide.",
   slices: [
     {
       type: "site_hero",
       primary: {
         layout: "Split",
         eyebrow: "Orgelbouwers sinds 1895",
-        title: "Nieuwe dansorgels, kermisorgels en straatorgels, gebouwd in Herentals",
+        title: "Echte dansorgels, gebouwd in Herentals",
         intro:
-          "We ontwerpen en bouwen orgels voor danszalen, cafés, kermissen, de straat, kerken en verzamelingen. Vertrek van onze beproefde modules of laat elk detail voor u maken. Pijpen, digitale klank of beide, met de frontinstrumenten die Decap-orgels sinds 1933 dragen. Decap-orgels spelen over de hele wereld, van Japan tot de VS en Australië.",
+          "Decap Herentals bouwt dansorgels: orgels om op te dansen, met een dynamiek en volumeregeling die geen enkel mechanisch orgel heeft. Vertrek van onze beproefde modules of laat elk detail voor u maken. Pijpen, digitale klank of beide, met de frontinstrumenten die Decap-orgels sinds 1933 dragen. Decap-orgels spelen over de hele wereld, van Japan tot de VS en Australië.",
         primary_cta_label: "Stel uw orgel samen",
         primary_cta_link: "/organ-composer",
         secondary_cta_label: "Vraag een adviesgesprek aan",
@@ -67,19 +67,52 @@ export default {
       type: "site_text_media",
       primary: {
         eyebrow: "Wat we bouwen",
-        title: "Dansorgels, kermisorgels, straatorgels en concertorgels",
+        title: "Eerst en vooral dansorgels",
         body:
-          "### Dansorgels\nVoor danszalen, cafés en feestzalen. Decap-dansorgels hebben een regelbare gevoeligheid en een regelbaar volume, zodat ze bij de ruimte passen in plaats van ze te overstemmen. Daarom kon Guido Belcanto er in 2008 mee op tournee met zijn theatervoorstelling *Balzaal der Gebroken Harten*.\n\n### Kermisorgels\nVoor kermissen, draaimolens en foorreizigers: gebouwd om vervoerd te worden en om buiten gehoord te worden.\n\n### Straatorgels\nVoor de straat, voor festivals en voor verzamelaars die een orgel willen dat meereist.\n\n### Kerk- en concertorgels\nIn 2025 bouwden we SmartValve in het eerste verplaatsbare kerkorgel, met elke pijp afzonderlijk aangestuurd. Dat orgel is [L'Explorateur](/work/yves-rechsteiner), het mobiele concertorgel van de Zwitserse organist Yves Rechsteiner.\n\nWe bouwen voor danszalen, cafés, kermissen, verzamelaars, musea en kerken.",
+          "### Dansorgels\nWat we normaal bouwen. Tussen 1960 en 1980 had elk van de zo'n 120 baancafés en dancings in België een dansorgel, en de mensen kwamen er elke dag dansen. Vandaag spelen Decap-dansorgels in huiskamers, cafés en danszalen, en op het podium: hun gevoeligheid en volume zijn regelbaar, zodat ze bij de ruimte passen in plaats van ze te overstemmen. Daarom kon Guido Belcanto er in 2008 mee op tournee met zijn theatervoorstelling *Balzaal der Gebroken Harten*.\n\n### Straat- en kermisorgels\nWe hebben ze gebouwd, en we kunnen er een voor u bouwen, maar in onze werkplaats zijn ze de uitzondering.\n\n### Kerk- en concertorgels\nIn 2025 bouwden we smARTvalve in het eerste verplaatsbare kerkorgel, met elke pijp afzonderlijk aangestuurd. Dat orgel is [L'Explorateur](/work/yves-rechsteiner), het mobiele concertorgel van de Zwitserse organist Yves Rechsteiner.",
         media_side: "Image right",
         aspect: "Portrait 4:5",
         image_brief:
           "A Decap dance organ in use in a café or dance hall, people in soft focus in front, taken from the side of the room; portrait 4:5",
       },
       items: [
-        { point: "Modulair of volledig op maat" },
+        { point: "Modulair of volledig op maat, gebouwd als units in een façade: transporteerbaar en opnieuw op te bouwen" },
         { point: "Standaardschalen van 105 en 121 toetsen, andere formaten mogelijk" },
         { point: "Pijpen, digitale klank, of een combinatie van beide" },
         { point: "Spelend over de hele wereld: Japan, de VS, Australië, Azië en Europa" },
+      ],
+    },
+    {
+      type: "site_card_grid",
+      primary: {
+        eyebrow: "Waarom een Decap anders speelt",
+        title: "Gebouwd door muzikanten, voor meer gevoel",
+        intro:
+          "We leerden hout bewerken om orgels te bouwen, maar we zijn eerst en vooral muzikanten. Sinds 1933 werken we aan één ding: een orgel dat speelt met meer dynamiek, meer controle en meer muzikaliteit. Dat alles is in Herentals ontwikkeld.",
+        columns: "2",
+        card_style: "Text cards",
+      },
+      items: [
+        {
+          tag: "Slagwerk",
+          title: "Een trom die hard of zacht speelt",
+          body: "Op een traditioneel orgel werkt de trommelstok op winddruk en slaat hij altijd met dezelfde kracht. Een Decap-trom wordt dynamisch aangestuurd: de stok slaat hard of zacht, en de timing is instelbaar.",
+        },
+        {
+          tag: "Windladen",
+          title: "Winddruk per windlade",
+          body: "Traditionele windladen werken met standaardventielen: een pijp staat aan of uit. Op een Decap-orgel is de winddruk per windlade in te stellen voor verschillende intensiteiten, en registers kunnen effecten zoals vibrato spelen.",
+        },
+        {
+          tag: "Volume",
+          title: "Volume dat u zelf regelt",
+          body: "Decap-orgels en orchestrions hebben een volumeregeling. Hetzelfde orgel speelt zacht in een huiskamer en vult een theater, of speelt mee in een dj-set.",
+        },
+        {
+          tag: "smARTvalve",
+          title: "Elke pijp zijn eigen wind",
+          body: "Onze nieuwste ontwikkeling brengt de drukregeling van de windlade tot op elke afzonderlijke pijp. [Hoe smARTvalve werkt](/smartvalve).",
+        },
       ],
     },
     {
@@ -129,7 +162,7 @@ export default {
         eyebrow: "Het aantal toetsen is geen grens",
         title: "Een orgel met 105 toetsen dat ook muziek voor 121 toetsen speelt",
         body:
-          "Onze standaardschalen tellen 105 en 121 toetsen, maar de schaal hoeft uw repertoire niet te beperken. Elk nieuw Decap-orgel wordt geleverd met onze Virtual Orchestrion-speler. Vraagt een arrangement registers die uw orgel niet heeft, dan voegt de speler ze virtueel toe, met samples die we in onze eigen werkplaats hebben opgenomen en VST-instrumenten.\n\nSinds 2000 speelt een Decap-orgel zijn muziek van één digitale kaart in plaats van rekken vol kartonnen orgelboeken. Kies het orgel dat bij uw ruimte en budget past, niet het orgel dat bij uw muziek past.",
+          "Onze standaardschalen tellen 105 en 121 toetsen, maar de schaal hoeft uw repertoire niet te beperken. Elk nieuw Decap-orgel wordt geleverd met onze Virtual Orchestrion-speler. Vraagt een arrangement registers die uw orgel niet heeft, dan voegt de speler ze virtueel toe, met samples die we in onze eigen werkplaats hebben opgenomen en VST-instrumenten.\n\nSinds 2000 speelt een Decap-orgel zijn muziek van één digitale kaart in plaats van rekken vol kartonnen orgelboeken. Mist u het boek, dan toont de speler het op het scherm terwijl het orgel speelt. Kies het orgel dat bij uw ruimte en budget past, niet het orgel dat bij uw muziek past.",
         media_side: "Image right",
         aspect: "Landscape 4:3",
         cta_label: "Over Virtual Orchestrion",
@@ -141,15 +174,15 @@ export default {
     {
       type: "site_text_media",
       primary: {
-        eyebrow: "SmartValve",
+        eyebrow: "smARTvalve",
         title: "Expressie op elke pijp",
         body:
-          "Een nieuw Decap-orgel met pijpen kan met SmartValve gebouwd worden: één ventiel en één processor voor elke pijp. Elke pijp krijgt zijn eigen opgeslagen winddruk, van 0 tot 200%, met een reactietijd van 4 ms. Dat maakt dynamiek, vibrato, slope en decay per noot mogelijk, bespeeld via MIDI.\n\nHet is de techniek in het verplaatsbare kerkorgel van 2025, het eerste orgel dat we een windsynthesizer noemen.",
+          "We regelen de winddruk al jaren per windlade. smARTvalve doet het per pijp: één ventiel en één processor voor elke pijp. Elke pijp krijgt zijn eigen opgeslagen winddruk, van 0 tot 200%, met een reactietijd van 4 ms. Dat maakt dynamiek, vibrato, slope en decay per noot mogelijk, bespeeld via MIDI.\n\nHet is de techniek in het verplaatsbare kerkorgel van 2025, het eerste orgel dat we een windsynthesizer noemen.",
         media_side: "Image left",
         aspect: "Landscape 4:3",
-        cta_label: "Hoe SmartValve werkt",
+        cta_label: "Hoe smARTvalve werkt",
         cta_link: "/smartvalve",
-        image_brief: "Close-up of a row of SmartValves on a wind chest, dark background, low side light; 4:3",
+        image_brief: "Close-up of a row of smARTvalves on a wind chest, dark background, low side light; 4:3",
         tone: "Dark band",
       },
     },
@@ -199,6 +232,11 @@ export default {
           question: "Wat kost een nieuw orgel?",
           answer:
             "Voor elk orgel maken we een aparte offerte, omdat de prijs uw keuzes volgt: de grootte, pijpen of digitale klank, de frontinstrumenten, de façade. Een digitaal of modulair orgel kost minder dan een pijporgel op maat, en u kunt pijpen of instrumenten hergebruiken die u al hebt. Stuur ons uw vertrekpunt en we antwoorden met een eerste idee en een offerte.",
+        },
+        {
+          question: "Bouwen jullie ook straatorgels en kermisorgels?",
+          answer:
+            "Ja, we hebben ze gebouwd en we kunnen er een voor u bouwen. Maar wat we normaal bouwen, zijn echte dansorgels, met het dynamische slagwerk, de windregeling en de volumeregeling waardoor ze niet alleen in danszalen spelen, maar ook in huiskamers en op het podium.",
         },
         {
           question: "Wat is het verschil tussen 105 en 121 toetsen?",

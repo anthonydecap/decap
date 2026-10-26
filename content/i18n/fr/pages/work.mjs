@@ -64,7 +64,7 @@ export default {
         {
           tag: "Orgue de concert · 2025",
           title: "Yves Rechsteiner : L'Explorateur",
-          body: "Un orgue de concert transportable avec SmartValve sur chaque tuyau : le premier synthétiseur à vent.",
+          body: "Un orgue de concert transportable avec smARTvalve sur chaque tuyau : le premier synthétiseur à vent.",
           link_label: "Lire l'étude de cas",
           link: "/work/yves-rechsteiner",
           image_brief: "L'Explorateur set up in a chapel, 4:3",

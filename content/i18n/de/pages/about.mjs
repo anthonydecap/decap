@@ -7,7 +7,7 @@ export default {
   theme: "decap",
   meta_title: "Über uns: Orgelbauer seit 1895 | Decap Herentals",
   meta_description:
-    "Vier Generationen Orgelbauer Decap. Aloïs Decap begann 1895, Frans gründete 1933 Decap Herentals. Heute baut Tony Decap Tanzorgeln, Orchestrien und SmartValve.",
+    "Vier Generationen Orgelbauer Decap, zuerst Musiker. Frans gründete 1933 Decap Herentals; heute baut Tony Decap Tanzorgeln, Orchestrien und smARTvalve.",
   slices: [
     {
       type: "site_hero",
@@ -16,7 +16,7 @@ export default {
         eyebrow: "Orgelbauer seit 1895. Decap Herentals seit 1933.",
         title: "Vier Generationen Orgelbauer Decap in Herentals",
         intro:
-          "Aloïs Decap begann 1895, rund um Antwerpen Orgeln zu vermieten. Sein Sohn Frans gründete 1933 Decap Herentals. Heute baut Tony Decap, die vierte Generation, in derselben Stadt Orgeln, selbstspielende Musikinstrumente und die Elektronik, die sie steuert.",
+          "Aloïs Decap begann 1895, rund um Antwerpen Orgeln zu vermieten. Sein Sohn Frans gründete 1933 Decap Herentals. Heute baut Tony Decap, die vierte Generation, in derselben Stadt Tanzorgeln, Orchestrien, selbstspielende Musikinstrumente und die Technik, die sie steuert.",
         primary_cta_label: "Unsere Orgeln",
         primary_cta_link: "/organs",
         secondary_cta_label: "Die Werkstatt kontaktieren",
@@ -31,11 +31,29 @@ export default {
         eyebrow: "Decap Herentals",
         title: "Eine Familie, ein Handwerk, seit 1895",
         body:
-          "Decap Herentals baut Tanzorgeln, Jahrmarktorgeln, Straßenorgeln und Konzertorgeln, dazu die selbstspielenden Musikinstrumente und die MIDI-Technik, die zu ihnen gehören. Die Werkstatt liegt am Langepad in Herentals, Belgien.\n\nDas Handwerk ging viermal vom Vater auf den Sohn über. Jede Generation behielt, was funktionierte, und änderte, was nicht mehr passte: Frans gab dem Betrieb eine eigene Werkstatt, François machte die Tanzorgel digital, und Tony brachte MIDI und danach SmartValve.",
+          "Decap Herentals ist für echte Tanzorgeln bekannt: Orgeln, zu denen Menschen tanzen. Wir haben auch Straßenorgeln und Drehorgeln gebaut, aber Tanzorgeln sind das, was wir normalerweise bauen. Die Werkstatt liegt am Langepad in Herentals, Belgien.\n\nDas Handwerk ging viermal vom Vater auf den Sohn über. Jede Generation behielt, was funktionierte, und änderte, was nicht mehr passte: Frans gab dem Betrieb eine eigene Werkstatt, François machte die Tanzorgel digital, und Tony brachte MIDI und danach smARTvalve.",
         media_side: "Image right",
         aspect: "Landscape 4:3",
         image_brief: "Scan of archive photo of the Decap workshop in Herentals, early years, landscape 4:3",
       },
+    },
+    {
+      type: "site_text_media",
+      primary: {
+        eyebrow: "Zuerst Musiker",
+        title: "Holzbearbeitung haben wir gelernt, um Orgeln zu bauen",
+        body:
+          "Im Herzen sind wir Musiker, keine Schreiner. Das Arbeiten mit Holz haben wir gelernt, um Orgeln bauen zu können, aber die Musik kommt zuerst. Das hat Decap damals ausgezeichnet, und das tut es noch heute.\n\nZwischen 1960 und 1980, der Blütezeit der Tanzorgel, gab es in Belgien rund 120 Tanzcafés und Tanzsäle, in denen jeden Tag getanzt wurde, jeder mit seiner eigenen Tanzorgel. Seit den Anfängen von Decap Herentals verfolgen wir ein Ziel: eine Orgel, die besser spielt. Mehr Gefühl, mehr Kontrolle über Lautstärke und Intensität, mehr Dynamik, mehr Musikalität.",
+        media_side: "Image left",
+        aspect: "Landscape 4:3",
+        image_brief: "Scan of archive photo of a full Belgian dance hall in the 1960s or 70s with a Decap dance organ on the stage, 4:3",
+      },
+      items: [
+        { point: "Schlagzeug, hart oder weich gespielt, mit einstellbarem Timing" },
+        { point: "Winddruck je Windlade einstellbar, Register, die Vibrato spielen" },
+        { point: "Orgeln und Orchestrien mit Lautstärkeregelung" },
+        { point: "smARTvalve: dieselbe Idee für jede einzelne Pfeife" },
+      ],
     },
     {
       type: "site_timeline",
@@ -99,8 +117,8 @@ export default {
         },
         {
           year: "2000",
-          title: "MIDI kommt zur Tanzorgel",
-          body: "Tony Decap bringt MIDI zur Tanzorgel. Eine ganze Musikbibliothek passt auf eine einzige digitale Karte und ersetzt Regale voller Notenbücher aus Karton.",
+          title: "Die Ersten mit MIDI in der Orgel",
+          body: "Tony Decap bringt MIDI in die Orgel. Eine ganze Musikbibliothek passt auf eine einzige digitale Karte und ersetzt Regale voller Notenbücher aus Karton. In den folgenden Jahren baut Decap mehr als Tanzorgeln: Orchestrien, separate Pfeifenladen, automatische Schlagzeuge und andere selbstspielende Musikinstrumente.",
           highlight: true,
           image_brief: "Photo of a stack of cardboard book music next to a single memory card, on a workbench, 4:3",
         },
@@ -125,7 +143,7 @@ export default {
         {
           year: "2025",
           title: "Der erste Windsynthesizer",
-          body: "SmartValve kommt in die erste transportable Kirchenorgel, in der jede Pfeife einzeln gesteuert wird: L'Explorateur für den Schweizer Organisten Yves Rechsteiner. [Zur Fallstudie](/work/yves-rechsteiner).",
+          body: "smARTvalve kommt in die erste transportable Kirchenorgel, in der jede Pfeife einzeln gesteuert wird: L'Explorateur für den Schweizer Organisten Yves Rechsteiner. [Zur Fallstudie](/work/yves-rechsteiner).",
           highlight: true,
           image_brief: "L'Explorateur set up in a chapel, wide shot, 4:3",
         },
@@ -164,9 +182,9 @@ export default {
       type: "site_text_media",
       primary: {
         eyebrow: "Die Werkstatt heute",
-        title: "Pfeifen, Elektronik und Software aus Herentals",
+        title: "Von der CNC bis zum Player, gebaut in Herentals",
         body:
-          "Fast alles, was in einer Decap-Orgel steckt, entsteht unter unserem eigenen Dach.",
+          "Fast alles, was in einer Decap-Orgel steckt, entsteht unter unserem eigenen Dach. Unsere gesamte Software ist unsere eigene: die CNC-Programme, die die Pfeifen fräsen, die Software, die die Instrumente steuert, und der Player, der sie spielt.",
         media_side: "Image left",
         aspect: "Landscape 4:3",
         image_brief: "Wide shot of the Herentals workshop: CNC machine on one side, an organ in assembly on the other, 4:3",
@@ -175,8 +193,9 @@ export default {
         { point: "Entwurf und 3D-Rendering jeder Orgel, bevor die Produktion beginnt" },
         { point: "Orgelpfeifen aus Holz, gefräst auf unserer 5-Achs-CNC, mit unserer selbst geschriebenen Software PipeCreator" },
         { point: "Intonation durch unsere eigenen Intonateure" },
-        { point: "SmartValve, MIDI-Umbaueinheiten und die Steuerelektronik für unsere Instrumente" },
-        { point: "Die Software Virtual Orchestrion und MIDIMapper, im Haus entwickelt" },
+        { point: "smARTvalve, MIDI-Umbaueinheiten und die Steuerelektronik für unsere Instrumente" },
+        { point: "Virtual Orchestrion und MIDIMapper, unsere Player- und Arrangier-Software" },
+        { point: "Orgeln als modulare Einheiten in einer Fassade gebaut: transportabel und wieder aufbaubar" },
         { point: "Selbstspielende Musikinstrumente: Akkordeon, Pfeifen, Schlagzeug und Stabspiele" },
       ],
     },

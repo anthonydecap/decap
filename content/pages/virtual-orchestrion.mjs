@@ -86,7 +86,7 @@ export default {
       items: [
         { label: "Plays", value: "MIDI, audio and video" },
         { label: "Drives", value: "Decap organs and self-playing instruments, QRS pianos" },
-        { label: "Views", value: "Animated orchestrion and book view" },
+        { label: "Views", value: "Animated orchestrion and book view", note: "The book view projects the music book fully digitally, also for organs converted to MIDI" },
         { label: "Virtual instruments", value: "Up to 8 VSTi and 8 DXi" },
         { label: "Missing ranks", value: "Added virtually with samples recorded in our workshop" },
         { label: "Music", value: "Your own MIDI, audio and video files; shop arrangements coming soon" },

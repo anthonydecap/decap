@@ -7,7 +7,7 @@ export default {
   theme: "decap",
   meta_title: "Facteurs d'orgues depuis 1895 | Decap Herentals",
   meta_description:
-    "Quatre générations de facteurs d'orgues Decap. Aloïs débute en 1895, Frans fonde Decap Herentals en 1933. Aujourd'hui, Tony construit orgues et SmartValve.",
+    "Quatre générations Decap, musiciens avant tout. Frans fonde Decap Herentals en 1933 ; Tony construit aujourd'hui orgues de danse, orchestrions et smARTvalve.",
   slices: [
     {
       type: "site_hero",
@@ -16,7 +16,7 @@ export default {
         eyebrow: "Facteurs d'orgues depuis 1895. Decap Herentals depuis 1933.",
         title: "Quatre générations de facteurs d'orgues Decap à Herentals",
         intro:
-          "En 1895, Aloïs Decap commence à louer des orgues dans la région d'Anvers. Son fils Frans fonde Decap Herentals en 1933. Aujourd'hui, Tony Decap, quatrième génération, construit dans la même ville des orgues, des instruments automatiques et l'électronique qui les pilote.",
+          "En 1895, Aloïs Decap commence à louer des orgues dans la région d'Anvers. Son fils Frans fonde Decap Herentals en 1933. Aujourd'hui, Tony Decap, quatrième génération, construit dans la même ville des orgues de danse, des orchestrions, des instruments automatiques et la technologie qui les pilote.",
         primary_cta_label: "Nos orgues",
         primary_cta_link: "/organs",
         secondary_cta_label: "Contacter l'atelier",
@@ -31,11 +31,29 @@ export default {
         eyebrow: "Decap Herentals",
         title: "Une famille, un métier, depuis 1895",
         body:
-          "Decap Herentals construit des orgues de danse, des orgues de foire, des orgues de rue et des orgues de concert, ainsi que les instruments automatiques et la technologie MIDI qui les accompagnent. L'atelier se trouve au Langepad à Herentals, en Belgique.\n\nLe métier s'est transmis de père en fils quatre fois. Chaque génération a gardé ce qui fonctionnait et changé ce qui ne fonctionnait plus : Frans a donné à l'entreprise son propre atelier, François a fait passer l'orgue de danse au numérique, et Tony a apporté le MIDI, puis SmartValve.",
+          "Decap Herentals est connu pour ses vrais orgues de danse : des orgues construits pour faire danser. Nous avons aussi construit des orgues de rue et des orgues de Barbarie, mais ce sont des orgues de danse que nous fabriquons d'habitude. L'atelier se trouve au Langepad à Herentals, en Belgique.\n\nLe métier s'est transmis de père en fils quatre fois. Chaque génération a gardé ce qui fonctionnait et changé ce qui ne fonctionnait plus : Frans a donné à l'entreprise son propre atelier, François a fait passer l'orgue de danse au numérique, et Tony a apporté le MIDI, puis smARTvalve.",
         media_side: "Image right",
         aspect: "Landscape 4:3",
         image_brief: "Scan of archive photo of the Decap workshop in Herentals, early years, landscape 4:3",
       },
+    },
+    {
+      type: "site_text_media",
+      primary: {
+        eyebrow: "D'abord des musiciens",
+        title: "Nous avons appris le bois pour construire des orgues",
+        body:
+          "Au fond, nous sommes des musiciens, pas des menuisiers. Nous avons appris à travailler le bois pour pouvoir construire des orgues, mais la musique passe en premier. C'est ce qui distinguait Decap à l'époque, et c'est toujours le cas.\n\nEntre 1960 et 1980, l'âge d'or de l'orgue de danse, la Belgique comptait quelque 120 cafés dansants et salles de danse où l'on allait danser tous les jours, chacun avec son propre orgue de danse. Depuis les débuts de Decap Herentals, nous poursuivons un seul but : un orgue qui joue mieux. Plus de sentiment, plus de maîtrise du volume et de l'intensité, plus de dynamique, plus de musicalité.",
+        media_side: "Image left",
+        aspect: "Landscape 4:3",
+        image_brief: "Scan of archive photo of a full Belgian dance hall in the 1960s or 70s with a Decap dance organ on the stage, 4:3",
+      },
+      items: [
+        { point: "Des percussions jouées fort ou doucement, avec un timing réglable" },
+        { point: "Une pression de vent réglée par sommier, des jeux qui jouent en vibrato" },
+        { point: "Des orgues et des orchestrions au volume réglable" },
+        { point: "smARTvalve : la même idée pour chaque tuyau" },
+      ],
     },
     {
       type: "site_timeline",
@@ -99,8 +117,8 @@ export default {
         },
         {
           year: "2000",
-          title: "Le MIDI arrive dans l'orgue de danse",
-          body: "Tony Decap introduit le MIDI dans l'orgue de danse. Toute une bibliothèque musicale tient sur une seule carte numérique et remplace des rayonnages de cartons perforés.",
+          title: "Les premiers à apporter le MIDI à l'orgue",
+          body: "Tony Decap introduit le MIDI dans l'orgue. Toute une bibliothèque musicale tient sur une seule carte numérique et remplace des rayonnages de cartons perforés. Dans les années qui suivent, Decap ne construit plus seulement des orgues de danse : orchestrions, buffets de tuyaux indépendants, batteries automatiques et autres instruments automatiques.",
           highlight: true,
           image_brief: "Photo of a stack of cardboard book music next to a single memory card, on a workbench, 4:3",
         },
@@ -125,7 +143,7 @@ export default {
         {
           year: "2025",
           title: "Le premier synthétiseur à vent",
-          body: "SmartValve équipe le premier orgue d'église transportable, chaque tuyau étant commandé individuellement : L'Explorateur, de l'organiste suisse Yves Rechsteiner. [Lire l'étude de cas](/work/yves-rechsteiner).",
+          body: "smARTvalve équipe le premier orgue d'église transportable, chaque tuyau étant commandé individuellement : L'Explorateur, de l'organiste suisse Yves Rechsteiner. [Lire l'étude de cas](/work/yves-rechsteiner).",
           highlight: true,
           image_brief: "L'Explorateur set up in a chapel, wide shot, 4:3",
         },
@@ -164,9 +182,9 @@ export default {
       type: "site_text_media",
       primary: {
         eyebrow: "L'atelier aujourd'hui",
-        title: "Tuyaux, électronique et logiciels, fabriqués à Herentals",
+        title: "De la CNC au lecteur, tout est fait à Herentals",
         body:
-          "Presque tout ce qui entre dans un orgue Decap est fabriqué sous notre propre toit.",
+          "Presque tout ce qui entre dans un orgue Decap est fabriqué sous notre propre toit. Tous nos logiciels sont les nôtres : les programmes CNC qui fraisent les tuyaux, le logiciel qui pilote les instruments et le lecteur qui les fait jouer.",
         media_side: "Image left",
         aspect: "Landscape 4:3",
         image_brief: "Wide shot of the Herentals workshop: CNC machine on one side, an organ in assembly on the other, 4:3",
@@ -175,8 +193,9 @@ export default {
         { point: "Conception et rendu 3D de chaque orgue avant le début de la production" },
         { point: "Tuyaux d'orgue en bois fraisés sur notre CNC 5 axes, avec PipeCreator, un logiciel que nous avons écrit nous-mêmes" },
         { point: "Harmonisation par nos propres harmonistes" },
-        { point: "SmartValve, modules de conversion MIDI et électronique de commande de nos instruments" },
-        { point: "Logiciels Virtual Orchestrion et MIDIMapper, développés en interne" },
+        { point: "smARTvalve, modules de conversion MIDI et électronique de commande de nos instruments" },
+        { point: "Virtual Orchestrion et MIDIMapper, nos logiciels de lecture et d'arrangement" },
+        { point: "Des orgues construits en modules dans une façade : transportables et remontables" },
         { point: "Instruments automatiques : accordéon, tuyaux, percussions et percussions à lames" },
       ],
     },

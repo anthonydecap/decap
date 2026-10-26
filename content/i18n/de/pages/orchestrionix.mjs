@@ -50,9 +50,9 @@ export default {
       },
       items: [
         {
-          title: "SmartValve",
-          body: "SmartValve ist ein Decap-Produkt: ein Ventil und ein Prozessor für jede einzelne Orgelpfeife.",
-          link_label: "SmartValve",
+          title: "smARTvalve",
+          body: "smARTvalve ist ein Decap-Produkt: ein Ventil und ein Prozessor für jede einzelne Orgelpfeife.",
+          link_label: "smARTvalve",
           link: "/smartvalve",
         },
         {

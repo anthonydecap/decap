@@ -50,9 +50,9 @@ export default {
       },
       items: [
         {
-          title: "SmartValve",
-          body: "SmartValve est un produit Decap : une soupape et un processeur pour chaque tuyau d'orgue.",
-          link_label: "SmartValve",
+          title: "smARTvalve",
+          body: "smARTvalve est un produit Decap : une soupape et un processeur pour chaque tuyau d'orgue.",
+          link_label: "smARTvalve",
           link: "/smartvalve",
         },
         {

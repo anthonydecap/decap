@@ -57,8 +57,9 @@ digital, Tony brought MIDI and smARTvalve).
 
 ## Organs (core business)
 
-- New organs: dance organs, fair organs, street organs, church/concert organs; for dance halls,
-  cafés, fairgrounds, collectors, museums, churches.
+- **Decap Herentals builds real dance organs**: organs made to dance to. Street, fair and barrel
+  organs have been built too, but they are the exception (see "Who we are", below). Also
+  church/concert organs (smARTvalve). For dance halls, cafés, homes, stages, collectors, museums.
 - **Never mention delivery or lead times** on the site (organs, instruments). Exception: organ
   pipes ship within a few days to a week, depending on the ranks.
 - Two routes: **modular** (customer picks from proven modules) or **fully bespoke**.
@@ -252,3 +253,68 @@ Existing Prismic pages (keep): `accordion`, `pipes`, `percussion-unit`, `mallet-
   (short M4y9bnKHQeQ). Points he wants highlighted: "One pipe, many sounds" (real-time wind
   pressure gives one pipe a whole palette of sounds) and "connecting digital languages with acoustic
   synthesis" (opens the instrument to non-organists, theatre, sound installations, artistic research).
+
+## Who we are and what sets Decap apart (from Decap, 2026-10-26) — overrides anything above
+
+**Real dance organs.** Decap Herentals is known for organs, and specifically for **real dance
+organs**: organs built for people to dance to. Not so much street organs or barrel organs; Decap has
+built those too, but normally it builds dance organs.
+
+**The golden age (1960–1980).** In that period there were some **120 dance cafés and dance halls**
+("baancafés" / dancings) where people went to dance every day, and each had an organ: a dance
+organ. This is **across Belgium** (confirmed by Decap).
+
+**Musicians first, not carpenters.** At heart Decap are **musicians first**. They learned
+woodworking in order to build organs, but they are musicians before anything else. That set them
+apart from the rest then, and it still does. Since Decap Herentals began, the aim has been to make
+the organ play better and better: **more feeling, more control over volume and intensity, more
+dynamics, more musicality.** ("De constante jacht naar de beste muzikale ervaring": the constant
+hunt for the best musical experience.)
+
+**Dynamic control, all developed in Herentals** (unique Decap developments):
+- **Percussion**: a Decap drum is dynamically controlled. The stick can hit hard or soft, and
+  timings can be adjusted. On a traditional organ the stick is driven by air pressure and always
+  hits with the same intensity.
+- **Wind chests**: traditional wind chests use ordinary standard valves, so a pipe is simply on or
+  off. On a Decap organ the **pressure can be adjusted per wind chest**, for different intensities,
+  and pipe ranks can play effects such as **vibrato**.
+- **smARTvalve**, the newest development, takes this concept to **every individual pipe**.
+- **Volume control**: Decap Herentals organs and orchestrions are **volume-controllable**.
+
+**Why it matters.** Because of all this, Decap organs don't only play in dance halls: they are used
+**in the living room as well as on big stages, from theatre shows to DJ sets**. With traditional
+mechanical technology this would not be possible. **Decap Herentals keeps evolving.**
+
+**MIDI.** Decap Herentals were **the first to bring MIDI to the organ** (milestone 2000 in the
+timeline; Tony to confirm the year — note that Mostmans' Antwerp history mentions a MIDI organ in
+1996). Today almost all old organs are converted to MIDI, simply because it is the better way to
+play: it is how you get a much wider repertoire on your organ.
+- At first there was resistance: installing MIDI takes away part of the organ's romance, the
+  **book** (the folding cardboard music that runs through the organ).
+- **Decap's answer, recently:** the **Decap Virtual Orchestrion** player can **project the book
+  fully digitally**, so the book comes back on screen while the organ plays from MIDI.
+
+**From dance organs to smARTvalve (from Decap, 2026-10-26).**
+- All the experience built up over **90 years** (use "90 years"; Decap Herentals dates from 1933)
+  and the constant hunt for the best musical experience led to the **smARTvalve** development.
+- **For the last 25 years** (since around 2000) Decap has built **more than dance organs**:
+  orchestrions and self-playing instruments, from **separate pipe chest units** to **automatic
+  drums** and **automated pianos** (in practice: Decap drives existing systems such as QRS; **keep this vague**
+  on the site, e.g. "automated pianos", without claiming Decap builds them), and also **technology for church organs**.
+- **Why church organs.** "We are musicians, and the church organ is one of the most beautiful
+  instruments there is, and one of the most musical." While developing smARTvalve, Decap could only
+  dream of what it would do for a church organ: far more effects and ways of playing, **far more
+  colours, far more musical possibilities**.
+- **Dance organ experience pays off here too.**
+  - Dance organs had to be **transportable and rebuildable**: Decap builds every organ as **modular
+    units in a façade**. That is why a project like **L'Explorateur** (a transportable church
+    organ) fits Decap perfectly.
+  - Decap wind chests are **built for hard conditions**, such as changes in temperature, because
+    dance organs played in **spiegeltents (mirror tents)** that had to be put up and taken down
+    again and again.
+
+**All software in-house (from Decap, 2026-10-26).** All Decap software is developed entirely
+in-house: from its own **CNC programs** (PipeCreator, which generates the G-code for the pipes),
+to the **hardware control** (the software that drives the instruments, e.g. in the Accordion
+Pedestal, the MIDI conversion units and smARTvalve), to the **player software**
+(Virtual Orchestrion, MIDIMapper).

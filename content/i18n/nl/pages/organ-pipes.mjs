@@ -73,7 +73,7 @@ export default {
         },
         {
           title: "Pijpen en windladen",
-          body: "Neem er windladen bij van ons, of ga verder met [MIDI-ombouw](/midi-conversion) of [SmartValve](/smartvalve) op elke pijp.",
+          body: "Neem er windladen bij van ons, of ga verder met [MIDI-ombouw](/midi-conversion) of [smARTvalve](/smartvalve) op elke pijp.",
         },
       ],
     },
@@ -162,7 +162,7 @@ export default {
         },
         {
           question: "Kunt u ook de windladen maken?",
-          answer: "Ja. Bestel pijpen en windladen samen, en voeg MIDI-ombouw of SmartValve toe als u wilt dat het orgel via MIDI speelt.",
+          answer: "Ja. Bestel pijpen en windladen samen, en voeg MIDI-ombouw of smARTvalve toe als u wilt dat het orgel via MIDI speelt.",
         },
         {
           question: "Verzendt u buiten België?",
@@ -188,7 +188,7 @@ export default {
         success_body: "We antwoorden met een offerte en een verzenddatum.",
         aside_title: "Goed om te weten",
         aside_body:
-          "- Verkocht als volledige registers\n- Standaardmensuren of uw eigen maten\n- Klaar in enkele dagen tot een week, afhankelijk van de registers\n- Geïntoneerd of klaar om te intoneren\n- Windladen, MIDI-ombouw en SmartValve op aanvraag\n- Wereldwijde verzending",
+          "- Verkocht als volledige registers\n- Standaardmensuren of uw eigen maten\n- Klaar in enkele dagen tot een week, afhankelijk van de registers\n- Geïntoneerd of klaar om te intoneren\n- Windladen, MIDI-ombouw en smARTvalve op aanvraag\n- Wereldwijde verzending",
       },
     },
   ],

@@ -7,7 +7,7 @@ export default {
   theme: "decap",
   meta_title: "L'Explorateur: verplaatsbaar concertorgel | Decap",
   meta_description:
-    "L'Explorateur, het mobiele pijporgel van Yves Rechsteiner met SmartValve op elke pijp: 12 modules, opgesteld in minder dan 2 uur, 30+ concerten sinds 2023.",
+    "L'Explorateur, het mobiele pijporgel van Yves Rechsteiner met smARTvalve op elke pijp: 12 modules, opgesteld in minder dan 2 uur, 30+ concerten sinds 2023.",
   fields: {
     summary: "Een verplaatsbaar concertorgel met windregeling op elke pijp: opgesteld in minder dan twee uur, meer dan 30 optredens sinds 2023.",
     client: "Yves Rechsteiner, Toulouse les Orgues",
@@ -20,12 +20,12 @@ export default {
       primary: {
         layout: "Split",
         eyebrow: "Realisaties · Yves Rechsteiner",
-        title: "L'Explorateur: een verplaatsbaar concertorgel met SmartValve op elke pijp",
+        title: "L'Explorateur: een verplaatsbaar concertorgel met smARTvalve op elke pijp",
         intro:
           "Organist Yves Rechsteiner wilde een pijporgel dat overal kan spelen waar de muziek is, niet alleen in kerken. Samen bouwden we L'Explorateur: twaalf modules die in één bestelwagen reizen, opgesteld in minder dan twee uur, met de wind van elke pijp onder controle. Rechsteiner noemt het resultaat een fysieke synthesizer.",
-        primary_cta_label: "SmartValve voor orgelbouwers",
+        primary_cta_label: "smARTvalve voor orgelbouwers",
         primary_cta_link: "/smartvalve-for-organ-builders",
-        secondary_cta_label: "Over SmartValve",
+        secondary_cta_label: "Over smARTvalve",
         secondary_cta_link: "/smartvalve",
         image_brief: "L'Explorateur on stage with dancers in front, wide shot, 4:3",
       },
@@ -67,8 +67,8 @@ export default {
         { year: "2019", title: "Kennismaking met Tony Decap", body: "Via een teaser van Stephan Eichers *Die Automaten*. Rechsteiner bestelt een MIDI-gestuurd instrument." },
         { year: "2021", title: "Start van de bouw", body: "Tijdens de bouw stelt Decap iets nieuws voor: de wind niet per windlade regelen, maar per pijp." },
         { year: "2023", title: "Eerste optredens", body: "Na twee jaar werk en onderzoek speelt L'Explorateur met de eerste generatie ventielen. De optredens beginnen." },
-        { year: "2023–2025", title: "SmartValve", body: "Tony Decap ontwerpt de tweede generatie, SmartValve, en de elektronica van de modules wordt eromheen opnieuw opgebouwd.", highlight: true },
-        { year: "2025", title: "De eerste windsynthesizer", body: "SmartValve in concert: elke pijp van een verplaatsbaar kerkorgel afzonderlijk gestuurd. Een van de concerten: een eerbetoon aan Moondog in de Chapelle de la Trinité in Lyon.", highlight: true },
+        { year: "2023–2025", title: "smARTvalve", body: "Tony Decap ontwerpt de tweede generatie, smARTvalve, en de elektronica van de modules wordt eromheen opnieuw opgebouwd.", highlight: true },
+        { year: "2025", title: "De eerste windsynthesizer", body: "smARTvalve in concert: elke pijp van een verplaatsbaar kerkorgel afzonderlijk gestuurd. Een van de concerten: een eerbetoon aan Moondog in de Chapelle de la Trinité in Lyon.", highlight: true },
         { year: "2026", title: "Volgende stappen", body: "Nieuwe ventielen en windladen, software voor de speeltafel, bijstelling van de intonatie en een register met vrije tongen uit een Muller-*orgue expressif* uit 1830." },
       ],
     },
@@ -78,12 +78,12 @@ export default {
         eyebrow: "De technologie",
         title: "Windregeling per pijp, niet per windlade",
         body:
-          "In een klassiek orgel delen alle pijpen op een windlade dezelfde wind. In L'Explorateur heeft elke pijp een eigen SmartValve, enkele millimeters van de pijpvoet. Het ventiel meet de drukval aan de ingang en opent verder om die te compenseren, zodat elke pijp haar wind houdt als veel pijpen tegelijk klinken.\n\nDe eerste ventielen waren kleine luidsprekers die tot ventiel waren omgebouwd. SmartValve, de tweede generatie, werd ontworpen door Tony Decap en industrieel geproduceerd. Voor de organist betekent het controle over elke noot: *“je kunt de aard van de aanzet van de klank bepalen.”*",
+          "In een klassiek orgel delen alle pijpen op een windlade dezelfde wind. In L'Explorateur heeft elke pijp een eigen smARTvalve, enkele millimeters van de pijpvoet. Het ventiel meet de drukval aan de ingang en opent verder om die te compenseren, zodat elke pijp haar wind houdt als veel pijpen tegelijk klinken.\n\nDe eerste ventielen waren kleine luidsprekers die tot ventiel waren omgebouwd. smARTvalve, de tweede generatie, werd ontworpen door Tony Decap en industrieel geproduceerd. Voor de organist betekent het controle over elke noot: *“je kunt de aard van de aanzet van de klank bepalen.”*",
         media_side: "Image right",
         aspect: "Landscape 4:3",
-        cta_label: "Hoe SmartValve werkt",
+        cta_label: "Hoe smARTvalve werkt",
         cta_link: "/smartvalve",
-        image_brief: "Close-up of the SmartValves under the pipes inside L'Explorateur, dark background, 4:3",
+        image_brief: "Close-up of the smARTvalves under the pipes inside L'Explorateur, dark background, 4:3",
       },
       items: [
         { point: "Eén ventiel en één processor per pijp" },
@@ -97,7 +97,7 @@ export default {
         eyebrow: "Gebouwd om te reizen",
         title: "Eén bestelwagen, twaalf modules, minder dan twee uur",
         body:
-          "Van bij het begin had L'Explorateur twee grenzen: het moest in een bestelwagen van 20 m³ passen en mocht niet meer dan 1.200 kg wegen. Elke technische keuze volgde daaruit.\n\nHet orgel is verdeeld in modules die worden binnengedragen, geplaatst en aangesloten. Omdat SmartValve windregelaars overbodig maakt, bestaat het windsysteem alleen uit een blaasmachine en een verdeelkast. *“Voor L'Explorateur betekent het een eenvoudige opbouw van minder dan 2 uur, van de aankomst van de vrachtwagen tot het spelen.”*",
+          "Van bij het begin had L'Explorateur twee grenzen: het moest in een bestelwagen van 20 m³ passen en mocht niet meer dan 1.200 kg wegen. Elke technische keuze volgde daaruit.\n\nHet orgel is verdeeld in modules die worden binnengedragen, geplaatst en aangesloten. Omdat smARTvalve windregelaars overbodig maakt, bestaat het windsysteem alleen uit een blaasmachine en een verdeelkast. *“Voor L'Explorateur betekent het een eenvoudige opbouw van minder dan 2 uur, van de aankomst van de vrachtwagen tot het spelen.”*",
         media_side: "Image left",
         aspect: "Landscape 4:3",
         image_brief: "L'Explorateur modules being unloaded from the van or set up in a hall, 4:3",
@@ -147,7 +147,7 @@ export default {
         eyebrow: "Het pijpwerk",
         title: "Oude pijpen, een nieuw leven",
         body:
-          "Het meeste pijpwerk is tweedehands, van eind 19e en begin 20e eeuw, en werd geïntoneerd door Jean Daldosso. Nieuwe pijpen met vrije tongen werden gemaakt door Orgelbau Orglez in Bretagne: vrije tongen veranderen van sterkte zonder van toonhoogte te veranderen, perfect voor windregeling per pijp.\n\nMet SmartValve kan één register veel meer dan waarvoor het gebouwd werd: vijftig Fluit-pijpen geven een hele waaier aan kleuren, alleen door de wind.",
+          "Het meeste pijpwerk is tweedehands, van eind 19e en begin 20e eeuw, en werd geïntoneerd door Jean Daldosso. Nieuwe pijpen met vrije tongen werden gemaakt door Orgelbau Orglez in Bretagne: vrije tongen veranderen van sterkte zonder van toonhoogte te veranderen, perfect voor windregeling per pijp.\n\nMet smARTvalve kan één register veel meer dan waarvoor het gebouwd werd: vijftig Fluit-pijpen geven een hele waaier aan kleuren, alleen door de wind.",
         media_side: "Image left",
         aspect: "Landscape 4:3",
         image_brief: "Close-up of old wooden and metal pipes standing on a module of L'Explorateur, 4:3",
@@ -213,8 +213,8 @@ export default {
       primary: {
         eyebrow: "Voor orgelbouwers en organisten",
         title: "Geef elke pijp haar eigen wind",
-        body: "SmartValve is beschikbaar voor nieuwe orgels en, door de pijpenstokken te vervangen, voor bestaande orgels. Vertel ons over uw project.",
-        primary_cta_label: "SmartValve voor orgelbouwers",
+        body: "smARTvalve is beschikbaar voor nieuwe orgels en, door de pijpenstokken te vervangen, voor bestaande orgels. Vertel ons over uw project.",
+        primary_cta_label: "smARTvalve voor orgelbouwers",
         primary_cta_link: "/smartvalve-for-organ-builders",
         secondary_cta_label: "Contacteer Decap",
         secondary_cta_link: "/contact",

@@ -5,18 +5,18 @@ export default {
   lang: "fr-fr",
   title: "Orgues",
   theme: "decap",
-  meta_title: "Orgues de danse, de foire et de rue | Decap Herentals",
+  meta_title: "Orgues de danse sur commande | Decap Herentals",
   meta_description:
-    "Orgues de danse, de foire, de rue et de concert neufs par Decap Herentals : modulaires ou sur mesure, à tuyaux, numériques ou les deux. Depuis 1895.",
+    "De vrais orgues de danse : percussions dynamiques, pression par sommier, volume réglable. Modulaires ou sur mesure, à tuyaux, numériques ou les deux.",
   slices: [
     {
       type: "site_hero",
       primary: {
         layout: "Split",
         eyebrow: "Facteurs d'orgues depuis 1895",
-        title: "Orgues de danse, orgues de foire et orgues de rue neufs, construits à Herentals",
+        title: "De vrais orgues de danse, construits à Herentals",
         intro:
-          "Nous concevons et construisons des orgues pour les salles de danse, les cafés, les champs de foire, la rue, les églises et les collections. Partez de nos modules éprouvés ou faites réaliser chaque détail pour vous. À tuyaux, numériques ou les deux, avec les instruments de façade que portent les orgues Decap depuis 1933. Les orgues Decap jouent partout dans le monde, du Japon aux États-Unis et à l'Australie.",
+          "Decap Herentals construit des orgues de danse : des orgues faits pour danser, avec une dynamique et un réglage du volume qu'aucun orgue mécanique ne possède. Partez de nos modules éprouvés ou faites réaliser chaque détail pour vous. À tuyaux, numériques ou les deux, avec les instruments de façade que portent les orgues Decap depuis 1933. Les orgues Decap jouent partout dans le monde, du Japon aux États-Unis et à l'Australie.",
         primary_cta_label: "Composer votre orgue",
         primary_cta_link: "/organ-composer",
         secondary_cta_label: "Demander une consultation",
@@ -67,19 +67,52 @@ export default {
       type: "site_text_media",
       primary: {
         eyebrow: "Ce que nous construisons",
-        title: "Orgues de danse, de foire, de rue et de concert",
+        title: "D'abord des orgues de danse",
         body:
-          "### Orgues de danse\nPour les salles de danse, les cafés et les salles d'événements. Les orgues de danse Decap ont une sensibilité et un volume réglables : ils s'adaptent à la salle au lieu de la saturer. C'est ce qui a permis à Guido Belcanto d'en emmener un en tournée dans son spectacle *Balzaal der Gebroken Harten* en 2008.\n\n### Orgues de foire\nPour les champs de foire, les carrousels et les forains : construits pour être transportés et entendus en plein air.\n\n### Orgues de rue\nPour la rue, les festivals et les collectionneurs qui veulent un orgue qui voyage.\n\n### Orgues d'église et de concert\nEn 2025, nous avons intégré SmartValve au premier orgue d'église transportable, chaque tuyau étant commandé individuellement. Cet orgue, c'est [L'Explorateur](/work/yves-rechsteiner), l'orgue de concert mobile de l'organiste suisse Yves Rechsteiner.\n\nNous construisons pour les salles de danse, les cafés, les champs de foire, les collectionneurs, les musées et les églises.",
+          "### Orgues de danse\nCe que nous construisons d'habitude. Entre 1960 et 1980, quelque 120 cafés dansants et salles de danse en Belgique avaient chacun leur orgue de danse, et l'on venait y danser tous les jours. Aujourd'hui, les orgues de danse Decap jouent dans des salons, des cafés, des salles de danse et sur scène : leur sensibilité et leur volume se règlent, ils s'adaptent donc à la salle au lieu de la saturer. C'est ce qui a permis à Guido Belcanto d'en emmener un en tournée dans son spectacle *Balzaal der Gebroken Harten* en 2008.\n\n### Orgues de rue et de foire\nNous en avons construit et pouvons en construire un pour vous, mais ils restent l'exception dans notre atelier.\n\n### Orgues d'église et de concert\nEn 2025, nous avons intégré smARTvalve au premier orgue d'église transportable, chaque tuyau étant commandé individuellement. Cet orgue, c'est [L'Explorateur](/work/yves-rechsteiner), l'orgue de concert mobile de l'organiste suisse Yves Rechsteiner.",
         media_side: "Image right",
         aspect: "Portrait 4:5",
         image_brief:
           "A Decap dance organ in use in a café or dance hall, people in soft focus in front, taken from the side of the room; portrait 4:5",
       },
       items: [
-        { point: "Modulaire ou entièrement sur mesure" },
+        { point: "Modulaire ou entièrement sur mesure, construit en modules dans une façade : transportable et remontable" },
         { point: "Échelles standard de 105 et 121 touches, autres tailles possibles" },
         { point: "Tuyaux, son numérique, ou les deux combinés" },
         { point: "Présents dans le monde entier : Japon, États-Unis, Australie, Asie et Europe" },
+      ],
+    },
+    {
+      type: "site_card_grid",
+      primary: {
+        eyebrow: "Pourquoi un Decap joue autrement",
+        title: "Construits par des musiciens, pour plus de sentiment",
+        intro:
+          "Nous avons appris à travailler le bois pour construire des orgues, mais nous sommes d'abord des musiciens. Depuis 1933, nous travaillons à une seule chose : un orgue qui joue avec plus de dynamique, plus de maîtrise et plus de musicalité. Tout cela a été développé à Herentals.",
+        columns: "2",
+        card_style: "Text cards",
+      },
+      items: [
+        {
+          tag: "Percussions",
+          title: "Un tambour qui joue fort ou doucement",
+          body: "Sur un orgue traditionnel, la baguette fonctionne à l'air comprimé et frappe toujours avec la même force. Un tambour Decap est commandé de façon dynamique : la baguette frappe fort ou doucement, et le timing se règle.",
+        },
+        {
+          tag: "Sommiers",
+          title: "La pression par sommier",
+          body: "Les sommiers traditionnels utilisent des soupapes standard : un tuyau est ouvert ou fermé. Sur un orgue Decap, la pression se règle par sommier pour obtenir différentes intensités, et des jeux peuvent jouer des effets comme le vibrato.",
+        },
+        {
+          tag: "Volume",
+          title: "Un volume que vous maîtrisez",
+          body: "Les orgues et orchestrions Decap ont un volume réglable. Le même orgue peut jouer doucement dans un salon, remplir un théâtre ou accompagner un set de DJ.",
+        },
+        {
+          tag: "smARTvalve",
+          title: "À chaque tuyau son propre vent",
+          body: "Notre dernier développement pousse le réglage de pression du sommier jusqu'à chaque tuyau. [Comment fonctionne smARTvalve](/smartvalve).",
+        },
       ],
     },
     {
@@ -129,7 +162,7 @@ export default {
         eyebrow: "Le nombre de touches n'est pas une limite",
         title: "Un orgue 105 touches qui joue aussi la musique 121 touches",
         body:
-          "Nos échelles standard comptent 105 et 121 touches, mais l'échelle ne doit pas limiter votre répertoire. Chaque nouvel orgue Decap est livré avec notre lecteur Virtual Orchestrion. Quand un arrangement demande des jeux que votre orgue n'a pas, le lecteur les ajoute virtuellement, avec des échantillons enregistrés dans notre propre atelier et des instruments VST.\n\nDepuis 2000, un orgue Decap joue sa musique à partir d'une seule carte numérique au lieu de rayonnages de cartons perforés. Choisissez l'orgue qui convient à votre salle et à votre budget, et non celui qui convient à votre musique.",
+          "Nos échelles standard comptent 105 et 121 touches, mais l'échelle ne doit pas limiter votre répertoire. Chaque nouvel orgue Decap est livré avec notre lecteur Virtual Orchestrion. Quand un arrangement demande des jeux que votre orgue n'a pas, le lecteur les ajoute virtuellement, avec des échantillons enregistrés dans notre propre atelier et des instruments VST.\n\nDepuis 2000, un orgue Decap joue sa musique à partir d'une seule carte numérique au lieu de rayonnages de cartons perforés. Si le carton vous manque, le lecteur l'affiche à l'écran pendant que l'orgue joue. Choisissez l'orgue qui convient à votre salle et à votre budget, et non celui qui convient à votre musique.",
         media_side: "Image right",
         aspect: "Landscape 4:3",
         cta_label: "À propos de Virtual Orchestrion",
@@ -141,15 +174,15 @@ export default {
     {
       type: "site_text_media",
       primary: {
-        eyebrow: "SmartValve",
+        eyebrow: "smARTvalve",
         title: "De l'expression sur chaque tuyau",
         body:
-          "Un nouvel orgue Decap à tuyaux peut être construit avec SmartValve : une soupape et un processeur pour chaque tuyau. Chaque tuyau reçoit sa propre pression mémorisée, de 0 à 200 %, avec un temps de réponse de 4 ms. Cela permet la dynamique, le vibrato, la pente (slope) et l'extinction (decay) note par note, joués en MIDI.\n\nC'est la technologie de l'orgue d'église transportable de 2025, le premier orgue que nous appelons un synthétiseur à vent.",
+          "Depuis des années, nous réglons la pression du vent par sommier. smARTvalve le fait par tuyau : une soupape et un processeur pour chaque tuyau. Chaque tuyau reçoit sa propre pression mémorisée, de 0 à 200 %, avec un temps de réponse de 4 ms. Cela permet la dynamique, le vibrato, la pente (slope) et l'extinction (decay) note par note, joués en MIDI.\n\nC'est la technologie de l'orgue d'église transportable de 2025, le premier orgue que nous appelons un synthétiseur à vent.",
         media_side: "Image left",
         aspect: "Landscape 4:3",
-        cta_label: "Comment fonctionne SmartValve",
+        cta_label: "Comment fonctionne smARTvalve",
         cta_link: "/smartvalve",
-        image_brief: "Close-up of a row of SmartValves on a wind chest, dark background, low side light; 4:3",
+        image_brief: "Close-up of a row of smARTvalves on a wind chest, dark background, low side light; 4:3",
         tone: "Dark band",
       },
     },
@@ -199,6 +232,11 @@ export default {
           question: "Combien coûte un orgue neuf ?",
           answer:
             "Chaque orgue fait l'objet d'un devis propre, car le prix suit vos choix : la taille, tuyaux ou son numérique, les instruments de façade, la façade. Un orgue numérique ou modulaire coûte moins cher qu'un orgue à tuyaux sur mesure, et vous pouvez réutiliser des tuyaux ou des instruments que vous possédez déjà. Envoyez-nous votre point de départ et nous vous répondons avec une première idée et un devis.",
+        },
+        {
+          question: "Construisez-vous aussi des orgues de rue et des orgues de foire ?",
+          answer:
+            "Oui, nous en avons construit et pouvons en construire un pour vous. Mais ce que nous construisons d'habitude, ce sont de vrais orgues de danse, avec les percussions dynamiques, la maîtrise du vent et le réglage du volume qui leur permettent de jouer dans un salon et sur scène autant que dans une salle de danse.",
         },
         {
           question: "Quelle est la différence entre 105 et 121 touches ?",

@@ -5,16 +5,16 @@ export default {
   "lang": "nl-be",
   "title": "Decap Herentals",
   "theme": "decap",
-  "meta_title": "Dansorgels & zelfspelende instrumenten | Decap",
-  "meta_description": "Orgelbouwers sinds 1895. Decap Herentals bouwt dansorgels, kermisorgels en straatorgels, zelfspelende accordeons en de MIDI-techniek die ze aanstuurt.",
+  "meta_title": "Dansorgels gebouwd door muzikanten | Decap Herentals",
+  "meta_description": "Echte dansorgels uit Herentals, sinds 1933 gebouwd door muzikanten. Orgels met dynamiek en volumeregeling, orchestrions, zelfspelende instrumenten, smARTvalve.",
   "slices": [
     {
       "type": "site_hero",
       "primary": {
         "layout": "Split",
         "eyebrow": "Orgelbouwers sinds 1895",
-        "title": "Dansorgels en zelfspelende instrumenten, gemaakt in Herentals",
-        "intro": "Orgels en zelfspelende instrumenten voor thuis, cafés, bars en danszalen, gebouwd door vier generaties van de familie Decap in één werkplaats in Herentals.",
+        "title": "Echte dansorgels, gebouwd door muzikanten in Herentals",
+        "intro": "We zijn eerst en vooral muzikanten. We leerden met hout werken om orgels te kunnen bouwen, en al 90 jaar laten we het dansorgel met meer gevoel spelen: dynamiek, volumeregeling, expressie. Vandaag spelen onze orgels en zelfspelende instrumenten in huiskamers, cafés, danszalen en op het podium.",
         "primary_cta_label": "Ontdek onze orgels",
         "primary_cta_link": "/organs",
         "secondary_cta_label": "Zelfspelende instrumenten",
@@ -30,8 +30,8 @@ export default {
           "size": "Full",
           "style": "Light",
           "eyebrow": "Orgels",
-          "title": "Dansorgels, op bestelling gebouwd.",
-          "tagline": "Dans-, kermis-, straat- en concertorgels uit onze werkplaats in Herentals. Modulair of volledig op maat.",
+          "title": "Echte dansorgels, op bestelling gebouwd.",
+          "tagline": "Orgels om op te dansen, uit onze werkplaats in Herentals. Modulair of volledig op maat.",
           "primary_label": "Meer info",
           "primary_link": "/organs",
           "secondary_label": "Stel uw orgel samen",
@@ -74,7 +74,7 @@ export default {
         {
           "size": "Full",
           "style": "SmartValve",
-          "eyebrow": "SmartValve",
+          "eyebrow": "smARTvalve",
           "title": "Elke pijp. Een eigen stem.",
           "tagline": "Een processor in elk ventiel. Wind, dynamiek en registers, per pijp gestuurd.",
           "primary_label": "Meer info",
@@ -84,7 +84,7 @@ export default {
           "image_fit": "Cover",
           "image_position": "Center",
           "overlay": "Strong",
-          "image_brief": "SmartValves mounted in their wind chest"
+          "image_brief": "smARTvalves mounted in their wind chest"
         },
         {
           "size": "Full",
@@ -175,11 +175,25 @@ export default {
       ]
     },
     {
+      "type": "site_text_media",
+      "primary": {
+        "eyebrow": "Eerst en vooral muzikanten",
+        "title": "Orgels die met gevoel spelen",
+        "body": "Een traditioneel orgel slaat elke trom met dezelfde kracht aan, en elke pijp staat gewoon aan of uit. Op een Decap-orgel slaat de stok hard of zacht, verandert de winddruk per windlade, spelen registers vibrato en is het volume van het hele orgel te regelen. smARTvalve brengt dat tot op elke afzonderlijke pijp.\n\nDaarom past een Decap-orgel even goed in een huiskamer als op een theaterpodium of in een dj-set. Met traditionele mechanische techniek zou dat niet kunnen.",
+        "media_side": "Image right",
+        "aspect": "Landscape 4:3",
+        "cta_label": "Waarom een Decap anders speelt",
+        "cta_link": "/organs",
+        "image_brief": "Close-up of the drum kit in the front of a Decap organ mid-hit, stick in motion, warm stage light, 4:3",
+        "tone": "Tinted"
+      }
+    },
+    {
       "type": "site_timeline",
       "primary": {
         "eyebrow": "Sinds 1895",
         "title": "Elke generatie heeft het orgel opnieuw uitgevonden",
-        "intro": "Aloïs Decap begon met een handvol verhuurde orgels. Zijn zoon Frans richtte Decap Herentals op. François maakte de stap naar digitaal, Tony bracht MIDI en SmartValve. [Lees het volledige verhaal](/about)."
+        "intro": "Aloïs Decap begon met een handvol verhuurde orgels. Zijn zoon Frans richtte Decap Herentals op. François maakte de stap naar digitaal, Tony bracht MIDI en smARTvalve. [Lees het volledige verhaal](/about)."
       },
       "items": [
         {
@@ -200,8 +214,8 @@ export default {
         },
         {
           "year": "2000",
-          "title": "MIDI doet zijn intrede in het dansorgel",
-          "body": "Tony Decap zet een volledige muziekbibliotheek op één kaart, in plaats van rekken vol kartonnen orgelboeken."
+          "title": "De eersten met MIDI in het orgel",
+          "body": "Tony Decap zet een volledige muziekbibliotheek op één kaart, in plaats van rekken vol kartonnen orgelboeken. Vandaag is bijna elk oud orgel naar MIDI omgebouwd."
         },
         {
           "year": "2016",
@@ -211,7 +225,7 @@ export default {
         {
           "year": "2025",
           "title": "De eerste windsynthesizer",
-          "body": "SmartValve in een verplaatsbaar kerkorgel: elke pijp afzonderlijk aangestuurd.",
+          "body": "smARTvalve in een verplaatsbaar kerkorgel: elke pijp afzonderlijk aangestuurd.",
           "highlight": true
         }
       ]

@@ -15,7 +15,7 @@ export default {
         eyebrow: "Software",
         title: "Software for orchestrions, organs and arrangers",
         intro:
-          "We write the software that drives our instruments. Virtual Orchestrion plays them. MIDIMapper helps arrangers hear what they write before it reaches the organ.",
+          "All our software is developed in-house: from the CNC programs that mill our pipes to the software that drives our instruments. Virtual Orchestrion plays them. MIDIMapper helps arrangers hear what they write before it reaches the organ.",
         primary_cta_label: "Virtual Orchestrion",
         primary_cta_link: "/virtual-orchestrion",
         secondary_cta_label: "MIDIMapper",

@@ -73,7 +73,7 @@ export default {
         },
         {
           title: "Pfeifen und Windladen",
-          body: "Nehmen Sie Windladen von uns dazu, oder gehen Sie weiter mit einem [MIDI-Umbau](/midi-conversion) oder [SmartValve](/smartvalve) an jeder Pfeife.",
+          body: "Nehmen Sie Windladen von uns dazu, oder gehen Sie weiter mit einem [MIDI-Umbau](/midi-conversion) oder [smARTvalve](/smartvalve) an jeder Pfeife.",
         },
       ],
     },
@@ -162,7 +162,7 @@ export default {
         },
         {
           question: "Fertigen Sie auch die Windladen?",
-          answer: "Ja. Bestellen Sie Pfeifen und Windladen zusammen, und nehmen Sie einen MIDI-Umbau oder SmartValve dazu, wenn die Orgel über MIDI spielen soll.",
+          answer: "Ja. Bestellen Sie Pfeifen und Windladen zusammen, und nehmen Sie einen MIDI-Umbau oder smARTvalve dazu, wenn die Orgel über MIDI spielen soll.",
         },
         {
           question: "Liefern Sie auch außerhalb Belgiens?",
@@ -188,7 +188,7 @@ export default {
         success_body: "Sie erhalten von uns ein Angebot und einen Versandtermin.",
         aside_title: "Gut zu wissen",
         aside_body:
-          "- Verkauf als komplette Register\n- Standardmensuren oder Ihre eigenen Maße\n- Fertig in wenigen Tagen bis einer Woche, je nach Registern\n- Intoniert oder bereit zum Intonieren\n- Windladen, MIDI-Umbau und SmartValve auf Anfrage\n- Versand weltweit",
+          "- Verkauf als komplette Register\n- Standardmensuren oder Ihre eigenen Maße\n- Fertig in wenigen Tagen bis einer Woche, je nach Registern\n- Intoniert oder bereit zum Intonieren\n- Windladen, MIDI-Umbau und smARTvalve auf Anfrage\n- Versand weltweit",
       },
     },
   ],

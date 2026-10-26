@@ -31,7 +31,7 @@ export default {
         eyebrow: "Pourquoi convertir",
         title: "Gardez le carton. Ajoutez la bibliothèque.",
         body:
-          "Les systèmes à cartons et à rouleaux font de ces orgues des instruments historiques, et beaucoup de propriétaires hésitent à y toucher. À juste titre : si vous convertissez, l'orgue doit rester aussi intact que possible.\n\nNotre module ne remplace rien. Le carton ou le rouleau actionne toujours l'orgue exactement comme avant. Le MIDI vient s'y ajouter : vous pouvez jouer des arrangements qui n'ont jamais été perforés, jouer en direct depuis un clavier, ou faire jouer l'orgue avec d'autres instruments.",
+          "Decap Herentals a été le premier à apporter le MIDI à l'orgue. Aujourd'hui, presque tous les orgues anciens sont convertis au MIDI, tout simplement parce que c'est la meilleure façon de jouer : votre orgue gagne un répertoire bien plus large.\n\nLes systèmes à cartons et à rouleaux font de ces orgues des instruments historiques, et beaucoup de propriétaires hésitent à y toucher. À juste titre : si vous convertissez, l'orgue doit rester aussi intact que possible. Notre module ne remplace rien. Le carton ou le rouleau actionne toujours l'orgue exactement comme avant. Le MIDI vient s'y ajouter : vous pouvez jouer des arrangements qui n'ont jamais été perforés, jouer en direct depuis un clavier, ou faire jouer l'orgue avec d'autres instruments.",
         media_side: "Image right",
         aspect: "Landscape 4:3",
         image_brief:
@@ -42,6 +42,21 @@ export default {
         { point: "Carton et MIDI peuvent jouer en même temps" },
         { point: "Jouez des arrangements MIDI via Virtual Orchestrion, ou jouez en direct en MIDI" },
       ],
+    },
+    {
+      type: "site_text_media",
+      primary: {
+        eyebrow: "Le carton, à l'écran",
+        title: "Gardez le charme du carton",
+        body:
+          "Quand le MIDI est arrivé dans l'orgue, beaucoup de propriétaires ont hésité : le carton plié qui défile dans l'orgue fait partie de son charme. Nous avons aussi une réponse à cela. Notre lecteur Virtual Orchestrion affiche le carton de façon entièrement numérique : vous le regardez défiler pendant que l'orgue joue en MIDI.",
+        media_side: "Image left",
+        aspect: "Landscape 4:3",
+        cta_label: "À propos de Virtual Orchestrion",
+        cta_link: "/virtual-orchestrion",
+        image_brief: "Screen showing the digital book view of Virtual Orchestrion beside a converted book organ, 4:3",
+        tone: "Tinted",
+      },
     },
     {
       type: "site_facts",

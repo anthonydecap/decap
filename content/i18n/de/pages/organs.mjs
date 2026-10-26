@@ -5,18 +5,18 @@ export default {
   lang: "de-de",
   title: "Orgeln",
   theme: "decap",
-  meta_title: "Tanzorgeln, Jahrmarkt- & Straßenorgeln | Decap Herentals",
+  meta_title: "Echte Tanzorgeln nach Maß | Decap Herentals",
   meta_description:
-    "Neue Tanzorgeln, Jahrmarktorgeln, Straßenorgeln und Konzertorgeln von Decap Herentals: modular oder maßgefertigt, mit Pfeifen, digital oder beides.",
+    "Echte Tanzorgeln von Decap Herentals: dynamisches Schlagzeug, Winddruck je Windlade, Lautstärkeregelung. Modular oder nach Maß, Pfeifen, digital oder beides.",
   slices: [
     {
       type: "site_hero",
       primary: {
         layout: "Split",
         eyebrow: "Orgelbauer seit 1895",
-        title: "Neue Tanzorgeln, Jahrmarktorgeln und Straßenorgeln aus Herentals",
+        title: "Echte Tanzorgeln, gebaut in Herentals",
         intro:
-          "Wir entwerfen und bauen Orgeln für Tanzsäle, Cafés, Jahrmärkte, die Straße, Kirchen und Sammlungen. Sie starten mit unseren bewährten Modulen oder lassen jedes Detail nach Maß fertigen. Pfeifen, digitaler Klang oder beides, mit den Frontinstrumenten, die Decap-Orgeln seit 1933 tragen. Decap-Orgeln spielen auf der ganzen Welt, von Japan bis in die USA und nach Australien.",
+          "Decap Herentals baut Tanzorgeln: Orgeln, zu denen Menschen tanzen, mit einer Dynamik und Lautstärkeregelung, die keine mechanische Orgel hat. Sie starten mit unseren bewährten Modulen oder lassen jedes Detail nach Maß fertigen. Pfeifen, digitaler Klang oder beides, mit den Frontinstrumenten, die Decap-Orgeln seit 1933 tragen. Decap-Orgeln spielen auf der ganzen Welt, von Japan bis in die USA und nach Australien.",
         primary_cta_label: "Orgel zusammenstellen",
         primary_cta_link: "/organ-composer",
         secondary_cta_label: "Beratung anfragen",
@@ -67,19 +67,52 @@ export default {
       type: "site_text_media",
       primary: {
         eyebrow: "Was wir bauen",
-        title: "Tanzorgeln, Jahrmarktorgeln, Straßenorgeln und Konzertorgeln",
+        title: "Zuerst Tanzorgeln",
         body:
-          "### Tanzorgeln\nFür Tanzsäle, Cafés und Veranstaltungsräume. Bei Decap-Tanzorgeln lassen sich Anschlagempfindlichkeit und Lautstärke regeln, so passen sie in den Raum, statt ihn zu übertönen. Deshalb konnte Guido Belcanto 2008 mit einer davon in seiner Theatershow *Balzaal der Gebroken Harten* auf Tournee gehen.\n\n### Jahrmarktorgeln\nFür Jahrmärkte, Karussells und Schausteller: gebaut für den Transport und dafür, im Freien gehört zu werden.\n\n### Straßenorgeln\nFür die Straße, für Festivals und für Sammler, die eine Orgel zum Mitnehmen wollen.\n\n### Kirchen- und Konzertorgeln\n2025 haben wir SmartValve in die erste transportable Kirchenorgel eingebaut, mit einzeln gesteuerten Pfeifen. Diese Orgel ist [L'Explorateur](/work/yves-rechsteiner), die mobile Konzertorgel des Schweizer Organisten Yves Rechsteiner.\n\nWir bauen für Tanzsäle, Cafés, Jahrmärkte, Sammler, Museen und Kirchen.",
+          "### Tanzorgeln\nDas, was wir normalerweise bauen. Zwischen 1960 und 1980 hatten rund 120 Tanzcafés und Tanzsäle in Belgien jeweils eine Tanzorgel, und die Menschen kamen jeden Tag zum Tanzen. Heute spielen Decap-Tanzorgeln in Wohnzimmern, Cafés und Tanzsälen und auf der Bühne: Anschlagempfindlichkeit und Lautstärke lassen sich regeln, so passen sie in den Raum, statt ihn zu übertönen. Deshalb konnte Guido Belcanto 2008 mit einer davon in seiner Theatershow *Balzaal der Gebroken Harten* auf Tournee gehen.\n\n### Straßen- und Jahrmarktorgeln\nWir haben sie gebaut, und wir können auch für Sie eine bauen, aber in unserer Werkstatt sind sie die Ausnahme.\n\n### Kirchen- und Konzertorgeln\n2025 haben wir smARTvalve in die erste transportable Kirchenorgel eingebaut, mit einzeln gesteuerten Pfeifen. Diese Orgel ist [L'Explorateur](/work/yves-rechsteiner), die mobile Konzertorgel des Schweizer Organisten Yves Rechsteiner.",
         media_side: "Image right",
         aspect: "Portrait 4:5",
         image_brief:
           "A Decap dance organ in use in a café or dance hall, people in soft focus in front, taken from the side of the room; portrait 4:5",
       },
       items: [
-        { point: "Modular oder komplett maßgefertigt" },
+        { point: "Modular oder komplett maßgefertigt, als Einheiten in einer Fassade gebaut: transportabel und wieder aufbaubar" },
         { point: "Standardskalen mit 105 und 121 Tasten, andere Größen möglich" },
         { point: "Pfeifen, digitaler Klang oder beides kombiniert" },
         { point: "Im Einsatz auf der ganzen Welt: Japan, USA, Australien, Asien und Europa" },
+      ],
+    },
+    {
+      type: "site_card_grid",
+      primary: {
+        eyebrow: "Warum eine Decap anders spielt",
+        title: "Von Musikern gebaut, für mehr Gefühl",
+        intro:
+          "Holzbearbeitung haben wir gelernt, um Orgeln zu bauen, aber zuerst sind wir Musiker. Seit 1933 arbeiten wir an einem Ziel: einer Orgel mit mehr Dynamik, mehr Kontrolle und mehr Musikalität. All das wurde in Herentals entwickelt.",
+        columns: "2",
+        card_style: "Text cards",
+      },
+      items: [
+        {
+          tag: "Schlagzeug",
+          title: "Eine Trommel, die hart oder weich spielt",
+          body: "Bei einer traditionellen Orgel wird der Trommelstock mit Luftdruck bewegt und schlägt immer mit derselben Kraft. Eine Decap-Trommel wird dynamisch gesteuert: Der Stock schlägt hart oder weich, und das Timing lässt sich einstellen.",
+        },
+        {
+          tag: "Windladen",
+          title: "Winddruck je Windlade",
+          body: "Traditionelle Windladen arbeiten mit Standardventilen: Eine Pfeife ist an oder aus. Bei einer Decap-Orgel lässt sich der Druck je Windlade für unterschiedliche Intensitäten einstellen, und Register können Effekte wie Vibrato spielen.",
+        },
+        {
+          tag: "Lautstärke",
+          title: "Lautstärke, die Sie regeln",
+          body: "Decap-Orgeln und -Orchestrien sind in der Lautstärke regelbar. Dieselbe Orgel kann leise im Wohnzimmer spielen und ein Theater füllen oder in einem DJ-Set mitspielen.",
+        },
+        {
+          tag: "smARTvalve",
+          title: "Jede Pfeife ihr eigener Wind",
+          body: "Unsere neueste Entwicklung bringt die Druckregelung der Windlade bis zu jeder einzelnen Pfeife. [So funktioniert smARTvalve](/smartvalve).",
+        },
       ],
     },
     {
@@ -129,7 +162,7 @@ export default {
         eyebrow: "Tasten sind keine Grenze",
         title: "Eine Orgel mit 105 Tasten, die auch Musik für 121 Tasten spielt",
         body:
-          "Unsere Standardskalen haben 105 und 121 Tasten, doch die Skala muss Ihr Repertoire nicht begrenzen. Jede neue Decap-Orgel wird mit unserem Virtual-Orchestrion-Player geliefert. Verlangt ein Arrangement Register, die Ihre Orgel nicht hat, ergänzt der Player sie virtuell, mit Samples, die wir in unserer eigenen Werkstatt aufgenommen haben, und mit VST-Instrumenten.\n\nSeit 2000 spielt eine Decap-Orgel ihre Musik von einer einzigen digitalen Karte statt aus Regalen voller Kartonnoten. Wählen Sie die Orgel, die zu Ihrem Raum und Budget passt, nicht die, die zu Ihrer Musik passt.",
+          "Unsere Standardskalen haben 105 und 121 Tasten, doch die Skala muss Ihr Repertoire nicht begrenzen. Jede neue Decap-Orgel wird mit unserem Virtual-Orchestrion-Player geliefert. Verlangt ein Arrangement Register, die Ihre Orgel nicht hat, ergänzt der Player sie virtuell, mit Samples, die wir in unserer eigenen Werkstatt aufgenommen haben, und mit VST-Instrumenten.\n\nSeit 2000 spielt eine Decap-Orgel ihre Musik von einer einzigen digitalen Karte statt aus Regalen voller Kartonnoten. Wenn Sie das Notenbuch vermissen, zeigt der Player es auf dem Bildschirm, während die Orgel spielt. Wählen Sie die Orgel, die zu Ihrem Raum und Budget passt, nicht die, die zu Ihrer Musik passt.",
         media_side: "Image right",
         aspect: "Landscape 4:3",
         cta_label: "Mehr über Virtual Orchestrion",
@@ -141,15 +174,15 @@ export default {
     {
       type: "site_text_media",
       primary: {
-        eyebrow: "SmartValve",
+        eyebrow: "smARTvalve",
         title: "Ausdruck auf jeder Pfeife",
         body:
-          "Eine neue Decap-Orgel mit Pfeifen kann mit SmartValve gebaut werden: ein Ventil und ein Prozessor für jede Pfeife. Jede Pfeife erhält ihren eigenen gespeicherten Winddruck, von 0 bis 200 %, mit 4 ms Reaktionszeit. Das ermöglicht Dynamik, Vibrato, Slope und Decay pro Ton, gespielt über MIDI.\n\nDiese Technik steckt in der transportablen Kirchenorgel von 2025, der ersten Orgel, die wir Windsynthesizer nennen.",
+          "Den Winddruck je Windlade stellen wir seit Jahren ein. smARTvalve macht das je Pfeife: ein Ventil und ein Prozessor für jede Pfeife. Jede Pfeife erhält ihren eigenen gespeicherten Winddruck, von 0 bis 200 %, mit 4 ms Reaktionszeit. Das ermöglicht Dynamik, Vibrato, Slope und Decay pro Ton, gespielt über MIDI.\n\nDiese Technik steckt in der transportablen Kirchenorgel von 2025, der ersten Orgel, die wir Windsynthesizer nennen.",
         media_side: "Image left",
         aspect: "Landscape 4:3",
-        cta_label: "So funktioniert SmartValve",
+        cta_label: "So funktioniert smARTvalve",
         cta_link: "/smartvalve",
-        image_brief: "Close-up of a row of SmartValves on a wind chest, dark background, low side light; 4:3",
+        image_brief: "Close-up of a row of smARTvalves on a wind chest, dark background, low side light; 4:3",
         tone: "Dark band",
       },
     },
@@ -199,6 +232,11 @@ export default {
           question: "Was kostet eine neue Orgel?",
           answer:
             "Jede Orgel erhält ein eigenes Angebot, denn der Preis folgt Ihren Entscheidungen: Größe, Pfeifen oder digitaler Klang, Frontinstrumente, Fassade. Eine digitale oder modulare Orgel kostet weniger als eine maßgefertigte Pfeifenorgel, und Sie können vorhandene Pfeifen oder Instrumente weiterverwenden. Schicken Sie uns Ihren Ausgangspunkt, und wir antworten mit einer ersten Idee und einem Angebot.",
+        },
+        {
+          question: "Bauen Sie auch Straßenorgeln und Jahrmarktorgeln?",
+          answer:
+            "Ja, wir haben sie gebaut und können auch für Sie eine bauen. Normalerweise bauen wir aber echte Tanzorgeln, mit dem dynamischen Schlagzeug, der Windregelung und der Lautstärkeregelung, durch die sie in Wohnzimmern und auf der Bühne ebenso spielen wie in Tanzsälen.",
         },
         {
           question: "Was ist der Unterschied zwischen 105 und 121 Tasten?",

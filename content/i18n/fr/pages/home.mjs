@@ -5,16 +5,16 @@ export default {
   "lang": "fr-fr",
   "title": "Decap Herentals",
   "theme": "decap",
-  "meta_title": "Orgues de danse et instruments automatiques | Decap",
-  "meta_description": "Facteurs d'orgues depuis 1895. Decap Herentals construit orgues de danse, de foire et de rue, accordéons automatiques et la technologie MIDI qui les pilote.",
+  "meta_title": "Orgues de danse, faits par des musiciens | Decap Herentals",
+  "meta_description": "De vrais orgues de danse faits à Herentals par des musiciens depuis 1933 : dynamique, volume réglable, orchestrions, instruments automatiques et smARTvalve.",
   "slices": [
     {
       "type": "site_hero",
       "primary": {
         "layout": "Split",
         "eyebrow": "Facteurs d'orgues depuis 1895",
-        "title": "Orgues de danse et instruments automatiques, fabriqués à Herentals",
-        "intro": "Des orgues et des instruments automatiques pour la maison, les cafés, les bars et les salles de danse, construits par quatre générations de la famille Decap dans un même atelier à Herentals, en Belgique.",
+        "title": "De vrais orgues de danse, construits par des musiciens à Herentals",
+        "intro": "Nous sommes d'abord des musiciens. Nous avons appris à travailler le bois pour construire des orgues et, depuis 90 ans, nous faisons jouer l'orgue de danse avec plus de sentiment : dynamique, réglage du volume, expression. Aujourd'hui, nos orgues et nos instruments automatiques jouent dans des salons, des cafés, des salles de danse et sur scène.",
         "primary_cta_label": "Découvrir nos orgues",
         "primary_cta_link": "/organs",
         "secondary_cta_label": "Instruments automatiques",
@@ -30,8 +30,8 @@ export default {
           "size": "Full",
           "style": "Light",
           "eyebrow": "Orgues",
-          "title": "Des orgues de danse, construits sur commande.",
-          "tagline": "Orgues de danse, de foire, de rue et de concert, sortis de notre atelier de Herentals. Modulaires ou entièrement sur mesure.",
+          "title": "De vrais orgues de danse, construits sur commande.",
+          "tagline": "Des orgues faits pour danser, sortis de notre atelier de Herentals. Modulaires ou entièrement sur mesure.",
           "primary_label": "En savoir plus",
           "primary_link": "/organs",
           "secondary_label": "Composer votre orgue",
@@ -74,7 +74,7 @@ export default {
         {
           "size": "Full",
           "style": "SmartValve",
-          "eyebrow": "SmartValve",
+          "eyebrow": "smARTvalve",
           "title": "Chaque tuyau. Sa propre voix.",
           "tagline": "Un processeur dans chaque soupape. Vent, dynamique et jeux, réglés tuyau par tuyau.",
           "primary_label": "En savoir plus",
@@ -84,7 +84,7 @@ export default {
           "image_fit": "Cover",
           "image_position": "Center",
           "overlay": "Strong",
-          "image_brief": "SmartValves mounted in their wind chest"
+          "image_brief": "smARTvalves mounted in their wind chest"
         },
         {
           "size": "Full",
@@ -175,11 +175,25 @@ export default {
       ]
     },
     {
+      "type": "site_text_media",
+      "primary": {
+        "eyebrow": "D'abord des musiciens",
+        "title": "Des orgues qui jouent avec sentiment",
+        "body": "Un orgue traditionnel frappe chaque tambour avec la même force, et chaque tuyau est simplement ouvert ou fermé. Sur un orgue Decap, la baguette frappe fort ou doucement, la pression du vent change d'un sommier à l'autre, des jeux jouent en vibrato et le volume de tout l'orgue se règle. smARTvalve pousse ce principe jusqu'à chaque tuyau.\n\nC'est pourquoi un orgue Decap a sa place dans un salon comme sur une scène de théâtre ou dans un set de DJ. Avec la technique mécanique traditionnelle, ce serait impossible.",
+        "media_side": "Image right",
+        "aspect": "Landscape 4:3",
+        "cta_label": "Pourquoi un Decap joue autrement",
+        "cta_link": "/organs",
+        "image_brief": "Close-up of the drum kit in the front of a Decap organ mid-hit, stick in motion, warm stage light, 4:3",
+        "tone": "Tinted"
+      }
+    },
+    {
       "type": "site_timeline",
       "primary": {
         "eyebrow": "Depuis 1895",
         "title": "Chaque génération a réinventé l'orgue",
-        "intro": "Aloïs Decap a commencé avec quelques orgues en location. Son fils Frans a fondé Decap Herentals. François est passé au numérique, Tony a apporté le MIDI et SmartValve. [Lire toute l'histoire](/about)."
+        "intro": "Aloïs Decap a commencé avec quelques orgues en location. Son fils Frans a fondé Decap Herentals. François est passé au numérique, Tony a apporté le MIDI et smARTvalve. [Lire toute l'histoire](/about)."
       },
       "items": [
         {
@@ -200,8 +214,8 @@ export default {
         },
         {
           "year": "2000",
-          "title": "Le MIDI arrive dans l'orgue de danse",
-          "body": "Tony Decap met toute une bibliothèque musicale sur une seule carte, à la place des rayonnages de cartons perforés."
+          "title": "Les premiers à apporter le MIDI à l'orgue",
+          "body": "Tony Decap met toute une bibliothèque musicale sur une seule carte, à la place des rayonnages de cartons perforés. Aujourd'hui, presque tous les orgues anciens sont convertis au MIDI."
         },
         {
           "year": "2016",
@@ -211,7 +225,7 @@ export default {
         {
           "year": "2025",
           "title": "Le premier synthétiseur à vent",
-          "body": "SmartValve dans un orgue d'église transportable : chaque tuyau commandé individuellement.",
+          "body": "smARTvalve dans un orgue d'église transportable : chaque tuyau commandé individuellement.",
           "highlight": true
         }
       ]

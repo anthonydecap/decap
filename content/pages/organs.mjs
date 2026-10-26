@@ -4,18 +4,18 @@ export default {
   uid: "organs",
   title: "Organs",
   theme: "decap",
-  meta_title: "Dance Organs, Fair & Street Organs | Decap Herentals",
+  meta_title: "Dance Organs Built to Order | Decap Herentals",
   meta_description:
-    "New dance, fair, street and concert organs from Decap Herentals: modular or fully bespoke, with pipes, digital sound or both. Organ builders since 1895.",
+    "Real dance organs from Decap Herentals, with dynamic percussion, wind pressure per chest and volume control. Modular or bespoke, pipes, digital or both.",
   slices: [
     {
       type: "site_hero",
       primary: {
         layout: "Split",
         eyebrow: "Organ builders since 1895",
-        title: "New dance organs, fair organs and street organs, built in Herentals",
+        title: "Real dance organs, built in Herentals",
         intro:
-          "We design and build organs for dance halls, cafés, fairgrounds, streets, churches and collections. Start from our proven modules or have every detail made for you. Pipes, digital sound or both, with the front instruments Decap organs have carried since 1933. Decap organs play all over the world, from Japan to the US and Australia.",
+          "Decap Herentals builds dance organs: organs made for people to dance to, with dynamics and volume control no mechanical organ has. Start from our proven modules or have every detail made for you. Pipes, digital sound or both, with the front instruments Decap organs have carried since 1933. Decap organs play all over the world, from Japan to the US and Australia.",
         primary_cta_label: "Compose your organ",
         primary_cta_link: "/organ-composer",
         secondary_cta_label: "Request a consultation",
@@ -66,19 +66,52 @@ export default {
       type: "site_text_media",
       primary: {
         eyebrow: "What we build",
-        title: "Dance, fair, street and concert organs",
+        title: "Dance organs first",
         body:
-          "### Dance organs\nFor dance halls, cafés and event rooms. Decap dance organs have controllable sensitivity and volume, so they fit the room instead of filling it. That is why Guido Belcanto could tour one in his theatre show *Balzaal der Gebroken Harten* in 2008.\n\n### Fair organs\nFor fairgrounds, carousels and showmen: built to be transported and to be heard outdoors.\n\n### Street organs\nFor the street, for festivals and for collectors who want an organ that travels.\n\n### Church and concert organs\nIn 2025 we built smARTvalve into the first transportable church organ, with every pipe controlled on its own. That organ is [L'Explorateur](/work/yves-rechsteiner), the mobile concert organ of Swiss organist Yves Rechsteiner.\n\nWe build for dance halls, cafés, fairgrounds, collectors, museums and churches.",
+          "### Dance organs\nWhat we normally build. Between 1960 and 1980 some 120 dance cafés and dance halls across Belgium each had a dance organ, and people came to dance every day. Today Decap dance organs play in living rooms, cafés and dance halls, and on stage: their sensitivity and volume are controllable, so they fit the room instead of filling it. That is why Guido Belcanto could tour one in his theatre show *Balzaal der Gebroken Harten* in 2008.\n\n### Street and fair organs\nWe have built them, and we can build one for you, but they are the exception in our workshop.\n\n### Church and concert organs\nIn 2025 we built smARTvalve into the first transportable church organ, with every pipe controlled on its own. That organ is [L'Explorateur](/work/yves-rechsteiner), the mobile concert organ of Swiss organist Yves Rechsteiner.",
         media_side: "Image right",
         aspect: "Portrait 4:5",
         image_brief:
           "A Decap dance organ in use in a café or dance hall, people in soft focus in front, taken from the side of the room; portrait 4:5",
       },
       items: [
-        { point: "Modular or fully bespoke" },
+        { point: "Modular or fully bespoke, built as units in a façade: transportable and rebuildable" },
         { point: "Standard scales of 105 and 121 keys, other sizes possible" },
         { point: "Pipes, digital sound, or both combined" },
         { point: "Playing all over the world: Japan, the US, Australia, Asia and Europe" },
+      ],
+    },
+    {
+      type: "site_card_grid",
+      primary: {
+        eyebrow: "Why a Decap plays differently",
+        title: "Built by musicians, for more feeling",
+        intro:
+          "We learned woodworking to build organs, but we are musicians first. Since 1933 we have worked on one thing: an organ that plays with more dynamics, more control and more musicality. All of this was developed in Herentals.",
+        columns: "2",
+        card_style: "Text cards",
+      },
+      items: [
+        {
+          tag: "Percussion",
+          title: "A drum that plays hard or soft",
+          body: "On a traditional organ the drumstick runs on air pressure and always hits with the same force. A Decap drum is controlled dynamically: the stick hits hard or soft, and the timing can be adjusted.",
+        },
+        {
+          tag: "Wind chests",
+          title: "Pressure per wind chest",
+          body: "Traditional wind chests use standard valves: a pipe is on or off. On a Decap organ the pressure can be set per wind chest for different intensities, and ranks can play effects such as vibrato.",
+        },
+        {
+          tag: "Volume",
+          title: "Volume you control",
+          body: "Decap organs and orchestrions are volume-controllable. The same organ can play softly in a living room and fill a theatre, or join a DJ set.",
+        },
+        {
+          tag: "smARTvalve",
+          title: "Every pipe its own wind",
+          body: "Our newest development takes the pressure control of the wind chest down to every individual pipe. [How smARTvalve works](/smartvalve).",
+        },
       ],
     },
     {
@@ -128,7 +161,7 @@ export default {
         eyebrow: "Keys are no limit",
         title: "A 105-key organ that also plays 121-key music",
         body:
-          "Our standard scales are 105 and 121 keys, but the scale does not have to limit your repertoire. Every new Decap organ comes with our Virtual Orchestrion player. When an arrangement calls for ranks your organ does not have, the player adds them virtually, with samples we recorded in our own workshop and VST instruments.\n\nSince 2000 a Decap organ plays its music from one digital card instead of racks of cardboard books. Choose the organ that fits your room and budget, not the one that fits your music.",
+          "Our standard scales are 105 and 121 keys, but the scale does not have to limit your repertoire. Every new Decap organ comes with our Virtual Orchestrion player. When an arrangement calls for ranks your organ does not have, the player adds them virtually, with samples we recorded in our own workshop and VST instruments.\n\nSince 2000 a Decap organ plays its music from one digital card instead of racks of cardboard books. If you miss the book, the player projects it on screen while the organ plays. Choose the organ that fits your room and budget, not the one that fits your music.",
         media_side: "Image right",
         aspect: "Landscape 4:3",
         cta_label: "About Virtual Orchestrion",
@@ -143,7 +176,7 @@ export default {
         eyebrow: "smARTvalve",
         title: "Expression on every pipe",
         body:
-          "A new Decap organ with pipes can be built with smARTvalve: one valve and one processor for every pipe. Each pipe gets its own stored pressure, from 0 to 200%, with a 4 ms response. That allows dynamics, vibrato, slope and decay per note, played over MIDI.\n\nIt is the technology in the 2025 transportable church organ, the first organ we call a wind synthesizer.",
+          "We have set the wind pressure per wind chest for years. smARTvalve does it per pipe: one valve and one processor for every pipe. Each pipe gets its own stored pressure, from 0 to 200%, with a 4 ms response. That allows dynamics, vibrato, slope and decay per note, played over MIDI.\n\nIt is the technology in the 2025 transportable church organ, the first organ we call a wind synthesizer.",
         media_side: "Image left",
         aspect: "Landscape 4:3",
         cta_label: "How smARTvalve works",
@@ -198,6 +231,11 @@ export default {
           question: "What does a new organ cost?",
           answer:
             "Every organ is quoted on its own, because the price follows your choices: the size, pipes or digital sound, the front instruments, the façade. A digital or modular organ costs less than a bespoke pipe organ, and you can reuse pipes or instruments you already have. Send us your starting point and we reply with a first idea and a quote.",
+        },
+        {
+          question: "Do you also build street organs and fair organs?",
+          answer:
+            "Yes, we have built them and can build one for you. But what we normally build are real dance organs, with the dynamic percussion, wind control and volume control that make them play in living rooms and on stage as well as in dance halls.",
         },
         {
           question: "What is the difference between 105 and 121 keys?",
