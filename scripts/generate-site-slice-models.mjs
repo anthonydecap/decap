@@ -240,6 +240,80 @@ export const SITE_SLICES = {
     },
   }),
 
+  siteStatement: sliceModel({
+    id: "site_statement",
+    name: "SiteStatement",
+    description: "One big statement that lights up word by word as visitors scroll, with a short text under it.",
+    primary: {
+      eyebrow: text("Eyebrow"),
+      statement: text("Statement", "Wrap words in *asterisks* to colour them"),
+      caption: rich("Text under the statement"),
+      tone: TONE(),
+    },
+  }),
+
+  siteOrchestra: sliceModel({
+    id: "site_orchestra",
+    name: "SiteOrchestra",
+    description: "Interactive orchestra view: switch between a book organ (every instrument on the same line) and a Decap organ (every instrument its own part, soft and hard notes).",
+    primary: {
+      ...header(),
+      book_label: text("Switch: first option", "Book or simple MIDI"),
+      decap_label: text("Switch: second option", "Decap organ"),
+      book_caption: text("Caption for the first option"),
+      decap_caption: text("Caption for the second option"),
+      note: text("Small note under the view", "Example arrangement"),
+      tone: select("Section tone", ["Dark band", "Default", "Tinted"]),
+    },
+    items: {
+      instrument: text("Instrument", "Saxophone"),
+      address: text("MIDI address", "Port 3 · Ch 1"),
+      role: text("Part", "Melody"),
+    },
+  }),
+
+  siteBento: sliceModel({
+    id: "site_bento",
+    name: "SiteBento",
+    description: "Apple-style bento grid of key facts: big numbers, short texts and small built-in visuals.",
+    primary: { ...header(), tone: TONE() },
+    items: {
+      size: select("Size", ["Small", "Wide", "Tall", "Large"]),
+      style: select("Style", ["Light", "Dark", "Accent"]),
+      visual: select("Visual", ["None", "Ports", "Velocity", "Wind", "Chip", "Pipe"]),
+      value: text("Big number or word", "16"),
+      value_label: text("Label under the number", "MIDI ports as standard"),
+      title: text("Title"),
+      body: text("Text"),
+      link_label: text("Link label"),
+      link: link("Link"),
+    },
+  }),
+
+  siteCompare: sliceModel({
+    id: "site_compare",
+    name: "SiteCompare",
+    description: "Apple-style comparison of up to three options. Write yes or no in a cell for a check mark or a dash.",
+    primary: {
+      ...header(),
+      col1: text("Column 1: name"),
+      col1_note: text("Column 1: one line"),
+      col2: text("Column 2: name"),
+      col2_note: text("Column 2: one line"),
+      col3: text("Column 3: name"),
+      col3_note: text("Column 3: one line"),
+      highlight: select("Highlighted column", ["3", "2", "1", "None"]),
+      highlight_label: text("Label on the highlighted column", "Decap"),
+      tone: TONE(),
+    },
+    items: {
+      feature: text("Feature"),
+      col1: text("Column 1 (yes / no / text)"),
+      col2: text("Column 2 (yes / no / text)"),
+      col3: text("Column 3 (yes / no / text)"),
+    },
+  }),
+
   contactForm: sliceModel({
     id: "contact_form",
     name: "ContactForm",

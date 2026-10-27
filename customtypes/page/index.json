@@ -41,6 +41,18 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "site_statement": {
+              "type": "SharedSlice"
+            },
+            "site_orchestra": {
+              "type": "SharedSlice"
+            },
+            "site_bento": {
+              "type": "SharedSlice"
+            },
+            "site_compare": {
+              "type": "SharedSlice"
+            },
             "site_carousel": {
               "type": "SharedSlice"
             },

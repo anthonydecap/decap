@@ -1,0 +1,138 @@
+{
+  "id": "site_bento",
+  "type": "SharedSlice",
+  "name": "SiteBento",
+  "description": "Apple-style bento grid of key facts: big numbers, short texts and small built-in visuals.",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": "Small label above the title"
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "intro": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Intro",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "tone": {
+          "type": "Select",
+          "config": {
+            "label": "Section tone",
+            "options": [
+              "Default",
+              "Tinted",
+              "Dark band"
+            ],
+            "default_value": "Default"
+          }
+        }
+      },
+      "items": {
+        "size": {
+          "type": "Select",
+          "config": {
+            "label": "Size",
+            "options": [
+              "Small",
+              "Wide",
+              "Tall",
+              "Large"
+            ],
+            "default_value": "Small"
+          }
+        },
+        "style": {
+          "type": "Select",
+          "config": {
+            "label": "Style",
+            "options": [
+              "Light",
+              "Dark",
+              "Accent"
+            ],
+            "default_value": "Light"
+          }
+        },
+        "visual": {
+          "type": "Select",
+          "config": {
+            "label": "Visual",
+            "options": [
+              "None",
+              "Ports",
+              "Velocity",
+              "Wind",
+              "Chip",
+              "Pipe"
+            ],
+            "default_value": "None"
+          }
+        },
+        "value": {
+          "type": "Text",
+          "config": {
+            "label": "Big number or word",
+            "placeholder": "16"
+          }
+        },
+        "value_label": {
+          "type": "Text",
+          "config": {
+            "label": "Label under the number",
+            "placeholder": "MIDI ports as standard"
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "body": {
+          "type": "Text",
+          "config": {
+            "label": "Text",
+            "placeholder": ""
+          }
+        },
+        "link_label": {
+          "type": "Text",
+          "config": {
+            "label": "Link label",
+            "placeholder": ""
+          }
+        },
+        "link": {
+          "type": "Link",
+          "config": {
+            "label": "Link",
+            "allowTargetBlank": true,
+            "select": null
+          }
+        }
+      }
+    }
+  ]
+}

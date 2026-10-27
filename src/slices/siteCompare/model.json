@@ -1,0 +1,145 @@
+{
+  "id": "site_compare",
+  "type": "SharedSlice",
+  "name": "SiteCompare",
+  "description": "Apple-style comparison of up to three options. Write yes or no in a cell for a check mark or a dash.",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": "Small label above the title"
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "intro": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Intro",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "col1": {
+          "type": "Text",
+          "config": {
+            "label": "Column 1: name",
+            "placeholder": ""
+          }
+        },
+        "col1_note": {
+          "type": "Text",
+          "config": {
+            "label": "Column 1: one line",
+            "placeholder": ""
+          }
+        },
+        "col2": {
+          "type": "Text",
+          "config": {
+            "label": "Column 2: name",
+            "placeholder": ""
+          }
+        },
+        "col2_note": {
+          "type": "Text",
+          "config": {
+            "label": "Column 2: one line",
+            "placeholder": ""
+          }
+        },
+        "col3": {
+          "type": "Text",
+          "config": {
+            "label": "Column 3: name",
+            "placeholder": ""
+          }
+        },
+        "col3_note": {
+          "type": "Text",
+          "config": {
+            "label": "Column 3: one line",
+            "placeholder": ""
+          }
+        },
+        "highlight": {
+          "type": "Select",
+          "config": {
+            "label": "Highlighted column",
+            "options": [
+              "3",
+              "2",
+              "1",
+              "None"
+            ],
+            "default_value": "3"
+          }
+        },
+        "highlight_label": {
+          "type": "Text",
+          "config": {
+            "label": "Label on the highlighted column",
+            "placeholder": "Decap"
+          }
+        },
+        "tone": {
+          "type": "Select",
+          "config": {
+            "label": "Section tone",
+            "options": [
+              "Default",
+              "Tinted",
+              "Dark band"
+            ],
+            "default_value": "Default"
+          }
+        }
+      },
+      "items": {
+        "feature": {
+          "type": "Text",
+          "config": {
+            "label": "Feature",
+            "placeholder": ""
+          }
+        },
+        "col1": {
+          "type": "Text",
+          "config": {
+            "label": "Column 1 (yes / no / text)",
+            "placeholder": ""
+          }
+        },
+        "col2": {
+          "type": "Text",
+          "config": {
+            "label": "Column 2 (yes / no / text)",
+            "placeholder": ""
+          }
+        },
+        "col3": {
+          "type": "Text",
+          "config": {
+            "label": "Column 3 (yes / no / text)",
+            "placeholder": ""
+          }
+        }
+      }
+    }
+  ]
+}
