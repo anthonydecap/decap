@@ -1,0 +1,118 @@
+{
+  "id": "site_gallery",
+  "type": "SharedSlice",
+  "name": "SiteGallery",
+  "description": "Photo portfolio: photos in justified rows with one small label each, filter pills and a full-screen view.",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": "Small label above the title"
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "intro": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Intro",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "show_filters": {
+          "type": "Boolean",
+          "config": {
+            "label": "Show filter pills (built from the labels)",
+            "default_value": true
+          }
+        },
+        "tone": {
+          "type": "Select",
+          "config": {
+            "label": "Section tone",
+            "options": [
+              "Default",
+              "Tinted",
+              "Dark band"
+            ],
+            "default_value": "Default"
+          }
+        }
+      },
+      "items": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Photo",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "label": {
+          "type": "Text",
+          "config": {
+            "label": "Label (pill)",
+            "placeholder": "e.g. Realisation or Design"
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Name (shown on hover and full screen)",
+            "placeholder": ""
+          }
+        },
+        "fit": {
+          "type": "Select",
+          "config": {
+            "label": "Fit (renders and cut-outs: whole)",
+            "options": [
+              "Fill the frame",
+              "Whole, light backdrop",
+              "Whole, dark backdrop"
+            ],
+            "default_value": "Fill the frame"
+          }
+        },
+        "link_label": {
+          "type": "Text",
+          "config": {
+            "label": "Link label (full screen)",
+            "placeholder": "View the project"
+          }
+        },
+        "link": {
+          "type": "Link",
+          "config": {
+            "label": "Link (optional)",
+            "allowTargetBlank": true,
+            "select": null
+          }
+        },
+        "image_brief": {
+          "type": "Text",
+          "config": {
+            "label": "Photo brief (shown while the image is empty)",
+            "placeholder": "e.g. Accordion Pedestal, front view, black backdrop, 4:3"
+          }
+        }
+      }
+    }
+  ]
+}

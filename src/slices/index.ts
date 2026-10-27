@@ -24,6 +24,7 @@ export const components = {
   site_orchestra: dynamic(() => import("./siteOrchestra")),
   site_bento: dynamic(() => import("./siteBento")),
   site_compare: dynamic(() => import("./siteCompare")),
+  site_gallery: dynamic(() => import("./siteGallery")),
   contact_form: dynamic(() => import("./contactForm")),
   organ_composer: dynamic(() => import("./organComposer")),
 

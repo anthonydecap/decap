@@ -304,6 +304,22 @@ export const SITE_SLICES = {
     },
   }),
 
+  siteGallery: sliceModel({
+    id: "site_gallery",
+    name: "SiteGallery",
+    description: "Photo portfolio: photos in justified rows with one small label each, filter pills and a full-screen view.",
+    primary: { ...header(), show_filters: bool("Show filter pills (built from the labels)", true), tone: TONE() },
+    items: {
+      image: image("Photo"),
+      label: text("Label (pill)", "e.g. Realisation or Design"),
+      title: text("Name (shown on hover and full screen)"),
+      fit: select("Fit (renders and cut-outs: whole)", ["Fill the frame", "Whole, light backdrop", "Whole, dark backdrop"]),
+      link_label: text("Link label (full screen)", "View the project"),
+      link: link("Link (optional)"),
+      image_brief: BRIEF(),
+    },
+  }),
+
   siteCompare: sliceModel({
     id: "site_compare",
     name: "SiteCompare",
