@@ -6,24 +6,23 @@ import { type SliceComponentProps } from "@prismicio/react";
 import clsx from "clsx";
 import { Container } from "@/components/Container";
 import { FadeIn, FadeInStagger } from "@/components/FadeIn";
-import { MediaSlot } from "@/components/MediaSlot";
-import { MuxVideoLayer, resolveMuxHlsUrl } from "@/lib/mux-video";
+import { resolveMuxHlsUrl } from "@/lib/mux-video";
+import { HeroMedia } from "./HeroMedia";
 import { VideoShowcase } from "./VideoShowcase";
 import { Eyebrow, SiteButton, SiteRichText, toneFromSelect } from "@/lib/site-ui";
 
-/** The hero image, with an optional Mux video playing over it (the image stays as poster and fallback). */
-function HeroMedia({ video, className, rounded = "rounded-2xl lg:rounded-3xl", ...slot }: Parameters<typeof MediaSlot>[0] & { video: string | null }) {
-  return (
-    <div className={clsx("relative", className)}>
-      <MediaSlot {...slot} rounded={rounded} className={className && "h-full w-full"} />
-      {video && (
-        <div className={clsx("absolute inset-0 overflow-hidden motion-reduce:hidden", rounded)}>
-          <MuxVideoLayer src={video} className="absolute inset-0 h-full w-full" />
-        </div>
-      )}
-    </div>
-  );
-}
+const SHAPE: Record<string, string> = {
+  "Portrait 4:5": "aspect-[4/5]",
+  "Landscape 4:3": "aspect-[4/3]",
+  Square: "aspect-square",
+  "Wide 16:9": "aspect-[16/9]",
+};
+/** How much the full-bleed image is darkened behind the text. */
+const OVERLAY: Record<string, string> = {
+  Light: "from-black/60 via-black/20 to-transparent",
+  Medium: "from-black/80 via-black/40 to-black/20",
+  Strong: "from-black/90 via-black/65 to-black/45",
+};
 
 /** Page hero with the page's H1. Layouts: Split (text + image), Centered, Full-bleed image, Video showcase. */
 const SiteHero: FC<SliceComponentProps<any>> = ({ slice }) => {
@@ -59,8 +58,10 @@ const SiteHero: FC<SliceComponentProps<any>> = ({ slice }) => {
     return (
       <section data-tone="inverse" className="relative isolate overflow-hidden bg-page text-ink">
         <div className="absolute inset-0 -z-10">
-          <HeroMedia video={video} field={p.image} brief={brief} aspect="" rounded="" className="h-full w-full" sizes="100vw" priority tone="dark" />
-          {(p.image?.url || video) && <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />}
+          <HeroMedia p={p} video={video} brief={brief} rounded="" className="h-full w-full" sizes="100vw" priority tone="dark" />
+          {(p.image?.url || video) && p.overlay !== "None" && (
+            <div className={clsx("absolute inset-0 bg-gradient-to-t", OVERLAY[p.overlay] ?? OVERLAY.Medium)} />
+          )}
         </div>
         <Container className="flex min-h-[80vh] items-end py-24 sm:py-32">
           <FadeIn className="mx-auto max-w-3xl text-center">{copy}</FadeIn>
@@ -80,7 +81,7 @@ const SiteHero: FC<SliceComponentProps<any>> = ({ slice }) => {
             <FadeIn className="mx-auto max-w-3xl text-center">{copy}</FadeIn>
             {(p.image?.url || p.image_brief || video) && (
               <FadeIn className="mt-16 lg:mt-20">
-                <HeroMedia video={video} field={p.image} brief={brief} aspect="aspect-[16/9]" sizes="(min-width: 1280px) 1216px, 100vw" priority />
+                <HeroMedia p={p} video={video} brief={brief} aspect={SHAPE[p.image_shape] ?? "aspect-[16/9]"} sizes="(min-width: 1280px) 1216px, 100vw" priority />
               </FadeIn>
             )}
           </FadeInStagger>
@@ -88,7 +89,13 @@ const SiteHero: FC<SliceComponentProps<any>> = ({ slice }) => {
           <FadeInStagger faster className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <FadeIn>{copy}</FadeIn>
             <FadeIn>
-              <HeroMedia video={video} field={p.image} brief={brief} aspect="aspect-[4/5] sm:aspect-[4/3] lg:aspect-[4/5]" priority />
+              <HeroMedia
+                p={p}
+                video={video}
+                brief={brief}
+                aspect={SHAPE[p.image_shape] ?? "aspect-[4/5] sm:aspect-[4/3] lg:aspect-[4/5]"}
+                priority
+              />
             </FadeIn>
           </FadeInStagger>
         )}

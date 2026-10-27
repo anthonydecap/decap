@@ -24,6 +24,7 @@ export function MediaSlot({
   tone,
   sizes = "(min-width: 1024px) 50vw, 100vw",
   priority = false,
+  fit = "auto",
 }: {
   field?: ImageField | null;
   /** What to photograph, e.g. "Accordion Pedestal, front view, black backdrop, 4:3". */
@@ -36,10 +37,13 @@ export function MediaSlot({
   tone?: "light" | "dark";
   sizes?: string;
   priority?: boolean;
+  /** "auto" shows portrait images whole in a landscape slot and crops the rest. */
+  fit?: "auto" | "cover" | "contain";
 }) {
   const filled = !!field && isFilled.image(field);
   // Portrait images (e.g. an Accordion Pedestal) in a landscape slot are shown whole, not cropped.
   const portrait = filled && field.dimensions && field.dimensions.height > field.dimensions.width * 1.15;
+  const contain = fit === "contain" || (fit === "auto" && portrait);
 
   return (
     <div className={clsx("relative overflow-hidden", aspect, rounded, className)}>
@@ -49,7 +53,7 @@ export function MediaSlot({
           fill
           sizes={sizes}
           priority={priority}
-          className={clsx(portrait ? "bg-surface object-contain" : "object-cover", imgClassName)}
+          className={clsx(contain ? "bg-surface object-contain" : "object-cover", imgClassName)}
           fallbackAlt=""
         />
       ) : (

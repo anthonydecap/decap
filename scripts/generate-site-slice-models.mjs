@@ -10,6 +10,10 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { BRIEF, RICH_BODY, TONE, bool, image, link, rich, select, sliceModel, text } from "./lib/slice-model.mjs";
 
+/** Image settings, matching src/lib/image-look.ts. */
+const POSITION_OPTIONS = ["Center", "Top", "Bottom", "Left", "Right", "Top left", "Top right", "Bottom left", "Bottom right"];
+const COLOR_OPTIONS = ["None", "Desaturate", "Black & white", "Warm", "Cool", "Vivid", "Faded"];
+
 const header = () => ({
   eyebrow: text("Eyebrow", "Small label above the title"),
   title: text("Title"),
@@ -34,6 +38,16 @@ export const SITE_SLICES = {
       image: image("Image (also the poster while a video loads)"),
       mux_video: text("Mux video instead of the image (optional)", "https://stream.mux.com/….m3u8 or playback ID"),
       image_brief: BRIEF(),
+      image_shape: select("Image shape (Split and Centered)", ["Default", "Portrait 4:5", "Landscape 4:3", "Square", "Wide 16:9"]),
+      image_fit: select("Image fit", ["Auto", "Cover", "Contain"]),
+      image_position: select("Image position (also the zoom point)", POSITION_OPTIONS),
+      image_zoom: select("Image zoom", ["100%", "110%", "125%", "150%"]),
+      overlay: select("Darkening behind the text (Full-bleed)", ["Medium", "Light", "Strong", "None"]),
+      blur: select("Effect: blur", ["None", "Light", "Medium", "Heavy"]),
+      dim: select("Effect: dim", ["None", "Light", "Medium", "Heavy"]),
+      color_effect: select("Effect: colour (also on the video)", COLOR_OPTIONS),
+      vignette: bool("Effect: vignette (darker edges)"),
+      slow_zoom: bool("Effect: slow zoom (Ken Burns)"),
       tone: TONE(),
     },
   }),
@@ -212,12 +226,12 @@ export const SITE_SLICES = {
       secondary_link: link("Secondary link"),
       image: image("Background image (photo or transparent PNG)"),
       image_fit: select("Image fit", ["Cover", "Contain"]),
-      image_position: select("Image position", ["Center", "Top", "Bottom", "Left", "Right", "Top left", "Top right", "Bottom left", "Bottom right"]),
+      image_position: select("Image position", POSITION_OPTIONS),
       image_size: select("Image size (with Contain)", ["100%", "85%", "70%", "55%"]),
       overlay: select("Text legibility over the image", ["None", "Soft", "Strong"]),
       blur: select("Effect: blur", ["None", "Light", "Medium", "Heavy"]),
       dim: select("Effect: dim (darkens on dark tiles, washes out on light tiles)", ["None", "Light", "Medium", "Heavy"]),
-      color_effect: select("Effect: colour", ["None", "Desaturate", "Black & white", "Warm"]),
+      color_effect: select("Effect: colour", COLOR_OPTIONS),
       vignette: bool("Effect: vignette (darker edges)"),
       hover_zoom: bool("Effect: zoom in slightly on hover"),
       slow_zoom: bool("Effect: slow zoom (Ken Burns)"),
