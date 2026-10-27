@@ -205,7 +205,10 @@
               "None",
               "Desaturate",
               "Black & white",
-              "Warm"
+              "Warm",
+              "Cool",
+              "Vivid",
+              "Faded"
             ],
             "default_value": "None"
           }

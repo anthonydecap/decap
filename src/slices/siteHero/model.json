@@ -107,6 +107,132 @@
             "placeholder": "e.g. Accordion Pedestal, front view, black backdrop, 4:3"
           }
         },
+        "image_shape": {
+          "type": "Select",
+          "config": {
+            "label": "Image shape (Split and Centered)",
+            "options": [
+              "Default",
+              "Portrait 4:5",
+              "Landscape 4:3",
+              "Square",
+              "Wide 16:9"
+            ],
+            "default_value": "Default"
+          }
+        },
+        "image_fit": {
+          "type": "Select",
+          "config": {
+            "label": "Image fit",
+            "options": [
+              "Auto",
+              "Cover",
+              "Contain"
+            ],
+            "default_value": "Auto"
+          }
+        },
+        "image_position": {
+          "type": "Select",
+          "config": {
+            "label": "Image position (also the zoom point)",
+            "options": [
+              "Center",
+              "Top",
+              "Bottom",
+              "Left",
+              "Right",
+              "Top left",
+              "Top right",
+              "Bottom left",
+              "Bottom right"
+            ],
+            "default_value": "Center"
+          }
+        },
+        "image_zoom": {
+          "type": "Select",
+          "config": {
+            "label": "Image zoom",
+            "options": [
+              "100%",
+              "110%",
+              "125%",
+              "150%"
+            ],
+            "default_value": "100%"
+          }
+        },
+        "overlay": {
+          "type": "Select",
+          "config": {
+            "label": "Darkening behind the text (Full-bleed)",
+            "options": [
+              "Medium",
+              "Light",
+              "Strong",
+              "None"
+            ],
+            "default_value": "Medium"
+          }
+        },
+        "blur": {
+          "type": "Select",
+          "config": {
+            "label": "Effect: blur",
+            "options": [
+              "None",
+              "Light",
+              "Medium",
+              "Heavy"
+            ],
+            "default_value": "None"
+          }
+        },
+        "dim": {
+          "type": "Select",
+          "config": {
+            "label": "Effect: dim",
+            "options": [
+              "None",
+              "Light",
+              "Medium",
+              "Heavy"
+            ],
+            "default_value": "None"
+          }
+        },
+        "color_effect": {
+          "type": "Select",
+          "config": {
+            "label": "Effect: colour (also on the video)",
+            "options": [
+              "None",
+              "Desaturate",
+              "Black & white",
+              "Warm",
+              "Cool",
+              "Vivid",
+              "Faded"
+            ],
+            "default_value": "None"
+          }
+        },
+        "vignette": {
+          "type": "Boolean",
+          "config": {
+            "label": "Effect: vignette (darker edges)",
+            "default_value": false
+          }
+        },
+        "slow_zoom": {
+          "type": "Boolean",
+          "config": {
+            "label": "Effect: slow zoom (Ken Burns)",
+            "default_value": false
+          }
+        },
         "tone": {
           "type": "Select",
           "config": {

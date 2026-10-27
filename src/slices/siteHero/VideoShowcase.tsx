@@ -4,8 +4,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { Container } from "@/components/Container";
-import { MediaSlot } from "@/components/MediaSlot";
-import { MuxVideoLayer } from "@/lib/mux-video";
+import { HeroMedia } from "./HeroMedia";
 import { Eyebrow, SiteButton, SiteRichText } from "@/lib/site-ui";
 import { useUiCopy } from "@/lib/ui-copy";
 
@@ -40,9 +39,14 @@ function ScreenGlow({ scope, style }: { scope: React.RefObject<HTMLElement | nul
       raf = requestAnimationFrame(tick);
       if (t - last < 120) return;
       last = t;
-      const src = scope.current?.querySelector<HTMLVideoElement | HTMLImageElement>("video, img");
-      if (!src || (src instanceof HTMLVideoElement ? src.readyState < 2 : !src.complete)) return;
+      // The playing video, else the image under it (the poster).
+      const v = scope.current?.querySelector("video");
+      const img = scope.current?.querySelector("img");
+      const src = v && v.readyState >= 2 ? v : img?.complete ? img : null;
+      if (!src) return;
       try {
+        // Same colour effect as the film, so a black-and-white film doesn't glow in colour.
+        ctx.filter = getComputedStyle(src).filter || "none";
         ctx.drawImage(src, 0, 0, 32, 18);
       } catch {
         /* source not ready */
@@ -153,11 +157,7 @@ export function VideoShowcase({ p, video, brief }: { p: any; video: string | nul
   const filmX = useTransform(open, (k) => (box ? ((box.x0 + box.x1) / 2 - box.W / 2) * (1 - k) : 0));
   const filmY = useTransform(open, (k) => (box ? ((box.y0 + box.y1) / 2 - box.H / 2) * (1 - k) : 0));
 
-  const film = video ? (
-    <MuxVideoLayer src={video} className="absolute inset-0 h-full w-full" />
-  ) : (
-    <MediaSlot field={p.image} brief={brief} aspect="" rounded="" className="absolute inset-0 h-full w-full" sizes="100vw" priority tone="dark" />
-  );
+  const film = <HeroMedia p={p} video={video} brief={brief} rounded="" className="absolute inset-0 h-full w-full" sizes="100vw" priority tone="dark" />;
 
   if (reduce) {
     return (
@@ -167,7 +167,7 @@ export function VideoShowcase({ p, video, brief }: { p: any; video: string | nul
             <div>
               <Copy p={p} />
             </div>
-            <MediaSlot field={p.image} brief={brief} aspect="aspect-[16/11]" priority />
+            <HeroMedia p={p} video={video} brief={brief} aspect="aspect-[16/11]" priority />
           </div>
         </Container>
       </section>

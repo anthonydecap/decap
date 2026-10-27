@@ -10,6 +10,7 @@ import { FadeIn } from "@/components/FadeIn";
 import { PrismicNextImage } from "@prismicio/next";
 import { MediaPlaceholder } from "@/components/MediaSlot";
 import { BrandText } from "@/components/BrandText";
+import { BLUR, COLOR, DIM, POSITION } from "@/lib/image-look";
 import { SiteLink, toneFromSelect } from "@/lib/site-ui";
 
 /*
@@ -69,30 +70,6 @@ const STYLES: Record<
     link: "text-[#1f1a14]",
     tone: "light",
   },
-};
-
-const POSITION: Record<string, string> = {
-  Center: "object-center",
-  Top: "object-top",
-  Bottom: "object-bottom",
-  Left: "object-left",
-  Right: "object-right",
-  "Top left": "object-left-top",
-  "Top right": "object-right-top",
-  "Bottom left": "object-left-bottom",
-  "Bottom right": "object-right-bottom",
-};
-/** Image effects, chosen per tile in Prismic. */
-const BLUR: Record<string, string> = {
-  Light: "blur-[2px]",
-  Medium: "blur-[6px]",
-  Heavy: "blur-[14px]",
-};
-const DIM: Record<string, number> = { Light: 0.2, Medium: 0.4, Heavy: 0.6 };
-const COLOR: Record<string, string> = {
-  Desaturate: "saturate-50",
-  "Black & white": "grayscale",
-  Warm: "sepia-[0.35] saturate-[0.9]",
 };
 
 /** Contain: the image sits in the lower part of the tile (the top is for the text), inset by size. */
