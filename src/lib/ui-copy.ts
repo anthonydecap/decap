@@ -24,6 +24,9 @@ const en = {
   video: "Video",
   previous: "Previous",
   next: "Next",
+  galleryAll: "All",
+  galleryClose: "Close",
+  galleryOpen: (t: string) => `Open photo: ${t}`,
   filmPlay: "Play the video",
   filmPause: "Pause the video",
 
@@ -103,6 +106,9 @@ const fr: UiCopy = {
   video: "Vidéo",
   previous: "Précédent",
   next: "Suivant",
+  galleryAll: "Tout",
+  galleryClose: "Fermer",
+  galleryOpen: (t: string) => `Ouvrir la photo : ${t}`,
   filmPlay: "Lire la vidéo",
   filmPause: "Mettre la vidéo en pause",
   form: {
@@ -176,6 +182,9 @@ const nl: UiCopy = {
   video: "Video",
   previous: "Vorige",
   next: "Volgende",
+  galleryAll: "Alles",
+  galleryClose: "Sluiten",
+  galleryOpen: (t: string) => `Foto openen: ${t}`,
   filmPlay: "Video afspelen",
   filmPause: "Video pauzeren",
   form: {
@@ -249,6 +258,9 @@ const de: UiCopy = {
   video: "Video",
   previous: "Zurück",
   next: "Weiter",
+  galleryAll: "Alle",
+  galleryClose: "Schließen",
+  galleryOpen: (t: string) => `Foto öffnen: ${t}`,
   filmPlay: "Video abspielen",
   filmPause: "Video pausieren",
   form: {

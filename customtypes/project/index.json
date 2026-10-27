@@ -328,6 +328,9 @@
             },
             "home_showcase": {
               "type": "SharedSlice"
+            },
+            "site_gallery": {
+              "type": "SharedSlice"
             }
           }
         }
