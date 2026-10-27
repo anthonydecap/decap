@@ -318,3 +318,61 @@ in-house: from its own **CNC programs** (PipeCreator, which generates the G-code
 to the **hardware control** (the software that drives the instruments, e.g. in the Accordion
 Pedestal, the MIDI conversion units and smARTvalve), to the **player software**
 (Virtual Orchestrion, MIDIMapper).
+
+## The orchestrion idea, and MIDI used to the full (from Decap, 2026-10-27)
+
+**History: the orchestrion as a self-playing orchestra.**
+- In the 19th century the first such organs were mostly called **orchestrions**: the name says it,
+  a self-playing **orchestra**. The aim was to imitate a human orchestra as closely as possible.
+- With the limited technology of the time there was a big difference with real musicians, who
+  bring feeling and nuance to their playing, which a mechanical instrument cannot. The search was
+  always to keep improving that (think of makers such as **Limonaire** and **Wurlitzer**).
+- In the golden years of the dance organ that effort stopped: a group of people came to love the
+  mechanical sound itself, and the drive for improvement and new developments stopped.
+- **Decap Herentals kept developing.** We still see our job as making orchestrions that play as
+  well as possible. As musicians, we dream of coming as close as possible to a real orchestra.
+  That is why, **over the last 50 years**, we kept developing: our organs play with feeling and
+  nuance, and are far more musical. That is recognised: our organs go from the living room to the
+  stage.
+- Decap confirms (2026-10-27): **other makers did not keep developing this**; "everyone stopped,
+  except Decap Herentals" may be stated. Keep the tone factual and respectful (no names of
+  competitors in a negative sense).
+
+**MIDI: replacing the book vs using MIDI to the full.**
+- Decap Herentals were the first to put an organ on MIDI control. There MIDI replaced the book,
+  because it makes playing a music repertoire so much easier. It was such an improvement that
+  almost everyone followed, and many old organs are converted to MIDI. **But there, MIDI simply
+  replaces the book.**
+- **Decap uses all the capabilities of MIDI**: velocity, controllers and other effects, and **more
+  ports**, for more musical possibilities and far more complete arrangements.
+- Full technical explanation (Dutch): `README_Decap_Herentals_MIDI.md` (repo root). Key points:
+  - The difference is not "Decap has MIDI and others don't", but **how independently the physical
+    instruments can be addressed**, and whether control goes beyond note on/off.
+  - Traditional book organ: the book layout sets which notes and functions play; several registers
+    can share one book track. Simple MIDI conversion: a MIDI file replaces the book but drives the
+    same functions, so the book's limits can stay. Extended Decap MIDI control: instrument groups
+    get their own MIDI channels and parts, and suitable instruments respond to velocity,
+    controllers and expression.
+  - In one sentence: a simple MIDI conversion can be a *digital book reader*; an extended MIDI
+    architecture can be an *operating system for a mechanical orchestra*.
+  - **16 MIDI ports is the standard on Decap organs** (confirmed by Decap): 16 ports × 16 channels
+    = **256 channel addresses**, 16 times the address space of one classic MIDI port. Technically
+    it can be expanded further, but a line had to be drawn somewhere. Example: the violin pipes on **port 7,
+    channel 12**. (Not 256 instruments or 256 simultaneous notes.)
+  - Example arrangement: saxophone plays the melody, flute 8′ ornaments, violins a counter-melody,
+    piano its own part with soft and hard touches, percussion accents at different intensities,
+    wind/expression control changing the sound while playing.
+  - MIDI facts used: velocity 1–127; 128 controllers (e.g. CC1 modulation/vibrato, CC7 volume,
+    CC11 expression); Decap uses its own mappings for wind pressure, registers and mechanical
+    effects.
+  - Note: the README's caveats that 16 ports is "not proven as standard" and that "other makers can
+    apply advanced MIDI too" are **wrong** (corrected by Decap, 2026-10-27). 16 ports is standard,
+    and other makers did not develop this.
+  - **Decap organs have no traditional mechanism: everything is digital, controlled by processors
+    and chips** (Decap, 2026-10-27). That is what lets MIDI velocity and expression become audible:
+    dynamic percussion, wind control per chest, smARTvalve per pipe. Where the README talks about
+    "mechaniek" (mechanism) for Decap organs, read "digital control"; "mechanical" applies to
+    traditional book organs.
+  - Line to use: *where other organs use MIDI only to replace the book, a Decap organ uses MIDI to
+    the full: 16 ports as standard, a separate part for every instrument group, and velocity and
+    expression, because everything in the organ is digitally controlled.*

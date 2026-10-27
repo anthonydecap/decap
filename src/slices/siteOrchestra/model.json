@@ -1,0 +1,111 @@
+{
+  "id": "site_orchestra",
+  "type": "SharedSlice",
+  "name": "SiteOrchestra",
+  "description": "Interactive orchestra view: switch between a book organ (every instrument on the same line) and a Decap organ (every instrument its own part, soft and hard notes).",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": "Small label above the title"
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "intro": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Intro",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "book_label": {
+          "type": "Text",
+          "config": {
+            "label": "Switch: first option",
+            "placeholder": "Book or simple MIDI"
+          }
+        },
+        "decap_label": {
+          "type": "Text",
+          "config": {
+            "label": "Switch: second option",
+            "placeholder": "Decap organ"
+          }
+        },
+        "book_caption": {
+          "type": "Text",
+          "config": {
+            "label": "Caption for the first option",
+            "placeholder": ""
+          }
+        },
+        "decap_caption": {
+          "type": "Text",
+          "config": {
+            "label": "Caption for the second option",
+            "placeholder": ""
+          }
+        },
+        "note": {
+          "type": "Text",
+          "config": {
+            "label": "Small note under the view",
+            "placeholder": "Example arrangement"
+          }
+        },
+        "tone": {
+          "type": "Select",
+          "config": {
+            "label": "Section tone",
+            "options": [
+              "Dark band",
+              "Default",
+              "Tinted"
+            ],
+            "default_value": "Dark band"
+          }
+        }
+      },
+      "items": {
+        "instrument": {
+          "type": "Text",
+          "config": {
+            "label": "Instrument",
+            "placeholder": "Saxophone"
+          }
+        },
+        "address": {
+          "type": "Text",
+          "config": {
+            "label": "MIDI address",
+            "placeholder": "Port 3 · Ch 1"
+          }
+        },
+        "role": {
+          "type": "Text",
+          "config": {
+            "label": "Part",
+            "placeholder": "Melody"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -20,6 +20,10 @@ export const components = {
   site_video: dynamic(() => import("./siteVideo")),
   site_tiles: dynamic(() => import("./siteTiles")),
   site_carousel: dynamic(() => import("./siteCarousel")),
+  site_statement: dynamic(() => import("./siteStatement")),
+  site_orchestra: dynamic(() => import("./siteOrchestra")),
+  site_bento: dynamic(() => import("./siteBento")),
+  site_compare: dynamic(() => import("./siteCompare")),
   contact_form: dynamic(() => import("./contactForm")),
   organ_composer: dynamic(() => import("./organComposer")),
 
