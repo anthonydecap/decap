@@ -142,9 +142,10 @@ Existing Prismic pages (keep): `accordion`, `pipes`, `percussion-unit`, `mallet-
 
 ## smARTvalve (existing Prismic page `smartvalve`, keep)
 
-- One valve per pipe with its own processor; airflow regulated more than 1,000 times per second;
-  pressure 0–200% stored per pipe; 4 ms response; PID feedback; optical MIDI cable (100× MIDI speed,
-  200 m+); LFO effects, vibrato, slope, decay. Proven in L'Explorateur (2025).
+- ~~One valve per pipe with its own processor; airflow regulated more than 1,000 times per second;
+  pressure 0–200% stored per pipe; 4 ms response~~ **Outdated: see "smARTvalve in detail
+  (2026-10-29)" below** (2,000×/s, 0–400% of VPP, full pressure in ~10 ms). Still valid: PID-style
+  feedback; optical MIDI cable (100× MIDI speed, 200 m+); proven in L'Explorateur (2025).
 - Optical MIDI is an accessory of smARTvalve.
 - **smARTvalve is fully digital:** every valve has its own processor, and every pipe is individually
   addressable. With Decap's software, **stops are defined in software ("digital stops")**: any
@@ -376,3 +377,82 @@ Pedestal, the MIDI conversion units and smARTvalve), to the **player software**
   - Line to use: *where other organs use MIDI only to replace the book, a Decap organ uses MIDI to
     the full: 16 ports as standard, a separate part for every instrument group, and velocity and
     expression, because everything in the organ is digitally controlled.*
+
+## smARTvalve in detail (from Decap, 2026-10-29) — overrides anything above
+
+**A proportional pipe valve with its own sensor and processor.** smARTvalve controls the wind
+pressure to every single pipe, individually, with a speed and precision not seen before in organ
+building. Designed and built by Decap in Herentals, Belgium; proven on the concert stage many times.
+
+**Real-time pressure dynamics**
+- Compact enough to sit inside the wind chest, a few millimetres from the pipe foot, for the fastest
+  possible response.
+- Its pressure sensor and processor measure and correct the pipe pressure **2,000 times per second**.
+- Whatever the chest pressure, and however much air the pipe uses, the pipe always gets exactly the
+  pressure it is meant to have. **No external regulator or reservoir needed**: connect the blower,
+  and smARTvalve does the rest.
+
+**Voiced Pipe Pressure (VPP)**
+- The pressure a pipe is voiced at is its **Voiced Pipe Pressure (VPP)**: the 100% level.
+- VPP is set per pipe as a simple number (with a slider) and **stored in the valve itself**. E.g. an
+  even rank, or a little more presence in the bass: adjust and store.
+
+**Up to four times the voiced pressure, in real time**
+- While playing, the pressure of every pipe can change in real time from **0 to 400% of its VPP**.
+  Example: a pipe voiced at 80 mm can be played anywhere between silence and 320 mm.
+- The **speed-controlled blower** automatically supplies the chest pressure needed.
+- Result: a range of dynamics and expression that was always hidden in the pipe, now accessible from
+  any controller: expression pedal, note velocity, key aftertouch, anything that sends controller data.
+
+**Built-in envelope and LFOs in every valve**
+- Each valve has its own complete envelope generator and **two LFOs**, running on the valve's own
+  2,000-per-second clock. Every pipe follows its own envelope with millisecond accuracy,
+  independently of the others, yet synced to each other.
+- **Wind envelope** per note: delay before the pipe speaks; start level (silence up to about twice
+  the voiced pressure); attack; decay; sustain level; release after the key is let go.
+  - Times from **5 ms to 12.7 s** ("more than 12 seconds"); an adjustable curve per stage, from a
+    slow swell to a quick rise with a soft landing.
+  - The pipe fades out as set instead of simply cutting off. Played again during the release, the
+    pipe carries on smoothly, without a gap or a jolt.
+- **Speech control**: a controlled transient at the start of every note, a short pressure accent
+  that settles onto the envelope over a chosen time, from a gentle chiff to a pronounced attack.
+  Velocity can set its depth.
+- **Two vibratos** (pressure LFOs):
+  - Vibrato 1: from a slow wave up to **25 Hz** (gentle tremulant to fast flutter).
+  - Vibrato 2: up to **50 Hz** normally; extended mode **more than 400 Hz**, well into the audible
+    range, where it becomes part of the pipe's tone colour.
+  - Depth up to about **±75%** each; the two add up. Each has its own delay, attack, decay, sustain
+    and release, so it can come in after the note has started.
+  - **In phase across the organ**: every pipe's vibrato locks smoothly to the MIDI clock, so the
+    whole organ breathes together, without the drift of a mechanical tremulant.
+- **Adjustable note ending**: soft close or a percussive "slap".
+
+**Everything under MIDI control**
+- Every parameter is a standard MIDI controller: VPP level, expression, envelope times and curves,
+  speech, vibrato speed, depth and envelope.
+- **Polyphonic aftertouch** controls the pressure of each sounding pipe; **channel aftertouch** a
+  whole rank. Anything that sends MIDI (console, sequencer, DAW) can play the organ this way.
+
+**Pressure control (at a glance)**
+- Proportional valve with its own sensor and processor in every pipe.
+- Stable under load: every pipe holds its pressure, even in full chords and at half the normal
+  chest pressure.
+- Fast, clean attack: **full pressure in about 10 ms**, without overshoot or dip.
+- **Self-calibrating**: each valve measures its own characteristic and keeps learning from every attack.
+- A filter that ignores the pipe's own tone (filters out its fundamental and overtones), for a calm,
+  steady tone, even on long held notes.
+- **Silent, proportional drive: a voice-coil actuator, not a solenoid.**
+
+**System and reliability**
+- High-capacity bus, up to about **40,000 messages per second**; MIDI always gets priority.
+  **Optical MIDI input at 3 Mbaud.**
+- Protection against hanging notes: a watchdog, plus automatic all-notes-off when a sequencer stops.
+- **Firmware updates over MIDI** for all valves at once, each update verified automatically by the
+  valve itself.
+
+**Software**
+- **PipeCreator**: a live pressure curve for every pipe, compared with the expected curve, plus a
+  diagnostics table for all valves. `[TO CHECK: the site also names PipeCreator as the CNC pipe-design
+  / G-code software. Same program with both roles, or two different names?]`
+- **PipeViewer**: customers can view their own organ in 3D in advance.
+- Wooden pipes designed in-house and CNC-made to measure.
