@@ -455,5 +455,8 @@ building. Designed and built by Decap in Herentals, Belgium; proven on the conce
   - designing wooden pipes and generating the G-code for the 5-axis CNC;
   - for smARTvalve: a live pressure curve for every pipe, compared with the expected curve, plus a
     diagnostics table for all valves.
-- **PipeViewer**: customers can view their own organ in 3D in advance.
+- **PipeViewer**: the 3D view in PipeCreator. With smARTvalve, the **pipe panels** (the panels the
+  valves and pipes sit on) have to be designed for each organ; PipeViewer is where Decap designs
+  these pipe panels in 3D, and the pipes too. Customers can view their own organ in 3D in advance.
+  **Not the Organ Composer** (the website configurator is a separate thing). (Decap, 2026-10-29)
 - Wooden pipes designed in-house and CNC-made to measure.
