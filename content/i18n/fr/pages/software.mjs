@@ -68,6 +68,25 @@ export default {
       },
     },
     {
+      type: "site_text_media",
+      primary: {
+        eyebrow: "Dans notre atelier",
+        title: "PipeCreator : de la conception des tuyaux à chaque soupape",
+        body:
+          "PipeCreator est le programme que nous utilisons nous-mêmes. Il conçoit nos tuyaux d'orgue en bois et envoie le G-code directement à notre CNC 5 axes. Dans sa vue 3D, PipeViewer, nous concevons les planches de tuyaux d'un orgue smARTvalve et les tuyaux qu'elles portent, pour que nos clients voient leur orgue en 3D avant sa construction.\n\nUne fois l'orgue en jeu, PipeCreator affiche pour chaque tuyau une courbe de pression en direct à côté de la courbe attendue, ainsi qu'un tableau de diagnostic de toutes les smARTvalves.",
+        media_side: "Image left",
+        aspect: "Landscape 4:3",
+        cta_label: "smARTvalve pour facteurs d'orgues",
+        cta_link: "/smartvalve-for-organ-builders",
+        image_brief: "PipeViewer on screen: a 3D pipe panel with smARTvalves and wooden pipes, 4:3",
+      },
+      items: [
+        { point: "Tuyaux en bois conçus et envoyés à la CNC" },
+        { point: "Planches et tuyaux en 3D dans PipeViewer" },
+        { point: "Courbes de pression en direct et diagnostic pour chaque smARTvalve" },
+      ],
+    },
+    {
       type: "site_cta",
       primary: {
         eyebrow: "Vous arrangez pour orgue ?",

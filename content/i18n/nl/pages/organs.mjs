@@ -268,7 +268,7 @@ export default {
         eyebrow: "smARTvalve",
         title: "Expressie op elke pijp",
         body:
-          "We regelen de winddruk al jaren per windlade. smARTvalve doet het per pijp: één ventiel en één processor voor elke pijp. Elke pijp krijgt zijn eigen opgeslagen winddruk, van 0 tot 200%, met een reactietijd van 4 ms. Dat maakt dynamiek, vibrato, slope en decay per noot mogelijk, bespeeld via MIDI.\n\nHet is de techniek in het verplaatsbare kerkorgel van 2025, het eerste orgel dat we een windsynthesizer noemen.",
+          "We regelen de winddruk al jaren per windlade. smARTvalve doet het per pijp: een ventiel met eigen sensor en processor voor elke pijp, dat de druk 2.000 keer per seconde bijstuurt. Elke pijp kan spelen van stilte tot vier keer haar intonatiedruk, met een eigen windenvelope en twee vibrato's, alles via MIDI.\n\nHet is de techniek in het verplaatsbare kerkorgel van 2025, het eerste orgel dat we een windsynthesizer noemen.",
         media_side: "Image left",
         aspect: "Landscape 4:3",
         cta_label: "Hoe smARTvalve werkt",

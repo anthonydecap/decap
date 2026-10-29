@@ -67,6 +67,25 @@ export default {
       },
     },
     {
+      type: "site_text_media",
+      primary: {
+        eyebrow: "In our workshop",
+        title: "PipeCreator: from pipe design to every valve",
+        body:
+          "PipeCreator is the program we use ourselves. It designs our wooden organ pipes and sends the G-code straight to our 5-axis CNC. In its 3D view, PipeViewer, we design the pipe panels for a smARTvalve organ and the pipes on them, so customers see their own organ in 3D before it is built.\n\nOnce the organ plays, PipeCreator shows a live pressure curve for every pipe next to the expected curve, and a diagnostics table for all smARTvalves.",
+        media_side: "Image left",
+        aspect: "Landscape 4:3",
+        cta_label: "smARTvalve for organ builders",
+        cta_link: "/smartvalve-for-organ-builders",
+        image_brief: "PipeViewer on screen: a 3D pipe panel with smARTvalves and wooden pipes, 4:3",
+      },
+      items: [
+        { point: "Wooden pipes designed and sent to the CNC" },
+        { point: "Pipe panels and pipes in 3D in PipeViewer" },
+        { point: "Live pressure curves and diagnostics for every smARTvalve" },
+      ],
+    },
+    {
       type: "site_cta",
       primary: {
         eyebrow: "Arranging for organ?",

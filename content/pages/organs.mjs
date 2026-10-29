@@ -267,7 +267,7 @@ export default {
         eyebrow: "smARTvalve",
         title: "Expression on every pipe",
         body:
-          "We have set the wind pressure per wind chest for years. smARTvalve does it per pipe: one valve and one processor for every pipe. Each pipe gets its own stored pressure, from 0 to 200%, with a 4 ms response. That allows dynamics, vibrato, slope and decay per note, played over MIDI.\n\nIt is the technology in the 2025 transportable church organ, the first organ we call a wind synthesizer.",
+          "We have set the wind pressure per wind chest for years. smARTvalve does it per pipe: a valve with its own sensor and processor for every pipe, correcting the pressure 2,000 times a second. Each pipe can play from silence up to four times its voiced pressure, with its own wind envelope and two vibratos, all over MIDI.\n\nIt is the technology in the 2025 transportable church organ, the first organ we call a wind synthesizer.",
         media_side: "Image left",
         aspect: "Landscape 4:3",
         cta_label: "How smARTvalve works",

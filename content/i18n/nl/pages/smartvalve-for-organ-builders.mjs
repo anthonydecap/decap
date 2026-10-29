@@ -6,17 +6,15 @@ export default {
   title: "smARTvalve voor orgelbouwers",
   theme: "smartvalve",
   meta_title: "Proportioneel pijpventiel voor orgelbouwers | smARTvalve",
-  meta_description:
-    "smARTvalve: proportioneel pijpventiel voor orgels, met eigen processor. Wind per pijp geregeld, digitale registers en optische MIDI, ook voor bestaande orgels.",
+  meta_description: "smARTvalve: een proportioneel pijpventiel met eigen sensor en processor. Druk 2.000 keer per seconde bijgestuurd, 0–400% van de intonatiedruk, alles via MIDI.",
   slices: [
     {
       type: "site_hero",
       primary: {
         layout: "Split",
         eyebrow: "smARTvalve voor orgelbouwers",
-        title: "Een proportioneel pijpventiel met een processor in elk ventiel",
-        intro:
-          "smARTvalve regelt de wind naar elke pijp afzonderlijk, meer dan 1.000 keer per seconde. Uw pijpen behouden hun stem; het orgel krijgt er dynamiek, expressie en registers bij die in software worden ingesteld. Ontworpen en gebouwd door Decap in Herentals, en bewezen op het concertpodium.",
+        title: "Een proportioneel pijpventiel met eigen sensor en processor",
+        intro: "smARTvalve meet en stuurt de wind naar elke afzonderlijke pijp 2.000 keer per seconde bij, en laat elke pijp spelen van stilte tot vier keer haar intonatiedruk. Uw pijpen behouden hun stem; het orgel krijgt er dynamiek, expressie en registers bij die in software worden ingesteld. Ontworpen en gebouwd door Decap in Herentals, en al vaak bewezen op het concertpodium.",
         primary_cta_label: "Technische documentatie aanvragen",
         primary_cta_link: "#contact-form",
         secondary_cta_label: "Ontdek smARTvalve",
@@ -31,10 +29,10 @@ export default {
         layout: "Stats",
       },
       items: [
-        { value: "1.000×", label: "per seconde wordt de wind naar elke pijp gemeten en bijgestuurd" },
-        { value: "0–200%", label: "winddruk per pijp, opgeslagen in het ventiel" },
-        { value: "4 ms", label: "reactietijd" },
-        { value: "200 m+", label: "optische MIDI, 100 keer sneller dan klassieke MIDI" },
+        { value: "2.000×", label: "per seconde wordt de druk aan elke pijp gemeten en bijgestuurd" },
+        { value: "0–400%", label: "van de intonatiedruk, in realtime tijdens het spelen" },
+        { value: "10 ms", label: "tot volle druk, zonder doorschieten of dip" },
+        { value: "3 Mbaud", label: "optische MIDI, over 200 m en meer" },
       ],
     },
     {
@@ -42,8 +40,7 @@ export default {
       primary: {
         eyebrow: "Waarom van Decap",
         title: "Negentig jaar dynamiek, nu in elke pijp",
-        body:
-          "We zijn eerst en vooral muzikanten, en al 90 jaar werken we aan orgels die met meer gevoel spelen. Op onze dansorgels spelen de trommels hard of zacht, verandert de winddruk per windlade en spelen registers vibrato. smARTvalve is waar die ervaring toe leidde: dezelfde controle, voor elke afzonderlijke pijp.\n\nVoor ons is het kerkorgel een van de mooiste en meest muzikale instrumenten die er bestaan. Terwijl we smARTvalve ontwikkelden, konden we alleen maar dromen van wat het voor een kerkorgel zou betekenen: meer effecten, meer speelwijzen, meer klankkleuren.\n\nOok onze ervaring met dansorgels helpt hier. Dansorgels moesten transporteerbaar en opnieuw op te bouwen zijn, dus bouwen we elk orgel als modulaire units in een façade. Daarom past een verplaatsbaar kerkorgel als L'Explorateur zo goed bij onze werkplaats. En onze windladen zijn gebouwd voor zware omstandigheden, zoals temperatuurschommelingen, omdat dansorgels speelden in spiegeltenten die keer op keer opgezet en weer afgebroken werden.",
+        body: "We zijn eerst en vooral muzikanten, en al 90 jaar werken we aan orgels die met meer gevoel spelen. Op onze dansorgels spelen de trommels hard of zacht, verandert de winddruk per windlade en spelen registers vibrato. smARTvalve is waar die ervaring toe leidde: dezelfde controle, voor elke afzonderlijke pijp.\n\nVoor ons is het kerkorgel een van de mooiste en meest muzikale instrumenten die er bestaan. Terwijl we smARTvalve ontwikkelden, konden we alleen maar dromen van wat het voor een kerkorgel zou betekenen: meer effecten, meer speelwijzen, meer klankkleuren.\n\nOok onze ervaring met dansorgels helpt hier. Dansorgels moesten transporteerbaar en opnieuw op te bouwen zijn, dus bouwen we elk orgel als modulaire units in een façade. Daarom past een verplaatsbaar kerkorgel als L'Explorateur zo goed bij onze werkplaats. En onze windladen zijn gebouwd voor zware omstandigheden, zoals temperatuurschommelingen, omdat dansorgels speelden in spiegeltenten die keer op keer opgezet en weer afgebroken werden.",
         media_side: "Image right",
         aspect: "Landscape 4:3",
         image_brief: "A Decap dance organ façade split into its modular units in the workshop, ready for transport, 4:3",
@@ -56,12 +53,18 @@ export default {
       ],
     },
     {
+      type: "site_statement",
+      primary: {
+        statement: "De dynamiek zat altijd al *verborgen in de pijp.* Met smARTvalve kunt u ze *bespelen.*",
+        caption: "Niet door de pijp te veranderen, maar door haar precies de wind te geven die ze nodig heeft, noot per noot, 2.000 keer per seconde.",
+      },
+    },
+    {
       type: "site_card_grid",
       primary: {
         eyebrow: "Drie generaties pijpventielen",
         title: "Van open-of-dicht naar elke pijp onder controle",
-        intro:
-          "Elektrische tracturen behandelden een pijpventiel lang als een schakelaar. Nieuwere ventielen volgen de toets. smARTvalve gaat een stap verder: het regelt de wind zelf.",
+        intro: "Elektrische tracturen behandelden een pijpventiel lang als een schakelaar. Nieuwere ventielen volgen de toets. smARTvalve gaat een stap verder: het regelt de wind zelf.",
         columns: "3",
         card_style: "Text cards",
       },
@@ -79,25 +82,90 @@ export default {
         {
           tag: "smARTvalve",
           title: "Windregeling in gesloten lus",
-          body: "Een processor in elk ventiel regelt de wind naar zijn pijp, tijdens de aanzet en zolang de noot klinkt. Het kan de toets volgen, of alles wat u eraan koppelt.",
+          body: "Een druksensor en een processor in elk ventiel regelen de wind naar zijn pijp, 2.000 keer per seconde, tijdens de aanzet en zolang de noot klinkt. Het kan de toets volgen, of alles wat u eraan koppelt.",
         },
       ],
     },
     {
       type: "site_text_media",
       primary: {
-        eyebrow: "Elke pijp haar eigen wind",
-        title: "Gemeten en bijgestuurd terwijl de noot klinkt",
-        body:
-          "smARTvalve is klein genoeg om op de pijpenstok te zitten, enkele millimeters van de pijpvoet. De processor meet de drukval aan de ingang en opent verder om die te compenseren, meer dan 1.000 keer per seconde. Als veel pijpen tegelijk spreken, houdt elke pijp haar wind. In L'Explorateur maakte dat windregelaars overbodig: een blaasmachine en een verdeelkast volstaan.\n\nDe basisdruk van elke pijp wordt opgeslagen in het ventiel, van 0 tot 200%. Zo kan een deel van de regeling die vroeger aan de intonatiebank gebeurde, in software gebeuren, en opnieuw gebeuren.",
+        eyebrow: "Druk in realtime",
+        title: "Altijd precies de juiste druk, wat de windlade ook doet",
+        body: "smARTvalve is compact genoeg om in de windlade te zitten, enkele millimeters van de pijpvoet, voor de snelst mogelijke reactie. De sensor en de processor meten en sturen de pijpdruk 2.000 keer per seconde bij. Wat de druk in de windlade ook is, en hoeveel lucht de pijp ook gebruikt, de pijp krijgt altijd precies de druk die ze hoort te krijgen: in volle akkoorden, en zelfs bij de helft van de normale windladedruk.\n\nEen externe regelaar of magazijnbalg is niet nodig. Sluit de blaasmachine aan, en smARTvalve doet de rest.",
         media_side: "Image right",
         aspect: "Landscape 4:3",
         image_brief: "Close-up of one smARTvalve with its electronics visible, dark background, 4:3",
       },
       items: [
-        { point: "Geregeld op enkele millimeters van de pijpvoet" },
-        { point: "Stabiele aanspraak als veel pijpen tegelijk klinken" },
-        { point: "Basisdruk per pijp opgeslagen in het ventiel" },
+        { point: "Volle druk in ongeveer 10 ms, zonder doorschieten of dip" },
+        { point: "Zelfkalibrerend: elk ventiel leert van elke aanzet" },
+        { point: "Negeert de eigen toon van de pijp, voor een rustige klank op lange noten" },
+        { point: "Geruisloze aandrijving met een voice coil, geen elektromagneet" },
+      ],
+    },
+    {
+      type: "site_text_media",
+      primary: {
+        eyebrow: "Intonatiedruk (VPP)",
+        title: "Intoneer met een schuifregelaar. Speel tot vier keer de druk.",
+        body: "De druk waarop een pijp geïntoneerd is, is haar Voiced Pipe Pressure, of VPP: het niveau van 100%. U stelt ze per pijp in met een eenvoudig getal, en dat getal wordt in het ventiel zelf opgeslagen. Een gelijkmatiger register, of wat meer aanwezigheid in de bas? Pas aan en sla op.\n\nTijdens het spelen kan elke pijp in realtime gaan van 0 tot 400% van haar VPP. Een pijp die op 80 mm geïntoneerd is, speelt alles tussen stilte en 320 mm, en de toerengeregelde blaasmachine levert de windladedruk die daarvoor nodig is. Een expressiepedaal, velocity, aftertouch: alles wat controllerdata stuurt, kan haar bespelen.",
+        media_side: "Image left",
+        aspect: "Landscape 4:3",
+        image_brief: "PipeCreator on screen with a VPP slider per pipe of a rank, next to the pipes, 4:3",
+        tone: "Tinted",
+      },
+      items: [
+        { point: "VPP per pijp ingesteld, opgeslagen in het ventiel" },
+        { point: "0–400% van de VPP, in realtime" },
+        { point: "Een toerengeregelde blaasmachine voedt de windlade" },
+      ],
+    },
+    {
+      type: "site_bento",
+      primary: {
+        eyebrow: "Ingebouwd in elk ventiel",
+        title: "Een envelope en twee vibrato's voor elke pijp",
+        intro: "Elk smARTvalve heeft een eigen envelopegenerator en twee LFO's, die op zijn eigen klok van 2.000 keer per seconde draaien. Elke pijp volgt haar eigen vorm tot op de milliseconde, onafhankelijk van de andere, en toch synchroon.",
+        tone: "Dark band",
+      },
+      items: [
+        {
+          size: "Large",
+          style: "Dark",
+          visual: "Velocity",
+          value: "5 ms – 12,7 s",
+          title: "Een volledige windenvelope voor elke noot",
+          body: "Vertraging, startniveau, attack, decay, sustain en release, elk met een eigen curve: van een trage zwelling tot een snelle stijging met een zachte landing. Speel de toets opnieuw tijdens de release en de pijp speelt naadloos door.",
+        },
+        {
+          size: "Small",
+          style: "Light",
+          visual: "Pipe",
+          title: "Aanspraak",
+          body: "Een gecontroleerd drukaccent bij het begin van elke noot, van een zachte chiff tot een uitgesproken aanzet. Velocity kan de diepte bepalen.",
+        },
+        { size: "Small", style: "Accent", value: "25 Hz", value_label: "Vibrato 1", body: "Van een trage golf tot een snelle flutter: een tremulant in elke pijp." },
+        {
+          size: "Small",
+          style: "Light",
+          value: "400 Hz+",
+          value_label: "Vibrato 2, uitgebreide modus",
+          body: "Tot in het hoorbare bereik, waar vibrato deel wordt van de klankkleur van de pijp.",
+        },
+        { size: "Small", style: "Light", visual: "Chip", title: "Zacht sluiten of slap", body: "Kies hoe een noot eindigt: zacht sluiten, of een percussieve slap." },
+        {
+          size: "Wide",
+          style: "Dark",
+          visual: "Wind",
+          title: "Het hele orgel ademt samen",
+          body: "Het vibrato van elke pijp vergrendelt soepel op de MIDI-klok, zonder het verlopen van een mechanische tremulant. Tot ±75% diepte per vibrato, elk met een eigen envelope.",
+        },
+        {
+          size: "Wide",
+          style: "Light",
+          title: "Eén noot van een akkoord zwelt aan",
+          body: "Polyfone aftertouch regelt de druk van elke klinkende pijp afzonderlijk; kanaal-aftertouch een heel register.",
+        },
       ],
     },
     {
@@ -105,9 +173,8 @@ export default {
       primary: {
         eyebrow: "Toetspositie, of iets anders",
         title: "Koppel elke MIDI aan elke pijp",
-        body:
-          "smARTvalve is volledig digitaal, dus u bepaalt wat het aanstuurt. Koppel de toetspositie aan de ventielopening en het gedraagt zich precies als een positievolgend ventiel. Koppel velocity, aftertouch, een controller of een automatiecurve uit een sequencer, en dezelfde pijp doet wat geen mechanisch ventiel kan.\n\n- Crescendo en decrescendo op een aangehouden noot\n- Vibrato en tremolo per pijp, niet per windlade\n- Drukcurves, slope en decay voor elke noot\n- Klassiek aan/uit-gedrag waar de muziek erom vraagt",
-        media_side: "Image left",
+        body: "smARTvalve is volledig digitaal, dus u bepaalt wat het aanstuurt. Elke parameter is een standaard MIDI-controller: VPP-niveau, expressie, tijden en curves van de envelope, aanspraak, en snelheid, diepte en envelope van het vibrato.\n\nKoppel de toetspositie aan de ventielopening en het gedraagt zich precies als een positievolgend ventiel. Koppel velocity, aftertouch, een controller of een automatiecurve uit een sequencer of DAW, en dezelfde pijp doet wat geen mechanisch ventiel kan.\n\n- Crescendo en decrescendo op een aangehouden noot\n- Vibrato en tremolo per pijp, niet per windlade\n- Een envelope en aanspraak voor elke noot\n- Klassiek aan/uit-gedrag waar de muziek erom vraagt",
+        media_side: "Image right",
         aspect: "Landscape 4:3",
         image_brief: "Screen of the smARTvalve software with a pressure curve, next to an organ keyboard, 4:3",
         tone: "Tinted",
@@ -137,8 +204,7 @@ export default {
       primary: {
         eyebrow: "Digitale registers",
         title: "Registers ingesteld in software, in elke combinatie",
-        body:
-          "Omdat elke pijp een eigen processor en adres heeft, ligt een register niet langer vast in de windlade. Met onze software wijst u elke combinatie van pijpen toe aan een register, elke pijp met haar eigen drukinstellingen. In een orgel dat volledig op smARTvalve gebouwd is, is het aantal combinaties praktisch onbeperkt; als smARTvalve een bestaand orgel uitbreidt, kan de oorspronkelijke sturing grenzen opleggen, en dat bekijken we per project.\n\nHet orgel is niet af op de dag van de levering: registers kunnen later worden toegevoegd of gewijzigd, zonder aan de windlade te komen.",
+        body: "Omdat elke pijp een eigen processor en adres heeft, ligt een register niet langer vast in de windlade. Met onze software wijst u elke combinatie van pijpen toe aan een register, elke pijp met haar eigen drukinstellingen. In een orgel dat volledig op smARTvalve gebouwd is, is het aantal combinaties praktisch onbeperkt; als smARTvalve een bestaand orgel uitbreidt, kan de oorspronkelijke sturing grenzen opleggen, en dat bekijken we per project.\n\nHet orgel is niet af op de dag van de levering: registers kunnen later worden toegevoegd of gewijzigd, zonder aan de windlade te komen.",
         media_side: "Image right",
         aspect: "Landscape 4:3",
         image_brief: "Screenshot of the stop configuration in the smARTvalve software, pipes grouped into stops, 4:3",
@@ -152,14 +218,58 @@ export default {
     {
       type: "site_text_media",
       primary: {
-        eyebrow: "Optische MIDI",
-        title: "Van speeltafel naar windlade via licht",
-        body:
-          "smARTvalves worden verbonden via Optische MIDI: meer dan 100 keer de snelheid van klassieke MIDI, over afstanden van 200 m en meer. Licht draagt geen elektrische storingen, dus de speeltafel kan staan waar het orgel hem nodig heeft. [Lees meer over smARTvalve](/smartvalve).",
+        eyebrow: "Optische MIDI en betrouwbaarheid",
+        title: "Snel, veilig en updatebaar, gebouwd voor het podium",
+        body: "smARTvalves worden verbonden via Optische MIDI op 3 Mbaud: ongeveer 100 keer de snelheid van klassieke MIDI, over afstanden van 200 m en meer. Licht draagt geen elektrische storingen, dus de speeltafel kan staan waar het orgel hem nodig heeft.\n\nIn het orgel vervoert een bus met hoge capaciteit tot ongeveer 40.000 berichten per seconde, en MIDI krijgt altijd voorrang. [Lees meer over smARTvalve](/smartvalve).",
         media_side: "Image left",
         aspect: "Landscape 4:3",
         image_brief: "Optical MIDI cable plugged into a smARTvalve controller, glowing connector, dark background, 4:3",
       },
+      items: [
+        { point: "Watchdog tegen hangende noten, en all-notes-off als een sequencer stopt" },
+        { point: "Firmware-updates via MIDI, voor alle ventielen tegelijk" },
+        { point: "Elke update gecontroleerd door het ventiel zelf" },
+      ],
+    },
+    {
+      type: "site_text_media",
+      primary: {
+        eyebrow: "PipeCreator en PipeViewer",
+        title: "Pijpenstokken ontworpen voor uw orgel, elke pijp bewaakt",
+        body: "Met smARTvalve worden de pijpenstokken die de ventielen en pijpen dragen voor elk orgel ontworpen. Dat doen we in PipeCreator, onze eigen software: in de 3D-weergave, PipeViewer, ontwerpen we de pijpenstokken en de pijpen, zodat u uw orgel in 3D ziet voor het gebouwd wordt. Hetzelfde programma ontwerpt onze houten pijpen en stuurt ze naar de CNC.\n\nZodra het orgel speelt, toont PipeCreator voor elke pijp een live drukcurve naast de verwachte curve, en een diagnosetabel voor alle ventielen.",
+        media_side: "Image right",
+        aspect: "Landscape 4:3",
+        image_brief: "PipeViewer on screen: a 3D pipe panel with its smARTvalves and pipes, 4:3",
+        tone: "Tinted",
+      },
+      items: [
+        { point: "Pijpenstokken en pijpen ontworpen in 3D" },
+        { point: "Zie uw orgel voor het gebouwd wordt" },
+        { point: "Live drukcurve en diagnose voor elk ventiel" },
+      ],
+    },
+    {
+      type: "site_facts",
+      primary: {
+        eyebrow: "In één oogopslag",
+        title: "Specificaties van smARTvalve",
+        layout: "Spec list",
+      },
+      items: [
+        { label: "Drukregeling", value: "Sensor en processor in elk ventiel", note: "2.000 keer per seconde gemeten en bijgestuurd" },
+        { label: "Aanzet", value: "Volle druk in ongeveer 10 ms", note: "Zonder doorschieten of dip" },
+        { label: "Drukbereik", value: "0–400% van de intonatiedruk (VPP)", note: "VPP per pijp ingesteld, opgeslagen in het ventiel" },
+        { label: "Windregeling", value: "Geen externe regelaar of magazijnbalg", note: "Een toerengeregelde blaasmachine voedt de windlade" },
+        { label: "Aandrijving", value: "Voice-coil-actuator", note: "Geruisloos en proportioneel, geen elektromagneet" },
+        { label: "Kalibratie", value: "Zelfkalibrerend", note: "Leert van elke aanzet" },
+        { label: "Windenvelope", value: "Vertraging, startniveau, attack, decay, sustain, release", note: "5 ms tot 12,7 s, een instelbare curve per fase" },
+        { label: "Vibrato's", value: "Twee, tot ±75% elk", note: "Tot 25 Hz en 50 Hz, uitgebreide modus boven 400 Hz; vergrendeld op de MIDI-klok" },
+        { label: "Sturing", value: "Standaard MIDI", note: "Polyfone aftertouch per pijp, kanaal-aftertouch per register" },
+        { label: "Verbinding", value: "Optische MIDI, 3 Mbaud", note: "200 m en meer" },
+        { label: "Bus", value: "Tot ongeveer 40.000 berichten per seconde", note: "MIDI krijgt altijd voorrang" },
+        { label: "Beveiliging", value: "Watchdog en automatische all-notes-off" },
+        { label: "Updates", value: "Firmware via MIDI, alle ventielen tegelijk", note: "Gecontroleerd door elk ventiel" },
+      ],
     },
     {
       type: "site_quote",
@@ -198,7 +308,15 @@ export default {
         },
         {
           question: "Welke speeltafels en sturingen werken met smARTvalve?",
-          answer: "Alles wat MIDI spreekt: een speeltafel met MIDI-uitgang, een sequencer of een computer. Via Optische MIDI kan de speeltafel 200 m of meer verwijderd zijn.",
+          answer: "Alles wat MIDI spreekt: een speeltafel met MIDI-uitgang, een sequencer, een DAW of een computer. Elke parameter is een standaard MIDI-controller. Via Optische MIDI kan de speeltafel 200 m of meer verwijderd zijn.",
+        },
+        {
+          question: "Heb ik nog windregelaars of magazijnbalgen nodig?",
+          answer: "Nee. Elk smARTvalve regelt zijn eigen pijp, 2.000 keer per seconde, wat de windladedruk ook is. Een toerengeregelde blaasmachine voedt de windlade; de ventielen doen de rest.",
+        },
+        {
+          question: "Hoor je het ventiel?",
+          answer: "Nee. smARTvalve wordt aangedreven door een geruisloze voice-coil-actuator, geen elektromagneet, en een filter zorgt dat het niet reageert op de eigen toon van de pijp.",
         },
         {
           question: "Wat zijn digitale registers?",
@@ -208,10 +326,7 @@ export default {
           question: "Is smARTvalve bewezen in de praktijk?",
           answer: "Ja. smARTvalve speelt in L'Explorateur, het verplaatsbare concertorgel van Yves Rechsteiner met smARTvalve op elke pijp: meer dan 30 voorstellingen sinds 2023, en opgesteld in minder dan twee uur nadat de vrachtwagen aankomt. [Lees de case study](/work/yves-rechsteiner).",
         },
-        {
-          question: "Wat kost het?",
-          answer: "Dat hangt af van het aantal pijpen en van het project. Vertel ons over uw orgel en we sturen u een voorstel.",
-        },
+        { question: "Wat kost het?", answer: "Dat hangt af van het aantal pijpen en van het project. Vertel ons over uw orgel en we sturen u een voorstel." },
       ],
     },
     {
@@ -230,8 +345,7 @@ export default {
         success_title: "Dank u",
         success_body: "Uw aanvraag is goed aangekomen. We antwoorden persoonlijk met de informatie die u vroeg.",
         aside_title: "Decap Herentals",
-        aside_body:
-          "Langepad 51C, 2200 Herentals, België\n\n+32 14 22 44 94\n\n[info@decap.be](mailto:info@decap.be)\n\nsmARTvalve wordt ontworpen, gebouwd en geprogrammeerd in onze eigen werkplaats.",
+        aside_body: "Langepad 51C, 2200 Herentals, België\n\n+32 14 22 44 94\n\n[info@decap.be](mailto:info@decap.be)\n\nsmARTvalve wordt ontworpen, gebouwd en geprogrammeerd in onze eigen werkplaats.",
       },
     },
   ],

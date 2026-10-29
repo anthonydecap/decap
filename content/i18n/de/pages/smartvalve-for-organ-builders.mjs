@@ -6,17 +6,15 @@ export default {
   title: "smARTvalve für Orgelbauer",
   theme: "smartvalve",
   meta_title: "Proportionales Pfeifenventil für Orgelbauer | smARTvalve",
-  meta_description:
-    "smARTvalve: proportionales Pfeifenventil für die Orgel mit eigenem Prozessor. Wind pro Pfeife geregelt, digitale Register, optisches MIDI, für Neubau und Umbau.",
+  meta_description: "smARTvalve: ein Proportionalventil für Orgelpfeifen mit eigenem Sensor und Prozessor. 2.000-mal pro Sekunde geregelt, 0–400 % des Intonationsdrucks, alles über MIDI.",
   slices: [
     {
       type: "site_hero",
       primary: {
         layout: "Split",
         eyebrow: "smARTvalve für Orgelbauer",
-        title: "Ein proportionales Pfeifenventil mit einem Prozessor in jedem Ventil",
-        intro:
-          "smARTvalve regelt den Wind zu jeder Pfeife einzeln, mehr als 1.000-mal pro Sekunde. Ihre Pfeifen behalten ihre Stimme; die Orgel gewinnt Dynamik, Ausdruck und Register, die in der Software eingestellt werden. Entwickelt und gebaut von Decap in Herentals und auf der Konzertbühne bewährt.",
+        title: "Ein Proportionalventil für Orgelpfeifen mit eigenem Sensor und Prozessor",
+        intro: "smARTvalve misst und korrigiert den Wind jeder einzelnen Pfeife 2.000-mal pro Sekunde und lässt jede Pfeife von Stille bis zum Vierfachen ihres Intonationsdrucks spielen. Ihre Pfeifen behalten ihre Stimme; die Orgel gewinnt Dynamik, Ausdruck und Register, die in der Software festgelegt werden. Entwickelt und gebaut von Decap in Herentals und auf der Konzertbühne vielfach bewährt.",
         primary_cta_label: "Technische Dokumentation anfordern",
         primary_cta_link: "#contact-form",
         secondary_cta_label: "smARTvalve entdecken",
@@ -31,10 +29,10 @@ export default {
         layout: "Stats",
       },
       items: [
-        { value: "1.000×", label: "pro Sekunde wird der Wind zu jeder Pfeife gemessen und korrigiert" },
-        { value: "0–200 %", label: "Winddruck pro Pfeife, im Ventil gespeichert" },
-        { value: "4 ms", label: "Ansprechzeit" },
-        { value: "200 m+", label: "optisches MIDI, 100-mal schneller als klassisches MIDI" },
+        { value: "2.000×", label: "pro Sekunde wird der Druck an jeder Pfeife gemessen und korrigiert" },
+        { value: "0–400 %", label: "des Intonationsdrucks, in Echtzeit beim Spielen" },
+        { value: "10 ms", label: "bis zum vollen Druck, ohne Überschwingen oder Einbruch" },
+        { value: "3 Mbaud", label: "optisches MIDI, über 200 m und mehr" },
       ],
     },
     {
@@ -42,8 +40,7 @@ export default {
       primary: {
         eyebrow: "Warum von Decap",
         title: "Neunzig Jahre Dynamik, jetzt in jeder Pfeife",
-        body:
-          "Wir sind zuerst Musiker, und seit 90 Jahren arbeiten wir an Orgeln, die mit mehr Gefühl spielen. Auf unseren Tanzorgeln spielt das Schlagzeug hart oder weich, der Winddruck ändert sich je Windlade, und Register spielen Vibrato. smARTvalve ist das, wohin uns diese Erfahrung geführt hat: dieselbe Kontrolle, für jede einzelne Pfeife.\n\nFür uns ist die Kirchenorgel eines der schönsten und musikalischsten Instrumente überhaupt. Während wir smARTvalve entwickelten, konnten wir nur davon träumen, was es für sie bedeuten würde: mehr Effekte, mehr Spielweisen, mehr Klangfarben.\n\nAuch unsere Erfahrung mit Tanzorgeln hilft hier. Tanzorgeln mussten transportabel und wieder aufbaubar sein, deshalb bauen wir jede Orgel als modulare Einheiten in einer Fassade. Darum passt eine transportable Kirchenorgel wie L'Explorateur so gut in unsere Werkstatt. Und unsere Windladen sind für harte Bedingungen gebaut, etwa Temperaturwechsel, denn Tanzorgeln spielten in Spiegelzelten, die immer wieder auf- und abgebaut wurden.",
+        body: "Wir sind zuerst Musiker, und seit 90 Jahren arbeiten wir an Orgeln, die mit mehr Gefühl spielen. Auf unseren Tanzorgeln spielt das Schlagzeug hart oder weich, der Winddruck ändert sich je Windlade, und Register spielen Vibrato. smARTvalve ist das, wohin uns diese Erfahrung geführt hat: dieselbe Kontrolle, für jede einzelne Pfeife.\n\nFür uns ist die Kirchenorgel eines der schönsten und musikalischsten Instrumente überhaupt. Während wir smARTvalve entwickelten, konnten wir nur davon träumen, was es für sie bedeuten würde: mehr Effekte, mehr Spielweisen, mehr Klangfarben.\n\nAuch unsere Erfahrung mit Tanzorgeln hilft hier. Tanzorgeln mussten transportabel und wieder aufbaubar sein, deshalb bauen wir jede Orgel als modulare Einheiten in einer Fassade. Darum passt eine transportable Kirchenorgel wie L'Explorateur so gut in unsere Werkstatt. Und unsere Windladen sind für harte Bedingungen gebaut, etwa Temperaturwechsel, denn Tanzorgeln spielten in Spiegelzelten, die immer wieder auf- und abgebaut wurden.",
         media_side: "Image right",
         aspect: "Landscape 4:3",
         image_brief: "A Decap dance organ façade split into its modular units in the workshop, ready for transport, 4:3",
@@ -56,12 +53,18 @@ export default {
       ],
     },
     {
+      type: "site_statement",
+      primary: {
+        statement: "Die Dynamik lag schon immer *in der Pfeife verborgen.* Mit smARTvalve können Sie *sie spielen.*",
+        caption: "Nicht, indem die Pfeife verändert wird, sondern indem sie genau den Wind bekommt, den sie braucht, Ton für Ton, 2.000-mal pro Sekunde.",
+      },
+    },
+    {
       type: "site_card_grid",
       primary: {
         eyebrow: "Drei Generationen von Pfeifenventilen",
         title: "Von Auf-oder-Zu zu jeder Pfeife unter Kontrolle",
-        intro:
-          "Elektrische Trakturen haben ein Pfeifenventil lange wie einen Schalter behandelt. Neuere Ventile folgen der Taste. smARTvalve geht einen Schritt weiter: Es regelt den Wind selbst.",
+        intro: "Elektrische Trakturen haben ein Pfeifenventil lange wie einen Schalter behandelt. Neuere Ventile folgen der Taste. smARTvalve geht einen Schritt weiter: Es regelt den Wind selbst.",
         columns: "3",
         card_style: "Text cards",
       },
@@ -79,25 +82,102 @@ export default {
         {
           tag: "smARTvalve",
           title: "Windregelung im geschlossenen Regelkreis",
-          body: "Ein Prozessor in jedem Ventil regelt den Wind zu seiner Pfeife, beim Einschwingen und solange der Ton klingt. Er kann der Taste folgen oder allem anderen, das Sie ihm zuordnen.",
+          body: "Ein Drucksensor und ein Prozessor in jedem Ventil regeln den Wind zu seiner Pfeife, 2.000-mal pro Sekunde, beim Einschwingen und solange der Ton klingt. Es kann der Taste folgen oder allem, was Sie ihm zuordnen.",
         },
       ],
     },
     {
       type: "site_text_media",
       primary: {
-        eyebrow: "Jede Pfeife, ihr eigener Wind",
-        title: "Gemessen und korrigiert, während der Ton klingt",
-        body:
-          "smARTvalve ist klein genug, um auf dem Pfeifenstock zu sitzen, wenige Millimeter vom Pfeifenfuß entfernt. Sein Prozessor misst den Druckabfall auf der Eingangsseite und öffnet weiter, um ihn auszugleichen, mehr als 1.000-mal pro Sekunde. Wenn viele Pfeifen gleichzeitig sprechen, behält jede Pfeife ihren Wind. In L'Explorateur wurden dadurch Windregler überflüssig: Ein Gebläse und ein Verteilerkasten genügen.\n\nDer Grunddruck jeder Pfeife wird im Ventil gespeichert, von 0 bis 200 %. So lässt sich ein Teil der Regulierung, die früher an der Intonierlade geschah, in der Software erledigen und jederzeit wiederholen.",
+        eyebrow: "Druck in Echtzeit",
+        title: "Immer genau der richtige Druck, was die Windlade auch tut",
+        body: "smARTvalve ist kompakt genug, um in der Windlade zu sitzen, wenige Millimeter vom Pfeifenfuß entfernt, für die schnellstmögliche Reaktion. Sensor und Prozessor messen und korrigieren den Pfeifendruck 2.000-mal pro Sekunde. Wie hoch der Druck in der Windlade auch ist und wie viel Luft die Pfeife auch verbraucht: Die Pfeife bekommt immer genau den Druck, den sie haben soll, in vollen Akkorden und sogar bei halbem normalem Windladendruck.\n\nEin externer Regler oder Magazinbalg ist nicht nötig. Gebläse anschließen, smARTvalve erledigt den Rest.",
         media_side: "Image right",
         aspect: "Landscape 4:3",
         image_brief: "Close-up of one smARTvalve with its electronics visible, dark background, 4:3",
       },
       items: [
-        { point: "Geregelt wenige Millimeter vom Pfeifenfuß" },
-        { point: "Stabile Ansprache, wenn viele Pfeifen gleichzeitig klingen" },
-        { point: "Grunddruck pro Pfeife im Ventil gespeichert" },
+        { point: "Voller Druck in etwa 10 ms, ohne Überschwingen oder Einbruch" },
+        { point: "Selbstkalibrierend: Jedes Ventil lernt aus jedem Einschwingen" },
+        { point: "Ignoriert den Eigenton der Pfeife, für einen ruhigen Klang auch bei langen Tönen" },
+        { point: "Lautloser Tauchspulenantrieb, kein Magnet" },
+      ],
+    },
+    {
+      type: "site_text_media",
+      primary: {
+        eyebrow: "Intonationsdruck (VPP)",
+        title: "Intonieren mit einem Schieberegler. Spielen bis zum vierfachen Druck.",
+        body: "Der Druck, auf den eine Pfeife intoniert ist, ist ihr Voiced Pipe Pressure, kurz VPP: das Niveau von 100 %. Sie stellen ihn für jede Pfeife als einfache Zahl ein, und diese Zahl wird im Ventil selbst gespeichert. Ein ausgeglicheneres Register oder etwas mehr Präsenz im Bass? Anpassen und speichern.\n\nBeim Spielen kann jede Pfeife in Echtzeit zwischen 0 und 400 % ihres VPP liegen. Eine auf 80 mm intonierte Pfeife spielt alles zwischen Stille und 320 mm, und das drehzahlgeregelte Gebläse liefert den nötigen Windladendruck. Schwellpedal, Anschlagstärke, Aftertouch: Alles, was Controllerdaten sendet, kann sie spielen.",
+        media_side: "Image left",
+        aspect: "Landscape 4:3",
+        image_brief: "PipeCreator on screen with a VPP slider per pipe of a rank, next to the pipes, 4:3",
+        tone: "Tinted",
+      },
+      items: [
+        { point: "VPP pro Pfeife eingestellt, im Ventil gespeichert" },
+        { point: "0–400 % des VPP, in Echtzeit" },
+        { point: "Ein drehzahlgeregeltes Gebläse versorgt die Windlade" },
+      ],
+    },
+    {
+      type: "site_bento",
+      primary: {
+        eyebrow: "In jedes Ventil eingebaut",
+        title: "Eine Hüllkurve und zwei Vibratos für jede Pfeife",
+        intro: "Jedes smARTvalve hat einen eigenen Hüllkurvengenerator und zwei LFOs, die mit seinem eigenen Takt von 2.000-mal pro Sekunde laufen. Jede Pfeife folgt millisekundengenau ihrer eigenen Form, unabhängig von den anderen und doch synchron.",
+        tone: "Dark band",
+      },
+      items: [
+        {
+          size: "Large",
+          style: "Dark",
+          visual: "Velocity",
+          value: "5 ms – 12,7 s",
+          title: "Eine vollständige Windhüllkurve für jeden Ton",
+          body: "Verzögerung, Startpegel, Attack, Decay, Sustain und Release, jeweils mit eigener Kurve: vom langsamen Anschwellen bis zum schnellen Anstieg mit sanfter Landung. Wird die Taste während des Release erneut gespielt, klingt die Pfeife nahtlos weiter.",
+        },
+        {
+          size: "Small",
+          style: "Light",
+          visual: "Pipe",
+          title: "Ansprache",
+          body: "Ein kontrollierter Druckakzent am Beginn jedes Tons, vom sanften Chiff bis zur ausgeprägten Ansprache. Die Anschlagstärke kann seine Tiefe bestimmen.",
+        },
+        {
+          size: "Small",
+          style: "Accent",
+          value: "25 Hz",
+          value_label: "Vibrato 1",
+          body: "Von der langsamen Welle bis zum schnellen Flattern: ein Tremulant in jeder Pfeife.",
+        },
+        {
+          size: "Small",
+          style: "Light",
+          value: "400 Hz+",
+          value_label: "Vibrato 2, erweiterter Modus",
+          body: "Bis in den hörbaren Bereich, wo das Vibrato Teil der Klangfarbe der Pfeife wird.",
+        },
+        {
+          size: "Small",
+          style: "Light",
+          visual: "Chip",
+          title: "Sanft schließen oder Slap",
+          body: "Wählen Sie, wie ein Ton endet: sanft schließend oder mit einem perkussiven Slap.",
+        },
+        {
+          size: "Wide",
+          style: "Dark",
+          visual: "Wind",
+          title: "Die ganze Orgel atmet zusammen",
+          body: "Das Vibrato jeder Pfeife rastet sanft auf die MIDI-Clock ein, ohne das Driften eines mechanischen Tremulanten. Bis zu ±75 % Tiefe je Vibrato, jedes mit eigener Hüllkurve.",
+        },
+        {
+          size: "Wide",
+          style: "Light",
+          title: "Ein Ton im Akkord schwillt an",
+          body: "Polyphoner Aftertouch regelt den Druck jeder klingenden Pfeife einzeln; Kanal-Aftertouch ein ganzes Register.",
+        },
       ],
     },
     {
@@ -105,9 +185,8 @@ export default {
       primary: {
         eyebrow: "Tastenposition oder etwas anderes",
         title: "Jedes MIDI jeder Pfeife zuordnen",
-        body:
-          "smARTvalve ist volldigital, also bestimmen Sie, was es steuert. Ordnen Sie die Tastenposition der Ventilöffnung zu, und es verhält sich genau wie ein positionsfolgendes Ventil. Ordnen Sie Velocity, Aftertouch, einen Controller oder eine Automationskurve aus einem Sequencer zu, und dieselbe Pfeife kann, was kein mechanisches Ventil kann.\n\n- Crescendo und Decrescendo auf einem gehaltenen Ton\n- Vibrato und Tremolo pro Pfeife, nicht pro Windlade\n- Druckkurven, Slope und Decay für jeden Ton\n- Klassisches Auf/Zu-Verhalten, wo die Musik es verlangt",
-        media_side: "Image left",
+        body: "smARTvalve ist vollständig digital, Sie entscheiden also, was es steuert. Jeder Parameter ist ein Standard-MIDI-Controller: VPP-Pegel, Expression, Zeiten und Kurven der Hüllkurve, Ansprache sowie Geschwindigkeit, Tiefe und Hüllkurve des Vibratos.\n\nOrdnen Sie die Tastenposition der Ventilöffnung zu, und es verhält sich genau wie ein positionsfolgendes Ventil. Ordnen Sie Anschlagstärke, Aftertouch, einen Controller oder eine Automationskurve aus einem Sequenzer oder einer DAW zu, und dieselbe Pfeife kann, was kein mechanisches Ventil kann.\n\n- Crescendo und Decrescendo auf einem gehaltenen Ton\n- Vibrato und Tremolo pro Pfeife, nicht pro Windlade\n- Eine Hüllkurve und Ansprache für jeden Ton\n- Klassisches Auf/Zu-Verhalten, wo die Musik es verlangt",
+        media_side: "Image right",
         aspect: "Landscape 4:3",
         image_brief: "Screen of the smARTvalve software with a pressure curve, next to an organ keyboard, 4:3",
         tone: "Tinted",
@@ -137,8 +216,7 @@ export default {
       primary: {
         eyebrow: "Digitale Register",
         title: "Register in der Software, in jeder Kombination",
-        body:
-          "Weil jede Pfeife einen eigenen Prozessor und eine eigene Adresse hat, ist ein Register nicht länger in der Windlade festgelegt. Mit unserer Software ordnen Sie jede beliebige Kombination von Pfeifen einem Register zu, jede Pfeife mit ihren eigenen Druckeinstellungen. In einer Orgel, die ganz auf smARTvalve aufgebaut ist, ist die Zahl der Kombinationen praktisch unbegrenzt; wenn smARTvalve eine bestehende Orgel erweitert, kann die ursprüngliche Steuerung Grenzen setzen, und das prüfen wir pro Projekt.\n\nDie Orgel ist am Tag der Lieferung nicht fertig: Register lassen sich später hinzufügen oder ändern, ohne die Windlade anzufassen.",
+        body: "Weil jede Pfeife einen eigenen Prozessor und eine eigene Adresse hat, ist ein Register nicht länger in der Windlade festgelegt. Mit unserer Software ordnen Sie jede beliebige Kombination von Pfeifen einem Register zu, jede Pfeife mit ihren eigenen Druckeinstellungen. In einer Orgel, die ganz auf smARTvalve aufgebaut ist, ist die Zahl der Kombinationen praktisch unbegrenzt; wenn smARTvalve eine bestehende Orgel erweitert, kann die ursprüngliche Steuerung Grenzen setzen, und das prüfen wir pro Projekt.\n\nDie Orgel ist am Tag der Lieferung nicht fertig: Register lassen sich später hinzufügen oder ändern, ohne die Windlade anzufassen.",
         media_side: "Image right",
         aspect: "Landscape 4:3",
         image_brief: "Screenshot of the stop configuration in the smARTvalve software, pipes grouped into stops, 4:3",
@@ -152,14 +230,58 @@ export default {
     {
       type: "site_text_media",
       primary: {
-        eyebrow: "Optisches MIDI",
-        title: "Vom Spieltisch zur Windlade über Licht",
-        body:
-          "smARTvalves werden über optisches MIDI verbunden: mehr als 100-mal so schnell wie klassisches MIDI, über Entfernungen von 200 m und mehr. Licht überträgt keine elektrischen Störungen, also kann der Spieltisch dort stehen, wo die Orgel ihn braucht. [Mehr über smARTvalve](/smartvalve).",
+        eyebrow: "Optisches MIDI und Zuverlässigkeit",
+        title: "Schnell, sicher und aktualisierbar, gebaut für die Bühne",
+        body: "smARTvalves werden über optisches MIDI mit 3 Mbaud verbunden: etwa 100-mal so schnell wie klassisches MIDI, über Entfernungen von 200 m und mehr. Licht überträgt keine elektrischen Störungen, der Spieltisch kann also stehen, wo die Orgel ihn braucht.\n\nIn der Orgel überträgt ein Bus mit hoher Kapazität bis zu etwa 40.000 Nachrichten pro Sekunde, und MIDI hat immer Vorrang. [Mehr über smARTvalve](/smartvalve).",
         media_side: "Image left",
         aspect: "Landscape 4:3",
         image_brief: "Optical MIDI cable plugged into a smARTvalve controller, glowing connector, dark background, 4:3",
       },
+      items: [
+        { point: "Watchdog gegen hängende Töne und All-Notes-Off, wenn ein Sequenzer stoppt" },
+        { point: "Firmware-Updates über MIDI, für alle Ventile gleichzeitig" },
+        { point: "Jedes Update vom Ventil selbst geprüft" },
+      ],
+    },
+    {
+      type: "site_text_media",
+      primary: {
+        eyebrow: "PipeCreator und PipeViewer",
+        title: "Pfeifenstöcke für Ihre Orgel entworfen, jede Pfeife überwacht",
+        body: "Mit smARTvalve werden die Pfeifenstöcke, die Ventile und Pfeifen tragen, für jede Orgel entworfen. Das tun wir in PipeCreator, unserer eigenen Software: In seiner 3D-Ansicht, PipeViewer, entwerfen wir die Pfeifenstöcke und die Pfeifen, sodass Sie Ihre Orgel in 3D sehen, bevor sie gebaut wird. Dasselbe Programm entwirft unsere Holzpfeifen und schickt sie an die CNC.\n\nSobald die Orgel spielt, zeigt PipeCreator für jede Pfeife eine Live-Druckkurve neben der erwarteten Kurve sowie eine Diagnosetabelle für alle Ventile.",
+        media_side: "Image right",
+        aspect: "Landscape 4:3",
+        image_brief: "PipeViewer on screen: a 3D pipe panel with its smARTvalves and pipes, 4:3",
+        tone: "Tinted",
+      },
+      items: [
+        { point: "Pfeifenstöcke und Pfeifen in 3D entworfen" },
+        { point: "Ihre Orgel sehen, bevor sie gebaut wird" },
+        { point: "Live-Druckkurve und Diagnose für jedes Ventil" },
+      ],
+    },
+    {
+      type: "site_facts",
+      primary: {
+        eyebrow: "Auf einen Blick",
+        title: "Technische Daten von smARTvalve",
+        layout: "Spec list",
+      },
+      items: [
+        { label: "Druckregelung", value: "Sensor und Prozessor in jedem Ventil", note: "2.000-mal pro Sekunde gemessen und korrigiert" },
+        { label: "Ansprache", value: "Voller Druck in etwa 10 ms", note: "Ohne Überschwingen oder Einbruch" },
+        { label: "Druckbereich", value: "0–400 % des Intonationsdrucks (VPP)", note: "VPP pro Pfeife eingestellt, im Ventil gespeichert" },
+        { label: "Windversorgung", value: "Kein externer Regler oder Magazinbalg", note: "Ein drehzahlgeregeltes Gebläse versorgt die Windlade" },
+        { label: "Antrieb", value: "Tauchspulenaktor", note: "Lautlos und proportional, kein Magnet" },
+        { label: "Kalibrierung", value: "Selbstkalibrierend", note: "Lernt aus jedem Einschwingen" },
+        { label: "Windhüllkurve", value: "Verzögerung, Startpegel, Attack, Decay, Sustain, Release", note: "5 ms bis 12,7 s, eine einstellbare Kurve pro Phase" },
+        { label: "Vibratos", value: "Zwei, je bis zu ±75 %", note: "Bis 25 Hz und 50 Hz, erweiterter Modus über 400 Hz; auf die MIDI-Clock synchronisiert" },
+        { label: "Steuerung", value: "Standard-MIDI", note: "Polyphoner Aftertouch pro Pfeife, Kanal-Aftertouch pro Register" },
+        { label: "Verbindung", value: "Optisches MIDI, 3 Mbaud", note: "200 m und mehr" },
+        { label: "Bus", value: "Bis zu etwa 40.000 Nachrichten pro Sekunde", note: "MIDI hat immer Vorrang" },
+        { label: "Sicherheit", value: "Watchdog und automatisches All-Notes-Off" },
+        { label: "Updates", value: "Firmware über MIDI, alle Ventile gleichzeitig", note: "Von jedem Ventil geprüft" },
+      ],
     },
     {
       type: "site_quote",
@@ -179,7 +301,10 @@ export default {
         { title: "Erzählen Sie uns vom Projekt", body: "Eine neue oder eine bestehende Orgel, die Windladen, die Zahl der Pfeifen und was das Instrument können soll." },
         { title: "Technische Dokumentation", body: "Spezifikationen, Abmessungen und Verkabelung für Ihr Projekt, damit Ihr Team die Integration beurteilen kann." },
         { title: "Vorführung", body: "Hören Sie smARTvalve an echten Pfeifen, in unserer Werkstatt in Herentals oder per Videoanruf." },
-        { title: "Unterstützung bei der Integration", body: "Wir unterstützen Ihr Team bei der Installation, der Konfiguration der Ventile und den digitalen Registern." },
+        {
+          title: "Unterstützung bei der Integration",
+          body: "Wir unterstützen Ihr Team bei der Installation, der Konfiguration der Ventile und den digitalen Registern.",
+        },
       ],
     },
     {
@@ -198,7 +323,15 @@ export default {
         },
         {
           question: "Welche Spieltische und Steuerungen funktionieren mit smARTvalve?",
-          answer: "Alles, was MIDI spricht: ein Spieltisch mit MIDI-Ausgang, ein Sequencer oder ein Computer. Über optisches MIDI kann der Spieltisch 200 m oder weiter entfernt stehen.",
+          answer: "Alles, was MIDI spricht: ein Spieltisch mit MIDI-Ausgang, ein Sequenzer, eine DAW oder ein Computer. Jeder Parameter ist ein Standard-MIDI-Controller. Über optisches MIDI kann der Spieltisch 200 m oder weiter entfernt stehen.",
+        },
+        {
+          question: "Brauche ich noch Windregler oder Magazinbälge?",
+          answer: "Nein. Jedes smARTvalve regelt seine eigene Pfeife, 2.000-mal pro Sekunde, wie hoch der Windladendruck auch ist. Ein drehzahlgeregeltes Gebläse versorgt die Windlade; die Ventile erledigen den Rest.",
+        },
+        {
+          question: "Hört man das Ventil?",
+          answer: "Nein. smARTvalve wird von einem lautlosen Tauchspulenaktor angetrieben, nicht von einem Magneten, und ein Filter verhindert, dass es auf den Eigenton der Pfeife reagiert.",
         },
         {
           question: "Was sind digitale Register?",
@@ -230,8 +363,7 @@ export default {
         success_title: "Vielen Dank",
         success_body: "Ihre Anfrage ist bei uns angekommen. Wir antworten persönlich mit den gewünschten Informationen.",
         aside_title: "Decap Herentals",
-        aside_body:
-          "Langepad 51C, 2200 Herentals, Belgien\n\n+32 14 22 44 94\n\n[info@decap.be](mailto:info@decap.be)\n\nsmARTvalve wird in unserer eigenen Werkstatt entwickelt, gebaut und programmiert.",
+        aside_body: "Langepad 51C, 2200 Herentals, Belgien\n\n+32 14 22 44 94\n\n[info@decap.be](mailto:info@decap.be)\n\nsmARTvalve wird in unserer eigenen Werkstatt entwickelt, gebaut und programmiert.",
       },
     },
   ],
