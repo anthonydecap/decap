@@ -451,8 +451,9 @@ building. Designed and built by Decap in Herentals, Belgium; proven on the conce
   valve itself.
 
 **Software**
-- **PipeCreator**: a live pressure curve for every pipe, compared with the expected curve, plus a
-  diagnostics table for all valves. `[TO CHECK: the site also names PipeCreator as the CNC pipe-design
-  / G-code software. Same program with both roles, or two different names?]`
+- **PipeCreator** is one in-house program with both roles (confirmed by Decap, 2026-10-29):
+  - designing wooden pipes and generating the G-code for the 5-axis CNC;
+  - for smARTvalve: a live pressure curve for every pipe, compared with the expected curve, plus a
+    diagnostics table for all valves.
 - **PipeViewer**: customers can view their own organ in 3D in advance.
 - Wooden pipes designed in-house and CNC-made to measure.
