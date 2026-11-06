@@ -1,0 +1,475 @@
+{
+  "id": "atdvtBEAACsAa14p",
+  "uid": "midi-conversion",
+  "url": null,
+  "type": "page",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22atdvtBEAACsAa14p%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2026-10-20T15:03:00+0000",
+  "last_publication_date": "2026-10-26T15:51:56+0000",
+  "slugs": [
+    "conversion-midi"
+  ],
+  "linked_documents": [],
+  "lang": "fr-fr",
+  "alternate_languages": [
+    {
+      "id": "atc3kREAACwAavQg",
+      "type": "page",
+      "lang": "en-us",
+      "uid": "midi-conversion"
+    }
+  ],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Conversion MIDI",
+        "spans": []
+      }
+    ],
+    "theme": "decap",
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "layout": "Split",
+          "eyebrow": "Module MIDI Decap à double soupape",
+          "title": "Conversion MIDI pour orgues à cartons et orgues de foire",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Jouez en MIDI sur votre orgue à cartons ou à rouleaux sans renoncer au carton. Notre module à double soupape se place entre le clavier de lecture et le sommier principal : le fonctionnement d'origine reste entièrement intact. Carton et MIDI peuvent même jouer en même temps.",
+              "spans": []
+            }
+          ],
+          "primary_cta_label": "Demander un devis",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "d9a63193-8bc8-4694-a7f2-c410e25de65c",
+            "url": "/contact"
+          },
+          "secondary_cta_label": "Installation par l'Atelier Frank Decap",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "49d1b78d-b164-4fa9-906f-1b75b2696c88",
+            "url": "/frank-decap"
+          },
+          "note": null,
+          "image": {
+            "dimensions": {
+              "width": 1500,
+              "height": 844
+            },
+            "alt": "Decap double-valve MIDI unit",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/wHauU6Z7tLoUgxmF_Products-Switching-Valve-01-Hersteld.png?auto=format,compress",
+            "id": "wHauU6Z7tLoUgxmF",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "mux_video": null,
+          "image_brief": "One Decap MIDI unit on a plain dark worktop, valves and tube connectors facing the camera, shot from slightly above; 4:3",
+          "image_shape": null,
+          "image_fit": null,
+          "image_position": null,
+          "image_zoom": null,
+          "overlay": null,
+          "blur": null,
+          "dim": null,
+          "color_effect": null,
+          "vignette": null,
+          "slow_zoom": null,
+          "tone": "Default"
+        },
+        "id": "site_hero$08fccbf7-d5be-476f-a4ed-e678a6a110e6",
+        "slice_type": "site_hero",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "point": "Le fonctionnement à cartons ou à rouleaux reste entièrement intact"
+          },
+          {
+            "point": "Carton et MIDI peuvent jouer en même temps"
+          },
+          {
+            "point": "Jouez des arrangements MIDI via Virtual Orchestrion, ou jouez en direct en MIDI"
+          }
+        ],
+        "primary": {
+          "eyebrow": "Pourquoi convertir",
+          "title": "Gardez le carton. Ajoutez la bibliothèque.",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Decap Herentals a été le premier à apporter le MIDI à l'orgue. Aujourd'hui, presque tous les orgues anciens sont convertis au MIDI, tout simplement parce que c'est la meilleure façon de jouer : votre orgue gagne un répertoire bien plus large.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "Les systèmes à cartons et à rouleaux font de ces orgues des instruments historiques, et beaucoup de propriétaires hésitent à y toucher. À juste titre : si vous convertissez, l'orgue doit rester aussi intact que possible. Notre module ne remplace rien. Le carton ou le rouleau actionne toujours l'orgue exactement comme avant. Le MIDI vient s'y ajouter : vous pouvez jouer des arrangements qui n'ont jamais été perforés, jouer en direct depuis un clavier, ou faire jouer l'orgue avec d'autres instruments.",
+              "spans": []
+            }
+          ],
+          "image": {},
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "A book organ playing with a cardboard music book running through the key frame, close-up of the book entering the key frame; 4:3",
+          "media_side": "Image right",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$b082d6c0-8ecc-438b-8b78-904c32958bd6",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Le carton, à l'écran",
+          "title": "Gardez le charme du carton",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Quand le MIDI est arrivé dans l'orgue, beaucoup de propriétaires ont hésité : le carton plié qui défile dans l'orgue fait partie de son charme. Nous avons aussi une réponse à cela. Notre lecteur Virtual Orchestrion affiche le carton de façon entièrement numérique : vous le regardez défiler pendant que l'orgue joue en MIDI.",
+              "spans": []
+            }
+          ],
+          "image": {},
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Screen showing the digital book view of Virtual Orchestrion beside a converted book organ, 4:3",
+          "media_side": "Image left",
+          "aspect": "Landscape 4:3",
+          "cta_label": "À propos de Virtual Orchestrion",
+          "cta_link": {
+            "link_type": "Web",
+            "key": "44af4f19-1662-4e90-93ab-a7f0abe58b32",
+            "url": "/virtual-orchestrion"
+          },
+          "tone": "Tinted"
+        },
+        "id": "site_text_media$9596ad44-f59a-4852-8b19-4fb454131c3a",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "label": "Soupapes",
+            "value": "16 soupapes à double commutation par module",
+            "note": "Des soupapes indépendantes : carton et MIDI peuvent jouer en même temps"
+          },
+          {
+            "label": "Position",
+            "value": "Entre le clavier de lecture et le sommier principal",
+            "note": "Le fonctionnement à cartons ou à rouleaux reste entièrement intact"
+          },
+          {
+            "label": "Taille",
+            "value": "Dimensions minimales",
+            "note": "Trouve sa place dans des orgues jamais conçus pour des pièces supplémentaires"
+          },
+          {
+            "label": "Montage",
+            "value": "Dans n'importe quelle position, même à l'envers",
+            "note": "Placez-le là où les tubulures sont les plus courtes"
+          },
+          {
+            "label": "Canal MIDI",
+            "value": "N'importe lequel des 16 canaux MIDI",
+            "note": null
+          },
+          {
+            "label": "Attribution des notes",
+            "value": "Chaque soupape sur n'importe quelle note MIDI",
+            "note": "Réglage avec le logiciel fourni"
+          },
+          {
+            "label": "Durée de note",
+            "value": "Réglable de −64 à +64 ms",
+            "note": "Compense des tubulures longues ou une mécanique plus lente ou plus rapide"
+          },
+          {
+            "label": "Retard de note",
+            "value": "Jusqu'à 500 ms",
+            "note": "Pour jouer en synchronisation, par exemple avec des systèmes de piano qui demandent un pré-retard de 500 ms"
+          }
+        ],
+        "primary": {
+          "eyebrow": "Le module",
+          "title": "Caractéristiques",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Chaque module commande 16 notes. Les orgues plus grands utilisent plusieurs modules.",
+              "spans": []
+            }
+          ],
+          "layout": "Spec list",
+          "tone": "Tinted"
+        },
+        "id": "site_facts$de56b629-823f-4da8-aa8a-b6fda111928c",
+        "slice_type": "site_facts",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "title": "Monter les modules",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Montez les modules dans l'espace libre entre le clavier de lecture et le sommier principal, dans la position qui convient à l'orgue.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": "MIDI units mounted inside an open organ case near the key frame, taken with a phone torch for light; 4:3"
+          },
+          {
+            "title": "Raccorder les tubulures",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Tirez un tube du clavier de lecture vers la soupape la plus proche, et de cette soupape vers l'entrée de sommier la plus proche. Inutile de garder les notes dans l'ordre.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": "Close-up of tubes running from a key frame into a MIDI unit, hands holding a tube, 4:3"
+          },
+          {
+            "title": "Attribuer les notes",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Indiquez au logiciel fourni quelle note joue chaque soupape. Réglez le canal MIDI, et ajustez la durée et le retard des notes si l'orgue ou la combinaison avec d'autres instruments le demande.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": "A laptop next to the organ showing the note assignment software, screen readable, 4:3"
+          }
+        ],
+        "primary": {
+          "eyebrow": "Installation",
+          "title": "Des tubulures courtes, une installation simple",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Comme chaque soupape peut être attribuée à n'importe quelle note MIDI, les tubulures n'ont pas à suivre l'échelle. Elles restent courtes et l'installation reste simple.",
+              "spans": []
+            }
+          ],
+          "tone": "Default"
+        },
+        "id": "site_steps$87c775b9-c5ed-4145-bf47-66500d69019b",
+        "slice_type": "site_steps",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Qui installe",
+          "title": "L'Atelier Frank Decap, ou votre propre facteur d'orgues",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Vous achetez les modules MIDI chez Decap Herentals. L'Atelier Frank Decap, dirigé par Frank, le frère de Tony, les installe, et restaure aussi les orgues historiques si le vôtre a besoin de plus que du MIDI. Vous pouvez aussi faire installer les modules par votre propre facteur d'orgues.",
+              "spans": [
+                {
+                  "start": 54,
+                  "end": 73,
+                  "type": "hyperlink",
+                  "data": {
+                    "link_type": "Web",
+                    "url": "/frank-decap"
+                  }
+                }
+              ]
+            }
+          ],
+          "image": {},
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Frank Decap working inside an open book organ in his workshop, warm light, 4:3",
+          "media_side": "Image left",
+          "aspect": "Landscape 4:3",
+          "cta_label": "À propos de l'Atelier Frank Decap",
+          "cta_link": {
+            "link_type": "Web",
+            "key": "ed7176de-7d3f-419a-80d2-75f9f8cd4d44",
+            "url": "/frank-decap"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$950fa894-e494-48e9-b7b4-2dadb0f9048b",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "label": "Dimensions (PDF)",
+            "description": "Les mesures du module MIDI pour préparer l'installation. Bientôt disponible ; en attendant, demandez-nous le plan.",
+            "file": {
+              "link_type": "Media"
+            },
+            "file_type": "PDF"
+          }
+        ],
+        "primary": {
+          "eyebrow": "Téléchargements",
+          "title": "Documents techniques",
+          "intro": [],
+          "tone": "Default"
+        },
+        "id": "site_downloads$13a8df47-e398-4115-a323-9d65b4f885f2",
+        "slice_type": "site_downloads",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "question": "Mon orgue jouera-t-il toujours ses cartons ?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Oui. Le module se place entre le clavier de lecture et le sommier principal et laisse le fonctionnement à cartons ou à rouleaux entièrement intact. Carton et MIDI peuvent jouer en même temps.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "De combien de modules mon orgue a-t-il besoin ?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Un module commande 16 notes. Comptez les touches de votre orgue et divisez par 16, ou envoyez-nous l'échelle et nous faisons le calcul pour vous.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "La conversion fonctionne-t-elle sur les orgues à rouleaux et les orchestrions ?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Le module est conçu pour les orgues et orchestrions actionnés par des cartons ou des rouleaux de piano. Chaque conversion est faite sur mesure pour l'orgue : nous examinons donc chaque orgue avant de confirmer qu'il convient. Envoyez-nous des photos du clavier de lecture et l'échelle.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "L'orgue peut-il jouer avec un piano automatique ?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Oui. Le retard de note jusqu'à 500 ms permet à l'orgue d'attendre les systèmes de piano qui demandent un pré-retard de 500 ms : les deux jouent en mesure.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Qui installe les modules ?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "L'Atelier Frank Decap installe les modules MIDI Decap. Votre propre facteur d'orgues peut aussi les installer.",
+                "spans": [
+                  {
+                    "start": 2,
+                    "end": 21,
+                    "type": "hyperlink",
+                    "data": {
+                      "link_type": "Web",
+                      "url": "/frank-decap"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "primary": {
+          "eyebrow": "Questions",
+          "title": "À propos de la conversion MIDI",
+          "intro": [],
+          "tone": "Default"
+        },
+        "id": "site_faq$c17f8f59-2076-4600-bf8f-73b265b5c94d",
+        "slice_type": "site_faq",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Vous voulez convertir un orgue ?",
+          "title": "Parlez-nous de votre orgue",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Envoyez-nous la marque, le nombre de touches et s'il joue des cartons ou des rouleaux. Nous vous répondons avec le nombre de modules nécessaires et un devis.",
+              "spans": []
+            }
+          ],
+          "price": null,
+          "price_note": null,
+          "primary_cta_label": "Demander un devis",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "55c49f83-df6f-450a-9790-de5fddbf651e",
+            "url": "/contact"
+          },
+          "secondary_cta_label": "Interroger Frank sur l'installation",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "9f3dd9b3-304f-4069-b1d1-36b17a663388",
+            "url": "/frank-decap"
+          },
+          "image": {},
+          "image_brief": null,
+          "tone": "Dark band"
+        },
+        "id": "site_cta$5f6beea2-3ac7-4456-b042-734919b8b01b",
+        "slice_type": "site_cta",
+        "slice_label": null
+      }
+    ],
+    "meta_title": "Conversion MIDI pour orgues à cartons | Decap Herentals",
+    "meta_description": "Ajoutez le MIDI à votre orgue à cartons ou à rouleaux sans renoncer au carton. Le module Decap se place entre clavier de lecture et sommier : 16 soupapes.",
+    "meta_image": {}
+  }
+}

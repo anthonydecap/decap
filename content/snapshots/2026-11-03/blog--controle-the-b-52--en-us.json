@@ -1,0 +1,107 @@
+{
+  "id": "aHgZiBEAACMA_6sT",
+  "uid": "controle-the-b-52",
+  "url": null,
+  "type": "blog",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22aHgZiBEAACMA_6sT%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2025-07-16T21:28:44+0000",
+  "last_publication_date": "2025-07-21T14:45:41+0000",
+  "slugs": [
+    "how-to-controle-the-b-52"
+  ],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [
+    {
+      "id": "aH5c3REAACAACRhP",
+      "type": "blog",
+      "lang": "fr-fr",
+      "uid": "controler-les-b52"
+    }
+  ],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "How To Controle the B-52",
+        "spans": [],
+        "direction": "ltr"
+      }
+    ],
+    "excerpt": [
+      {
+        "type": "paragraph",
+        "text": "In this blog we wil cover all different methodes how to controle the new b-52 module",
+        "spans": [],
+        "direction": "ltr"
+      }
+    ],
+    "card_image": {},
+    "featured_image": {
+      "dimensions": {
+        "width": 1200,
+        "height": 630
+      },
+      "alt": null,
+      "copyright": null,
+      "url": "https://images.prismic.io/decap/aHazG0MqNJQqH8CS_c8a59fe9.png?auto=format,compress&rect=0,185,1117,586&w=1200&h=630",
+      "id": "aHazG0MqNJQqH8CS",
+      "edit": {
+        "x": 0,
+        "y": 185,
+        "zoom": 1,
+        "background": "transparent"
+      },
+      "thumbnail": {
+        "dimensions": {
+          "width": 400,
+          "height": 300
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "https://images.prismic.io/decap/aHazG0MqNJQqH8CS_c8a59fe9.png?auto=format,compress&rect=0,59,1117,838&w=400&h=300",
+        "id": "aHazG0MqNJQqH8CS",
+        "edit": {
+          "x": 0,
+          "y": 59,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      }
+    },
+    "published_date": "2025-07-01",
+    "type": null,
+    "slices": [],
+    "author_name": "Anthony",
+    "author_role": "Developer",
+    "author_image": {
+      "dimensions": {
+        "width": 200,
+        "height": 200
+      },
+      "alt": null,
+      "copyright": null,
+      "url": "https://images.prismic.io/decap/aHbDY0MqNJQqH8JK_fce9c756bf6425f65b673d5d1be4a309eab2ac27.jpg?auto=format,compress&rect=0,150,1200,1200&w=200&h=200",
+      "id": "aHbDY0MqNJQqH8JK",
+      "edit": {
+        "x": 0,
+        "y": 150,
+        "zoom": 1,
+        "background": "transparent"
+      }
+    },
+    "tags": [
+      {
+        "tag": "Technology"
+      },
+      {
+        "tag": "Trumpet"
+      }
+    ],
+    "reading_time": null,
+    "meta_title": null,
+    "meta_description": null,
+    "meta_image": {}
+  }
+}

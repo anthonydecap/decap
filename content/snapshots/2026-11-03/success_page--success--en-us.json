@@ -1,0 +1,30 @@
+{
+  "id": "aIcythEAACAAFm-u",
+  "uid": "success",
+  "url": null,
+  "type": "success_page",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22aIcythEAACAAFm-u%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2025-07-28T08:20:07+0000",
+  "last_publication_date": "2025-07-28T08:20:07+0000",
+  "slugs": [
+    "success-page"
+  ],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Payment successfull",
+        "spans": [],
+        "direction": "ltr"
+      }
+    ],
+    "slices": [],
+    "meta_title": null,
+    "meta_description": null,
+    "meta_image": {}
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "id": "aHYdRxEAACcAdtQE",
+  "uid": "b-52",
+  "url": null,
+  "type": "product",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22aHYdRxEAACcAdtQE%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2025-07-15T09:20:09+0000",
+  "last_publication_date": "2025-07-15T09:20:09+0000",
+  "slugs": [
+    "b-52"
+  ],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [
+    {
+      "id": "aHYdshEAACgAdtSz",
+      "type": "product",
+      "lang": "fr-fr",
+      "uid": "b-52"
+    }
+  ],
+  "data": {
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "item_title": "Function",
+            "item_description": [
+              {
+                "type": "paragraph",
+                "text": "Create playlists",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ],
+            "item_image": {
+              "dimensions": {
+                "width": 800,
+                "height": 600
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/aHYdCkMqNJQqH6Re_19cd30fe.png?auto=format,compress&rect=16,0,1284,963&w=800&h=600",
+              "id": "aHYdCkMqNJQqH6Re",
+              "edit": {
+                "x": 16,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              },
+              "thumbnail": {
+                "dimensions": {
+                  "width": 400,
+                  "height": 300
+                },
+                "alt": null,
+                "copyright": null,
+                "url": "https://images.prismic.io/decap/aHYdCkMqNJQqH6Re_19cd30fe.png?auto=format,compress&rect=16,0,1284,963&w=400&h=300",
+                "id": "aHYdCkMqNJQqH6Re",
+                "edit": {
+                  "x": 16,
+                  "y": 0,
+                  "zoom": 1,
+                  "background": "transparent"
+                }
+              }
+            },
+            "item_price": "51",
+            "item_badge": "yes",
+            "item_link": {
+              "link_type": "Any"
+            },
+            "item_size": "small"
+          },
+          {
+            "item_title": "Slope",
+            "item_description": [
+              {
+                "type": "paragraph",
+                "text": "Manage This",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ],
+            "item_image": {
+              "dimensions": {
+                "width": 800,
+                "height": 600
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/aHYdBEMqNJQqH6Rb_c8a59fe9.png?auto=format,compress&rect=0,59,1117,838&w=800&h=600",
+              "id": "aHYdBEMqNJQqH6Rb",
+              "edit": {
+                "x": 0,
+                "y": 59,
+                "zoom": 1,
+                "background": "transparent"
+              },
+              "thumbnail": {
+                "dimensions": {
+                  "width": 400,
+                  "height": 300
+                },
+                "alt": null,
+                "copyright": null,
+                "url": "https://images.prismic.io/decap/aHYdBEMqNJQqH6Rb_c8a59fe9.png?auto=format,compress&rect=0,59,1117,838&w=400&h=300",
+                "id": "aHYdBEMqNJQqH6Rb",
+                "edit": {
+                  "x": 0,
+                  "y": 59,
+                  "zoom": 1,
+                  "background": "transparent"
+                }
+              }
+            },
+            "item_price": "Free",
+            "item_badge": null,
+            "item_link": {
+              "link_type": "Any"
+            },
+            "item_size": "large"
+          }
+        ],
+        "primary": {
+          "title": "The Bento gRID",
+          "eyebrow": "this is a nice grid",
+          "description": [
+            {
+              "type": "paragraph",
+              "text": "Discover our range of nice",
+              "spans": [],
+              "direction": "ltr"
+            }
+          ],
+          "background_color": null
+        },
+        "id": "bento_grid$30393235-5d79-47d5-b577-ac3d1aecf3e6",
+        "slice_type": "bento_grid",
+        "slice_label": null
+      }
+    ],
+    "meta_title": null,
+    "meta_description": null,
+    "meta_image": {}
+  }
+}

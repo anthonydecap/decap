@@ -1,0 +1,61 @@
+{
+  "id": "aaFp0xEAACkAw7eP",
+  "uid": "preserving-the-organs-soul",
+  "url": null,
+  "type": "blog",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22aaFp0xEAACkAw7eP%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2026-02-27T09:56:07+0000",
+  "last_publication_date": "2026-02-27T09:56:07+0000",
+  "slugs": [
+    "preserving-the-organs-soul"
+  ],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Preserving the Organ’s Soul",
+        "spans": [],
+        "direction": "ltr"
+      }
+    ],
+    "excerpt": [],
+    "card_image": {
+      "dimensions": {
+        "width": 6630,
+        "height": 5304
+      },
+      "alt": null,
+      "copyright": null,
+      "url": "https://images.prismic.io/decap/aJ9MaqTt2nPbaXQ7_pexels-mogilat-3977166.jpg?auto=format,compress",
+      "id": "aJ9MaqTt2nPbaXQ7",
+      "edit": {
+        "x": 0,
+        "y": 0,
+        "zoom": 1,
+        "background": "transparent"
+      }
+    },
+    "featured_image": {
+      "thumbnail": {}
+    },
+    "published_date": null,
+    "type": "smartvalve",
+    "slices": [],
+    "author_name": null,
+    "author_role": null,
+    "author_image": {},
+    "tags": [
+      {
+        "tag": null
+      }
+    ],
+    "reading_time": null,
+    "meta_title": null,
+    "meta_description": null,
+    "meta_image": {}
+  }
+}

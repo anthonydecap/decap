@@ -1,0 +1,1130 @@
+{
+  "id": "atd5txEAACwAa3T7",
+  "uid": "smartvalve-for-organ-builders",
+  "url": null,
+  "type": "page",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22atd5txEAACwAa3T7%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2026-10-20T15:03:04+0000",
+  "last_publication_date": "2026-10-29T21:47:03+0000",
+  "slugs": [
+    "smartvalve-for-organ-builders"
+  ],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [
+    {
+      "id": "atiHvhEAACkAbSbw",
+      "type": "page",
+      "lang": "fr-fr",
+      "uid": "smartvalve-for-organ-builders"
+    }
+  ],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "smARTvalve for organ builders",
+        "spans": []
+      }
+    ],
+    "theme": "smartvalve",
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "layout": "Split",
+          "eyebrow": "smARTvalve for organ builders",
+          "title": "A proportional pipe valve with its own sensor and processor",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "smARTvalve measures and corrects the wind to every single pipe 2,000 times a second, and lets each pipe play anywhere from silence to four times its voiced pressure. Your pipes keep their voice; the organ gains dynamics, expression and stops that are set in software. Designed and built by Decap in Herentals, and proven on the concert stage many times.",
+              "spans": []
+            }
+          ],
+          "primary_cta_label": "Request technical documentation",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "b684b091-2159-4fdc-890a-4fffd85083a7",
+            "url": "#contact-form"
+          },
+          "secondary_cta_label": "Discover smARTvalve",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "53c461c3-e7ac-44b7-b164-8f2c05483c16",
+            "url": "/smartvalve"
+          },
+          "note": "For new organs, and for existing ones by replacing the pipe panels. Prices on request.",
+          "image": {
+            "dimensions": {
+              "width": 1417,
+              "height": 1890
+            },
+            "alt": null,
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/ERK2w3GP4XYKI6GS_pipepanel_v3.png?auto=format,compress",
+            "id": "ERK2w3GP4XYKI6GS",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "mux_video": null,
+          "image_brief": "A row of smARTvalves mounted under pipes on a wind chest, dark background, low side light, portrait 4:5",
+          "image_shape": "Default",
+          "image_fit": "Auto",
+          "image_position": "Center",
+          "image_zoom": "100%",
+          "overlay": "Medium",
+          "blur": "None",
+          "dim": "None",
+          "color_effect": "None",
+          "vignette": false,
+          "slow_zoom": false,
+          "tone": "Default"
+        },
+        "id": "site_hero$34f31373-b998-4a83-b998-748a1fb77936",
+        "slice_type": "site_hero",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "label": "a second, the pressure at every pipe is measured and corrected",
+            "value": "2,000×",
+            "note": null
+          },
+          {
+            "label": "of the voiced pressure, in real time while you play",
+            "value": "0–400%",
+            "note": null
+          },
+          {
+            "label": "to full pressure, without overshoot or dip",
+            "value": "10 ms",
+            "note": null
+          },
+          {
+            "label": "optical MIDI, over 200 m and more",
+            "value": "3 Mbaud",
+            "note": null
+          }
+        ],
+        "primary": {
+          "eyebrow": null,
+          "title": null,
+          "intro": [],
+          "layout": "Stats",
+          "tone": "Default"
+        },
+        "id": "site_facts$679a0ecf-eefd-4b32-bdf0-45764a00fbcb",
+        "slice_type": "site_facts",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "point": "Dynamic control of percussion and wind since the dance organ years"
+          },
+          {
+            "point": "Modular, transportable construction"
+          },
+          {
+            "point": "Wind chests built for changing temperatures and repeated set-ups"
+          },
+          {
+            "point": "All software in-house: CNC programs, valve control and player"
+          }
+        ],
+        "primary": {
+          "eyebrow": "Why from Decap",
+          "title": "Ninety years of dynamics, now in every pipe",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "We are musicians first, and for 90 years we have worked on organs that play with more feeling. On our dance organs the drums play hard or soft, the wind pressure changes per wind chest and ranks play vibrato. smARTvalve is where that experience led: the same control, for every single pipe.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "For us the church organ is one of the most beautiful and most musical instruments there is. While we developed smARTvalve, we could only dream of what it would do for one: more effects, more ways of playing, more colours.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "Our dance organ experience helps here too. Dance organs had to be transportable and rebuildable, so we build every organ as modular units in a façade. That is why a transportable church organ like L'Explorateur fits our workshop so well. And our wind chests are built for hard conditions, such as changes in temperature, because dance organs played in spiegeltents that were put up and taken down again and again.",
+              "spans": []
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 2048,
+              "height": 2048
+            },
+            "alt": null,
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/xrM343reak784Vv6_cantedvalve.png?auto=format,compress",
+            "id": "xrM343reak784Vv6",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "A Decap dance organ façade split into its modular units in the workshop, ready for transport, 4:3",
+          "media_side": "Image right",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$ebef6ba0-04de-4daf-b3b8-22c6e48f717e",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": null,
+          "statement": "The dynamics were always *hidden in the pipe.* smARTvalve lets you *play them.*",
+          "caption": [
+            {
+              "type": "paragraph",
+              "text": "Not by changing the pipe, but by giving it exactly the wind it needs, note by note, 2,000 times a second.",
+              "spans": []
+            }
+          ],
+          "tone": "Default"
+        },
+        "id": "site_statement$3ea75cfa-0f61-4e8a-95aa-6b3e34044a75",
+        "slice_type": "site_statement",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": "Generation 1",
+            "title": "On/off valve",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "A magnet opens the valve fully or closes it. Reliable and simple, but every note speaks the same way, however the key is played.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": "Generation 2",
+            "title": "Position-following valve",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "The valve opening follows the key travel, so the organist shapes the attack. Once the key is down, the pipe stays where it is.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": "smARTvalve",
+            "title": "Closed-loop wind control",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "A pressure sensor and processor in every valve regulate the wind to its pipe, 2,000 times a second, during the attack and while the note sounds. It can follow the key, or anything else you map to it.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          }
+        ],
+        "primary": {
+          "eyebrow": "Three generations of pipe valves",
+          "title": "From open-or-closed to every pipe under control",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Electric actions have long treated a pipe valve as a switch. Newer valves follow the key. smARTvalve goes one step further: it controls the wind itself.",
+              "spans": []
+            }
+          ],
+          "columns": "3",
+          "card_style": "Text cards",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_card_grid$afa3b69d-1456-46bf-a9cb-f91d0f822d8a",
+        "slice_type": "site_card_grid",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "point": "Full pressure in about 10 ms, without overshoot or dip"
+          },
+          {
+            "point": "Self-calibrating: every valve learns from every attack"
+          },
+          {
+            "point": "Ignores the pipe's own tone, for a steady sound on long notes"
+          },
+          {
+            "point": "Silent voice-coil drive, not a solenoid"
+          }
+        ],
+        "primary": {
+          "eyebrow": "Real-time pressure",
+          "title": "Exactly the right pressure, whatever the chest does",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "smARTvalve is compact enough to sit inside the wind chest, a few millimetres from the pipe foot, for the fastest possible response. Its sensor and processor measure and correct the pipe pressure 2,000 times a second. Whatever the pressure in the chest, and however much air the pipe uses, the pipe gets exactly the pressure it is meant to have: in full chords, and even at half the normal chest pressure.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "No external regulator or reservoir is needed. Connect the blower, and smARTvalve does the rest.",
+              "spans": []
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 1672,
+              "height": 941
+            },
+            "alt": "smARTvalves with their electronics",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/IWKJJma9LmOjjrPe_decap-smartvalve-samples.jpg?auto=format,compress",
+            "id": "IWKJJma9LmOjjrPe",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Close-up of one smARTvalve with its electronics visible, dark background, 4:3",
+          "media_side": "Image right",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$ce26b3e1-4b0b-47fd-ba60-2e3ea4b1dbe2",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "point": "VPP set per pipe, stored in the valve"
+          },
+          {
+            "point": "0–400% of the VPP, in real time"
+          },
+          {
+            "point": "A speed-controlled blower supplies the chest"
+          }
+        ],
+        "primary": {
+          "eyebrow": "Voiced Pipe Pressure",
+          "title": "Voice with a slider. Play up to four times the pressure.",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "The pressure a pipe is voiced at is its Voiced Pipe Pressure, or VPP: the 100% level. You set it for each pipe as a simple number, and it is stored in the valve itself. Want an even rank, or a little more presence in the bass? Adjust it and store it.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "While you play, every pipe can go anywhere from 0 to 400% of its VPP, in real time. A pipe voiced at 80 mm plays anywhere between silence and 320 mm, and the speed-controlled blower supplies the chest pressure needed. An expression pedal, note velocity, aftertouch: anything that sends controller data can play it.",
+              "spans": []
+            }
+          ],
+          "image": {},
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "PipeCreator on screen with a VPP slider per pipe of a rank, next to the pipes, 4:3",
+          "media_side": "Image left",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Tinted"
+        },
+        "id": "site_text_media$e42a0517-8e56-4427-b8d2-23c489a93347",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "size": "Large",
+            "style": "Dark",
+            "visual": "Velocity",
+            "value": "5 ms – 12.7 s",
+            "value_label": null,
+            "title": "A full wind envelope for every note",
+            "body": "Delay, start level, attack, decay, sustain and release, each with its own curve: from a slow swell to a quick rise with a soft landing. Play the key again during the release and the pipe carries on, without a gap.",
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "size": "Small",
+            "style": "Light",
+            "visual": "Pipe",
+            "value": null,
+            "value_label": null,
+            "title": "Speech",
+            "body": "A controlled pressure accent at the start of each note, from a gentle chiff to a pronounced attack. Velocity can set its depth.",
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "size": "Small",
+            "style": "Accent",
+            "visual": "None",
+            "value": "25 Hz",
+            "value_label": "Vibrato 1",
+            "title": null,
+            "body": "From a slow wave to a fast flutter: a tremulant in every pipe.",
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "size": "Small",
+            "style": "Light",
+            "visual": "None",
+            "value": "400 Hz+",
+            "value_label": "Vibrato 2, extended mode",
+            "title": null,
+            "body": "Into the audible range, where vibrato becomes part of the pipe's tone colour.",
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "size": "Small",
+            "style": "Light",
+            "visual": "Chip",
+            "value": null,
+            "value_label": null,
+            "title": "Soft close or slap",
+            "body": "Choose how a note ends: a soft close, or a percussive slap.",
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "size": "Wide",
+            "style": "Dark",
+            "visual": "Wind",
+            "value": null,
+            "value_label": null,
+            "title": "The whole organ breathes together",
+            "body": "Every pipe's vibrato locks smoothly to the MIDI clock, without the drift of a mechanical tremulant. Up to ±75% depth each, and each with its own envelope.",
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "size": "Wide",
+            "style": "Light",
+            "visual": "None",
+            "value": null,
+            "value_label": null,
+            "title": "One key of a chord swells",
+            "body": "Polyphonic aftertouch sets the pressure of each sounding pipe on its own; channel aftertouch moves a whole rank.",
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          }
+        ],
+        "primary": {
+          "eyebrow": "Built into every valve",
+          "title": "An envelope and two vibratos for every pipe",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Every smARTvalve has its own envelope generator and two LFOs, running on its own clock of 2,000 times a second. Every pipe follows its own shape with millisecond accuracy, independent of the others, yet in sync.",
+              "spans": []
+            }
+          ],
+          "tone": "Dark band"
+        },
+        "id": "site_bento$44365313-80ea-4e78-aec1-8e76ae01aeaa",
+        "slice_type": "site_bento",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Key position, or anything else",
+          "title": "Map any MIDI to any pipe",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "smARTvalve is fully digital, so you decide what drives it. Every parameter is a standard MIDI controller: VPP level, expression, envelope times and curves, speech, and vibrato speed, depth and envelope.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "Map the key position to the valve opening and it behaves exactly like a position-following valve. Map velocity, aftertouch, a controller or an automation curve from a sequencer or DAW, and the same pipe does what no mechanical valve can.",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Crescendo and decrescendo on a held note",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Vibrato and tremolo per pipe, not per wind chest",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "An envelope and speech for every note",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Classic on/off behaviour where the music asks for it",
+              "spans": []
+            }
+          ],
+          "image": {},
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Screen of the smARTvalve software with a pressure curve, next to an organ keyboard, 4:3",
+          "media_side": "Image right",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Tinted"
+        },
+        "id": "site_text_media$d41b4498-cc89-4a55-8000-420fe8c057ad",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Artistic research",
+          "title": "One pipe, many sounds",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "With smARTvalve a single pipe is no longer limited to one characteristic sound. Real-time control of the wind pressure opens a new palette of sounds from traditional organ pipes. Here Mauricio Silva Orendain, who researches microtonality, plays pipes through smARTvalve with a MIDI gesture ring.",
+              "spans": []
+            }
+          ],
+          "video": {
+            "embed_url": "https://www.youtube.com/shorts/M4y9bnKHQeQ",
+            "type": "video",
+            "version": "1.0",
+            "title": "Gestural Organ (L'Explorateur)",
+            "author_name": "Mauricio Silva Orendain",
+            "author_url": "https://www.youtube.com/@mauriciosilvaorendain",
+            "provider_name": "YouTube",
+            "provider_url": "https://www.youtube.com/",
+            "thumbnail_url": "https://i.ytimg.com/vi/M4y9bnKHQeQ/hq2.jpg",
+            "thumbnail_width": 480,
+            "thumbnail_height": 360,
+            "html": "<iframe width=\"113\" height=\"200\" src=\"https://www.youtube.com/embed/M4y9bnKHQeQ?feature=oembed\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen title=\"Gestural Organ (L&#39;Explorateur)\"></iframe>",
+            "height": 200,
+            "width": 113
+          },
+          "caption": "Mauricio Silva Orendain controls organ pipes through smARTvalve with a MIDI gesture ring.",
+          "poster": {},
+          "video_brief": "Mauricio Silva Orendain playing pipes through smARTvalve with a MIDI gesture ring",
+          "tone": "Default"
+        },
+        "id": "site_video$daec494d-a0a1-4ee9-b976-f4d2c1c4119c",
+        "slice_type": "site_video",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "quote": [
+            {
+              "type": "paragraph",
+              "text": "smARTvalve creates new and largely unexplored connections between digital languages and the physicality of the pipe as an acoustic sound generator. It opens the instrument to non-organists, and to theatre, sound installations and artistic research.",
+              "spans": []
+            }
+          ],
+          "name": "Mauricio Silva Orendain",
+          "role": "Researcher in microtonality",
+          "image": {},
+          "tone": "Default"
+        },
+        "id": "site_quote$ed2ac548-60e5-4b6c-b7d2-9540907990bd",
+        "slice_type": "site_quote",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "point": "Any combination of pipes as a stop"
+          },
+          {
+            "point": "Pressure settings per pipe, per stop"
+          },
+          {
+            "point": "Stops can be changed after installation"
+          }
+        ],
+        "primary": {
+          "eyebrow": "Digital stops",
+          "title": "Stops set in software, in any combination",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Because every pipe has its own processor and address, a stop is no longer fixed in the wind chest. With our software you assign any combination of pipes to a stop, each pipe with its own pressure settings. In an organ built fully on smARTvalve, the number of combinations is practically unlimited; when smARTvalve extends an existing organ, the original control system can set limits, and we look at that per project.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "The organ is not finished on delivery day: stops can be added or changed later, without touching the chest.",
+              "spans": []
+            }
+          ],
+          "image": {},
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Screenshot of the stop configuration in the smARTvalve software, pipes grouped into stops, 4:3",
+          "media_side": "Image right",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$45219ae8-52e7-4072-b076-dd2ec21a885f",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "point": "Watchdog against hanging notes, and all-notes-off when a sequencer stops"
+          },
+          {
+            "point": "Firmware updates over MIDI, for all valves at once"
+          },
+          {
+            "point": "Every update verified by the valve itself"
+          }
+        ],
+        "primary": {
+          "eyebrow": "Optical MIDI and reliability",
+          "title": "Fast, safe and updatable, built for the concert stage",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "smARTvalves are connected over Optical MIDI at 3 Mbaud: about 100 times the speed of classic MIDI, over distances of 200 m and more. Light carries no electrical interference, so the console can stand wherever the organ needs it.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "Inside the organ, a high-capacity bus carries up to about 40,000 messages a second, and MIDI always gets priority. Read more about smARTvalve.",
+              "spans": [
+                {
+                  "start": 115,
+                  "end": 141,
+                  "type": "hyperlink",
+                  "data": {
+                    "link_type": "Web",
+                    "url": "/smartvalve"
+                  }
+                }
+              ]
+            }
+          ],
+          "image": {},
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Optical MIDI cable plugged into a smARTvalve controller, glowing connector, dark background, 4:3",
+          "media_side": "Image left",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$25626c33-4448-4975-a2c1-90553853cdfe",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "point": "Pipe panels and pipes designed in 3D"
+          },
+          {
+            "point": "See your organ before it is built"
+          },
+          {
+            "point": "Live pressure curve and diagnostics for every valve"
+          }
+        ],
+        "primary": {
+          "eyebrow": "PipeCreator and PipeViewer",
+          "title": "Pipe panels designed for your organ, every pipe monitored",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "With smARTvalve, the pipe panels that carry the valves and pipes are designed for each organ. We do that in PipeCreator, our own software: in its 3D view, PipeViewer, we design the pipe panels and the pipes, so you see your organ in 3D before it is built. The same program designs our wooden pipes and sends them to the CNC.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "Once the organ plays, PipeCreator shows a live pressure curve for every pipe next to the expected curve, and a diagnostics table for all valves.",
+              "spans": []
+            }
+          ],
+          "image": {},
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "PipeViewer on screen: a 3D pipe panel with its smARTvalves and pipes, 4:3",
+          "media_side": "Image right",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Tinted"
+        },
+        "id": "site_text_media$26f393ec-98e5-4f45-871a-5a4597a3b2bd",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "label": "Pressure control",
+            "value": "Sensor and processor in every valve",
+            "note": "Measured and corrected 2,000 times a second"
+          },
+          {
+            "label": "Attack",
+            "value": "Full pressure in about 10 ms",
+            "note": "Without overshoot or dip"
+          },
+          {
+            "label": "Pressure range",
+            "value": "0–400% of the Voiced Pipe Pressure",
+            "note": "VPP set per pipe, stored in the valve"
+          },
+          {
+            "label": "Regulation",
+            "value": "No external regulator or reservoir",
+            "note": "A speed-controlled blower supplies the chest"
+          },
+          {
+            "label": "Drive",
+            "value": "Voice-coil actuator",
+            "note": "Silent and proportional, not a solenoid"
+          },
+          {
+            "label": "Calibration",
+            "value": "Self-calibrating",
+            "note": "Learns from every attack"
+          },
+          {
+            "label": "Wind envelope",
+            "value": "Delay, start level, attack, decay, sustain, release",
+            "note": "5 ms to 12.7 s, an adjustable curve per stage"
+          },
+          {
+            "label": "Vibratos",
+            "value": "Two, up to ±75% each",
+            "note": "Up to 25 Hz and 50 Hz, extended mode above 400 Hz; locked to the MIDI clock"
+          },
+          {
+            "label": "Control",
+            "value": "Standard MIDI",
+            "note": "Polyphonic aftertouch per pipe, channel aftertouch per rank"
+          },
+          {
+            "label": "Connection",
+            "value": "Optical MIDI, 3 Mbaud",
+            "note": "200 m and more"
+          },
+          {
+            "label": "Bus",
+            "value": "Up to about 40,000 messages a second",
+            "note": "MIDI always has priority"
+          },
+          {
+            "label": "Safety",
+            "value": "Watchdog and automatic all-notes-off",
+            "note": null
+          },
+          {
+            "label": "Updates",
+            "value": "Firmware over MIDI, all valves at once",
+            "note": "Verified by every valve"
+          }
+        ],
+        "primary": {
+          "eyebrow": "At a glance",
+          "title": "smARTvalve specifications",
+          "intro": [],
+          "layout": "Spec list",
+          "tone": "Default"
+        },
+        "id": "site_facts$4f15f75e-1a3d-4d59-a789-6a4a2d2f0c28",
+        "slice_type": "site_facts",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "quote": [
+            {
+              "type": "paragraph",
+              "text": "This technology essentially turns a pipe organ into a physical synthesizer.",
+              "spans": []
+            }
+          ],
+          "name": "Studio 31, Basel",
+          "role": "On L'Explorateur, the transportable concert organ with smARTvalve on every pipe",
+          "image": {},
+          "tone": "Default"
+        },
+        "id": "site_quote$3ca90791-ebbe-4562-85b4-a589a538fc68",
+        "slice_type": "site_quote",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "title": "Tell us about the project",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "A new organ or an existing one, the wind chests, the number of pipes and what you want the instrument to do.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null
+          },
+          {
+            "title": "Technical documentation",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Specifications, dimensions and wiring for your project, so your team can judge the integration.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null
+          },
+          {
+            "title": "Demonstration",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Hear smARTvalve on real pipes, in our Herentals workshop or by video call.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null
+          },
+          {
+            "title": "Integration support",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "We support your team with the installation, the configuration of the valves and the digital stops.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null
+          }
+        ],
+        "primary": {
+          "eyebrow": "Working with us",
+          "title": "From first question to a playing organ",
+          "intro": [],
+          "tone": "Default"
+        },
+        "id": "site_steps$81a1b94d-884a-42cc-b273-ae8111e3b583",
+        "slice_type": "site_steps",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "question": "Can smARTvalve behave like a classic valve?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Yes. smARTvalve is fully digital: it can work as an on/off valve, follow the key position, or respond to velocity, aftertouch and any other MIDI you map to it. You choose per pipe and per stop.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Can it go into an existing organ?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Yes. smARTvalves are mounted on a pipe panel, so an existing organ can be converted by replacing its pipe panels. In a full smARTvalve organ everything is set in software; when smARTvalve extends an existing installation, the limits of its original control system apply. We look at every project first.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Which consoles and control systems work with smARTvalve?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Anything that speaks MIDI: a console with MIDI output, a sequencer, a DAW or a computer. Every parameter is a standard MIDI controller. Over Optical MIDI the console can be 200 m or more away.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Do I still need wind regulators or reservoirs?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "No. Every smARTvalve regulates its own pipe, 2,000 times a second, whatever the chest pressure. A speed-controlled blower supplies the chest; the valves do the rest.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Can you hear the valve?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "No. smARTvalve is driven by a silent voice-coil actuator, not a solenoid, and a filter keeps it from reacting to the pipe's own tone.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "What are digital stops?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Stops defined in software instead of in the wind chest. You assign any combination of pipes to a stop, with its own pressure settings, and you can change stops after installation.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Is smARTvalve proven in practice?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Yes. smARTvalve plays in L'Explorateur, Yves Rechsteiner's transportable concert organ with smARTvalve on every pipe: more than 30 performances since 2023, and set up in under two hours from the truck arriving. Read the case study.",
+                "spans": [
+                  {
+                    "start": 211,
+                    "end": 230,
+                    "type": "hyperlink",
+                    "data": {
+                      "link_type": "Web",
+                      "url": "/work/yves-rechsteiner"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "question": "What does it cost?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "That depends on the number of pipes and the project. Tell us about your organ and we send you a proposal.",
+                "spans": []
+              }
+            ]
+          }
+        ],
+        "primary": {
+          "eyebrow": null,
+          "title": "Questions from organ builders",
+          "intro": [],
+          "tone": "Default"
+        },
+        "id": "site_faq$58c3f586-d4e7-4119-b8b1-58bf410574c2",
+        "slice_type": "site_faq",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "For organ builders",
+          "title": "Request documentation or a demonstration",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Tell us about your workshop and your project. We reply personally.",
+              "spans": []
+            }
+          ],
+          "recipient": "decap",
+          "topics": "Technical documentation, Demonstration, Proposal for a project, Integration question",
+          "default_topic": "Technical documentation",
+          "show_phone": true,
+          "show_location": false,
+          "message_placeholder": "Your workshop, the organ (new or existing), the wind chests, the number of pipes and what you would like smARTvalve to do…",
+          "submit_label": "Send request",
+          "success_title": "Thank you",
+          "success_body": [
+            {
+              "type": "paragraph",
+              "text": "Your request is with us. We reply personally with the information you asked for.",
+              "spans": []
+            }
+          ],
+          "aside_title": "Decap Herentals",
+          "aside_body": [
+            {
+              "type": "paragraph",
+              "text": "Langepad 51C, 2200 Herentals, Belgium",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "+32 14 22 44 94",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "info@decap.be",
+              "spans": [
+                {
+                  "start": 0,
+                  "end": 13,
+                  "type": "hyperlink",
+                  "data": {
+                    "link_type": "Web",
+                    "url": "mailto:info@decap.be"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "smARTvalve is designed, built and programmed in our own workshop.",
+              "spans": []
+            }
+          ],
+          "tone": "Default"
+        },
+        "id": "contact_form$b7be4127-a465-4158-8bc6-6d4a01a55b9b",
+        "slice_type": "contact_form",
+        "slice_label": null
+      }
+    ],
+    "meta_title": "Proportional Pipe Valves for Organ Builders | smARTvalve",
+    "meta_description": "smARTvalve: a proportional pipe valve with its own sensor and processor. Pressure corrected 2,000 times a second, 0–400% of the voiced pressure, all over MIDI.",
+    "meta_image": {}
+  }
+}

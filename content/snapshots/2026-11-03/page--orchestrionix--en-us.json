@@ -1,0 +1,262 @@
+{
+  "id": "atc3jBEAACgAavQT",
+  "uid": "orchestrionix",
+  "url": null,
+  "type": "page",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22atc3jBEAACgAavQT%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2026-10-20T09:51:01+0000",
+  "last_publication_date": "2026-10-22T08:15:29+0000",
+  "slugs": [
+    "orchestrionix"
+  ],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [
+    {
+      "id": "atdvuREAACsAa143",
+      "type": "page",
+      "lang": "fr-fr",
+      "uid": "orchestrionix"
+    }
+  ],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Orchestrionix",
+        "spans": []
+      }
+    ],
+    "theme": "orchestrionix",
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "layout": "Split",
+          "eyebrow": "Orchestrionix by Decap",
+          "title": "Orchestrionix: robotic instruments for musicians",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Orchestrionix is Decap's line of robotic instruments for musicians, made in our workshop in Herentals. It used to have its own website; decap.be is now the home of both. Today the line is Brass Core: real trumpet or trombone sound, driven by your own audio.",
+              "spans": [
+                {
+                  "start": 188,
+                  "end": 198,
+                  "type": "strong"
+                }
+              ]
+            }
+          ],
+          "primary_cta_label": "Discover Brass Core",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "c65d84fd-1131-4eb4-ae33-5c0ee51771c3",
+            "url": "/brass-core"
+          },
+          "secondary_cta_label": "Self-playing instruments",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "8ceb7460-7894-4087-b4b3-89fd051ed9dc",
+            "url": "/instruments"
+          },
+          "note": null,
+          "image": {
+            "dimensions": {
+              "width": 1600,
+              "height": 1200
+            },
+            "alt": "Brass Core on a trombone",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/aIu906Tt2nPbZn2l_TROMBONE-Samenstelling_01_2023-Oct-16_10-42-03PM-000_CustomizedView21586800008.png?auto=format,compress",
+            "id": "aIu906Tt2nPbZn2l",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "mux_video": null,
+          "image_brief": "Brass Core clamped to a trumpet on a stand, dark backdrop, low side light catching the brass, portrait 4:5",
+          "image_shape": null,
+          "image_fit": null,
+          "image_position": null,
+          "image_zoom": null,
+          "overlay": null,
+          "blur": null,
+          "dim": null,
+          "color_effect": null,
+          "vignette": null,
+          "slow_zoom": null,
+          "tone": "Dark band"
+        },
+        "id": "site_hero$820e976f-7726-4931-b69b-0e658f54e9b7",
+        "slice_type": "site_hero",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "What makes it different",
+          "title": "No music library. You supply the performance.",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Our self-playing instruments come with a player and music. Orchestrionix instruments do not. They are tools for musicians, sound designers and venues who want to drive a real acoustic instrument with their own material.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "Brass Core takes a line-level audio signal, from a recording or from MIDI through the sampler or synth of your choice. A voice-coil motor turns that signal into air vibrations at the mouthpiece, and the brass instrument itself shapes the tone. No drilling, no changes to the instrument.",
+              "spans": []
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 610,
+              "height": 505
+            },
+            "alt": "Close-up of Brass Core on a trumpet",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/8kY9-01Bn9GNSd-e_Rectangle-62-1-3.png?auto=format,compress",
+            "id": "8kY9-01Bn9GNSd-e",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Close-up of Brass Core on a trombone mouthpiece with its audio cable plugged in, dark backdrop, 4:3",
+          "media_side": "Image right",
+          "aspect": "Landscape 4:3",
+          "cta_label": "Brass Core specifications",
+          "cta_link": {
+            "link_type": "Web",
+            "key": "06cad679-b5f1-4c9c-9744-d202c233fb10",
+            "url": "/brass-core"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$0d41c376-1e6a-42c6-86dd-a3abbcca7812",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": null,
+            "title": "smARTvalve",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "smARTvalve is a Decap product: one valve and one processor for every organ pipe.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": "smARTvalve",
+            "link": {
+              "link_type": "Web",
+              "key": "f12ded22-fb7f-4e9f-9a08-00a96554ea6e",
+              "url": "/smartvalve"
+            }
+          },
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": null,
+            "title": "Self-playing instruments",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "The Accordion Pedestal and Cube, Pipes, Percussion Unit, Mallet Percussion and Bellow Organ.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": "Instruments",
+            "link": {
+              "link_type": "Web",
+              "key": "cd615eb5-cd0f-421b-90fb-100e52e69835",
+              "url": "/instruments"
+            }
+          }
+        ],
+        "primary": {
+          "eyebrow": "Coming from orchestrionix.com?",
+          "title": "Where to find things now",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Everything from the old Orchestrionix site now lives on decap.be.",
+              "spans": []
+            }
+          ],
+          "columns": "2",
+          "card_style": "Text cards",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_card_grid$c925cfb6-2fe7-4586-ac5a-3cd7e5b15e08",
+        "slice_type": "site_card_grid",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Orchestrionix Brass Core",
+          "title": "Hear a real trumpet play from your audio",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "See how Brass Core works, what it connects to and what theatres, studios and museums use it for.",
+              "spans": []
+            }
+          ],
+          "price": "€ 2,599",
+          "price_note": "Ships straight away when in stock",
+          "primary_cta_label": "Discover Brass Core",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "acc63eeb-34c5-4694-8221-71c5a43d4fbf",
+            "url": "/brass-core"
+          },
+          "secondary_cta_label": "Ask a question",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "8ae15faa-2f28-427c-ab15-6d2fdfe03b8a",
+            "url": "/contact"
+          },
+          "image": {},
+          "image_brief": null,
+          "tone": "Dark band"
+        },
+        "id": "site_cta$51ccadc1-8769-4c3c-bf11-d1a811be205b",
+        "slice_type": "site_cta",
+        "slice_label": null
+      }
+    ],
+    "meta_title": "Orchestrionix Robotic Instruments | Decap Herentals",
+    "meta_description": "Orchestrionix is Decap's line of robotic instruments for musicians. No music library: you play them from your own audio. Today the line is Brass Core.",
+    "meta_image": {}
+  }
+}

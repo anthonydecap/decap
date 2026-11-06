@@ -1,0 +1,230 @@
+{
+  "id": "atdvqxEAACwAa14O",
+  "uid": "contact",
+  "url": null,
+  "type": "page",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22atdvqxEAACwAa14O%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2026-10-20T15:03:01+0000",
+  "last_publication_date": "2026-10-22T08:15:24+0000",
+  "slugs": [
+    "contacter-decap-herentals"
+  ],
+  "linked_documents": [],
+  "lang": "fr-fr",
+  "alternate_languages": [
+    {
+      "id": "atc3mBEAACgAavQ2",
+      "type": "page",
+      "lang": "en-us",
+      "uid": "contact"
+    }
+  ],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Contacter Decap Herentals",
+        "spans": []
+      }
+    ],
+    "theme": "decap",
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "layout": "Centered",
+          "eyebrow": "Contact",
+          "title": "Contacter l'atelier d'orgues Decap à Herentals",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Dites-nous ce que vous avez en tête : un orgue neuf, un instrument, une conversion MIDI ou une question sur nos logiciels. Plus vous nous en dites sur la salle et la musique, plus notre première réponse sera utile.",
+              "spans": []
+            }
+          ],
+          "primary_cta_label": null,
+          "primary_cta_link": {
+            "link_type": "Any"
+          },
+          "secondary_cta_label": null,
+          "secondary_cta_link": {
+            "link_type": "Any"
+          },
+          "note": null,
+          "image": {},
+          "mux_video": null,
+          "image_brief": null,
+          "image_shape": null,
+          "image_fit": null,
+          "image_position": null,
+          "image_zoom": null,
+          "overlay": null,
+          "blur": null,
+          "dim": null,
+          "color_effect": null,
+          "vignette": null,
+          "slow_zoom": null,
+          "tone": "Default"
+        },
+        "id": "site_hero$bbf1913a-dc44-470c-81bd-a0a4936faf73",
+        "slice_type": "site_hero",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Envoyer une demande",
+          "title": "Comment pouvons-nous vous aider ?",
+          "intro": [],
+          "recipient": "decap",
+          "topics": "Question générale, Orgue neuf, Instruments, Conversion MIDI, Logiciels, Presse",
+          "default_topic": "Question générale",
+          "show_phone": true,
+          "show_location": true,
+          "message_placeholder": "Pour un orgue neuf : où jouera-t-il, quelle musique, et quelle taille ou quel budget approximatif ? Pour une conversion MIDI : quel orgue et combien de touches ?",
+          "submit_label": "Envoyer la demande",
+          "success_title": "Merci, votre demande est envoyée",
+          "success_body": [
+            {
+              "type": "paragraph",
+              "text": "Nous lisons chaque message à l'atelier et répondons personnellement.",
+              "spans": []
+            }
+          ],
+          "aside_title": "L'atelier",
+          "aside_body": [
+            {
+              "type": "paragraph",
+              "text": "Decap Herentals, Langepad 51C, 2200 Herentals, Belgique",
+              "spans": [
+                {
+                  "start": 0,
+                  "end": 15,
+                  "type": "strong"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "Téléphone : +32 14 22 44 94",
+              "spans": [
+                {
+                  "start": 0,
+                  "end": 11,
+                  "type": "strong"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "E-mail : info@decap.be",
+              "spans": [
+                {
+                  "start": 0,
+                  "end": 8,
+                  "type": "strong"
+                },
+                {
+                  "start": 9,
+                  "end": 22,
+                  "type": "hyperlink",
+                  "data": {
+                    "link_type": "Web",
+                    "url": "mailto:info@decap.be"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "DECAP TONY BV · BE 0450.352.984",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "Vous faites restaurer un orgue historique ? Contactez directement l'Atelier Frank Decap.",
+              "spans": [
+                {
+                  "start": 68,
+                  "end": 87,
+                  "type": "hyperlink",
+                  "data": {
+                    "link_type": "Web",
+                    "url": "/frank-decap"
+                  }
+                }
+              ]
+            }
+          ],
+          "tone": "Default"
+        },
+        "id": "contact_form$003b20ce-3026-4080-95ca-c7ebbbedc9c8",
+        "slice_type": "contact_form",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "question": "Puis-je visiter l'atelier à Herentals ?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "L'atelier n'est pas ouvert aux visites : c'est là que les orgues sont construits. De temps en temps, nous organisons des journées portes ouvertes. Si nous construisons un orgue pour vous, vous venez plusieurs fois à l'atelier pendant la construction pour voir comment il avance.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Livrez-vous hors de Belgique ?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Oui, nous expédions dans le monde entier. Des orgues et instruments Decap jouent au Japon, aux États-Unis, en Australie, en Asie et dans toute l'Europe. Le transport et l'installation dépendent du projet et font partie de votre devis.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Qui restaure les orgues historiques ?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "La restauration est le travail de l'Atelier Frank Decap, l'entreprise distincte de Frank, le frère de Tony. Utilisez le formulaire de sa page pour que votre message lui parvienne directement.",
+                "spans": [
+                  {
+                    "start": 134,
+                    "end": 141,
+                    "type": "hyperlink",
+                    "data": {
+                      "link_type": "Web",
+                      "url": "/frank-decap"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "primary": {
+          "eyebrow": "Avant d'écrire",
+          "title": "Bon à savoir",
+          "intro": [],
+          "tone": "Tinted"
+        },
+        "id": "site_faq$a847ba15-3855-42a9-9084-bc7c6db30e3f",
+        "slice_type": "site_faq",
+        "slice_label": null
+      }
+    ],
+    "meta_title": "Contacter l'atelier d'orgues | Decap Herentals",
+    "meta_description": "Une question sur un orgue neuf, un instrument automatique, une conversion MIDI ou un logiciel ? Decap Herentals, Langepad 51C, 2200 Herentals. +32 14 22 44 94.",
+    "meta_image": {}
+  }
+}

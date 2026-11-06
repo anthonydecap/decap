@@ -7,6 +7,7 @@ import { type SliceComponentProps } from "@prismicio/react";
 import clsx from "clsx";
 import { FadeIn, FadeInStagger } from "@/components/FadeIn";
 import { Section, SectionHeader, toneFromSelect } from "@/lib/site-ui";
+import { PipeRanges } from "./PipeRanges";
 
 const STAT_COLUMNS: Record<number, string> = {
   1: "",
@@ -15,7 +16,10 @@ const STAT_COLUMNS: Record<number, string> = {
   4: "sm:grid-cols-2 lg:grid-cols-4",
 };
 
-/** Key figures as big numbers ("Stats"), or a label/value spec table ("Spec list"). */
+/**
+ * Key figures as big numbers ("Stats"), a label/value spec table ("Spec list"), or organ ranks
+ * drawn as keyboards over one shared compass ("Pipe ranges").
+ */
 const SiteFacts: FC<SliceComponentProps<any>> = ({ slice }) => {
   const p = slice.primary;
   const facts: any[] = (slice.items || []).filter((i: any) => i?.value || i?.label);
@@ -29,7 +33,9 @@ const SiteFacts: FC<SliceComponentProps<any>> = ({ slice }) => {
       <SectionHeader eyebrow={p.eyebrow} title={p.title} intro={p.intro} />
 
       <FadeInStagger faster className={hasHeader ? "mt-16 lg:mt-20" : undefined}>
-        {specList ? (
+        {p.layout === "Pipe ranges" ? (
+          <PipeRanges facts={facts} />
+        ) : specList ? (
           <dl
             className={clsx(
               "mx-auto grid gap-x-16",

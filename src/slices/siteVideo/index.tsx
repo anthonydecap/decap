@@ -3,9 +3,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { type FC, useState } from "react";
 import { isFilled } from "@prismicio/client";
+import clsx from "clsx";
 import { type SliceComponentProps } from "@prismicio/react";
 import { FadeIn, FadeInStagger } from "@/components/FadeIn";
 import { MediaPlaceholder, MediaSlot } from "@/components/MediaSlot";
+import { MuxPlayer, muxPlaybackId } from "@/components/MuxPlayer";
 import { Section, SectionHeader, toneFromSelect } from "@/lib/site-ui";
 import { useUiCopy } from "@/lib/ui-copy";
 
@@ -18,23 +20,46 @@ function playerUrl(embedUrl: string): string | null {
   return null;
 }
 
-/** A 16:9 video that loads the provider's player only after the visitor clicks play. */
+/**
+ * A 16:9 video. Mux videos play as a muted loop while on screen (pause and sound buttons);
+ * YouTube and Vimeo load their privacy-friendly embed only after the visitor clicks play.
+ */
 const SiteVideo: FC<SliceComponentProps<any>> = ({ slice }) => {
   const p = slice.primary;
   const t = useUiCopy();
   const [active, setActive] = useState(false);
   const video = isFilled.embed(p.video) ? (p.video as any) : null;
-  if (!video && !p.video_brief) return null;
+  // The plain Mux link field wins; a Mux link pasted in the embed field works too.
+  const muxId = muxPlaybackId(p.mux_video) ?? muxPlaybackId(video?.embed_url);
+  if (!muxId && !video && !p.video_brief) return null;
 
-  const title = video?.title || p.title || t.video;
+  const title = (video?.provider_name !== "Mux" && video?.title) || p.title || t.video;
   const src = video?.embed_url ? playerUrl(video.embed_url) : null;
   const canPlay = !!src || !!video?.html;
   // Imported links may lack oEmbed data: derive the YouTube thumbnail from the video id.
   const ytId = src?.match(/youtube-nocookie\.com\/embed\/([\w-]{6,})/)?.[1];
   const youtubeThumb = ytId ? `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg` : null;
 
+  // "Same as section": no card behind the video, the poster is shown whole on the section color
+  const bare = p.media_background === "Same as section";
+
+  const posterImage = isFilled.image(p.poster) ? (
+    <MediaSlot
+      field={p.poster}
+      brief={p.video_brief || title}
+      aspect=""
+      rounded=""
+      className="absolute inset-0 h-full w-full"
+      sizes="(min-width: 1280px) 1216px, 100vw"
+      fit={bare ? "contain" : "auto"}
+      backdrop={!bare}
+    />
+  ) : null;
+
   let frame: React.ReactNode;
-  if (active && src) {
+  if (muxId) {
+    frame = <MuxPlayer playbackId={muxId} title={title} poster={posterImage ?? undefined} sound={!p.without_sound} className={clsx("absolute inset-0", bare && "bg-page")} />;
+  } else if (active && src) {
     frame = (
       <iframe
         src={src}
@@ -47,8 +72,8 @@ const SiteVideo: FC<SliceComponentProps<any>> = ({ slice }) => {
   } else if (active && video?.html) {
     frame = <div className="absolute inset-0 [&_iframe]:h-full [&_iframe]:w-full" dangerouslySetInnerHTML={{ __html: video.html }} />;
   } else {
-    const poster = isFilled.image(p.poster) ? (
-      <MediaSlot field={p.poster} brief={p.video_brief || title} aspect="" rounded="" className="absolute inset-0" sizes="(min-width: 1280px) 1216px, 100vw" />
+    const poster = posterImage ? (
+      posterImage
     ) : video?.thumbnail_url || youtubeThumb ? (
       // eslint-disable-next-line @next/next/no-img-element
       <img src={video?.thumbnail_url || youtubeThumb!} alt="" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
@@ -63,7 +88,10 @@ const SiteVideo: FC<SliceComponentProps<any>> = ({ slice }) => {
             type="button"
             onClick={() => setActive(true)}
             aria-label={t.playVideo(title)}
-            className="group absolute inset-0 flex items-center justify-center bg-black/10 transition hover:bg-black/20 focus-visible:outline-none"
+            className={clsx(
+              "group absolute inset-0 flex items-center justify-center transition focus-visible:outline-none",
+              !bare && "bg-black/10 hover:bg-black/20"
+            )}
           >
             <span className="flex h-20 w-20 items-center justify-center rounded-full bg-accent text-accent-contrast shadow-lg transition-transform duration-300 group-hover:scale-105 group-focus-visible:ring-4 group-focus-visible:ring-accent-soft sm:h-24 sm:w-24">
               <svg viewBox="0 0 24 24" className="ml-1 h-8 w-8 fill-current" aria-hidden="true">
@@ -82,7 +110,7 @@ const SiteVideo: FC<SliceComponentProps<any>> = ({ slice }) => {
         <SectionHeader eyebrow={p.eyebrow} title={p.title} intro={p.intro} />
         <FadeIn className="mt-12 sm:mt-16">
           <figure>
-            <div className="relative aspect-[16/9] overflow-hidden rounded-2xl bg-surface lg:rounded-3xl">{frame}</div>
+            <div className={clsx("relative aspect-[16/9] overflow-hidden rounded-2xl lg:rounded-3xl", !bare && "bg-surface")}>{frame}</div>
             {p.caption && <figcaption className="mt-4 text-center text-sm text-ink-muted">{p.caption}</figcaption>}
           </figure>
         </FadeIn>

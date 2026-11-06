@@ -1,0 +1,933 @@
+{
+  "id": "atdv3REAACcAa16a",
+  "uid": "yves-rechsteiner",
+  "url": null,
+  "type": "project",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22atdv3REAACcAa16a%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2026-10-20T15:02:55+0000",
+  "last_publication_date": "2026-10-22T08:15:17+0000",
+  "slugs": [
+    "yves-rechsteiner--lexplorateur"
+  ],
+  "linked_documents": [],
+  "lang": "fr-fr",
+  "alternate_languages": [
+    {
+      "id": "atc3aBEAAC4AavOd",
+      "type": "project",
+      "lang": "en-us",
+      "uid": "yves-rechsteiner"
+    }
+  ],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Yves Rechsteiner : L'Explorateur",
+        "spans": []
+      }
+    ],
+    "theme": "decap",
+    "summary": "Un orgue de concert transportable avec contrôle du vent sur chaque tuyau : monté en moins de deux heures, plus de 30 concerts depuis 2023.",
+    "card_image": {},
+    "client": "Yves Rechsteiner, Toulouse les Orgues",
+    "year": "2021–2026",
+    "location": "Toulouse, France",
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "layout": "Split",
+          "eyebrow": "Réalisations · Yves Rechsteiner",
+          "title": "L'Explorateur : un orgue de concert transportable avec SmartValve sur chaque tuyau",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "L'organiste Yves Rechsteiner voulait un orgue à tuyaux capable de jouer partout où se trouve la musique, pas seulement dans les églises. Ensemble, nous avons construit L'Explorateur : douze modules qui voyagent dans une seule camionnette, montés en moins de deux heures, avec le vent de chaque tuyau sous contrôle. Rechsteiner appelle le résultat un synthétiseur physique.",
+              "spans": []
+            }
+          ],
+          "primary_cta_label": "SmartValve pour facteurs d'orgues",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "b76de602-c5bd-445c-b8ba-28af1247b2a2",
+            "url": "/smartvalve-for-organ-builders"
+          },
+          "secondary_cta_label": "À propos de SmartValve",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "fb178fd9-428f-4150-95bb-970d1e32bf64",
+            "url": "/smartvalve"
+          },
+          "note": null,
+          "image": {
+            "dimensions": {
+              "width": 815,
+              "height": 542
+            },
+            "alt": "A stage production with L'Explorateur: four dancers in front of the organ",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/-ZSpWiGWlMAAYL6__20221008_mohaibalazs_074-2-2.jpeg?auto=format,compress",
+            "id": "-ZSpWiGWlMAAYL6_",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "mux_video": null,
+          "image_brief": "L'Explorateur on stage with dancers in front, wide shot, 4:3",
+          "image_shape": null,
+          "image_fit": null,
+          "image_position": null,
+          "image_zoom": null,
+          "overlay": null,
+          "blur": null,
+          "dim": null,
+          "color_effect": null,
+          "vignette": null,
+          "slow_zoom": null,
+          "tone": "Default"
+        },
+        "id": "site_hero$78f2b14c-1324-4d5b-9f30-aa48af9e8e0b",
+        "slice_type": "site_hero",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "label": "de l'arrivée du camion aux premières notes",
+            "value": "< 2 h",
+            "note": null
+          },
+          {
+            "label": "concerts depuis 2023",
+            "value": "30+",
+            "note": null
+          },
+          {
+            "label": "modules, dans une seule camionnette de 20 m³",
+            "value": "12",
+            "note": null
+          },
+          {
+            "label": "régulateur de vent : une soufflerie et une caisse de distribution",
+            "value": "0",
+            "note": null
+          }
+        ],
+        "primary": {
+          "eyebrow": null,
+          "title": null,
+          "intro": [],
+          "layout": "Stats",
+          "tone": "Tinted"
+        },
+        "id": "site_facts$10998a76-64c5-43b9-9b96-c244d9d76b02",
+        "slice_type": "site_facts",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "L'idée",
+          "title": "Un orgue pour toutes les scènes, pas seulement pour les églises",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "En 2013, Yves Rechsteiner devient directeur artistique de Toulouse les Orgues. Son idée : un orgue à tuyaux qui puisse sortir de l'église. « Le but était d'avoir un instrument qui joue hors des églises, pour tout projet musical avec orgue à tuyaux. »",
+              "spans": [
+                {
+                  "start": 139,
+                  "end": 250,
+                  "type": "em"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "En 2017, le projet s'arrête pour des raisons financières. Deux ans plus tard, Rechsteiner voit la bande-annonce du spectacle Die Automaten de Stephan Eicher, construit avec des instruments Decap, et rencontre Tony Decap. Tony avait l'expérience des orgues à tuyaux déplaçables et avait déjà développé sa propre régulation du vent. Rechsteiner commande un instrument piloté en MIDI.",
+              "spans": [
+                {
+                  "start": 125,
+                  "end": 138,
+                  "type": "em"
+                }
+              ]
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 710,
+              "height": 542
+            },
+            "alt": "Dancers on stage in front of L'Explorateur, an organist at the console",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/E8ZDXmUAI2SXqix2_20221008_mohaibalazs_074-3-3.jpeg?auto=format,compress",
+            "id": "E8ZDXmUAI2SXqix2",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Dancers on stage in front of L'Explorateur, an organist at the console, 4:3",
+          "media_side": "Image left",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$e589d904-6b8b-4d33-8b5a-b034a5c7dc49",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "year": "2013",
+            "title": "L'idée",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Yves Rechsteiner, nouveau directeur artistique de Toulouse les Orgues, veut un orgue capable de jouer hors des églises.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null,
+            "highlight": false
+          },
+          {
+            "year": "2017",
+            "title": "En suspens",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Le projet d'orgue transportable s'arrête pour des raisons financières.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null,
+            "highlight": false
+          },
+          {
+            "year": "2019",
+            "title": "La rencontre avec Tony Decap",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Grâce à la bande-annonce de Die Automaten de Stephan Eicher. Rechsteiner commande un instrument piloté en MIDI.",
+                "spans": [
+                  {
+                    "start": 28,
+                    "end": 41,
+                    "type": "em"
+                  }
+                ]
+              }
+            ],
+            "image": {},
+            "image_brief": null,
+            "highlight": false
+          },
+          {
+            "year": "2021",
+            "title": "Début de la construction",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Pendant la construction, Decap propose une nouveauté : régler le vent non plus par sommier, mais par tuyau.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null,
+            "highlight": false
+          },
+          {
+            "year": "2023",
+            "title": "Premiers concerts",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Après deux ans de travail et de recherche, L'Explorateur joue avec la première génération de soupapes. Les concerts commencent.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null,
+            "highlight": false
+          },
+          {
+            "year": "2023–2025",
+            "title": "SmartValve",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Tony Decap conçoit la deuxième génération, SmartValve, et l'électronique des modules est reconstruite autour d'elle.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null,
+            "highlight": true
+          },
+          {
+            "year": "2025",
+            "title": "Le premier synthétiseur à vent",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "SmartValve en concert : chaque tuyau d'un orgue d'église transportable commandé séparément. Parmi les concerts, un hommage à Moondog dans la Chapelle de la Trinité à Lyon.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null,
+            "highlight": true
+          },
+          {
+            "year": "2026",
+            "title": "Les prochaines étapes",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Nouvelles soupapes et nouveaux sommiers, logiciel de console, ajustement de l'harmonisation et un jeu à anches libres provenant d'un orgue expressif Muller de 1830.",
+                "spans": [
+                  {
+                    "start": 133,
+                    "end": 148,
+                    "type": "em"
+                  }
+                ]
+              }
+            ],
+            "image": {},
+            "image_brief": null,
+            "highlight": false
+          }
+        ],
+        "primary": {
+          "eyebrow": "Chronologie",
+          "title": "De l'idée au synthétiseur à vent",
+          "intro": [],
+          "tone": "Default"
+        },
+        "id": "site_timeline$beefb046-2b52-4229-a06d-05dce8c1c449",
+        "slice_type": "site_timeline",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "point": "Une soupape et un processeur par tuyau"
+          },
+          {
+            "point": "Pression mesurée et corrigée au pied du tuyau"
+          },
+          {
+            "point": "Aucun régulateur de vent : une soufflerie et une caisse de distribution suffisent"
+          }
+        ],
+        "primary": {
+          "eyebrow": "La technologie",
+          "title": "Le vent réglé par tuyau, pas par sommier",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Dans un orgue classique, tous les tuyaux d'un sommier partagent le même vent. Dans L'Explorateur, chaque tuyau a sa propre SmartValve, à quelques millimètres du pied du tuyau. La soupape mesure la chute de pression en entrée et ouvre davantage pour la compenser : chaque tuyau garde son vent quand de nombreux tuyaux sonnent ensemble.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "Les premières soupapes étaient de petits haut-parleurs transformés en soupapes. SmartValve, la deuxième génération, a été conçue par Tony Decap et produite industriellement. Pour l'organiste, cela signifie le contrôle de chaque note : « on peut définir la nature de l'attaque du son. »",
+              "spans": [
+                {
+                  "start": 235,
+                  "end": 285,
+                  "type": "em"
+                }
+              ]
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 1672,
+              "height": 941
+            },
+            "alt": "smARTvalves with their electronics",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/IWKJJma9LmOjjrPe_decap-smartvalve-samples.jpg?auto=format,compress",
+            "id": "IWKJJma9LmOjjrPe",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Close-up of the SmartValves under the pipes inside L'Explorateur, dark background, 4:3",
+          "media_side": "Image right",
+          "aspect": "Landscape 4:3",
+          "cta_label": "Comment fonctionne SmartValve",
+          "cta_link": {
+            "link_type": "Web",
+            "key": "7f7b86b5-2929-445e-97f3-82cf30d23f37",
+            "url": "/smartvalve"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$90883433-c1d9-4620-914e-947255384931",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "point": "Tient dans une camionnette de 20 m³"
+          },
+          {
+            "point": "1 200 kg au maximum"
+          },
+          {
+            "point": "Modules reconstruits aux mêmes dimensions standard"
+          }
+        ],
+        "primary": {
+          "eyebrow": "Conçu pour voyager",
+          "title": "Une camionnette, douze modules, moins de deux heures",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Dès le départ, L'Explorateur avait deux limites : tenir dans une camionnette de 20 m³ et ne pas peser plus de 1 200 kg. Chaque choix technique en a découlé.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "L'orgue est divisé en modules que l'on porte, place et raccorde. Comme SmartValve rend les régulateurs de vent inutiles, l'alimentation en vent se résume à une soufflerie et une caisse de distribution. « Pour L'Explorateur, cela signifie un montage facile de moins de 2 heures, de l'arrivée du camion aux premières notes. »",
+              "spans": [
+                {
+                  "start": 202,
+                  "end": 323,
+                  "type": "em"
+                }
+              ]
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 815,
+              "height": 542
+            },
+            "alt": "Render of L'Explorateur's transportable modules",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/aZCn_lWLo0XkEg-j_20221008_mohaibalazs_074-1-2-1.png?auto=format,compress",
+            "id": "aZCn_lWLo0XkEg-j",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "L'Explorateur modules being unloaded from the van or set up in a hall, 4:3",
+          "media_side": "Image left",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Tinted"
+        },
+        "id": "site_text_media$fc50f9b9-6f6e-427e-a5a5-386b797f109b",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Dans la salle",
+          "title": "L'emplacement fait partie du son",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Comme les modules sont séparés, ils peuvent se tenir ensemble comme un seul orgue, ou à distance comme des plans sonores indépendants autour du public. Chaque emplacement change la rencontre entre l'instrument et la salle. « Le même module de Flûte sonne différemment selon qu'il est placé devant, sur le côté ou derrière un autre module. »",
+              "spans": [
+                {
+                  "start": 223,
+                  "end": 340,
+                  "type": "em"
+                }
+              ]
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 710,
+              "height": 499
+            },
+            "alt": "L'Explorateur's modules on stage, with dancers and smoke",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/Noqm3xfDvZ1uZkzk_image-6-1.jpeg?auto=format%2Ccompress&rect=0%2C0%2C710%2C499&w=710&h=499",
+            "id": "Noqm3xfDvZ1uZkzk",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "L'Explorateur modules spread around a hall or chapel, audience in between, wide shot, 4:3",
+          "media_side": "Image right",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$47705f18-4218-46d5-beb3-4b981be9d5e3",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "label": "Bourdon",
+            "value": "16′ à 4′",
+            "note": null
+          },
+          {
+            "label": "Principal",
+            "value": "8′ à 1′",
+            "note": null
+          },
+          {
+            "label": "Flûte",
+            "value": "8′ à 1′",
+            "note": "tuyaux à partir de la deuxième octave"
+          },
+          {
+            "label": "Flûte traversière en bois",
+            "value": "8′",
+            "note": "tuyaux à partir de la deuxième octave"
+          },
+          {
+            "label": "Salicional",
+            "value": "8′",
+            "note": null
+          },
+          {
+            "label": "Gambe",
+            "value": "8′ et 4′",
+            "note": "tuyaux à partir de la deuxième octave"
+          },
+          {
+            "label": "Nasard",
+            "value": "",
+            "note": null
+          },
+          {
+            "label": "Tierce",
+            "value": "",
+            "note": null
+          },
+          {
+            "label": "Trompette",
+            "value": "16′ à 4′",
+            "note": "nouvelles anches libres dans les deux premières octaves"
+          }
+        ],
+        "primary": {
+          "eyebrow": "Composition",
+          "title": "La composition d'origine",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Telle que prévue au départ. L'instrument continue d'évoluer : voir « La suite ».",
+              "spans": []
+            }
+          ],
+          "layout": "Spec list",
+          "tone": "Default"
+        },
+        "id": "site_facts$0cc37bca-2908-4978-8837-ce0e9208cee3",
+        "slice_type": "site_facts",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "La tuyauterie",
+          "title": "De vieux tuyaux, une nouvelle vie",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "La plus grande partie de la tuyauterie est de seconde main, de la fin du XIXe et du début du XXe siècle, et a été harmonisée par Jean Daldosso. De nouveaux tuyaux à anches libres ont été fabriqués par Orgelbau Orglez en Bretagne : les anches libres changent de dynamique sans changer de hauteur, ce qui convient parfaitement au contrôle du vent par tuyau.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "Avec SmartValve, un jeu peut faire bien plus que ce pour quoi il a été construit : cinquante tuyaux de Flûte donnent toute une palette de couleurs, par le seul vent.",
+              "spans": []
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 710,
+              "height": 542
+            },
+            "alt": "Render of L'Explorateur's modules and pipework",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/aZCn_VWLo0XkEg-i_20221008_mohaibalazs_074-3-1-1.png?auto=format,compress",
+            "id": "aZCn_VWLo0XkEg-i",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Close-up of old wooden and metal pipes standing on a module of L'Explorateur, 4:3",
+          "media_side": "Image left",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$2c5a5606-8549-4514-aa46-2564c2efa5ed",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": null,
+            "title": "Répertoire",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "La Messe solennelle de Vierne, le Requiem de Fauré, de la musique vocale de Thierry Escaich et le Concerto pour orgue de Poulenc.",
+                "spans": [
+                  {
+                    "start": 3,
+                    "end": 19,
+                    "type": "em"
+                  },
+                  {
+                    "start": 34,
+                    "end": 41,
+                    "type": "em"
+                  },
+                  {
+                    "start": 98,
+                    "end": 117,
+                    "type": "em"
+                  }
+                ]
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": null,
+            "title": "Concerts",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Dans des églises, des musées, des théâtres et des auditoriums. En novembre 2025, un hommage à Moondog dans la Chapelle de la Trinité à Lyon.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": null,
+            "title": "Résidences",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Pour Toulouse les Orgues, le duo berlinois Gamut et l'artiste torontois George Rahi ont travaillé avec L'Explorateur comme orgue piloté en MIDI.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          }
+        ],
+        "primary": {
+          "eyebrow": "Sur scène",
+          "title": "Du Requiem de Fauré aux résidences MIDI",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Depuis 2023, L'Explorateur a donné plus de 30 concerts, dans des églises, des musées, des théâtres et des salles de concert.",
+              "spans": []
+            }
+          ],
+          "columns": "3",
+          "card_style": "Text cards",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_card_grid$0ea240fd-c644-47c4-bf2b-8c2b451a8f77",
+        "slice_type": "site_card_grid",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "quote": [
+            {
+              "type": "paragraph",
+              "text": "Tous reconnaissent le haut niveau de qualité, de performance et de réponse de la smART valve de Tony Decap.",
+              "spans": []
+            }
+          ],
+          "name": "Yves Rechsteiner",
+          "role": "À propos des facteurs d'orgues qui ont vu L'Explorateur",
+          "image": {},
+          "tone": "Default"
+        },
+        "id": "site_quote$cebe9834-fed2-4825-a01f-090d70a587e8",
+        "slice_type": "site_quote",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "La suite",
+          "title": "Un instrument qui continue de grandir",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "L'Explorateur n'est pas terminé, et c'est bien là l'idée.",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Clavier Osmose : la pression du vent suit la touche, et l'organiste joue avec une technique de piano ou de clavicorde.",
+              "spans": [
+                {
+                  "start": 0,
+                  "end": 16,
+                  "type": "strong"
+                }
+              ]
+            },
+            {
+              "type": "list-item",
+              "text": "Logiciel de console : un outil pour programmer l'attaque, le développement et le vibrato de chaque son, inspiré des enveloppes ADSR.",
+              "spans": [
+                {
+                  "start": 0,
+                  "end": 21,
+                  "type": "strong"
+                }
+              ]
+            },
+            {
+              "type": "list-item",
+              "text": "Tuyaux polyphones pour la basse du Principal et du Salicional : plusieurs notes avec un seul tuyau.",
+              "spans": [
+                {
+                  "start": 0,
+                  "end": 17,
+                  "type": "strong"
+                }
+              ]
+            },
+            {
+              "type": "list-item",
+              "text": "Nouvelles boîtes expressives conçues par Tony Decap, pour les nuances les plus douces.",
+              "spans": [
+                {
+                  "start": 0,
+                  "end": 28,
+                  "type": "strong"
+                }
+              ]
+            },
+            {
+              "type": "list-item",
+              "text": "Un Ophicléide 16′ plus léger, et un jeu à anches libres provenant d'un orgue expressif Muller de 1830.",
+              "spans": [
+                {
+                  "start": 0,
+                  "end": 28,
+                  "type": "strong"
+                },
+                {
+                  "start": 71,
+                  "end": 86,
+                  "type": "em"
+                }
+              ]
+            }
+          ],
+          "image": {},
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Yves Rechsteiner at the console of L'Explorateur with a laptop beside the keyboard, 4:3",
+          "media_side": "Image right",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Tinted"
+        },
+        "id": "site_text_media$3ff1da85-47ce-4123-89eb-2b96a792c6a3",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "À voir",
+          "title": "Gamut explore L’Explorateur",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Le duo berlinois Gamut, en résidence pour Toulouse les Orgues, montre ce que le contrôle du vent tuyau par tuyau rend possible.",
+              "spans": []
+            }
+          ],
+          "video": {
+            "embed_url": "https://www.youtube.com/watch?v=IvDFsVgjlno",
+            "provider_name": "YouTube",
+            "provider_url": "https://www.youtube.com/",
+            "title": "AGGREGATE : COLLABORATIONS #1 - Toulouse",
+            "author_name": "gamut inc",
+            "author_url": "https://www.youtube.com/@pirxpirxpirx",
+            "type": "video",
+            "height": 113,
+            "width": 200,
+            "version": "1.0",
+            "thumbnail_height": 360,
+            "thumbnail_width": 480,
+            "thumbnail_url": "https://i.ytimg.com/vi/IvDFsVgjlno/hqdefault.jpg",
+            "html": "<iframe width=\"200\" height=\"113\" src=\"https://www.youtube.com/embed/IvDFsVgjlno?feature=oembed\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen title=\"AGGREGATE : COLLABORATIONS #1 - Toulouse\"></iframe>"
+          },
+          "caption": null,
+          "poster": {},
+          "video_brief": "Gamut playing L'Explorateur in residency",
+          "tone": "Default"
+        },
+        "id": "site_video$d035b099-7c43-4442-806b-128a1da028df",
+        "slice_type": "site_video",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Pour les facteurs d'orgues et les organistes",
+          "title": "Donnez à chaque tuyau son propre vent",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "SmartValve est disponible pour les orgues neufs et, en remplaçant les chapes, pour les orgues existants. Parlez-nous de votre projet.",
+              "spans": []
+            }
+          ],
+          "price": null,
+          "price_note": null,
+          "primary_cta_label": "SmartValve pour facteurs d'orgues",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "b6b3a071-1ed3-4ae4-9e6f-c80dcdd673ff",
+            "url": "/smartvalve-for-organ-builders"
+          },
+          "secondary_cta_label": "Contacter Decap",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "b3396a18-c842-4f7a-b796-4001198c93bf",
+            "url": "/contact"
+          },
+          "image": {},
+          "image_brief": null,
+          "tone": "Dark band"
+        },
+        "id": "site_cta$4b9801da-af04-4fbd-84b5-bc37b60b5dd7",
+        "slice_type": "site_cta",
+        "slice_label": null
+      }
+    ],
+    "meta_title": "L'Explorateur, orgue de concert transportable | Decap",
+    "meta_description": "L'Explorateur, l'orgue transportable d'Yves Rechsteiner avec SmartValve sur chaque tuyau : 12 modules, monté en moins de 2 h, plus de 30 concerts depuis 2023.",
+    "meta_image": {}
+  }
+}

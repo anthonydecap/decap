@@ -1,0 +1,761 @@
+{
+  "id": "atc3nREAACwAavRC",
+  "uid": "about",
+  "url": null,
+  "type": "page",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22atc3nREAACwAavRC%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2026-10-20T09:50:59+0000",
+  "last_publication_date": "2026-10-26T15:51:58+0000",
+  "slugs": [
+    "about-decap-herentals"
+  ],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [
+    {
+      "id": "atdvpREAACgAa13_",
+      "type": "page",
+      "lang": "fr-fr",
+      "uid": "about"
+    }
+  ],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "About Decap Herentals",
+        "spans": []
+      }
+    ],
+    "theme": "decap",
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "layout": "Split",
+          "eyebrow": "Organ builders since 1895. Decap Herentals since 1933.",
+          "title": "Four generations of Decap organ builders in Herentals",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Aloïs Decap started renting out organs around Antwerp in 1895. His son Frans founded Decap Herentals in 1933. Today Tony Decap, the fourth generation, builds dance organs, orchestrions, self-playing instruments and the technology that drives them in the same town.",
+              "spans": []
+            }
+          ],
+          "primary_cta_label": "Our organs",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "845f38cb-a9ad-4f02-a387-89383859eaca",
+            "url": "/organs"
+          },
+          "secondary_cta_label": "Contact the workshop",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "1a85846a-ce8e-4f87-9faf-e3f82f8fc107",
+            "url": "/contact"
+          },
+          "note": null,
+          "image": {
+            "dimensions": {
+              "width": 1672,
+              "height": 941
+            },
+            "alt": "Tony Decap and François Decap in the Herentals workshop in front of an organ without its façade",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/U2LTUoM0bqWiYfBU_decap-tony-decap-and-francois-decap-belcanto-orgel-without-facade.jpg?auto=format,compress",
+            "id": "U2LTUoM0bqWiYfBU",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "mux_video": null,
+          "image_brief": "Tony Decap at the workbench in the Herentals workshop, an organ façade in progress behind him, natural light, portrait 4:5",
+          "image_shape": null,
+          "image_fit": null,
+          "image_position": null,
+          "image_zoom": null,
+          "overlay": null,
+          "blur": null,
+          "dim": null,
+          "color_effect": null,
+          "vignette": null,
+          "slow_zoom": null,
+          "tone": "Default"
+        },
+        "id": "site_hero$1ccdd0a8-e7c8-480e-9c9c-86a801cc78cf",
+        "slice_type": "site_hero",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Decap Herentals",
+          "title": "One family, one trade, since 1895",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Decap Herentals is known for real dance organs: organs built for people to dance to. We have built street organs and barrel organs too, but dance organs are what we normally make. The workshop is on the Langepad in Herentals, Belgium.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "The trade has passed from father to son four times. Each generation kept what worked and changed what no longer did: Frans gave the business its own workshop, François took the dance organ digital, and Tony brought MIDI and then smARTvalve.",
+              "spans": []
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 807,
+              "height": 499
+            },
+            "alt": "Archive photos: an early Decap delivery truck, a Monte Carlo organ and a family portrait",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/HTmGCsJi26Fxxb-s_image-6-1.png?auto=format,compress",
+            "id": "HTmGCsJi26Fxxb-s",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Scan of archive photo of the Decap workshop in Herentals, early years, landscape 4:3",
+          "media_side": "Image right",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$4cfcce5c-e85f-40cb-bb94-54e6a0fcea13",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "point": "Percussion played hard or soft, with adjustable timing"
+          },
+          {
+            "point": "Wind pressure set per wind chest, ranks that play vibrato"
+          },
+          {
+            "point": "Organs and orchestrions with volume control"
+          },
+          {
+            "point": "smARTvalve: the same idea for every single pipe"
+          }
+        ],
+        "primary": {
+          "eyebrow": "Musicians first",
+          "title": "We learned woodworking to build organs",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "At heart we are musicians, not carpenters. We learned to work wood so we could build organs, but the music comes first. That set Decap apart then, and it still does.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "Between 1960 and 1980, the golden age of the dance organ, there were some 120 dance cafés and dance halls across Belgium where people went to dance every day, each with its own dance organ. Since Decap Herentals began, we have chased one thing: an organ that plays better. More feeling, more control over volume and intensity, more dynamics, more musicality.",
+              "spans": []
+            }
+          ],
+          "image": {},
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Scan of archive photo of a full Belgian dance hall in the 1960s or 70s with a Decap dance organ on the stage, 4:3",
+          "media_side": "Image left",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$1ad494f9-4c79-4f65-8ac0-506c622f4992",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "year": "1864",
+            "title": "Aloïs Decap is born",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "The son of farmer Livien Decap and Sophie Mortier.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": "Scan of archive portrait of Aloïs Decap, portrait 4:5",
+            "highlight": false
+          },
+          {
+            "year": "c. 1888",
+            "title": "Accordion player at fairs and in cafés",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Aloïs settles in Ekeren, near Antwerp, and plays the accordion at fairs and in cafés.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": "Scan of archive photo of Aloïs Decap with his accordion, 4:3",
+            "highlight": false
+          },
+          {
+            "year": "c. 1895",
+            "title": "The start of the Decap organ business",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Aloïs begins renting out and dealing in organs. He delivers them by dog cart, later by mule. His son Frans is born the same year.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": "Scan of archive photo of an early rented organ or the dog cart used for deliveries, 4:3",
+            "highlight": false
+          },
+          {
+            "year": "1902",
+            "title": "The first Decap workshop",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Aloïs and his son Livien start building organs in a workshop on the Essenstraat in Antwerp.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": "Scan of archive photo of the Essenstraat workshop, Antwerp, 4:3",
+            "highlight": false
+          },
+          {
+            "year": "After WWI",
+            "title": "Gebroeders Decap",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Aloïs's sons Livien, Frans, Léon and Camille form the partnership Gebroeders Decap.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": "Scan of archive photo of the four Decap brothers, 4:3",
+            "highlight": false
+          },
+          {
+            "year": "1933",
+            "title": "Frans Decap founds Decap Herentals",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Frans sets up his own organ workshop in Herentals. The same year, the first self-playing accordions appear on Decap organs.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": "Scan of archive photo of Frans Decap or the first Herentals workshop, 4:3",
+            "highlight": true
+          },
+          {
+            "year": "1972",
+            "title": "François takes over",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "After Frans dies, his son François continues the business as Orgelfabriek Decap Herentals.",
+                "spans": []
+              }
+            ],
+            "image": {
+              "dimensions": {
+                "width": 960,
+                "height": 689
+              },
+              "alt": "Archive photo: François Decap at the delivery of a new organ",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/pRb8dS7VJO7ZQvXP_decap-old-retro-of-francois-decap-and-the-delivery-of-a-new-organ.jpg?auto=format,compress",
+              "id": "pRb8dS7VJO7ZQvXP",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Scan of archive photo of François Decap in the workshop, 4:3",
+            "highlight": false
+          },
+          {
+            "year": "1977",
+            "title": "The first digital dance organ",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "François replaces the pipes with digital sound. Dance halls and cafés with much smaller budgets can now have an organ.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": "Scan of archive photo of an early digital Decap dance organ in a dance hall, 4:3",
+            "highlight": true
+          },
+          {
+            "year": "2000",
+            "title": "The first to bring MIDI to the organ",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Tony Decap brings MIDI to the organ. A whole music library fits on one digital card and replaces racks of cardboard music books. In the years that follow Decap builds more than dance organs: orchestrions, separate pipe chest units, automatic drums and other self-playing instruments.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": "Photo of a stack of cardboard book music next to a single memory card, on a workbench, 4:3",
+            "highlight": true
+          },
+          {
+            "year": "2004",
+            "title": "The Accordion Pedestal",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "A real accordion, played by MIDI on its own stand. See the self-playing accordion.",
+                "spans": [
+                  {
+                    "start": 51,
+                    "end": 81,
+                    "type": "hyperlink",
+                    "data": {
+                      "link_type": "Web",
+                      "url": "/accordion"
+                    }
+                  }
+                ]
+              }
+            ],
+            "image": {
+              "dimensions": {
+                "width": 1000,
+                "height": 1778
+              },
+              "alt": "Accordion Pedestal",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/WMX-_f1HT3Qfauj9_Products-AccordionPedestal-05.jpg?auto=format,compress",
+              "id": "WMX-_f1HT3Qfauj9",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Early Accordion Pedestal photographed against a plain wall, 4:3",
+            "highlight": false
+          },
+          {
+            "year": "2008",
+            "title": "A Decap dance organ on tour",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Guido Belcanto takes a Decap dance organ on stage in his theatre show Balzaal der Gebroken Harten. Controllable sensitivity and volume make it possible. Read the story.",
+                "spans": [
+                  {
+                    "start": 70,
+                    "end": 97,
+                    "type": "em"
+                  },
+                  {
+                    "start": 153,
+                    "end": 167,
+                    "type": "hyperlink",
+                    "data": {
+                      "link_type": "Web",
+                      "url": "/work/guido-belcanto"
+                    }
+                  }
+                ]
+              }
+            ],
+            "image": {
+              "dimensions": {
+                "width": 514,
+                "height": 394
+              },
+              "alt": "Poster of Balzaal der Gebroken Harten: Guido Belcanto dancing in front of the Decap organ",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/QPSmzpqCWIbSocoG_decap-guido-belcanto-balzaal-der-gebroken-harten-poster.jpg?auto=format,compress",
+              "id": "QPSmzpqCWIbSocoG",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Scan of a photo or poster of Balzaal der Gebroken Harten with the Decap organ on stage, 4:3",
+            "highlight": false
+          },
+          {
+            "year": "2016",
+            "title": "Organ pipes from our own CNC",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "We mill the first organ pipes on CNC, with a process developed entirely in-house and our own PipeCreator software. About our organ pipes.",
+                "spans": [
+                  {
+                    "start": 115,
+                    "end": 136,
+                    "type": "hyperlink",
+                    "data": {
+                      "link_type": "Web",
+                      "url": "/organ-pipes"
+                    }
+                  }
+                ]
+              }
+            ],
+            "image": {
+              "dimensions": {
+                "width": 643,
+                "height": 428
+              },
+              "alt": "Organ pipe parts from the CNC",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/YsDfiVuRPuEGOY1n_20221008_mohaibalazs_074-2-1.png?auto=format,compress",
+              "id": "YsDfiVuRPuEGOY1n",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Wooden pipe being milled on the 5-axis CNC, close-up, 4:3",
+            "highlight": false
+          },
+          {
+            "year": "2025",
+            "title": "The first wind synthesizer",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "smARTvalve goes into the first transportable church organ, with every pipe controlled on its own: L'Explorateur for Swiss organist Yves Rechsteiner. Read the case study.",
+                "spans": [
+                  {
+                    "start": 149,
+                    "end": 168,
+                    "type": "hyperlink",
+                    "data": {
+                      "link_type": "Web",
+                      "url": "/work/yves-rechsteiner"
+                    }
+                  }
+                ]
+              }
+            ],
+            "image": {
+              "dimensions": {
+                "width": 815,
+                "height": 542
+              },
+              "alt": "A stage production with L'Explorateur",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/-ZSpWiGWlMAAYL6__20221008_mohaibalazs_074-2-2.jpeg?auto=format,compress",
+              "id": "-ZSpWiGWlMAAYL6_",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "L'Explorateur set up in a chapel, wide shot, 4:3",
+            "highlight": true
+          }
+        ],
+        "primary": {
+          "eyebrow": "Our history",
+          "title": "From a dog cart in Antwerp to the first wind synthesizer",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "The milestones below come from family records and from the history of the Decap family published by Mostmans in Carousel Organ no. 4 (2000).",
+              "spans": [
+                {
+                  "start": 112,
+                  "end": 126,
+                  "type": "em"
+                }
+              ]
+            }
+          ],
+          "tone": "Tinted"
+        },
+        "id": "site_timeline$04754f23-fe10-4304-bcde-ea936ca7d4e1",
+        "slice_type": "site_timeline",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Which Decap?",
+          "title": "Two Decap workshops, one founder",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Two organ businesses carry the Decap name today, and both descend from Aloïs Decap.",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Gebroeders Decap Antwerpen (Decap Brothers, Antwerp) continues from the partnership Aloïs's sons formed in Antwerp after the First World War.",
+              "spans": [
+                {
+                  "start": 0,
+                  "end": 26,
+                  "type": "strong"
+                }
+              ]
+            },
+            {
+              "type": "list-item",
+              "text": "Decap Herentals goes back to 1933, when Frans Decap set up his own workshop in Herentals. This is the Decap you are reading about.",
+              "spans": [
+                {
+                  "start": 0,
+                  "end": 15,
+                  "type": "strong"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "The two companies are independent of each other and on friendly terms. If you have a Decap organ and are not sure which workshop built it, send us a photo of the façade and any nameplate. We will tell you what we can.",
+              "spans": []
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 815,
+              "height": 542
+            },
+            "alt": "Historic Decap orchestrion façade with the Decap name",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/G8pXeBWSwrH60h9u_20221008_mohaibalazs_074-2.jpeg?auto=format,compress",
+            "id": "G8pXeBWSwrH60h9u",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Scan of archive photo of a historic Decap organ façade with the Decap name visible, 4:3",
+          "media_side": "Image left",
+          "aspect": "Landscape 4:3",
+          "cta_label": "Send us a photo",
+          "cta_link": {
+            "link_type": "Web",
+            "key": "cd0d9b98-3785-46c3-9b9a-d5e61f557093",
+            "url": "/contact"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$b516ec31-b0a8-4aa9-af44-ceafd48d068e",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Restoration",
+          "title": "Frank Decap and his Atelier",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Frank Decap is Tony's brother. He runs his own business, Atelier Frank Decap, as a master craftsman dedicated to organ restoration, working the way earlier generations of the family did.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "Frank also installs our MIDI conversion units, so a restored book organ can play from books and from MIDI. Restoration enquiries go straight to him through his page on this site.",
+              "spans": []
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 1536,
+              "height": 1024
+            },
+            "alt": "Tony Decap and Frank Decap, brothers, in DECAP jackets",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/fXPc4fvfGGYBKHxY_decap-tony-decap-and-frank-decap-brothers.jpg?auto=format,compress",
+            "id": "fXPc4fvfGGYBKHxY",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Frank Decap restoring the bellows of a historic organ in his atelier, warm light, portrait 4:5",
+          "media_side": "Image right",
+          "aspect": "Portrait 4:5",
+          "cta_label": "Atelier Frank Decap",
+          "cta_link": {
+            "link_type": "Web",
+            "key": "de3d3b57-74ed-46ec-8697-efe37f8c4037",
+            "url": "/frank-decap"
+          },
+          "tone": "Tinted"
+        },
+        "id": "site_text_media$8bad8bc0-4cb5-4469-9eb0-69b0afab4a8e",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "point": "Design and 3D render of every organ before production starts"
+          },
+          {
+            "point": "Wooden organ pipes milled on our 5-axis CNC, with PipeCreator software we wrote ourselves"
+          },
+          {
+            "point": "Voicing by our own voicers"
+          },
+          {
+            "point": "smARTvalve, MIDI conversion units and the control electronics for our instruments"
+          },
+          {
+            "point": "Virtual Orchestrion and MIDIMapper, our player and arranger software"
+          },
+          {
+            "point": "Organs built as modular units in a façade: transportable and rebuildable"
+          },
+          {
+            "point": "Self-playing instruments: accordion, pipes, percussion and mallet percussion"
+          }
+        ],
+        "primary": {
+          "eyebrow": "The workshop today",
+          "title": "From the CNC to the player, made in Herentals",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Almost everything that goes into a Decap organ is made under our own roof. All our software is our own: the CNC programs that mill the pipes, the software that drives the instruments and the player that plays them.",
+              "spans": []
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 1086,
+              "height": 1448
+            },
+            "alt": "A CNC-milled valve panel in the Herentals workshop",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/845WRgmgYCeMsVjs_decap-topside-of-a-valve-panel.jpg?auto=format,compress",
+            "id": "845WRgmgYCeMsVjs",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Wide shot of the Herentals workshop: CNC machine on one side, an organ in assembly on the other, 4:3",
+          "media_side": "Image left",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$a4ad6715-1535-453e-9609-0d056c3f8b34",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "The next Decap organ",
+          "title": "Tell us where your organ will play",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Describe the room, the music and the budget. We reply with questions and a first design idea.",
+              "spans": []
+            }
+          ],
+          "price": null,
+          "price_note": null,
+          "primary_cta_label": "See our organs",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "9fe66db6-c8e7-4750-b964-70c3dec79f6f",
+            "url": "/organs"
+          },
+          "secondary_cta_label": "Request a consultation",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "c9f9953e-5ecd-4cfe-86fb-65a23282443d",
+            "url": "/contact"
+          },
+          "image": {},
+          "image_brief": null,
+          "tone": "Dark band"
+        },
+        "id": "site_cta$7ee837a4-de3e-4763-9e8d-a516d5196271",
+        "slice_type": "site_cta",
+        "slice_label": null
+      }
+    ],
+    "meta_title": "About Us: Organ Builders Since 1895 | Decap Herentals",
+    "meta_description": "Four generations of Decap organ builders, musicians first. Frans founded Decap Herentals in 1933; today Tony Decap builds dance organs, orchestrions and smARTvalve.",
+    "meta_image": {}
+  }
+}

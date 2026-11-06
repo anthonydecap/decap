@@ -1,0 +1,409 @@
+{
+  "id": "atc3dhEAACkAavPI",
+  "uid": "guido-belcanto",
+  "url": null,
+  "type": "project",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22atc3dhEAACkAavPI%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2026-10-20T09:51:03+0000",
+  "last_publication_date": "2026-10-22T08:15:26+0000",
+  "slugs": [
+    "guido-belcanto-balzaal-der-gebroken-harten"
+  ],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [
+    {
+      "id": "atdv0REAACwAa158",
+      "type": "project",
+      "lang": "fr-fr",
+      "uid": "guido-belcanto"
+    }
+  ],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Guido Belcanto: Balzaal der Gebroken Harten",
+        "spans": []
+      }
+    ],
+    "theme": "decap",
+    "summary": "A fully custom Belcanto organ, on tour in Guido Belcanto's theatre show Balzaal der Gebroken Harten.",
+    "card_image": {},
+    "client": "Guido Belcanto",
+    "year": "2008",
+    "location": "Belgium",
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "layout": "Split",
+          "eyebrow": "Work · 2008",
+          "title": "A Decap dance organ on tour with Guido Belcanto",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "In 2008 Flemish singer Guido Belcanto took a Decap dance organ on stage in his theatre show Balzaal der Gebroken Harten. We built it from scratch for him: the Belcanto organ. It toured the largest halls of Belgium's cultural centres, next to a singer.",
+              "spans": [
+                {
+                  "start": 92,
+                  "end": 119,
+                  "type": "em"
+                }
+              ]
+            }
+          ],
+          "primary_cta_label": "Our dance organs",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "ac9c5430-6ec4-468d-bc74-618c7e368507",
+            "url": "/organs"
+          },
+          "secondary_cta_label": "All projects",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "fd1ef719-b6c7-4ad0-ae03-af64113857b3",
+            "url": "/work"
+          },
+          "note": null,
+          "image": {
+            "dimensions": {
+              "width": 1448,
+              "height": 1086
+            },
+            "alt": "The Belcanto organ on stage in Balzaal der Gebroken Harten",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/k8hlUvOjGOJlMMgW_decap-balzaal-der-gebroken-harten-organ.jpg?auto=format,compress",
+            "id": "k8hlUvOjGOJlMMgW",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "mux_video": null,
+          "image_brief": "Guido Belcanto on stage with the Decap dance organ behind him, 4:3",
+          "image_shape": null,
+          "image_fit": null,
+          "image_position": null,
+          "image_zoom": null,
+          "overlay": null,
+          "blur": null,
+          "dim": null,
+          "color_effect": null,
+          "vignette": null,
+          "slow_zoom": null,
+          "tone": "Default"
+        },
+        "id": "site_hero$0d1f3124-84b8-4dc5-aaa5-d0ecd32f1950",
+        "slice_type": "site_hero",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Why it worked",
+          "title": "Sensitivity and volume under control",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "A dance organ is voiced to fill a dance hall. A theatre stage, with a singer at the microphone, asks for something else.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "On a Decap organ, sensitivity and volume are controllable. That made it possible to set the organ for each hall and play it alongside a singer, night after night, in the largest cultural centres in Belgium.",
+              "spans": []
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 1672,
+              "height": 941
+            },
+            "alt": "Tony and François Decap with the Belcanto organ before its façade was fitted",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/U2LTUoM0bqWiYfBU_decap-tony-decap-and-francois-decap-belcanto-orgel-without-facade.jpg?auto=format,compress",
+            "id": "U2LTUoM0bqWiYfBU",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Front of the Decap dance organ used in the show, front view, 4:3",
+          "media_side": "Image right",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$6351ebec-cf8e-4707-b28e-08bdb74581ef",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "image": {
+              "dimensions": {
+                "width": 1536,
+                "height": 1024
+              },
+              "alt": "Load-in: the DECAP crew carrying organ parts onto the stage",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/Wy2FrvwPgOibzFaJ_decap-balzaal-der-gebroken-harten-backstage-load-in-decap-crew-at-work.jpg?auto=format,compress",
+              "id": "Wy2FrvwPgOibzFaJ",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Backstage load-in with the DECAP crew, 4:3",
+            "tag": null,
+            "title": "Load-in",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Flight cases and organ modules come off the truck and onto the empty stage.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 1672,
+                "height": 941
+              },
+              "alt": "The modular stage organ being assembled and cabled",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/AHI0PBpkoiZgrakl_decap-balzaal-der-gebroken-harten-modular-stage-organ-installation.jpg?auto=format,compress",
+              "id": "AHI0PBpkoiZgrakl",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "The modular stage organ being assembled, 4:3",
+            "tag": null,
+            "title": "Building the organ",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "The modular stage organ is assembled and cabled on its frame.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 1448,
+                "height": 1086
+              },
+              "alt": "The organ backstage under an amber spotlight",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/bXpZ5K415LxiRfDu_decap-balzaal-der-gebroken-harten-backstage-organ-and-amber-spotlight-crew.jpg?auto=format,compress",
+              "id": "bXpZ5K415LxiRfDu",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "The organ backstage under an amber spotlight, crew at work, 4:3",
+            "tag": null,
+            "title": "Ready for the show",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Last checks under the stage lights, minutes before the audience comes in.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          }
+        ],
+        "primary": {
+          "eyebrow": "Behind the scenes",
+          "title": "From truck to stage, every evening",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "The Belcanto organ toured the largest halls of Belgium's cultural centres. Every show began with the DECAP crew unloading, building and tuning the organ.",
+              "spans": []
+            }
+          ],
+          "columns": "3",
+          "card_style": "Image cards",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_card_grid$627e6847-5359-4eef-b728-fd8b7366ffb0",
+        "slice_type": "site_card_grid",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Watch",
+          "title": "Guido Belcanto and the Belcanto organ",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "A moment from Balzaal der Gebroken Harten, with the Belcanto organ on stage.",
+              "spans": []
+            }
+          ],
+          "video": {
+            "embed_url": "https://www.youtube.com/watch?v=0kfG-wFjMDk",
+            "provider_name": "YouTube",
+            "provider_url": "https://www.youtube.com/",
+            "title": "Guido Belcanto - Plastic Jesus (live)",
+            "author_name": "Café Corsari",
+            "author_url": "https://www.youtube.com/@CafeCorsari",
+            "type": "video",
+            "height": 113,
+            "width": 200,
+            "version": "1.0",
+            "thumbnail_height": 360,
+            "thumbnail_width": 480,
+            "thumbnail_url": "https://i.ytimg.com/vi/0kfG-wFjMDk/hqdefault.jpg",
+            "html": "<iframe width=\"200\" height=\"113\" src=\"https://www.youtube.com/embed/0kfG-wFjMDk?feature=oembed\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen title=\"Guido Belcanto - Plastic Jesus (live)\"></iframe>"
+          },
+          "caption": null,
+          "poster": {},
+          "video_brief": "Guido Belcanto with the Belcanto organ on stage",
+          "tone": "Default"
+        },
+        "id": "site_video$6f76b4d6-8d15-4f7f-9db6-75c10828d048",
+        "slice_type": "site_video",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "label": "Artist",
+            "value": "Guido Belcanto",
+            "note": null
+          },
+          {
+            "label": "Show",
+            "value": "Balzaal der Gebroken Harten",
+            "note": null
+          },
+          {
+            "label": "Year",
+            "value": "2008",
+            "note": null
+          },
+          {
+            "label": "On stage",
+            "value": "Guido Belcanto, Lady Angelina, Vitalski and the Decap organ",
+            "note": null
+          },
+          {
+            "label": "Instrument",
+            "value": "The Belcanto organ, a fully custom Decap dance organ",
+            "note": null
+          },
+          {
+            "label": "Toured",
+            "value": "The largest halls of Belgium's cultural centres",
+            "note": null
+          }
+        ],
+        "primary": {
+          "eyebrow": "At a glance",
+          "title": "Project facts",
+          "intro": [],
+          "layout": "Spec list",
+          "tone": "Default"
+        },
+        "id": "site_facts$beab05a1-c764-40a9-9a2c-14bd18cc7943",
+        "slice_type": "site_facts",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Dance organs",
+          "title": "A dance organ that fits your room",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Dance hall, café or theatre: tell us where the organ will play. We reply with questions and a first design idea.",
+              "spans": []
+            }
+          ],
+          "price": null,
+          "price_note": null,
+          "primary_cta_label": "Compose your organ",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "623ef513-0624-4cfe-b5f4-346f3d89d628",
+            "url": "/organ-composer"
+          },
+          "secondary_cta_label": "Request a consultation",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "de0a1d70-7942-42af-9225-95e01a28994e",
+            "url": "/contact"
+          },
+          "image": {},
+          "image_brief": null,
+          "tone": "Dark band"
+        },
+        "id": "site_cta$4fb8bb5b-80be-4b05-a464-2e8d2d0fb63b",
+        "slice_type": "site_cta",
+        "slice_label": null
+      }
+    ],
+    "meta_title": "Guido Belcanto's Dance Organ on Stage | Decap",
+    "meta_description": "In 2008 Guido Belcanto toured a Decap dance organ in his theatre show Balzaal der Gebroken Harten, possible because its sensitivity and volume are controllable.",
+    "meta_image": {}
+  }
+}

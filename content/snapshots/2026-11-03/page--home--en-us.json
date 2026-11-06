@@ -1,0 +1,969 @@
+{
+  "id": "aHUKPBEAACcAdSwD",
+  "uid": "home",
+  "url": null,
+  "type": "page",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22aHUKPBEAACcAdSwD%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2025-07-14T13:46:50+0000",
+  "last_publication_date": "2026-11-02T21:12:17+0000",
+  "slugs": [
+    "decap-herentals"
+  ],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [
+    {
+      "id": "ab8zGhEAAJEsnM2M",
+      "type": "page",
+      "lang": "fr-fr",
+      "uid": "home"
+    }
+  ],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Decap Herentals",
+        "spans": []
+      }
+    ],
+    "theme": "decap",
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "layout": "Video showcase",
+          "eyebrow": "Organ builders since 1895",
+          "title": "Real dance organs, built by musicians in Herentals",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "We are musicians first. We learned to work wood so we could build organs, and for 90 years we have made the dance organ play with more feeling: dynamics, volume control, expression. Today our organs and self-playing instruments play in living rooms, cafés, dance halls and on stage.",
+              "spans": []
+            }
+          ],
+          "primary_cta_label": "Discover our organs",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "c03d8a57-4181-4b47-bc18-8de1cb6435da",
+            "url": "/organs"
+          },
+          "secondary_cta_label": "Self-playing instruments",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "8123a1c3-99ed-4642-8d27-bafe555dcdb1",
+            "url": "/instruments"
+          },
+          "note": null,
+          "image": {
+            "dimensions": {
+              "width": 3024,
+              "height": 2248
+            },
+            "alt": null,
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/vt2-YAGaQDLBuVVl_Guido-Belcanto-ea-Balzaal-Decap-c-Koen-Van-Wuytswinkel-verkleind.jpg?auto=format,compress",
+            "id": "vt2-YAGaQDLBuVVl",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "mux_video": "https://stream.mux.com/nMTrEaGQ5pwnJE1rljkWXJs1DFe02lECWtQrABCyxZRw.m3u8",
+          "image_brief": "Tony Decap in the Herentals workshop next to a finished organ façade, portrait 4:5",
+          "image_shape": "Default",
+          "image_fit": "Auto",
+          "image_position": "Center",
+          "image_zoom": "100%",
+          "overlay": "Medium",
+          "blur": "None",
+          "dim": "None",
+          "color_effect": "None",
+          "vignette": false,
+          "slow_zoom": false,
+          "tone": "Default"
+        },
+        "id": "site_hero$499d1bc9-b7be-4c3e-b5f6-dd6e124fe565",
+        "slice_type": "site_hero",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "size": "Full",
+            "style": "Dark",
+            "eyebrow": "Organs",
+            "title": "Real dance organs, built to order.",
+            "tagline": "Organs made to dance to, from our Herentals workshop. Modular or fully bespoke.",
+            "note": null,
+            "primary_label": "Learn more",
+            "primary_link": {
+              "link_type": "Web",
+              "key": "904f13ca-a2b3-4b1c-8c96-73a8e64607a7",
+              "url": "/organs"
+            },
+            "secondary_label": "Compose your organ",
+            "secondary_link": {
+              "link_type": "Web",
+              "key": "1798a8c3-415a-465f-a692-0f5b4b545996",
+              "url": "/organ-composer"
+            },
+            "image": {
+              "dimensions": {
+                "width": 1672,
+                "height": 941
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/jy_FAR1w5tZhTl-K_UntitledDesign-4-.png?auto=format,compress",
+              "id": "jy_FAR1w5tZhTl-K",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_fit": "Cover",
+            "image_position": "Bottom",
+            "image_size": "100%",
+            "overlay": "Strong",
+            "blur": "None",
+            "dim": "None",
+            "color_effect": "None",
+            "vignette": false,
+            "hover_zoom": false,
+            "slow_zoom": true,
+            "image_brief": "A finished Decap dance organ on stage, wide shot"
+          },
+          {
+            "size": "Half",
+            "style": "Light",
+            "eyebrow": "Self-playing instruments",
+            "title": "A real accordion. Playing itself.",
+            "tagline": "Accordion, pipes, drums and xylophones, played by MIDI.",
+            "note": null,
+            "primary_label": "Learn more",
+            "primary_link": {
+              "link_type": "Web",
+              "key": "7f0e2069-78ca-450c-a31a-c64a65657375",
+              "url": "/instruments"
+            },
+            "secondary_label": "Accordion Pedestal",
+            "secondary_link": {
+              "link_type": "Web",
+              "key": "de15bf2b-bae8-4e05-8237-5b8918869bf8",
+              "url": "/accordion"
+            },
+            "image": {
+              "dimensions": {
+                "width": 940,
+                "height": 1672
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/rvQzG9KCX_IzN60v_Untitleddesign-12-.png?auto=format,compress",
+              "id": "rvQzG9KCX_IzN60v",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_fit": "Contain",
+            "image_position": "Bottom",
+            "image_size": "85%",
+            "overlay": "None",
+            "blur": "None",
+            "dim": "None",
+            "color_effect": "None",
+            "vignette": false,
+            "hover_zoom": false,
+            "slow_zoom": true,
+            "image_brief": "Accordion Pedestal on stage"
+          },
+          {
+            "size": "Half",
+            "style": "Dark",
+            "eyebrow": "Organ pipes",
+            "title": "Any wooden pipe. Within a week.",
+            "tagline": "Milled on our own CNC, in our scales or yours.",
+            "note": null,
+            "primary_label": "Learn more",
+            "primary_link": {
+              "link_type": "Web",
+              "key": "a3bca1fd-c26c-4457-831a-afb507a002a4",
+              "url": "/organ-pipes"
+            },
+            "secondary_label": "Order pipes",
+            "secondary_link": {
+              "link_type": "Web",
+              "key": "d0169895-d8f7-4a77-9232-c2304f72053a",
+              "url": "/organ-pipes#contact-form"
+            },
+            "image": {
+              "dimensions": {
+                "width": 1448,
+                "height": 1086
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/jZLQ0Pz29F8ciAEt_Untitleddesign-11-.png?auto=format,compress",
+              "id": "jZLQ0Pz29F8ciAEt",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_fit": "Cover",
+            "image_position": "Center",
+            "image_size": "100%",
+            "overlay": "Strong",
+            "blur": "None",
+            "dim": "None",
+            "color_effect": "None",
+            "vignette": false,
+            "hover_zoom": false,
+            "slow_zoom": true,
+            "image_brief": "New wooden pipe parts from the CNC"
+          },
+          {
+            "size": "Full",
+            "style": "SmartValve",
+            "eyebrow": "smARTvalve",
+            "title": "Every pipe. Its own voice.",
+            "tagline": "A processor in every valve. Wind, dynamics and stops, controlled per pipe.",
+            "note": null,
+            "primary_label": "Learn more",
+            "primary_link": {
+              "link_type": "Web",
+              "key": "266c5f9f-d2c1-4930-969e-d85906731127",
+              "url": "/smartvalve"
+            },
+            "secondary_label": "For organ builders",
+            "secondary_link": {
+              "link_type": "Web",
+              "key": "c7865f63-dc3f-4098-8ae9-3aaae6d4acb1",
+              "url": "/smartvalve-for-organ-builders"
+            },
+            "image": {
+              "dimensions": {
+                "width": 2048,
+                "height": 2048
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/xrM343reak784Vv6_cantedvalve.png?auto=format,compress",
+              "id": "xrM343reak784Vv6",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_fit": "Cover",
+            "image_position": "Top",
+            "image_size": "100%",
+            "overlay": "Strong",
+            "blur": "None",
+            "dim": "None",
+            "color_effect": "None",
+            "vignette": false,
+            "hover_zoom": false,
+            "slow_zoom": true,
+            "image_brief": "smARTvalves mounted in their wind chest"
+          },
+          {
+            "size": "Full",
+            "style": "Light",
+            "eyebrow": "Brass Core",
+            "title": "A real trumpet. Played by sound.",
+            "tagline": "A voice-coil embouchure for trumpet and trombone. No changes to the instrument.",
+            "note": null,
+            "primary_label": "Learn more",
+            "primary_link": {
+              "link_type": "Web",
+              "key": "767e491b-d5a2-4f4d-8d96-1b13460ee556",
+              "url": "/brass-core"
+            },
+            "secondary_label": "Order",
+            "secondary_link": {
+              "link_type": "Web",
+              "key": "6790b852-8115-418f-9389-6e738908359d",
+              "url": "/brass-core#contact-form"
+            },
+            "image": {
+              "dimensions": {
+                "width": 1600,
+                "height": 1200
+              },
+              "alt": "Brass Core on a trombone",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/aIu906Tt2nPbZn2l_TROMBONE-Samenstelling_01_2023-Oct-16_10-42-03PM-000_CustomizedView21586800008.png?auto=format,compress",
+              "id": "aIu906Tt2nPbZn2l",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_fit": "Contain",
+            "image_position": "Bottom",
+            "image_size": "100%",
+            "overlay": "None",
+            "blur": "None",
+            "dim": "None",
+            "color_effect": "None",
+            "vignette": false,
+            "hover_zoom": false,
+            "slow_zoom": true,
+            "image_brief": "Brass Core on a trombone, dark background"
+          },
+          {
+            "size": "Half",
+            "style": "Dark",
+            "eyebrow": "Atelier Frank Decap",
+            "title": "Historic organs, restored by hand.",
+            "tagline": "Restoration and MIDI installation, on the same site in Herentals.",
+            "note": null,
+            "primary_label": "Learn more",
+            "primary_link": {
+              "link_type": "Web",
+              "key": "d7883629-d1e8-491e-b96c-b0b5e1ed4fd0",
+              "url": "/frank-decap"
+            },
+            "secondary_label": "Send photos of your organ",
+            "secondary_link": {
+              "link_type": "Web",
+              "key": "91e8e4d6-0fb5-4bf9-93c9-b96055a241f8",
+              "url": "/frank-decap#contact-form"
+            },
+            "image": {
+              "dimensions": {
+                "width": 1448,
+                "height": 1086
+              },
+              "alt": "Restoration in progress in Atelier Frank Decap",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/jb6dI5hKHP7T_8l0_decap-frank-decap-organ-restoration-workshop-in-warm-light.jpg?auto=format,compress",
+              "id": "jb6dI5hKHP7T_8l0",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_fit": "Cover",
+            "image_position": "Center",
+            "image_size": "100%",
+            "overlay": "Strong",
+            "blur": "None",
+            "dim": "Medium",
+            "color_effect": "None",
+            "vignette": false,
+            "hover_zoom": false,
+            "slow_zoom": true,
+            "image_brief": "Frank Decap at work in his atelier"
+          },
+          {
+            "size": "Half",
+            "style": "Light",
+            "eyebrow": "Software",
+            "title": "One player for the whole ensemble.",
+            "tagline": "Virtual Orchestrion and MIDIMapper, in the Decap shop.",
+            "note": null,
+            "primary_label": "Learn more",
+            "primary_link": {
+              "link_type": "Web",
+              "key": "f54bd4ea-7350-4ca6-a043-5c1607d89e41",
+              "url": "/software"
+            },
+            "secondary_label": "Visit the shop",
+            "secondary_link": {
+              "link_type": "Web",
+              "key": "6727d53d-7091-49da-a5b8-9a1c0d77abd8",
+              "url": "/shop"
+            },
+            "image": {
+              "dimensions": {
+                "width": 644,
+                "height": 322
+              },
+              "alt": "Virtual Orchestrion on two screens",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/5KDblOy3MRiPEXhf_Virtual-Organ-5-1.png?auto=format,compress",
+              "id": "5KDblOy3MRiPEXhf",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_fit": "Contain",
+            "image_position": "Bottom",
+            "image_size": "85%",
+            "overlay": "None",
+            "blur": "None",
+            "dim": "None",
+            "color_effect": "None",
+            "vignette": false,
+            "hover_zoom": false,
+            "slow_zoom": false,
+            "image_brief": "Virtual Orchestrion on two screens"
+          }
+        ],
+        "primary": {
+          "tone": "Default"
+        },
+        "id": "site_tiles$5506abc3-d138-4477-b911-62a7901ffd3f",
+        "slice_type": "site_tiles",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "image": {
+              "dimensions": {
+                "width": 1536,
+                "height": 1024
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/A8Bsxxw_60EbWrje_WhatsAppImage2026-05-05at21.25.46.jpeg?auto=format,compress",
+              "id": "A8Bsxxw_60EbWrje",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Accordion Pedestal in a living room at a customer's home, warm evening light, 4:3",
+            "image_position": "Center",
+            "eyebrow": "At home",
+            "title": "A real accordion in the living room.",
+            "link": {
+              "link_type": "Web",
+              "key": "194d21e2-21e9-4aa2-90dc-e6a64c8fd422",
+              "url": "/accordion"
+            }
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 1448,
+                "height": 1086
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/Y9MhWCzg81m1ZJRY_MoodyOrganJazzClubStage.png?auto=format,compress",
+              "id": "Y9MhWCzg81m1ZJRY",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Decap organ in a café or bar with guests, 4:3",
+            "image_position": "Center",
+            "eyebrow": "Bars and cafés",
+            "title": "Plays all evening, on its own.",
+            "link": {
+              "link_type": "Web",
+              "key": "8eca90f2-f268-4859-968b-19502314df65",
+              "url": "/organs"
+            }
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 3024,
+                "height": 2248
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/vt2-YAGaQDLBuVVl_Guido-Belcanto-ea-Balzaal-Decap-c-Koen-Van-Wuytswinkel-verkleind.jpg?auto=format,compress",
+              "id": "vt2-YAGaQDLBuVVl",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Dance organ in a dance hall during an evening, 4:3",
+            "image_position": "Center",
+            "eyebrow": "Dance halls and events",
+            "title": "Sized for the room, from café to festival.",
+            "link": {
+              "link_type": "Web",
+              "key": "c03de779-7e6b-4f4a-960f-526513739f83",
+              "url": "/organs"
+            }
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 2048,
+                "height": 1356
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/eXLrW3qUZdsEDchQ_656072428_10239428789691069_2221950743130956745_n.jpg?auto=format,compress",
+              "id": "eXLrW3qUZdsEDchQ",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Decap orchestrion in a museum or on a stage, 4:3",
+            "image_position": "Center",
+            "eyebrow": "Museums and stages",
+            "title": "On tour and on display.",
+            "link": {
+              "link_type": "Web",
+              "key": "4636425c-3108-4014-8f5a-2f9c36450ef9",
+              "url": "/work"
+            }
+          }
+        ],
+        "primary": {
+          "eyebrow": "Where they play",
+          "title": "In living rooms, bars and dance halls",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Most Decap organs and instruments belong to private owners. They play at home, in a café or bar, in a dance hall, all over the world.",
+              "spans": []
+            }
+          ],
+          "tone": "Default"
+        },
+        "id": "site_carousel$27309c3f-9af8-4730-89c3-658e681dbeb7",
+        "slice_type": "site_carousel",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Musicians first",
+          "title": "Organs that play with feeling",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "A traditional organ hits every drum with the same force, and every pipe is simply on or off. On a Decap organ the drumstick hits hard or soft, the wind pressure changes per wind chest, ranks play vibrato and the whole organ is volume-controllable. smARTvalve takes this down to every single pipe.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "That is why a Decap organ fits a living room as well as a theatre stage or a DJ set. With traditional mechanical technology it would not be possible.",
+              "spans": []
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 1448,
+              "height": 1086
+            },
+            "alt": null,
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/NqF31ts0KK3QXxJN_Untitleddesign-10-.png?auto=format,compress",
+            "id": "NqF31ts0KK3QXxJN",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Close-up of the drum kit in the front of a Decap organ mid-hit, stick in motion, warm stage light, 4:3",
+          "media_side": "Image right",
+          "aspect": "Landscape 4:3",
+          "cta_label": "Why a Decap plays differently",
+          "cta_link": {
+            "link_type": "Web",
+            "key": "1aa8aee6-e2df-49f8-9ff1-e219c2d3994a",
+            "url": "/organs"
+          },
+          "tone": "Tinted"
+        },
+        "id": "site_text_media$759c91cd-3e91-4a47-a3cf-99380462b2d5",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "artist_name": "Guido Belcanto",
+            "artist_role": null,
+            "artist_portrait": {
+              "dimensions": {
+                "width": 400,
+                "height": 500
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/rnql16eloPqKGpDv_GuidoBelcanto.jpeg?auto=format%2Ccompress&rect=0%2C180%2C1440%2C1800&w=400&h=500",
+              "id": "rnql16eloPqKGpDv",
+              "edit": {
+                "x": 0,
+                "y": 180,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            }
+          },
+          {
+            "artist_name": "Gamut Inc",
+            "artist_role": null,
+            "artist_portrait": {
+              "dimensions": {
+                "width": 400,
+                "height": 500
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/aaHXYMFoBIGEg8AB_voy_9566-Kopie-717x1024.jpg?auto=format%2Ccompress&rect=0%2C64%2C717%2C896&w=400&h=500",
+              "id": "aaHXYMFoBIGEg8AB",
+              "edit": {
+                "x": 0,
+                "y": 64,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            }
+          },
+          {
+            "artist_name": "Maxim De Nuc",
+            "artist_role": null,
+            "artist_portrait": {
+              "dimensions": {
+                "width": 400,
+                "height": 500
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/aaHWusFoBIGEg7_r_Maxime-Denuc-%C2%A9-Andrea-Avezzu%CC%80--courtesy-of-La-Biennale-di-Venezia---Large-.jpg?auto=format%2Ccompress&rect=157%2C0%2C864%2C1080&w=400&h=500",
+              "id": "aaHWusFoBIGEg7_r",
+              "edit": {
+                "x": 157,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            }
+          },
+          {
+            "artist_name": "Yves Rechsteiner",
+            "artist_role": null,
+            "artist_portrait": {
+              "dimensions": {
+                "width": 400,
+                "height": 500
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/wjEyiyowQljFYa3p_2025-WEB-Yves-Rechsteiner-NBjpg.webp?auto=format%2Ccompress&rect=134%2C0%2C733%2C916&w=400&h=500",
+              "id": "wjEyiyowQljFYa3p",
+              "edit": {
+                "x": 134,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            }
+          },
+          {
+            "artist_name": "Stephan Eicher",
+            "artist_role": null,
+            "artist_portrait": {
+              "dimensions": {
+                "width": 400,
+                "height": 500
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/aaHXM8FoBIGEg7_5_489239898_1208176334644221_2497212205538778467_n.jpg?auto=format%2Ccompress&rect=467%2C0%2C1066%2C1333&w=400&h=500",
+              "id": "aaHXM8FoBIGEg7_5",
+              "edit": {
+                "x": 467,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            }
+          },
+          {
+            "artist_name": "Pat Metheny",
+            "artist_role": null,
+            "artist_portrait": {
+              "dimensions": {
+                "width": 400,
+                "height": 500
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/aaHVtMFoBIGEg7_O_Pat_01-jgxxwgckWXkd6w97dxkNuuTZCEibejlA.jpg?auto=format%2Ccompress&rect=0%2C82%2C668%2C835&w=400&h=500",
+              "id": "aaHVtMFoBIGEg7_O",
+              "edit": {
+                "x": 0,
+                "y": 82,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            }
+          },
+          {
+            "artist_name": "Walter Hus",
+            "artist_role": null,
+            "artist_portrait": {
+              "dimensions": {
+                "width": 400,
+                "height": 500
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/aaHXUMFoBIGEg7___COM-STUK-START-foto-web-Walter-Hus-on-Decap-%C2%A9-DYOD.jpg?auto=format%2Ccompress&rect=0%2C112%2C900%2C1125&w=400&h=500",
+              "id": "aaHXUMFoBIGEg7__",
+              "edit": {
+                "x": 0,
+                "y": 112,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            }
+          },
+          {
+            "artist_name": "Circus Ronaldo",
+            "artist_role": null,
+            "artist_portrait": {
+              "dimensions": {
+                "width": 400,
+                "height": 500
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/tEjy8vTylMz5gtPL_474620729_1228337042043753_3393434546587048591_n.jpg?auto=format,compress&rect=478,0,1092,1365&w=400&h=500",
+              "id": "tEjy8vTylMz5gtPL",
+              "edit": {
+                "x": 478,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            }
+          }
+        ],
+        "primary": {
+          "title": "Also played on stage",
+          "description": [
+            {
+              "type": "paragraph",
+              "text": "Our organs and instruments mostly play in homes, bars and dance halls. These artists take them on stage.",
+              "spans": []
+            }
+          ],
+          "background_color": null
+        },
+        "id": "home_artists$c7f22499-2cd8-45cb-8739-1e42307cc8c7",
+        "slice_type": "home_artists",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "year": "1895",
+            "title": "Aloïs Decap starts in organs",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "He rents out and deals in small organs around Antwerp, delivered by dog cart.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null,
+            "highlight": false
+          },
+          {
+            "year": "1933",
+            "title": "Frans Decap founds Decap Herentals",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "The same year, the first self-playing accordions appear on Decap organs.",
+                "spans": []
+              }
+            ],
+            "image": {
+              "dimensions": {
+                "width": 960,
+                "height": 689
+              },
+              "alt": "Archive photo: François Decap at the delivery of a new organ",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/Y1_vbxctriKhBKCp_decap-old-retro-of-francois-decap-and-the-delivery-of-a-new-organ.jpg?auto=format,compress",
+              "id": "Y1_vbxctriKhBKCp",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": null,
+            "highlight": true
+          },
+          {
+            "year": "1977",
+            "title": "The first digital dance organ",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "François replaces pipes with digital sound, so cafés and dance halls with smaller budgets can have an organ.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null,
+            "highlight": false
+          },
+          {
+            "year": "2000",
+            "title": "The first to bring MIDI to the organ",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Tony Decap puts a whole music library on one card, instead of racks of cardboard books. Today almost every old organ is converted to MIDI.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null,
+            "highlight": false
+          },
+          {
+            "year": "2016",
+            "title": "Pipes from our own CNC",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "We mill organ pipes on 5-axis CNC with PipeCreator, software we wrote ourselves.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null,
+            "highlight": false
+          },
+          {
+            "year": "2025",
+            "title": "The first wind synthesizer",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "smARTvalve in a transportable church organ: every pipe controlled on its own.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null,
+            "highlight": true
+          }
+        ],
+        "primary": {
+          "eyebrow": "Since 1895",
+          "title": "Every generation reinvented the organ",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Aloïs Decap started with a handful of rented organs. His son Frans founded Decap Herentals. François took it digital, Tony brought MIDI and smARTvalve. Read the full story.",
+              "spans": [
+                {
+                  "start": 152,
+                  "end": 171,
+                  "type": "hyperlink",
+                  "data": {
+                    "link_type": "Web",
+                    "url": "/about"
+                  }
+                }
+              ]
+            }
+          ],
+          "tone": "Default"
+        },
+        "id": "site_timeline$991d1e60-032a-40ed-abb0-178ebe0faceb",
+        "slice_type": "site_timeline",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Planning an organ?",
+          "title": "Tell us where it will play",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Pick a starting design and a few options in the Organ Composer. We reply with questions and a first idea, without obligation.",
+              "spans": []
+            }
+          ],
+          "price": null,
+          "price_note": null,
+          "primary_cta_label": "Compose your organ",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "4a83b1b3-9d96-48ff-bdb6-107db1dcd7d3",
+            "url": "/organ-composer"
+          },
+          "secondary_cta_label": "Contact the workshop",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "feee9efe-9b6f-4ac8-a52b-056397a26a38",
+            "url": "/contact"
+          },
+          "image": {},
+          "image_brief": null,
+          "tone": "Dark band"
+        },
+        "id": "site_cta$3ef30ae8-5696-4f9b-9281-5c9ff865e024",
+        "slice_type": "site_cta",
+        "slice_label": null
+      }
+    ],
+    "meta_title": "Dance Organs Built by Musicians | Decap Herentals",
+    "meta_description": "Real dance organs from Herentals, built by musicians since 1933: dynamics and volume control, orchestrions, self-playing instruments and smARTvalve.",
+    "meta_image": {}
+  }
+}

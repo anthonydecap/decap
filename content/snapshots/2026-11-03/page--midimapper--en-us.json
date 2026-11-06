@@ -1,0 +1,401 @@
+{
+  "id": "atc3jhEAACwAavQb",
+  "uid": "midimapper",
+  "url": null,
+  "type": "page",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22atc3jhEAACwAavQb%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2026-10-20T09:51:00+0000",
+  "last_publication_date": "2026-10-22T08:15:29+0000",
+  "slugs": [
+    "midimapper"
+  ],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [
+    {
+      "id": "atdvthEAAC0Aa14y",
+      "type": "page",
+      "lang": "fr-fr",
+      "uid": "midimapper"
+    }
+  ],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "MIDIMapper",
+        "spans": []
+      }
+    ],
+    "theme": "decap",
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "layout": "Split",
+          "eyebrow": "MIDIMapper, for arrangers",
+          "title": "Hear your organ arrangement with real organ samples",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Arranging for a street organ or pipe organ usually means writing blind until the music reaches the instrument. MIDIMapper takes the MIDI from your arranging software, routes it through your own maps and plays it with real organ samples. What you hear while arranging is much closer to what the organ will play.",
+              "spans": []
+            }
+          ],
+          "primary_cta_label": "Get the free trial in the shop",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "f906ba3e-bbf6-4624-ac6d-4dcb7c800cae",
+            "url": "/software/midi-mapper"
+          },
+          "secondary_cta_label": "All Decap software",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "68b2ce1c-51f3-4de2-aa71-9eb684ff71e5",
+            "url": "/software"
+          },
+          "note": "Full licence € 150 excl. VAT. Free trial and licence in the shop.",
+          "image": {
+            "dimensions": {
+              "width": 542,
+              "height": 382
+            },
+            "alt": "MIDIMapper on a laptop and a desktop screen",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/QP_8CY7X2Aoayhej_midimapper-desktop.png?auto=format,compress",
+            "id": "QP_8CY7X2Aoayhej",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "mux_video": null,
+          "image_brief": "Laptop with the MIDIMapper map editor open next to a MIDI keyboard on a desk, portrait 4:5",
+          "image_shape": null,
+          "image_fit": null,
+          "image_position": null,
+          "image_zoom": null,
+          "overlay": null,
+          "blur": null,
+          "dim": null,
+          "color_effect": null,
+          "vignette": null,
+          "slow_zoom": null,
+          "tone": "Default"
+        },
+        "id": "site_hero$94a58381-7ad3-443c-aa28-faf093b2e7e3",
+        "slice_type": "site_hero",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "What it does",
+          "title": "MIDI routing and organ playback in one program",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "MIDIMapper reads a MIDI input and sends each note to one or more outputs, following maps you define. A map can stack up to 12 layers, so you hear registrations in context: a Jazz Flute with and without tremolo, or a woodblock added on a note.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "Because the sound comes from real organ samples instead of General MIDI sounds, you judge balance and registration while you arrange, not after the book is cut.",
+              "spans": []
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 497,
+              "height": 312
+            },
+            "alt": "MIDIMapper map editor",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/CH5CnU7qUNtGlP5__MidiMapperLaptop1-1.png?auto=format,compress",
+            "id": "CH5CnU7qUNtGlP5_",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Screenshot of a MIDIMapper map with several layers visible, 4:3",
+          "media_side": "Image right",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$fa1f7f1f-9a89-4b6f-a1e0-a033b71b3628",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "title": "Connect your DAW",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Send MIDI from your arranging software through a virtual MIDI cable such as loopMIDI, and pick the outputs. MIDIMapper stores this set-up for next time.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null
+          },
+          {
+            "title": "Build your map",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "In the built-in MapCreator, assign incoming notes to output channels and registrations. Refine the map as you go.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null
+          },
+          {
+            "title": "Listen and adjust",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Play the arrangement through the organ samples. Correct note lengths in milliseconds to match the book and the organ's response.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null
+          },
+          {
+            "title": "Record and share",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Record the output and export it as a WAV file to review or share.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null
+          }
+        ],
+        "primary": {
+          "eyebrow": "How it works",
+          "title": "Set up once, then arrange",
+          "intro": [],
+          "tone": "Tinted"
+        },
+        "id": "site_steps$1a0c8410-a91f-46bc-ac4e-0f9660c2c87a",
+        "slice_type": "site_steps",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "label": "Sound",
+            "value": "Real pipe organ samples; custom samples supported",
+            "note": null
+          },
+          {
+            "label": "MapCreator",
+            "value": "Built-in editor for your own MIDI routing",
+            "note": null
+          },
+          {
+            "label": "Layers",
+            "value": "Up to 12 per map, to stack registrations",
+            "note": null
+          },
+          {
+            "label": "Switches",
+            "value": "Registration patch switches and note switches",
+            "note": null
+          },
+          {
+            "label": "Outputs",
+            "value": "2 to the internal sound modules, 2 freely routable",
+            "note": null
+          },
+          {
+            "label": "Channels",
+            "value": "64 addressable (4 × 16)",
+            "note": null
+          },
+          {
+            "label": "Repeat",
+            "value": "Mandoline effect with adjustable speed and duty cycle",
+            "note": null
+          },
+          {
+            "label": "Timing",
+            "value": "Millisecond control; drum delay on (book) or off (arrangement)",
+            "note": null
+          },
+          {
+            "label": "Note length",
+            "value": "Global adjustment in milliseconds",
+            "note": null
+          },
+          {
+            "label": "Export",
+            "value": "Direct recording to WAV",
+            "note": null
+          },
+          {
+            "label": "Input",
+            "value": "Any MIDI input, e.g. loopMIDI from your DAW",
+            "note": null
+          },
+          {
+            "label": "Use",
+            "value": "Street organs and pipe organs; add percussion or glockenspiel samples",
+            "note": null
+          }
+        ],
+        "primary": {
+          "eyebrow": "Features",
+          "title": "What MIDIMapper includes",
+          "intro": [],
+          "layout": "Spec list",
+          "tone": "Default"
+        },
+        "id": "site_facts$2c3a2a57-99ca-4145-b774-4f2d0f76bd73",
+        "slice_type": "site_facts",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "question": "Who is MIDIMapper for?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Arrangers who write for street organs or pipe organs and want to hear registrations while they work.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Does it work with my DAW?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "It works with any software that sends MIDI. Route the MIDI to MIDIMapper through a virtual MIDI cable such as loopMIDI.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Can I use my own samples?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Yes. MIDIMapper supports custom samples, for example percussion or glockenspiel to complete an organ's sound.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Why adjust note lengths?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Mapper timing, book note lengths and the real organ's response differ. A global note length in milliseconds lets you compensate, and the drum delay switch matches book or arrangement timing.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "How do I buy the full licence?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "In the shop: € 150 excl. VAT. The free trial is there too, so you can try MIDIMapper with your own arrangements first.",
+                "spans": [
+                  {
+                    "start": 7,
+                    "end": 11,
+                    "type": "hyperlink",
+                    "data": {
+                      "link_type": "Web",
+                      "url": "/software/midi-mapper"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "primary": {
+          "eyebrow": "Questions",
+          "title": "About MIDIMapper",
+          "intro": [],
+          "tone": "Default"
+        },
+        "id": "site_faq$4f3f2f32-95d1-43a3-9e3d-c755ddcdd8aa",
+        "slice_type": "site_faq",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "MIDIMapper",
+          "title": "Hear your next arrangement before the organ does",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Download the free trial from the shop and connect it to your DAW. When you are ready, buy the full licence in the shop.",
+              "spans": []
+            }
+          ],
+          "price": "€ 150",
+          "price_note": "excl. VAT, full licence",
+          "primary_cta_label": "Get the free trial in the shop",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "c86192b9-5b86-45a5-b65c-44073db351dd",
+            "url": "/software/midi-mapper"
+          },
+          "secondary_cta_label": "Buy in the shop",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "b563cdd6-4ae5-4037-b895-7ae7940ea891",
+            "url": "/software/midi-mapper"
+          },
+          "image": {},
+          "image_brief": null,
+          "tone": "Dark band"
+        },
+        "id": "site_cta$40a7049c-98e4-4aff-8ce5-c5cff6e456e8",
+        "slice_type": "site_cta",
+        "slice_label": null
+      }
+    ],
+    "meta_title": "MIDIMapper: Organ Arranging Software | Decap Herentals",
+    "meta_description": "MIDIMapper routes MIDI from your DAW to real organ samples, so you hear an organ arrangement as it will sound. € 150 excl. VAT. Download the free trial.",
+    "meta_image": {}
+  }
+}

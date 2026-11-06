@@ -1,0 +1,322 @@
+{
+  "id": "atdv0xEAAC4Aa16B",
+  "uid": "house-of-music-hungary",
+  "url": null,
+  "type": "project",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22atdv0xEAAC4Aa16B%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2026-10-20T15:02:57+0000",
+  "last_publication_date": "2026-10-22T08:15:18+0000",
+  "slugs": [
+    "house-of-music-hungary--creative-sound-space"
+  ],
+  "linked_documents": [],
+  "lang": "fr-fr",
+  "alternate_languages": [
+    {
+      "id": "atc3cxEAAC0AavO7",
+      "type": "project",
+      "lang": "en-us",
+      "uid": "house-of-music-hungary"
+    }
+  ],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "House of Music Hungary : Creative Sound Space",
+        "spans": []
+      }
+    ],
+    "theme": "decap",
+    "summary": "Des instruments automatiques pour l'orchestre robotisé du Creative Sound Space, avec Medence Design.",
+    "card_image": {},
+    "client": "House of Music Hungary, avec Medence Design",
+    "year": "2022",
+    "location": "Budapest, Hongrie",
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "layout": "Split",
+          "eyebrow": "Réalisations · Budapest",
+          "title": "Un orchestre robotisé pour la House of Music Hungary",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Le Creative Sound Space de la House of Music Hungary à Budapest compte huit installations consacrées au son, conçues par Medence Design. L'une d'elles est un orchestre robotisé composé de nos instruments automatiques.",
+              "spans": []
+            }
+          ],
+          "primary_cta_label": "Instruments automatiques",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "240d5c93-cf37-4eb1-9434-d2ed393ddc1c",
+            "url": "/instruments"
+          },
+          "secondary_cta_label": "Tous les projets",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "df3c5f87-4154-4325-9335-f89293f5d720",
+            "url": "/work"
+          },
+          "note": "Photos : Mohai Balázs, 2022",
+          "image": {
+            "dimensions": {
+              "width": 815,
+              "height": 542
+            },
+            "alt": "The orchestrion room at the House of Music Hungary",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/JHcG9SGmqACS5-h1_20221008_mohaibalazs_074-1-1.jpeg?auto=format,compress",
+            "id": "JHcG9SGmqACS5-h1",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "mux_video": null,
+          "image_brief": "The robot orchestra in the Creative Sound Space, wide shot with visitors, 4:3 (photo Mohai Balázs)",
+          "image_shape": null,
+          "image_fit": null,
+          "image_position": null,
+          "image_zoom": null,
+          "overlay": null,
+          "blur": null,
+          "dim": null,
+          "color_effect": null,
+          "vignette": null,
+          "slow_zoom": null,
+          "tone": "Default"
+        },
+        "id": "site_hero$87ade0c9-6fb6-4ce6-a969-465f43c377ff",
+        "slice_type": "site_hero",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Le projet",
+          "title": "Huit installations, un orchestre robotisé",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Medence Design a conçu le Creative Sound Space comme huit installations qui permettent aux visiteurs d'explorer le son. Nous avons construit presque tous les instruments de la salle interactive, orchestre robotisé compris. Le logiciel de commande de l'espace a été réalisé par d'autres.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "L'espace est ouvert depuis 2022.",
+              "spans": []
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 710,
+              "height": 542
+            },
+            "alt": "Visitors playing the instruments from a touchscreen",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/SONdV1-t8OE3gruR_20221008_mohaibalazs_074-3-2-1.png?auto=format,compress",
+            "id": "SONdV1-t8OE3gruR",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Close-up of the marimba and glockenspiel of the robot orchestra, 4:3 (photo Mohai Balázs)",
+          "media_side": "Image right",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$cff85008-ce2a-4324-8acf-55e04de05b72",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "point": "Marimba"
+          },
+          {
+            "point": "Accordéon"
+          },
+          {
+            "point": "Pianino"
+          },
+          {
+            "point": "Glockenspiel"
+          },
+          {
+            "point": "Batterie"
+          },
+          {
+            "point": "Un orgue avec commande de pression à distance"
+          }
+        ],
+        "primary": {
+          "eyebrow": "En concert",
+          "title": "Robotorgona : des concerts pour l'orchestre robotisé",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "La House of Music Hungary organise des concerts Robotorgona dans le Creative Sound Space. L'orchestre est commandé par ordinateur et joue :",
+              "spans": [
+                {
+                  "start": 48,
+                  "end": 59,
+                  "type": "em"
+                }
+              ]
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 710,
+              "height": 499
+            },
+            "alt": "Visitors in the Creative Sound Space",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/F21WX8QstCP_pfcr_image-6-2.jpeg?auto=format%2Ccompress&rect=0%2C0%2C710%2C499&w=710&h=499",
+            "id": "F21WX8QstCP_pfcr",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Audience at a Robotorgona concert in front of the robot orchestra, 4:3 (photo Mohai Balázs)",
+          "media_side": "Image left",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Tinted"
+        },
+        "id": "site_text_media$c58e730a-8eb8-4f09-9841-4377671ddd45",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "label": "Lieu",
+            "value": "House of Music Hungary, Budapest",
+            "note": null
+          },
+          {
+            "label": "Scénographie",
+            "value": "Medence Design",
+            "note": null
+          },
+          {
+            "label": "Espace",
+            "value": "Creative Sound Space, huit installations",
+            "note": null
+          },
+          {
+            "label": "Ouvert depuis",
+            "value": "2022",
+            "note": null
+          },
+          {
+            "label": "Instruments",
+            "value": "Marimba, accordéon, pianino, glockenspiel, batterie, orgue",
+            "note": null
+          }
+        ],
+        "primary": {
+          "eyebrow": "En bref",
+          "title": "Le projet en chiffres",
+          "intro": [],
+          "layout": "Spec list",
+          "tone": "Default"
+        },
+        "id": "site_facts$2f3bcbf0-701f-4ae7-b6f5-74c60637b579",
+        "slice_type": "site_facts",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Regarder",
+          "title": "L'orchestre robotisé en action",
+          "intro": [],
+          "video": {},
+          "caption": null,
+          "poster": {},
+          "video_brief": "Clip of a Robotorgona concert in the Creative Sound Space",
+          "tone": "Default"
+        },
+        "id": "site_video$dfad4671-0559-4a69-bae1-b1a030fb85ba",
+        "slice_type": "site_video",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Musées et expositions",
+          "title": "Vous préparez une installation avec des instruments automatiques ?",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Parlez-nous de l'espace, des visiteurs et de ce qu'ils doivent entendre. Nous vous répondons avec les instruments qui conviennent et leur mode de commande.",
+              "spans": []
+            }
+          ],
+          "price": null,
+          "price_note": null,
+          "primary_cta_label": "Décrire votre installation",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "5f4d71e5-810a-429c-98a7-e1db69462cbe",
+            "url": "/contact"
+          },
+          "secondary_cta_label": "Voir les instruments",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "74fbe736-7208-4a2a-b097-1bf4fd39cb02",
+            "url": "/instruments"
+          },
+          "image": {},
+          "image_brief": null,
+          "tone": "Dark band"
+        },
+        "id": "site_cta$3930468f-843a-4cee-b864-908202fb80f5",
+        "slice_type": "site_cta",
+        "slice_label": null
+      }
+    ],
+    "meta_title": "Orchestre robotisé, House of Music Hungary | Decap",
+    "meta_description": "Un orchestre robotisé de Decap Herentals pour le Creative Sound Space de la House of Music Hungary à Budapest, avec Medence Design, et les concerts Robotorgona.",
+    "meta_image": {}
+  }
+}

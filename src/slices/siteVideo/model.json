@@ -2,7 +2,7 @@
   "id": "site_video",
   "type": "SharedSlice",
   "name": "SiteVideo",
-  "description": "A YouTube or Vimeo video, loaded only when played (privacy friendly).",
+  "description": "A Mux video in our own player, or a YouTube/Vimeo video loaded only when played (privacy friendly).",
   "variations": [
     {
       "id": "default",
@@ -35,10 +35,26 @@
             "multi": "paragraph,strong,em,hyperlink"
           }
         },
+        "mux_video": {
+          "type": "Text",
+          "config": {
+            "label": "Mux video (plays in our own player, wins over YouTube/Vimeo)",
+            "placeholder": "https://stream.mux.com/….m3u8 or playback ID"
+          }
+        },
         "video": {
           "type": "Embed",
           "config": {
             "label": "YouTube or Vimeo URL"
+          }
+        },
+        "without_sound": {
+          "type": "Boolean",
+          "config": {
+            "label": "Play without sound (Mux only)",
+            "default_value": false,
+            "placeholder_false": "With sound",
+            "placeholder_true": "Without sound"
           }
         },
         "caption": {
@@ -54,6 +70,17 @@
             "label": "Poster image (optional)",
             "constraint": {},
             "thumbnails": []
+          }
+        },
+        "media_background": {
+          "type": "Select",
+          "config": {
+            "label": "Media background",
+            "options": [
+              "Card",
+              "Same as section"
+            ],
+            "default_value": "Card"
           }
         },
         "video_brief": {

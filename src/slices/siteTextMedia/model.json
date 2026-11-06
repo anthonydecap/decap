@@ -43,6 +43,13 @@
             "thumbnails": []
           }
         },
+        "mux_video": {
+          "type": "Text",
+          "config": {
+            "label": "Mux video loop (optional, plays muted, wins over the mp4)",
+            "placeholder": "https://stream.mux.com/….m3u8 or playback ID"
+          }
+        },
         "video": {
           "type": "Link",
           "config": {
@@ -80,6 +87,17 @@
               "Wide 16:9"
             ],
             "default_value": "Landscape 4:3"
+          }
+        },
+        "media_background": {
+          "type": "Select",
+          "config": {
+            "label": "Media background",
+            "options": [
+              "Card",
+              "Same as section"
+            ],
+            "default_value": "Card"
           }
         },
         "cta_label": {

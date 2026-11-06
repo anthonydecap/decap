@@ -1,0 +1,234 @@
+{
+  "id": "atdv1hEAACcAa16I",
+  "uid": "pat-metheny",
+  "url": null,
+  "type": "project",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22atdv1hEAACcAa16I%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2026-10-20T15:02:57+0000",
+  "last_publication_date": "2026-10-22T08:15:18+0000",
+  "slugs": [
+    "pat-metheny"
+  ],
+  "linked_documents": [],
+  "lang": "fr-fr",
+  "alternate_languages": [
+    {
+      "id": "atc3bxEAAC0AavO1",
+      "type": "project",
+      "lang": "en-us",
+      "uid": "pat-metheny"
+    }
+  ],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Pat Metheny",
+        "spans": []
+      }
+    ],
+    "theme": "decap",
+    "summary": "Un orchestrion construit à Herentals, emmené en tournée dans le monde entier dans nombre de ses productions.",
+    "card_image": {},
+    "client": "Pat Metheny",
+    "year": null,
+    "location": "Monde entier",
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "layout": "Split",
+          "eyebrow": "Réalisations",
+          "title": "Un orchestrion pour Pat Metheny",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Nous avons construit un orchestrion pour Pat Metheny. Il l'a emmené en tournée dans le monde entier dans nombre de ses productions. Son dernier concert en Belgique, à BOZAR à Bruxelles, le mettait aussi en scène.",
+              "spans": []
+            }
+          ],
+          "primary_cta_label": "Tous les projets",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "ccf57260-3784-4cd1-b7b2-aec2114f1130",
+            "url": "/work"
+          },
+          "secondary_cta_label": null,
+          "secondary_cta_link": {
+            "link_type": "Any"
+          },
+          "note": null,
+          "image": {
+            "dimensions": {
+              "width": 268,
+              "height": 239
+            },
+            "alt": "Pat Metheny with his orchestrion",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/tdBrcHX-1NWKGmiN_Untitled-1-41.png?auto=format,compress",
+            "id": "tdBrcHX-1NWKGmiN",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "mux_video": null,
+          "image_brief": "Pat Metheny with the Decap instrument(s) on stage or in the studio, 4:3",
+          "image_shape": null,
+          "image_fit": null,
+          "image_position": null,
+          "image_zoom": null,
+          "overlay": null,
+          "blur": null,
+          "dim": null,
+          "color_effect": null,
+          "vignette": null,
+          "slow_zoom": null,
+          "tone": "Default"
+        },
+        "id": "site_hero$189cf65e-25ae-4c71-8a7b-224dd15f05ba",
+        "slice_type": "site_hero",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Le projet",
+          "title": "Construit pour faire le tour du monde",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Un orchestrion est un orchestre d'instruments acoustiques joués par une machine. Pat Metheny joue à ses côtés sur scène : les instruments répondent à son jeu et à ses arrangements, soir après soir, dans une salle différente chaque fois.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "C'est beaucoup demander à un instrument. Il doit voyager, résister au montage et au démontage, et jouer avec le timing et la dynamique d'un musicien de jazz.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "L'orchestrion l'a accompagné pendant de nombreuses productions. Lors de son dernier concert en Belgique, à BOZAR à Bruxelles, il était sur scène avec lui.",
+              "spans": []
+            }
+          ],
+          "image": {},
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "The Decap-built instrument from this project in the Herentals workshop before shipping, 4:3",
+          "media_side": "Image right",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$7ff4c2f4-584b-461f-be5b-0b87854638af",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "label": "Artiste",
+            "value": "Pat Metheny",
+            "note": null
+          },
+          {
+            "label": "Construit par Decap",
+            "value": "Un orchestrion",
+            "note": null
+          },
+          {
+            "label": "Utilisé lors de",
+            "value": "Tournées mondiales, nombreuses productions",
+            "note": null
+          },
+          {
+            "label": "En Belgique",
+            "value": "BOZAR, Bruxelles",
+            "note": null
+          }
+        ],
+        "primary": {
+          "eyebrow": "En bref",
+          "title": "Le projet en chiffres",
+          "intro": [],
+          "layout": "Spec list",
+          "tone": "Default"
+        },
+        "id": "site_facts$6438aae7-8097-4c9c-9c68-2a2f3ac14bd3",
+        "slice_type": "site_facts",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Regarder",
+          "title": "Les instruments en action",
+          "intro": [],
+          "video": {},
+          "caption": null,
+          "poster": {},
+          "video_brief": "Video of Pat Metheny playing with the Decap instrument(s)",
+          "tone": "Default"
+        },
+        "id": "site_video$c3b6445d-69af-4e92-9654-6db74a68f1a2",
+        "slice_type": "site_video",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Votre projet",
+          "title": "Besoin d'un instrument acoustique qui joue en MIDI ?",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Dites-nous ce qu'il doit jouer et où. Nous vous répondons avec des questions et une première idée.",
+              "spans": []
+            }
+          ],
+          "price": null,
+          "price_note": null,
+          "primary_cta_label": "Décrire votre projet",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "7ac26c3a-3751-4f02-83de-a83e36282128",
+            "url": "/contact"
+          },
+          "secondary_cta_label": "Instruments automatiques",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "41a2dc4d-fbc3-42de-9f24-19762c23a0d7",
+            "url": "/instruments"
+          },
+          "image": {},
+          "image_brief": null,
+          "tone": "Dark band"
+        },
+        "id": "site_cta$7be2361d-bb65-4733-9213-862fa3d8ad57",
+        "slice_type": "site_cta",
+        "slice_label": null
+      }
+    ],
+    "meta_title": "Pat Metheny et Decap | Réalisations | Decap Herentals",
+    "meta_description": "Decap Herentals a construit un orchestrion pour le guitariste de jazz Pat Metheny, qui l'a emmené en tournée mondiale dans de nombreuses productions.",
+    "meta_image": {}
+  }
+}

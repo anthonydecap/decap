@@ -1,0 +1,272 @@
+{
+  "id": "atdvvBEAAC0Aa15B",
+  "uid": "organ-composer",
+  "url": null,
+  "type": "page",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22atdvvBEAAC0Aa15B%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2026-10-20T15:03:00+0000",
+  "last_publication_date": "2026-10-22T08:15:23+0000",
+  "slugs": [
+    "organ-composer"
+  ],
+  "linked_documents": [],
+  "lang": "fr-fr",
+  "alternate_languages": [
+    {
+      "id": "atc3iREAACgAavQO",
+      "type": "page",
+      "lang": "en-us",
+      "uid": "organ-composer"
+    }
+  ],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Organ Composer",
+        "spans": []
+      }
+    ],
+    "theme": "decap",
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "layout": "Centered",
+          "eyebrow": "Organ Composer",
+          "title": "Composez votre orgue de danse",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Choisissez un modèle de départ et répondez à quelques questions sur la salle, le son et les instruments de façade. Cela prend quelques minutes et nous donne un point de départ clair pour la première conversation.",
+              "spans": []
+            }
+          ],
+          "primary_cta_label": null,
+          "primary_cta_link": {
+            "link_type": "Any"
+          },
+          "secondary_cta_label": null,
+          "secondary_cta_link": {
+            "link_type": "Any"
+          },
+          "note": "Ce n'est ni un calculateur de prix ni une commande. Chaque orgue est confirmé après une consultation.",
+          "image": {},
+          "mux_video": null,
+          "image_brief": null,
+          "image_shape": null,
+          "image_fit": null,
+          "image_position": null,
+          "image_zoom": null,
+          "overlay": null,
+          "blur": null,
+          "dim": null,
+          "color_effect": null,
+          "vignette": null,
+          "slow_zoom": null,
+          "tone": "Default"
+        },
+        "id": "site_hero$4c6da47b-5b9e-4e02-99a0-e75b1164272a",
+        "slice_type": "site_hero",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "image": {
+              "dimensions": {
+                "width": 724,
+                "height": 804
+              },
+              "alt": "Render of a modular Decap dance organ",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/BB-llpKn4TV5FjVP_Model_V02_2023-Oct-16_11-15-28PM-000_CustomizedView27364077015.png?auto=format,compress",
+              "id": "BB-llpKn4TV5FjVP",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Existing 3D render of the modular 105-key dance organ, front view, plain background, 4:3",
+            "name": "Orgue de danse modulaire, 105 touches",
+            "kind": "Modular",
+            "description": "Construit à partir de modules éprouvés sur notre échelle standard de 105 touches. Joue la musique 121 touches grâce au lecteur Virtual Orchestrion."
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 1242,
+                "height": 1012
+              },
+              "alt": "Render of a modular Decap dance organ with a name panel",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/R7xlQhwm9B3cGVLU_ST.ORG_._SAMENBOUW_INSTRUMENTEN-001_OrigineelSteven_2023-Aug-16_09-45-31PM-000_CustomizedView4140936227.png?auto=format,compress",
+              "id": "R7xlQhwm9B3cGVLU",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Existing 3D render of the modular 121-key dance organ, front view, plain background, 4:3",
+            "name": "Orgue de danse modulaire, 121 touches",
+            "kind": "Modular",
+            "description": "Construit à partir de modules éprouvés sur notre échelle standard de 121 touches, pour plus de notes et plus de jeux."
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 911,
+                "height": 764
+              },
+              "alt": "Render of the bespoke organ Isabella",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/8RsD3EaLG6DCdW_a_cb0efde8-a27a-48f1-afd3-afb5a1fb60d2.png?auto=format%2Ccompress&rect=0%2C0%2C911%2C764&w=911&h=764",
+              "id": "8RsD3EaLG6DCdW_a",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Existing 3D render of a bespoke Decap concert organ, front three-quarter view, plain background, 4:3",
+            "name": "Orgue sur mesure dans son propre style",
+            "kind": "Bespoke",
+            "description": "Un buffet, des couleurs et un nom conçus pour un seul propriétaire, comme l'Isabella aux formes arrondies de style années 70. Tuyaux, accordéons et batterie en façade."
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 1011,
+                "height": 799
+              },
+              "alt": "Render of a bespoke Decap orchestrion",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/MfEyZIjIn7GIAuzm_Trailer_2023-Oct-07_10-13-09PM-000_CustomizedView1077535285-1.png?auto=format,compress",
+              "id": "MfEyZIjIn7GIAuzm",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Existing 3D render of a bespoke Decap street organ, front three-quarter view, plain background, 4:3",
+            "name": "Orchestrion sur mesure",
+            "kind": "Bespoke",
+            "description": "Un orchestrion complet avec deux accordéons, des tuyaux, des percussions et une batterie, conçu autour de la salle où il joue."
+          }
+        ],
+        "primary": {
+          "eyebrow": "Étape 1",
+          "title": "Choisissez un modèle de départ",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Partez de l'un de nos orgues modulaires ou d'un modèle sur mesure que nous avons déjà construit. Choisissez ensuite où il jouera, la taille, tuyaux ou numérique, les jeux et ce qui joue en façade.",
+              "spans": []
+            }
+          ],
+          "bespoke_note": [
+            {
+              "type": "paragraph",
+              "text": "Vous voulez quelque chose qu'aucun de ces modèles ne montre ? Choisissez Partir de zéro et décrivez votre idée dans le message. Les orgues sur mesure commencent par une consultation et un rendu 3D : rien n'est fixé avant que vous l'ayez vu.",
+              "spans": [
+                {
+                  "start": 73,
+                  "end": 87,
+                  "type": "strong"
+                }
+              ]
+            }
+          ],
+          "success_title": "Votre point de départ est en route",
+          "success_body": [
+            {
+              "type": "paragraph",
+              "text": "Merci. Vos choix sont bien arrivés chez nous à Herentals. Nous vous répondons avec des questions et une première idée.",
+              "spans": []
+            }
+          ],
+          "tone": "Default"
+        },
+        "id": "organ_composer$d9c5a68a-72ba-4e2c-993f-c36855a810ce",
+        "slice_type": "organ_composer",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "question": "L'envoi d'un modèle m'engage-t-il ?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Non. C'est une demande de consultation, pas une commande. Rien n'est fixé tant que vous ne nous avez pas confirmé une commande.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Que se passe-t-il après l'envoi ?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Nous lisons vos choix et vous répondons avec des questions et une première idée. Ensuite, nous parlons de la salle, de la musique et du budget, et nous avançons vers une conception et un rendu 3D. Voir comment nous construisons un orgue.",
+                "spans": [
+                  {
+                    "start": 197,
+                    "end": 236,
+                    "type": "hyperlink",
+                    "data": {
+                      "link_type": "Web",
+                      "url": "/organs"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "question": "Puis-je partir de zéro ?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Oui. Choisissez Partir de zéro et décrivez ce que vous avez en tête. Chaque option peut être modifiée par la suite, et un orgue entièrement sur mesure est toujours possible.",
+                "spans": [
+                  {
+                    "start": 16,
+                    "end": 30,
+                    "type": "strong"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "primary": {
+          "eyebrow": "Questions",
+          "title": "À propos de l'Organ Composer",
+          "intro": [],
+          "tone": "Default"
+        },
+        "id": "site_faq$ecc9701a-b157-49e4-9596-6f1a013611cd",
+        "slice_type": "site_faq",
+        "slice_label": null
+      }
+    ],
+    "meta_title": "Organ Composer : concevez votre orgue de danse | Decap",
+    "meta_description": "Choisissez un modèle de départ, la taille, le son, les jeux et les instruments de façade, puis envoyez-le à Decap. Nous répondons avec une première idée.",
+    "meta_image": {}
+  }
+}
