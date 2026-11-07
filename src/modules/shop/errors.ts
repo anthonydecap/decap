@@ -2,7 +2,6 @@
 export type ShopErrorCode =
   | "UNAUTHENTICATED"
   | "FORBIDDEN"
-  | "MFA_REQUIRED"
   | "EMAIL_NOT_VERIFIED"
   | "ONBOARDING_REQUIRED"
   | "NOT_FOUND"
@@ -23,7 +22,6 @@ export type ShopErrorCode =
 const STATUS: Record<ShopErrorCode, number> = {
   UNAUTHENTICATED: 401,
   FORBIDDEN: 403,
-  MFA_REQUIRED: 403,
   EMAIL_NOT_VERIFIED: 403,
   ONBOARDING_REQUIRED: 403,
   NOT_FOUND: 404,

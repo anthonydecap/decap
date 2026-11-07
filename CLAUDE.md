@@ -35,6 +35,6 @@ Player registration = upload of the player's `.decapreq`; check `id == hex(BLAKE
   temporarily during development (Tony, 2026-11-07). Remove that grant; give automation its own Machine-to-Machine app
   with only `read/create/update/delete:users` (`AUTH0_MGMT_CLIENT_ID` / `AUTH0_MGMT_CLIENT_SECRET`).
 - Rotate every secret that was pasted in a chat (Neon, Blob, Stripe, Auth0, Sendcloud, Resend).
-- Staff MFA: during development Vercel may run with `SHOP_REQUIRE_STAFF_MFA=false`. Turn it back on (remove the
-  variable) and give every staff account MFA in Auth0.
+- Staff MFA was removed from the shop on purpose (Tony, 2026-11-07). If it is wanted again, enforce it in Auth0
+  (tenant MFA policy), not in the shop code.
 - Delete the e2e test users (`e2e-*@decapremote.com`) or move testing to a separate Auth0 tenant.

@@ -56,13 +56,6 @@ export const shopConfig = {
 
   // Product policy.
   get requirePreviewToPublish() { return process.env.SHOP_REQUIRE_PREVIEW_TO_PUBLISH !== "false"; },
-  get requireStaffMfa() {
-    if (process.env.SHOP_REQUIRE_STAFF_MFA === "false") return false;
-    if (process.env.SHOP_REQUIRE_STAFF_MFA === "true") return true;
-    // On by default for real deployments; off for a production build served on localhost.
-    if (process.env.VERCEL_ENV === "production") return true;
-    return this.isProduction && !/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(this.appBaseUrl);
-  },
   get legalVersions() {
     return {
       TERMS: process.env.SHOP_TERMS_VERSION ?? "2026-10-01",

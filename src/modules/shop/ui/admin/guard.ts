@@ -6,7 +6,7 @@ import { ShopError } from "../../errors";
 
 export type StaffPageResult =
   | { ok: true; ctx: StaffContext }
-  | { ok: false; reason: "FORBIDDEN" | "MFA_REQUIRED" };
+  | { ok: false; reason: "FORBIDDEN" };
 
 /**
  * Server-side guard for every admin page (layouts don't re-run on client navigation, so
@@ -18,7 +18,6 @@ export async function guardStaffPage(permission: StaffPermission | undefined, re
   } catch (e) {
     if (e instanceof ShopError) {
       if (e.code === "UNAUTHENTICATED") redirect(staffLoginUrl(returnTo));
-      if (e.code === "MFA_REQUIRED") return { ok: false, reason: "MFA_REQUIRED" };
       return { ok: false, reason: "FORBIDDEN" };
     }
     throw e;

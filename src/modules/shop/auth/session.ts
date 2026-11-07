@@ -255,9 +255,6 @@ export async function requireStaff(permission?: StaffPermission): Promise<StaffC
   // SUSPENDED and DISABLED both deny immediately: revoking access must take effect on the
   // next request, not at the end of the session.
   if (!staff || staff.status !== "ACTIVE") throw new ShopError("FORBIDDEN", "Not a staff account");
-  if (shopConfig.requireStaffMfa && !(user.amr ?? []).includes("mfa")) {
-    throw new ShopError("MFA_REQUIRED", "Sign in again with multi-factor authentication");
-  }
   if (permission && !roleHasPermission(staff.role, permission)) {
     throw new ShopError("FORBIDDEN", "Your role does not allow this action");
   }

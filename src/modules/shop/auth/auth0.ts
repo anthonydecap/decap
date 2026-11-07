@@ -1,9 +1,8 @@
 import { Auth0Client, filterDefaultIdTokenClaims } from "@auth0/nextjs-auth0/server";
-import { shopConfig } from "../config";
 
 /**
  * Auth0 owns authentication (Universal Login, credentials, password reset, email
- * verification, MFA). Routes are mounted by the proxy under /auth/* (login, logout, callback).
+ * verification). Routes are mounted by the proxy under /auth/* (login, logout, callback).
  *
  * Configuration comes from AUTH0_DOMAIN, AUTH0_CLIENT_ID, AUTH0_CLIENT_SECRET, AUTH0_SECRET
  * and APP_BASE_URL. Created lazily so the marketing site never depends on Auth0 config.
@@ -20,8 +19,7 @@ export function auth0(): Auth0Client {
       inactivityDuration: 60 * 60 * 24 * 3,
       absoluteDuration: 60 * 60 * 24 * 14,
     },
-    // Keep the standard claims plus `amr` / `auth_time`, which staff guards use to confirm
-    // that MFA happened on this login.
+    // Keep the standard claims plus `amr` / `auth_time` (how and when the user signed in).
     async beforeSessionSaved(session) {
       const { amr, auth_time } = session.user as { amr?: unknown; auth_time?: unknown };
       return {
@@ -56,12 +54,7 @@ export function signupUrl(returnTo: string): string {
   return loginUrl(returnTo, { screen_hint: "signup" });
 }
 
-/**
- * Staff sign-in asks Auth0 for MFA explicitly; the tenant policy should also enforce it.
- * With SHOP_REQUIRE_STAFF_MFA=false (development only, see CLAUDE.md "Before production")
- * it is a plain sign-in, so the login does not ask for an MFA the guard will not check.
- */
+/** Staff sign in like everyone else; access is decided by the staff role in the shop database. */
 export function staffLoginUrl(returnTo = "/admin/shop"): string {
-  if (!shopConfig.requireStaffMfa) return loginUrl(returnTo);
-  return loginUrl(returnTo, { acr_values: "http://schemas.openid.net/pape/policies/2007/06/multi-factor" });
+  return loginUrl(returnTo);
 }
