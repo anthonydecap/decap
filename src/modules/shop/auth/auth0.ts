@@ -1,4 +1,5 @@
 import { Auth0Client, filterDefaultIdTokenClaims } from "@auth0/nextjs-auth0/server";
+import { shopConfig } from "../config";
 
 /**
  * Auth0 owns authentication (Universal Login, credentials, password reset, email
@@ -55,7 +56,12 @@ export function signupUrl(returnTo: string): string {
   return loginUrl(returnTo, { screen_hint: "signup" });
 }
 
-/** Staff sign-in asks Auth0 for MFA explicitly; the tenant policy should also enforce it. */
+/**
+ * Staff sign-in asks Auth0 for MFA explicitly; the tenant policy should also enforce it.
+ * With SHOP_REQUIRE_STAFF_MFA=false (development only, see CLAUDE.md "Before production")
+ * it is a plain sign-in, so the login does not ask for an MFA the guard will not check.
+ */
 export function staffLoginUrl(returnTo = "/admin/shop"): string {
+  if (!shopConfig.requireStaffMfa) return loginUrl(returnTo);
   return loginUrl(returnTo, { acr_values: "http://schemas.openid.net/pape/policies/2007/06/multi-factor" });
 }
