@@ -21,15 +21,14 @@ test.describe("public storefront", () => {
     await expect(page.getByText(/bought separately/i)).toBeVisible();
   });
 
-  test("anonymous cart dedupes an arrangement already inside a collection", async ({ page }) => {
+  // Since ad5c799 music is bought signed in only (a cart belongs to a customer): an anonymous
+  // visitor gets "Sign in to buy" instead of "Add to cart".
+  test("anonymous visitors are sent to sign in before anything goes in a cart", async ({ page }) => {
     await page.goto("/en/shop/browse?q=Entertainer");
-    await page.getByRole("button", { name: /add to cart/i }).first().click();
-    await expect(page.getByRole("link", { name: /in cart/i }).first()).toBeVisible();
-    await page.goto("/en/shop/collections/ragtime-parlour");
-    await page.getByRole("button", { name: /add to cart/i }).first().click();
-    await page.goto("/en/shop/cart");
-    await expect(page.getByText(/included in ragtime parlour/i)).toBeVisible();
-    await expect(page.getByRole("link", { name: /sign in to check out/i })).toBeVisible();
+    const signIn = page.getByRole("link", { name: /sign in to buy/i }).first();
+    await expect(signIn).toBeVisible();
+    await expect(signIn).toHaveAttribute("href", /^\/auth\/login\?returnTo=/);
+    await expect(page.getByRole("button", { name: /add to cart/i })).toHaveCount(0);
   });
 });
 
