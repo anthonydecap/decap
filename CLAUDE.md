@@ -20,7 +20,9 @@ Player registration = upload of the player's `.decapreq`; check `id == hex(BLAKE
 
 ## Running locally (Windows)
 
-- `.env` (git-ignored) holds the dev credentials. There is no production yet; all data is test data.
+- `.env` (git-ignored) holds the dev credentials. The shop reads ONLY `SHOP_DATABASE_URL` (not `DATABASE_URL`); Vercel needs
+  it too, plus `SHOP_UPLOAD_TICKET_SECRET`, `SHOP_ACTIVATION_KEY_SECRET`, `APP_BASE_URL` (see `.env.example`).
+  Vercel does NOT run migrations: `npm run shop:deploy-migrations` against the database Vercel uses. There is no production yet; all data is test data.
 - Tests use their own database: `SHOP_TEST_DATABASE_URL` (must contain "test"; Neon database `decap_shop_test`).
   Vitest does not read `.env`: run with the variables loaded, e.g. in Git Bash `set -a; . ./.env; set +a; npm test`.
 - Baseline 2026-11-07: `npm test` 147/147, `tsc --noEmit` clean, `next build` OK (one lint error in a website slice).
@@ -33,4 +35,6 @@ Player registration = upload of the player's `.decapreq`; check `id == hex(BLAKE
   temporarily during development (Tony, 2026-11-07). Remove that grant; give automation its own Machine-to-Machine app
   with only `read/create/update/delete:users` (`AUTH0_MGMT_CLIENT_ID` / `AUTH0_MGMT_CLIENT_SECRET`).
 - Rotate every secret that was pasted in a chat (Neon, Blob, Stripe, Auth0, Sendcloud, Resend).
+- Staff MFA: during development Vercel may run with `SHOP_REQUIRE_STAFF_MFA=false`. Turn it back on (remove the
+  variable) and give every staff account MFA in Auth0.
 - Delete the e2e test users (`e2e-*@decapremote.com`) or move testing to a separate Auth0 tenant.
