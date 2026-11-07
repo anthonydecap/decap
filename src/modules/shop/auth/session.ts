@@ -147,6 +147,7 @@ export type StaffPermission =
   | "players:transfer"
   | "players:replace"
   | "players:library-transfer"
+  | "licences:issue"
   | "music:read"
   | "music:grant"
   | "music:revoke"
@@ -183,7 +184,7 @@ export const ALL_PERMISSIONS: readonly StaffPermission[] = [
   "orders:read", "orders:refund",
   "customers:read", "customers:write", "crm:write",
   "players:read", "players:write", "players:activation-key", "players:transfer",
-  "players:replace", "players:library-transfer",
+  "players:replace", "players:library-transfer", "licences:issue",
   "music:read", "music:grant", "music:revoke", "music:transfer", "music:migration",
   "deliveries:read", "deliveries:regenerate",
   "support:read", "support:reply", "support:assign",
@@ -210,7 +211,7 @@ const ROLE_PERMISSIONS: Record<StaffRole, ReadonlySet<StaffPermission>> = {
   ADMIN: new Set<StaffPermission>([
     "catalog:write", "assets:upload", "assets:download-master", "imports:manage", "orders:read",
     "orders:refund", "customers:read", "customers:write", "crm:write",
-    "players:read", "players:write", "players:activation-key", "players:replace", "players:library-transfer",
+    "players:read", "players:write", "players:activation-key", "players:replace", "players:library-transfer", "licences:issue",
     "music:read", "music:grant", "music:revoke", "music:transfer", "music:migration",
     "deliveries:read", "deliveries:regenerate",
     "support:read", "support:reply", "support:assign",

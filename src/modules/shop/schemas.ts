@@ -569,3 +569,13 @@ export const installationActionSchema = z.object({
   action: z.enum(["retire", "suspend", "reactivate"]),
   reason: z.string().trim().min(3).max(500),
 });
+
+// Licence v1 queue (contract C7): staff settings, the uploaded .decaplic, a refusal.
+export const licenseOrderSettingsSchema = z.object({
+  edition: z.enum(["standard", "pro"]),
+  midiOut: z.boolean(),
+  validUntil: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).nullable(),
+  dmiUserId: z.number().int().min(1).max(16777215).nullable(),
+});
+export const licenseUploadSchema = z.object({ licence: z.string().min(1).max(2 * 1024 * 1024) });
+export const licenseRefuseSchema = z.object({ reason: z.string().trim().min(3).max(500) });

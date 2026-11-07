@@ -133,6 +133,7 @@ model Customer {
   softwareActivations   SoftwareActivationRequest[]
   softwareInstallations SoftwareInstallation[]
   musicLicenses         MusicLicense[]
+  playerLicenseOrders   PlayerLicenseOrder[]
   musicTransfersOut     MusicLicenseTransfer[]      @relation("TransferCustomer")
   musicTransfersIn      MusicLicenseTransfer[]      @relation("TransferNewCustomer")
 
@@ -179,6 +180,7 @@ model StaffAccount {
   installationsCreated    SoftwareInstallation[]      @relation("InstallationCreatedBy")
   installationsUpdated    SoftwareInstallation[]      @relation("InstallationUpdatedBy")
   musicLicensesGranted    MusicLicense[]              @relation("MusicLicenseGrantedBy")
+  playerLicensesProcessed PlayerLicenseOrder[]        @relation("PlayerLicenseProcessedBy")
   musicTransfersCreated   MusicLicenseTransfer[]      @relation("TransferCreatedBy")
   musicTransfersApproved  MusicLicenseTransfer[]      @relation("TransferApprovedBy")
   musicLicenseEvents      MusicLicenseEvent[]
@@ -345,6 +347,7 @@ model RegisteredPlayer {
   /// Customer-chosen label ("Living Room Piano"). Never an identity.
   friendlyName          String?
   musicLicenses         MusicLicense[]
+  licenseOrders         PlayerLicenseOrder[]
   transfersFrom         MusicLicenseTransfer[] @relation("TransferFromPlayer")
   transfersTo           MusicLicenseTransfer[] @relation("TransferToPlayer")
   cartItems             CartItem[]
@@ -772,6 +775,9 @@ model Arrangement {
   containsAudio      Boolean       @default(false)
   containsVideo      Boolean       @default(false)
   dmiFormatVersion   String?
+  /// Licence v1 song ID of this arrangement's `.dvo` (contract C7 §3): [A-Za-z0-9-_.], max 64.
+  /// It is what goes into `songs[]` of a player licence. Null = no .dvo yet, cannot be licensed.
+  songId             String?       @unique @db.VarChar(64)
   internalNotes      String?
 
   /// Per-arrangement royalty override; null → arranger default.
@@ -793,21 +799,22 @@ model Arrangement {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  work              Work                       @relation(fields: [workId], references: [id], onDelete: Restrict)
-  arranger          Arranger                   @relation(fields: [arrangerId], references: [id], onDelete: Restrict)
-  genres            Genre[]
-  tags              Tag[]
-  compatibilities   ArrangementCompatibility[]
-  assets            Asset[]                    @relation("ArrangementAssets")
-  rightsProofAsset  Asset?                     @relation("RightsProof", fields: [rightsProofAssetId], references: [id], onDelete: SetNull)
-  bundleItems       BundleItem[]
-  cartItems         CartItem[]
-  entitlements      Entitlement[]
-  encodingJobs      EncodingJob[]
-  deliveryArtifacts DeliveryArtifact[]
-  supportTickets    SupportTicket[]
-  importItems       ImportBatchItem[]
-  musicLicenses     MusicLicense[]
+  work               Work                       @relation(fields: [workId], references: [id], onDelete: Restrict)
+  arranger           Arranger                   @relation(fields: [arrangerId], references: [id], onDelete: Restrict)
+  genres             Genre[]
+  tags               Tag[]
+  compatibilities    ArrangementCompatibility[]
+  assets             Asset[]                    @relation("ArrangementAssets")
+  rightsProofAsset   Asset?                     @relation("RightsProof", fields: [rightsProofAssetId], references: [id], onDelete: SetNull)
+  bundleItems        BundleItem[]
+  cartItems          CartItem[]
+  entitlements       Entitlement[]
+  encodingJobs       EncodingJob[]
+  deliveryArtifacts  DeliveryArtifact[]
+  supportTickets     SupportTicket[]
+  importItems        ImportBatchItem[]
+  musicLicenses      MusicLicense[]
+  playerLicenseSongs PlayerLicenseOrderSong[]
 
   @@index([status, featured])
   @@index([arrangerId])
@@ -2045,4 +2052,71 @@ model MusicLicenseTransfer {
   @@index([customerId, createdAt])
   @@index([fromPlayerId])
   @@index([toPlayerId])
+}
+
+// ─── Licence v1: the queue of player licences (contract C7 §2, §4, §5) ────────
+
+enum PlayerLicenseOrderStatus {
+  /// A player needs a (new) licence; Tony makes it offline with `decaplic issue`.
+  WAITING
+  /// The signed `.decaplic` is uploaded and the customer can download it.
+  DONE
+  /// Not issued (with a reason). A later change for the player opens a new order.
+  REFUSED
+}
+
+/// One licence to make for one player. At most one WAITING order per player (partial unique
+/// index in the migration). The shop never signs: it only lists what is wanted and keeps the
+/// signed file that Tony uploads, after checking it.
+model PlayerLicenseOrder {
+  id         String                   @id @default(uuid()) @db.Uuid
+  playerId   String                   @db.Uuid
+  customerId String                   @db.Uuid
+  status     PlayerLicenseOrderStatus @default(WAITING)
+  /// Why the order was opened (new player, new music, staff), for the record.
+  reason     String
+
+  /// Suggested licence settings (the uploaded licence is the truth and overwrites them).
+  edition    String  @default("standard")
+  midiOut    Boolean @default(true)
+  /// YYYY-MM-DD, null = no end date.
+  validUntil String? @db.Char(10)
+  /// Old DMI user ID (1..16777215) for .dmi books, null = none.
+  dmiUserId  Int?
+
+  /// From the uploaded licence.
+  licenseId     String?  @unique @db.VarChar(64)
+  signerKeyId   String?  @db.VarChar(64)
+  issued        String?  @db.VarChar(10)
+  /// sha256 of the stored `.decaplic` (hex), and where it is (private DELIVERIES store).
+  fileSha256    String?  @db.Char(64)
+  storageKey    String?
+  issuedSongIds String[] @default([])
+
+  refusedReason      String?
+  processedByStaffId String?   @db.Uuid
+  processedAt        DateTime?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  player      RegisteredPlayer         @relation(fields: [playerId], references: [id], onDelete: Restrict)
+  customer    Customer                 @relation(fields: [customerId], references: [id], onDelete: Restrict)
+  processedBy StaffAccount?            @relation("PlayerLicenseProcessedBy", fields: [processedByStaffId], references: [id], onDelete: SetNull)
+  songs       PlayerLicenseOrderSong[]
+
+  @@index([status, createdAt])
+  @@index([playerId, createdAt])
+}
+
+/// The songs wanted in an order: every active music licence of the player whose arrangement
+/// has a song ID. Kept as rows so the admin page can name the arrangement.
+model PlayerLicenseOrderSong {
+  orderId       String @db.Uuid
+  arrangementId String @db.Uuid
+  songId        String @db.VarChar(64)
+
+  order       PlayerLicenseOrder @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  arrangement Arrangement        @relation(fields: [arrangementId], references: [id], onDelete: Restrict)
+
+  @@id([orderId, songId])
 }

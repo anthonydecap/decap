@@ -7,6 +7,7 @@ import { FadeIn } from "@/components/FadeIn";
 import { resolveUrlLang } from "@/i18n";
 import { shopDb } from "@/modules/shop/db";
 import { customerMusicPlayers, LIVE_LICENSE_STATUSES } from "@/modules/shop/services/music-licenses";
+import { customerPlayerLicenseState } from "@/modules/shop/services/player-licenses";
 import { formatDate } from "@/modules/shop/ui/format";
 import { requireAccountCustomer } from "@/modules/shop/ui/store/account-server";
 import {
@@ -80,6 +81,7 @@ export default async function PlayerDetailPage({ params }: { params: Promise<{ l
   });
   const player = players.find((p) => p.id === playerId);
   if (!player || !details) notFound();
+  const licence = await customerPlayerLicenseState(customer.id, player.id);
 
   const canAdd = player.eligible && player.supportsMusicLibrary;
   // eslint-disable-next-line react-hooks/purity -- request-time render, force-dynamic
@@ -109,6 +111,26 @@ export default async function PlayerDetailPage({ params }: { params: Promise<{ l
             <p className="text-sm text-neutral-600">{t.playerStatusNote[player.status]}</p>
           )}
         </FadeIn>
+
+        {/* Licence v1 (contract C7): the player's licence, made offline by Decap, downloaded here. */}
+        {licence && (licence.ready || licence.waitingSince) && (
+          <FadeIn className="mt-10">
+            <div className="flex flex-col gap-4 rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm sm:flex-row sm:items-center sm:justify-between sm:p-8">
+              <div>
+                <p className={eyebrow}>{t.licenceSection}</p>
+                {licence.ready && <p className="mt-2 text-neutral-950">{t.licenceReady(licence.ready.issued ?? "", licence.ready.songs)}</p>}
+                {licence.waitingSince && <p className="mt-2 text-neutral-600">{t.licenceWaiting}</p>}
+                {licence.ready && <p className="mt-2 text-sm text-neutral-600">{t.licenceInstallHint}</p>}
+              </div>
+              {licence.ready && (
+                <a href={`/api/shop/account/players/${player.id}/licence`} className={btnPrimary}>
+                  <DownloadSimple size={14} weight="bold" aria-hidden />
+                  {t.licenceDownload}
+                </a>
+              )}
+            </div>
+          </FadeIn>
+        )}
 
         {/* §64: a freshly activated player gets a short "what now". */}
         {isNew && (

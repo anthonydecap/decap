@@ -100,6 +100,13 @@ const en = {
   registerDone: (customerNumber: string) => `Player registered. Your customer number is ${customerNumber}. We will prepare its licence and email you when it is ready.`,
   registerAgain: "This player was already registered to your account. We have the latest request.",
 
+  // Player licence (.decaplic, licence v1)
+  licenceSection: "Licence",
+  licenceReady: (issued: string, songs: number) => `Your licence of ${issued} is ready, with ${songs} ${plural(songs, "song", "songs")}.`,
+  licenceWaiting: "We are preparing a new licence for this player. You will get an email when it is ready.",
+  licenceInstallHint: "Install it in the Decap Player with Help > Install License File.",
+  licenceDownload: "Download licence",
+
   // Player detail
   backToMyDmi: "My DMI",
   backToPlayer: (name: string) => name,
@@ -349,6 +356,12 @@ const fr: AccountCopy = {
   registerNoFile: "Choisissez d'abord le fichier .decapreq.",
   registerDone: (customerNumber) => `Lecteur enregistré. Votre numéro de client est ${customerNumber}. Nous préparons sa licence et vous écrivons dès qu'elle est prête.`,
   registerAgain: "Ce lecteur était déjà enregistré sur votre compte. Nous avons la dernière demande.",
+
+  licenceSection: "Licence",
+  licenceReady: (issued, songs) => `Votre licence du ${issued} est prête, avec ${songs} ${plural(songs, "morceau", "morceaux")}.`,
+  licenceWaiting: "Nous préparons une nouvelle licence pour ce lecteur. Vous recevrez un e-mail dès qu'elle est prête.",
+  licenceInstallHint: "Installez-la dans le Decap Player avec Help > Install License File.",
+  licenceDownload: "Télécharger la licence",
 
   backToMyDmi: "Mon DMI",
   backToPlayer: (name) => name,

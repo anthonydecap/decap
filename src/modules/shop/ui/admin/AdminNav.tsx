@@ -45,6 +45,7 @@ const SECTIONS: { title: string; items: NavItem[] }[] = [
     title: "Players & music",
     items: [
       { href: "/admin/shop/players", label: "Players", permission: "players:read" },
+      { href: "/admin/shop/licences", label: "Player licences", permission: "licences:issue" },
       { href: "/admin/shop/music", label: "Music licenses", permission: "music:read" },
       { href: "/admin/shop/music/transfers", label: "Transfers", permission: "music:read" },
       { href: "/admin/shop/music/migration", label: "Music migration", permission: "music:migration" },

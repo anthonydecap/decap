@@ -1,0 +1,17 @@
+{
+  "format": "decap-license",
+  "formatVersion": 1,
+  "licenseId": "f6e206764ed39acedccf288c557ecb6d",
+  "issued": "2026-09-27",
+  "signerKeyId": "decap-TEST-1",
+  "player": { "id": "f7928d1fc97c177a6ee3e7694b7652ef", "publicKey": "3f65fb0ffd39ac6284ca94f41950c3cd95b15ecfa4658d9b4a859a5f7aff5110" },
+  "customer": "K0001",
+  "edition": "standard",
+  "features": { "midiOut": true },
+  "songs": [
+    { "id": "e6dbd8e3-d247-4f65-b0a8-3dbb3f04564e", "sealedKey": "3760073d52e0a2e954f49c91ab580fb469b030d4304d10064ff2b5c75d163d08e539ad60fe8d0f724877310d0f5c5f042a7e863ac7b042224080449f3c13dfbd6195eb2adb412f9fe1c86801f66efddb" },
+    { "id": "84e332cf-c7bf-4f6a-afb3-79efea7ac8f4", "sealedKey": "b3341301d6c9820827e35440cb0d04ee54765ea53f5be26b4cbe572236bd18623e13d067649ec43818d880f339bd24ab180ac0225e7c2d916eaedb7dcb9e51b68d87d73bab3d260f05214d0e661bdc1c" },
+    { "id": "6155ba77-50d9-41b2-87f2-95517143b284", "sealedKey": "b35214976e9afd7f3ec62ae770d73e39cac9feb1ed4837a85ca444ee48e3b651f59f9956a6c4cfb833ed5a2c1a822be2dca4f77a226795ef9661b383585084c835e78856e92482f1860cc55d1e9304e9" }
+  ]
+}
+#signature 131a306073c9265bbea9ba6103d5d27df9ad69e41e7230e5773d382f0d1e9841b42af2b34b8a501141c20304658f3b5c137cb288086f42fd260ba65a1aa36700

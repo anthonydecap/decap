@@ -4,6 +4,7 @@ import { shopDb } from "../db";
 import { ShopError, notFound } from "../errors";
 import { encryptActivationKey, decryptActivationKey } from "./activation-key";
 import { parseDecapRequest } from "./decap-request";
+import { syncPlayerLicenseOrder } from "./player-licenses";
 import { audit } from "./audit";
 import { recordActivity } from "./crm";
 import { onPlayerActivated } from "./music-licenses";
@@ -220,6 +221,7 @@ export async function registerPlayerFromRequest(input: {
       data: { licensePlayerId: req.playerId, licensePublicKey: req.publicKey, licenseRequestAt: new Date() },
     });
     await audit(actor, "player.request_uploaded", { type: "RegisteredPlayer", id: player.id }, { licensePlayerId: req.playerId, again: true });
+    await syncPlayerLicenseOrder(player.id);
     return { player, created: false, customerNumber: customer.customerNumber };
   }
 
@@ -256,6 +258,7 @@ export async function registerPlayerFromRequest(input: {
     summary: `Player ${formatRegistrationCode(code)} registered by the customer (activation request)`,
     metadata: { playerId: player.id, status: "PENDING" },
   });
+  await syncPlayerLicenseOrder(player.id); // a new player needs its first licence
   return { player, created: true, customerNumber: customer.customerNumber };
 }
 
