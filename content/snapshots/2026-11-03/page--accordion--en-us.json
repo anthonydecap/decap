@@ -1,0 +1,552 @@
+{
+  "id": "aiHrkBIAACkAnRpK",
+  "uid": "accordion",
+  "url": null,
+  "type": "page",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22aiHrkBIAACkAnRpK%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2026-06-04T21:25:57+0000",
+  "last_publication_date": "2026-10-22T08:15:16+0000",
+  "slugs": [
+    "automatic-accordion"
+  ],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Automatic Accordion",
+        "spans": [],
+        "direction": "ltr"
+      }
+    ],
+    "theme": "decap",
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "mux_hls_url": null,
+          "title": "Automatic Accordion",
+          "subtitle": "A real accordion. Playing automatically.",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "A self-playing acoustic accordion with MIDI-controlled keys and precisely regulated airflow. Designed and built by Decap Herentals.",
+              "spans": [],
+              "direction": "ltr"
+            }
+          ],
+          "primary_button_text": "How it works",
+          "primary_button_link": {
+            "link_type": "Any"
+          },
+          "secondary_button_text": "Watch video",
+          "secondary_button_link": {
+            "link_type": "Any"
+          },
+          "footnote": "Available as Pedestal or Cube.",
+          "overlay_opacity": null,
+          "background_color": "#FFFFFF"
+        },
+        "id": "instrument_header$12cfc3b5-dc74-4c34-920f-e9cddbfd30b4",
+        "slice_type": "instrument_header",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "title": "Real reeds. Real accordion sound.",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "This is not a sampled accordion. Air flows through real reeds inside an acoustic instrument. Electronic control operates the keys and regulates the airflow normally created by the player, preserving the natural tone and mechanical character of the accordion.",
+              "spans": [],
+              "direction": "ltr"
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 800,
+              "height": 600
+            },
+            "alt": null,
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/jIzlQx2fS49FpDIR_shape-800x600.png?auto=format,compress",
+            "id": "jIzlQx2fS49FpDIR",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "background_color": null
+        },
+        "id": "instrument_showcase$af074f1e-2374-4de2-94ce-c3d5a26cfc63",
+        "slice_type": "instrument_showcase",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "item_title": "MIDI control",
+            "item_description": [
+              {
+                "type": "paragraph",
+                "text": "A MIDI file or connected controller provides the notes, timing, registers and expression.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ],
+            "image": {
+              "dimensions": {
+                "width": 800,
+                "height": 600
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/jIzlQx2fS49FpDIR_shape-800x600.png?auto=format,compress",
+              "id": "jIzlQx2fS49FpDIR",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            }
+          },
+          {
+            "item_title": "Electronic key action",
+            "item_description": [
+              {
+                "type": "paragraph",
+                "text": "Fast PWM-controlled actuators operate the keys and registers with precise timing.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ],
+            "image": {
+              "dimensions": {
+                "width": 800,
+                "height": 600
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/jIzlQx2fS49FpDIR_shape-800x600.png?auto=format,compress",
+              "id": "jIzlQx2fS49FpDIR",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            }
+          },
+          {
+            "item_title": "Regulated airflow",
+            "item_description": [
+              {
+                "type": "paragraph",
+                "text": "A quiet blower and closed-loop pressure control supply the air normally created by the bellows.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ],
+            "image": {
+              "dimensions": {
+                "width": 800,
+                "height": 600
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/jIzlQx2fS49FpDIR_shape-800x600.png?auto=format,compress",
+              "id": "jIzlQx2fS49FpDIR",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            }
+          },
+          {
+            "item_title": "Acoustic sound",
+            "item_description": [
+              {
+                "type": "paragraph",
+                "text": "Opening a key sends air across real reeds. The resulting sound comes from the accordion itself.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ],
+            "image": {
+              "dimensions": {
+                "width": 800,
+                "height": 600
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/jIzlQx2fS49FpDIR_shape-800x600.png?auto=format,compress",
+              "id": "jIzlQx2fS49FpDIR",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            }
+          }
+        ],
+        "primary": {
+          "section_title": [
+            {
+              "type": "paragraph",
+              "text": "How it plays itself.",
+              "spans": [],
+              "direction": "ltr"
+            }
+          ],
+          "background_color": null
+        },
+        "id": "instrument_bento$a5367708-273b-4b52-ad7b-b806a5e57e4b",
+        "slice_type": "instrument_bento",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "title": "Expression comes from air.",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "On an accordion, dynamics are shaped by air pressure. The control system adjusts airflow for soft passages, accents, crescendo, diminuendo and vibrato while keeping the pressure stable.",
+              "spans": [],
+              "direction": "ltr"
+            }
+          ],
+          "media_type": "mux_video",
+          "mux_hls_url": "https://stream.mux.com/jICEIVGWf78011cV6iYuEoJddL6D01nduJkTmi8nFtfl4.m3u8",
+          "image": {
+            "dimensions": {
+              "width": 800,
+              "height": 600
+            },
+            "alt": null,
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/jIzlQx2fS49FpDIR_shape-800x600.png?auto=format,compress",
+            "id": "jIzlQx2fS49FpDIR",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "background_color": null
+        },
+        "id": "instrument_feature$b31d3320-7166-42ce-82a4-1d88665a1c9d",
+        "slice_type": "instrument_feature",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "title": "Pedestal",
+            "description": [
+              {
+                "type": "paragraph",
+                "text": "A freestanding presentation model. The base houses the airflow system, electronics, player and sound equipment.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ],
+            "image": {
+              "dimensions": {
+                "width": 800,
+                "height": 600
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/jIzlQx2fS49FpDIR_shape-800x600.png?auto=format,compress",
+              "id": "jIzlQx2fS49FpDIR",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            }
+          },
+          {
+            "title": "Cube",
+            "description": [
+              {
+                "type": "paragraph",
+                "text": "A compact, transport-friendly format for installations where space and mobility matter.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ],
+            "image": {
+              "dimensions": {
+                "width": 800,
+                "height": 600
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/jIzlQx2fS49FpDIR_shape-800x600.png?auto=format,compress",
+              "id": "jIzlQx2fS49FpDIR",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            }
+          }
+        ],
+        "primary": {
+          "footnote": "The same automatic accordion in two formats.",
+          "background_color": null
+        },
+        "id": "instrument_split$4f780faa-79ed-4979-a7b9-4f1c97241af1",
+        "slice_type": "instrument_split",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "title": "Automatic playback",
+            "description": [
+              {
+                "type": "paragraph",
+                "text": "Select MIDI or audio files from the integrated touchscreen player. An SD card provides storage for a large music library.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          },
+          {
+            "title": "Live MIDI performance",
+            "description": [
+              {
+                "type": "paragraph",
+                "text": "Connect a MIDI keyboard or controller and play the acoustic accordion in real time. Link it with other Decap or Orchestrionix instruments.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          }
+        ],
+        "primary": {
+          "section_title": "Play it your way.",
+          "background_color": null
+        },
+        "id": "instrument_applications$69e57a5d-5541-4641-98b2-3fd2aa840e09",
+        "slice_type": "instrument_applications",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "title": "MIDI In, Out and Thru",
+            "description": [
+              {
+                "type": "paragraph",
+                "text": "Control the accordion live, send MIDI data onward or integrate it with other automated instruments.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          },
+          {
+            "title": "Touchscreen player",
+            "description": [
+              {
+                "type": "paragraph",
+                "text": "Play and manage MIDI and audio files directly from the integrated interface.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          },
+          {
+            "title": "Built-in accompaniment",
+            "description": [
+              {
+                "type": "paragraph",
+                "text": "A General MIDI sound module, speaker system and subwoofer can add orchestral backing to the acoustic accordion.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          }
+        ],
+        "primary": {
+          "section_title": "Connected from the start.",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Designed as a standalone instrument and as part of a larger automated ensemble.",
+              "spans": [],
+              "direction": "ltr"
+            }
+          ],
+          "background_color": null
+        },
+        "id": "instrument_connectivity$a5c9152e-a4c0-4619-8fe8-1f0c3e18b614",
+        "slice_type": "instrument_connectivity",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "background_color": null
+        },
+        "id": "instrument_highlights$d1235386-c6bc-4e8d-8c8d-654529ff7370",
+        "slice_type": "instrument_highlights",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "label": "Sound generation",
+            "value": [
+              {
+                "type": "paragraph",
+                "text": "Acoustic free reeds",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          },
+          {
+            "label": "Control",
+            "value": [
+              {
+                "type": "paragraph",
+                "text": "MIDI with FPGA-based key and register control",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          },
+          {
+            "label": "Air system",
+            "value": [
+              {
+                "type": "paragraph",
+                "text": "Electronically regulated airflow with closed-loop pressure control",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          }
+        ],
+        "primary": {
+          "section_title": "Technical overview",
+          "background_color": null
+        },
+        "id": "instrument_specs$cc4f34a9-ebeb-4833-b196-d8e4e3b080e9",
+        "slice_type": "instrument_specs",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "question": "What is an automatic accordion?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "It is a real acoustic accordion whose keys, registers and airflow are operated electronically. It can perform MIDI arrangements without a human player.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          },
+          {
+            "question": "Does it use sampled accordion sounds?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "No. The main accordion sound is produced by air moving across real reeds. The built-in sound module and speakers can add electronic accompaniment.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          },
+          {
+            "question": "Can it be played live?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Yes. Connect a MIDI keyboard or controller through MIDI In and play the accordion in real time. MIDI Out and Thru allow integration with other instruments.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          }
+        ],
+        "primary": {
+          "title": "Questions. Answered.",
+          "background_color": null
+        },
+        "id": "instrument_faq$25ede7d1-c821-4c08-813b-24ae31eb4e37",
+        "slice_type": "instrument_faq",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "mux_hls_url": "https://stream.mux.com/jICEIVGWf78011cV6iYuEoJddL6D01nduJkTmi8nFtfl4.m3u8",
+          "title": "Hear a real accordion play itself.",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Use it as a standalone automatic instrument, control it live over MIDI or combine it with a complete Decap ensemble.",
+              "spans": [],
+              "direction": "ltr"
+            }
+          ],
+          "button_text": "Contact Decap",
+          "button_link": {
+            "link_type": "Any"
+          },
+          "footnote": "Available as Pedestal or Cube.",
+          "overlay_opacity": "dark",
+          "background_color": "#334A24"
+        },
+        "id": "instrument_cta$bb1ce783-a654-404d-9ee0-0b7810d20f6c",
+        "slice_type": "instrument_cta",
+        "slice_label": null
+      }
+    ],
+    "meta_title": "Automatic Accordion | Decap Herentals",
+    "meta_description": "Discover the Decap Automatic Accordion: a real acoustic accordion with MIDI-controlled keys, regulated airflow and live performance support.",
+    "meta_image": {}
+  }
+}

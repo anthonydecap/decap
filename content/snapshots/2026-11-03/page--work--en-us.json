@@ -1,0 +1,793 @@
+{
+  "id": "atc3exEAAC4AavPa",
+  "uid": "work",
+  "url": null,
+  "type": "page",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22atc3exEAAC4AavPa%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2026-10-20T09:51:02+0000",
+  "last_publication_date": "2026-10-28T19:08:29+0000",
+  "slugs": [
+    "work"
+  ],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [
+    {
+      "id": "atdvyxEAAC0Aa15u",
+      "type": "page",
+      "lang": "fr-fr",
+      "uid": "work"
+    }
+  ],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Work",
+        "spans": []
+      }
+    ],
+    "theme": "decap",
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "layout": "Centered",
+          "eyebrow": "Work",
+          "title": "Organs and orchestrions in homes, bars and on stage",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Most of our organs and instruments play for private owners: in living rooms, cafés, bars and dance halls, all over the world. Some go on tour with artists. Here is a selection.",
+              "spans": []
+            }
+          ],
+          "primary_cta_label": null,
+          "primary_cta_link": {
+            "link_type": "Any"
+          },
+          "secondary_cta_label": null,
+          "secondary_cta_link": {
+            "link_type": "Any"
+          },
+          "note": null,
+          "image": {},
+          "mux_video": null,
+          "image_brief": null,
+          "image_shape": "Default",
+          "image_fit": "Auto",
+          "image_position": "Center",
+          "image_zoom": "100%",
+          "overlay": "Medium",
+          "blur": "None",
+          "dim": "None",
+          "color_effect": "None",
+          "vignette": false,
+          "slow_zoom": false,
+          "tone": "Default"
+        },
+        "id": "site_hero$adf00571-773b-4c6a-b911-7865fc72a8cb",
+        "slice_type": "site_hero",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "image": {
+              "dimensions": {
+                "width": 618,
+                "height": 458
+              },
+              "alt": "The Accordion castle",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/FroMiY8VNEZjey14_Rectangle-68.png?auto=format,compress",
+              "id": "FroMiY8VNEZjey14",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "label": "Realisation",
+            "title": "Accordion castle",
+            "fit": "Fill the frame",
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            },
+            "image_brief": "The Accordion castle, front view on a plain backdrop, 4:3"
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 941,
+                "height": 1672
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/IAeMe4E93rADMSjq_Untitleddesign-11-.png?auto=format,compress",
+              "id": "IAeMe4E93rADMSjq",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "label": "Realisation",
+            "title": "Accordion Pedestal, pearl white",
+            "fit": "Fill the frame",
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            },
+            "image_brief": "Pearl-white Accordion Pedestal against a dark backdrop, three-quarter view, 4:3"
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 1070,
+                "height": 1470
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/PeoQLw3E808988Ve_DECAPMechanicalBandOrganCutout.png?auto=format,compress",
+              "id": "PeoQLw3E808988Ve",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "label": "Realisation",
+            "title": "Orchestrion, pearl white",
+            "fit": "Fill the frame",
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            },
+            "image_brief": "Pearl-white orchestrion, front view, workshop wall behind, 4:3"
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 943,
+                "height": 1668
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/oVekfw-sWZn0lJkC_Untitleddesign-14-.png?auto=format,compress",
+              "id": "oVekfw-sWZn0lJkC",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "label": "Realisation",
+            "title": "Orchestrion with dual accordion",
+            "fit": "Fill the frame",
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            },
+            "image_brief": "Orchestrion with two accordions, front view, 4:3"
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 911,
+                "height": 764
+              },
+              "alt": "Orchestrion Isabella, rounded 70's design",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/8RsD3EaLG6DCdW_a_cb0efde8-a27a-48f1-afd3-afb5a1fb60d2.png?auto=format%2Ccompress&rect=0%2C0%2C911%2C764&w=911&h=764",
+              "id": "8RsD3EaLG6DCdW_a",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "label": "Design",
+            "title": "Orchestrion, rounded 70's design",
+            "fit": "Whole, light backdrop",
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            },
+            "image_brief": "Orchestrion with rounded 1970s-style case, three-quarter view, 4:3"
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 940,
+                "height": 1672
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/rvQzG9KCX_IzN60v_Untitleddesign-12-.png?auto=format,compress",
+              "id": "rvQzG9KCX_IzN60v",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "label": "Design",
+            "title": "Orchestrion, trailer design",
+            "fit": "Whole, light backdrop",
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            },
+            "image_brief": "Orchestrion built into a trailer, side panel open, outdoors, 4:3"
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 1448,
+                "height": 1086
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/NqF31ts0KK3QXxJN_Untitleddesign-10-.png?auto=format,compress",
+              "id": "NqF31ts0KK3QXxJN",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "label": "Realisation",
+            "title": "Organ",
+            "fit": "Fill the frame",
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            },
+            "image_brief": "Finished Decap organ façade, front view, 4:3"
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 968,
+                "height": 1714
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/5jxa1ZXVfVH5paX5_Untitleddesign-6-.png?auto=format,compress",
+              "id": "5jxa1ZXVfVH5paX5",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "label": "Design",
+            "title": "Pipe cube",
+            "fit": "Whole, light backdrop",
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            },
+            "image_brief": "Pipe Cube on a table, black backdrop, pipes visible, 4:3"
+          }
+        ],
+        "primary": {
+          "eyebrow": "For private owners",
+          "title": "In homes, bars and collections",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "A selection of organs and orchestrions that left our Herentals workshop for private customers.",
+              "spans": []
+            }
+          ],
+          "show_filters": true,
+          "tone": "Default"
+        },
+        "id": "site_gallery$f17733db-d749-4687-a58c-f358122a30a4",
+        "slice_type": "site_gallery",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "artist_name": "Guido Belcanto",
+            "artist_role": null,
+            "artist_portrait": {
+              "dimensions": {
+                "width": 400,
+                "height": 500
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/rnql16eloPqKGpDv_GuidoBelcanto.jpeg?auto=format%2Ccompress&rect=0%2C180%2C1440%2C1800&w=400&h=500",
+              "id": "rnql16eloPqKGpDv",
+              "edit": {
+                "x": 0,
+                "y": 180,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            }
+          },
+          {
+            "artist_name": "Gamut Inc",
+            "artist_role": null,
+            "artist_portrait": {
+              "dimensions": {
+                "width": 400,
+                "height": 500
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/aaHXYMFoBIGEg8AB_voy_9566-Kopie-717x1024.jpg?auto=format%2Ccompress&rect=0%2C64%2C717%2C896&w=400&h=500",
+              "id": "aaHXYMFoBIGEg8AB",
+              "edit": {
+                "x": 0,
+                "y": 64,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            }
+          },
+          {
+            "artist_name": "Maxim De Nuc",
+            "artist_role": null,
+            "artist_portrait": {
+              "dimensions": {
+                "width": 400,
+                "height": 500
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/aaHWusFoBIGEg7_r_Maxime-Denuc-%C2%A9-Andrea-Avezzu%CC%80--courtesy-of-La-Biennale-di-Venezia---Large-.jpg?auto=format%2Ccompress&rect=157%2C0%2C864%2C1080&w=400&h=500",
+              "id": "aaHWusFoBIGEg7_r",
+              "edit": {
+                "x": 157,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            }
+          },
+          {
+            "artist_name": "Yves Rechsteiner",
+            "artist_role": null,
+            "artist_portrait": {
+              "dimensions": {
+                "width": 400,
+                "height": 500
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/wjEyiyowQljFYa3p_2025-WEB-Yves-Rechsteiner-NBjpg.webp?auto=format%2Ccompress&rect=134%2C0%2C733%2C916&w=400&h=500",
+              "id": "wjEyiyowQljFYa3p",
+              "edit": {
+                "x": 134,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            }
+          },
+          {
+            "artist_name": "Stephan Eicher",
+            "artist_role": null,
+            "artist_portrait": {
+              "dimensions": {
+                "width": 400,
+                "height": 500
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/aaHXM8FoBIGEg7_5_489239898_1208176334644221_2497212205538778467_n.jpg?auto=format%2Ccompress&rect=467%2C0%2C1066%2C1333&w=400&h=500",
+              "id": "aaHXM8FoBIGEg7_5",
+              "edit": {
+                "x": 467,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            }
+          },
+          {
+            "artist_name": "Pat Metheny",
+            "artist_role": null,
+            "artist_portrait": {
+              "dimensions": {
+                "width": 400,
+                "height": 500
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/aaHVtMFoBIGEg7_O_Pat_01-jgxxwgckWXkd6w97dxkNuuTZCEibejlA.jpg?auto=format%2Ccompress&rect=0%2C82%2C668%2C835&w=400&h=500",
+              "id": "aaHVtMFoBIGEg7_O",
+              "edit": {
+                "x": 0,
+                "y": 82,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            }
+          },
+          {
+            "artist_name": "Walter Hus",
+            "artist_role": null,
+            "artist_portrait": {
+              "dimensions": {
+                "width": 400,
+                "height": 500
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/aaHXUMFoBIGEg7___COM-STUK-START-foto-web-Walter-Hus-on-Decap-%C2%A9-DYOD.jpg?auto=format%2Ccompress&rect=0%2C112%2C900%2C1125&w=400&h=500",
+              "id": "aaHXUMFoBIGEg7__",
+              "edit": {
+                "x": 0,
+                "y": 112,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            }
+          },
+          {
+            "artist_name": "Circus Ronaldo",
+            "artist_role": null,
+            "artist_portrait": {
+              "dimensions": {
+                "width": 400,
+                "height": 500
+              },
+              "alt": "Circus Ronaldo with the Decap orchestrion cart",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/k4mB0_ZTv6Wwb8pd_decap-circus-ronaldo-la-cucina-dell-arte-orchestrion-cart.jpg?auto=format%2Ccompress&rect=163%2C0%2C186%2C233&w=400&h=500",
+              "id": "k4mB0_ZTv6Wwb8pd",
+              "edit": {
+                "x": 163,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            }
+          }
+        ],
+        "primary": {
+          "title": "Played by artists",
+          "description": [
+            {
+              "type": "paragraph",
+              "text": "Composers, bands and theatre companies who play our organs and instruments on stage and in the studio.",
+              "spans": []
+            }
+          ],
+          "background_color": null
+        },
+        "id": "home_artists$ef03235f-efc4-458d-88ac-661ca8c13f60",
+        "slice_type": "home_artists",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "image": {
+              "dimensions": {
+                "width": 710,
+                "height": 499
+              },
+              "alt": "A stage production with L'Explorateur",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/Noqm3xfDvZ1uZkzk_image-6-1.jpeg?auto=format%2Ccompress&rect=0%2C0%2C710%2C499&w=710&h=499",
+              "id": "Noqm3xfDvZ1uZkzk",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "L'Explorateur set up in a chapel, 4:3",
+            "tag": "Concert organ · 2025",
+            "title": "Yves Rechsteiner: L'Explorateur",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "A transportable concert organ with smARTvalve on every pipe: the first wind synthesizer.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": "Read the case study",
+            "link": {
+              "link_type": "Web",
+              "key": "daf42a8a-916f-4242-8c70-3dd25b25941d",
+              "url": "/work/yves-rechsteiner"
+            }
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 815,
+                "height": 542
+              },
+              "alt": "Stephan Eicher und die Automaten on stage",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/4_ith85Wtknorgjd_20221008_mohaibalazs_074-2-1.jpeg?auto=format,compress",
+              "id": "4_ith85Wtknorgjd",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Stephan Eicher on stage with the automated instruments, 4:3",
+            "tag": "Tour and album",
+            "title": "Stephan Eicher und die Automaten",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Self-playing acoustic instruments on tour with Stephan Eicher, and on his album Ode.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": "Read the case study",
+            "link": {
+              "link_type": "Web",
+              "key": "7eafc1e8-b907-4d80-ae06-a34e68cda993",
+              "url": "/work/stephan-eicher"
+            }
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 815,
+                "height": 542
+              },
+              "alt": "The orchestrion room at the House of Music Hungary",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/JHcG9SGmqACS5-h1_20221008_mohaibalazs_074-1-1.jpeg?auto=format,compress",
+              "id": "JHcG9SGmqACS5-h1",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "The robot orchestra in the Creative Sound Space, Budapest, 4:3 (photo Mohai Balázs)",
+            "tag": "Museum · Budapest",
+            "title": "House of Music Hungary",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Almost all the instruments of the robot orchestra in the Creative Sound Space, with Medence Design.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": "Read the case study",
+            "link": {
+              "link_type": "Web",
+              "key": "3c908321-717c-47e6-ba49-c5a37865eaa5",
+              "url": "/work/house-of-music-hungary"
+            }
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 268,
+                "height": 239
+              },
+              "alt": "Pat Metheny with his orchestrion",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/tdBrcHX-1NWKGmiN_Untitled-1-41.png?auto=format,compress",
+              "id": "tdBrcHX-1NWKGmiN",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Pat Metheny with Decap instruments on stage, 4:3",
+            "tag": null,
+            "title": "Pat Metheny",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "An orchestrion from Herentals, toured around the world in many productions, up to his last concert in Belgium at BOZAR.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": "Read the case study",
+            "link": {
+              "link_type": "Web",
+              "key": "e20196e3-c0ea-47fe-9131-0e93493f5353",
+              "url": "/work/pat-metheny"
+            }
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 815,
+                "height": 542
+              },
+              "alt": "BELEM: Didier Laloy and Kathy Adam with Walter Hus",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/5jBm_yHQ3ojRtbQF_20221008_mohaibalazs_074-1-2.jpeg?auto=format,compress",
+              "id": "5jBm_yHQ3ojRtbQF",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "BELEM on stage in front of the mechanical orchestra, 4:3",
+            "tag": "Orchestrion",
+            "title": "Walter Hus, BELEM and The Mekanics",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Transportable pipe units, a percussion unit and an accordion for Walter Hus's mechanical orchestra.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": "Read the case study",
+            "link": {
+              "link_type": "Web",
+              "key": "c3d2ef9a-8ae1-4bd7-9936-e3a6a6f83b31",
+              "url": "/work/walter-hus-belem"
+            }
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 3024,
+                "height": 2248
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/vt2-YAGaQDLBuVVl_Guido-Belcanto-ea-Balzaal-Decap-c-Koen-Van-Wuytswinkel-verkleind.jpg?auto=format,compress",
+              "id": "vt2-YAGaQDLBuVVl",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Guido Belcanto on stage with the Decap dance organ, 4:3",
+            "tag": "Dance organ · 2008",
+            "title": "Guido Belcanto",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "A custom-built Belcanto organ for Balzaal der Gebroken Harten, on tour through the largest halls of Belgium's cultural centres.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": "Read the case study",
+            "link": {
+              "link_type": "Web",
+              "key": "34ed942f-91e2-4eae-a5ce-f3619c836f64",
+              "url": "/work/guido-belcanto"
+            }
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 2048,
+                "height": 1365
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/tEjy8vTylMz5gtPL_474620729_1228337042043753_3393434546587048591_n.jpg?auto=format,compress",
+              "id": "tEjy8vTylMz5gtPL",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "The Decap organ in the Circus Ronaldo tent, 4:3",
+            "tag": "Circus",
+            "title": "Circus Ronaldo",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Bespoke instruments built into the sets of several productions, and Brass Core for live brass.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": "Read the case study",
+            "link": {
+              "link_type": "Web",
+              "key": "d724ba7d-ce44-4936-b61f-0c2b93987520",
+              "url": "/work/circus-ronaldo"
+            }
+          }
+        ],
+        "primary": {
+          "eyebrow": "Projects in depth",
+          "title": "Some projects, told in full",
+          "intro": [],
+          "columns": "3",
+          "card_style": "Image cards",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_card_grid$d9e5773e-2d79-4bbc-ae66-57b59a77d7bf",
+        "slice_type": "site_card_grid",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Your project",
+          "title": "Tell us where it will play",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Living room, bar, dance hall or stage: describe the room and the music. We reply with questions and a first idea.",
+              "spans": []
+            }
+          ],
+          "price": null,
+          "price_note": null,
+          "primary_cta_label": "Describe your project",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "4b4ebae2-c040-4298-93d5-ee48c8c8d912",
+            "url": "/contact"
+          },
+          "secondary_cta_label": "Compose your organ",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "4bb5b3b2-d8ac-450e-99f0-f66ca468f24a",
+            "url": "/organ-composer"
+          },
+          "image": {},
+          "image_brief": null,
+          "tone": "Dark band"
+        },
+        "id": "site_cta$18413e7b-900e-4be3-b7dd-5a3c21f2fd3e",
+        "slice_type": "site_cta",
+        "slice_label": null
+      }
+    ],
+    "meta_title": "Our Work: Organs and Orchestrions | Decap Herentals",
+    "meta_description": "Decap organs and orchestrions play in homes, bars and dance halls around the world, and on stage with Pat Metheny, Stephan Eicher and Yves Rechsteiner.",
+    "meta_image": {}
+  }
+}

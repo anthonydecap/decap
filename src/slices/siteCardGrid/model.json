@@ -53,7 +53,8 @@
             "label": "Card style",
             "options": [
               "Image cards",
-              "Text cards"
+              "Text cards",
+              "Case cards"
             ],
             "default_value": "Image cards"
           }

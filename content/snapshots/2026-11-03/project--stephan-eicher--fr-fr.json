@@ -1,0 +1,309 @@
+{
+  "id": "atdv2BEAACsAa16N",
+  "uid": "stephan-eicher",
+  "url": null,
+  "type": "project",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22atdv2BEAACsAa16N%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2026-10-20T15:02:57+0000",
+  "last_publication_date": "2026-10-22T08:15:18+0000",
+  "slugs": [
+    "stephan-eicher-und-die-automaten"
+  ],
+  "linked_documents": [],
+  "lang": "fr-fr",
+  "alternate_languages": [
+    {
+      "id": "atc3bREAACkAavOt",
+      "type": "project",
+      "lang": "en-us",
+      "uid": "stephan-eicher"
+    }
+  ],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Stephan Eicher und die Automaten",
+        "spans": []
+      }
+    ],
+    "theme": "decap",
+    "summary": "Plusieurs instruments automatiques pour différentes productions de Stephan Eicher und die Automaten, et son album Ode.",
+    "card_image": {},
+    "client": "Stephan Eicher",
+    "year": null,
+    "location": "Europe",
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "layout": "Split",
+          "eyebrow": "Réalisations",
+          "title": "Des instruments automatiques en tournée avec Stephan Eicher",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Dans Stephan Eicher und die Automaten, l'auteur-compositeur-interprète suisse est seul en scène avec un orchestre d'instruments acoustiques automatiques. Nous avons construit plusieurs de ces instruments et unités d'orchestrion, pour différentes productions du spectacle.",
+              "spans": [
+                {
+                  "start": 5,
+                  "end": 37,
+                  "type": "em"
+                }
+              ]
+            }
+          ],
+          "primary_cta_label": "Instruments automatiques",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "bfafacc4-6417-4996-9dca-99649627c050",
+            "url": "/instruments"
+          },
+          "secondary_cta_label": "Tous les projets",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "bffc729b-5cfa-44e1-8cef-3a0ad7c9e3b1",
+            "url": "/work"
+          },
+          "note": null,
+          "image": {
+            "dimensions": {
+              "width": 815,
+              "height": 542
+            },
+            "alt": "Stephan Eicher und die Automaten on stage",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/4_ith85Wtknorgjd_20221008_mohaibalazs_074-2-1.jpeg?auto=format,compress",
+            "id": "4_ith85Wtknorgjd",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "mux_video": null,
+          "image_brief": "Stephan Eicher on stage surrounded by the automated instruments, wide shot, 4:3",
+          "image_shape": null,
+          "image_fit": null,
+          "image_position": null,
+          "image_zoom": null,
+          "overlay": null,
+          "blur": null,
+          "dim": null,
+          "color_effect": null,
+          "vignette": null,
+          "slow_zoom": null,
+          "tone": "Default"
+        },
+        "id": "site_hero$a9fe965f-9cbe-4967-a911-2d6b82b27b2d",
+        "slice_type": "site_hero",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "La demande",
+          "title": "Des instruments qui suivent le chanteur",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Les chansons de Stephan Eicher demandaient des instruments capables de nuances. Des instruments qui se contentent d'allumer et d'éteindre des notes ne pouvaient pas le suivre. Les nôtres jouent chaque note avec sa propre vélocité : l'orchestre automatique suit la chanson.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "Le spectacle a beaucoup tourné, du festival Bardentreffen à Nuremberg à la Rockhal d'Esch-sur-Alzette, et les instruments ont voyagé avec lui : montés, joués et remballés dans une salle différente à chaque fois.",
+              "spans": []
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 710,
+              "height": 542
+            },
+            "alt": "The automated instruments on stage in concert light",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/IKC-wVZ2LqSmZCk1_20221008_mohaibalazs_074-3-1.jpeg?auto=format,compress",
+            "id": "IKC-wVZ2LqSmZCk1",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "The tour instruments lined up in the Herentals workshop before shipping, 4:3",
+          "media_side": "Image right",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$88890de7-896e-46b7-80fd-5e1d1a3d2bb7",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "En studio",
+          "title": "De retour en studio pour Ode",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Stephan Eicher a aussi utilisé les instruments en studio, sur son album Ode.",
+              "spans": [
+                {
+                  "start": 72,
+                  "end": 75,
+                  "type": "em"
+                }
+              ]
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 815,
+              "height": 542
+            },
+            "alt": "Stephan Eicher singing in front of the instruments",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/dCppDBUfxvMmMnS9_20221008_mohaibalazs_074-1.jpeg?auto=format,compress",
+            "id": "dCppDBUfxvMmMnS9",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Album cover of Ode next to one of the instruments, square",
+          "media_side": "Image left",
+          "aspect": "Square",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Tinted"
+        },
+        "id": "site_text_media$30b525e9-0e0f-4883-a2f5-c624ccfc4140",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "label": "Artiste",
+            "value": "Stephan Eicher",
+            "note": null
+          },
+          {
+            "label": "Spectacle",
+            "value": "Stephan Eicher und die Automaten",
+            "note": null
+          },
+          {
+            "label": "Album",
+            "value": "Ode",
+            "note": null
+          },
+          {
+            "label": "Construit par Decap",
+            "value": "Plusieurs instruments et unités d'orchestrion, pour différentes productions",
+            "note": null
+          },
+          {
+            "label": "Commande",
+            "value": "MIDI, avec vélocité note par note",
+            "note": null
+          }
+        ],
+        "primary": {
+          "eyebrow": "En bref",
+          "title": "Le projet en chiffres",
+          "intro": [],
+          "layout": "Spec list",
+          "tone": "Default"
+        },
+        "id": "site_facts$fbad34af-470c-40e0-a160-e0bda60938aa",
+        "slice_type": "site_facts",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Regarder",
+          "title": "Und die Automaten, en concert",
+          "intro": [],
+          "video": {},
+          "caption": null,
+          "poster": {},
+          "video_brief": "Live clip of Stephan Eicher und die Automaten",
+          "tone": "Default"
+        },
+        "id": "site_video$3e183302-6764-4aab-98dd-81e76afebdcc",
+        "slice_type": "site_video",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Sur scène",
+          "title": "Vous préparez un spectacle avec des instruments automatiques ?",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Indiquez-nous les chansons, la scène et les dates de tournée. Nous vous répondons avec les instruments qui conviennent et leur mode de commande.",
+              "spans": []
+            }
+          ],
+          "price": null,
+          "price_note": null,
+          "primary_cta_label": "Décrire votre spectacle",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "816df3f8-3444-4fab-ab5d-fdd2a45e3867",
+            "url": "/contact"
+          },
+          "secondary_cta_label": "Voir les instruments",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "67cde272-b517-4299-b2d2-76c54a5cbe67",
+            "url": "/instruments"
+          },
+          "image": {},
+          "image_brief": null,
+          "tone": "Dark band"
+        },
+        "id": "site_cta$2f3c0b84-f061-4d48-8e05-9515b186d145",
+        "slice_type": "site_cta",
+        "slice_label": null
+      }
+    ],
+    "meta_title": "Stephan Eicher und die Automaten | Decap Herentals",
+    "meta_description": "Des instruments acoustiques automatiques de Decap Herentals pour Stephan Eicher und die Automaten et l'album Ode. Joués en MIDI, avec des nuances.",
+    "meta_image": {}
+  }
+}

@@ -1,0 +1,253 @@
+{
+  "id": "atc3eREAAC0AavPP",
+  "uid": "circus-ronaldo",
+  "url": null,
+  "type": "project",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22atc3eREAAC0AavPP%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2026-10-20T09:51:02+0000",
+  "last_publication_date": "2026-10-22T08:15:26+0000",
+  "slugs": [
+    "circus-ronaldo"
+  ],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [
+    {
+      "id": "atdvzhEAACwAa151",
+      "type": "project",
+      "lang": "fr-fr",
+      "uid": "circus-ronaldo"
+    }
+  ],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Circus Ronaldo",
+        "spans": []
+      }
+    ],
+    "theme": "decap",
+    "summary": "Bespoke instruments built into the sets of several productions, and Brass Core for live brass without a player.",
+    "card_image": {},
+    "client": "Circus Ronaldo",
+    "year": null,
+    "location": "Belgium",
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "layout": "Split",
+          "eyebrow": "Work",
+          "title": "Instruments built into the set for Circus Ronaldo",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "For several Circus Ronaldo productions we built fully bespoke instruments, made to sit inside the set itself. The company also uses Brass Core, our robotic brass player.",
+              "spans": []
+            }
+          ],
+          "primary_cta_label": "About Brass Core",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "376ce5e6-d67a-41db-bda9-842f912c3e2b",
+            "url": "/brass-core"
+          },
+          "secondary_cta_label": "All projects",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "6e1063b1-a2b9-4bbe-970e-62aed8c9e0f3",
+            "url": "/work"
+          },
+          "note": null,
+          "image": {
+            "dimensions": {
+              "width": 513,
+              "height": 233
+            },
+            "alt": "Circus Ronaldo in La Cucina dell’Arte, with the Decap orchestrion cart on stage",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/k4mB0_ZTv6Wwb8pd_decap-circus-ronaldo-la-cucina-dell-arte-orchestrion-cart.jpg?auto=format%2Ccompress&rect=0%2C0%2C513%2C233&w=513&h=233",
+            "id": "k4mB0_ZTv6Wwb8pd",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "mux_video": null,
+          "image_brief": "The Decap organ in the Circus Ronaldo tent, performers in front, 4:3",
+          "image_shape": null,
+          "image_fit": null,
+          "image_position": null,
+          "image_zoom": null,
+          "overlay": null,
+          "blur": null,
+          "dim": null,
+          "color_effect": null,
+          "vignette": null,
+          "slow_zoom": null,
+          "tone": "Default"
+        },
+        "id": "site_hero$59dfd224-8d94-4731-8770-b868b57cd4b6",
+        "slice_type": "site_hero",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Watch",
+          "title": "Circus Ronaldo with a Tony Decap organ",
+          "intro": [],
+          "video": {
+            "embed_url": "https://www.youtube.com/watch?v=XQf13I7nTdY",
+            "provider_name": "YouTube",
+            "provider_url": "https://www.youtube.com/",
+            "title": "La Cucina dell'Arte",
+            "author_name": "MelinaHellebaut",
+            "author_url": "https://www.youtube.com/@MelinaHellebaut",
+            "type": "video",
+            "height": 150,
+            "width": 200,
+            "version": "1.0",
+            "thumbnail_height": 360,
+            "thumbnail_width": 480,
+            "thumbnail_url": "https://i.ytimg.com/vi/XQf13I7nTdY/hqdefault.jpg",
+            "html": "<iframe width=\"200\" height=\"150\" src=\"https://www.youtube.com/embed/XQf13I7nTdY?feature=oembed\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen title=\"La Cucina dell&#39;Arte\"></iframe>"
+          },
+          "caption": "Circus Ronaldo with a Tony Decap organ, YouTube.",
+          "poster": {},
+          "video_brief": null,
+          "tone": "Default"
+        },
+        "id": "site_video$90301cf4-d4c1-40cf-bd3a-779fb9c36c1a",
+        "slice_type": "site_video",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Brass Core",
+          "title": "Live brass, played from an audio signal",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Brass Core puts a real trumpet or trombone on stage and plays it from your own audio or MIDI. A voice-coil motor in a pressure chamber replaces the player's lips, and the instrument's own resonance shapes the tone. No drilling, no changes to the instrument.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "Circus Ronaldo uses it for its automated brass section.",
+              "spans": []
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 720,
+              "height": 688
+            },
+            "alt": "Brass Core on a trumpet",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/aIu9zKTt2nPbZn2g_s.png?auto=format,compress",
+            "id": "aIu9zKTt2nPbZn2g",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Brass Core mounted on a trumpet, against a dark backdrop, side view, 4:3",
+          "media_side": "Image right",
+          "aspect": "Landscape 4:3",
+          "cta_label": "Brass Core — Orchestrionix",
+          "cta_link": {
+            "link_type": "Web",
+            "key": "597d56bb-ec5c-40de-b39c-8585d781c7d2",
+            "url": "/brass-core"
+          },
+          "tone": "Tinted"
+        },
+        "id": "site_text_media$1656b365-0bc4-42ec-83d6-4f4c3fe0432c",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "quote": [
+            {
+              "type": "paragraph",
+              "text": "The Brass Core has become the beating heart of our automated brass section. We didn't want to just play brass music through the PA - we wanted the audience to feel it, like a real band was right there on stage.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "People often ask us where the brass band is hiding - that's how convincing it is. It's not just sound. It's presence.",
+              "spans": []
+            }
+          ],
+          "name": "Circus Ronaldo",
+          "role": "On Brass Core",
+          "image": {},
+          "tone": "Default"
+        },
+        "id": "site_quote$900a7692-0a19-417d-ad12-08bbd2e9cc87",
+        "slice_type": "site_quote",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Theatre and circus",
+          "title": "Acoustic instruments that play the cue on time",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Tell us about the show and the instruments you need. We reply with what fits and how it connects to your sound desk.",
+              "spans": []
+            }
+          ],
+          "price": null,
+          "price_note": null,
+          "primary_cta_label": "Describe your show",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "24737208-653b-4638-84f5-cf5f9f314757",
+            "url": "/contact"
+          },
+          "secondary_cta_label": "Discover Brass Core",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "f795d4f1-9c96-4630-822d-0535721a874c",
+            "url": "/brass-core"
+          },
+          "image": {},
+          "image_brief": null,
+          "tone": "Dark band"
+        },
+        "id": "site_cta$db31b722-9360-44b7-b790-0c33658730cf",
+        "slice_type": "site_cta",
+        "slice_label": null
+      }
+    ],
+    "meta_title": "Circus Ronaldo and Decap Organs | Decap Herentals",
+    "meta_description": "Bespoke instruments from Decap Herentals, built into the sets of several Circus Ronaldo productions, and Brass Core for live brass without a player on stage.",
+    "meta_image": {}
+  }
+}

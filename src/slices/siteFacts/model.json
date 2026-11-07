@@ -41,7 +41,8 @@
             "label": "Layout",
             "options": [
               "Stats",
-              "Spec list"
+              "Spec list",
+              "Pipe ranges"
             ],
             "default_value": "Stats"
           }

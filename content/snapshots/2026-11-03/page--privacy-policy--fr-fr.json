@@ -1,0 +1,312 @@
+{
+  "id": "atdvwxEAACkAa15V",
+  "uid": "privacy-policy",
+  "url": null,
+  "type": "page",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22atdvwxEAACkAa15V%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2026-10-20T15:02:59+0000",
+  "last_publication_date": "2026-10-22T08:15:22+0000",
+  "slugs": [
+    "politique-de-confidentialite"
+  ],
+  "linked_documents": [],
+  "lang": "fr-fr",
+  "alternate_languages": [
+    {
+      "id": "atc3ghEAACkAavPu",
+      "type": "page",
+      "lang": "en-us",
+      "uid": "privacy-policy"
+    }
+  ],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Politique de confidentialité",
+        "spans": []
+      }
+    ],
+    "theme": "decap",
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "layout": "Centered",
+          "eyebrow": "Vie privée",
+          "title": "Politique de confidentialité de decap.be",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Cette notice explique quelles données personnelles nous traitons lorsque vous utilisez ce site, pourquoi, et quels sont vos droits. Nous restons brefs et ne collectons que ce dont nous avons besoin pour vous répondre.",
+              "spans": []
+            }
+          ],
+          "primary_cta_label": null,
+          "primary_cta_link": {
+            "link_type": "Any"
+          },
+          "secondary_cta_label": null,
+          "secondary_cta_link": {
+            "link_type": "Any"
+          },
+          "note": "Dernière mise à jour : octobre 2026",
+          "image": {},
+          "mux_video": null,
+          "image_brief": null,
+          "image_shape": null,
+          "image_fit": null,
+          "image_position": null,
+          "image_zoom": null,
+          "overlay": null,
+          "blur": null,
+          "dim": null,
+          "color_effect": null,
+          "vignette": null,
+          "slow_zoom": null,
+          "tone": "Default"
+        },
+        "id": "site_hero$32f35a9d-e6a7-490f-be83-e83a36ce56ca",
+        "slice_type": "site_hero",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "question": "Qui est responsable de vos données",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Le responsable du traitement est DECAP TONY BV, Langepad 51C, 2200 Herentals, Belgique, numéro d'entreprise BE 0450.352.984, sous le nom commercial Decap Herentals.",
+                "spans": [
+                  {
+                    "start": 33,
+                    "end": 46,
+                    "type": "strong"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "text": "Pour toute question sur la vie privée, écrivez à info@decap.be ou appelez le +32 14 22 44 94.",
+                "spans": [
+                  {
+                    "start": 49,
+                    "end": 62,
+                    "type": "hyperlink",
+                    "data": {
+                      "link_type": "Web",
+                      "url": "mailto:info@decap.be"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "question": "Ce que nous collectons via le formulaire de contact",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Lorsque vous envoyez une demande, nous recevons :",
+                "spans": []
+              },
+              {
+                "type": "list-item",
+                "text": "votre nom",
+                "spans": []
+              },
+              {
+                "type": "list-item",
+                "text": "votre adresse e-mail",
+                "spans": []
+              },
+              {
+                "type": "list-item",
+                "text": "votre numéro de téléphone, si vous le donnez",
+                "spans": []
+              },
+              {
+                "type": "list-item",
+                "text": "votre localisation, si vous la donnez",
+                "spans": []
+              },
+              {
+                "type": "list-item",
+                "text": "le sujet et votre message",
+                "spans": []
+              },
+              {
+                "type": "paragraph",
+                "text": "Le formulaire nous est envoyé par e-mail via Resend, un prestataire de services e-mail qui traite le message pour notre compte. Resend peut traiter des données en dehors de l'Union européenne, par exemple aux États-Unis ; ces transferts reposent sur les garanties exigées par le RGPD.",
+                "spans": []
+              },
+              {
+                "type": "paragraph",
+                "text": "Les messages destinés à l'Atelier Frank Decap, envoyés depuis la page Frank Decap, parviennent à Frank Decap, qui dirige une entreprise distincte et traite lui-même ces messages.",
+                "spans": [
+                  {
+                    "start": 65,
+                    "end": 81,
+                    "type": "hyperlink",
+                    "data": {
+                      "link_type": "Web",
+                      "url": "/frank-decap"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "question": "Pourquoi nous les utilisons, et sur quelle base légale",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Nous utilisons vos données uniquement pour répondre à votre demande et, si vous nous le demandez, pour préparer un devis ou une commande. La base légale est constituée des mesures que vous nous demandez de prendre avant un éventuel contrat et de notre intérêt légitime à répondre aux messages qui nous sont adressés (article 6, paragraphe 1, points b) et f) du RGPD).",
+                "spans": []
+              },
+              {
+                "type": "paragraph",
+                "text": "Nous ne vendons pas vos données. Nous n'envoyons pas de newsletter et ne tenons pas de liste de diffusion.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Combien de temps nous les conservons",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Nous conservons votre demande aussi longtemps que nécessaire pour vous répondre et en assurer le suivi. Ensuite, nous la supprimons. Si une commande suit, nous conservons les données liées à la commande aussi longtemps que la législation comptable l'exige.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Comptes et commandes dans la boutique",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Si vous créez un compte ou passez commande dans notre boutique, nous traitons les données nécessaires à la commande, au paiement et à la livraison. Les paiements sont gérés par Stripe. Les commandes et les paiements sont décrits dans les conditions de notre boutique.",
+                "spans": [
+                  {
+                    "start": 258,
+                    "end": 266,
+                    "type": "hyperlink",
+                    "data": {
+                      "link_type": "Web",
+                      "url": "/shop"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "question": "Cookies et statistiques",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Nous utilisons Google Analytics, fourni par Google Ireland Ltd., pour voir comment les visiteurs utilisent le site. Il ne fonctionne que si vous l'acceptez dans le bandeau cookies. Si vous refusez, aucun cookie de statistiques n'est placé. Google peut traiter des données en dehors de l'Union européenne, par exemple aux États-Unis.",
+                "spans": []
+              },
+              {
+                "type": "paragraph",
+                "text": "Le site enregistre aussi votre choix en matière de cookies, pour que le bandeau n'apparaisse pas sur chaque page.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Vos droits",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "En vertu du RGPD, vous pouvez nous demander de :",
+                "spans": []
+              },
+              {
+                "type": "list-item",
+                "text": "vous montrer les données personnelles que nous détenons à votre sujet",
+                "spans": []
+              },
+              {
+                "type": "list-item",
+                "text": "les corriger",
+                "spans": []
+              },
+              {
+                "type": "list-item",
+                "text": "les supprimer",
+                "spans": []
+              },
+              {
+                "type": "list-item",
+                "text": "limiter la façon dont nous les utilisons",
+                "spans": []
+              },
+              {
+                "type": "list-item",
+                "text": "vous les remettre dans un format portable",
+                "spans": []
+              },
+              {
+                "type": "paragraph",
+                "text": "Vous pouvez aussi vous opposer au traitement fondé sur notre intérêt légitime. Envoyez votre demande à info@decap.be. Nous répondons dans un délai d'un mois.",
+                "spans": [
+                  {
+                    "start": 103,
+                    "end": 116,
+                    "type": "hyperlink",
+                    "data": {
+                      "link_type": "Web",
+                      "url": "mailto:info@decap.be"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "question": "Réclamations",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Si vous pensez que nous traitons vos données de manière incorrecte, dites-le-nous d'abord pour que nous puissions corriger le problème. Vous pouvez aussi introduire une réclamation auprès de l'Autorité de protection des données (Gegevensbeschermingsautoriteit), rue de la Presse 35, 1000 Bruxelles, www.dataprotectionauthority.be.",
+                "spans": [
+                  {
+                    "start": 299,
+                    "end": 329,
+                    "type": "hyperlink",
+                    "data": {
+                      "link_type": "Web",
+                      "url": "https://www.dataprotectionauthority.be"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "primary": {
+          "eyebrow": null,
+          "title": "Comment nous traitons vos données",
+          "intro": [],
+          "tone": "Default"
+        },
+        "id": "site_faq$600e8a8f-4807-464a-a532-dad16ce97c64",
+        "slice_type": "site_faq",
+        "slice_label": null
+      }
+    ],
+    "meta_title": "Politique de confidentialité | Decap Herentals",
+    "meta_description": "Comment DECAP TONY BV traite les données envoyées via decap.be : ce que nous collectons, pourquoi, combien de temps, et comment exercer vos droits RGPD.",
+    "meta_image": {}
+  }
+}

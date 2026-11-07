@@ -1,0 +1,525 @@
+{
+  "id": "atdvyBEAACsAa15l",
+  "uid": "virtual-orchestrion",
+  "url": null,
+  "type": "page",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22atdvyBEAACsAa15l%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2026-10-20T15:02:58+0000",
+  "last_publication_date": "2026-10-26T15:51:55+0000",
+  "slugs": [
+    "virtual-orchestrion"
+  ],
+  "linked_documents": [],
+  "lang": "fr-fr",
+  "alternate_languages": [
+    {
+      "id": "atc3fREAACkAavPf",
+      "type": "page",
+      "lang": "en-us",
+      "uid": "virtual-orchestrion"
+    }
+  ],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Virtual Orchestrion",
+        "spans": []
+      }
+    ],
+    "theme": "decap",
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "layout": "Split",
+          "eyebrow": "Virtual Orchestrion",
+          "title": "Virtual Orchestrion : un seul lecteur pour tout votre orchestrion",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Virtual Orchestrion lit le MIDI, l'audio et la vidéo, et envoie à chaque instrument sa partie : orgues et instruments automatiques Decap, et pianos QRS. À l'écran, vous suivez la musique sous forme d'orchestrion animé ou de carton qui défile.",
+              "spans": []
+            }
+          ],
+          "primary_cta_label": "L'obtenir dans la boutique",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "cc52c379-9775-4e5c-8dcb-132c5659fc39",
+            "url": "/software/virtual-orchestrion"
+          },
+          "secondary_cta_label": "Instruments automatiques",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "58f2477d-ed18-4ee7-859d-6d0a39fd5be8",
+            "url": "/instruments"
+          },
+          "note": "Inclus avec chaque nouvel orgue Decap.",
+          "image": {
+            "dimensions": {
+              "width": 542,
+              "height": 382
+            },
+            "alt": "Virtual Orchestrion: orchestrion view and book view",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/Dh8pCAZ8oF70qinr_decap-home-img3.png?auto=format,compress",
+            "id": "Dh8pCAZ8oF70qinr",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "mux_video": null,
+          "image_brief": "Laptop showing the animated orchestrion view, next to an Accordion Pedestal, plain backdrop, portrait 4:5",
+          "image_shape": null,
+          "image_fit": null,
+          "image_position": null,
+          "image_zoom": null,
+          "overlay": null,
+          "blur": null,
+          "dim": null,
+          "color_effect": null,
+          "vignette": null,
+          "slow_zoom": null,
+          "tone": "Default"
+        },
+        "id": "site_hero$5f3e4e98-6487-4802-b083-bdd4c28d6915",
+        "slice_type": "site_hero",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Un seul ensemble",
+          "title": "Chaque instrument joue sa propre partie",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Connectez un Accordion Pedestal, une Percussion Unit, des Pipes ou un orgue complet, et Virtual Orchestrion les pilote ensemble à partir d'un seul arrangement. Il pilote aussi les pianos QRS : un piano automatique peut rejoindre l'orchestre.",
+              "spans": [
+                {
+                  "start": 13,
+                  "end": 31,
+                  "type": "hyperlink",
+                  "data": {
+                    "link_type": "Web",
+                    "url": "/accordion"
+                  }
+                },
+                {
+                  "start": 37,
+                  "end": 52,
+                  "type": "hyperlink",
+                  "data": {
+                    "link_type": "Web",
+                    "url": "/percussion-unit"
+                  }
+                },
+                {
+                  "start": 58,
+                  "end": 63,
+                  "type": "hyperlink",
+                  "data": {
+                    "link_type": "Web",
+                    "url": "/pipes"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "Ce que vous n'avez pas connecté peut quand même sonner : le lecteur accueille jusqu'à 8 instruments virtuels VSTi et 8 DXi pour les parties restantes.",
+              "spans": []
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 497,
+              "height": 312
+            },
+            "alt": "Virtual Orchestrion on a laptop",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/VGZHmKnvMUT6nZvo_VirtualPlayerLaptop1-1.png?auto=format,compress",
+            "id": "VGZHmKnvMUT6nZvo",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Several Decap instruments in a row with a laptop running Virtual Orchestrion in front, workshop, 4:3",
+          "media_side": "Image right",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$8d32b4a5-8a01-4525-bf04-c32d1beb7a8d",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Le nombre de touches n'est pas une limite",
+          "title": "Un orgue plus petit qui joue des échelles plus grandes",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Quand un arrangement demande des jeux que votre orgue n'a pas, Virtual Orchestrion les ajoute virtuellement, avec des échantillons enregistrés dans notre propre atelier. Un orgue 105 touches joue la musique 121 touches.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "Vous choisissez donc l'instrument qui convient à votre salle et à votre budget, et vous jouez tout de même tout le répertoire.",
+              "spans": []
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 644,
+              "height": 322
+            },
+            "alt": "Virtual Orchestrion on two screens",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/5KDblOy3MRiPEXhf_Virtual-Organ-5-1.png?auto=format,compress",
+            "id": "5KDblOy3MRiPEXhf",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Screenshot of the book view with real and virtual ranks shown in different colours, 4:3",
+          "media_side": "Image left",
+          "aspect": "Landscape 4:3",
+          "cta_label": "Orgues neufs",
+          "cta_link": {
+            "link_type": "Web",
+            "key": "3733b0f7-8b0e-4658-ab14-4f542994500e",
+            "url": "/organs"
+          },
+          "tone": "Tinted"
+        },
+        "id": "site_text_media$fa123044-eb23-44e7-b9fd-acdd9a4113af",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "title": "Installer le lecteur",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Achetez Virtual Orchestrion dans la boutique, téléchargez-le et installez-le sur votre ordinateur.",
+                "spans": [
+                  {
+                    "start": 36,
+                    "end": 44,
+                    "type": "hyperlink",
+                    "data": {
+                      "link_type": "Web",
+                      "url": "/software/virtual-orchestrion"
+                    }
+                  }
+                ]
+              }
+            ],
+            "image": {},
+            "image_brief": null
+          },
+          {
+            "title": "Connecter vos instruments",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Connectez vos instruments Decap ou votre piano QRS en MIDI. Les parties sans instrument vont vers les instruments virtuels que vous chargez.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null
+          },
+          {
+            "title": "Choisir votre musique",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Jouez vos propres fichiers MIDI, audio et vidéo. Des arrangements protégés contre la copie seront bientôt disponibles dans notre boutique.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null
+          },
+          {
+            "title": "Appuyer sur lecture",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Chaque instrument joue sa partie. Suivez dans la vue orchestrion animé ou dans la vue carton.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null
+          }
+        ],
+        "primary": {
+          "eyebrow": "Comment ça marche",
+          "title": "De l'arrangement au son en quatre étapes",
+          "intro": [],
+          "tone": "Default"
+        },
+        "id": "site_steps$64b984b9-6369-463f-8b1c-f3b9930dd86e",
+        "slice_type": "site_steps",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "label": "Lit",
+            "value": "MIDI, audio et vidéo",
+            "note": null
+          },
+          {
+            "label": "Pilote",
+            "value": "Orgues et instruments automatiques Decap, pianos QRS",
+            "note": null
+          },
+          {
+            "label": "Vues",
+            "value": "Orchestrion animé et vue carton",
+            "note": "La vue carton affiche le carton de musique de façon entièrement numérique, y compris pour les orgues convertis au MIDI"
+          },
+          {
+            "label": "Instruments virtuels",
+            "value": "Jusqu'à 8 VSTi et 8 DXi",
+            "note": null
+          },
+          {
+            "label": "Jeux manquants",
+            "value": "Ajoutés virtuellement avec des échantillons enregistrés dans notre atelier",
+            "note": null
+          },
+          {
+            "label": "Musique",
+            "value": "Vos propres fichiers MIDI, audio et vidéo ; arrangements de la boutique bientôt disponibles",
+            "note": null
+          },
+          {
+            "label": "Où l'acheter",
+            "value": "Dans la boutique Decap",
+            "note": null
+          }
+        ],
+        "primary": {
+          "eyebrow": "En bref",
+          "title": "Ce que fait Virtual Orchestrion",
+          "intro": [],
+          "layout": "Spec list",
+          "tone": "Default"
+        },
+        "id": "site_facts$3c8e64b8-9494-45c1-976c-489044043a8e",
+        "slice_type": "site_facts",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Pour les arrangeurs",
+          "title": "Vendre vos arrangements : bientôt possible",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Une place de marché où les arrangeurs vendent leur travail aux propriétaires d'instruments Decap arrive bientôt. Chaque arrangement sera protégé contre la copie et formaté pour exploiter tout ce que le lecteur sait faire, sur des instruments réels comme virtuels.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "Vous arrangez pour orchestrions ou orgues ? Faites-vous connaître et nous vous préviendrons à l'ouverture.",
+              "spans": []
+            }
+          ],
+          "image": {},
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Arranger at a desk with a DAW on screen and a MIDI keyboard, 4:3",
+          "media_side": "Image right",
+          "aspect": "Landscape 4:3",
+          "cta_label": "Faites-vous connaître",
+          "cta_link": {
+            "link_type": "Web",
+            "key": "55e81a2c-b551-4059-9f06-8d156e5c4351",
+            "url": "/contact"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$76fe604a-6389-4f58-92c6-bf56bd4fd01c",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "question": "Faut-il un instrument Decap pour l'utiliser ?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Non. Avec des instruments virtuels chargés, Virtual Orchestrion joue de la musique d'orchestrion sur votre ordinateur. Connectez de vrais instruments et ils reprennent leurs parties.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Quels instruments peut-il piloter ?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Tous les orgues et instruments automatiques Decap, ainsi que les pianos QRS. Voir les instruments.",
+                "spans": [
+                  {
+                    "start": 86,
+                    "end": 97,
+                    "type": "hyperlink",
+                    "data": {
+                      "link_type": "Web",
+                      "url": "/instruments"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "question": "Comment ajoute-t-il des jeux que mon orgue n'a pas ?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Quand un arrangement utilise un jeu absent de votre orgue, le lecteur le joue avec des échantillons enregistrés dans notre atelier. Votre orgue joue ses propres tuyaux ; les jeux manquants sonnent par des haut-parleurs.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Est-il inclus avec un orgue neuf ?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Oui. Chaque nouvel orgue Decap est livré avec le lecteur Virtual Orchestrion, et le Bellow Organ l'a intégré.",
+                "spans": [
+                  {
+                    "start": 84,
+                    "end": 96,
+                    "type": "hyperlink",
+                    "data": {
+                      "link_type": "Web",
+                      "url": "/bellow-organ"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "question": "Où l'acheter ?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Dans la boutique Decap, où vous l'achetez et le téléchargez. Avec un nouvel orgue Decap, il est inclus.",
+                "spans": [
+                  {
+                    "start": 8,
+                    "end": 22,
+                    "type": "hyperlink",
+                    "data": {
+                      "link_type": "Web",
+                      "url": "/software/virtual-orchestrion"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "primary": {
+          "eyebrow": "Questions",
+          "title": "À propos de Virtual Orchestrion",
+          "intro": [],
+          "tone": "Default"
+        },
+        "id": "site_faq$e34141c0-39b7-4722-8ad2-99e00fb5b1f8",
+        "slice_type": "site_faq",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Prêt à jouer ?",
+          "title": "Obtenez Virtual Orchestrion",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Achetez et téléchargez Virtual Orchestrion dans la boutique, connectez vos instruments et appuyez sur lecture.",
+              "spans": []
+            }
+          ],
+          "price": null,
+          "price_note": null,
+          "primary_cta_label": "L'obtenir dans la boutique",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "c7d27d4c-e30d-421c-a9f3-1fc5ad595e6c",
+            "url": "/software/virtual-orchestrion"
+          },
+          "secondary_cta_label": "Visiter la boutique",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "f315a87d-e83a-4a71-90ea-f99b2e033f25",
+            "url": "/shop"
+          },
+          "image": {},
+          "image_brief": null,
+          "tone": "Dark band"
+        },
+        "id": "site_cta$117e89db-8ecf-4c4f-a751-170d91805649",
+        "slice_type": "site_cta",
+        "slice_label": null
+      }
+    ],
+    "meta_title": "Virtual Orchestrion, logiciel lecteur | Decap Herentals",
+    "meta_description": "Un seul lecteur pour votre ensemble Decap et vos pianos QRS. Vues orchestrion animé et carton, jeux manquants ajoutés virtuellement. En vente dans la boutique.",
+    "meta_image": {}
+  }
+}

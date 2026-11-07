@@ -79,7 +79,7 @@ export const SITE_SLICES = {
     primary: {
       ...header(),
       columns: select("Columns", ["3", "2", "4"]),
-      card_style: select("Card style", ["Image cards", "Text cards"]),
+      card_style: select("Card style", ["Image cards", "Text cards", "Case cards"]),
       cta_label: text("Link under the grid: label"),
       cta_link: link("Link under the grid"),
       tone: TONE(),

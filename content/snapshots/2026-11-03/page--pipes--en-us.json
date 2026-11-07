@@ -1,0 +1,477 @@
+{
+  "id": "alnYiBEAACgAD0b6",
+  "uid": "pipes",
+  "url": null,
+  "type": "page",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22alnYiBEAACgAD0b6%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2026-07-17T07:30:21+0000",
+  "last_publication_date": "2026-10-22T08:15:16+0000",
+  "slugs": [
+    "pipes"
+  ],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Pipes",
+        "spans": [],
+        "direction": "ltr"
+      }
+    ],
+    "theme": "decap",
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "mux_hls_url": null,
+          "title": "Pipes",
+          "subtitle": "A real pipe organ. Made for MIDI.",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Decap Pipes is a self-playing, MIDI-controlled acoustic pipe instrument. Choose chest-wide pressure regulation, based on the system used in the Decap automatic accordion, or smARTvalve technology for independent pressure control of every pipe.",
+              "spans": [],
+              "direction": "ltr"
+            }
+          ],
+          "primary_button_text": "How it works",
+          "primary_button_link": {
+            "link_type": "Any"
+          },
+          "secondary_button_text": "Explore the system",
+          "secondary_button_link": {
+            "link_type": "Any"
+          },
+          "footnote": "Built as an organ façade, compact module, transportable frame or custom installation.",
+          "overlay_opacity": null,
+          "background_color": "#FFFFFF"
+        },
+        "id": "instrument_header$12cfc3b5-dc74-4c34-920f-e9cddbfd30b4",
+        "slice_type": "instrument_header",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "title": "One pipe instrument. Two pressure systems.",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "The standard Decap system regulates the pressure of the complete chest as one responsive air supply. smARTvalve moves that control to every individual pipe, allowing each note to follow its own pressure curve, articulation and dynamics.",
+              "spans": [],
+              "direction": "ltr"
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 815,
+              "height": 542
+            },
+            "alt": "Modular Decap pipe organ system",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/aZCn_lWLo0XkEg-j_20221008_mohaibalazs_074-1-2-1.png?auto=format,compress",
+            "id": "aZCn_lWLo0XkEg-j",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "background_color": null
+        },
+        "id": "instrument_showcase$af074f1e-2374-4de2-94ce-c3d5a26cfc63",
+        "slice_type": "instrument_showcase",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "item_title": "Standard chest regulation",
+            "item_description": [
+              {
+                "type": "paragraph",
+                "text": "The complete chest shares one regulated pressure. This proven Decap system uses the same core airflow-control principle as the self-playing accordion.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ],
+            "image": {}
+          },
+          {
+            "item_title": "smARTvalve per-pipe control",
+            "item_description": [
+              {
+                "type": "paragraph",
+                "text": "Every pipe receives its own electronically controlled pressure. Notes can be shaped independently instead of following one shared chest pressure.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ],
+            "image": {}
+          },
+          {
+            "item_title": "Real acoustic pipework",
+            "item_description": [
+              {
+                "type": "paragraph",
+                "text": "Use wooden or metal pipes, newly built, restored or refurbished. The selected pipework remains responsible for the sound.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ],
+            "image": {}
+          },
+          {
+            "item_title": "Up to seven ranks",
+            "item_description": [
+              {
+                "type": "paragraph",
+                "text": "A compact Pipes system can contain up to seven ranks, configured around the required range, tone and available space.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ],
+            "image": {}
+          }
+        ],
+        "primary": {
+          "section_title": [
+            {
+              "type": "paragraph",
+              "text": "Choose how every pipe breathes.",
+              "spans": [],
+              "direction": "ltr"
+            }
+          ],
+          "background_color": null
+        },
+        "id": "instrument_bento$a5367708-273b-4b52-ad7b-b806a5e57e4b",
+        "slice_type": "instrument_bento",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "title": "From global expression to independent voices.",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Standard chest regulation shapes the complete pipe chest together, supporting crescendo, decrescendo, pitch and modulation effects, LFO vibrato, slope and decay. With smARTvalve, dynamic shaping, note articulation, vibrato, tremolo and pressure curves can be controlled for each pipe independently, enabling polyphonic expression.",
+              "spans": [],
+              "direction": "ltr"
+            }
+          ],
+          "media_type": "image",
+          "mux_hls_url": null,
+          "image": {},
+          "background_color": null
+        },
+        "id": "instrument_feature$b31d3320-7166-42ce-82a4-1d88665a1c9d",
+        "slice_type": "instrument_feature",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "title": "Organ or orchestrion façade",
+            "description": [
+              {
+                "type": "paragraph",
+                "text": "Build the pipework into a traditional organ or orchestrion façade. Pipes, wind chest, electronics and visual design become one permanent instrument.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ],
+            "image": {
+              "dimensions": {
+                "width": 1600,
+                "height": 1200
+              },
+              "alt": "Traditional organ installation with Decap pipe technology",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/aZpCkMFoBIGEgnuG_WhatsAppImage2026-02-21at20.24.06-2-.jpeg?auto=format,compress",
+              "id": "aZpCkMFoBIGEgnuG",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            }
+          },
+          {
+            "title": "Transportable or custom",
+            "description": [
+              {
+                "type": "paragraph",
+                "text": "Install Pipes in a compact cube, pedestal, transportable frame, flight case or exposed modular structure. Dimensions, pipe layout and enclosure can be designed around the application.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ],
+            "image": {
+              "dimensions": {
+                "width": 1280,
+                "height": 1280
+              },
+              "alt": "Compact transportable modular pipe organ system",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/aZohmMFoBIGEgnqj_make_this_image_photorealistic_N.png?auto=format,compress",
+              "id": "aZohmMFoBIGEgnqj",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            }
+          }
+        ],
+        "primary": {
+          "footnote": "The technology follows the project, not a fixed cabinet.",
+          "background_color": null
+        },
+        "id": "instrument_split$4f780faa-79ed-4979-a7b9-4f1c97241af1",
+        "slice_type": "instrument_split",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "title": "Complete new build",
+            "description": [
+              {
+                "type": "paragraph",
+                "text": "Create a self-playing MIDI pipe organ as a standalone instrument or as part of a complete automated ensemble.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          },
+          {
+            "title": "Integration or retrofit",
+            "description": [
+              {
+                "type": "paragraph",
+                "text": "Add modern MIDI and pressure control to an existing organ, or integrate Pipes with other Decap and Orchestrionix instruments.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          }
+        ],
+        "primary": {
+          "section_title": "New instruments and existing organs.",
+          "background_color": null
+        },
+        "id": "instrument_applications$69e57a5d-5541-4641-98b2-3fd2aa840e09",
+        "slice_type": "instrument_applications",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "title": "MIDI and live control",
+            "description": [
+              {
+                "type": "paragraph",
+                "text": "Use keys, faders, aftertouch and MIDI CC messages to play notes and control pressure in real time.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          },
+          {
+            "title": "DAW automation",
+            "description": [
+              {
+                "type": "paragraph",
+                "text": "Draw pressure curves, automate movement and program evolving expression directly inside a production workflow.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          },
+          {
+            "title": "Individual smARTvalve addressing",
+            "description": [
+              {
+                "type": "paragraph",
+                "text": "Every smARTvalve and pipe has its own identity, allowing individual control, configuration and custom stop combinations.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          }
+        ],
+        "primary": {
+          "section_title": "Control it your way.",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Play from a traditional organ console, MIDI controller, sequencer or computer-based production environment.",
+              "spans": [],
+              "direction": "ltr"
+            }
+          ],
+          "background_color": null
+        },
+        "id": "instrument_connectivity$a5c9152e-a4c0-4619-8fe8-1f0c3e18b614",
+        "slice_type": "instrument_connectivity",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "background_color": null
+        },
+        "id": "instrument_highlights$d1235386-c6bc-4e8d-8c8d-654529ff7370",
+        "slice_type": "instrument_highlights",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "label": "Pipework",
+            "value": [
+              {
+                "type": "paragraph",
+                "text": "Wooden or metal; new, restored or refurbished",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          },
+          {
+            "label": "Pressure architecture",
+            "value": [
+              {
+                "type": "paragraph",
+                "text": "Chest-wide Decap regulation or individual smARTvalve control",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          },
+          {
+            "label": "Construction",
+            "value": [
+              {
+                "type": "paragraph",
+                "text": "Façade, cube, pedestal, transportable frame, flight case or custom",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          }
+        ],
+        "primary": {
+          "section_title": "Technical overview",
+          "background_color": null
+        },
+        "id": "instrument_specs$cc4f34a9-ebeb-4833-b196-d8e4e3b080e9",
+        "slice_type": "instrument_specs",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "question": "What is the difference between chest regulation and smARTvalve?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "The standard Decap system regulates pressure for the complete chest, so all active pipes follow the same pressure movement. smARTvalve controls every pipe independently, giving each note its own pressure, articulation and dynamics.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          },
+          {
+            "question": "Which pressure effects are available?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Depending on the selected system, effects include crescendo, decrescendo, pitch and modulation movement, LFO vibrato, tremolo, slope, decay and shaped note articulation. smARTvalve can apply expression independently to each pipe.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          },
+          {
+            "question": "How can a Pipes system be built?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "It can be integrated into a traditional organ or orchestrion façade, built as a compact cube or pedestal, mounted in a transportable frame or flight case, added to an existing organ, or developed as a fully custom installation.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          }
+        ],
+        "primary": {
+          "title": "Questions. Answered.",
+          "background_color": null
+        },
+        "id": "instrument_faq$25ede7d1-c821-4c08-813b-24ae31eb4e37",
+        "slice_type": "instrument_faq",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "mux_hls_url": null,
+          "title": "Built around your project.",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Choose the pipework, pressure system, rank layout, enclosure and control method. From a traditional façade to a transportable frame or a fully custom installation, Pipes is engineered around the required sound, use and space.",
+              "spans": [],
+              "direction": "ltr"
+            }
+          ],
+          "button_text": "Contact Decap",
+          "button_link": {
+            "link_type": "Any"
+          },
+          "footnote": "Automated acoustic pipe-organ technology, designed and built in Herentals.",
+          "overlay_opacity": "dark",
+          "background_color": "#334A24"
+        },
+        "id": "instrument_cta$bb1ce783-a654-404d-9ee0-0b7810d20f6c",
+        "slice_type": "instrument_cta",
+        "slice_label": null
+      }
+    ],
+    "meta_title": "Self-Playing MIDI Pipe Organ | Decap Pipes",
+    "meta_description": "Decap Pipes is a self-playing MIDI pipe organ with chest-wide pressure regulation or individual smARTvalve control, available in standard or custom formats.",
+    "meta_image": {}
+  }
+}

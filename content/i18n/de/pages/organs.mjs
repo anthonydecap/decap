@@ -268,7 +268,7 @@ export default {
         eyebrow: "smARTvalve",
         title: "Ausdruck auf jeder Pfeife",
         body:
-          "Den Winddruck je Windlade stellen wir seit Jahren ein. smARTvalve macht das je Pfeife: ein Ventil und ein Prozessor für jede Pfeife. Jede Pfeife erhält ihren eigenen gespeicherten Winddruck, von 0 bis 200 %, mit 4 ms Reaktionszeit. Das ermöglicht Dynamik, Vibrato, Slope und Decay pro Ton, gespielt über MIDI.\n\nDiese Technik steckt in der transportablen Kirchenorgel von 2025, der ersten Orgel, die wir Windsynthesizer nennen.",
+          "Den Winddruck je Windlade stellen wir seit Jahren ein. smARTvalve macht das je Pfeife: ein Ventil mit eigenem Sensor und Prozessor für jede Pfeife, das den Druck 2.000-mal pro Sekunde korrigiert. Jede Pfeife kann von Stille bis zum Vierfachen ihres Intonationsdrucks spielen, mit eigener Windhüllkurve und zwei Vibratos, alles über MIDI.\n\nDiese Technik steckt in der transportablen Kirchenorgel von 2025, der ersten Orgel, die wir Windsynthesizer nennen.",
         media_side: "Image left",
         aspect: "Landscape 4:3",
         cta_label: "So funktioniert smARTvalve",

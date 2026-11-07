@@ -68,6 +68,25 @@ export default {
       },
     },
     {
+      type: "site_text_media",
+      primary: {
+        eyebrow: "In unserer Werkstatt",
+        title: "PipeCreator: vom Pfeifenentwurf bis zu jedem Ventil",
+        body:
+          "PipeCreator ist das Programm, das wir selbst nutzen. Es entwirft unsere Orgelpfeifen aus Holz und schickt den G-Code direkt an unsere 5-Achs-CNC. In seiner 3D-Ansicht, PipeViewer, entwerfen wir die Pfeifenstöcke einer smARTvalve-Orgel und die Pfeifen darauf, sodass Kunden ihre eigene Orgel in 3D sehen, bevor sie gebaut wird.\n\nSobald die Orgel spielt, zeigt PipeCreator für jede Pfeife eine Live-Druckkurve neben der erwarteten Kurve sowie eine Diagnosetabelle für alle smARTvalves.",
+        media_side: "Image left",
+        aspect: "Landscape 4:3",
+        cta_label: "smARTvalve für Orgelbauer",
+        cta_link: "/smartvalve-for-organ-builders",
+        image_brief: "PipeViewer on screen: a 3D pipe panel with smARTvalves and wooden pipes, 4:3",
+      },
+      items: [
+        { point: "Holzpfeifen entworfen und an die CNC geschickt" },
+        { point: "Pfeifenstöcke und Pfeifen in 3D in PipeViewer" },
+        { point: "Live-Druckkurven und Diagnose für jedes smARTvalve" },
+      ],
+    },
+    {
       type: "site_cta",
       primary: {
         eyebrow: "Sie arrangieren für Orgel?",

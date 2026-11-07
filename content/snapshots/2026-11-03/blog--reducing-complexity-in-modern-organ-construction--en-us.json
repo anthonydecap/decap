@@ -1,0 +1,61 @@
+{
+  "id": "aaFovhEAACgAw7WX",
+  "uid": "reducing-complexity-in-modern-organ-construction",
+  "url": null,
+  "type": "blog",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22aaFovhEAACgAw7WX%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2026-02-27T09:50:54+0000",
+  "last_publication_date": "2026-02-27T09:50:54+0000",
+  "slugs": [
+    "reducing-complexity-in-modern-organ-construction"
+  ],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Reducing Complexity in Modern Organ Construction",
+        "spans": [],
+        "direction": "ltr"
+      }
+    ],
+    "excerpt": [],
+    "card_image": {
+      "dimensions": {
+        "width": 2528,
+        "height": 1696
+      },
+      "alt": null,
+      "copyright": null,
+      "url": "https://images.prismic.io/decap/aZoU0sFoBIGEgnqJ_make_the_right_person_not_look_Nano_Banana_Pro_39684.jpg?auto=format,compress",
+      "id": "aZoU0sFoBIGEgnqJ",
+      "edit": {
+        "x": 0,
+        "y": 0,
+        "zoom": 1,
+        "background": "transparent"
+      }
+    },
+    "featured_image": {
+      "thumbnail": {}
+    },
+    "published_date": null,
+    "type": "smartvalve",
+    "slices": [],
+    "author_name": null,
+    "author_role": null,
+    "author_image": {},
+    "tags": [
+      {
+        "tag": null
+      }
+    ],
+    "reading_time": null,
+    "meta_title": null,
+    "meta_description": null,
+    "meta_image": {}
+  }
+}

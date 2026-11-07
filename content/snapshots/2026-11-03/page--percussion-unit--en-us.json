@@ -1,0 +1,449 @@
+{
+  "id": "aljyqBEAAC0ADeai",
+  "uid": "percussion-unit",
+  "url": null,
+  "type": "page",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22aljyqBEAAC0ADeai%22%29+%5D%5D",
+  "tags": [
+    "instrument"
+  ],
+  "first_publication_date": "2026-07-16T15:08:22+0000",
+  "last_publication_date": "2026-10-22T08:15:16+0000",
+  "slugs": [
+    "automated-percussion"
+  ],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Automated Percussion",
+        "spans": [],
+        "direction": "ltr"
+      }
+    ],
+    "theme": "decap",
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "mux_hls_url": null,
+          "title": "Automated Percussion",
+          "subtitle": "Real drums. Played by MIDI.",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "A complete acoustic percussion system with electronically controlled sticks and beaters. Built for automatic playback, live MIDI control and custom installation.",
+              "spans": [],
+              "direction": "ltr"
+            }
+          ],
+          "primary_button_text": "How it works",
+          "primary_button_link": {
+            "link_type": "Any"
+          },
+          "secondary_button_text": "Explore configurations",
+          "secondary_button_link": {
+            "link_type": "Any"
+          },
+          "footnote": "From compact units to complete custom percussion installations.",
+          "overlay_opacity": null,
+          "background_color": "#FFFFFF"
+        },
+        "id": "instrument_header$12cfc3b5-dc74-4c34-920f-e9cddbfd30b4",
+        "slice_type": "instrument_header",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "title": "The sound comes from the instrument.",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Real sticks and beaters strike real drums, cymbals, blocks, bells and handheld percussion. MIDI controls the timing and force of each action while the acoustic instruments produce the sound.",
+              "spans": [],
+              "direction": "ltr"
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 822,
+              "height": 676
+            },
+            "alt": "Decap automated acoustic percussion unit",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/aIZQLVGsbswqTUfx_percussion.png?auto=format%2Ccompress&rect=0%2C0%2C822%2C676&w=822&h=676",
+            "id": "aIZQLVGsbswqTUfx",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "background_color": null
+        },
+        "id": "instrument_showcase$af074f1e-2374-4de2-94ce-c3d5a26cfc63",
+        "slice_type": "instrument_showcase",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "item_title": "Individual actions",
+            "item_description": [
+              {
+                "type": "paragraph",
+                "text": "Each stick, beater and percussion action is controlled independently.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ],
+            "image": {}
+          },
+          {
+            "item_title": "Velocity-sensitive",
+            "item_description": [
+              {
+                "type": "paragraph",
+                "text": "MIDI velocity determines the force of the strike, from a light touch to a strong accent.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ],
+            "image": {}
+          },
+          {
+            "item_title": "Fast repetition",
+            "item_description": [
+              {
+                "type": "paragraph",
+                "text": "A 70 ms repeat time supports up to 14 strikes per second across the available velocity range.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ],
+            "image": {}
+          },
+          {
+            "item_title": "General MIDI",
+            "item_description": [
+              {
+                "type": "paragraph",
+                "text": "Standard General MIDI drum note numbers make existing drum tracks straightforward to use.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ],
+            "image": {}
+          }
+        ],
+        "primary": {
+          "section_title": [
+            {
+              "type": "paragraph",
+              "text": "Precise control of every hit.",
+              "spans": [],
+              "direction": "ltr"
+            }
+          ],
+          "background_color": null
+        },
+        "id": "instrument_bento$a5367708-273b-4b52-ad7b-b806a5e57e4b",
+        "slice_type": "instrument_bento",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "title": "More than a drum kit.",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "A percussion unit can combine bass drum, snare, toms and cymbals with tambourine, claves, woodblock, cowbell, shaker and other acoustic percussion. The instrument selection is adapted to the music and the available space.",
+              "spans": [],
+              "direction": "ltr"
+            }
+          ],
+          "media_type": "image",
+          "mux_hls_url": null,
+          "image": {},
+          "background_color": null
+        },
+        "id": "instrument_feature$b31d3320-7166-42ce-82a4-1d88665a1c9d",
+        "slice_type": "instrument_feature",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "title": "Built into an organ façade",
+            "description": [
+              {
+                "type": "paragraph",
+                "text": "Integrate the complete percussion section into a traditional organ or orchestrion façade. Instruments, mechanics, lighting and cabling become part of one permanent installation.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ],
+            "image": {}
+          },
+          {
+            "title": "Built to travel",
+            "description": [
+              {
+                "type": "paragraph",
+                "text": "Mount the system in a transportable frame or flight case for touring, demonstrations and temporary installations. The layout can be designed for protection, access and fast setup.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ],
+            "image": {}
+          }
+        ],
+        "primary": {
+          "footnote": "The system is not tied to one cabinet or format.",
+          "background_color": null
+        },
+        "id": "instrument_split$4f780faa-79ed-4979-a7b9-4f1c97241af1",
+        "slice_type": "instrument_split",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "title": "Standalone percussion",
+            "description": [
+              {
+                "type": "paragraph",
+                "text": "Use the percussion unit as an independent MIDI-controlled acoustic instrument for playback or live performance.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          },
+          {
+            "title": "Part of an ensemble",
+            "description": [
+              {
+                "type": "paragraph",
+                "text": "Synchronize it with accordions, organs, mallet percussion and other Decap or Orchestrionix instruments. Custom layouts and instrument combinations can be engineered for the project.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          }
+        ],
+        "primary": {
+          "section_title": "One system. Any configuration.",
+          "background_color": null
+        },
+        "id": "instrument_applications$69e57a5d-5541-4641-98b2-3fd2aa840e09",
+        "slice_type": "instrument_applications",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "title": "Note and velocity",
+            "description": [
+              {
+                "type": "paragraph",
+                "text": "MIDI note data selects the instrument. Velocity controls the intensity of the strike.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          },
+          {
+            "title": "Volume and expression",
+            "description": [
+              {
+                "type": "paragraph",
+                "text": "The controller responds to MIDI volume and expression for dynamic control across the complete unit.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          },
+          {
+            "title": "System integration",
+            "description": [
+              {
+                "type": "paragraph",
+                "text": "Standard MIDI mapping supports standalone use and synchronization with complete orchestrions or custom installations.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          }
+        ],
+        "primary": {
+          "section_title": "Made for MIDI.",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Connect a prepared drum track, sequencer, keyboard or larger automated music system.",
+              "spans": [],
+              "direction": "ltr"
+            }
+          ],
+          "background_color": null
+        },
+        "id": "instrument_connectivity$a5c9152e-a4c0-4619-8fe8-1f0c3e18b614",
+        "slice_type": "instrument_connectivity",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "background_color": null
+        },
+        "id": "instrument_highlights$d1235386-c6bc-4e8d-8c8d-654529ff7370",
+        "slice_type": "instrument_highlights",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "label": "Sound generation",
+            "value": [
+              {
+                "type": "paragraph",
+                "text": "Acoustic drums, cymbals and percussion",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          },
+          {
+            "label": "Control",
+            "value": [
+              {
+                "type": "paragraph",
+                "text": "MIDI note, velocity, volume and expression",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          },
+          {
+            "label": "Repeat time",
+            "value": [
+              {
+                "type": "paragraph",
+                "text": "70 ms — up to 14 strikes per second",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          }
+        ],
+        "primary": {
+          "section_title": "Technical overview",
+          "background_color": null
+        },
+        "id": "instrument_specs$cc4f34a9-ebeb-4833-b196-d8e4e3b080e9",
+        "slice_type": "instrument_specs",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "question": "Which percussion instruments can be automated?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Drums, cymbals, tambourines, claves, woodblocks, cowbells, shakers and many other acoustic percussion instruments can be considered. The mechanics are designed around the required instruments and playing actions.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          },
+          {
+            "question": "Can it be built into an organ façade?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Yes. The percussion can be integrated into a traditional organ or orchestrion façade, including its mechanics, cabling and visual presentation.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          },
+          {
+            "question": "Can the system be transportable?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Yes. It can be built into a movable frame, touring rack or flight case. Other custom formats are possible when the installation requires a different layout.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          }
+        ],
+        "primary": {
+          "title": "Questions. Answered.",
+          "background_color": null
+        },
+        "id": "instrument_faq$25ede7d1-c821-4c08-813b-24ae31eb4e37",
+        "slice_type": "instrument_faq",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "mux_hls_url": null,
+          "title": "Built around your project.",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Choose the instruments, layout and enclosure. From a traditional organ façade to a transportable flight case or a completely custom installation, the automation is engineered around the result you need.",
+              "spans": [],
+              "direction": "ltr"
+            }
+          ],
+          "button_text": "Contact Decap",
+          "button_link": {
+            "link_type": "Any"
+          },
+          "footnote": "Custom automated percussion, designed and built in Herentals.",
+          "overlay_opacity": "dark",
+          "background_color": "#334A24"
+        },
+        "id": "instrument_cta$bb1ce783-a654-404d-9ee0-0b7810d20f6c",
+        "slice_type": "instrument_cta",
+        "slice_label": null
+      }
+    ],
+    "meta_title": "Automated Drums & Percussion | Decap",
+    "meta_description": "MIDI-controlled acoustic drums and percussion with velocity-sensitive strikes, built into organ façades, transport frames, flight cases or custom setups.",
+    "meta_image": {}
+  }
+}

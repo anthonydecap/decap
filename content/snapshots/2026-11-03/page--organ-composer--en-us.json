@@ -1,0 +1,272 @@
+{
+  "id": "atc3iREAACgAavQO",
+  "uid": "organ-composer",
+  "url": null,
+  "type": "page",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22atc3iREAACgAavQO%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2026-10-20T09:51:01+0000",
+  "last_publication_date": "2026-10-22T08:15:28+0000",
+  "slugs": [
+    "organ-composer"
+  ],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [
+    {
+      "id": "atdvvBEAAC0Aa15B",
+      "type": "page",
+      "lang": "fr-fr",
+      "uid": "organ-composer"
+    }
+  ],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Organ Composer",
+        "spans": []
+      }
+    ],
+    "theme": "decap",
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "layout": "Centered",
+          "eyebrow": "Organ Composer",
+          "title": "Compose your organ",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Choose a starting design and answer a few questions about the room, the sound and the front instruments. It takes a few minutes and gives us a clear starting point for the first conversation.",
+              "spans": []
+            }
+          ],
+          "primary_cta_label": null,
+          "primary_cta_link": {
+            "link_type": "Any"
+          },
+          "secondary_cta_label": null,
+          "secondary_cta_link": {
+            "link_type": "Any"
+          },
+          "note": "Not a price calculator and not an order. Every organ is confirmed after a consultation.",
+          "image": {},
+          "mux_video": null,
+          "image_brief": null,
+          "image_shape": null,
+          "image_fit": null,
+          "image_position": null,
+          "image_zoom": null,
+          "overlay": null,
+          "blur": null,
+          "dim": null,
+          "color_effect": null,
+          "vignette": null,
+          "slow_zoom": null,
+          "tone": "Default"
+        },
+        "id": "site_hero$2df39faf-205d-4f00-a865-80271d9e91d1",
+        "slice_type": "site_hero",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "image": {
+              "dimensions": {
+                "width": 724,
+                "height": 804
+              },
+              "alt": "Render of a modular Decap dance organ",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/BB-llpKn4TV5FjVP_Model_V02_2023-Oct-16_11-15-28PM-000_CustomizedView27364077015.png?auto=format,compress",
+              "id": "BB-llpKn4TV5FjVP",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Existing 3D render of the modular 105-key dance organ, front view, plain background, 4:3",
+            "name": "Modular dance organ, 105 keys",
+            "kind": "Modular",
+            "description": "Built from proven modules on our standard 105-key scale. Plays 121-key music through the Virtual Orchestrion player."
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 1242,
+                "height": 1012
+              },
+              "alt": "Render of a modular Decap dance organ with a name panel",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/R7xlQhwm9B3cGVLU_ST.ORG_._SAMENBOUW_INSTRUMENTEN-001_OrigineelSteven_2023-Aug-16_09-45-31PM-000_CustomizedView4140936227.png?auto=format,compress",
+              "id": "R7xlQhwm9B3cGVLU",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Existing 3D render of the modular 121-key dance organ, front view, plain background, 4:3",
+            "name": "Modular dance organ, 121 keys",
+            "kind": "Modular",
+            "description": "Built from proven modules on our standard 121-key scale, for more notes and more ranks."
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 911,
+                "height": 764
+              },
+              "alt": "Render of the bespoke organ Isabella",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/8RsD3EaLG6DCdW_a_cb0efde8-a27a-48f1-afd3-afb5a1fb60d2.png?auto=format%2Ccompress&rect=0%2C0%2C911%2C764&w=911&h=764",
+              "id": "8RsD3EaLG6DCdW_a",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Existing 3D render of a bespoke Decap concert organ, front three-quarter view, plain background, 4:3",
+            "name": "Bespoke organ in its own style",
+            "kind": "Bespoke",
+            "description": "A case, colours and name designed for one owner, like the rounded 70's-style Isabella. Pipes, accordions and drums in the front."
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 1011,
+                "height": 799
+              },
+              "alt": "Render of a bespoke Decap orchestrion",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/MfEyZIjIn7GIAuzm_Trailer_2023-Oct-07_10-13-09PM-000_CustomizedView1077535285-1.png?auto=format,compress",
+              "id": "MfEyZIjIn7GIAuzm",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Existing 3D render of a bespoke Decap street organ, front three-quarter view, plain background, 4:3",
+            "name": "Bespoke orchestrion",
+            "kind": "Bespoke",
+            "description": "A complete orchestrion with two accordions, pipes, percussion and drums, designed around the room it plays in."
+          }
+        ],
+        "primary": {
+          "eyebrow": "Step 1",
+          "title": "Pick a starting design",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Start from one of our modular organs or from a bespoke design we built before. Then choose where it will play, the size, pipes or digital, the voices and what plays in the front.",
+              "spans": []
+            }
+          ],
+          "bespoke_note": [
+            {
+              "type": "paragraph",
+              "text": "Want something none of these designs show? Choose Start from scratch and describe your idea in the message. Bespoke organs start with a consultation and a 3D render, so nothing is fixed until you have seen it.",
+              "spans": [
+                {
+                  "start": 50,
+                  "end": 68,
+                  "type": "strong"
+                }
+              ]
+            }
+          ],
+          "success_title": "Your starting point is on its way",
+          "success_body": [
+            {
+              "type": "paragraph",
+              "text": "Thank you. Your choices are with us in Herentals. We reply with questions and a first idea.",
+              "spans": []
+            }
+          ],
+          "tone": "Default"
+        },
+        "id": "organ_composer$c70cd9a9-6cf8-4170-beb5-fa48a6f0709d",
+        "slice_type": "organ_composer",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "question": "Is sending a design binding?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "No. It is a request for a consultation, not an order. Nothing is fixed until you confirm an order with us.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "What happens after I send it?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "We read your choices and reply with questions and a first idea. Then we talk through the room, the music and the budget, and work towards a design and a 3D render. See how we build an organ.",
+                "spans": [
+                  {
+                    "start": 164,
+                    "end": 189,
+                    "type": "hyperlink",
+                    "data": {
+                      "link_type": "Web",
+                      "url": "/organs"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "question": "Can I start from scratch?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Yes. Choose Start from scratch and describe what you have in mind. Every option can be changed later, and a fully bespoke organ is always possible.",
+                "spans": [
+                  {
+                    "start": 12,
+                    "end": 30,
+                    "type": "strong"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "primary": {
+          "eyebrow": "Questions",
+          "title": "About the Organ Composer",
+          "intro": [],
+          "tone": "Default"
+        },
+        "id": "site_faq$e34b2549-2c41-4bc5-adfa-43a3e5ab6d08",
+        "slice_type": "site_faq",
+        "slice_label": null
+      }
+    ],
+    "meta_title": "Organ Composer: design your dance organ | Decap",
+    "meta_description": "Pick a starting design, choose size, sound, voices and front instruments, and send it to Decap Herentals. We reply with questions and a first idea.",
+    "meta_image": {}
+  }
+}

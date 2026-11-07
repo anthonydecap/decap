@@ -1,0 +1,350 @@
+{
+  "id": "atdv2xEAACgAa16T",
+  "uid": "walter-hus-belem",
+  "url": null,
+  "type": "project",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22atdv2xEAACgAa16T%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2026-10-20T15:02:57+0000",
+  "last_publication_date": "2026-10-22T08:15:17+0000",
+  "slugs": [
+    "walter-hus-belem-et-the-mekanics"
+  ],
+  "linked_documents": [],
+  "lang": "fr-fr",
+  "alternate_languages": [
+    {
+      "id": "atc3ahEAACkAavOm",
+      "type": "project",
+      "lang": "en-us",
+      "uid": "walter-hus-belem"
+    }
+  ],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Walter Hus, BELEM et The Mekanics",
+        "spans": []
+      }
+    ],
+    "theme": "decap",
+    "summary": "Des instruments Decap dans l'orchestre mécanique de Walter Hus, pour The Mekanics de BELEM et à Flagey.",
+    "card_image": {},
+    "client": "Walter Hus, BELEM",
+    "year": "Vers 2017",
+    "location": "Bruxelles, Belgique",
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "layout": "Split",
+          "eyebrow": "Réalisations",
+          "title": "Un orchestrion Decap avec Walter Hus et BELEM",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Le compositeur Walter Hus joue avec un orchestre mécanique d'instruments Decap : des unités de tuyaux transportables, une unité de percussion et un accordéon, construits vers 2017. Avec BELEM, le duo de l'accordéoniste Didier Laloy et de la violoncelliste Kathy Adam, il est devenu The Mekanics.",
+              "spans": [
+                {
+                  "start": 282,
+                  "end": 294,
+                  "type": "em"
+                }
+              ]
+            }
+          ],
+          "primary_cta_label": "Instruments automatiques",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "9c4a72ec-74b8-412f-aa46-c041c79382cb",
+            "url": "/instruments"
+          },
+          "secondary_cta_label": "Tous les projets",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "fbb8699e-9458-4fc8-929c-188040c5b2c4",
+            "url": "/work"
+          },
+          "note": null,
+          "image": {
+            "dimensions": {
+              "width": 815,
+              "height": 542
+            },
+            "alt": "BELEM with Walter Hus",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/5jBm_yHQ3ojRtbQF_20221008_mohaibalazs_074-1-2.jpeg?auto=format,compress",
+            "id": "5jBm_yHQ3ojRtbQF",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "mux_video": null,
+          "image_brief": "Didier Laloy and Kathy Adam on stage in front of the mechanical orchestra, 4:3",
+          "image_shape": null,
+          "image_fit": null,
+          "image_position": null,
+          "image_zoom": null,
+          "overlay": null,
+          "blur": null,
+          "dim": null,
+          "color_effect": null,
+          "vignette": null,
+          "slow_zoom": null,
+          "tone": "Default"
+        },
+        "id": "site_hero$9121ade5-007a-43cc-95cb-b94851f46911",
+        "slice_type": "site_hero",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "The Mekanics",
+          "title": "Accordéon, violoncelle et orguedinateur",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "BELEM, c'est un accordéon et un violoncelle. Pour The Mekanics, Walter Hus a ajouté son orchestre mécanique, qu'il appelle l'orguedinateur : un orgue et un ordinateur en un seul mot. Le résultat est un album qui passe de la musique de film aux rythmes des Balkans, au baroque et au jazz.",
+              "spans": [
+                {
+                  "start": 50,
+                  "end": 62,
+                  "type": "em"
+                },
+                {
+                  "start": 125,
+                  "end": 138,
+                  "type": "em"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "Les unités de tuyaux sont conçues pour voyager : l'orchestre part en tournée avec les musiciens.",
+              "spans": []
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 667,
+              "height": 444
+            },
+            "alt": "Accordion, cello and pipes of the mechanical orchestra",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/9unFx7_0c2p1yjJ4_20221008_mohaibalazs_074-1-2.png?auto=format,compress",
+            "id": "9unFx7_0c2p1yjJ4",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "The orguedinateur instruments close up, 4:3",
+          "media_side": "Image right",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$1f0906b3-912d-4240-a169-55be11670798",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "En concert",
+          "title": "L'orchestrion Decap à Flagey",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "À Flagey, à Bruxelles, Walter Hus et le Zenne Quartet ont donné un concert intitulé Decap orchestrion : un concerto pour quatuor à cordes et orchestrion. Voir le concert sur le site de Flagey.",
+              "spans": [
+                {
+                  "start": 84,
+                  "end": 101,
+                  "type": "em"
+                },
+                {
+                  "start": 154,
+                  "end": 191,
+                  "type": "hyperlink",
+                  "data": {
+                    "link_type": "Web",
+                    "url": "https://www.flagey.be/en/activity/13535-decap-orchestrion-walter-hus-zenne-quartet-concerto-for-string-quartet-orchestrion"
+                  }
+                }
+              ]
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 710,
+              "height": 542
+            },
+            "alt": "Walter Hus in front of the pipes",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/j69URo3oiwtlmojN_20221008_mohaibalazs_074-3-2.jpeg?auto=format,compress",
+            "id": "j69URo3oiwtlmojN",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "The orchestrion on stage at Flagey with the Zenne Quartet, 4:3",
+          "media_side": "Image left",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Tinted"
+        },
+        "id": "site_text_media$dfab2996-8b3e-482f-bf60-2b0ecf7a0a6d",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "label": "Compositeur",
+            "value": "Walter Hus",
+            "note": null
+          },
+          {
+            "label": "Avec",
+            "value": "BELEM : Didier Laloy (accordéon), Kathy Adam (violoncelle)",
+            "note": null
+          },
+          {
+            "label": "Projet",
+            "value": "The Mekanics",
+            "note": null
+          },
+          {
+            "label": "Concert",
+            "value": "Decap orchestrion, Flagey, Bruxelles, avec le Zenne Quartet",
+            "note": null
+          },
+          {
+            "label": "Construit par Decap",
+            "value": "Des unités de tuyaux transportables, une unité de percussion et un accordéon",
+            "note": null
+          },
+          {
+            "label": "Construction",
+            "value": "Vers 2017",
+            "note": null
+          }
+        ],
+        "primary": {
+          "eyebrow": "En bref",
+          "title": "Le projet en chiffres",
+          "intro": [],
+          "layout": "Spec list",
+          "tone": "Default"
+        },
+        "id": "site_facts$ffd5a42c-957b-40d6-949c-da1cb9a68864",
+        "slice_type": "site_facts",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "À voir",
+          "title": "The Mekanics, en live",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "BELEM et Walter Hus avec l’orchestre mécanique. La vidéo s’ouvre sur YouTube.",
+              "spans": []
+            }
+          ],
+          "price": null,
+          "price_note": null,
+          "primary_cta_label": "Voir sur YouTube",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "9a437806-79c9-4403-bcdc-7b306da610eb",
+            "url": "https://www.youtube.com/watch?v=uIrJGwcmgwY"
+          },
+          "secondary_cta_label": null,
+          "secondary_cta_link": {
+            "link_type": "Any"
+          },
+          "image": {},
+          "image_brief": null,
+          "tone": "Tinted"
+        },
+        "id": "site_cta$e1d327ea-2d88-4eeb-975e-b7fee0bef980",
+        "slice_type": "site_cta",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Pour les compositeurs",
+          "title": "Écrivez pour des instruments acoustiques qui jouent en MIDI",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Dites-nous ce dont votre œuvre a besoin. Nous vous répondons avec les instruments qui conviennent et la façon de les piloter depuis votre propre installation.",
+              "spans": []
+            }
+          ],
+          "price": null,
+          "price_note": null,
+          "primary_cta_label": "Décrire votre projet",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "4a3a0029-265b-45f0-b80f-682effb385e5",
+            "url": "/contact"
+          },
+          "secondary_cta_label": "Voir les instruments",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "1723e67d-b932-4bc6-9c58-80191be04160",
+            "url": "/instruments"
+          },
+          "image": {},
+          "image_brief": null,
+          "tone": "Dark band"
+        },
+        "id": "site_cta$95645cd3-5c0d-4ed0-99c1-3f1da18dd7dd",
+        "slice_type": "site_cta",
+        "slice_label": null
+      }
+    ],
+    "meta_title": "Walter Hus, BELEM et The Mekanics | Decap Herentals",
+    "meta_description": "L'orchestre mécanique de Walter Hus avec BELEM (Didier Laloy, Kathy Adam) dans The Mekanics, et l'orchestrion Decap en concert à Flagey avec le Zenne Quartet.",
+    "meta_image": {}
+  }
+}

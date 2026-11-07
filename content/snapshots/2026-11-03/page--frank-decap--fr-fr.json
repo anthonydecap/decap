@@ -1,0 +1,636 @@
+{
+  "id": "atdvrhEAACcAa14V",
+  "uid": "frank-decap",
+  "url": null,
+  "type": "page",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22atdvrhEAACcAa14V%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2026-10-20T15:03:01+0000",
+  "last_publication_date": "2026-10-22T08:15:24+0000",
+  "slugs": [
+    "atelier-frank-decap"
+  ],
+  "linked_documents": [],
+  "lang": "fr-fr",
+  "alternate_languages": [
+    {
+      "id": "atc3lhEAACwAavQu",
+      "type": "page",
+      "lang": "en-us",
+      "uid": "frank-decap"
+    }
+  ],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Atelier Frank Decap",
+        "spans": []
+      }
+    ],
+    "theme": "atelier",
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "layout": "Split",
+          "eyebrow": "Atelier Frank Decap",
+          "title": "Restauration d'orgues par Frank Decap",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Frank Decap est un maître artisan qui a consacré son atelier à une seule chose : restaurer les orgues historiques tels qu'ils ont été construits. Il est le frère de Tony Decap et dirige son propre atelier indépendant. Écrivez-lui au sujet de votre orgue ; cette page lui parvient directement.",
+              "spans": []
+            }
+          ],
+          "primary_cta_label": "Posez votre question à Frank",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "e1b8a920-1cfe-42dc-bfc1-14d52a6623a2",
+            "url": "#contact-form"
+          },
+          "secondary_cta_label": null,
+          "secondary_cta_link": {
+            "link_type": "Any"
+          },
+          "note": null,
+          "image": {
+            "dimensions": {
+              "width": 1448,
+              "height": 1086
+            },
+            "alt": "Frank Decap at work in his restoration workshop",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/3kPGmjngidsqUA65_decap-frank-decap-piano-restoration-in-a-busy-workshop.jpg?auto=format,compress",
+            "id": "3kPGmjngidsqUA65",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "mux_video": null,
+          "image_brief": "Frank Decap at his workbench with an organ part in his hands, looking at the work rather than the camera, warm window light; portrait 4:5",
+          "image_shape": null,
+          "image_fit": null,
+          "image_position": null,
+          "image_zoom": null,
+          "overlay": null,
+          "blur": null,
+          "dim": null,
+          "color_effect": null,
+          "vignette": null,
+          "slow_zoom": null,
+          "tone": "Default"
+        },
+        "id": "site_hero$9ca4da45-8708-4e68-981c-d07549dc1700",
+        "slice_type": "site_hero",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Qui restaure votre orgue",
+          "title": "Une famille, deux ateliers",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "La famille Decap travaille avec les orgues depuis 1895. Tony Decap construit des orgues neufs et développe la technologie à Herentals. Son frère Frank a choisi l'autre versant du métier : faire jouer les orgues historiques comme leurs facteurs l'avaient voulu.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "L'Atelier Frank Decap est l'entreprise de Frank, distincte de Decap Herentals. Quand vous lui écrivez, vous traitez avec la personne qui fera le travail.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "L'atelier se trouve sur le même site que Decap Herentals, la fabrique d'orgues Decap au Langepad à Herentals.",
+              "spans": []
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 1448,
+              "height": 1086
+            },
+            "alt": "Frank Decap working among historic organs",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/-mRrocqDUWGiAS75_decap-frank-decap-historic-concert-hall-organ-workshop.jpg?auto=format,compress",
+            "id": "-mRrocqDUWGiAS75",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Wide shot of Frank's atelier: workbench, hand tools on the wall, an organ case opened up in the background; 4:3",
+          "media_side": "Image right",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$bed59ab0-97e9-4b09-9b27-4baefd95d963",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": null,
+            "title": "Orgues à cartons et à rouleaux",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Claviers de lecture, mécanismes à cartons et à rouleaux, et tout ce qu'ils actionnent.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": null,
+            "title": "Orgues de danse, de foire et de rue",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Les orgues que la famille Decap construit et fait jouer depuis des générations, et ceux d'autres facteurs.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": null,
+            "title": "Mécaniques pneumatiques",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Soufflets de membranes, soupapes et tubulures, pour que chaque note parle à nouveau.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": null,
+            "title": "Soufflets et alimentation en vent",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Soufflets et réservoirs rendus étanches, pour que l'orgue garde un vent stable.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": null,
+            "title": "Harmonisation",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Des tuyaux harmonisés et accordés pour retrouver le caractère d'origine de l'orgue.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": null,
+            "title": "Buffets",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Le buffet et la façade qui rendent un orgue reconnaissable.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": null,
+            "title": "Facture traditionnelle de tuyaux",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Des tuyaux neufs faits à la main, de manière traditionnelle, assortis à la tuyauterie d'origine de l'orgue.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          }
+        ],
+        "primary": {
+          "eyebrow": "Ce que Frank restaure",
+          "title": "Des soufflets à la façade",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Les travaux courants de l'atelier.",
+              "spans": []
+            }
+          ],
+          "columns": "3",
+          "card_style": "Text cards",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_card_grid$ef8186d0-a411-43a1-9fec-145368aee73d",
+        "slice_type": "site_card_grid",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Conversion MIDI",
+          "title": "Carton et MIDI dans un même orgue",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Frank installe les modules de conversion MIDI Decap fabriqués à Herentals. Les modules se placent entre le clavier de lecture et le sommier principal : le carton ou le rouleau continue de fonctionner comme avant, et carton et MIDI peuvent même jouer en même temps.",
+              "spans": [
+                {
+                  "start": 19,
+                  "end": 51,
+                  "type": "hyperlink",
+                  "data": {
+                    "link_type": "Web",
+                    "url": "/midi-conversion"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "Vous achetez les modules chez Decap Herentals ; Frank les monte, seuls ou dans le cadre d'une restauration.",
+              "spans": []
+            }
+          ],
+          "image": {},
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Decap MIDI units fitted inside a historic organ, tubing to the key frame visible, lit with a work lamp; 4:3",
+          "media_side": "Image left",
+          "aspect": "Landscape 4:3",
+          "cta_label": "À propos des modules MIDI",
+          "cta_link": {
+            "link_type": "Web",
+            "key": "a4b22345-a279-4943-b05c-5100c3232768",
+            "url": "/midi-conversion"
+          },
+          "tone": "Tinted"
+        },
+        "id": "site_text_media$fa763887-f85e-4a15-9575-0b3893b3a393",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "title": "Photos et premier regard",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Envoyez quelques lignes sur votre orgue via le formulaire ci-dessous. Quand Frank vous répond, vous pouvez lui envoyer des photos du buffet, de la façade, du clavier de lecture et de tout ce qui ne fonctionne plus. Elles lui en apprennent beaucoup avant qu'il ne voie l'orgue.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null
+          },
+          {
+            "title": "Inspection",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Frank examine l'orgue lui-même pour voir ce dont il a besoin et ce qui est encore d'origine. Chaque orgue est différent : Frank décide au cas par cas s'il vient chez vous ou si l'orgue vient à l'atelier.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null
+          },
+          {
+            "title": "Proposition écrite",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Vous recevez une proposition écrite décrivant les travaux que Frank recommande : vous savez ce qui sera fait avant que quoi que ce soit ne commence. Son contenu dépend de l'orgue et des travaux nécessaires.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null
+          },
+          {
+            "title": "Restauration",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Le travail se fait à la main à l'atelier, pièce par pièce, dans le respect de ce que le facteur d'origine a réalisé.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null
+          },
+          {
+            "title": "Harmonisation et livraison",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Frank harmonise et accorde l'orgue, et vous le rend en état de jouer. L'installation sur place se convient pour chaque orgue.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null
+          }
+        ],
+        "primary": {
+          "eyebrow": "Comment Frank travaille",
+          "title": "De la première photo au premier air",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Chaque orgue est différent : chaque restauration commence donc par un examen avant le devis.",
+              "spans": []
+            }
+          ],
+          "tone": "Default"
+        },
+        "id": "site_steps$2a869a6d-142a-4134-8933-d39d750e3c3f",
+        "slice_type": "site_steps",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "image": {
+              "dimensions": {
+                "width": 1448,
+                "height": 1086
+              },
+              "alt": "A historic organ dismantled for restoration in the atelier",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/utrQ857hyFQxs_sn_decap-frank-decap-antique-organ-restoration-workshop.jpg?auto=format,compress",
+              "id": "utrQ857hyFQxs_sn",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "An organ as it arrived in the atelier, front view, same position and angle as the 'after' photo; 4:3",
+            "tag": null,
+            "title": "Avant",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Un orgue tel qu'il est arrivé à l'atelier.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 1448,
+                "height": 1086
+              },
+              "alt": "A restored historic organ being loaded into a van for delivery",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/kBEdGGB4p1YG5WYX_decap-frank-decap-antique-organ-loaded-into-van.jpg?auto=format,compress",
+              "id": "kBEdGGB4p1YG5WYX",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "The same organ after restoration, shot from the exact same spot and height as the 'before' photo; 4:3",
+            "tag": null,
+            "title": "Après",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Le même orgue, restauré et qui joue à nouveau.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 1448,
+                "height": 1086
+              },
+              "alt": "Restoration in progress: organ parts on the workbench in warm light",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/jb6dI5hKHP7T_8l0_decap-frank-decap-organ-restoration-workshop-in-warm-light.jpg?auto=format,compress",
+              "id": "jb6dI5hKHP7T_8l0",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Close-up of restoration in progress, e.g. new leather on a pneumatic pouch board or a bellows being re-covered, warm light; 4:3",
+            "tag": null,
+            "title": "À l'atelier",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Restauration en cours, pièce par pièce, à la main.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          }
+        ],
+        "primary": {
+          "eyebrow": "Avant et après",
+          "title": "Depuis l'atelier",
+          "intro": [],
+          "columns": "3",
+          "card_style": "Image cards",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_card_grid$a3d15b17-fc1c-483a-9a31-b405b3f92f44",
+        "slice_type": "site_card_grid",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Écrire à Frank",
+          "title": "Parlez à Frank de votre orgue",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Ce formulaire parvient directement à Frank Decap. Quelques détails sur l'orgue l'aident à vous donner une première réponse utile.",
+              "spans": []
+            }
+          ],
+          "recipient": "frank",
+          "topics": "Restauration, Installation MIDI, Réparation, Autre",
+          "default_topic": "Restauration",
+          "show_phone": true,
+          "show_location": true,
+          "message_placeholder": "Marque ou facteur de l'orgue, nombre de touches, carton ou rouleau, et son état. Les photos aident : vous pourrez les envoyer quand Frank vous répondra.",
+          "submit_label": "Envoyer à Frank",
+          "success_title": "Merci",
+          "success_body": [
+            {
+              "type": "paragraph",
+              "text": "Votre message est arrivé chez Frank. Il répond personnellement ; préparez vos photos de l'orgue.",
+              "spans": []
+            }
+          ],
+          "aside_title": "Joindre Frank",
+          "aside_body": [
+            {
+              "type": "paragraph",
+              "text": "L'Atelier Frank Decap est indépendant de Decap Herentals. Le plus simple pour joindre Frank est ce formulaire.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "Téléphone : [TO CHECK: Frank's phone number]",
+              "spans": [
+                {
+                  "start": 0,
+                  "end": 11,
+                  "type": "strong"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "Atelier : Langepad 51C, 2200 Herentals, Belgique, sur le même site que Decap Herentals.",
+              "spans": [
+                {
+                  "start": 0,
+                  "end": 9,
+                  "type": "strong"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "Pour un orgue neuf, des tuyaux ou des modules MIDI, contactez Decap Herentals.",
+              "spans": [
+                {
+                  "start": 62,
+                  "end": 77,
+                  "type": "hyperlink",
+                  "data": {
+                    "link_type": "Web",
+                    "url": "/contact"
+                  }
+                }
+              ]
+            }
+          ],
+          "tone": "Default"
+        },
+        "id": "contact_form$634234cf-9bd0-4697-bb09-24cd6f338c72",
+        "slice_type": "contact_form",
+        "slice_label": null
+      }
+    ],
+    "meta_title": "Restauration d'orgues | Atelier Frank Decap",
+    "meta_description": "L'Atelier Frank Decap restaure orgues à cartons, orgues de danse, de foire et de rue, fabrique des tuyaux à la main et installe les modules MIDI Decap.",
+    "meta_image": {}
+  }
+}

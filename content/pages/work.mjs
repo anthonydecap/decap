@@ -55,7 +55,7 @@ export default {
         eyebrow: "Projects in depth",
         title: "Some projects, told in full",
         columns: "3",
-        card_style: "Image cards",
+        card_style: "Case cards",
       },
       items: [
         {

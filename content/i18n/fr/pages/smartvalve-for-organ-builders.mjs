@@ -6,17 +6,15 @@ export default {
   title: "smARTvalve pour facteurs d'orgues",
   theme: "smartvalve",
   meta_title: "Soupape proportionnelle pour tuyaux d'orgue | smARTvalve",
-  meta_description:
-    "smARTvalve : une soupape proportionnelle pour tuyaux d'orgue avec son propre processeur. Vent régulé par tuyau, jeux numériques, MIDI optique, orgues neufs.",
+  meta_description: "smARTvalve : une soupape proportionnelle avec son propre capteur et processeur. Pression corrigée 2 000 fois par seconde, de 0 à 400 % de la pression d'harmonisation, en MIDI.",
   slices: [
     {
       type: "site_hero",
       primary: {
         layout: "Split",
         eyebrow: "smARTvalve pour facteurs d'orgues",
-        title: "Une soupape proportionnelle avec un processeur dans chaque soupape",
-        intro:
-          "smARTvalve règle le vent de chaque tuyau séparément, plus de 1 000 fois par seconde. Vos tuyaux gardent leur voix ; l'orgue gagne en dynamique, en expression, et en jeux définis dans le logiciel. Conçue et construite par Decap à Herentals, et éprouvée sur scène en concert.",
+        title: "Une soupape proportionnelle avec son propre capteur et processeur",
+        intro: "smARTvalve mesure et corrige le vent de chaque tuyau 2 000 fois par seconde, et permet à chaque tuyau de jouer du silence jusqu'à quatre fois sa pression d'harmonisation. Vos tuyaux gardent leur voix ; l'orgue gagne en dynamique, en expression et en jeux définis dans le logiciel. Conçue et fabriquée par Decap à Herentals, et maintes fois éprouvée sur scène.",
         primary_cta_label: "Demander la documentation technique",
         primary_cta_link: "#contact-form",
         secondary_cta_label: "Découvrir smARTvalve",
@@ -31,10 +29,10 @@ export default {
         layout: "Stats",
       },
       items: [
-        { value: "1 000×", label: "par seconde, le vent de chaque tuyau est mesuré et corrigé" },
-        { value: "0–200 %", label: "de pression de vent par tuyau, enregistrée dans la soupape" },
-        { value: "4 ms", label: "de temps de réponse" },
-        { value: "200 m+", label: "de MIDI optique, 100 fois plus rapide que le MIDI classique" },
+        { value: "2 000×", label: "par seconde, la pression de chaque tuyau est mesurée et corrigée" },
+        { value: "0–400 %", label: "de la pression d'harmonisation, en temps réel pendant le jeu" },
+        { value: "10 ms", label: "pour atteindre la pleine pression, sans dépassement ni creux" },
+        { value: "3 Mbaud", label: "MIDI optique, sur 200 m et plus" },
       ],
     },
     {
@@ -42,8 +40,7 @@ export default {
       primary: {
         eyebrow: "Pourquoi chez Decap",
         title: "Quatre-vingt-dix ans de dynamique, désormais dans chaque tuyau",
-        body:
-          "Nous sommes d'abord des musiciens et, depuis 90 ans, nous travaillons à des orgues qui jouent avec plus de sentiment. Sur nos orgues de danse, les tambours jouent fort ou doucement, la pression du vent change d'un sommier à l'autre et des jeux jouent en vibrato. smARTvalve est l'aboutissement de cette expérience : la même maîtrise, pour chaque tuyau.\n\nPour nous, l'orgue d'église est l'un des instruments les plus beaux et les plus musicaux qui soient. Pendant que nous développions smARTvalve, nous ne pouvions que rêver de ce qu'elle lui apporterait : plus d'effets, plus de façons de jouer, plus de couleurs.\n\nNotre expérience de l'orgue de danse nous sert ici aussi. Les orgues de danse devaient être transportables et remontables : nous construisons donc chaque orgue en modules dans une façade. C'est pourquoi un orgue d'église transportable comme L'Explorateur convient si bien à notre atelier. Et nos sommiers sont construits pour des conditions difficiles, comme les variations de température, car les orgues de danse jouaient dans des Spiegeltents (tentes à miroirs) montées et démontées sans cesse.",
+        body: "Nous sommes d'abord des musiciens et, depuis 90 ans, nous travaillons à des orgues qui jouent avec plus de sentiment. Sur nos orgues de danse, les tambours jouent fort ou doucement, la pression du vent change d'un sommier à l'autre et des jeux jouent en vibrato. smARTvalve est l'aboutissement de cette expérience : la même maîtrise, pour chaque tuyau.\n\nPour nous, l'orgue d'église est l'un des instruments les plus beaux et les plus musicaux qui soient. Pendant que nous développions smARTvalve, nous ne pouvions que rêver de ce qu'elle lui apporterait : plus d'effets, plus de façons de jouer, plus de couleurs.\n\nNotre expérience de l'orgue de danse nous sert ici aussi. Les orgues de danse devaient être transportables et remontables : nous construisons donc chaque orgue en modules dans une façade. C'est pourquoi un orgue d'église transportable comme L'Explorateur convient si bien à notre atelier. Et nos sommiers sont construits pour des conditions difficiles, comme les variations de température, car les orgues de danse jouaient dans des Spiegeltents (tentes à miroirs) montées et démontées sans cesse.",
         media_side: "Image right",
         aspect: "Landscape 4:3",
         image_brief: "A Decap dance organ façade split into its modular units in the workshop, ready for transport, 4:3",
@@ -56,12 +53,18 @@ export default {
       ],
     },
     {
+      type: "site_statement",
+      primary: {
+        statement: "La dynamique a toujours été *cachée dans le tuyau.* smARTvalve vous permet de *la jouer.*",
+        caption: "Sans toucher au tuyau, mais en lui donnant exactement le vent dont il a besoin, note après note, 2 000 fois par seconde.",
+      },
+    },
+    {
       type: "site_card_grid",
       primary: {
         eyebrow: "Trois générations de soupapes",
         title: "De l'ouvert-fermé au contrôle de chaque tuyau",
-        intro:
-          "Les transmissions électriques ont longtemps traité la soupape de tuyau comme un interrupteur. Les soupapes plus récentes suivent la touche. smARTvalve va un pas plus loin : elle règle le vent lui-même.",
+        intro: "Les transmissions électriques ont longtemps traité la soupape de tuyau comme un interrupteur. Les soupapes plus récentes suivent la touche. smARTvalve va un pas plus loin : elle règle le vent lui-même.",
         columns: "3",
         card_style: "Text cards",
       },
@@ -79,25 +82,96 @@ export default {
         {
           tag: "smARTvalve",
           title: "Régulation du vent en boucle fermée",
-          body: "Un processeur dans chaque soupape régule le vent de son tuyau, pendant l'attaque et pendant toute la durée de la note. Elle peut suivre la touche, ou tout ce que vous lui attribuez.",
+          body: "Un capteur de pression et un processeur dans chaque soupape règlent le vent de son tuyau, 2 000 fois par seconde, pendant l'attaque et tant que la note sonne. Elle peut suivre la touche, ou tout ce que vous lui attribuez.",
         },
       ],
     },
     {
       type: "site_text_media",
       primary: {
-        eyebrow: "À chaque tuyau son vent",
-        title: "Mesuré et corrigé pendant que la note sonne",
-        body:
-          "smARTvalve est assez petite pour se placer sur la chape, à quelques millimètres du pied du tuyau. Son processeur mesure la chute de pression en entrée et ouvre davantage pour la compenser, plus de 1 000 fois par seconde. Quand de nombreux tuyaux parlent en même temps, chaque tuyau garde son vent. Dans L'Explorateur, les régulateurs de vent sont ainsi devenus inutiles : une soufflerie et une caisse de distribution suffisent.\n\nLa pression de base de chaque tuyau est enregistrée dans la soupape, de 0 à 200 %. Une partie du réglage qui se faisait autrefois au banc d'harmonisation peut ainsi se faire, et se refaire, dans le logiciel.",
+        eyebrow: "La pression en temps réel",
+        title: "Toujours la bonne pression, quoi que fasse le sommier",
+        body: "smARTvalve est assez compacte pour se placer dans le sommier, à quelques millimètres du pied du tuyau, pour la réponse la plus rapide possible. Son capteur et son processeur mesurent et corrigent la pression du tuyau 2 000 fois par seconde. Quelle que soit la pression dans le sommier, et quelle que soit la quantité d'air utilisée par le tuyau, celui-ci reçoit exactement la pression prévue : dans les accords pleins, et même à la moitié de la pression normale du sommier.\n\nAucun régulateur ni réservoir externe n'est nécessaire. Branchez la soufflerie, smARTvalve fait le reste.",
         media_side: "Image right",
         aspect: "Landscape 4:3",
         image_brief: "Close-up of one smARTvalve with its electronics visible, dark background, 4:3",
       },
       items: [
-        { point: "Régulé à quelques millimètres du pied du tuyau" },
-        { point: "Une émission stable quand de nombreux tuyaux sonnent ensemble" },
-        { point: "Pression de base par tuyau enregistrée dans la soupape" },
+        { point: "Pleine pression en 10 ms environ, sans dépassement ni creux" },
+        { point: "Auto-calibrante : chaque soupape apprend de chaque attaque" },
+        { point: "Ignore le son propre du tuyau, pour un son stable sur les notes tenues" },
+        { point: "Entraînement silencieux par bobine mobile, pas d'électroaimant" },
+      ],
+    },
+    {
+      type: "site_text_media",
+      primary: {
+        eyebrow: "Pression d'harmonisation",
+        title: "Harmonisez avec un curseur. Jouez jusqu'à quatre fois la pression.",
+        body: "La pression à laquelle un tuyau est harmonisé est sa Voiced Pipe Pressure, ou VPP : le niveau de 100 %. Vous la réglez pour chaque tuyau avec un simple nombre, enregistré dans la soupape elle-même. Un jeu plus égal, ou un peu plus de présence dans la basse ? Ajustez et enregistrez.\n\nPendant le jeu, chaque tuyau peut aller de 0 à 400 % de sa VPP, en temps réel. Un tuyau harmonisé à 80 mm joue du silence jusqu'à 320 mm, et la soufflerie à vitesse variable fournit la pression nécessaire dans le sommier. Pédale d'expression, vélocité, aftertouch : tout ce qui envoie des données de contrôleur peut la jouer.",
+        media_side: "Image left",
+        aspect: "Landscape 4:3",
+        image_brief: "PipeCreator on screen with a VPP slider per pipe of a rank, next to the pipes, 4:3",
+        tone: "Tinted",
+      },
+      items: [
+        { point: "VPP réglée par tuyau, enregistrée dans la soupape" },
+        { point: "De 0 à 400 % de la VPP, en temps réel" },
+        { point: "Une soufflerie à vitesse variable alimente le sommier" },
+      ],
+    },
+    {
+      type: "site_bento",
+      primary: {
+        eyebrow: "Intégré dans chaque soupape",
+        title: "Une enveloppe et deux vibratos pour chaque tuyau",
+        intro: "Chaque smARTvalve possède son propre générateur d'enveloppe et deux LFO, cadencés par sa propre horloge à 2 000 fois par seconde. Chaque tuyau suit sa propre forme à la milliseconde près, indépendamment des autres, mais en synchronisation.",
+        tone: "Dark band",
+      },
+      items: [
+        {
+          size: "Large",
+          style: "Dark",
+          visual: "Velocity",
+          value: "5 ms – 12,7 s",
+          title: "Une enveloppe de vent complète pour chaque note",
+          body: "Délai, niveau de départ, attaque, déclin, maintien et relâchement, chacun avec sa propre courbe : d'une lente montée à une attaque vive qui se pose en douceur. Rejouez la touche pendant le relâchement et le tuyau continue, sans interruption.",
+        },
+        {
+          size: "Small",
+          style: "Light",
+          visual: "Pipe",
+          title: "Attaque du son",
+          body: "Un accent de pression contrôlé au début de chaque note, d'un léger chiff à une attaque marquée. La vélocité peut en régler l'intensité.",
+        },
+        { size: "Small", style: "Accent", value: "25 Hz", value_label: "Vibrato 1", body: "D'une onde lente à un battement rapide : un tremblant dans chaque tuyau." },
+        {
+          size: "Small",
+          style: "Light",
+          value: "400 Hz+",
+          value_label: "Vibrato 2, mode étendu",
+          body: "Jusque dans le domaine audible, où le vibrato devient une partie du timbre du tuyau.",
+        },
+        {
+          size: "Small",
+          style: "Light",
+          visual: "Chip",
+          title: "Fin douce ou slap",
+          body: "Choisissez comment une note se termine : une fermeture douce, ou un slap percussif.",
+        },
+        {
+          size: "Wide",
+          style: "Dark",
+          visual: "Wind",
+          title: "Tout l'orgue respire ensemble",
+          body: "Le vibrato de chaque tuyau se cale en douceur sur l'horloge MIDI, sans la dérive d'un tremblant mécanique. Jusqu'à ±75 % de profondeur chacun, chacun avec sa propre enveloppe.",
+        },
+        {
+          size: "Wide",
+          style: "Light",
+          title: "Une seule note de l'accord enfle",
+          body: "L'aftertouch polyphonique règle la pression de chaque tuyau qui sonne ; l'aftertouch de canal fait varier tout un jeu.",
+        },
       ],
     },
     {
@@ -105,9 +179,8 @@ export default {
       primary: {
         eyebrow: "La position de la touche, ou autre chose",
         title: "Attribuez n'importe quel MIDI à n'importe quel tuyau",
-        body:
-          "smARTvalve est entièrement numérique : c'est vous qui décidez de ce qui la commande. Associez la position de la touche à l'ouverture de la soupape, et elle se comporte exactement comme une soupape qui suit la position. Associez la vélocité, l'aftertouch, un contrôleur ou une courbe d'automation d'un séquenceur, et le même tuyau fait ce qu'aucune soupape mécanique ne peut faire.\n\n- Crescendo et decrescendo sur une note tenue\n- Vibrato et trémolo par tuyau, et non par sommier\n- Courbes de pression, attaque (slope) et extinction (decay) pour chaque note\n- Le comportement classique tout ou rien quand la musique le demande",
-        media_side: "Image left",
+        body: "smARTvalve est entièrement numérique : c'est vous qui décidez ce qui la pilote. Chaque paramètre est un contrôleur MIDI standard : niveau de VPP, expression, durées et courbes de l'enveloppe, attaque du son, ainsi que vitesse, profondeur et enveloppe du vibrato.\n\nAttribuez la position de la touche à l'ouverture de la soupape et elle se comporte exactement comme une soupape qui suit la position. Attribuez la vélocité, l'aftertouch, un contrôleur ou une courbe d'automation d'un séquenceur ou d'une DAW, et le même tuyau fait ce qu'aucune soupape mécanique ne peut faire.\n\n- Crescendo et decrescendo sur une note tenue\n- Vibrato et trémolo par tuyau, et non par sommier\n- Une enveloppe et une attaque pour chaque note\n- Un comportement tout ou rien classique quand la musique le demande",
+        media_side: "Image right",
         aspect: "Landscape 4:3",
         image_brief: "Screen of the smARTvalve software with a pressure curve, next to an organ keyboard, 4:3",
         tone: "Tinted",
@@ -137,8 +210,7 @@ export default {
       primary: {
         eyebrow: "Jeux numériques",
         title: "Des jeux définis dans le logiciel, en toute combinaison",
-        body:
-          "Comme chaque tuyau a son propre processeur et sa propre adresse, un jeu n'est plus figé dans le sommier. Avec notre logiciel, vous attribuez n'importe quelle combinaison de tuyaux à un jeu, chaque tuyau avec ses propres réglages de pression. Dans un orgue entièrement construit sur smARTvalve, le nombre de combinaisons est pratiquement illimité ; quand smARTvalve complète un orgue existant, le système de commande d'origine peut imposer des limites, et nous l'examinons projet par projet.\n\nL'orgue n'est pas terminé le jour de la livraison : des jeux peuvent être ajoutés ou modifiés plus tard, sans toucher au sommier.",
+        body: "Comme chaque tuyau a son propre processeur et sa propre adresse, un jeu n'est plus figé dans le sommier. Avec notre logiciel, vous attribuez n'importe quelle combinaison de tuyaux à un jeu, chaque tuyau avec ses propres réglages de pression. Dans un orgue entièrement construit sur smARTvalve, le nombre de combinaisons est pratiquement illimité ; quand smARTvalve complète un orgue existant, le système de commande d'origine peut imposer des limites, et nous l'examinons projet par projet.\n\nL'orgue n'est pas terminé le jour de la livraison : des jeux peuvent être ajoutés ou modifiés plus tard, sans toucher au sommier.",
         media_side: "Image right",
         aspect: "Landscape 4:3",
         image_brief: "Screenshot of the stop configuration in the smARTvalve software, pipes grouped into stops, 4:3",
@@ -152,14 +224,58 @@ export default {
     {
       type: "site_text_media",
       primary: {
-        eyebrow: "MIDI optique",
-        title: "De la console au sommier par la lumière",
-        body:
-          "Les smARTvalves sont reliées par MIDI optique : plus de 100 fois la vitesse du MIDI classique, sur des distances de 200 m et plus. La lumière ne transporte aucune perturbation électrique : la console peut se placer là où l'orgue en a besoin. [En savoir plus sur smARTvalve](/smartvalve).",
+        eyebrow: "MIDI optique et fiabilité",
+        title: "Rapide, sûre et évolutive, faite pour la scène",
+        body: "Les smARTvalves sont reliées par MIDI optique à 3 Mbaud : environ 100 fois la vitesse du MIDI classique, sur des distances de 200 m et plus. La lumière ne transporte aucune perturbation électrique : la console peut se placer là où l'orgue en a besoin.\n\nDans l'orgue, un bus à haut débit transporte jusqu'à environ 40 000 messages par seconde, et le MIDI est toujours prioritaire. [En savoir plus sur smARTvalve](/smartvalve).",
         media_side: "Image left",
         aspect: "Landscape 4:3",
         image_brief: "Optical MIDI cable plugged into a smARTvalve controller, glowing connector, dark background, 4:3",
       },
+      items: [
+        { point: "Watchdog contre les notes bloquées, et all-notes-off à l'arrêt d'un séquenceur" },
+        { point: "Mises à jour du firmware par MIDI, pour toutes les soupapes à la fois" },
+        { point: "Chaque mise à jour vérifiée par la soupape elle-même" },
+      ],
+    },
+    {
+      type: "site_text_media",
+      primary: {
+        eyebrow: "PipeCreator et PipeViewer",
+        title: "Des planches de tuyaux conçues pour votre orgue, chaque tuyau surveillé",
+        body: "Avec smARTvalve, les planches qui portent les soupapes et les tuyaux sont conçues pour chaque orgue. Nous le faisons dans PipeCreator, notre propre logiciel : dans sa vue 3D, PipeViewer, nous concevons les planches et les tuyaux, et vous voyez votre orgue en 3D avant sa construction. Le même programme conçoit nos tuyaux en bois et les envoie à la CNC.\n\nUne fois l'orgue en jeu, PipeCreator affiche pour chaque tuyau une courbe de pression en direct à côté de la courbe attendue, ainsi qu'un tableau de diagnostic de toutes les soupapes.",
+        media_side: "Image right",
+        aspect: "Landscape 4:3",
+        image_brief: "PipeViewer on screen: a 3D pipe panel with its smARTvalves and pipes, 4:3",
+        tone: "Tinted",
+      },
+      items: [
+        { point: "Planches et tuyaux conçus en 3D" },
+        { point: "Voyez votre orgue avant sa construction" },
+        { point: "Courbe de pression en direct et diagnostic pour chaque soupape" },
+      ],
+    },
+    {
+      type: "site_facts",
+      primary: {
+        eyebrow: "En bref",
+        title: "Caractéristiques de smARTvalve",
+        layout: "Spec list",
+      },
+      items: [
+        { label: "Régulation de la pression", value: "Capteur et processeur dans chaque soupape", note: "Mesure et correction 2 000 fois par seconde" },
+        { label: "Attaque", value: "Pleine pression en 10 ms environ", note: "Sans dépassement ni creux" },
+        { label: "Plage de pression", value: "De 0 à 400 % de la pression d'harmonisation", note: "VPP réglée par tuyau, enregistrée dans la soupape" },
+        { label: "Régulation du vent", value: "Aucun régulateur ni réservoir externe", note: "Une soufflerie à vitesse variable alimente le sommier" },
+        { label: "Entraînement", value: "Actionneur à bobine mobile", note: "Silencieux et proportionnel, pas d'électroaimant" },
+        { label: "Calibrage", value: "Auto-calibrante", note: "Apprend de chaque attaque" },
+        { label: "Enveloppe de vent", value: "Délai, niveau de départ, attaque, déclin, maintien, relâchement", note: "De 5 ms à 12,7 s, une courbe réglable par étape" },
+        { label: "Vibratos", value: "Deux, jusqu'à ±75 % chacun", note: "Jusqu'à 25 Hz et 50 Hz, mode étendu au-delà de 400 Hz ; calés sur l'horloge MIDI" },
+        { label: "Commande", value: "MIDI standard", note: "Aftertouch polyphonique par tuyau, aftertouch de canal par jeu" },
+        { label: "Connexion", value: "MIDI optique, 3 Mbaud", note: "200 m et plus" },
+        { label: "Bus", value: "Jusqu'à environ 40 000 messages par seconde", note: "Le MIDI est toujours prioritaire" },
+        { label: "Sécurité", value: "Watchdog et all-notes-off automatique" },
+        { label: "Mises à jour", value: "Firmware par MIDI, toutes les soupapes à la fois", note: "Vérifié par chaque soupape" },
+      ],
     },
     {
       type: "site_quote",
@@ -198,7 +314,15 @@ export default {
         },
         {
           question: "Quelles consoles et quels systèmes de commande fonctionnent avec smARTvalve ?",
-          answer: "Tout ce qui parle MIDI : une console avec sortie MIDI, un séquenceur ou un ordinateur. Grâce au MIDI optique, la console peut se trouver à 200 m ou plus.",
+          answer: "Tout ce qui parle MIDI : une console avec sortie MIDI, un séquenceur, une DAW ou un ordinateur. Chaque paramètre est un contrôleur MIDI standard. Avec le MIDI optique, la console peut se trouver à 200 m ou plus.",
+        },
+        {
+          question: "Faut-il encore des régulateurs ou des réservoirs ?",
+          answer: "Non. Chaque smARTvalve règle son propre tuyau, 2 000 fois par seconde, quelle que soit la pression du sommier. Une soufflerie à vitesse variable alimente le sommier ; les soupapes font le reste.",
+        },
+        {
+          question: "Entend-on la soupape ?",
+          answer: "Non. smARTvalve est entraînée par un actionneur silencieux à bobine mobile, pas par un électroaimant, et un filtre l'empêche de réagir au son propre du tuyau.",
         },
         {
           question: "Que sont les jeux numériques ?",
@@ -230,8 +354,7 @@ export default {
         success_title: "Merci",
         success_body: "Votre demande nous est bien parvenue. Nous vous répondons personnellement avec les informations demandées.",
         aside_title: "Decap Herentals",
-        aside_body:
-          "Langepad 51C, 2200 Herentals, Belgique\n\n+32 14 22 44 94\n\n[info@decap.be](mailto:info@decap.be)\n\nsmARTvalve est conçue, construite et programmée dans notre propre atelier.",
+        aside_body: "Langepad 51C, 2200 Herentals, Belgique\n\n+32 14 22 44 94\n\n[info@decap.be](mailto:info@decap.be)\n\nsmARTvalve est conçue, construite et programmée dans notre propre atelier.",
       },
     },
   ],

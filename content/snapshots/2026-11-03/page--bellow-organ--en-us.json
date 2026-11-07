@@ -1,0 +1,626 @@
+{
+  "id": "atc3mhEAACgAavQ7",
+  "uid": "bellow-organ",
+  "url": null,
+  "type": "page",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22atc3mhEAACgAavQ7%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2026-10-20T09:50:59+0000",
+  "last_publication_date": "2026-10-22T08:15:31+0000",
+  "slugs": [
+    "bellow-organ"
+  ],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [
+    {
+      "id": "atdvqBEAACgAa14H",
+      "type": "page",
+      "lang": "fr-fr",
+      "uid": "bellow-organ"
+    }
+  ],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Bellow Organ",
+        "spans": []
+      }
+    ],
+    "theme": "decap",
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "layout": "Split",
+          "eyebrow": "Bellow Organ",
+          "title": "A hand-turned organ with every note of the scale",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Our Bellow Organ is a hand-turned street organ for buskers, collectors and anyone who wants to play outdoors. It is 100% chromatic, plays from a built-in Virtual Orchestrion player and comes as a kit or fully assembled. It can run on battery, so it plays wherever you take it.",
+              "spans": []
+            }
+          ],
+          "primary_cta_label": "Request a quote",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "0d60e822-fed2-44e7-82a1-383e328656f7",
+            "url": "/contact"
+          },
+          "secondary_cta_label": "All instruments",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "210a4a32-1d2b-4e9e-833b-d0e8c5aa5127",
+            "url": "/instruments"
+          },
+          "note": null,
+          "image": {
+            "dimensions": {
+              "width": 934,
+              "height": 922
+            },
+            "alt": "Render of the Bellow Organ with its crank",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/D6ViUsaBCSKUxiYN_45-Key_Chromatic_V01_v14_2023-Oct-16_10-02-07PM-000_CustomizedView3947186824.png?auto=format,compress",
+            "id": "D6ViUsaBCSKUxiYN",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "mux_video": null,
+          "image_brief": "Bellow Organ with veneer panels on a cobbled street or pavement, someone's hand on the crank, camera at waist height, portrait 4:5",
+          "image_shape": null,
+          "image_fit": null,
+          "image_position": null,
+          "image_zoom": null,
+          "overlay": null,
+          "blur": null,
+          "dim": null,
+          "color_effect": null,
+          "vignette": null,
+          "slow_zoom": null,
+          "tone": "Default"
+        },
+        "id": "site_hero$22b93a7d-1f23-43be-9061-28ac3e10bb0c",
+        "slice_type": "site_hero",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Keep it chromatic and keep it simple",
+          "title": "No notes left out",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Most hand-turned organs copy an old scale. To keep the price and the case small, they leave notes out. The scale is then no longer chromatic, and that has two consequences:",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "You cannot transpose a song to another key.",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Many songs lose notes, so the arranger has to make compromises you can hear.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "Our Bellow Organ keeps every note. Any arrangement written for its range plays as written, in the key you choose.",
+              "spans": []
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 1237,
+              "height": 709
+            },
+            "alt": "Render of the Bellow Organ, front view",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/ghVDRhDmqI7e4V1f_52-Key_Chromatic_V01_2023-Sep-02_09-57-35PM-000_Customiz23edView816123377037.png?auto=format,compress",
+            "id": "ghVDRhDmqI7e4V1f",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Close-up of the full row of pipes from the front, every pipe visible, plain backdrop, 4:3",
+          "media_side": "Image right",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$a17c497f-566e-49c7-a9b8-6dbffed60495",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Frame and panels",
+          "title": "An aluminium frame with panels you can change in minutes",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "The organ is built on an aluminium frame. The top, front, side and back panels mount onto it and come off again in minutes.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "Choose high-gloss wood veneer, or blank pre-cut panels to paint and decorate yourself. Blank panels cost little, so you can keep a set for every occasion.",
+              "spans": []
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 858,
+              "height": 872
+            },
+            "alt": "Render of the Bellow Organ frame and panels",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/LUhS5i9gyGe0yTC6_45-Key_Chromatic_V01_v14_2023-Oct-16_10-02-58PM-000_CustomizedView42092905668.png?auto=format,compress",
+            "id": "LUhS5i9gyGe0yTC6",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "The bare aluminium frame next to a stack of panels, one veneer and one blank, workshop table, 4:3",
+          "media_side": "Image left",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Tinted"
+        },
+        "id": "site_text_media$d17edb49-c39a-4f3e-bb54-d41b2c3bd740",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "point": "Mechanical: the traditional regulator"
+          },
+          {
+            "point": "smARTvalve per chest: one regulated pressure for the whole chest"
+          },
+          {
+            "point": "smARTvalve per pipe: its own pressure for every single pipe"
+          }
+        ],
+        "primary": {
+          "eyebrow": "Pressure regulation",
+          "title": "Three ways to regulate the wind",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Wind pressure shapes how the pipes speak. You choose how much control you want, from a traditional regulator to smARTvalve on every pipe.",
+              "spans": [
+                {
+                  "start": 112,
+                  "end": 122,
+                  "type": "hyperlink",
+                  "data": {
+                    "link_type": "Web",
+                    "url": "/smartvalve"
+                  }
+                }
+              ]
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 941,
+              "height": 1672
+            },
+            "alt": "smARTvalves mounted in a wind chest",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/vCNNMbyfmCOpn_k2_decap-smartvalves-in-their-windchest.jpg?auto=format,compress",
+            "id": "vCNNMbyfmCOpn_k2",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "smARTvalves mounted on the Bellow Organ's chest, close-up from above, square",
+          "media_side": "Image right",
+          "aspect": "Square",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$6b825e73-dfeb-41d2-9bb4-d35232b93557",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Player and ensemble",
+          "title": "Built-in Virtual Orchestrion player",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "The organ plays from a built-in Virtual Orchestrion player. It plays standard music written for this organ, and full orchestrations that run in sync with it.",
+              "spans": [
+                {
+                  "start": 32,
+                  "end": 51,
+                  "type": "hyperlink",
+                  "data": {
+                    "link_type": "Web",
+                    "url": "/virtual-orchestrion"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "Connect other Decap instruments and the Bellow Organ can lead them as MIDI master, or follow them as slave. Add an Accordion Pedestal or a Percussion Unit and the street organ becomes a small band.",
+              "spans": [
+                {
+                  "start": 115,
+                  "end": 133,
+                  "type": "hyperlink",
+                  "data": {
+                    "link_type": "Web",
+                    "url": "/accordion"
+                  }
+                },
+                {
+                  "start": 139,
+                  "end": 154,
+                  "type": "hyperlink",
+                  "data": {
+                    "link_type": "Web",
+                    "url": "/percussion-unit"
+                  }
+                }
+              ]
+            }
+          ],
+          "image": {},
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Bellow Organ next to an Accordion Pedestal with a MIDI cable between them, outdoors, 4:3",
+          "media_side": "Image left",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Tinted"
+        },
+        "id": "site_text_media$8512258f-3a19-4030-9c9f-616ac1ce5fba",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": null,
+            "title": "Kit or ready to play",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Assemble it yourself from a kit, or receive it pre-assembled and ready to go.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": null,
+            "title": "Add ranks over time",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Start with a few pipes and add stops later. The organ grows with your budget and repertoire.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": null,
+            "title": "Optional motor",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Fit the motor and it turns the wheel for you, leaving your hands free to play the pipes from a MIDI controller.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          }
+        ],
+        "primary": {
+          "eyebrow": "Your way",
+          "title": "Build it, grow it, motorise it",
+          "intro": [],
+          "columns": "3",
+          "card_style": "Text cards",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_card_grid$1f621ce6-30b6-4514-a846-cf1ffc567172",
+        "slice_type": "site_card_grid",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "label": "Power",
+            "value": "Can run on battery",
+            "note": null
+          },
+          {
+            "label": "Scale",
+            "value": "100% chromatic",
+            "note": null
+          },
+          {
+            "label": "Frame",
+            "value": "Aluminium",
+            "note": null
+          },
+          {
+            "label": "Panels",
+            "value": "High-gloss wood veneer, or blank pre-cut panels to decorate yourself",
+            "note": null
+          },
+          {
+            "label": "Pressure regulation",
+            "value": "Mechanical, smARTvalve per chest or smARTvalve per pipe",
+            "note": null
+          },
+          {
+            "label": "Player",
+            "value": "Built-in Virtual Orchestrion",
+            "note": null
+          },
+          {
+            "label": "MIDI",
+            "value": "Master or slave with other Decap instruments",
+            "note": null
+          },
+          {
+            "label": "Drive",
+            "value": "Hand-turned; optional motor",
+            "note": null
+          },
+          {
+            "label": "Supply",
+            "value": "Kit or pre-assembled",
+            "note": null
+          },
+          {
+            "label": "Price",
+            "value": "On quote: depends on the number of ranks, panels and kit or finished",
+            "note": null
+          }
+        ],
+        "primary": {
+          "eyebrow": "Specifications",
+          "title": "Bellow Organ at a glance",
+          "intro": [],
+          "layout": "Spec list",
+          "tone": "Default"
+        },
+        "id": "site_facts$3a6d1704-eb4e-4e48-9cdc-85e8f456b93b",
+        "slice_type": "site_facts",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "title": "Turned by hand",
+            "description": "Recording to come: a street organ tune on the Bellow Organ, cranked by hand.",
+            "audio": {
+              "link_type": "Media"
+            },
+            "audio_brief": "Phone or handheld recorder 2 m in front of the organ, quiet room or calm street, one full tune, crank noise allowed"
+          },
+          {
+            "title": "With smARTvalve per pipe",
+            "description": "Recording to come: the same organ, with pressure controlled pipe by pipe.",
+            "audio": {
+              "link_type": "Media"
+            },
+            "audio_brief": "Same position and level as the first recording, a slow piece where swells and vibrato are clearly audible"
+          }
+        ],
+        "primary": {
+          "eyebrow": "Listen",
+          "title": "Hear the Bellow Organ",
+          "intro": [],
+          "tone": "Default"
+        },
+        "id": "site_sound$53766168-0730-434d-a0ad-e218886ecd11",
+        "slice_type": "site_sound",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "question": "Is this a barrel organ or a street organ?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "It is a hand-turned street organ: turning the wheel works the bellows. The music comes from the built-in Virtual Orchestrion player rather than a pinned barrel.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Why does 100% chromatic matter?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "With every note present you can transpose a song to any key within the range, and arrangements do not have to skip notes. Organs with gaps in the scale force the arranger to rewrite.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Can I assemble it myself?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Yes. It is available as a kit for the handy builder, or pre-assembled and ready to play.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Can I add pipes later?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Yes. Start with a few ranks and add extra stops when you are ready.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Does it work with other Decap instruments?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Yes. Over MIDI it can drive other Decap instruments as master, or follow them as slave. See the self-playing instruments.",
+                "spans": [
+                  {
+                    "start": 96,
+                    "end": 120,
+                    "type": "hyperlink",
+                    "data": {
+                      "link_type": "Web",
+                      "url": "/instruments"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "primary": {
+          "eyebrow": "Questions",
+          "title": "About the hand-turned organ",
+          "intro": [],
+          "tone": "Default"
+        },
+        "id": "site_faq$412ed94f-16c3-4388-86c0-ccc1f49f0bb1",
+        "slice_type": "site_faq",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Planning a bellow organ?",
+          "title": "Choose your ranks, panels and pressure system",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Tell us whether you want a kit or a finished organ, how many ranks to start with and how you will use it. We reply with a configuration and a quote.",
+              "spans": []
+            }
+          ],
+          "price": null,
+          "price_note": null,
+          "primary_cta_label": "Request a quote",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "a156813e-401c-4263-b4fa-067774133a7f",
+            "url": "/contact"
+          },
+          "secondary_cta_label": "About smARTvalve",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "ba9982cb-4f8f-4721-af7e-62deb38e43c2",
+            "url": "/smartvalve"
+          },
+          "image": {},
+          "image_brief": null,
+          "tone": "Dark band"
+        },
+        "id": "site_cta$2cdc2b78-16c3-4efe-9cf2-f1e3df7428b0",
+        "slice_type": "site_cta",
+        "slice_label": null
+      }
+    ],
+    "meta_title": "Hand-Turned Bellow Organ, 100% Chromatic | Decap",
+    "meta_description": "A hand-turned street organ that keeps every note: transpose freely, swap panels, add ranks later. Built-in Virtual Orchestrion player. As a kit or ready to play.",
+    "meta_image": {}
+  }
+}

@@ -29,6 +29,9 @@ const en = {
   galleryOpen: (t: string) => `Open photo: ${t}`,
   filmPlay: "Play the video",
   filmPause: "Pause the video",
+  videoMute: "Mute",
+  videoUnmute: "Turn sound on",
+  pipeFamily: { stopped: "Stopped pipes", open: "Open pipes", reed: "Reed pipes", other: "Other ranks" },
 
   form: {
     topic: "What is it about?",
@@ -111,6 +114,9 @@ const fr: UiCopy = {
   galleryOpen: (t: string) => `Ouvrir la photo : ${t}`,
   filmPlay: "Lire la vidéo",
   filmPause: "Mettre la vidéo en pause",
+  videoMute: "Couper le son",
+  videoUnmute: "Activer le son",
+  pipeFamily: { stopped: "Tuyaux bouchés", open: "Tuyaux ouverts", reed: "Tuyaux à anche", other: "Autres jeux" },
   form: {
     topic: "De quoi s’agit-il ?",
     name: "Nom",
@@ -187,6 +193,9 @@ const nl: UiCopy = {
   galleryOpen: (t: string) => `Foto openen: ${t}`,
   filmPlay: "Video afspelen",
   filmPause: "Video pauzeren",
+  videoMute: "Geluid uit",
+  videoUnmute: "Geluid aan",
+  pipeFamily: { stopped: "Gedekte pijpen", open: "Open pijpen", reed: "Tongwerken", other: "Andere registers" },
   form: {
     topic: "Waarover gaat het?",
     name: "Naam",
@@ -263,6 +272,9 @@ const de: UiCopy = {
   galleryOpen: (t: string) => `Foto öffnen: ${t}`,
   filmPlay: "Video abspielen",
   filmPause: "Video pausieren",
+  videoMute: "Ton aus",
+  videoUnmute: "Ton an",
+  pipeFamily: { stopped: "Gedackte Pfeifen", open: "Offene Pfeifen", reed: "Zungenpfeifen", other: "Weitere Register" },
   form: {
     topic: "Worum geht es?",
     name: "Name",

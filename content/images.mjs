@@ -485,7 +485,7 @@ export default {
       "file": "content/media/decap-smartvalves-in-their-windchest.jpg",
       "alt": "smARTvalves mounted in their wind chest"
     },
-    "4": {
+    "5": {
       "file": "content/media/decap-smartvalve-samples.jpg",
       "alt": "smARTvalves with their electronics"
     }

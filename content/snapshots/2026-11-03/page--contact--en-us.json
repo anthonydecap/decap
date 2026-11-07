@@ -1,0 +1,230 @@
+{
+  "id": "atc3mBEAACgAavQ2",
+  "uid": "contact",
+  "url": null,
+  "type": "page",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22atc3mBEAACgAavQ2%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2026-10-20T09:50:58+0000",
+  "last_publication_date": "2026-10-22T08:15:31+0000",
+  "slugs": [
+    "contact-decap-herentals"
+  ],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [
+    {
+      "id": "atdvqxEAACwAa14O",
+      "type": "page",
+      "lang": "fr-fr",
+      "uid": "contact"
+    }
+  ],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Contact Decap Herentals",
+        "spans": []
+      }
+    ],
+    "theme": "decap",
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "layout": "Centered",
+          "eyebrow": "Contact",
+          "title": "Contact the Decap organ workshop in Herentals",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Tell us what you have in mind: a new organ, an instrument, a MIDI conversion or a question about our software. The more you tell us about the room and the music, the more useful our first answer.",
+              "spans": []
+            }
+          ],
+          "primary_cta_label": null,
+          "primary_cta_link": {
+            "link_type": "Any"
+          },
+          "secondary_cta_label": null,
+          "secondary_cta_link": {
+            "link_type": "Any"
+          },
+          "note": null,
+          "image": {},
+          "mux_video": null,
+          "image_brief": null,
+          "image_shape": null,
+          "image_fit": null,
+          "image_position": null,
+          "image_zoom": null,
+          "overlay": null,
+          "blur": null,
+          "dim": null,
+          "color_effect": null,
+          "vignette": null,
+          "slow_zoom": null,
+          "tone": "Default"
+        },
+        "id": "site_hero$ca910cb0-9f3e-4bdc-a078-0c660809a93f",
+        "slice_type": "site_hero",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Send an enquiry",
+          "title": "What can we help you with?",
+          "intro": [],
+          "recipient": "decap",
+          "topics": "General question, New organ, Instruments, MIDI conversion, Software, Press",
+          "default_topic": "General question",
+          "show_phone": true,
+          "show_location": true,
+          "message_placeholder": "For a new organ: where will it play, what music, and roughly what size or budget? For MIDI conversion: which organ and how many keys?",
+          "submit_label": "Send enquiry",
+          "success_title": "Thank you, your enquiry is on its way",
+          "success_body": [
+            {
+              "type": "paragraph",
+              "text": "We read every message in the workshop and reply personally.",
+              "spans": []
+            }
+          ],
+          "aside_title": "The workshop",
+          "aside_body": [
+            {
+              "type": "paragraph",
+              "text": "Decap Herentals, Langepad 51C, 2200 Herentals, Belgium",
+              "spans": [
+                {
+                  "start": 0,
+                  "end": 15,
+                  "type": "strong"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "Phone: +32 14 22 44 94",
+              "spans": [
+                {
+                  "start": 0,
+                  "end": 6,
+                  "type": "strong"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "Email: info@decap.be",
+              "spans": [
+                {
+                  "start": 0,
+                  "end": 6,
+                  "type": "strong"
+                },
+                {
+                  "start": 7,
+                  "end": 20,
+                  "type": "hyperlink",
+                  "data": {
+                    "link_type": "Web",
+                    "url": "mailto:info@decap.be"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "DECAP TONY BV · BE 0450.352.984",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "Restoring a historic organ? Contact Atelier Frank Decap directly.",
+              "spans": [
+                {
+                  "start": 36,
+                  "end": 55,
+                  "type": "hyperlink",
+                  "data": {
+                    "link_type": "Web",
+                    "url": "/frank-decap"
+                  }
+                }
+              ]
+            }
+          ],
+          "tone": "Default"
+        },
+        "id": "contact_form$e8a61a91-0085-4252-a19a-79dd9efdbe6f",
+        "slice_type": "contact_form",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "question": "Can I visit the workshop in Herentals?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "The workshop is not open for show visits: it is where the organs are built. From time to time we hold open days. If we build an organ for you, you visit the workshop several times during the build to see how it is coming along.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Do you deliver outside Belgium?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Yes, we ship worldwide. Decap organs and instruments play in Japan, the US, Australia, Asia and across Europe. Shipping and installation depend on the project and are part of your quote.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Who restores historic organs?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Restoration is the work of Atelier Frank Decap, the separate business of Tony's brother Frank. Use the form on his page so your message reaches him directly.",
+                "spans": [
+                  {
+                    "start": 111,
+                    "end": 119,
+                    "type": "hyperlink",
+                    "data": {
+                      "link_type": "Web",
+                      "url": "/frank-decap"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "primary": {
+          "eyebrow": "Before you write",
+          "title": "Good to know",
+          "intro": [],
+          "tone": "Tinted"
+        },
+        "id": "site_faq$b9f2ab79-4a74-41b1-8e29-0e34ec26c341",
+        "slice_type": "site_faq",
+        "slice_label": null
+      }
+    ],
+    "meta_title": "Contact the Organ Workshop | Decap Herentals",
+    "meta_description": "Ask about a new organ, self-playing instruments, MIDI conversion or software. Decap Herentals, Langepad 51C, 2200 Herentals, Belgium. +32 14 22 44 94.",
+    "meta_image": {}
+  }
+}

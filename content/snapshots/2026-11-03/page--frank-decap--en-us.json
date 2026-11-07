@@ -1,0 +1,636 @@
+{
+  "id": "atc3lhEAACwAavQu",
+  "uid": "frank-decap",
+  "url": null,
+  "type": "page",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22atc3lhEAACwAavQu%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2026-10-20T09:50:58+0000",
+  "last_publication_date": "2026-10-22T08:15:30+0000",
+  "slugs": [
+    "atelier-frank-decap"
+  ],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [
+    {
+      "id": "atdvrhEAACcAa14V",
+      "type": "page",
+      "lang": "fr-fr",
+      "uid": "frank-decap"
+    }
+  ],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Atelier Frank Decap",
+        "spans": []
+      }
+    ],
+    "theme": "atelier",
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "layout": "Split",
+          "eyebrow": "Atelier Frank Decap",
+          "title": "Organ restoration by Frank Decap",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Frank Decap is a master craftsman who has given his workshop to one thing: restoring historic organs the way they were built. He is Tony Decap's brother and runs his own independent atelier. Write to him about your organ; this page reaches him directly.",
+              "spans": []
+            }
+          ],
+          "primary_cta_label": "Send Frank your question",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "cc6118f7-e600-4048-9012-be3b1983e389",
+            "url": "#contact-form"
+          },
+          "secondary_cta_label": null,
+          "secondary_cta_link": {
+            "link_type": "Any"
+          },
+          "note": null,
+          "image": {
+            "dimensions": {
+              "width": 1448,
+              "height": 1086
+            },
+            "alt": "Frank Decap at work in his restoration workshop",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/3kPGmjngidsqUA65_decap-frank-decap-piano-restoration-in-a-busy-workshop.jpg?auto=format,compress",
+            "id": "3kPGmjngidsqUA65",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "mux_video": null,
+          "image_brief": "Frank Decap at his workbench with an organ part in his hands, looking at the work rather than the camera, warm window light; portrait 4:5",
+          "image_shape": null,
+          "image_fit": null,
+          "image_position": null,
+          "image_zoom": null,
+          "overlay": null,
+          "blur": null,
+          "dim": null,
+          "color_effect": null,
+          "vignette": null,
+          "slow_zoom": null,
+          "tone": "Default"
+        },
+        "id": "site_hero$cecc484d-cdd3-459d-978b-dc0492d5065e",
+        "slice_type": "site_hero",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Who restores your organ",
+          "title": "One family, two workshops",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "The Decap family has worked with organs since 1895. Tony Decap builds new organs and develops the technology in Herentals. His brother Frank chose the other side of the craft: keeping historic organs playing as their builders intended.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "Atelier Frank Decap is Frank's own business, separate from Decap Herentals. When you write to him, you deal with the person who will do the work.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "The atelier is on the same site as Decap Herentals, the Decap organ factory on the Langepad in Herentals.",
+              "spans": []
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 1448,
+              "height": 1086
+            },
+            "alt": "Frank Decap working among historic organs",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/-mRrocqDUWGiAS75_decap-frank-decap-historic-concert-hall-organ-workshop.jpg?auto=format,compress",
+            "id": "-mRrocqDUWGiAS75",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Wide shot of Frank's atelier: workbench, hand tools on the wall, an organ case opened up in the background; 4:3",
+          "media_side": "Image right",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$371c737c-2306-4289-bc4f-c226400ad164",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": null,
+            "title": "Book and roll organs",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Key frames, book and roll mechanisms, and everything they drive.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": null,
+            "title": "Dance, fair and street organs",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "The organs the Decap family has built and played for generations, and those of other builders.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": null,
+            "title": "Pneumatic actions",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Pouches, valves and tubing, so every note speaks again.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": null,
+            "title": "Bellows and wind",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Bellows and reservoirs made airtight, so the organ holds steady wind.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": null,
+            "title": "Voicing",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Pipes voiced and tuned back to the organ's original character.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": null,
+            "title": "Cases",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "The case and the façade that make an organ recognisable.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": null,
+            "title": "Traditional pipe building",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "New pipes made by hand, the traditional way, to match an organ's original pipework.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          }
+        ],
+        "primary": {
+          "eyebrow": "What Frank restores",
+          "title": "From the bellows to the façade",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Typical work in the atelier.",
+              "spans": []
+            }
+          ],
+          "columns": "3",
+          "card_style": "Text cards",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_card_grid$521c012d-7d4d-4a53-a85d-5baf4a2ec18c",
+        "slice_type": "site_card_grid",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "MIDI conversion",
+          "title": "Book and MIDI in one organ",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Frank installs the Decap MIDI conversion units made in Herentals. The units sit between the key frame and the main chest, so the book or roll keeps working as before, and book and MIDI can even play at the same time.",
+              "spans": [
+                {
+                  "start": 19,
+                  "end": 46,
+                  "type": "hyperlink",
+                  "data": {
+                    "link_type": "Web",
+                    "url": "/midi-conversion"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "You buy the units from Decap Herentals; Frank fits them, alone or as part of a restoration.",
+              "spans": []
+            }
+          ],
+          "image": {},
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Decap MIDI units fitted inside a historic organ, tubing to the key frame visible, lit with a work lamp; 4:3",
+          "media_side": "Image left",
+          "aspect": "Landscape 4:3",
+          "cta_label": "About the MIDI units",
+          "cta_link": {
+            "link_type": "Web",
+            "key": "9a9f87e2-c962-45f0-90ee-09368e8980e7",
+            "url": "/midi-conversion"
+          },
+          "tone": "Tinted"
+        },
+        "id": "site_text_media$b60409bd-19e9-415d-bb65-8b80bafda040",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "title": "Photos and a first look",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Send a few lines about your organ through the form below. When Frank replies, you can send him photos of the case, the façade, the key frame and anything that no longer works. They tell him a lot before he sees the organ.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null
+          },
+          {
+            "title": "Inspection",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Frank looks at the organ itself to see what it needs and what is still original. Every organ is different, so Frank decides case by case whether he comes to you or the organ comes to the atelier.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null
+          },
+          {
+            "title": "Written proposal",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "You receive a written proposal describing the work Frank recommends, so you know what will be done before anything starts. What it covers depends on the organ and the work it needs.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null
+          },
+          {
+            "title": "Restoration",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "The work is done by hand in the atelier, part by part, with respect for what the original builder made.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null
+          },
+          {
+            "title": "Voicing and delivery",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Frank voices and tunes the organ and returns it to you playing. Whether he sets it up on site is agreed for each organ.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null
+          }
+        ],
+        "primary": {
+          "eyebrow": "How Frank works",
+          "title": "From the first photo to the first tune",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Every organ is different, so every restoration starts with looking before quoting.",
+              "spans": []
+            }
+          ],
+          "tone": "Default"
+        },
+        "id": "site_steps$2c169dd1-5372-4245-a38c-5af79fccbbc0",
+        "slice_type": "site_steps",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "image": {
+              "dimensions": {
+                "width": 1448,
+                "height": 1086
+              },
+              "alt": "A historic organ dismantled for restoration in the atelier",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/utrQ857hyFQxs_sn_decap-frank-decap-antique-organ-restoration-workshop.jpg?auto=format,compress",
+              "id": "utrQ857hyFQxs_sn",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "An organ as it arrived in the atelier, front view, same position and angle as the 'after' photo; 4:3",
+            "tag": null,
+            "title": "Before",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "An organ as it arrived in the atelier.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 1448,
+                "height": 1086
+              },
+              "alt": "A restored historic organ being loaded into a van for delivery",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/kBEdGGB4p1YG5WYX_decap-frank-decap-antique-organ-loaded-into-van.jpg?auto=format,compress",
+              "id": "kBEdGGB4p1YG5WYX",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "The same organ after restoration, shot from the exact same spot and height as the 'before' photo; 4:3",
+            "tag": null,
+            "title": "After",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "The same organ, restored and playing again.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 1448,
+                "height": 1086
+              },
+              "alt": "Restoration in progress: organ parts on the workbench in warm light",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/jb6dI5hKHP7T_8l0_decap-frank-decap-organ-restoration-workshop-in-warm-light.jpg?auto=format,compress",
+              "id": "jb6dI5hKHP7T_8l0",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Close-up of restoration in progress, e.g. new leather on a pneumatic pouch board or a bellows being re-covered, warm light; 4:3",
+            "tag": null,
+            "title": "In the atelier",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Restoration in progress, part by part, by hand.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          }
+        ],
+        "primary": {
+          "eyebrow": "Before and after",
+          "title": "From the atelier",
+          "intro": [],
+          "columns": "3",
+          "card_style": "Image cards",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_card_grid$b83409ea-c481-4046-aac7-13238b8b3434",
+        "slice_type": "site_card_grid",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Write to Frank",
+          "title": "Tell Frank about your organ",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "This form goes straight to Frank Decap. A few details about the organ help him give you a useful first answer.",
+              "spans": []
+            }
+          ],
+          "recipient": "frank",
+          "topics": "Restoration, MIDI installation, Repair, Other",
+          "default_topic": "Restoration",
+          "show_phone": true,
+          "show_location": true,
+          "message_placeholder": "Make or builder of the organ, number of keys, book or roll, and its condition. Photos help: you can send them when Frank replies.",
+          "submit_label": "Send to Frank",
+          "success_title": "Thank you",
+          "success_body": [
+            {
+              "type": "paragraph",
+              "text": "Your message is with Frank. He replies personally; have your photos of the organ ready.",
+              "spans": []
+            }
+          ],
+          "aside_title": "Reaching Frank",
+          "aside_body": [
+            {
+              "type": "paragraph",
+              "text": "Atelier Frank Decap is independent from Decap Herentals. The easiest way to reach Frank is this form.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "Phone: [TO CHECK: Frank's phone number]",
+              "spans": [
+                {
+                  "start": 0,
+                  "end": 6,
+                  "type": "strong"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "Atelier: Langepad 51C, 2200 Herentals, Belgium, on the same site as Decap Herentals.",
+              "spans": [
+                {
+                  "start": 0,
+                  "end": 8,
+                  "type": "strong"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "For a new organ, pipes or MIDI units, contact Decap Herentals.",
+              "spans": [
+                {
+                  "start": 46,
+                  "end": 61,
+                  "type": "hyperlink",
+                  "data": {
+                    "link_type": "Web",
+                    "url": "/contact"
+                  }
+                }
+              ]
+            }
+          ],
+          "tone": "Default"
+        },
+        "id": "contact_form$1400f933-f20d-4da2-936c-5af665e9194a",
+        "slice_type": "contact_form",
+        "slice_label": null
+      }
+    ],
+    "meta_title": "Organ Restoration | Atelier Frank Decap",
+    "meta_description": "Atelier Frank Decap restores historic book and roll organs, dance, fair and street organs, builds pipes by hand and installs Decap MIDI units. Write to Frank.",
+    "meta_image": {}
+  }
+}

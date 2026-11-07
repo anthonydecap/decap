@@ -7,6 +7,7 @@ import { type SliceComponentProps } from "@prismicio/react";
 import clsx from "clsx";
 import { FadeIn, FadeInStagger } from "@/components/FadeIn";
 import { MediaSlot } from "@/components/MediaSlot";
+import { MuxVideoLayer, resolveMuxHlsUrl } from "@/lib/mux-video";
 import { Eyebrow, Section, SiteButton, SiteRichText, toneFromSelect } from "@/lib/site-ui";
 
 const ASPECTS: Record<string, string> = {
@@ -16,12 +17,19 @@ const ASPECTS: Record<string, string> = {
   "Wide 16:9": "aspect-[16/9]",
 };
 
-/** Text next to an image or a short muted looping clip (the easiest DIY footage to shoot). */
+/**
+ * Text next to an image or a short muted looping clip (the easiest DIY footage to shoot).
+ * A Mux stream wins over an uploaded mp4; the image stays underneath as the poster.
+ */
 const SiteTextMedia: FC<SliceComponentProps<any>> = ({ slice }) => {
   const p = slice.primary;
   const points: string[] = (slice.items || []).map((i: any) => i?.point).filter(Boolean);
   const imageLeft = p.media_side === "Image left";
   const aspect = ASPECTS[p.aspect] ?? ASPECTS["Landscape 4:3"];
+  // "Same as section": no card behind the media, images are shown whole on the section color
+  const bare = p.media_background === "Same as section";
+  const frame = clsx("relative overflow-hidden rounded-2xl lg:rounded-3xl", !bare && "bg-surface", aspect);
+  const muxUrl = resolveMuxHlsUrl(p.mux_video);
   const videoUrl = isFilled.link(p.video) ? (p.video as any).url : null;
   const brief = p.image_brief || `Image for “${p.title || "this section"}”`;
 
@@ -29,8 +37,23 @@ const SiteTextMedia: FC<SliceComponentProps<any>> = ({ slice }) => {
     <Section tone={toneFromSelect(p.tone)}>
       <FadeInStagger faster className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
         <FadeIn className={clsx(imageLeft ? "lg:order-1" : "lg:order-2")}>
-          {videoUrl ? (
-            <div className={clsx("relative overflow-hidden rounded-2xl bg-surface lg:rounded-3xl", aspect)}>
+          {muxUrl ? (
+            <div className={frame}>
+              {isFilled.image(p.image) && (
+                <MediaSlot
+                  field={p.image}
+                  brief={brief}
+                  aspect=""
+                  rounded=""
+                  fit={bare ? "contain" : "cover"}
+                  backdrop={!bare}
+                  className="absolute inset-0 h-full w-full"
+                />
+              )}
+              <MuxVideoLayer src={muxUrl} className="absolute inset-0 h-full w-full motion-reduce:hidden" />
+            </div>
+          ) : videoUrl ? (
+            <div className={frame}>
               <video
                 src={videoUrl}
                 className="absolute inset-0 h-full w-full object-cover"
@@ -43,7 +66,7 @@ const SiteTextMedia: FC<SliceComponentProps<any>> = ({ slice }) => {
               />
             </div>
           ) : (
-            <MediaSlot field={p.image} brief={brief} aspect={aspect} />
+            <MediaSlot field={p.image} brief={brief} aspect={aspect} fit={bare ? "contain" : "auto"} backdrop={!bare} />
           )}
         </FadeIn>
 

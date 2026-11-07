@@ -268,7 +268,7 @@ export default {
         eyebrow: "smARTvalve",
         title: "De l'expression sur chaque tuyau",
         body:
-          "Depuis des années, nous réglons la pression du vent par sommier. smARTvalve le fait par tuyau : une soupape et un processeur pour chaque tuyau. Chaque tuyau reçoit sa propre pression mémorisée, de 0 à 200 %, avec un temps de réponse de 4 ms. Cela permet la dynamique, le vibrato, la pente (slope) et l'extinction (decay) note par note, joués en MIDI.\n\nC'est la technologie de l'orgue d'église transportable de 2025, le premier orgue que nous appelons un synthétiseur à vent.",
+          "Depuis des années, nous réglons la pression du vent par sommier. smARTvalve le fait par tuyau : une soupape avec son propre capteur et processeur pour chaque tuyau, qui corrige la pression 2 000 fois par seconde. Chaque tuyau peut jouer du silence jusqu'à quatre fois sa pression d'harmonisation, avec sa propre enveloppe de vent et deux vibratos, le tout en MIDI.\n\nC'est la technologie de l'orgue d'église transportable de 2025, le premier orgue que nous appelons un synthétiseur à vent.",
         media_side: "Image left",
         aspect: "Landscape 4:3",
         cta_label: "Comment fonctionne smARTvalve",

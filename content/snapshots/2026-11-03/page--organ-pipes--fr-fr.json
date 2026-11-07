@@ -1,0 +1,633 @@
+{
+  "id": "atdvvhEAACoAa15I",
+  "uid": "organ-pipes",
+  "url": null,
+  "type": "page",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22atdvvhEAACoAa15I%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2026-10-20T15:02:59+0000",
+  "last_publication_date": "2026-10-22T08:15:22+0000",
+  "slugs": [
+    "tuyaux-dorgue"
+  ],
+  "linked_documents": [],
+  "lang": "fr-fr",
+  "alternate_languages": [
+    {
+      "id": "atc3hxEAACsAavQD",
+      "type": "page",
+      "lang": "en-us",
+      "uid": "organ-pipes"
+    }
+  ],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Tuyaux d'orgue",
+        "spans": []
+      }
+    ],
+    "theme": "decap",
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "layout": "Split",
+          "eyebrow": "Le seul atelier au monde à le faire",
+          "title": "Tuyaux d'orgue en bois, prêts en quelques jours, pas en quelques mois",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Nous sommes la seule entreprise au monde à avoir développé en interne la fabrication de tuyaux d'orgue sur CNC. Presque tous les tuyaux en bois, selon nos diapasons standard ou vos propres mesures, fraisés, assemblés et prêts à expédier en quelques jours.",
+              "spans": []
+            }
+          ],
+          "primary_cta_label": "Commander des tuyaux",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "363ad5d5-0ea6-4664-b57c-c939668d1cfe",
+            "url": "#contact-form"
+          },
+          "secondary_cta_label": "Des tuyaux dans un orgue neuf",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "ac952063-9be0-43e6-851b-87a843e5eae1",
+            "url": "/organs"
+          },
+          "note": "Pour les constructions personnelles, votre propre orgue, les facteurs d'orgues et les restaurateurs.",
+          "image": {
+            "dimensions": {
+              "width": 643,
+              "height": 428
+            },
+            "alt": "Rows of wooden organ pipe parts from the CNC",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/RwmAAnCR_5hEmYo5_20221008_mohaibalazs_074-3-2.png?auto=format,compress",
+            "id": "RwmAAnCR_5hEmYo5",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "mux_video": null,
+          "image_brief": "A row of new wooden pipes of increasing size on a workbench, pale Ayous bodies and beech mouths visible, side light from a window; portrait 4:5",
+          "image_shape": null,
+          "image_fit": null,
+          "image_position": null,
+          "image_zoom": null,
+          "overlay": null,
+          "blur": null,
+          "dim": null,
+          "color_effect": null,
+          "vignette": null,
+          "slow_zoom": null,
+          "tone": "Default"
+        },
+        "id": "site_hero$2f5b0336-4678-4cdc-a8e1-b4b53e38c1f1",
+        "slice_type": "site_hero",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "label": "ou moins de la commande à l'expédition, selon les jeux",
+            "value": "1 semaine",
+            "note": null
+          },
+          {
+            "label": "nos diapasons standard ou vos propres mesures",
+            "value": "Toutes tailles",
+            "note": null
+          },
+          {
+            "label": "étendue du Bourdon, MIDI 24 à 96",
+            "value": "6 octaves",
+            "note": null
+          },
+          {
+            "label": "nos premiers tuyaux sortis de notre propre CNC",
+            "value": "2016",
+            "note": null
+          }
+        ],
+        "primary": {
+          "eyebrow": null,
+          "title": null,
+          "intro": [],
+          "layout": "Stats",
+          "tone": "Tinted"
+        },
+        "id": "site_facts$96090656-cf3a-4e2d-8030-2b0cac1b239d",
+        "slice_type": "site_facts",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Du dessin au tuyau",
+          "title": "Regardez la fabrication d'un tuyau",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Dessiné en 3D dans notre bureau, fraisé sur notre CNC, collé et harmonisé dans l'atelier d'à côté.",
+              "spans": []
+            }
+          ],
+          "video": {},
+          "caption": null,
+          "poster": {},
+          "video_brief": "Film, 1–2 minutes, landscape 16:9: a pipe drawn in 3D in PipeCreator at the office → the G-code sent to the CNC → the CNC milling the parts → gluing → the finished pipe being blown for the first time. Upload to YouTube and paste the link here.",
+          "tone": "Default"
+        },
+        "id": "site_video$ee5efd89-20cb-47cb-90a3-660d743d3dae",
+        "slice_type": "site_video",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": null,
+            "title": "Constructeurs amateurs",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Vous construisez votre propre orgue ou instrument ? Commandez les jeux dont vous avez besoin, harmonisés ou prêts à être harmonisés par vous.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": null,
+            "title": "Votre propre orgue",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Un jeu supplémentaire ou un jeu de remplacement, fabriqué pour s'accorder à ce qui existe déjà.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": null,
+            "title": "Facteurs d'orgues et restaurateurs",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Des tuyaux selon vos diapasons et vos mesures, sans attendre des mois un fournisseur.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": null,
+            "title": "Tuyaux et sommiers",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Ajoutez nos sommiers, ou allez plus loin avec la conversion MIDI ou SmartValve sur chaque tuyau.",
+                "spans": [
+                  {
+                    "start": 49,
+                    "end": 64,
+                    "type": "hyperlink",
+                    "data": {
+                      "link_type": "Web",
+                      "url": "/midi-conversion"
+                    }
+                  },
+                  {
+                    "start": 68,
+                    "end": 78,
+                    "type": "hyperlink",
+                    "data": {
+                      "link_type": "Web",
+                      "url": "/smartvalve"
+                    }
+                  }
+                ]
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          }
+        ],
+        "primary": {
+          "eyebrow": "Qui commande nos tuyaux",
+          "title": "Un seul jeu ou une alimentation en vent complète",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Achetez uniquement les jeux, ou les jeux et les sommiers pour les poser. Nous fabriquons les pièces dont vous avez besoin et vous laissons le reste.",
+              "spans": []
+            }
+          ],
+          "columns": "4",
+          "card_style": "Text cards",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_card_grid$57b11a90-217c-4623-a30c-a6471c52f1a4",
+        "slice_type": "site_card_grid",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "point": "CNC 5 axes, code G issu de notre propre logiciel PipeCreator"
+          },
+          {
+            "point": "Prêts en quelques jours à une semaine, selon les jeux"
+          },
+          {
+            "point": "Harmonisés par nos harmonistes, ou livrés pour que vous les harmonisiez"
+          }
+        ],
+        "primary": {
+          "eyebrow": "Comment nous les fabriquons",
+          "title": "Un procédé que nous avons développé nous-mêmes",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Depuis 2016, nous fraisons nos tuyaux d'orgue sur une CNC 5 axes. Le code G provient de PipeCreator, un logiciel que nous avons écrit en interne. Aucune autre entreprise ne fabrique des tuyaux d'orgue de cette façon. La machine découpe chaque pièce aux dimensions et aux angles exacts : chaque tuyau d'un jeu correspond au suivant.",
+              "spans": [
+                {
+                  "start": 88,
+                  "end": 99,
+                  "type": "strong"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "Après découpe et collage, le tuyau est prêt pour l'harmonisation et la finition. Nos harmonistes peuvent s'en charger pour vous, ou vous prenez le relais à l'étape de votre choix.",
+              "spans": []
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 643,
+              "height": 428
+            },
+            "alt": "Wooden pipe parts milled on the CNC",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/YsDfiVuRPuEGOY1n_20221008_mohaibalazs_074-2-1.png?auto=format,compress",
+            "id": "YsDfiVuRPuEGOY1n",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Looping clip (mp4, 10–15 s, no sound needed): the 5-axis CNC milling a pipe part, shot beside the machine door. Upload it in the video field; until then a still photo, 4:3.",
+          "media_side": "Image right",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$b9ec6f59-22bf-4f2f-8b62-c8472256700a",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Diapason standard ou sur mesure",
+          "title": "Changez une mesure, obtenez un nouveau tuyau",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Chaque famille de tuyaux a le même dessin de base, avec une marge de variation. Un peu plus large pour plus de fondamentale, un peu plus étroit pour plus d'harmoniques, une hauteur de bouche plus grande et une autre longueur pour une pression de vent plus élevée.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "Dans PipeCreator, nous modifions en quelques minutes la largeur et la profondeur intérieures, l'épaisseur des planches et la longueur de nos modèles standard. Le code G part directement vers la CNC. Un tuyau à vos propres mesures prend donc à peu près autant de temps qu'un tuyau standard.",
+              "spans": []
+            }
+          ],
+          "image": {},
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Looping clip (mp4, 10–15 s): a pipe model in PipeCreator at the office, a measurement being changed and the 3D pipe updating. Screen recording or filmed monitor, 4:3.",
+          "media_side": "Image left",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Tinted"
+        },
+        "id": "site_text_media$bd3636c8-b72c-4e17-a102-d1427a7f4d0b",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Le bois",
+          "title": "Corps en ayous, pieds et bouches en hêtre",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Une CNC ne voit pas la différence entre un grain fin et un nœud : nous avons donc choisi le bois pour la machine et pour le son. Le corps est en ayous (Triplochiton scleroxylon) : très stable, jaune pâle et pratiquement sans nœuds. Les pieds et les bouches sont en hêtre sélectionné à la main.",
+              "spans": [
+                {
+                  "start": 145,
+                  "end": 150,
+                  "type": "strong"
+                },
+                {
+                  "start": 152,
+                  "end": 176,
+                  "type": "em"
+                },
+                {
+                  "start": 265,
+                  "end": 292,
+                  "type": "strong"
+                }
+              ]
+            }
+          ],
+          "image": {},
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Close-up of the mouth of a wooden pipe, pale Ayous body against the beech mouth, square 1:1",
+          "media_side": "Image right",
+          "aspect": "Square",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$b31654c4-3919-43dd-aa73-07ae64a8e031",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "label": "Bourdon",
+            "value": "MIDI 24–96",
+            "note": "6 octaves, bouché"
+          },
+          {
+            "label": "Flûte jazz",
+            "value": "MIDI 60–96",
+            "note": "3 octaves, bouché"
+          },
+          {
+            "label": "Vibraton",
+            "value": "MIDI 46–84",
+            "note": "3 octaves, bouché"
+          },
+          {
+            "label": "Double orgue de rue",
+            "value": "MIDI 60–96",
+            "note": "3 octaves, bouché"
+          },
+          {
+            "label": "Flûte (Flûte 8′ etc.)",
+            "value": "MIDI 60–96",
+            "note": "3 octaves, ouvert"
+          },
+          {
+            "label": "Violons (alto, violoncelle etc.)",
+            "value": "MIDI 48–96",
+            "note": "4 octaves, ouvert"
+          },
+          {
+            "label": "Baryton",
+            "value": "MIDI 48–84",
+            "note": "3 octaves, anche"
+          },
+          {
+            "label": "Trompette",
+            "value": "MIDI 60–96",
+            "note": "3 octaves, anche"
+          }
+        ],
+        "primary": {
+          "eyebrow": "Gamme",
+          "title": "Notre gamme de tuyaux standard",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Les étendues sont indiquées en numéros de note MIDI (60 = do central). Autres étendues et mesures sur demande.",
+              "spans": []
+            }
+          ],
+          "layout": "Spec list",
+          "tone": "Default"
+        },
+        "id": "site_facts$f9478b84-3fb8-4b95-a7f9-36711b7dcd0c",
+        "slice_type": "site_facts",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "question": "En combien de temps pouvez-vous livrer ?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "En quelques jours à une semaine, selon les jeux commandés. Nous confirmons la date avec le devis.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Vendez-vous des tuyaux à l'unité ?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Non. Nous fabriquons les tuyaux par jeux complets : chaque tuyau du jeu est découpé, harmonisé et assorti au suivant.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Puis-je envoyer mes propres mesures ?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Oui. Envoyez la largeur et la profondeur intérieures, la longueur, les dimensions de la bouche et la pression de vent, ou un dessin ou un tuyau modèle, et nous fabriquons le jeu en conséquence.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Harmonisés ou non harmonisés ?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Les deux. Nos harmonistes peuvent harmoniser les tuyaux pour votre pression de vent, ou vous les recevez prêts à harmoniser vous-même.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Pouvez-vous aussi fabriquer les sommiers ?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Oui. Commandez tuyaux et sommiers ensemble, et ajoutez la conversion MIDI ou SmartValve si vous voulez que l'orgue joue en MIDI.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Expédiez-vous hors de Belgique ?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Oui, nous expédions dans le monde entier. Le transport fait partie de votre devis.",
+                "spans": []
+              }
+            ]
+          }
+        ],
+        "primary": {
+          "eyebrow": null,
+          "title": "Commander des tuyaux",
+          "intro": [],
+          "tone": "Default"
+        },
+        "id": "site_faq$dceeac80-978e-4e4e-8acf-9fe55a301c82",
+        "slice_type": "site_faq",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Commander des tuyaux",
+          "title": "Envoyez-nous votre liste de jeux",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Dites-nous ce dont vous avez besoin. Nous vous répondons avec un devis et une date d'expédition.",
+              "spans": []
+            }
+          ],
+          "recipient": "decap",
+          "topics": "Tuyaux d'orgue, Tuyaux et sommiers",
+          "default_topic": "Tuyaux d'orgue",
+          "show_phone": true,
+          "show_location": false,
+          "message_placeholder": "Quels jeux (par ex. Bourdon, Flûte), étendue de chaque jeu, pression de vent, diapason standard ou vos propres mesures, harmonisés ou non…",
+          "submit_label": "Demander un devis",
+          "success_title": "Votre liste de jeux est bien arrivée",
+          "success_body": [
+            {
+              "type": "paragraph",
+              "text": "Nous vous répondrons avec un devis et une date d'expédition.",
+              "spans": []
+            }
+          ],
+          "aside_title": "Bon à savoir",
+          "aside_body": [
+            {
+              "type": "list-item",
+              "text": "Vendus par jeux complets",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Diapasons standard ou vos propres mesures",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Prêts en quelques jours à une semaine, selon les jeux",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Harmonisés ou prêts à harmoniser",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Sommiers, conversion MIDI et SmartValve sur demande",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Expédiés dans le monde entier",
+              "spans": []
+            }
+          ],
+          "tone": "Default"
+        },
+        "id": "contact_form$74d835ce-c417-4c40-a51a-ebbfeb17bcc0",
+        "slice_type": "contact_form",
+        "slice_label": null
+      }
+    ],
+    "meta_title": "Tuyaux d'orgue en bois, prêts en une semaine | Decap",
+    "meta_description": "Presque tous les tuyaux d'orgue en bois, fraisés sur notre CNC et prêts à expédier en une semaine. Diapasons standard ou vos mesures, pour tous vos projets.",
+    "meta_image": {}
+  }
+}

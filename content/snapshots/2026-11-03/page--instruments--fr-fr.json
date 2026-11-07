@@ -1,0 +1,674 @@
+{
+  "id": "atdvsBEAAC4Aa14g",
+  "uid": "instruments",
+  "url": null,
+  "type": "page",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22atdvsBEAAC4Aa14g%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2026-10-20T15:03:00+0000",
+  "last_publication_date": "2026-10-22T08:15:24+0000",
+  "slugs": [
+    "instruments-automatiques"
+  ],
+  "linked_documents": [],
+  "lang": "fr-fr",
+  "alternate_languages": [
+    {
+      "id": "atc3kxEAACcAavQp",
+      "type": "page",
+      "lang": "en-us",
+      "uid": "instruments"
+    }
+  ],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Instruments automatiques",
+        "spans": []
+      }
+    ],
+    "theme": "decap",
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "layout": "Split",
+          "eyebrow": "Instruments",
+          "title": "Instruments automatiques au vrai son acoustique",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Un vrai accordéon, de vrais tuyaux, une vraie batterie et de vraies lames en bois, joués par MIDI. Nous installons des accordéons automatiques sur nos orgues depuis 1933. Aujourd'hui, nous construisons ces instruments automatiques comme des pièces autonomes, à utiliser seules ou à réunir en un seul ensemble.",
+              "spans": []
+            }
+          ],
+          "primary_cta_label": "Quel instrument vous convient ?",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "4a50438c-bb8d-4333-9c33-f53dc5c6e71a",
+            "url": "/contact"
+          },
+          "secondary_cta_label": "Lecteur Virtual Orchestrion",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "1ddae62c-7e03-47b8-b7e4-7a4c0db6aa93",
+            "url": "/virtual-orchestrion"
+          },
+          "note": null,
+          "image": {
+            "dimensions": {
+              "width": 875,
+              "height": 1200
+            },
+            "alt": "Decap orchestrion with two accordions, drums and pipes",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/m17UZ5galgqwub5n_Products-Orchestrion-Complete-Two-Acc-01.jpg?auto=format,compress",
+            "id": "m17UZ5galgqwub5n",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "mux_video": null,
+          "image_brief": "Accordion Pedestal, Pipe Cube and Percussion Unit lined up in the workshop, plain dark wall behind, camera at chest height, portrait 4:5",
+          "image_shape": null,
+          "image_fit": null,
+          "image_position": null,
+          "image_zoom": null,
+          "overlay": null,
+          "blur": null,
+          "dim": null,
+          "color_effect": null,
+          "vignette": null,
+          "slow_zoom": null,
+          "tone": "Default"
+        },
+        "id": "site_hero$198de190-6a3f-4c03-a55b-0a107ee63406",
+        "slice_type": "site_hero",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "image": {
+              "dimensions": {
+                "width": 638,
+                "height": 399
+              },
+              "alt": "Render of the Accordion Pedestal",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/2nxTdImnUjkMxCAQ_Products-AccordionPedestal-01a-2.png?auto=format,compress",
+              "id": "2nxTdImnUjkMxCAQ",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Accordion Pedestal, three-quarter front view, plain light backdrop, 4:3",
+            "tag": "Musique incluse",
+            "title": "Accordion Pedestal & Cube",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Un vrai accordéon italien avec mécanique de touches électronique et flux d'air régulé. Lecteur à écran tactile, haut-parleurs d'accompagnement et MIDI in, out et thru. Pedestal sur pied ou Cube compact.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": "Accordéon automatique",
+            "link": {
+              "link_type": "Web",
+              "key": "2dfa6941-1642-4752-8af3-486899eb23a9",
+              "url": "/accordion"
+            }
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 638,
+                "height": 399
+              },
+              "alt": "Render of the Pipe Cube",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/8rwjLMYOlC1dmtkU_Products-AccordionPedestal-01a-2-1.png?auto=format,compress",
+              "id": "8rwjLMYOlC1dmtkU",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Pipe Cube with front panel off so the pipes show, plain backdrop, 4:3",
+            "tag": "Musique incluse",
+            "title": "Tuyaux",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Jusqu'à sept jeux de tuyaux en bois ou en métal avec une soufflerie silencieuse intégrée. Effets de pression en MIDI, avec une évolution possible vers la commande SmartValve par tuyau.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": "Pipe Cube et Pedestal",
+            "link": {
+              "link_type": "Web",
+              "key": "005d8ba3-bbfc-4074-a9f7-b651ec1ec035",
+              "url": "/pipes"
+            }
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 678,
+                "height": 424
+              },
+              "alt": "Render of the Percussion Unit",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/wSCDRnbn_qmsBpDt_Products-AccordionPedestal-03-1-3.png?auto=format,compress",
+              "id": "wSCDRnbn_qmsBpDt",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Percussion Unit front view with stick-tip LEDs lit, dark backdrop, 4:3",
+            "tag": "Musique incluse",
+            "title": "Percussion Unit",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Batterie plus tambourin, claves, woodblock, cloche et œuf shaker. Toute la plage de vélocité et jusqu'à 14 frappes par seconde. Joue les pistes de batterie General MIDI standard.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": "Percussion Unit",
+            "link": {
+              "link_type": "Web",
+              "key": "7173a46f-7391-4ce5-949d-71e4c53f24a4",
+              "url": "/percussion-unit"
+            }
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 636,
+                "height": 397
+              },
+              "alt": "Render of the automated xylophone",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/HVNsVtqVyBt4PzNE_Products-AccordionPedestal-02-1-3.png?auto=format,compress",
+              "id": "HVNsVtqVyBt4PzNE",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Xylophone with its row of hammers, shot from above at an angle, plain backdrop, 4:3",
+            "tag": "Musique incluse",
+            "title": "Mallet Percussion",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Xylophone ou métallophone avec un marteau à ressort par lame. La vélocité MIDI règle la force de chaque frappe, avec une latence de quelques millisecondes.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": "Mallet Percussion",
+            "link": {
+              "link_type": "Web",
+              "key": "ccc0d602-7f67-4584-8ed3-8825a9979ea6",
+              "url": "/mallet-percussion"
+            }
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 1237,
+                "height": 709
+              },
+              "alt": "Render of the hand-turned Bellow Organ",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/ghVDRhDmqI7e4V1f_52-Key_Chromatic_V01_2023-Sep-02_09-57-35PM-000_Customiz23edView816123377037.png?auto=format,compress",
+              "id": "ghVDRhDmqI7e4V1f",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Bellow Organ with veneer panels, three-quarter view showing the crank, plain backdrop, 4:3",
+            "tag": "Musique incluse",
+            "title": "Bellow Organ",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Un orgue à manivelle qui garde toutes les notes de la gamme. Châssis en aluminium, panneaux interchangeables, lecteur Virtual Orchestrion intégré. En kit ou prêt à jouer.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": "Orgue à manivelle",
+            "link": {
+              "link_type": "Web",
+              "key": "cef92916-7774-4fd4-b241-10f403aa3bd7",
+              "url": "/bellow-organ"
+            }
+          }
+        ],
+        "primary": {
+          "eyebrow": "Les instruments",
+          "title": "Musique incluse, prêts à jouer",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Chaque instrument présenté ici est livré avec un lecteur et de la musique : allumez-le et il joue. Vous cherchez des cuivres robotisés sans bibliothèque musicale ? C'est Brass Core, notre instrument Orchestrionix pour les musiciens.",
+              "spans": [
+                {
+                  "start": 170,
+                  "end": 180,
+                  "type": "hyperlink",
+                  "data": {
+                    "link_type": "Web",
+                    "url": "/brass-core"
+                  }
+                }
+              ]
+            }
+          ],
+          "columns": "3",
+          "card_style": "Image cards",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_card_grid$b47c0480-92c3-4e65-a8f0-4267350aa06d",
+        "slice_type": "site_card_grid",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "point": "L'instrument de votre choix : économique ou haut de gamme"
+          },
+          {
+            "point": "Nos tuyaux ou les vôtres"
+          },
+          {
+            "point": "Brass Core : prix fixe, expédié depuis le stock"
+          }
+        ],
+        "primary": {
+          "eyebrow": "Construit selon vos choix",
+          "title": "Pourquoi vous ne trouverez pas de liste de prix ici",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Chaque instrument automatique est construit autour de l'instrument que vous choisissez : le prix suit donc vos choix. Automatiser un accordéon chinois coûte bien moins cher qu'un accordéon italien. Pour un instrument à tuyaux, vous pouvez nous faire fabriquer les tuyaux ou fournir les vôtres. Il en va de même pour la batterie, les lames et les buffets.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "Dites-nous ce que vous avez en tête et nous vous envoyons un devis pour exactement cet instrument.",
+              "spans": []
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 638,
+              "height": 399
+            },
+            "alt": "Render of the Accordion Cube",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/PGjm3X3CYZb_H8_3_Products-AccordionPedestal-01a-1-1.png?auto=format,compress",
+            "id": "PGjm3X3CYZb_H8_3",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Two accordions side by side on the workbench, one being fitted with the key action, 4:3",
+          "media_side": "Image left",
+          "aspect": "Landscape 4:3",
+          "cta_label": "Demander un devis",
+          "cta_link": {
+            "link_type": "Web",
+            "key": "4c79a226-0d6b-425c-b89d-2273c81c2075",
+            "url": "/contact"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$591bf1ba-bb0e-41ab-b713-d56d9e696c04",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "point": "Un instrument seul ou plusieurs ensemble"
+          },
+          {
+            "point": "MIDI standard : notes de batterie General MIDI sur les percussions"
+          },
+          {
+            "point": "Jeu en direct depuis un clavier, un séquenceur ou une DAW"
+          }
+        ],
+        "primary": {
+          "eyebrow": "Un seul ensemble",
+          "title": "Chaque instrument automatique parle MIDI",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Chaque instrument fonctionne seul. Connectez-les et ils jouent comme un seul orchestre : un accordéon, une unité de percussion et un xylophone peuvent suivre le même arrangement, chacun jouant sa propre partie.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "L'Accordion Pedestal et le Cube ont le MIDI in, out et thru. Le Bellow Organ peut diriger les autres en maître MIDI ou les suivre en esclave. Les mêmes instruments peuvent être intégrés à la façade d'un orgue neuf.",
+              "spans": []
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 1536,
+              "height": 1024
+            },
+            "alt": "A pianist and a self-playing accordion performing together",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/hHExiFsZ45EZ_u8s_decap-concert-pianist-and-red-accordion.jpg?auto=format,compress",
+            "id": "hHExiFsZ45EZ_u8s",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Three instruments side by side with their MIDI cables visible between them, workshop floor, 4:3",
+          "media_side": "Image right",
+          "aspect": "Landscape 4:3",
+          "cta_label": "Orgues neufs",
+          "cta_link": {
+            "link_type": "Web",
+            "key": "3735a34a-f794-4c4a-9890-e4629772933f",
+            "url": "/organs"
+          },
+          "tone": "Tinted"
+        },
+        "id": "site_text_media$49713d16-c56d-4c57-89fe-066214f3f144",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Lecteur et musique",
+          "title": "Un seul lecteur pour tout l'ensemble",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Virtual Orchestrion est le lecteur de tout l'ensemble Decap. Il envoie à chaque instrument sa partie et affiche la musique sous forme d'orchestrion animé ou de carton perforé. Quand un arrangement demande des jeux que votre instrument n'a pas, le lecteur les ajoute avec des échantillons enregistrés dans notre propre atelier.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "Une boutique de musique proposant des arrangements protégés contre la copie pour les instruments Decap arrive bientôt.",
+              "spans": []
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 497,
+              "height": 312
+            },
+            "alt": "Virtual Orchestrion on a laptop",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/VGZHmKnvMUT6nZvo_VirtualPlayerLaptop1-1.png?auto=format,compress",
+            "id": "VGZHmKnvMUT6nZvo",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Laptop running Virtual Orchestrion in front of an Accordion Pedestal, screen readable, 4:3",
+          "media_side": "Image left",
+          "aspect": "Landscape 4:3",
+          "cta_label": "Virtual Orchestrion",
+          "cta_link": {
+            "link_type": "Web",
+            "key": "26e6ec07-e8c3-487e-9ded-374a31fc9946",
+            "url": "/virtual-orchestrion"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$4f7188a2-130c-4227-a38b-a81283c7828a",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "question": "Quel instrument pour quel usage ?",
+            "answer": [
+              {
+                "type": "list-item",
+                "text": "Café, vitrine ou maison : l'Accordion Pedestal ou le Cube, avec l'accompagnement par ses propres haut-parleurs.",
+                "spans": [
+                  {
+                    "start": 0,
+                    "end": 25,
+                    "type": "strong"
+                  }
+                ]
+              },
+              {
+                "type": "list-item",
+                "text": "Événements et tournées : les formats Cube sont compacts et faciles à transporter.",
+                "spans": [
+                  {
+                    "start": 0,
+                    "end": 24,
+                    "type": "strong"
+                  }
+                ]
+              },
+              {
+                "type": "list-item",
+                "text": "Rue et plein air : le Bellow Organ à manivelle.",
+                "spans": [
+                  {
+                    "start": 0,
+                    "end": 18,
+                    "type": "strong"
+                  },
+                  {
+                    "start": 22,
+                    "end": 34,
+                    "type": "hyperlink",
+                    "data": {
+                      "link_type": "Web",
+                      "url": "/bellow-organ"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "list-item",
+                "text": "Vos propres spectacles ou installations : Brass Core joue la partie de cuivres que vous lui envoyez.",
+                "spans": [
+                  {
+                    "start": 0,
+                    "end": 41,
+                    "type": "strong"
+                  },
+                  {
+                    "start": 42,
+                    "end": 52,
+                    "type": "hyperlink",
+                    "data": {
+                      "link_type": "Web",
+                      "url": "/brass-core"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "text": "Vous hésitez ? Dites-nous où il jouera et nous vous proposons une configuration.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Les instruments peuvent-ils jouer ensemble ?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Oui. Ils utilisent tous le MIDI standard : un même arrangement peut piloter plusieurs instruments à la fois, chacun jouant sa propre partie. Virtual Orchestrion est conçu exactement pour cela.",
+                "spans": [
+                  {
+                    "start": 141,
+                    "end": 160,
+                    "type": "hyperlink",
+                    "data": {
+                      "link_type": "Web",
+                      "url": "/virtual-orchestrion"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "question": "Puis-je en jouer en direct ?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Oui. Connectez un clavier MIDI, un contrôleur, un séquenceur ou une DAW et les instruments répondent en temps réel. Le MIDI thru de l'accordéon transmet votre jeu à l'instrument suivant.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Quelle est la différence entre les instruments automatiques et Brass Core ?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Les instruments automatiques sont livrés avec un lecteur et de la musique, prêts à jouer. Brass Core, qui fait partie de notre gamme Orchestrionix, n'a pas de bibliothèque musicale : il transforme votre propre audio en vrai son de cuivre.",
+                "spans": [
+                  {
+                    "start": 133,
+                    "end": 146,
+                    "type": "hyperlink",
+                    "data": {
+                      "link_type": "Web",
+                      "url": "/orchestrionix"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "question": "Livrez-vous hors de Belgique ?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Oui, nous expédions dans le monde entier. Des instruments Decap jouent en Europe, au Japon, aux États-Unis, en Australie et dans toute l'Asie. Le transport fait partie de votre devis.",
+                "spans": []
+              }
+            ]
+          }
+        ],
+        "primary": {
+          "eyebrow": "Questions",
+          "title": "Choisir un instrument automatique",
+          "intro": [],
+          "tone": "Default"
+        },
+        "id": "site_faq$cbd842a6-ec5e-4381-91ee-cd792e4f4a15",
+        "slice_type": "site_faq",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Vous choisissez un instrument ?",
+          "title": "Dites-nous où il jouera",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Un café, une scène, un musée ou la rue : décrivez le lieu et la musique. Nous vous répondons avec l'instrument ou la combinaison que nous choisirions, et un devis.",
+              "spans": []
+            }
+          ],
+          "price": null,
+          "price_note": null,
+          "primary_cta_label": "Demander un devis",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "433bb845-a83c-42bd-9868-1bda7ede72da",
+            "url": "/contact"
+          },
+          "secondary_cta_label": "Visiter la boutique",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "786bdd0c-4c26-441d-a31e-010a21f70055",
+            "url": "/shop"
+          },
+          "image": {},
+          "image_brief": null,
+          "tone": "Dark band"
+        },
+        "id": "site_cta$92f915a4-391f-4b75-96a2-a87cc969a9fe",
+        "slice_type": "site_cta",
+        "slice_label": null
+      }
+    ],
+    "meta_title": "Instruments automatiques | Decap Herentals",
+    "meta_description": "Accordéon automatique, tuyaux, batterie, xylophone et orgue à manivelle, pilotés par MIDI et construits à Herentals. Seuls ou ensemble, comme un orchestre.",
+    "meta_image": {}
+  }
+}

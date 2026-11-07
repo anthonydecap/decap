@@ -37,6 +37,20 @@ const SiteCardGrid: FC<SliceComponentProps<any>> = ({ slice }) => {
   const withImages = p.card_style !== "Text cards";
   const hasHeader = !!(p.eyebrow || p.title || isFilled.richText(p.intro));
 
+  if (p.card_style === "Case cards") {
+    return (
+      <Section tone={toneFromSelect(p.tone)}>
+        <SectionHeader eyebrow={p.eyebrow} title={p.title} intro={p.intro} />
+        <CaseGrid items={items} columns={columns} className={hasHeader ? "mt-16 lg:mt-20" : undefined} />
+        {p.cta_label && isFilled.link(p.cta_link) && (
+          <FadeIn className="mt-12 text-center lg:mt-16">
+            <SiteButton field={p.cta_link} label={p.cta_label} variant="text" />
+          </FadeIn>
+        )}
+      </Section>
+    );
+  }
+
   return (
     <Section tone={toneFromSelect(p.tone)}>
       <SectionHeader eyebrow={p.eyebrow} title={p.title} intro={p.intro} />
@@ -124,5 +138,92 @@ const SiteCardGrid: FC<SliceComponentProps<any>> = ({ slice }) => {
     </Section>
   );
 };
+
+/**
+ * "Case cards": editorial tiles for case studies, in the language of the Work page's portfolio and
+ * artist rows. No card frame: the photo itself is the tile, with the text loose underneath. When the
+ * count would leave one card alone on the last row, the first case becomes a wide feature instead.
+ */
+function CaseGrid({ items, columns, className }: { items: any[]; columns: string; className?: string }) {
+  const cols = Number(columns);
+  const feature = items.length > 1 && items.length % cols === 1;
+  return (
+    <FadeInStagger faster className={className}>
+      <ul role="list" className={clsx("grid grid-cols-1 gap-x-6 gap-y-12 lg:gap-x-8 lg:gap-y-16", COLUMNS[columns])}>
+        {items.map((item, i) => (
+          <li key={i} className={clsx("flex", feature && i === 0 && "sm:col-span-full")}>
+            <FadeIn className="flex w-full">
+              <CaseCard item={item} feature={feature && i === 0} sizes={SIZES[columns]} />
+            </FadeIn>
+          </li>
+        ))}
+      </ul>
+    </FadeInStagger>
+  );
+}
+
+function CaseCard({ item, feature, sizes }: { item: any; feature: boolean; sizes: string }) {
+  const linked = isFilled.link(item.link);
+  const inner = (
+    <>
+      <div className={clsx(feature && "lg:col-span-7")}>
+        <MediaSlot
+          field={item.image}
+          brief={item.image_brief || `Photo for “${item.title || "this case"}”`}
+          aspect={feature ? "aspect-[4/3] lg:aspect-[3/2]" : "aspect-[4/3]"}
+          rounded="rounded-2xl lg:rounded-3xl"
+          sizes={feature ? "(min-width: 1024px) 58vw, 100vw" : sizes}
+          className={clsx(
+            linked && "[&_img]:transition-transform [&_img]:duration-700 [&_img]:ease-out group-hover:[&_img]:scale-[1.03]",
+          )}
+        />
+      </div>
+      <div className={clsx("flex flex-1 flex-col pt-6", feature && "lg:col-span-5 lg:pt-0")}>
+        {item.tag && (
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-ink-muted">
+            <BrandText>{item.tag}</BrandText>
+          </p>
+        )}
+        {item.title && (
+          <h3
+            className={clsx(
+              "site-heading leading-snug text-ink",
+              feature ? "text-2xl sm:text-3xl lg:text-4xl lg:leading-tight" : "text-xl sm:text-2xl",
+            )}
+          >
+            {item.title}
+          </h3>
+        )}
+        {isFilled.richText(item.body) && (
+          <div className={clsx("mt-3 leading-relaxed text-ink-muted", feature ? "text-base lg:text-lg" : "text-base")}>
+            <PrismicRichText field={item.body} components={linked ? cardRichText : siteRichText} />
+          </div>
+        )}
+        {linked && item.link_label && (
+          <span className={clsx("inline-flex items-center gap-1.5 pt-5 text-sm font-semibold text-ink", !feature && "mt-auto")}>
+            {item.link_label}
+            <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">
+              →
+            </span>
+          </span>
+        )}
+      </div>
+    </>
+  );
+  const layout = clsx("flex w-full flex-col", feature && "lg:grid lg:grid-cols-12 lg:items-center lg:gap-12");
+  return linked ? (
+    <SiteLink
+      field={item.link}
+      className={clsx(
+        layout,
+        "group rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent lg:rounded-3xl",
+      )}
+    >
+      {inner}
+    </SiteLink>
+  ) : (
+    <div className={layout}>{inner}</div>
+  );
+}
 
 export default SiteCardGrid;

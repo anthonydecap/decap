@@ -68,6 +68,25 @@ export default {
       },
     },
     {
+      type: "site_text_media",
+      primary: {
+        eyebrow: "In onze werkplaats",
+        title: "PipeCreator: van pijpontwerp tot elk ventiel",
+        body:
+          "PipeCreator is het programma dat we zelf gebruiken. Het ontwerpt onze houten orgelpijpen en stuurt de G-code rechtstreeks naar onze 5-assige CNC. In de 3D-weergave, PipeViewer, ontwerpen we de pijpenstokken voor een smARTvalve-orgel en de pijpen erop, zodat klanten hun eigen orgel in 3D zien voor het gebouwd wordt.\n\nZodra het orgel speelt, toont PipeCreator voor elke pijp een live drukcurve naast de verwachte curve, en een diagnosetabel voor alle smARTvalves.",
+        media_side: "Image left",
+        aspect: "Landscape 4:3",
+        cta_label: "smARTvalve voor orgelbouwers",
+        cta_link: "/smartvalve-for-organ-builders",
+        image_brief: "PipeViewer on screen: a 3D pipe panel with smARTvalves and wooden pipes, 4:3",
+      },
+      items: [
+        { point: "Houten pijpen ontworpen en naar de CNC gestuurd" },
+        { point: "Pijpenstokken en pijpen in 3D in PipeViewer" },
+        { point: "Live drukcurves en diagnose voor elk smARTvalve" },
+      ],
+    },
+    {
       type: "site_cta",
       primary: {
         eyebrow: "Arrangeert u voor orgel?",

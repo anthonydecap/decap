@@ -1,0 +1,1165 @@
+{
+  "id": "atc3hREAACcAavP4",
+  "uid": "organs",
+  "url": null,
+  "type": "page",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22atc3hREAACcAavP4%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2026-10-20T09:51:01+0000",
+  "last_publication_date": "2026-11-02T23:13:43+0000",
+  "slugs": [
+    "organs"
+  ],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [
+    {
+      "id": "atdvwREAACoAa15Q",
+      "type": "page",
+      "lang": "fr-fr",
+      "uid": "organs"
+    }
+  ],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Organs",
+        "spans": []
+      }
+    ],
+    "theme": "decap",
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "layout": "Split",
+          "eyebrow": "Organ builders since 1895",
+          "title": "Real dance organs, built in Herentals",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Decap Herentals builds dance organs: organs made for people to dance to, with dynamics and volume control no mechanical organ has. Start from our proven modules or have every detail made for you. Pipes, digital sound or both, with the front instruments Decap organs have carried since 1933. Decap organs play all over the world, from Japan to the US and Australia.",
+              "spans": []
+            }
+          ],
+          "primary_cta_label": "Compose your organ",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "59e6cf7e-aece-4471-9701-3e5177be9188",
+            "url": "/organ-composer"
+          },
+          "secondary_cta_label": "Request a consultation",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "4d710571-5256-4bee-82bd-49656461dbe2",
+            "url": "/contact"
+          },
+          "note": "Decap Herentals since 1933. Fourth generation, one workshop, organs all over the world.",
+          "image": {
+            "dimensions": {
+              "width": 1447,
+              "height": 1087
+            },
+            "alt": null,
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/l1PuEZd8GUoqY9BA_Untitleddesign-9-.png?auto=format,compress",
+            "id": "l1PuEZd8GUoqY9BA",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "mux_video": null,
+          "image_brief": "A finished Decap dance organ façade, shot straight on from chest height with the whole front in frame, lights on, room lights dimmed; portrait 4:5",
+          "image_shape": "Landscape 4:3",
+          "image_fit": "Auto",
+          "image_position": "Center",
+          "image_zoom": "100%",
+          "overlay": "Medium",
+          "blur": "None",
+          "dim": "None",
+          "color_effect": "None",
+          "vignette": false,
+          "slow_zoom": false,
+          "tone": "Default"
+        },
+        "id": "site_hero$8ffd3ed7-eda7-4e59-b2c6-74634e903c4b",
+        "slice_type": "site_hero",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "image": {
+              "dimensions": {
+                "width": 1448,
+                "height": 1086
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/NqF31ts0KK3QXxJN_Untitleddesign-10-.png?auto=format,compress",
+              "id": "NqF31ts0KK3QXxJN",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Existing 3D render of a modular Decap dance organ, front three-quarter view, plain background, 4:3",
+            "tag": "Modular",
+            "title": "Built from our modules",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Pick from proven modules: scale, ranks, front instruments and façade. You get a well-tested design and a clear picture of the result before production starts.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": "Start in the Organ Composer",
+            "link": {
+              "link_type": "Web",
+              "key": "b7b2d861-8592-49f2-b49b-0e23e53ea93e",
+              "url": "/organ-composer"
+            }
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 1448,
+                "height": 1086
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/oFY38JnZT1upsIlE_Untitleddesign-16-.png?auto=format%2Ccompress&rect=28%2C0%2C1392%2C1044&w=1448&h=1086",
+              "id": "oFY38JnZT1upsIlE",
+              "edit": {
+                "x": 28,
+                "y": 0,
+                "zoom": 1.04,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Existing 3D render of a bespoke Decap concert or street organ, front view, plain background, 4:3",
+            "tag": "Bespoke",
+            "title": "Fully bespoke",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Every detail designed for your room, your music and your budget: case, scale, voices, front instruments and controls. We draw it, render it in 3D and build it.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": "Request a consultation",
+            "link": {
+              "link_type": "Web",
+              "key": "573ce79c-e4ec-4636-b3fa-ddfffada3748",
+              "url": "/contact"
+            }
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 1448,
+                "height": 1086
+              },
+              "alt": "A historic organ dismantled for restoration in the atelier",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/wtXh87YfJscjObNH_decap-frank-decap-antique-organ-restoration-workshop.jpg?auto=format,compress",
+              "id": "wtXh87YfJscjObNH",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "An open historic book organ in the workshop, key frame and tubing visible, warm side light, 4:3",
+            "tag": "Restore or upgrade",
+            "title": "Your existing organ",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Historic book and roll organs are restored by Atelier Frank Decap, Tony's brother. Our MIDI conversion units add MIDI while the book or roll keeps working.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": "Atelier Frank Decap",
+            "link": {
+              "link_type": "Web",
+              "key": "7aed99b5-bedd-495d-bf37-e88fa6453eb2",
+              "url": "/frank-decap"
+            }
+          }
+        ],
+        "primary": {
+          "eyebrow": "Three ways to your organ",
+          "title": "Choose how much you want to design",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Most organs start in one of three places. Not sure which is yours? Describe the room and the music, and we suggest a route.",
+              "spans": []
+            }
+          ],
+          "columns": "3",
+          "card_style": "Image cards",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_card_grid$fc0fee75-859c-4f8b-a1d3-79ae18b68f22",
+        "slice_type": "site_card_grid",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "point": "Modular or fully bespoke, built as units in a façade: transportable and rebuildable"
+          },
+          {
+            "point": "Standard scales of 105 and 121 keys, other sizes possible"
+          },
+          {
+            "point": "Pipes, digital sound, or both combined"
+          },
+          {
+            "point": "Playing all over the world: Japan, the US, Australia, Asia and Europe"
+          }
+        ],
+        "primary": {
+          "eyebrow": "What we build",
+          "title": "Dance organs first",
+          "body": [
+            {
+              "type": "heading3",
+              "text": "Dance organs",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "What we normally build. Between 1960 and 1980 some 120 dance cafés and dance halls across Belgium each had a dance organ, and people came to dance every day. Today Decap dance organs play in living rooms, cafés and dance halls, and on stage: their sensitivity and volume are controllable, so they fit the room instead of filling it. That is why Guido Belcanto could tour one in his theatre show Balzaal der Gebroken Harten in 2008.",
+              "spans": [
+                {
+                  "start": 395,
+                  "end": 422,
+                  "type": "em"
+                }
+              ]
+            },
+            {
+              "type": "heading3",
+              "text": "Street and fair organs",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "We have built them, and we can build one for you, but they are the exception in our workshop.",
+              "spans": []
+            },
+            {
+              "type": "heading3",
+              "text": "Church and concert organs",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "In 2025 we built smARTvalve into the first transportable church organ, with every pipe controlled on its own. That organ is L'Explorateur, the mobile concert organ of Swiss organist Yves Rechsteiner.",
+              "spans": [
+                {
+                  "start": 124,
+                  "end": 137,
+                  "type": "hyperlink",
+                  "data": {
+                    "link_type": "Web",
+                    "url": "/work/yves-rechsteiner"
+                  }
+                }
+              ]
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 1672,
+              "height": 941
+            },
+            "alt": null,
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/0wJnPVrpl21u2R03_VintageDecapOrganCastleShowcase.png?auto=format,compress",
+            "id": "0wJnPVrpl21u2R03",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "A Decap dance organ in use in a café or dance hall, people in soft focus in front, taken from the side of the room; portrait 4:5",
+          "media_side": "Image right",
+          "aspect": "Portrait 4:5",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$6803ea52-9da6-426b-aabc-456372c2c010",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Why a Decap plays differently",
+          "statement": "The first orchestrions were built to sound like a real orchestra. In the golden age of the dance organ, everyone stopped trying. *We never did.*",
+          "caption": [
+            {
+              "type": "paragraph",
+              "text": "In the 19th century makers such as Limonaire and Wurlitzer worked to bring their mechanical orchestras closer to real musicians, who play with feeling and nuance. When people came to love the mechanical sound itself, that work stopped. We are musicians first, so for the last 50 years we kept going: organs that play with feeling and nuance, from the living room to the stage.",
+              "spans": []
+            }
+          ],
+          "tone": "Default"
+        },
+        "id": "site_statement$d53b4933-7a3c-4299-868d-c299280e9df0",
+        "slice_type": "site_statement",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "instrument": "Saxophone",
+            "address": "Port 3 · Ch 1",
+            "role": "Melody"
+          },
+          {
+            "instrument": "Flute 8′",
+            "address": "Port 6 · Ch 2",
+            "role": "Ornaments"
+          },
+          {
+            "instrument": "Violins",
+            "address": "Port 7 · Ch 12",
+            "role": "Counter-melody"
+          },
+          {
+            "instrument": "Piano",
+            "address": "Port 1 · Ch 1",
+            "role": "Accompaniment"
+          },
+          {
+            "instrument": "Percussion",
+            "address": "Port 9 · Ch 10",
+            "role": "Accents"
+          }
+        ],
+        "primary": {
+          "eyebrow": "MIDI, used to the full",
+          "title": "Every instrument its own part",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "We were the first to put an organ on MIDI. Most organs now use MIDI to replace the book, and nothing more. A Decap organ uses all of it: every instrument group gets its own part, with soft and hard notes.",
+              "spans": []
+            }
+          ],
+          "book_label": "Book or simple MIDI",
+          "decap_label": "Decap organ",
+          "book_caption": "The book decides. Instruments coupled to the same track follow the same line, and every note sounds at the same strength.",
+          "decap_caption": "Every instrument group has its own MIDI address and its own part: the saxophone plays the melody, the violins a counter-melody, the piano soft and hard.",
+          "note": "Example arrangement. Note height and brightness show how hard each note is played.",
+          "tone": "Dark band"
+        },
+        "id": "site_orchestra$0ded4d02-cf9b-480c-b71a-e93f8dc71a8e",
+        "slice_type": "site_orchestra",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "size": "Large",
+            "style": "Dark",
+            "visual": "Ports",
+            "value": "16",
+            "value_label": "MIDI ports as standard",
+            "title": "256 separate addresses",
+            "body": "16 ports of 16 channels each. Every instrument group gets its own address, so an arranger can write a real part for each one.",
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "size": "Small",
+            "style": "Light",
+            "visual": "Velocity",
+            "value": "1–127",
+            "value_label": "note strengths",
+            "title": "Soft or hard, per note",
+            "body": "On a traditional organ the drumstick always hits with the same force. On a Decap organ it hits soft or hard, with adjustable timing.",
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "size": "Small",
+            "style": "Light",
+            "visual": "Wind",
+            "value": null,
+            "value_label": null,
+            "title": "Wind pressure per chest",
+            "body": "Different intensities per wind chest, and ranks that play vibrato.",
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "size": "Wide",
+            "style": "Accent",
+            "visual": "Chip",
+            "value": null,
+            "value_label": null,
+            "title": "A processor behind every part",
+            "body": "No air-driven mechanism: every drum, valve and register is controlled digitally. That is what makes soft and hard notes, wind control and volume control possible.",
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "size": "Small",
+            "style": "Light",
+            "visual": "None",
+            "value": null,
+            "value_label": null,
+            "title": "Volume you control",
+            "body": "Soft in a living room, full in a theatre, loud enough for a DJ set.",
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "size": "Small",
+            "style": "Dark",
+            "visual": "Pipe",
+            "value": null,
+            "value_label": null,
+            "title": "smARTvalve: every pipe its own wind",
+            "body": "Our newest development takes wind control down to every single pipe.",
+            "link_label": "How smARTvalve works",
+            "link": {
+              "link_type": "Web",
+              "key": "a74aeaf3-b117-47f0-a0e0-0383e009f4c3",
+              "url": "/smartvalve"
+            }
+          },
+          {
+            "size": "Wide",
+            "style": "Light",
+            "visual": "None",
+            "value": null,
+            "value_label": null,
+            "title": "All software, our own",
+            "body": "The CNC programs that mill our pipes, the software that drives the organ and the Virtual Orchestrion player: all developed in Herentals.",
+            "link_label": "Our software",
+            "link": {
+              "link_type": "Web",
+              "key": "a5f0669f-ecae-4566-9cc7-f15f26a17eb9",
+              "url": "/software"
+            }
+          }
+        ],
+        "primary": {
+          "eyebrow": "Inside a Decap organ",
+          "title": "No mechanism. Everything digital.",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Processors and chips control every part of a Decap organ. That is what lets it play soft and hard, change its wind and fit any room.",
+              "spans": []
+            }
+          ],
+          "tone": "Default"
+        },
+        "id": "site_bento$f2396fd1-b89a-423b-b100-2ff529a5c967",
+        "slice_type": "site_bento",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "feature": "Control",
+            "col1": "Mechanical and pneumatic",
+            "col2": "Mechanical, with an electronic reader",
+            "col3": "Fully digital: processors and chips"
+          },
+          {
+            "feature": "MIDI ports",
+            "col1": "no",
+            "col2": "Usually 1",
+            "col3": "16 as standard"
+          },
+          {
+            "feature": "Own part per instrument group",
+            "col1": "no",
+            "col2": "no",
+            "col3": "yes"
+          },
+          {
+            "feature": "Soft and hard notes",
+            "col1": "no",
+            "col2": "no",
+            "col3": "yes"
+          },
+          {
+            "feature": "Wind pressure and vibrato under control",
+            "col1": "no",
+            "col2": "no",
+            "col3": "Per wind chest, per pipe with smARTvalve"
+          },
+          {
+            "feature": "Volume control",
+            "col1": "no",
+            "col2": "no",
+            "col3": "yes"
+          },
+          {
+            "feature": "Repertoire",
+            "col1": "Books punched for this organ",
+            "col2": "MIDI files, within the book layout",
+            "col3": "Arrangements for the full organ; missing ranks added virtually"
+          }
+        ],
+        "primary": {
+          "eyebrow": "Compare",
+          "title": "Book organ, simple MIDI or a Decap organ",
+          "intro": [],
+          "col1": "Book organ",
+          "col1_note": "Plays from a cardboard book",
+          "col2": "Simple MIDI conversion",
+          "col2_note": "MIDI replaces the book",
+          "col3": "Decap organ",
+          "col3_note": "MIDI used to the full",
+          "highlight": "3",
+          "highlight_label": "Decap",
+          "tone": "Tinted"
+        },
+        "id": "site_compare$39c3c868-f645-44fd-b5fb-122facbe4800",
+        "slice_type": "site_compare",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": null,
+            "title": "Pipes",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Wooden pipes milled on our own 5-axis CNC: bourdons, flutes, violins, jazz flutes, vibratons, baritons and trumpets. See our organ pipes.",
+                "spans": [
+                  {
+                    "start": 117,
+                    "end": 136,
+                    "type": "hyperlink",
+                    "data": {
+                      "link_type": "Web",
+                      "url": "/organ-pipes"
+                    }
+                  }
+                ]
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": null,
+            "title": "Digital",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Digital sound in place of pipes: less space and a smaller budget. The route that brought organs to cafés and dance halls in 1977.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": null,
+            "title": "Pipes and digital combined",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Real pipes and digital sound in one organ. We advise which voices are worth building in wood for your room and budget.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          }
+        ],
+        "primary": {
+          "eyebrow": "Sound",
+          "title": "Pipes, digital, or both",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "In 1977 François Decap built the first digital dance organ, so dance halls and cafés with much smaller budgets could have an organ. Today you choose the mix.",
+              "spans": []
+            }
+          ],
+          "columns": "3",
+          "card_style": "Text cards",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_card_grid$28ebabb1-aa89-4b41-965e-3432bcbdfedc",
+        "slice_type": "site_card_grid",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Front instruments",
+          "title": "Accordions on Decap organs since 1933",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "The year Frans Decap founded Decap Herentals, the first self-playing accordions appeared on Decap organs. They still do. A Decap organ front can carry:",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "a real accordion, played by the organ",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "a drum kit",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "percussion such as woodblock, tambourine and cowbell",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "animated figures",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "We make these instruments as stand-alone self-playing instruments too, so every one is proven on its own before it goes into an organ. See our instruments.",
+              "spans": [
+                {
+                  "start": 135,
+                  "end": 154,
+                  "type": "hyperlink",
+                  "data": {
+                    "link_type": "Web",
+                    "url": "/instruments"
+                  }
+                }
+              ]
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 1536,
+              "height": 1024
+            },
+            "alt": "A pianist on stage with a self-playing red accordion on a pedestal",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/E2t706ikfWrrEUxg_decap-concert-pianist-and-red-accordion.jpg?auto=format,compress",
+            "id": "E2t706ikfWrrEUxg",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Close-up of the accordion and drums in the front of a Decap organ, taken at eye level from slightly to one side, background out of focus; 4:3",
+          "media_side": "Image left",
+          "aspect": "Landscape 4:3",
+          "cta_label": "Self-playing accordion",
+          "cta_link": {
+            "link_type": "Web",
+            "key": "657b9dcc-90dc-4781-8611-5d426167731d",
+            "url": "/accordion"
+          },
+          "tone": "Tinted"
+        },
+        "id": "site_text_media$06ddcd4a-d968-4306-ae95-b5f450f2791e",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Keys are no limit",
+          "title": "A 105-key organ that also plays 121-key music",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Our standard scales are 105 and 121 keys, but the scale does not have to limit your repertoire. Every new Decap organ comes with our Virtual Orchestrion player. When an arrangement calls for ranks your organ does not have, the player adds them virtually, with samples we recorded in our own workshop and VST instruments.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "Since 2000 a Decap organ plays its music from one digital card instead of racks of cardboard books. If you miss the book, the player projects it on screen while the organ plays. Choose the organ that fits your room and budget, not the one that fits your music.",
+              "spans": []
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 542,
+              "height": 382
+            },
+            "alt": "Virtual Orchestrion screens",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/Dh8pCAZ8oF70qinr_decap-home-img3.png?auto=format,compress",
+            "id": "Dh8pCAZ8oF70qinr",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Virtual Orchestrion running on a touchscreen beside an organ, the animated book view visible on screen; 4:3",
+          "media_side": "Image right",
+          "aspect": "Landscape 4:3",
+          "cta_label": "About Virtual Orchestrion",
+          "cta_link": {
+            "link_type": "Web",
+            "key": "7c95b6a2-756a-42f5-a1c8-d0319b4f6de9",
+            "url": "/virtual-orchestrion"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$47fa349a-3713-4747-9e14-c77c46dda231",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "smARTvalve",
+          "title": "Expression on every pipe",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "We have set the wind pressure per wind chest for years. smARTvalve does it per pipe: a valve with its own sensor and processor for every pipe, correcting the pressure 2,000 times a second. Each pipe can play from silence up to four times its voiced pressure, with its own wind envelope and two vibratos, all over MIDI.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "It is the technology in the 2025 transportable church organ, the first organ we call a wind synthesizer.",
+              "spans": []
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 2048,
+              "height": 2048
+            },
+            "alt": null,
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/xrM343reak784Vv6_cantedvalve.png?auto=format,compress",
+            "id": "xrM343reak784Vv6",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Close-up of a row of smARTvalves on a wind chest, dark background, low side light; 4:3",
+          "media_side": "Image left",
+          "aspect": "Landscape 4:3",
+          "cta_label": "How smARTvalve works",
+          "cta_link": {
+            "link_type": "Web",
+            "key": "7d4777b5-b584-43ea-9433-0eeac44837e8",
+            "url": "/smartvalve"
+          },
+          "tone": "Dark band"
+        },
+        "id": "site_text_media$9240f85b-f7f0-4841-9242-fd4b221604bf",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "title": "Consultation",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Tell us where the organ will play, who will listen and what music you love. We ask about the room, transport and budget, and suggest a route: modular, bespoke or a mix. The Organ Composer is a quick way to send us a starting point.",
+                "spans": [
+                  {
+                    "start": 173,
+                    "end": 187,
+                    "type": "hyperlink",
+                    "data": {
+                      "link_type": "Web",
+                      "url": "/organ-composer"
+                    }
+                  }
+                ]
+              }
+            ],
+            "image": {
+              "dimensions": {
+                "width": 1672,
+                "height": 941
+              },
+              "alt": "Tony Decap discussing an organ in the workshop",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/U2LTUoM0bqWiYfBU_decap-tony-decap-and-francois-decap-belcanto-orgel-without-facade.jpg?auto=format,compress",
+              "id": "U2LTUoM0bqWiYfBU",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Tony Decap at a workbench talking with a visitor, organ parts in the background, 4:3"
+          },
+          {
+            "title": "Design and 3D render",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "We draw the organ and render it in 3D: case, façade, front instruments and the scale. You see how it will look before anything is made, and we adjust the design with you.",
+                "spans": []
+              }
+            ],
+            "image": {
+              "dimensions": {
+                "width": 1011,
+                "height": 799
+              },
+              "alt": "3D render of a Decap orchestrion",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/MfEyZIjIn7GIAuzm_Trailer_2023-Oct-07_10-13-09PM-000_CustomizedView1077535285-1.png?auto=format,compress",
+              "id": "MfEyZIjIn7GIAuzm",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "A 3D render of an organ on a computer screen in the workshop office, screen filling most of the frame, 4:3"
+          },
+          {
+            "title": "Production",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "We build the organ in our workshop in Herentals: case, wind system, pipes from our own CNC, front instruments and electronics. During the build you visit the workshop several times to see the status of your organ.",
+                "spans": []
+              }
+            ],
+            "image": {
+              "dimensions": {
+                "width": 1086,
+                "height": 1448
+              },
+              "alt": "A valve panel in production in the Herentals workshop",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/845WRgmgYCeMsVjs_decap-topside-of-a-valve-panel.jpg?auto=format,compress",
+              "id": "845WRgmgYCeMsVjs",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "An organ case under construction in the Herentals workshop, tools and timber around it, wide shot, 4:3"
+          },
+          {
+            "title": "Voicing",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Each pipe and each voice is voiced and tuned so the organ sounds right as a whole, at the volume your room needs.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": "Hands voicing a wooden pipe on the voicing bench, close-up, warm light, 4:3"
+          },
+          {
+            "title": "Delivery",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "We deliver the organ ready to play, with the Virtual Orchestrion player and your music on card. Warranty is always included. Shipping and installation depend on the project, in Belgium or abroad.",
+                "spans": []
+              }
+            ],
+            "image": {
+              "dimensions": {
+                "width": 1448,
+                "height": 1086
+              },
+              "alt": "An organ being loaded into a van for delivery",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/kBEdGGB4p1YG5WYX_decap-frank-decap-antique-organ-loaded-into-van.jpg?auto=format,compress",
+              "id": "kBEdGGB4p1YG5WYX",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "A finished organ being wheeled out of the workshop doors or loaded into a van, 4:3"
+          }
+        ],
+        "primary": {
+          "eyebrow": "How it works",
+          "title": "From first conversation to first dance",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Five steps, and you see your organ before we build it.",
+              "spans": []
+            }
+          ],
+          "tone": "Default"
+        },
+        "id": "site_steps$eba3f665-3ec8-447f-bc99-0ef914d3eecb",
+        "slice_type": "site_steps",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "question": "What does a new organ cost?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Every organ is quoted on its own, because the price follows your choices: the size, pipes or digital sound, the front instruments, the façade. A digital or modular organ costs less than a bespoke pipe organ, and you can reuse pipes or instruments you already have. Send us your starting point and we reply with a first idea and a quote.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Do you also build street organs and fair organs?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Yes, we have built them and can build one for you. But what we normally build are real dance organs, with the dynamic percussion, wind control and volume control that make them play in living rooms and on stage as well as in dance halls.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "What is the difference between 105 and 121 keys?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "The number of keys sets how many notes and ranks the organ has, and so which music it plays as written. With our Virtual Orchestrion player a 105-key organ also plays 121-key music: missing ranks are added virtually.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Should I choose pipes or digital sound?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Pipes give the real sound of wind in wood. Digital sound needs less space and a smaller budget. Pipes and digital combined sit in between. Tell us about the room and the music, and we advise.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Where does the music come from?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "From a digital card in the Virtual Orchestrion player: a whole music library instead of racks of books. Copy-protected arrangements in our shop are coming soon. You can also play the organ live over MIDI.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Do you deliver organs outside Belgium?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Yes. Decap organs play all over the world: in Japan, the US, Australia, Asia and across Europe. Shipping and installation are part of the quote and depend on the project. Warranty is always included.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Can you restore my old organ or add MIDI to it?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Restoration is done by Atelier Frank Decap, Tony's brother. Our MIDI conversion units add MIDI to book and roll organs while the book or roll keeps working.",
+                "spans": [
+                  {
+                    "start": 23,
+                    "end": 42,
+                    "type": "hyperlink",
+                    "data": {
+                      "link_type": "Web",
+                      "url": "/frank-decap"
+                    }
+                  },
+                  {
+                    "start": 64,
+                    "end": 85,
+                    "type": "hyperlink",
+                    "data": {
+                      "link_type": "Web",
+                      "url": "/midi-conversion"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "question": "Are you the same company as Gebroeders Decap in Antwerp?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "No. Both descend from the same founder, Aloïs Decap. Decap Herentals was founded by his son Frans in 1933 and is run today by Tony Decap. The two companies are independent and on friendly terms.",
+                "spans": []
+              }
+            ]
+          }
+        ],
+        "primary": {
+          "eyebrow": "Questions",
+          "title": "Before you order an organ",
+          "intro": [],
+          "tone": "Default"
+        },
+        "id": "site_faq$db5056ef-01cc-43fa-9757-91318c9a6333",
+        "slice_type": "site_faq",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Planning an organ?",
+          "title": "Start with a design and a few choices",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Pick a starting design in the Organ Composer and tell us where the organ will play. We reply with questions and a first idea, without obligation.",
+              "spans": []
+            }
+          ],
+          "price": null,
+          "price_note": null,
+          "primary_cta_label": "Compose your organ",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "d090a9fe-e743-4c1c-8f61-28193c6cd71a",
+            "url": "/organ-composer"
+          },
+          "secondary_cta_label": "Contact the workshop",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "bbb17fc1-d2a1-4cc3-ba4b-a9a3eff34bbd",
+            "url": "/contact"
+          },
+          "image": {},
+          "image_brief": null,
+          "tone": "Dark band"
+        },
+        "id": "site_cta$f5f4a62e-18ac-449c-902c-b2a568d2480e",
+        "slice_type": "site_cta",
+        "slice_label": null
+      }
+    ],
+    "meta_title": "Dance Organs Built to Order | Decap Herentals",
+    "meta_description": "Real dance organs from Decap Herentals, with dynamic percussion, wind pressure per chest and volume control. Modular or bespoke, pipes, digital or both.",
+    "meta_image": {}
+  }
+}

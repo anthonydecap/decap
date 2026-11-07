@@ -1,0 +1,434 @@
+{
+  "id": "aljsHhEAACwADdsb",
+  "uid": "mallet-percussion",
+  "url": null,
+  "type": "page",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22aljsHhEAACwADdsb%22%29+%5D%5D",
+  "tags": [
+    "instrument"
+  ],
+  "first_publication_date": "2026-07-16T14:40:38+0000",
+  "last_publication_date": "2026-10-22T08:15:16+0000",
+  "slugs": [
+    "mallet-percussion"
+  ],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Mallet Percussion",
+        "spans": [],
+        "direction": "ltr"
+      }
+    ],
+    "theme": "decap",
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "mux_hls_url": null,
+          "title": "Mallet Percussion",
+          "subtitle": "Acoustic instruments. Automated.",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Xylophones, metallophones and other mallet instruments can be equipped with MIDI-controlled hammers for automatic playback or live performance.",
+              "spans": [],
+              "direction": "ltr"
+            }
+          ],
+          "primary_button_text": "How it works",
+          "primary_button_link": {
+            "link_type": "Any"
+          },
+          "secondary_button_text": "See the possibilities",
+          "secondary_button_link": {
+            "link_type": "Any"
+          },
+          "footnote": "Built around the instrument, its range and its response.",
+          "overlay_opacity": null,
+          "background_color": "#FFFFFF"
+        },
+        "id": "instrument_header$12cfc3b5-dc74-4c34-920f-e9cddbfd30b4",
+        "slice_type": "instrument_header",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "title": "Every bar. Precisely struck.",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Each note is played by its own electronically controlled hammer. The original bars, resonators and acoustic construction remain responsible for the sound.",
+              "spans": [],
+              "direction": "ltr"
+            }
+          ],
+          "image": {},
+          "background_color": null
+        },
+        "id": "instrument_showcase$af074f1e-2374-4de2-94ce-c3d5a26cfc63",
+        "slice_type": "instrument_showcase",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "item_title": "MIDI input",
+            "item_description": [
+              {
+                "type": "paragraph",
+                "text": "A MIDI file or connected controller provides the note, timing and velocity data.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ],
+            "image": {}
+          },
+          {
+            "item_title": "One actuator per note",
+            "item_description": [
+              {
+                "type": "paragraph",
+                "text": "Each soundbar is paired with an individual spring-loaded solenoid and hammer.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ],
+            "image": {}
+          },
+          {
+            "item_title": "Velocity control",
+            "item_description": [
+              {
+                "type": "paragraph",
+                "text": "PWM control translates MIDI velocity into the force of each physical strike.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ],
+            "image": {}
+          },
+          {
+            "item_title": "Acoustic result",
+            "item_description": [
+              {
+                "type": "paragraph",
+                "text": "The hammer strikes the real bar. The instrument itself produces the sound.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ],
+            "image": {}
+          }
+        ],
+        "primary": {
+          "section_title": [
+            {
+              "type": "paragraph",
+              "text": "One system. Four precise steps.",
+              "spans": [],
+              "direction": "ltr"
+            }
+          ],
+          "background_color": null
+        },
+        "id": "instrument_bento$a5367708-273b-4b52-ad7b-b806a5e57e4b",
+        "slice_type": "instrument_bento",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "title": "From MIDI velocity to physical impact.",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "A dedicated processor converts incoming note and velocity data into controlled hammer movement. With millisecond-scale latency, the instrument responds in real time.",
+              "spans": [],
+              "direction": "ltr"
+            }
+          ],
+          "media_type": "image",
+          "mux_hls_url": null,
+          "image": {},
+          "background_color": null
+        },
+        "id": "instrument_feature$b31d3320-7166-42ce-82a4-1d88665a1c9d",
+        "slice_type": "instrument_feature",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "title": "Wooden bars",
+            "description": [
+              {
+                "type": "paragraph",
+                "text": "Xylophones, marimbas and related instruments retain their own bars and resonators. The automation system is fitted around the existing playing surface.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ],
+            "image": {}
+          },
+          {
+            "title": "Metal bars",
+            "description": [
+              {
+                "type": "paragraph",
+                "text": "Metallophones, glockenspiels and related instruments can use the same individual, velocity-controlled hammer system.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ],
+            "image": {}
+          }
+        ],
+        "primary": {
+          "footnote": "Adapted to the material, range and geometry of the instrument.",
+          "background_color": null
+        },
+        "id": "instrument_split$4f780faa-79ed-4979-a7b9-4f1c97241af1",
+        "slice_type": "instrument_split",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "title": "Automatic playback",
+            "description": [
+              {
+                "type": "paragraph",
+                "text": "Play prepared MIDI arrangements with accurate timing, dynamics and repeatability.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          },
+          {
+            "title": "Live MIDI performance",
+            "description": [
+              {
+                "type": "paragraph",
+                "text": "Connect a MIDI keyboard, sequencer or controller and play the acoustic instrument in real time.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          }
+        ],
+        "primary": {
+          "section_title": "Automatic or live.",
+          "background_color": null
+        },
+        "id": "instrument_applications$69e57a5d-5541-4641-98b2-3fd2aa840e09",
+        "slice_type": "instrument_applications",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "title": "General MIDI compatible",
+            "description": [
+              {
+                "type": "paragraph",
+                "text": "Standard MIDI note and velocity data control the physical hammers.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          },
+          {
+            "title": "Real-time response",
+            "description": [
+              {
+                "type": "paragraph",
+                "text": "Millisecond-scale latency keeps live input and automated arrangements responsive.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          },
+          {
+            "title": "System integration",
+            "description": [
+              {
+                "type": "paragraph",
+                "text": "Connect it to sequencers, MIDI controllers and other Decap or Orchestrionix instruments.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          }
+        ],
+        "primary": {
+          "section_title": "Made for MIDI.",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Use the instrument on its own or integrate it into a larger automated ensemble.",
+              "spans": [],
+              "direction": "ltr"
+            }
+          ],
+          "background_color": null
+        },
+        "id": "instrument_connectivity$a5c9152e-a4c0-4619-8fe8-1f0c3e18b614",
+        "slice_type": "instrument_connectivity",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "background_color": null
+        },
+        "id": "instrument_highlights$d1235386-c6bc-4e8d-8c8d-654529ff7370",
+        "slice_type": "instrument_highlights",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "label": "Sound generation",
+            "value": [
+              {
+                "type": "paragraph",
+                "text": "Acoustic bars and resonators",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          },
+          {
+            "label": "Action",
+            "value": [
+              {
+                "type": "paragraph",
+                "text": "Individual PWM-controlled, spring-loaded solenoids",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          },
+          {
+            "label": "Control",
+            "value": [
+              {
+                "type": "paragraph",
+                "text": "MIDI note and velocity data",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          }
+        ],
+        "primary": {
+          "section_title": "Technical overview",
+          "background_color": null
+        },
+        "id": "instrument_specs$cc4f34a9-ebeb-4833-b196-d8e4e3b080e9",
+        "slice_type": "instrument_specs",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "question": "Which mallet instruments can be automated?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Xylophones, metallophones, glockenspiels, marimbas and other instruments with individually playable bars can be considered. The final system is adapted to the instrument’s size, range and construction.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          },
+          {
+            "question": "Is the sound sampled?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "No. Real hammers strike the instrument’s own bars. The bars and resonators produce the acoustic sound.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          },
+          {
+            "question": "Does it respond to playing velocity?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Yes. The controller converts MIDI velocity into a controlled hammer strike, allowing notes to be played softly or with greater force.",
+                "spans": [],
+                "direction": "ltr"
+              }
+            ]
+          }
+        ],
+        "primary": {
+          "title": "Questions. Answered.",
+          "background_color": null
+        },
+        "id": "instrument_faq$25ede7d1-c821-4c08-813b-24ae31eb4e37",
+        "slice_type": "instrument_faq",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "mux_hls_url": null,
+          "title": "Automate a mallet instrument.",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Each system is designed around the instrument you want to control, from a single xylophone to part of a complete automated ensemble.",
+              "spans": [],
+              "direction": "ltr"
+            }
+          ],
+          "button_text": "Contact Decap",
+          "button_link": {
+            "link_type": "Any"
+          },
+          "footnote": "Custom engineering for acoustic mallet percussion.",
+          "overlay_opacity": "dark",
+          "background_color": "#334A24"
+        },
+        "id": "instrument_cta$bb1ce783-a654-404d-9ee0-0b7810d20f6c",
+        "slice_type": "instrument_cta",
+        "slice_label": null
+      }
+    ],
+    "meta_title": "MIDI Mallet Percussion Automation | Decap",
+    "meta_description": "Automate xylophones, metallophones, marimbas and other mallet percussion with MIDI-controlled, velocity-sensitive solenoid hammers.",
+    "meta_image": {}
+  }
+}

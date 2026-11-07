@@ -1,0 +1,894 @@
+{
+  "id": "ab8zGhEAAJEsnM2M",
+  "uid": "home",
+  "url": null,
+  "type": "page",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ab8zGhEAAJEsnM2M%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2026-03-22T00:09:03+0000",
+  "last_publication_date": "2026-10-26T15:56:15+0000",
+  "slugs": [
+    "decap-herentals"
+  ],
+  "linked_documents": [],
+  "lang": "fr-fr",
+  "alternate_languages": [
+    {
+      "id": "aHUKPBEAACcAdSwD",
+      "type": "page",
+      "lang": "en-us",
+      "uid": "home"
+    }
+  ],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Decap Herentals",
+        "spans": []
+      }
+    ],
+    "theme": "decap",
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "layout": "Split",
+          "eyebrow": "Facteurs d'orgues depuis 1895",
+          "title": "De vrais orgues de danse, construits par des musiciens à Herentals",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Nous sommes d'abord des musiciens. Nous avons appris à travailler le bois pour construire des orgues et, depuis 90 ans, nous faisons jouer l'orgue de danse avec plus de sentiment : dynamique, réglage du volume, expression. Aujourd'hui, nos orgues et nos instruments automatiques jouent dans des salons, des cafés, des salles de danse et sur scène.",
+              "spans": []
+            }
+          ],
+          "primary_cta_label": "Découvrir nos orgues",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "4a400489-5e2e-49b5-b1cf-40f556fcc42b",
+            "url": "/organs"
+          },
+          "secondary_cta_label": "Instruments automatiques",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "498e9df3-2892-46c0-bdc4-3f530d8e56c4",
+            "url": "/instruments"
+          },
+          "note": null,
+          "image": {
+            "dimensions": {
+              "width": 1448,
+              "height": 1086
+            },
+            "alt": "The Belcanto dance organ by Decap on stage in a Belgian cultural centre",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/k8hlUvOjGOJlMMgW_decap-balzaal-der-gebroken-harten-organ.jpg?auto=format,compress",
+            "id": "k8hlUvOjGOJlMMgW",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "mux_video": null,
+          "image_brief": "Tony Decap in the Herentals workshop next to a finished organ façade, portrait 4:5",
+          "image_shape": null,
+          "image_fit": null,
+          "image_position": null,
+          "image_zoom": null,
+          "overlay": null,
+          "blur": null,
+          "dim": null,
+          "color_effect": null,
+          "vignette": null,
+          "slow_zoom": null,
+          "tone": "Default"
+        },
+        "id": "site_hero$901c2cf7-7e90-4ea3-adab-e58a3784df69",
+        "slice_type": "site_hero",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "size": "Full",
+            "style": "Light",
+            "eyebrow": "Orgues",
+            "title": "De vrais orgues de danse, construits sur commande.",
+            "tagline": "Des orgues faits pour danser, sortis de notre atelier de Herentals. Modulaires ou entièrement sur mesure.",
+            "note": null,
+            "primary_label": "En savoir plus",
+            "primary_link": {
+              "link_type": "Web",
+              "key": "9eeb4953-fda2-4f40-aef4-b2d5028287dc",
+              "url": "/organs"
+            },
+            "secondary_label": "Composer votre orgue",
+            "secondary_link": {
+              "link_type": "Web",
+              "key": "e0057834-b210-4e53-9290-39897fea1486",
+              "url": "/organ-composer"
+            },
+            "image": {
+              "dimensions": {
+                "width": 1672,
+                "height": 941
+              },
+              "alt": "Tony and François Decap with a dance organ in the Herentals workshop",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/U2LTUoM0bqWiYfBU_decap-tony-decap-and-francois-decap-belcanto-orgel-without-facade.jpg?auto=format,compress",
+              "id": "U2LTUoM0bqWiYfBU",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_fit": "Cover",
+            "image_position": "Bottom",
+            "image_size": "100%",
+            "overlay": "Strong",
+            "blur": "None",
+            "dim": "None",
+            "color_effect": "None",
+            "vignette": false,
+            "hover_zoom": false,
+            "slow_zoom": false,
+            "image_brief": "A finished Decap dance organ on stage, wide shot"
+          },
+          {
+            "size": "Half",
+            "style": "Light",
+            "eyebrow": "Instruments automatiques",
+            "title": "Un vrai accordéon. Qui joue tout seul.",
+            "tagline": "Accordéon, tuyaux, batterie et xylophones, joués par MIDI.",
+            "note": null,
+            "primary_label": "En savoir plus",
+            "primary_link": {
+              "link_type": "Web",
+              "key": "15ea559b-088a-4af4-8831-5ff07e67855b",
+              "url": "/instruments"
+            },
+            "secondary_label": "Accordion Pedestal",
+            "secondary_link": {
+              "link_type": "Web",
+              "key": "f2517be1-f58e-4a58-aeab-2a14d10ebd3a",
+              "url": "/accordion"
+            },
+            "image": {
+              "dimensions": {
+                "width": 1536,
+                "height": 1024
+              },
+              "alt": "A self-playing red accordion on a pedestal, on stage with a pianist",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/hHExiFsZ45EZ_u8s_decap-concert-pianist-and-red-accordion.jpg?auto=format,compress",
+              "id": "hHExiFsZ45EZ_u8s",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_fit": "Cover",
+            "image_position": "Center",
+            "image_size": "100%",
+            "overlay": "Strong",
+            "blur": "None",
+            "dim": "None",
+            "color_effect": "None",
+            "vignette": false,
+            "hover_zoom": false,
+            "slow_zoom": false,
+            "image_brief": "Accordion Pedestal on stage"
+          },
+          {
+            "size": "Half",
+            "style": "Dark",
+            "eyebrow": "Tuyaux d'orgue",
+            "title": "Tout tuyau en bois. En une semaine.",
+            "tagline": "Fraisés sur notre propre CNC, selon nos diapasons ou les vôtres.",
+            "note": null,
+            "primary_label": "En savoir plus",
+            "primary_link": {
+              "link_type": "Web",
+              "key": "fa1fc1ee-d585-4a74-a336-805369fb68c1",
+              "url": "/organ-pipes"
+            },
+            "secondary_label": "Commander des tuyaux",
+            "secondary_link": {
+              "link_type": "Web",
+              "key": "6f3ec0d4-20ce-4785-8be3-20409cb8205d",
+              "url": "/organ-pipes#contact-form"
+            },
+            "image": {
+              "dimensions": {
+                "width": 643,
+                "height": 428
+              },
+              "alt": "Rows of wooden organ pipe parts from the CNC",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/RwmAAnCR_5hEmYo5_20221008_mohaibalazs_074-3-2.png?auto=format,compress",
+              "id": "RwmAAnCR_5hEmYo5",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_fit": "Cover",
+            "image_position": "Bottom",
+            "image_size": "100%",
+            "overlay": "Strong",
+            "blur": "None",
+            "dim": "None",
+            "color_effect": "None",
+            "vignette": false,
+            "hover_zoom": false,
+            "slow_zoom": false,
+            "image_brief": "New wooden pipe parts from the CNC"
+          },
+          {
+            "size": "Full",
+            "style": "SmartValve",
+            "eyebrow": "SmartValve",
+            "title": "Chaque tuyau. Sa propre voix.",
+            "tagline": "Un processeur dans chaque soupape. Vent, dynamique et jeux, réglés tuyau par tuyau.",
+            "note": null,
+            "primary_label": "En savoir plus",
+            "primary_link": {
+              "link_type": "Web",
+              "key": "d8728124-70a0-4bf8-877e-99f52a45404d",
+              "url": "/smartvalve"
+            },
+            "secondary_label": "Pour les facteurs d'orgues",
+            "secondary_link": {
+              "link_type": "Web",
+              "key": "6e80ed89-9a18-43b6-98df-1ed8d41c7e83",
+              "url": "/smartvalve-for-organ-builders"
+            },
+            "image": {
+              "dimensions": {
+                "width": 1672,
+                "height": 941
+              },
+              "alt": "smARTvalves with their electronics",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/IWKJJma9LmOjjrPe_decap-smartvalve-samples.jpg?auto=format,compress",
+              "id": "IWKJJma9LmOjjrPe",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_fit": "Cover",
+            "image_position": "Center",
+            "image_size": "100%",
+            "overlay": "Strong",
+            "blur": "None",
+            "dim": "None",
+            "color_effect": "None",
+            "vignette": false,
+            "hover_zoom": false,
+            "slow_zoom": false,
+            "image_brief": "SmartValves mounted in their wind chest"
+          },
+          {
+            "size": "Full",
+            "style": "Orchestrionix",
+            "eyebrow": "Brass Core",
+            "title": "Une vraie trompette. Jouée par le son.",
+            "tagline": "Une embouchure à bobine mobile pour trompette et trombone. Sans modification de l'instrument.",
+            "note": "2 599 € · expédié depuis le stock",
+            "primary_label": "En savoir plus",
+            "primary_link": {
+              "link_type": "Web",
+              "key": "061419d1-4cda-4df2-b945-2daaab8797ea",
+              "url": "/brass-core"
+            },
+            "secondary_label": "Commander",
+            "secondary_link": {
+              "link_type": "Web",
+              "key": "7ebcfcb1-be65-463d-9563-66f3fe419071",
+              "url": "/brass-core#contact-form"
+            },
+            "image": {
+              "dimensions": {
+                "width": 1600,
+                "height": 1200
+              },
+              "alt": "Brass Core on a trombone",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/aIu906Tt2nPbZn2l_TROMBONE-Samenstelling_01_2023-Oct-16_10-42-03PM-000_CustomizedView21586800008.png?auto=format,compress",
+              "id": "aIu906Tt2nPbZn2l",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_fit": "Contain",
+            "image_position": "Bottom",
+            "image_size": "100%",
+            "overlay": "None",
+            "blur": "None",
+            "dim": "None",
+            "color_effect": "None",
+            "vignette": false,
+            "hover_zoom": false,
+            "slow_zoom": false,
+            "image_brief": "Brass Core on a trombone, dark background"
+          },
+          {
+            "size": "Half",
+            "style": "Atelier",
+            "eyebrow": "Atelier Frank Decap",
+            "title": "Des orgues historiques, restaurés à la main.",
+            "tagline": "Restauration et installation MIDI, sur le même site à Herentals.",
+            "note": null,
+            "primary_label": "En savoir plus",
+            "primary_link": {
+              "link_type": "Web",
+              "key": "2bd1ddd3-4c82-4f59-ab80-c2fc0f14bc84",
+              "url": "/frank-decap"
+            },
+            "secondary_label": "Envoyez des photos de votre orgue",
+            "secondary_link": {
+              "link_type": "Web",
+              "key": "eba3f736-e696-47ac-b082-c1125f213034",
+              "url": "/frank-decap#contact-form"
+            },
+            "image": {
+              "dimensions": {
+                "width": 1448,
+                "height": 1086
+              },
+              "alt": "Restoration in progress in Atelier Frank Decap",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/jb6dI5hKHP7T_8l0_decap-frank-decap-organ-restoration-workshop-in-warm-light.jpg?auto=format,compress",
+              "id": "jb6dI5hKHP7T_8l0",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_fit": "Cover",
+            "image_position": "Center",
+            "image_size": "100%",
+            "overlay": "Strong",
+            "blur": "None",
+            "dim": "None",
+            "color_effect": "None",
+            "vignette": false,
+            "hover_zoom": false,
+            "slow_zoom": false,
+            "image_brief": "Frank Decap at work in his atelier"
+          },
+          {
+            "size": "Half",
+            "style": "Light",
+            "eyebrow": "Logiciels",
+            "title": "Un seul lecteur pour tout l'ensemble.",
+            "tagline": "Virtual Orchestrion et MIDIMapper, dans la boutique Decap.",
+            "note": null,
+            "primary_label": "En savoir plus",
+            "primary_link": {
+              "link_type": "Web",
+              "key": "431a5bff-6758-404a-88b1-53ad13b85b09",
+              "url": "/software"
+            },
+            "secondary_label": "Visiter la boutique",
+            "secondary_link": {
+              "link_type": "Web",
+              "key": "d8a68364-ffc1-4c0e-bb81-a5bb5be78965",
+              "url": "/shop"
+            },
+            "image": {
+              "dimensions": {
+                "width": 644,
+                "height": 322
+              },
+              "alt": "Virtual Orchestrion on two screens",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/5KDblOy3MRiPEXhf_Virtual-Organ-5-1.png?auto=format,compress",
+              "id": "5KDblOy3MRiPEXhf",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_fit": "Contain",
+            "image_position": "Bottom",
+            "image_size": "85%",
+            "overlay": "None",
+            "blur": "None",
+            "dim": "None",
+            "color_effect": "None",
+            "vignette": false,
+            "hover_zoom": false,
+            "slow_zoom": false,
+            "image_brief": "Virtual Orchestrion on two screens"
+          }
+        ],
+        "primary": {
+          "tone": "Default"
+        },
+        "id": "site_tiles$6586977e-f2eb-4800-83a9-b98781bf61ee",
+        "slice_type": "site_tiles",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "image": {
+              "dimensions": {
+                "width": 1000,
+                "height": 1778
+              },
+              "alt": "Accordion Pedestal with a real accordion",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/WMX-_f1HT3Qfauj9_Products-AccordionPedestal-05.jpg?auto=format,compress",
+              "id": "WMX-_f1HT3Qfauj9",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Accordion Pedestal in a living room at a customer's home, warm evening light, 4:3",
+            "image_position": "Center",
+            "eyebrow": "À la maison",
+            "title": "Un vrai accordéon au salon.",
+            "link": {
+              "link_type": "Web",
+              "key": "b18d5215-888f-420d-b1d9-d7c213114797",
+              "url": "/accordion"
+            }
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 875,
+                "height": 1200
+              },
+              "alt": "Pearl-white Decap orchestrion with accordion and drums",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/c4sObaWKiVQwFwlF_Products-Orchestrion-Complete-Notenkraker-01-1.jpg?auto=format,compress",
+              "id": "c4sObaWKiVQwFwlF",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Decap organ in a café or bar with guests, 4:3",
+            "image_position": "Center",
+            "eyebrow": "Bars et cafés",
+            "title": "Il joue toute la soirée, tout seul.",
+            "link": {
+              "link_type": "Web",
+              "key": "721f3554-f3ba-47b3-981a-2eb40fa1f043",
+              "url": "/organs"
+            }
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 513,
+                "height": 373
+              },
+              "alt": "A Decap dance organ with drums, accordions and pipes on a lit stage",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/rUxhtnp7FEzGiG6o_decap-beat-machine-dance-organ.jpg?auto=format,compress",
+              "id": "rUxhtnp7FEzGiG6o",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Dance organ in a dance hall during an evening, 4:3",
+            "image_position": "Center",
+            "eyebrow": "Salles de danse et événements",
+            "title": "À la taille de la salle, du café au festival.",
+            "link": {
+              "link_type": "Web",
+              "key": "660d2d8d-957f-4688-9d38-11b3c1510778",
+              "url": "/organs"
+            }
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 815,
+                "height": 542
+              },
+              "alt": "The orchestrion room at the House of Music Hungary, Budapest",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/JHcG9SGmqACS5-h1_20221008_mohaibalazs_074-1-1.jpeg?auto=format,compress",
+              "id": "JHcG9SGmqACS5-h1",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Decap orchestrion in a museum or on a stage, 4:3",
+            "image_position": "Center",
+            "eyebrow": "Musées et scènes",
+            "title": "En tournée et en exposition.",
+            "link": {
+              "link_type": "Web",
+              "key": "0f322f05-c9c6-4b3e-abce-eed70c6952de",
+              "url": "/work"
+            }
+          }
+        ],
+        "primary": {
+          "eyebrow": "Où ils jouent",
+          "title": "Au salon, au café et dans les salles de danse",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "La plupart des orgues et instruments Decap appartiennent à des particuliers. Ils jouent à la maison, dans un café ou un bar, dans une salle de danse, partout dans le monde.",
+              "spans": []
+            }
+          ],
+          "tone": "Default"
+        },
+        "id": "site_carousel$58540fea-7883-4bec-93ad-e1a8b9b3cd3f",
+        "slice_type": "site_carousel",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "D'abord des musiciens",
+          "title": "Des orgues qui jouent avec sentiment",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Un orgue traditionnel frappe chaque tambour avec la même force, et chaque tuyau est simplement ouvert ou fermé. Sur un orgue Decap, la baguette frappe fort ou doucement, la pression du vent change d'un sommier à l'autre, des jeux jouent en vibrato et le volume de tout l'orgue se règle. smARTvalve pousse ce principe jusqu'à chaque tuyau.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "C'est pourquoi un orgue Decap a sa place dans un salon comme sur une scène de théâtre ou dans un set de DJ. Avec la technique mécanique traditionnelle, ce serait impossible.",
+              "spans": []
+            }
+          ],
+          "image": {},
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Close-up of the drum kit in the front of a Decap organ mid-hit, stick in motion, warm stage light, 4:3",
+          "media_side": "Image right",
+          "aspect": "Landscape 4:3",
+          "cta_label": "Pourquoi un Decap joue autrement",
+          "cta_link": {
+            "link_type": "Web",
+            "key": "224bdc74-0f41-47fb-9090-4e37399786ca",
+            "url": "/organs"
+          },
+          "tone": "Tinted"
+        },
+        "id": "site_text_media$2dc8360a-c7d5-4283-9968-a4bdbc461f17",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "year": "1895",
+            "title": "Aloïs Decap se lance dans les orgues",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Il loue et vend de petits orgues dans la région d'Anvers, livrés en charrette à chien.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null,
+            "highlight": false
+          },
+          {
+            "year": "1933",
+            "title": "Frans Decap fonde Decap Herentals",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "La même année, les premiers accordéons automatiques apparaissent sur les orgues Decap.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null,
+            "highlight": true
+          },
+          {
+            "year": "1977",
+            "title": "Le premier orgue de danse numérique",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "François remplace les tuyaux par le son numérique : les cafés et salles de danse aux budgets plus modestes peuvent avoir un orgue.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null,
+            "highlight": false
+          },
+          {
+            "year": "2000",
+            "title": "Les premiers à apporter le MIDI à l'orgue",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Tony Decap met toute une bibliothèque musicale sur une seule carte, à la place des rayonnages de cartons perforés. Aujourd'hui, presque tous les orgues anciens sont convertis au MIDI.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null,
+            "highlight": false
+          },
+          {
+            "year": "2016",
+            "title": "Des tuyaux sortis de notre propre CNC",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Nous fraisons des tuyaux d'orgue sur une CNC 5 axes avec PipeCreator, un logiciel que nous avons écrit nous-mêmes.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null,
+            "highlight": false
+          },
+          {
+            "year": "2025",
+            "title": "Le premier synthétiseur à vent",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "SmartValve dans un orgue d'église transportable : chaque tuyau commandé individuellement.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null,
+            "highlight": true
+          }
+        ],
+        "primary": {
+          "eyebrow": "Depuis 1895",
+          "title": "Chaque génération a réinventé l'orgue",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Aloïs Decap a commencé avec quelques orgues en location. Son fils Frans a fondé Decap Herentals. François est passé au numérique, Tony a apporté le MIDI et SmartValve. Lire toute l'histoire.",
+              "spans": [
+                {
+                  "start": 168,
+                  "end": 189,
+                  "type": "hyperlink",
+                  "data": {
+                    "link_type": "Web",
+                    "url": "/about"
+                  }
+                }
+              ]
+            }
+          ],
+          "tone": "Default"
+        },
+        "id": "site_timeline$87742ac0-9202-4ff6-b699-82034ef8b378",
+        "slice_type": "site_timeline",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "artist_name": "Guido Belcanto",
+            "artist_role": null,
+            "artist_portrait": {
+              "dimensions": {
+                "width": 400,
+                "height": 500
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/aaHWjMFoBIGEg7_m_Guido_Belcanto_189.jpg?auto=format%2Ccompress&rect=221%2C0%2C504%2C630&w=400&h=500",
+              "id": "aaHWjMFoBIGEg7_m",
+              "edit": {
+                "x": 221,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            }
+          },
+          {
+            "artist_name": "Gamut Inc",
+            "artist_role": null,
+            "artist_portrait": {
+              "dimensions": {
+                "width": 400,
+                "height": 500
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/aaHXYMFoBIGEg8AB_voy_9566-Kopie-717x1024.jpg?auto=format%2Ccompress&rect=0%2C64%2C717%2C896&w=400&h=500",
+              "id": "aaHXYMFoBIGEg8AB",
+              "edit": {
+                "x": 0,
+                "y": 64,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            }
+          },
+          {
+            "artist_name": "Maxim De Nuc",
+            "artist_role": null,
+            "artist_portrait": {
+              "dimensions": {
+                "width": 400,
+                "height": 500
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/aaHWusFoBIGEg7_r_Maxime-Denuc-%C2%A9-Andrea-Avezzu%CC%80--courtesy-of-La-Biennale-di-Venezia---Large-.jpg?auto=format%2Ccompress&rect=157%2C0%2C864%2C1080&w=400&h=500",
+              "id": "aaHWusFoBIGEg7_r",
+              "edit": {
+                "x": 157,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            }
+          },
+          {
+            "artist_name": "Yves Rechsteiner",
+            "artist_role": null,
+            "artist_portrait": {
+              "dimensions": {
+                "width": 400,
+                "height": 500
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/aaHY68FoBIGEg8DN_564611467_2572371343115470_6021553905859625737_n.jpg?auto=format%2Ccompress&rect=467%2C0%2C1066%2C1333&w=400&h=500",
+              "id": "aaHY68FoBIGEg8DN",
+              "edit": {
+                "x": 467,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            }
+          },
+          {
+            "artist_name": "Stephan Eicher",
+            "artist_role": null,
+            "artist_portrait": {
+              "dimensions": {
+                "width": 400,
+                "height": 500
+              },
+              "alt": null,
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/aaHXM8FoBIGEg7_5_489239898_1208176334644221_2497212205538778467_n.jpg?auto=format%2Ccompress&rect=467%2C0%2C1066%2C1333&w=400&h=500",
+              "id": "aaHXM8FoBIGEg7_5",
+              "edit": {
+                "x": 467,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            }
+          },
+          {
+            "artist_name": "Pat Metheny",
+            "artist_role": null,
+            "artist_portrait": {}
+          },
+          {
+            "artist_name": "Walter Hus",
+            "artist_role": null,
+            "artist_portrait": {}
+          },
+          {
+            "artist_name": "Circus Ronaldo",
+            "artist_role": null,
+            "artist_portrait": {}
+          }
+        ],
+        "primary": {
+          "title": "Aussi sur scène",
+          "description": [
+            {
+              "type": "paragraph",
+              "text": "Nos orgues et instruments jouent surtout à la maison, dans les bars et les salles de danse. Ces artistes les emmènent sur scène.",
+              "spans": []
+            }
+          ],
+          "background_color": null
+        },
+        "id": "home_artists$5677c8e2-76cd-44a1-b6f1-16634f3ce4d5",
+        "slice_type": "home_artists",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Un projet d'orgue ?",
+          "title": "Dites-nous où il jouera",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Choisissez un modèle de départ et quelques options dans l'Organ Composer. Nous vous répondons avec des questions et une première idée, sans engagement.",
+              "spans": []
+            }
+          ],
+          "price": null,
+          "price_note": null,
+          "primary_cta_label": "Composer votre orgue",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "b7494ca5-42cc-435d-a5ac-b16f66a7958a",
+            "url": "/organ-composer"
+          },
+          "secondary_cta_label": "Contacter l'atelier",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "2a2772c4-e5fd-4963-a121-a1c9a91efc34",
+            "url": "/contact"
+          },
+          "image": {},
+          "image_brief": null,
+          "tone": "Dark band"
+        },
+        "id": "site_cta$cc4599c5-fdff-4b6d-9250-ee70b2981788",
+        "slice_type": "site_cta",
+        "slice_label": null
+      }
+    ],
+    "meta_title": "Orgues de danse, faits par des musiciens | Decap Herentals",
+    "meta_description": "De vrais orgues de danse faits à Herentals par des musiciens depuis 1933 : dynamique, volume réglable, orchestrions, instruments automatiques et smARTvalve.",
+    "meta_image": {}
+  }
+}

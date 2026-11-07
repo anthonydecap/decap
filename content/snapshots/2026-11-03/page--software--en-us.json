@@ -1,0 +1,338 @@
+{
+  "id": "atc3gBEAACsAavPo",
+  "uid": "software",
+  "url": null,
+  "type": "page",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22atc3gBEAACsAavPo%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2026-10-20T09:51:02+0000",
+  "last_publication_date": "2026-10-29T21:41:37+0000",
+  "slugs": [
+    "software"
+  ],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [
+    {
+      "id": "atdvxhEAACgAa15d",
+      "type": "page",
+      "lang": "fr-fr",
+      "uid": "software"
+    }
+  ],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Software",
+        "spans": []
+      }
+    ],
+    "theme": "decap",
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "layout": "Split",
+          "eyebrow": "Software",
+          "title": "Software for orchestrions, organs and arrangers",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "All our software is developed in-house: from the CNC programs that mill our pipes to the software that drives our instruments. Virtual Orchestrion plays them. MIDIMapper helps arrangers hear what they write before it reaches the organ.",
+              "spans": []
+            }
+          ],
+          "primary_cta_label": "Virtual Orchestrion",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "93d485b1-a836-4a50-ae9d-865973270d50",
+            "url": "/virtual-orchestrion"
+          },
+          "secondary_cta_label": "MIDIMapper",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "00d725db-09ce-404c-8539-d45611f0a200",
+            "url": "/midimapper"
+          },
+          "note": null,
+          "image": {
+            "dimensions": {
+              "width": 644,
+              "height": 322
+            },
+            "alt": "Virtual Orchestrion on two screens",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/5KDblOy3MRiPEXhf_Virtual-Organ-5-1.png?auto=format,compress",
+            "id": "5KDblOy3MRiPEXhf",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "mux_video": null,
+          "image_brief": "Laptop on a workbench showing Virtual Orchestrion, an organ façade out of focus behind it, portrait 4:5",
+          "image_shape": "Default",
+          "image_fit": "Auto",
+          "image_position": "Center",
+          "image_zoom": "100%",
+          "overlay": "Medium",
+          "blur": "None",
+          "dim": "None",
+          "color_effect": "None",
+          "vignette": false,
+          "slow_zoom": false,
+          "tone": "Default"
+        },
+        "id": "site_hero$e6f6d662-d050-40ba-b796-a8eabf86e24f",
+        "slice_type": "site_hero",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "image": {
+              "dimensions": {
+                "width": 542,
+                "height": 382
+              },
+              "alt": "Virtual Orchestrion orchestrion and book view",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/mGTAmWLeCf3l5ES5_Group-77.png?auto=format,compress",
+              "id": "mGTAmWLeCf3l5ES5",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Screenshot of Virtual Orchestrion's animated orchestrion view, 4:3",
+            "tag": "Player",
+            "title": "Virtual Orchestrion",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "The player for Decap instruments and QRS pianos. Adds missing ranks virtually, so a smaller organ plays larger scales. Hosts up to 8 VSTi and 8 DXi instruments. Available in the shop.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": "Virtual Orchestrion",
+            "link": {
+              "link_type": "Web",
+              "key": "85bc5795-562c-4810-962e-071290469009",
+              "url": "/virtual-orchestrion"
+            }
+          },
+          {
+            "image": {
+              "dimensions": {
+                "width": 497,
+                "height": 312
+              },
+              "alt": "MIDIMapper map editor",
+              "copyright": null,
+              "url": "https://images.prismic.io/decap/CH5CnU7qUNtGlP5__MidiMapperLaptop1-1.png?auto=format,compress",
+              "id": "CH5CnU7qUNtGlP5_",
+              "edit": {
+                "x": 0,
+                "y": 0,
+                "zoom": 1,
+                "background": "transparent"
+              }
+            },
+            "image_brief": "Screenshot of the MIDIMapper map editor on a laptop, 4:3",
+            "tag": "For arrangers",
+            "title": "MIDIMapper",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Routes MIDI from your DAW to real organ samples, so you hear an arrangement as registrations, not General MIDI sounds. Up to 12 layers per map, 64 channels and WAV export.",
+                "spans": []
+              }
+            ],
+            "price": "€ 150 excl. VAT",
+            "link_label": "MIDIMapper and free trial",
+            "link": {
+              "link_type": "Web",
+              "key": "ee20c791-0d41-4558-9cce-4e9de49e4c1a",
+              "url": "/midimapper"
+            }
+          }
+        ],
+        "primary": {
+          "eyebrow": "Two programs",
+          "title": "One for playing, one for arranging",
+          "intro": [],
+          "columns": "2",
+          "card_style": "Image cards",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_card_grid$4674eaa5-4bdb-47a5-8810-cd187c256a4b",
+        "slice_type": "site_card_grid",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Music shop",
+          "title": "Arrangements for the player: coming soon",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Soon our shop will also sell arrangements for Decap instruments, from our own library and from independent arrangers. Every file will be copy-protected and formatted for Virtual Orchestrion, so it plays on the instruments you have connected.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "Arranging for Decap instruments? Register your interest.",
+              "spans": [
+                {
+                  "start": 33,
+                  "end": 55,
+                  "type": "hyperlink",
+                  "data": {
+                    "link_type": "Web",
+                    "url": "/contact"
+                  }
+                }
+              ]
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 497,
+              "height": 312
+            },
+            "alt": "Virtual Orchestrion book view on a laptop",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/VGZHmKnvMUT6nZvo_VirtualPlayerLaptop1-1.png?auto=format,compress",
+            "id": "VGZHmKnvMUT6nZvo",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Virtual Orchestrion playing an arrangement in book view, screen filling the frame, 4:3",
+          "media_side": "Image right",
+          "aspect": "Landscape 4:3",
+          "cta_label": "Visit the shop",
+          "cta_link": {
+            "link_type": "Web",
+            "key": "de4aaa19-e72f-443b-902b-29f3f04c9523",
+            "url": "/shop"
+          },
+          "tone": "Tinted"
+        },
+        "id": "site_text_media$23051219-9251-4966-b402-cc45103833a7",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "point": "Wooden pipes designed and sent to the CNC"
+          },
+          {
+            "point": "Pipe panels and pipes in 3D in PipeViewer"
+          },
+          {
+            "point": "Live pressure curves and diagnostics for every smARTvalve"
+          }
+        ],
+        "primary": {
+          "eyebrow": "In our workshop",
+          "title": "PipeCreator: from pipe design to every valve",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "PipeCreator is the program we use ourselves. It designs our wooden organ pipes and sends the G-code straight to our 5-axis CNC. In its 3D view, PipeViewer, we design the pipe panels for a smARTvalve organ and the pipes on them, so customers see their own organ in 3D before it is built.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "Once the organ plays, PipeCreator shows a live pressure curve for every pipe next to the expected curve, and a diagnostics table for all smARTvalves.",
+              "spans": []
+            }
+          ],
+          "image": {},
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "PipeViewer on screen: a 3D pipe panel with smARTvalves and wooden pipes, 4:3",
+          "media_side": "Image left",
+          "aspect": "Landscape 4:3",
+          "cta_label": "smARTvalve for organ builders",
+          "cta_link": {
+            "link_type": "Web",
+            "key": "2e68dafa-7827-4524-9a07-b0f239ed6dbb",
+            "url": "/smartvalve-for-organ-builders"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$a9a5c229-d6ff-43b1-b109-abfbf21eb485",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Arranging for organ?",
+          "title": "Try MIDIMapper for free",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Download the trial, connect it to your DAW and hear your arrangement with real organ samples.",
+              "spans": []
+            }
+          ],
+          "price": "€ 150",
+          "price_note": "excl. VAT, full licence",
+          "primary_cta_label": "Get the free trial",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "6450f35a-59fe-42ef-beaf-b73a6f4e822e",
+            "url": "/software/midi-mapper"
+          },
+          "secondary_cta_label": "About MIDIMapper",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "a42cc31c-6705-4652-93a1-97b91aa43bb2",
+            "url": "/midimapper"
+          },
+          "image": {},
+          "image_brief": null,
+          "tone": "Dark band"
+        },
+        "id": "site_cta$943bf7a9-d374-48a5-9038-58f4d8b17abb",
+        "slice_type": "site_cta",
+        "slice_label": null
+      }
+    ],
+    "meta_title": "Organ & Orchestrion Software | Decap Herentals",
+    "meta_description": "Virtual Orchestrion plays your Decap instruments and QRS pianos. MIDIMapper lets arrangers hear organ arrangements with real organ samples. Free trial.",
+    "meta_image": {}
+  }
+}

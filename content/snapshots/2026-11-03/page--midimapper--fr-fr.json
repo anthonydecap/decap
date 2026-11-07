@@ -1,0 +1,401 @@
+{
+  "id": "atdvthEAAC0Aa14y",
+  "uid": "midimapper",
+  "url": null,
+  "type": "page",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22atdvthEAAC0Aa14y%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2026-10-20T15:03:00+0000",
+  "last_publication_date": "2026-10-22T08:15:23+0000",
+  "slugs": [
+    "midimapper"
+  ],
+  "linked_documents": [],
+  "lang": "fr-fr",
+  "alternate_languages": [
+    {
+      "id": "atc3jhEAACwAavQb",
+      "type": "page",
+      "lang": "en-us",
+      "uid": "midimapper"
+    }
+  ],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "MIDIMapper",
+        "spans": []
+      }
+    ],
+    "theme": "decap",
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "layout": "Split",
+          "eyebrow": "MIDIMapper, pour les arrangeurs",
+          "title": "Écoutez votre arrangement pour orgue avec de vrais échantillons d'orgue",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Arranger pour un orgue de rue ou un orgue à tuyaux, c'est souvent écrire à l'aveugle jusqu'à ce que la musique arrive sur l'instrument. MIDIMapper prend le MIDI de votre logiciel d'arrangement, l'achemine selon vos propres maps et le joue avec de vrais échantillons d'orgue. Ce que vous entendez en arrangeant est bien plus proche de ce que l'orgue jouera.",
+              "spans": []
+            }
+          ],
+          "primary_cta_label": "Version d'essai gratuite dans la boutique",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "55e44496-9cf9-423a-85e5-1b0fdd9752f0",
+            "url": "/software/midi-mapper"
+          },
+          "secondary_cta_label": "Tous les logiciels Decap",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "178ed15c-7875-438a-a398-ecb5fc6ffcea",
+            "url": "/software"
+          },
+          "note": "Licence complète 150 € HTVA. Version d'essai gratuite et licence dans la boutique.",
+          "image": {
+            "dimensions": {
+              "width": 542,
+              "height": 382
+            },
+            "alt": "MIDIMapper on a laptop and a desktop screen",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/QP_8CY7X2Aoayhej_midimapper-desktop.png?auto=format,compress",
+            "id": "QP_8CY7X2Aoayhej",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "mux_video": null,
+          "image_brief": "Laptop with the MIDIMapper map editor open next to a MIDI keyboard on a desk, portrait 4:5",
+          "image_shape": null,
+          "image_fit": null,
+          "image_position": null,
+          "image_zoom": null,
+          "overlay": null,
+          "blur": null,
+          "dim": null,
+          "color_effect": null,
+          "vignette": null,
+          "slow_zoom": null,
+          "tone": "Default"
+        },
+        "id": "site_hero$e3fcc413-0cdd-4bb3-9e6a-4b1b6e9b240f",
+        "slice_type": "site_hero",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Ce qu'il fait",
+          "title": "Routage MIDI et lecture d'orgue dans un seul programme",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "MIDIMapper lit une entrée MIDI et envoie chaque note vers une ou plusieurs sorties, selon des maps que vous définissez. Une map peut superposer jusqu'à 12 couches : vous entendez les registrations en contexte, une Jazz Flute avec et sans trémolo, ou un woodblock ajouté sur une note.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "Comme le son vient de vrais échantillons d'orgue et non de sons General MIDI, vous jugez l'équilibre et la registration pendant que vous arrangez, et non après la perforation du carton.",
+              "spans": []
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 497,
+              "height": 312
+            },
+            "alt": "MIDIMapper map editor",
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/CH5CnU7qUNtGlP5__MidiMapperLaptop1-1.png?auto=format,compress",
+            "id": "CH5CnU7qUNtGlP5_",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Screenshot of a MIDIMapper map with several layers visible, 4:3",
+          "media_side": "Image right",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$11bfa58b-2abc-41a0-8f72-f6b8bbcdc9c5",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "title": "Connecter votre DAW",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Envoyez le MIDI de votre logiciel d'arrangement via un câble MIDI virtuel comme loopMIDI, et choisissez les sorties. MIDIMapper garde cette configuration pour la prochaine fois.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null
+          },
+          {
+            "title": "Créer votre map",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Dans le MapCreator intégré, attribuez les notes entrantes aux canaux de sortie et aux registrations. Affinez la map au fur et à mesure.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null
+          },
+          {
+            "title": "Écouter et ajuster",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Jouez l'arrangement avec les échantillons d'orgue. Corrigez la durée des notes en millisecondes pour correspondre au carton et à la réponse de l'orgue.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null
+          },
+          {
+            "title": "Enregistrer et partager",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Enregistrez la sortie et exportez-la en fichier WAV pour la réécouter ou la partager.",
+                "spans": []
+              }
+            ],
+            "image": {},
+            "image_brief": null
+          }
+        ],
+        "primary": {
+          "eyebrow": "Comment ça marche",
+          "title": "Configurez une fois, puis arrangez",
+          "intro": [],
+          "tone": "Tinted"
+        },
+        "id": "site_steps$4c53d7ae-ab53-4926-8a18-738fbafb51e4",
+        "slice_type": "site_steps",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "label": "Son",
+            "value": "De vrais échantillons d'orgue à tuyaux ; échantillons personnalisés possibles",
+            "note": null
+          },
+          {
+            "label": "MapCreator",
+            "value": "Éditeur intégré pour votre propre routage MIDI",
+            "note": null
+          },
+          {
+            "label": "Couches",
+            "value": "Jusqu'à 12 par map, pour superposer les registrations",
+            "note": null
+          },
+          {
+            "label": "Commutateurs",
+            "value": "Commutateurs de registration et commutateurs de notes",
+            "note": null
+          },
+          {
+            "label": "Sorties",
+            "value": "2 vers les modules de son internes, 2 librement routables",
+            "note": null
+          },
+          {
+            "label": "Canaux",
+            "value": "64 adressables (4 × 16)",
+            "note": null
+          },
+          {
+            "label": "Répétition",
+            "value": "Effet mandoline avec vitesse et rapport cyclique réglables",
+            "note": null
+          },
+          {
+            "label": "Timing",
+            "value": "Contrôle à la milliseconde ; retard de batterie activé (carton) ou désactivé (arrangement)",
+            "note": null
+          },
+          {
+            "label": "Durée de note",
+            "value": "Réglage global en millisecondes",
+            "note": null
+          },
+          {
+            "label": "Export",
+            "value": "Enregistrement direct en WAV",
+            "note": null
+          },
+          {
+            "label": "Entrée",
+            "value": "Toute entrée MIDI, par exemple loopMIDI depuis votre DAW",
+            "note": null
+          },
+          {
+            "label": "Usage",
+            "value": "Orgues de rue et orgues à tuyaux ; ajout d'échantillons de percussions ou de glockenspiel",
+            "note": null
+          }
+        ],
+        "primary": {
+          "eyebrow": "Fonctions",
+          "title": "Ce que comprend MIDIMapper",
+          "intro": [],
+          "layout": "Spec list",
+          "tone": "Default"
+        },
+        "id": "site_facts$06918ca0-a5d5-4f6d-b01f-1d92aee30529",
+        "slice_type": "site_facts",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "question": "À qui s'adresse MIDIMapper ?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Aux arrangeurs qui écrivent pour orgues de rue ou orgues à tuyaux et veulent entendre les registrations pendant qu'ils travaillent.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Fonctionne-t-il avec ma DAW ?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Il fonctionne avec tout logiciel qui envoie du MIDI. Acheminez le MIDI vers MIDIMapper via un câble MIDI virtuel comme loopMIDI.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Puis-je utiliser mes propres échantillons ?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Oui. MIDIMapper accepte des échantillons personnalisés, par exemple des percussions ou un glockenspiel pour compléter le son d'un orgue.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Pourquoi ajuster la durée des notes ?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Le timing du mapper, la durée des notes sur le carton et la réponse de l'orgue réel diffèrent. Une durée de note globale en millisecondes permet de compenser, et le commutateur de retard de batterie s'aligne sur le timing du carton ou de l'arrangement.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Comment acheter la licence complète ?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Dans la boutique : 150 € HTVA. La version d'essai gratuite s'y trouve aussi : vous pouvez d'abord essayer MIDIMapper avec vos propres arrangements.",
+                "spans": [
+                  {
+                    "start": 8,
+                    "end": 16,
+                    "type": "hyperlink",
+                    "data": {
+                      "link_type": "Web",
+                      "url": "/software/midi-mapper"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "primary": {
+          "eyebrow": "Questions",
+          "title": "À propos de MIDIMapper",
+          "intro": [],
+          "tone": "Default"
+        },
+        "id": "site_faq$2f5f8f79-59a8-4fbd-b274-6b469181e791",
+        "slice_type": "site_faq",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "MIDIMapper",
+          "title": "Entendez votre prochain arrangement avant l'orgue",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Téléchargez la version d'essai gratuite dans la boutique et connectez-la à votre DAW. Quand vous êtes prêt, achetez la licence complète dans la boutique.",
+              "spans": []
+            }
+          ],
+          "price": "150 €",
+          "price_note": "HTVA, licence complète",
+          "primary_cta_label": "Version d'essai gratuite dans la boutique",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "d193f449-74ca-4cd4-b88d-9fee0b7a60d9",
+            "url": "/software/midi-mapper"
+          },
+          "secondary_cta_label": "Acheter dans la boutique",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "40173385-0592-4cb6-bde8-e5b22cceb542",
+            "url": "/software/midi-mapper"
+          },
+          "image": {},
+          "image_brief": null,
+          "tone": "Dark band"
+        },
+        "id": "site_cta$7704073e-02d6-4cdb-9249-f68c3658c858",
+        "slice_type": "site_cta",
+        "slice_label": null
+      }
+    ],
+    "meta_title": "MIDIMapper : logiciel d'arrangement pour orgue | Decap",
+    "meta_description": "MIDIMapper envoie le MIDI de votre DAW vers de vrais échantillons d'orgue : entendez votre arrangement tel qu'il sonnera. 150 € HTVA. Essai gratuit.",
+    "meta_image": {}
+  }
+}

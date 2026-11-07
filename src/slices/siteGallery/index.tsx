@@ -5,192 +5,324 @@ import { type FC, useCallback, useEffect, useMemo, useRef, useState } from "reac
 import { isFilled } from "@prismicio/client";
 import { type SliceComponentProps } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
-import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowLeft, ArrowRight, ArrowsOut, X } from "@phosphor-icons/react";
 import clsx from "clsx";
 import { FadeIn } from "@/components/FadeIn";
 import { Section, SectionHeader, SiteLink, toneFromSelect } from "@/lib/site-ui";
 import { useUiCopy } from "@/lib/ui-copy";
 
 /*
- * Photo portfolio: the photos do the talking. Justified rows, as in a photo library: every row
- * fills the width, every photo keeps its own shape, so nothing is cropped and there are no holes,
- * whatever the number of photos. One small pill per photo (e.g. Realisation or Design) and the
- * name only on hover. Filter pills above, built from the labels; a click opens the photo full screen.
+ * The work, shown like a showroom: one instrument at a time on a large stage, with the whole
+ * collection as an index beside it (desktop) or a strip of thumbnails under it (mobile).
+ * Cut-outs stand on a floor with a soft shadow; real photos fill the stage. Filters come from the
+ * labels; the stage opens full screen.
  */
 
-/** The photo's width / height, within limits so very tall or wide photos don't break a row. */
-function ratioOf(item: any): number {
-  const d = item.image?.dimensions;
-  return d ? Math.min(2, Math.max(0.6, d.width / d.height)) : 4 / 3;
-}
+/** "Whole, …" fits from Prismic: always a cut-out on a stage; the dark one on a dark stage. */
+const DARK_FIT = "Whole, dark backdrop";
+const isWholeFit = (fit?: string) => typeof fit === "string" && fit.startsWith("Whole");
 
 /**
- * Row breaks for the measured width: the split whose rows come closest to the target row height
- * (so no photo is left alone on a last row). Returns each photo's share of its row's width and
- * the number of photos in that row; null until the list has been measured.
+ * Which images are cut-outs (transparent edges), checked on a 24 px copy of each image, so a
+ * transparent PNG is never cropped, whatever its Fit says. Unknown until checked: shown whole.
  */
-function useRows(list: React.RefObject<HTMLElement | null>, ratios: number[]) {
-  const [rows, setRows] = useState<{ share: number; count: number }[] | null>(null);
-  const key = ratios.join(",");
+function useCutouts(items: any[]) {
+  const [cutouts, setCutouts] = useState<Record<string, boolean>>({});
   useEffect(() => {
-    const el = list.current;
-    if (!el) return;
-    const layout = () => {
-      const style = getComputedStyle(el);
-      const W = el.clientWidth;
-      const H = parseFloat(style.getPropertyValue("--row")) * parseFloat(getComputedStyle(document.documentElement).fontSize);
-      const g = parseFloat(style.columnGap) || 0;
-      const n = ratios.length;
-      if (!W || !H || !n) return;
-      const cost = [0];
-      const from = [0];
-      for (let j = 1; j <= n; j++) {
-        cost[j] = Infinity;
-        let sum = 0;
-        for (let i = j - 1; i >= 0; i--) {
-          sum += ratios[i];
-          const h = (W - g * (j - i - 1)) / sum;
-          const c = cost[i] + (h - H) ** 2;
-          if (c < cost[j]) [cost[j], from[j]] = [c, i];
-          if (h < H / 3) break;
+    let cancelled = false;
+    for (const item of items) {
+      const url: string = item.image.url;
+      if (url in cutouts) continue;
+      const probe = new Image();
+      probe.crossOrigin = "anonymous";
+      probe.onload = () => {
+        try {
+          const c = document.createElement("canvas");
+          c.width = c.height = 24;
+          const ctx = c.getContext("2d", { willReadFrequently: true })!;
+          ctx.drawImage(probe, 0, 0, 24, 24);
+          // A cut-out is transparent along most of its border; a photo with rounded corners is not
+          const { data } = ctx.getImageData(0, 0, 24, 24);
+          let edge = 0;
+          let clear = 0;
+          for (let y = 0; y < 24; y++)
+            for (let x = 0; x < 24; x++)
+              if (x === 0 || y === 0 || x === 23 || y === 23) {
+                edge++;
+                if (data[(y * 24 + x) * 4 + 3] < 200) clear++;
+              }
+          if (!cancelled) setCutouts((m) => ({ ...m, [url]: clear / edge > 0.4 }));
+        } catch {
+          if (!cancelled) setCutouts((m) => ({ ...m, [url]: false }));
         }
-      }
-      const out: { share: number; count: number }[] = [];
-      for (let j = n; j > 0; j = from[j]) {
-        const i = from[j];
-        const sum = ratios.slice(i, j).reduce((a, b) => a + b, 0);
-        for (let k = i; k < j; k++) out[k] = { share: ratios[k] / sum, count: j - i };
-      }
-      setRows(out);
+      };
+      probe.src = `${url}${url.includes("?") ? "&" : "?"}w=24&h=24&fit=fill&fm=png`;
+    }
+    return () => {
+      cancelled = true;
     };
-    layout();
-    const ro = new ResizeObserver(layout);
-    ro.observe(el);
-    return () => ro.disconnect();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [list, key]);
-  return rows;
+  }, [items]);
+  return cutouts;
 }
 
-/** Cut-outs and renders are shown whole on a plain backdrop instead of cropped. */
-const BACKDROP: Record<string, string> = { "Whole, light backdrop": "bg-ink/[0.05]", "Whole, dark backdrop": "bg-neutral-950" };
+const ratio = (item: any) => {
+  const d = item.image?.dimensions;
+  return d?.width && d?.height ? d.width / d.height : 4 / 3;
+};
 
 const SiteGallery: FC<SliceComponentProps<any>> = ({ slice }) => {
   const p = slice.primary;
   const t = useUiCopy();
-  const reduce = useReducedMotion();
   const items: any[] = useMemo(() => (slice.items || []).filter((i: any) => isFilled.image(i?.image)), [slice.items]);
   const labels = useMemo(() => [...new Set(items.map((i) => i.label).filter(Boolean))] as string[], [items]);
+  const cutouts = useCutouts(items);
   const [filter, setFilter] = useState<string | null>(null);
-  const [open, setOpen] = useState<number | null>(null);
+  const [active, setActive] = useState(0);
+  const [open, setOpen] = useState(false);
+  const strip = useRef<HTMLDivElement>(null);
+
   const shown = filter ? items.filter((i) => i.label === filter) : items;
-  const list = useRef<HTMLUListElement>(null);
-  const rows = useRows(list, shown.map(ratioOf));
   if (!items.length) return null;
+  const current = shown.includes(items[active]) ? active : items.indexOf(shown[0]);
+  const position = shown.indexOf(items[current]);
+  const item = items[current];
   const hasHeader = !!(p.eyebrow || p.title || isFilled.richText(p.intro));
+  const many = shown.length > 1;
+
+  const select = (index: number) => {
+    setActive(index);
+    // Keep the chosen thumbnail in view on mobile
+    strip.current
+      ?.querySelector<HTMLElement>(`[data-index="${index}"]`)
+      ?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+  };
+  const step = (dir: number) => select(items.indexOf(shown[(position + dir + shown.length) % shown.length]));
+  const choose = (next: string | null) => {
+    setFilter(next);
+    const list = next ? items.filter((i) => i.label === next) : items;
+    if (!list.includes(items[active])) setActive(items.indexOf(list[0]));
+  };
+
+  /** How an item sits on the stage */
+  const look = (it: any) => {
+    const cutout = isWholeFit(it.fit) || cutouts[it.image.url] !== false;
+    return {
+      cutout,
+      dark: it.fit === DARK_FIT,
+      // A photo fills the stage when its shape is close; otherwise it is shown whole
+      cover: !cutout && Math.abs(ratio(it) - 1.25) < 0.35,
+    };
+  };
+
+  const filters = p.show_filters !== false && labels.length > 1 && (
+    <div className="flex flex-wrap gap-2" role="group">
+      {[null, ...labels].map((l) => (
+        <button
+          key={l ?? "all"}
+          type="button"
+          aria-pressed={filter === l}
+          onClick={() => choose(l)}
+          className={clsx(
+            "rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-200 active:scale-[0.98]",
+            filter === l ? "bg-ink text-page" : "bg-ink/[0.06] text-ink-muted hover:text-ink",
+          )}
+        >
+          {l ?? t.galleryAll}
+          <span className={clsx("ml-1.5 tabular-nums", filter === l ? "opacity-60" : "opacity-50")}>
+            {l ? items.filter((i) => i.label === l).length : items.length}
+          </span>
+        </button>
+      ))}
+    </div>
+  );
 
   return (
     <Section tone={toneFromSelect(p.tone)}>
       <SectionHeader eyebrow={p.eyebrow} title={p.title} intro={p.intro} />
 
-      {p.show_filters !== false && labels.length > 1 && (
-        <FadeIn className={clsx("flex flex-wrap gap-2", hasHeader && "mt-10 lg:mt-12")}>
-          {[null, ...labels].map((l) => (
-            <button
-              key={l ?? "all"}
-              type="button"
-              aria-pressed={filter === l}
-              onClick={() => setFilter(l)}
-              className={clsx(
-                "relative rounded-full px-4 py-2 text-sm font-semibold transition-colors",
-                filter === l ? "text-page" : "bg-ink/[0.06] text-ink-muted hover:text-ink",
-              )}
-            >
-              {filter === l && (
-                <motion.span layoutId={`gallery-pill-${slice.id}`} className="absolute inset-0 rounded-full bg-ink" transition={{ type: "spring", stiffness: 300, damping: 30 }} />
-              )}
-              <span className="relative">{l ?? t.galleryAll}</span>
-            </button>
-          ))}
-        </FadeIn>
-      )}
+      <FadeIn className={clsx("grid gap-x-12 gap-y-6 lg:grid-cols-12", hasHeader && "mt-12 lg:mt-16")}>
+        {filters && <div className="lg:hidden">{filters}</div>}
 
-      <LayoutGroup>
-        <motion.ul
-          ref={list}
-          role="list"
-          className={clsx(
-            // Each photo grows in proportion to its shape, so a row's photos end up the same height.
-            "flex flex-wrap gap-[var(--gap)] [--gap:0.5rem] [--row:11rem] sm:[--gap:0.75rem] sm:[--row:13rem] lg:[--row:17rem]",
-            hasHeader || labels.length > 1 ? "mt-8 lg:mt-10" : undefined,
-          )}
-        >
-          <AnimatePresence initial={false}>
-            {shown.map((item) => {
-              const index = items.indexOf(item);
-              const backdrop = BACKDROP[item.fit];
-              const r = ratioOf(item);
-              const row = rows?.[shown.indexOf(item)];
+        {/* Stage */}
+        <div className="lg:col-span-8">
+          <div className="relative aspect-square overflow-hidden rounded-3xl bg-surface sm:aspect-[4/3] lg:aspect-[5/4]">
+            {shown.map((it) => {
+              const index = items.indexOf(it);
+              const { cutout, dark, cover } = look(it);
+              const isActive = index === current;
               return (
-                <motion.li
+                <div
                   key={index}
-                  layout={!reduce}
-                  initial={{ opacity: 0, scale: 0.96 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.96 }}
-                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                  style={
-                    row
-                      ? { flex: `0 1 calc((100% - ${row.count - 1} * var(--gap)) * ${row.share * 0.9999})`, aspectRatio: r }
-                      : { flexGrow: r, flexBasis: `calc(var(--row) * ${r})`, aspectRatio: r }
-                  }
-                  className="relative"
+                  aria-hidden={!isActive}
+                  className={clsx(
+                    "absolute inset-0 transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
+                    dark ? "bg-neutral-950" : "bg-surface",
+                    isActive ? "z-10 translate-y-0 opacity-100" : "pointer-events-none translate-y-3 opacity-0",
+                  )}
                 >
-                  <button
-                    type="button"
-                    onClick={() => setOpen(index)}
-                    aria-label={t.galleryOpen(item.title || item.image.alt || item.label || "")}
-                    className={clsx("group absolute inset-0 overflow-hidden rounded-2xl lg:rounded-3xl", backdrop ?? "bg-ink/[0.06]")}
-                  >
-                    <PrismicNextImage
-                      field={item.image}
-                      fill
-                      sizes="(min-width: 1024px) 40vw, 70vw"
+                  {cutout && (
+                    // The floor: a soft contact shadow the instrument stands on
+                    <span
+                      aria-hidden="true"
                       className={clsx(
-                        "transition-transform duration-700 ease-out group-hover:scale-[1.04]",
-                        backdrop ? "object-contain p-[8%]" : "object-cover",
+                        "absolute bottom-[6%] left-1/2 h-[5%] w-[55%] -translate-x-1/2 rounded-[100%] blur-2xl",
+                        dark ? "bg-white/10" : "bg-ink/20",
                       )}
-                      fallbackAlt=""
                     />
-                    {item.label && (
-                      <span className="absolute top-2 left-2 max-w-[calc(100%-1rem)] truncate rounded-full bg-black/45 px-2 py-0.5 text-[10px] font-semibold tracking-wide text-white backdrop-blur-md sm:top-4 sm:left-4 sm:max-w-[calc(100%-2rem)] sm:px-2.5 sm:py-1 sm:text-xs">
-                        {item.label}
-                      </span>
+                  )}
+                  <PrismicNextImage
+                    field={it.image}
+                    fill
+                    sizes="(min-width: 1024px) 60vw, 100vw"
+                    fallbackAlt=""
+                    className={clsx(
+                      cover ? "object-cover" : cutout ? "object-contain object-bottom px-[10%] pt-[7%] pb-[8%]" : "object-contain p-[6%]",
                     )}
-                    {item.title && (
-                      <span
-                        className={clsx(
-                          "absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent px-3 pt-10 pb-3 text-left text-sm font-semibold text-white transition-opacity duration-300 sm:px-4 sm:pb-4",
-                          "[@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:opacity-100 [@media(hover:hover)]:group-focus-visible:opacity-100",
-                        )}
-                      >
-                        {item.title}
-                      </span>
-                    )}
-                  </button>
-                </motion.li>
+                  />
+                </div>
               );
             })}
-          </AnimatePresence>
-          {/* Before measuring: keeps the last row at its natural height instead of stretching it. */}
-          {!rows && <li aria-hidden="true" className="grow-[100]" />}
-        </motion.ul>
-      </LayoutGroup>
 
-      <Lightbox items={shown} index={open === null ? null : shown.indexOf(items[open])} onIndex={(i) => setOpen(i === null ? null : items.indexOf(shown[i]))} />
+            <button
+              type="button"
+              onClick={() => setOpen(true)}
+              aria-label={t.galleryOpen(item.title || item.image.alt || item.label || "")}
+              className="group absolute inset-0 z-20 cursor-zoom-in focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-ink"
+            >
+              <span className="absolute top-4 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-page/80 text-ink opacity-0 backdrop-blur-md transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100 sm:top-5 sm:right-5">
+                <ArrowsOut className="h-4 w-4" weight="bold" />
+              </span>
+            </button>
+          </div>
+
+          {/* Caption under the stage */}
+          <div className="mt-5 flex items-start justify-between gap-6">
+            <div className="min-w-0" aria-live="polite">
+              <p className="site-heading text-2xl leading-tight text-ink sm:text-3xl">{item.title || item.image.alt}</p>
+              <p className="mt-1.5 text-sm text-ink-muted">
+                {item.label}
+                {item.link_label && isFilled.link(item.link) && (
+                  <SiteLink field={item.link} className="ml-3 font-semibold text-ink underline-offset-4 hover:underline">
+                    {item.link_label}
+                  </SiteLink>
+                )}
+              </p>
+            </div>
+            {many && (
+              <div className="flex shrink-0 gap-2">
+                <button type="button" onClick={() => step(-1)} aria-label={t.previous} className={arrowClass}>
+                  <ArrowLeft className="h-4 w-4" weight="bold" />
+                </button>
+                <button type="button" onClick={() => step(1)} aria-label={t.next} className={arrowClass}>
+                  <ArrowRight className="h-4 w-4" weight="bold" />
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Mobile: thumbnail strip */}
+        {many && (
+          <div
+            ref={strip}
+            className="-mx-6 flex snap-x snap-mandatory scroll-px-6 gap-3 overflow-x-auto px-6 py-1 [scrollbar-width:none] lg:hidden"
+            role="list"
+          >
+            {shown.map((it) => {
+              const index = items.indexOf(it);
+              return (
+                <button
+                  key={index}
+                  type="button"
+                  role="listitem"
+                  data-index={index}
+                  onClick={() => select(index)}
+                  aria-label={it.title || it.label || undefined}
+                  aria-current={index === current}
+                  className={clsx(
+                    "relative aspect-square w-20 shrink-0 snap-start overflow-hidden rounded-2xl transition",
+                    it.fit === DARK_FIT ? "bg-neutral-950" : "bg-surface",
+                    index === current ? "ring-2 ring-ink ring-offset-2 ring-offset-page" : "opacity-70",
+                  )}
+                >
+                  <PrismicNextImage field={it.image} fill sizes="80px" fallbackAlt="" className="object-contain p-2" />
+                </button>
+              );
+            })}
+          </div>
+        )}
+
+        {/* Desktop: the index */}
+        <div className="relative hidden lg:col-span-4 lg:block">
+          <div className="flex h-full flex-col lg:absolute lg:inset-0">
+            {filters && <div className="mb-6">{filters}</div>}
+            <ol className="-mr-2 min-h-0 flex-1 overflow-y-auto pr-2">
+              {shown.map((it) => {
+                const index = items.indexOf(it);
+                const isActive = index === current;
+                return (
+                  <li key={index} className="border-t border-line first:border-t-0">
+                    <button
+                      type="button"
+                      onClick={() => select(index)}
+                      onMouseEnter={() => setActive(index)}
+                      onFocus={() => setActive(index)}
+                      aria-current={isActive}
+                      className="group flex w-full items-center gap-4 py-3 text-left"
+                    >
+                      <span
+                        className={clsx(
+                          "relative h-12 w-12 shrink-0 overflow-hidden rounded-xl transition-opacity duration-300",
+                          it.fit === DARK_FIT ? "bg-neutral-950" : "bg-surface",
+                          isActive ? "opacity-100" : "opacity-50 group-hover:opacity-100",
+                        )}
+                      >
+                        <PrismicNextImage field={it.image} fill sizes="48px" fallbackAlt="" className="object-contain p-1" />
+                      </span>
+                      <span className="min-w-0 flex-1">
+                        <span
+                          className={clsx(
+                            "block truncate text-base font-semibold transition-colors duration-300",
+                            isActive ? "text-ink" : "text-ink-muted group-hover:text-ink",
+                          )}
+                        >
+                          {it.title || it.image.alt || it.label}
+                        </span>
+                        {it.label && <span className="block text-sm text-ink-muted">{it.label}</span>}
+                      </span>
+                      <ArrowRight
+                        aria-hidden="true"
+                        weight="bold"
+                        className={clsx(
+                          "h-4 w-4 shrink-0 text-ink transition-[opacity,transform] duration-300",
+                          isActive ? "translate-x-0 opacity-100" : "-translate-x-2 opacity-0",
+                        )}
+                      />
+                    </button>
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
+        </div>
+      </FadeIn>
+
+      <Lightbox
+        items={shown}
+        index={open ? position : null}
+        onIndex={(i) => {
+          if (i === null) setOpen(false);
+          else select(items.indexOf(shown[i]));
+        }}
+      />
     </Section>
   );
 };
+
+const arrowClass =
+  "flex h-11 w-11 items-center justify-center rounded-full border border-line text-ink transition hover:bg-ink hover:text-page active:scale-[0.96] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink";
 
 /** Full-screen view: arrows, swipe and Escape; the page behind doesn't scroll. */
 function Lightbox({ items, index, onIndex }: { items: any[]; index: number | null; onIndex: (i: number | null) => void }) {
@@ -233,7 +365,7 @@ function Lightbox({ items, index, onIndex }: { items: any[]; index: number | nul
 
   const item = index === null ? null : items[index];
   const many = items.length > 1;
-  const arrow = "flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20";
+  const button = "flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20";
 
   return (
     <AnimatePresence>
@@ -249,12 +381,9 @@ function Lightbox({ items, index, onIndex }: { items: any[]; index: number | nul
           className="fixed inset-0 z-[100] flex flex-col bg-neutral-950/95 text-white backdrop-blur-xl"
           onClick={(e) => e.target === e.currentTarget && onIndex(null)}
         >
-          <div className="flex items-center justify-between gap-4 px-4 py-4 sm:px-6">
-            <p className="text-sm tabular-nums text-white/60">{many && `${index! + 1} / ${items.length}`}</p>
-            <button ref={close} type="button" onClick={() => onIndex(null)} aria-label={t.galleryClose} className={arrow}>
-              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                <path d="M6 6l12 12M18 6 6 18" strokeLinecap="round" />
-              </svg>
+          <div className="flex items-center justify-end px-4 py-4 sm:px-6">
+            <button ref={close} type="button" onClick={() => onIndex(null)} aria-label={t.galleryClose} className={button}>
+              <X className="h-5 w-5" weight="bold" />
             </button>
           </div>
 
@@ -281,28 +410,26 @@ function Lightbox({ items, index, onIndex }: { items: any[]; index: number | nul
             </AnimatePresence>
             {many && (
               <>
-                <button type="button" onClick={() => go(-1)} aria-label={t.previous} className={clsx(arrow, "absolute top-1/2 left-4 hidden -translate-y-1/2 sm:flex")}>
-                  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                    <path d="m15 6-6 6 6 6" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
+                <button type="button" onClick={() => go(-1)} aria-label={t.previous} className={clsx(button, "absolute top-1/2 left-4 hidden -translate-y-1/2 sm:flex")}>
+                  <ArrowLeft className="h-5 w-5" weight="bold" />
                 </button>
-                <button type="button" onClick={() => go(1)} aria-label={t.next} className={clsx(arrow, "absolute top-1/2 right-4 hidden -translate-y-1/2 sm:flex")}>
-                  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                    <path d="m9 6 6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
+                <button type="button" onClick={() => go(1)} aria-label={t.next} className={clsx(button, "absolute top-1/2 right-4 hidden -translate-y-1/2 sm:flex")}>
+                  <ArrowRight className="h-5 w-5" weight="bold" />
                 </button>
               </>
             )}
           </div>
 
-          <div className="flex min-h-20 flex-wrap items-center justify-center gap-x-3 gap-y-1 px-6 py-5 text-center">
-            {item.label && <span className="rounded-full bg-white/10 px-2.5 py-1 text-xs font-semibold">{item.label}</span>}
-            {item.title && <p className="text-base font-semibold">{item.title}</p>}
-            {item.link_label && isFilled.link(item.link) && (
-              <SiteLink field={item.link} className="text-sm font-semibold text-white/70 underline-offset-4 hover:text-white hover:underline">
-                {item.link_label} <span aria-hidden="true">›</span>
-              </SiteLink>
-            )}
+          <div className="flex min-h-20 flex-col items-center justify-center gap-1 px-6 py-5 text-center">
+            {item.title && <p className="site-heading text-xl">{item.title}</p>}
+            <p className="text-sm text-white/60">
+              {item.label}
+              {item.link_label && isFilled.link(item.link) && (
+                <SiteLink field={item.link} className="ml-3 font-semibold text-white underline-offset-4 hover:underline">
+                  {item.link_label}
+                </SiteLink>
+              )}
+            </p>
           </div>
         </motion.div>
       )}

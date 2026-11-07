@@ -1,0 +1,107 @@
+{
+  "id": "aH5c3REAACAACRhP",
+  "uid": "controler-les-b52",
+  "url": null,
+  "type": "blog",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22aH5c3REAACAACRhP%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2025-07-21T15:29:34+0000",
+  "last_publication_date": "2025-07-27T15:39:40+0000",
+  "slugs": [
+    "controler-les-b52"
+  ],
+  "linked_documents": [],
+  "lang": "fr-fr",
+  "alternate_languages": [
+    {
+      "id": "aHgZiBEAACMA_6sT",
+      "type": "blog",
+      "lang": "en-us",
+      "uid": "controle-the-b-52"
+    }
+  ],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "controler-les-b52",
+        "spans": [],
+        "direction": "ltr"
+      }
+    ],
+    "excerpt": [
+      {
+        "type": "paragraph",
+        "text": "dfsdfdsf",
+        "spans": [],
+        "direction": "ltr"
+      }
+    ],
+    "card_image": {},
+    "featured_image": {
+      "dimensions": {
+        "width": 1200,
+        "height": 630
+      },
+      "alt": "sdsd",
+      "copyright": null,
+      "url": "https://images.prismic.io/decap/aHbDZkMqNJQqH8JL_Stephan_Eicher_%40_Bsf_2012_-7855842396-.jpg?auto=format,compress&rect=0,659,1788,939&w=1200&h=630",
+      "id": "aHbDZkMqNJQqH8JL",
+      "edit": {
+        "x": 0,
+        "y": 659,
+        "zoom": 1,
+        "background": "transparent"
+      },
+      "thumbnail": {
+        "dimensions": {
+          "width": 400,
+          "height": 300
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "https://images.prismic.io/decap/aHbDZkMqNJQqH8JL_Stephan_Eicher_%40_Bsf_2012_-7855842396-.jpg?auto=format,compress&rect=0,458,1788,1341&w=400&h=300",
+        "id": "aHbDZkMqNJQqH8JL",
+        "edit": {
+          "x": 0,
+          "y": 458,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      }
+    },
+    "published_date": "2025-07-08",
+    "type": null,
+    "slices": [],
+    "author_name": "sdfsf",
+    "author_role": "sdfsdf",
+    "author_image": {
+      "dimensions": {
+        "width": 200,
+        "height": 200
+      },
+      "alt": null,
+      "copyright": null,
+      "url": "https://images.prismic.io/decap/aHbDZkMqNJQqH8JL_Stephan_Eicher_%40_Bsf_2012_-7855842396-.jpg?auto=format,compress&rect=0,235,1788,1788&w=200&h=200",
+      "id": "aHbDZkMqNJQqH8JL",
+      "edit": {
+        "x": 0,
+        "y": 235,
+        "zoom": 1,
+        "background": "transparent"
+      }
+    },
+    "tags": [
+      {
+        "tag": "Tchnologiq"
+      },
+      {
+        "tag": "tremptere"
+      }
+    ],
+    "reading_time": null,
+    "meta_title": null,
+    "meta_description": null,
+    "meta_image": {}
+  }
+}

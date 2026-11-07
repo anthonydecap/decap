@@ -1,0 +1,265 @@
+{
+  "id": "ab6c7xEAACAAm_Z4",
+  "uid": null,
+  "url": null,
+  "type": "settings",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ab6c7xEAACAAm_Z4%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2026-03-21T13:36:16+0000",
+  "last_publication_date": "2026-10-22T08:15:15+0000",
+  "slugs": [
+    "settings"
+  ],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [],
+  "data": {
+    "site_name": "Decap",
+    "logo": {},
+    "contact_button_text": "Contact",
+    "contact_button_link": {
+      "link_type": "Web",
+      "key": "b95f8b3f-0ba8-421f-b8cc-8f49bb65cb08",
+      "url": "/contact"
+    },
+    "navigation": [
+      {
+        "label": "Organs",
+        "link": {
+          "link_type": "Web",
+          "key": "2c74614c-d834-4be1-866c-50693ac498ec",
+          "url": "/organs"
+        }
+      },
+      {
+        "label": "Organ pipes",
+        "link": {
+          "link_type": "Web",
+          "key": "b50b53d6-5e22-4da5-bb6a-113ae3ea15a1",
+          "url": "/organ-pipes"
+        }
+      },
+      {
+        "label": "Instruments",
+        "link": {
+          "link_type": "Web",
+          "key": "fea7b155-5f2f-4c4b-a454-43b60d7d70f0",
+          "url": "/instruments"
+        }
+      },
+      {
+        "label": "smARTvalve",
+        "link": {
+          "link_type": "Web",
+          "key": "8b44b49a-8c88-47ae-807b-297223375168",
+          "url": "/smartvalve"
+        }
+      },
+      {
+        "label": "Brass Core",
+        "link": {
+          "link_type": "Web",
+          "key": "ff494c72-7bdf-460f-81c9-314d327cba6d",
+          "url": "/brass-core"
+        }
+      },
+      {
+        "label": "Software",
+        "link": {
+          "link_type": "Web",
+          "key": "309994ec-6819-4efe-86b9-88578de9e71a",
+          "url": "/software"
+        }
+      },
+      {
+        "label": "Work",
+        "link": {
+          "link_type": "Web",
+          "key": "26a326c5-1e2f-4dcd-bc84-05261d0fa56b",
+          "url": "/work"
+        }
+      },
+      {
+        "label": "About",
+        "link": {
+          "link_type": "Web",
+          "key": "ebe802ca-d7f1-4e3c-ad66-820f9e4e743a",
+          "url": "/about"
+        }
+      }
+    ],
+    "footer_sections": [
+      {
+        "section_title": "Organs",
+        "section_links": [
+          {
+            "link_text": "New organs",
+            "link_url": {
+              "link_type": "Web",
+              "key": "474ddc84-e79c-4d2f-bfe2-2e591dd574ff",
+              "url": "/organs"
+            }
+          },
+          {
+            "link_text": "Organ Composer",
+            "link_url": {
+              "link_type": "Web",
+              "key": "9fc0a716-7af3-4145-b159-6e5caae3f1c9",
+              "url": "/organ-composer"
+            }
+          },
+          {
+            "link_text": "MIDI conversion",
+            "link_url": {
+              "link_type": "Web",
+              "key": "8ba77b29-6a25-4cd3-a678-cdd51a31cbf9",
+              "url": "/midi-conversion"
+            }
+          },
+          {
+            "link_text": "Organ pipes",
+            "link_url": {
+              "link_type": "Web",
+              "key": "99388d96-d844-41d2-a370-4726a663aebe",
+              "url": "/organ-pipes"
+            }
+          },
+          {
+            "link_text": "Restoration",
+            "link_url": {
+              "link_type": "Web",
+              "key": "f7cac676-fd86-44c4-ba7b-ac55122c1840",
+              "url": "/frank-decap"
+            }
+          }
+        ]
+      },
+      {
+        "section_title": "Instruments",
+        "section_links": [
+          {
+            "link_text": "Accordion Pedestal & Cube",
+            "link_url": {
+              "link_type": "Web",
+              "key": "1f5c39c2-9455-4189-ad7f-3e7dd0de6f44",
+              "url": "/accordion"
+            }
+          },
+          {
+            "link_text": "Pipes",
+            "link_url": {
+              "link_type": "Web",
+              "key": "20ed8248-99d6-44ac-901e-0261ddf21401",
+              "url": "/pipes"
+            }
+          },
+          {
+            "link_text": "Percussion Unit",
+            "link_url": {
+              "link_type": "Web",
+              "key": "17090e45-e041-46f0-8cc1-65c32c5ff641",
+              "url": "/percussion-unit"
+            }
+          },
+          {
+            "link_text": "Mallet Percussion",
+            "link_url": {
+              "link_type": "Web",
+              "key": "dd32123b-d22c-4cca-8e88-4ed37720a390",
+              "url": "/mallet-percussion"
+            }
+          },
+          {
+            "link_text": "Bellow Organ",
+            "link_url": {
+              "link_type": "Web",
+              "key": "88b0ebfd-5e73-40f9-b48a-8c307ec188b8",
+              "url": "/bellow-organ"
+            }
+          }
+        ]
+      },
+      {
+        "section_title": "Decap",
+        "section_links": [
+          {
+            "link_text": "smARTvalve",
+            "link_url": {
+              "link_type": "Web",
+              "key": "a46a6c8b-26c6-4f1b-92c2-f09c94769d9e",
+              "url": "/smartvalve"
+            }
+          },
+          {
+            "link_text": "For organ builders",
+            "link_url": {
+              "link_type": "Web",
+              "key": "23476861-c8ca-4bd9-af30-32d3034db0d5",
+              "url": "/smartvalve-for-organ-builders"
+            }
+          },
+          {
+            "link_text": "Brass Core",
+            "link_url": {
+              "link_type": "Web",
+              "key": "2722b360-838a-4bdf-8bbf-0fa1a1db5b02",
+              "url": "/brass-core"
+            }
+          },
+          {
+            "link_text": "Software",
+            "link_url": {
+              "link_type": "Web",
+              "key": "6e762acc-69b2-4023-aa8c-730d0004e4cc",
+              "url": "/software"
+            }
+          },
+          {
+            "link_text": "Work",
+            "link_url": {
+              "link_type": "Web",
+              "key": "a6384e8b-c121-450a-947d-c53e6a76147f",
+              "url": "/work"
+            }
+          },
+          {
+            "link_text": "About",
+            "link_url": {
+              "link_type": "Web",
+              "key": "ed0d0a79-bd52-43b1-8867-f6f9ce4cb5cf",
+              "url": "/about"
+            }
+          },
+          {
+            "link_text": "Journal",
+            "link_url": {
+              "link_type": "Web",
+              "key": "1e3e477d-510e-4b5d-a738-0cce53ebccab",
+              "url": "/blog"
+            }
+          },
+          {
+            "link_text": "Contact",
+            "link_url": {
+              "link_type": "Web",
+              "key": "237e2fbd-8037-4a8b-8450-9a6986138768",
+              "url": "/contact"
+            }
+          }
+        ]
+      }
+    ],
+    "company_name": "Decap Herentals",
+    "company_address": [
+      {
+        "type": "paragraph",
+        "text": "Langepad 51C 2200 Herentals, Belgium",
+        "spans": []
+      }
+    ],
+    "company_phone": "+32 14 22 44 94",
+    "company_email": "info@decap.be",
+    "company_vat": "DECAP TONY BV · BE 0450.352.984",
+    "copyright_text": "© Decap Herentals"
+  }
+}

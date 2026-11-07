@@ -1,0 +1,646 @@
+{
+  "id": "atc3hxEAACsAavQD",
+  "uid": "organ-pipes",
+  "url": null,
+  "type": "page",
+  "href": "https://decap.cdn.prismic.io/api/v2/documents/search?ref=aukahhEAACkAP18r&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22atc3hxEAACsAavQD%22%29+%5D%5D",
+  "tags": [],
+  "first_publication_date": "2026-10-20T09:51:01+0000",
+  "last_publication_date": "2026-11-02T23:19:34+0000",
+  "slugs": [
+    "organ-pipes"
+  ],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [
+    {
+      "id": "atdvvhEAACoAa15I",
+      "type": "page",
+      "lang": "fr-fr",
+      "uid": "organ-pipes"
+    }
+  ],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Organ pipes",
+        "spans": []
+      }
+    ],
+    "theme": "decap",
+    "slices": [
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "layout": "Split",
+          "eyebrow": "The only workshop in the world that does this",
+          "title": "Wooden organ pipes, ready in days, not months",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "We are the only company in the world that developed CNC manufacturing of organ pipes in-house. Almost any wooden pipe, in our standard scales or to your own measurements, milled, assembled and ready to ship within days.",
+              "spans": []
+            }
+          ],
+          "primary_cta_label": "Order pipes",
+          "primary_cta_link": {
+            "link_type": "Web",
+            "key": "fd624728-36a7-4979-8a75-c93d4b95cb5d",
+            "url": "#contact-form"
+          },
+          "secondary_cta_label": "Pipes in a new organ",
+          "secondary_cta_link": {
+            "link_type": "Web",
+            "key": "050a4eda-c6ee-4b6b-876e-157678ef1175",
+            "url": "/organs"
+          },
+          "note": "For DIY builds, your own organ, organ builders and restorers.",
+          "image": {
+            "dimensions": {
+              "width": 1086,
+              "height": 1448
+            },
+            "alt": null,
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/2V9yswR35ZxeQb7z_Untitleddesign-14-.png?auto=format,compress",
+            "id": "2V9yswR35ZxeQb7z",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "mux_video": null,
+          "image_brief": "A row of new wooden pipes of increasing size on a workbench, pale Ayous bodies and beech mouths visible, side light from a window; portrait 4:5",
+          "image_shape": "Default",
+          "image_fit": "Cover",
+          "image_position": "Center",
+          "image_zoom": "100%",
+          "overlay": "Medium",
+          "blur": "None",
+          "dim": "None",
+          "color_effect": "None",
+          "vignette": false,
+          "slow_zoom": false,
+          "tone": "Default"
+        },
+        "id": "site_hero$9cfa011f-4467-455c-9b95-125671355bf9",
+        "slice_type": "site_hero",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "label": "or less from order to shipping, depending on the ranks",
+            "value": "1 week",
+            "note": null
+          },
+          {
+            "label": "our standard scales or your own measurements",
+            "value": "Any size",
+            "note": null
+          },
+          {
+            "label": "Bourdon range, MIDI 24 to 96",
+            "value": "6 octaves",
+            "note": null
+          },
+          {
+            "label": "our first pipes from our own CNC",
+            "value": "2016",
+            "note": null
+          }
+        ],
+        "primary": {
+          "eyebrow": null,
+          "title": null,
+          "intro": [],
+          "layout": "Stats",
+          "tone": "Tinted"
+        },
+        "id": "site_facts$7dc60a39-ed42-48ce-8e71-9b3403399c15",
+        "slice_type": "site_facts",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "From drawing to pipe",
+          "title": "Watch a pipe being made",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Drawn in 3D in our office, milled on our CNC, glued and voiced in the workshop next door.",
+              "spans": []
+            }
+          ],
+          "video": {
+            "embed_url": "https://player.mux.com/nMTrEaGQ5pwnJE1rljkWXJs1DFe02lECWtQrABCyxZRw?metadata-video-title=thirdedit&video-title=thirdedit",
+            "type": "video",
+            "version": "1.0",
+            "title": "Mux Player",
+            "provider_name": "Mux",
+            "provider_url": "https://www.mux.com",
+            "thumbnail_url": "https://image.mux.com/nMTrEaGQ5pwnJE1rljkWXJs1DFe02lECWtQrABCyxZRw/thumbnail.webp",
+            "thumbnail_width": 1920,
+            "thumbnail_height": 1080,
+            "html": "<iframe\n      src=\"https://player.mux.com/nMTrEaGQ5pwnJE1rljkWXJs1DFe02lECWtQrABCyxZRw?metadata-video-title=thirdedit&amp;video-title=thirdedit\"\n      allow=\"accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;\"\n      allowfullscreen=\"true\"\n      width=\"640\"\n      height=\"360\"\n    ></iframe>",
+            "width": 640,
+            "height": 360
+          },
+          "caption": null,
+          "poster": {},
+          "video_brief": "Film, 1–2 minutes, landscape 16:9: a pipe drawn in 3D in PipeCreator at the office → the G-code sent to the CNC → the CNC milling the parts → gluing → the finished pipe being blown for the first time. Upload to YouTube and paste the link here.",
+          "tone": "Default"
+        },
+        "id": "site_video$860c0157-3f75-4673-8e5e-19e55ce728c7",
+        "slice_type": "site_video",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": null,
+            "title": "DIY builders",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Building your own organ or instrument? Order the ranks you need, voiced or ready for you to voice.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": null,
+            "title": "Your own organ",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "An extra rank or a replacement rank, made to match what is already there.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": null,
+            "title": "Organ builders and restorers",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Pipes to your scales and your measurements, without waiting months for a supplier.",
+                "spans": []
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          },
+          {
+            "image": {},
+            "image_brief": null,
+            "tag": null,
+            "title": "Pipes and chests",
+            "body": [
+              {
+                "type": "paragraph",
+                "text": "Add wind chests from us, or go further with MIDI conversion or smARTvalve on every pipe.",
+                "spans": [
+                  {
+                    "start": 44,
+                    "end": 59,
+                    "type": "hyperlink",
+                    "data": {
+                      "link_type": "Web",
+                      "url": "/midi-conversion"
+                    }
+                  },
+                  {
+                    "start": 63,
+                    "end": 73,
+                    "type": "hyperlink",
+                    "data": {
+                      "link_type": "Web",
+                      "url": "/smartvalve"
+                    }
+                  }
+                ]
+              }
+            ],
+            "price": null,
+            "link_label": null,
+            "link": {
+              "link_type": "Any"
+            }
+          }
+        ],
+        "primary": {
+          "eyebrow": "Who orders our pipes",
+          "title": "One rank or a complete wind system",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Buy only the ranks, or the ranks and the chests to put them on. We make the parts you need and leave the rest to you.",
+              "spans": []
+            }
+          ],
+          "columns": "4",
+          "card_style": "Text cards",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_card_grid$e191acd5-c1f6-423a-abb0-bd95cdd9f71c",
+        "slice_type": "site_card_grid",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "point": "5-axis CNC, G-code from our own PipeCreator software"
+          },
+          {
+            "point": "Ready in a few days to a week, depending on the ranks"
+          },
+          {
+            "point": "Voiced by our voicers, or delivered for you to voice"
+          }
+        ],
+        "primary": {
+          "eyebrow": "How we make them",
+          "title": "A process we developed ourselves",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Since 2016 we mill our organ pipes on a 5-axis CNC. The G-code comes from PipeCreator, software we wrote in-house. No other company makes organ pipes this way. The machine cuts each part to exact dimensions and angles, so every pipe in a rank matches the next.",
+              "spans": [
+                {
+                  "start": 74,
+                  "end": 85,
+                  "type": "strong"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "After cutting and gluing, the pipe is ready for voicing and finishing. Our voicers can do that for you, or you take over at the stage you prefer.",
+              "spans": []
+            }
+          ],
+          "image": {
+            "dimensions": {
+              "width": 1448,
+              "height": 1086
+            },
+            "alt": null,
+            "copyright": null,
+            "url": "https://images.prismic.io/decap/KSNKAS5nwlUB_t5s_Untitleddesign-13-.png?auto=format,compress",
+            "id": "KSNKAS5nwlUB_t5s",
+            "edit": {
+              "x": 0,
+              "y": 0,
+              "zoom": 1,
+              "background": "transparent"
+            }
+          },
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Looping clip (mp4, 10–15 s, no sound needed): the 5-axis CNC milling a pipe part, shot beside the machine door. Upload it in the video field; until then a still photo, 4:3.",
+          "media_side": "Image right",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$fccb11a1-8138-4126-8da9-5944b5b52ee1",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Standard or your own sizing",
+          "title": "Change a measurement, get a new pipe",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "Every pipe family has the same basic design, with room to vary. A little wider for more ground tone, a little narrower for more harmonics, a higher cut-up and a different length for higher wind pressure.",
+              "spans": []
+            },
+            {
+              "type": "paragraph",
+              "text": "In PipeCreator we change the inside width and depth, panel thickness and length of our standard models in minutes. The G-code goes straight to the CNC. So a pipe to your own measurements takes about as long as a standard one.",
+              "spans": []
+            }
+          ],
+          "image": {},
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Looping clip (mp4, 10–15 s): a pipe model in PipeCreator at the office, a measurement being changed and the 3D pipe updating. Screen recording or filmed monitor, 4:3.",
+          "media_side": "Image left",
+          "aspect": "Landscape 4:3",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Tinted"
+        },
+        "id": "site_text_media$b7c8b2b9-5207-40f9-9a0e-3336080afca8",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Wood",
+          "title": "Ayous bodies, beech feet and mouths",
+          "body": [
+            {
+              "type": "paragraph",
+              "text": "A CNC does not see the difference between fine grain and a knot, so we chose the wood for the machine and for the sound. The body is Ayous (Triplochiton scleroxylon): very stable, pale yellow and virtually free of knots. Feet and mouths are made of hand-selected beech.",
+              "spans": [
+                {
+                  "start": 133,
+                  "end": 138,
+                  "type": "strong"
+                },
+                {
+                  "start": 140,
+                  "end": 164,
+                  "type": "em"
+                },
+                {
+                  "start": 249,
+                  "end": 268,
+                  "type": "strong"
+                }
+              ]
+            }
+          ],
+          "image": {},
+          "video": {
+            "link_type": "Media"
+          },
+          "image_brief": "Close-up of the mouth of a wooden pipe, pale Ayous body against the beech mouth, square 1:1",
+          "media_side": "Image right",
+          "aspect": "Square",
+          "cta_label": null,
+          "cta_link": {
+            "link_type": "Any"
+          },
+          "tone": "Default"
+        },
+        "id": "site_text_media$d1a40066-8ef5-4da8-a9c4-a177a7c54ef1",
+        "slice_type": "site_text_media",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "label": "Bourdon",
+            "value": "MIDI 24–96",
+            "note": "6 octaves, stopped"
+          },
+          {
+            "label": "Jazz Flute",
+            "value": "MIDI 60–96",
+            "note": "3 octaves, stopped"
+          },
+          {
+            "label": "Vibraton",
+            "value": "MIDI 46–84",
+            "note": "3 octaves, stopped"
+          },
+          {
+            "label": "Double Street Organ",
+            "value": "MIDI 60–96",
+            "note": "3 octaves, stopped"
+          },
+          {
+            "label": "Flute (Flute 8′ etc.)",
+            "value": "MIDI 60–96",
+            "note": "3 octaves, open"
+          },
+          {
+            "label": "Violins (alto, cello etc.)",
+            "value": "MIDI 48–96",
+            "note": "4 octaves, open"
+          },
+          {
+            "label": "Bariton",
+            "value": "MIDI 48–84",
+            "note": "3 octaves, reed"
+          },
+          {
+            "label": "Trumpet",
+            "value": "MIDI 60–96",
+            "note": "3 octaves, reed"
+          }
+        ],
+        "primary": {
+          "eyebrow": "Range",
+          "title": "Our standard pipe range",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Ranges are given as MIDI note numbers (60 = middle C). Other ranges and measurements on request.",
+              "spans": []
+            }
+          ],
+          "layout": "Spec list",
+          "tone": "Default"
+        },
+        "id": "site_facts$fa2fa585-e8b4-4652-9c74-dd1aecb5b5af",
+        "slice_type": "site_facts",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [
+          {
+            "question": "How fast can you deliver?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Within a few days to a week, depending on the ranks you order. We confirm the date with the quote.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Do you sell single pipes?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "No. We make pipes as complete ranks, so every pipe in the rank is cut, voiced and matched with the next.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Can I send my own measurements?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Yes. Send inside width and depth, length, mouth dimensions and wind pressure, or a drawing or sample pipe, and we make the rank to match.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Voiced or unvoiced?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Both. Our voicers can voice the pipes to your wind pressure, or you receive them ready to voice yourself.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Can you also make the wind chests?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Yes. Order pipes and chests together, and add MIDI conversion or smARTvalve if you want the organ to play from MIDI.",
+                "spans": []
+              }
+            ]
+          },
+          {
+            "question": "Do you ship outside Belgium?",
+            "answer": [
+              {
+                "type": "paragraph",
+                "text": "Yes, we ship worldwide. Shipping is part of your quote.",
+                "spans": []
+              }
+            ]
+          }
+        ],
+        "primary": {
+          "eyebrow": null,
+          "title": "Ordering pipes",
+          "intro": [],
+          "tone": "Default"
+        },
+        "id": "site_faq$0f0456b1-31eb-4fb1-85ad-7406a56406ec",
+        "slice_type": "site_faq",
+        "slice_label": null
+      },
+      {
+        "variation": "default",
+        "version": "initial",
+        "items": [],
+        "primary": {
+          "eyebrow": "Order pipes",
+          "title": "Send us your list of ranks",
+          "intro": [
+            {
+              "type": "paragraph",
+              "text": "Tell us what you need. We reply with a quote and a shipping date.",
+              "spans": []
+            }
+          ],
+          "recipient": "decap",
+          "topics": "Organ pipes, Pipes and wind chests",
+          "default_topic": "Organ pipes",
+          "show_phone": true,
+          "show_location": false,
+          "message_placeholder": "Which ranks (e.g. Bourdon, Flute), note range of each rank, wind pressure, standard scale or your own measurements, voiced or unvoiced…",
+          "submit_label": "Request a quote",
+          "success_title": "Your list of ranks has arrived",
+          "success_body": [
+            {
+              "type": "paragraph",
+              "text": "We will reply with a quote and a shipping date.",
+              "spans": []
+            }
+          ],
+          "aside_title": "Good to know",
+          "aside_body": [
+            {
+              "type": "list-item",
+              "text": "Sold as complete ranks",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Standard scales or your own measurements",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Ready in a few days to a week, depending on the ranks",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Voiced or ready to voice",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Chests, MIDI conversion and smARTvalve on request",
+              "spans": []
+            },
+            {
+              "type": "list-item",
+              "text": "Shipped worldwide",
+              "spans": []
+            }
+          ],
+          "tone": "Default"
+        },
+        "id": "contact_form$a8cc29f2-9865-4da7-9565-ce66bbc79db3",
+        "slice_type": "contact_form",
+        "slice_label": null
+      }
+    ],
+    "meta_title": "Wooden Organ Pipes, Ready Within a Week | Decap",
+    "meta_description": "Almost any wooden organ pipe, milled on our own CNC and ready to ship within a week. Standard scales or your own measurements, for DIY builds and organs.",
+    "meta_image": {}
+  }
+}
