@@ -47,3 +47,18 @@ export async function emptyCart(page: Page) {
     await page.waitForTimeout(400);
   }
 }
+
+/** A fresh test account lands on onboarding first; fill it with harmless test data. */
+export async function completeOnboardingIfAsked(page: Page) {
+  if (!/\/shop\/account\/onboarding/.test(page.url())) return;
+  await page.getByLabel(/first name/i).fill("E2E");
+  await page.getByLabel(/last name/i).fill("Test");
+  await page.getByLabel(/^address$/i).fill("Teststraat 1");
+  await page.getByLabel(/postal code/i).fill("2200");
+  await page.getByLabel(/^city$/i).fill("Herentals");
+  await page.getByLabel(/^country$/i).selectOption("BE");
+  await page.getByLabel(/terms of sale/i).check();
+  await page.getByLabel(/privacy policy/i).check();
+  await page.getByRole("button", { name: /^continue$/i }).click();
+  await page.waitForURL((u) => !/\/onboarding/.test(u.pathname), { timeout: 30_000 });
+}

@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { auth0Login, creds } from "./helpers";
+import { auth0Login, completeOnboardingIfAsked, creds } from "./helpers";
 
 /**
  * Licence v1 (contract C7): player registration with a .decapreq and the licence queue.
@@ -41,6 +41,7 @@ test.describe("licence v1: customer registers a player", () => {
     if (/auth0\.com/.test(page.url()) || (await page.getByRole("link", { name: /sign in|log in/i }).first().isVisible().catch(() => false))) {
       if (!/auth0\.com/.test(page.url())) await page.getByRole("link", { name: /sign in|log in/i }).first().click();
       await auth0Login(page, creds.customer!.email, creds.customer!.password);
+      await completeOnboardingIfAsked(page);
       await page.goto("/en/shop/account/players");
     }
     await expect(page.getByRole("heading", { name: /register a decap player/i })).toBeVisible();
