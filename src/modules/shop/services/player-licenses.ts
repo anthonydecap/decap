@@ -189,12 +189,16 @@ export function licenseSongsFile(o: OrderForFiles): { filename: string; text: st
   return { filename: `${id}_songs.txt`, text: o.songs.map((s) => s.songId).join("\n") + (o.songs.length ? "\n" : "") };
 }
 
-/** The command line, with placeholders for the two files that never leave the vault. */
+/**
+ * The command line as typed in the vault folder (C:\DecapKluis): decaplic lives in Tools\, the
+ * downloaded request and songs file go in Requests\, the licence is written to Issued\.
+ * Only file NAMES appear here; the key and nummers.txt never leave the vault (and are encrypted).
+ */
 export function decaplicCommand(o: OrderForFiles): string {
   const { id } = requirePlayerKey(o);
   return [
-    "decaplic issue <decap-2026-1.sec>", `${id}.decapreq`, formatCustomerNumber(o.customer.customerNumber), "<nummers.txt>", `${id}.decaplic`,
-    o.songs.length ? `--nummers ${id}_songs.txt` : "--geen",
+    "Tools\\decaplic issue decap-2026-1.sec", `Requests\\${id}.decapreq`, formatCustomerNumber(o.customer.customerNumber), "nummers.txt", `Issued\\${id}.decaplic`,
+    o.songs.length ? `--nummers Requests\\${id}_songs.txt` : "--geen",
     `--edition ${o.edition}`, `--midiout ${o.midiOut ? "ja" : "nee"}`,
     ...(o.validUntil ? [`--tot ${o.validUntil}`] : []),
     ...(o.dmiUserId ? [`--dmiuser ${o.dmiUserId}`] : []),

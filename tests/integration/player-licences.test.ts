@@ -76,7 +76,8 @@ describe("Licence queue (licence v1)", () => {
     expect(detail.songs.map((s) => s.songId)).toEqual(["song-1"]);
     expect(detail.withoutSongId.map((a) => a.arrangementId)).toEqual([noId.id]);
     expect(licenseSongsFile(detail).text).toBe("song-1\n");
-    expect(decaplicCommand(detail)).toContain(`--nummers ${A.id}_songs.txt`);
+    expect(decaplicCommand(detail)).toContain(`--nummers Requests\\${A.id}_songs.txt`);
+    expect(decaplicCommand(detail).startsWith(`Tools\\decaplic issue decap-2026-1.sec Requests\\${A.id}.decapreq K1001 nummers.txt Issued\\${A.id}.decaplic`)).toBe(true);
 
     // A second song while it waits: the same order, refreshed.
     await songFor(player.id, me.customer.id, staff.id, "song-2");

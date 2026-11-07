@@ -88,7 +88,7 @@ export default async function AdminLicenceOrderPage({ params }: { params: Promis
           <Panel title="Make the licence (offline)">
             <ol className="list-decimal space-y-3 pl-5 text-sm text-neutral-700">
               <li>
-                Download the two files:{" "}
+                Download into <span className="font-mono">C:\DecapKluis\Requests</span>:{" "}
                 <a href={`/api/admin/shop/licences/${order.id}/request`} className="font-medium text-neutral-950 underline">{playerId}.decapreq</a>
                 {order.songs.length > 0 && (
                   <>
@@ -99,10 +99,10 @@ export default async function AdminLicenceOrderPage({ params }: { params: Promis
                 .
               </li>
               <li>
-                On the vault PC run (the signing key and nummers.txt never leave it):
+                In a command prompt in <span className="font-mono">C:\DecapKluis</span> run (it asks the vault password; the key and nummers.txt never leave the vault):
                 <pre className="mt-2 overflow-x-auto whitespace-pre-wrap break-all rounded-lg bg-neutral-100 p-3 font-mono text-xs text-neutral-950">{decaplicCommand(order)}</pre>
               </li>
-              <li>Upload the .decaplic it writes, under Licence settings. The customer gets an email.</li>
+              <li>Upload <span className="font-mono">C:\DecapKluis\Issued\{playerId}.decaplic</span> under Licence settings.</li>
             </ol>
           </Panel>
         </div>
