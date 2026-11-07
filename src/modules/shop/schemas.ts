@@ -33,6 +33,9 @@ export const playerContextSchema = z.object({ playerId: uuid.nullable() });
 
 export const playerRenameSchema = z.object({ friendlyName: z.string().trim().max(60).nullable() });
 
+/** Licence v1: the text of the player's `.decapreq` (checked in `parseDecapRequest`). */
+export const playerRequestSchema = z.object({ request: z.string().max(8192), friendlyName: z.string().trim().max(60).nullable().optional() });
+
 export const assignMusicSchema = z.object({ licenseIds: z.array(uuid).min(1).max(5000), playerId: uuid, reason: z.string().trim().max(500).optional() });
 
 const country = z.string().trim().toUpperCase().length(2).regex(/^[A-Z]{2}$/);

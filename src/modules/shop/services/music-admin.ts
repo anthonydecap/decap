@@ -13,7 +13,7 @@ import { listTransfers } from "./music-transfers";
 const PLAYER_LIST_SELECT = {
   id: true, friendlyName: true, adminLabel: true, registrationCode: true, serialNumber: true, status: true, activatedAt: true, retiredAt: true, createdAt: true,
   playerType: { select: { id: true, name: true, code: true, supportsMusicLibrary: true } },
-  customer: { select: { id: true, email: true, firstName: true, lastName: true, companyName: true } },
+  customer: { select: { id: true, customerNumber: true, email: true, firstName: true, lastName: true, companyName: true } },
 } satisfies Prisma.RegisteredPlayerSelect;
 
 export async function listPlayersAdmin(params: { q?: string; status?: PlayerStatus | "all"; typeId?: string; page?: number }) {
@@ -59,6 +59,7 @@ export async function adminPlayerDetail(playerId: string) {
     select: {
       ...PLAYER_LIST_SELECT,
       customerId: true, registrationIdentifier: true, purchaseDate: true, warrantyUntil: true, dealerName: true, registeredAt: true, suspendedAt: true, updatedAt: true,
+      licensePlayerId: true, licensePublicKey: true, licenseRequestAt: true,
       activationKeyEncrypted: true,
       playerType: { select: { id: true, name: true, code: true, supportsMusicLibrary: true, softwareProduct: { select: { id: true, name: true } } } },
       softwareInstallations: {

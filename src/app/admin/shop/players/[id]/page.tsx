@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { ArrowSquareOut } from "@phosphor-icons/react/ssr";
 import { roleHasPermission } from "@/modules/shop/auth/session";
 import { ShopError } from "@/modules/shop/errors";
+import { formatCustomerNumber } from "@/modules/shop/services/decap-request";
 import { adminPlayerDetail } from "@/modules/shop/services/music-admin";
 import { grantPickerOptions } from "@/modules/shop/services/music-admin-ui";
 import { getMusicPolicy } from "@/modules/shop/services/music-policy";
@@ -127,6 +128,7 @@ export default async function AdminPlayerPage({ params }: { params: Promise<{ id
                 customerName
               )}
               <span className="block text-xs text-neutral-500">{player.customer.email}</span>
+              <span className="block font-mono text-xs text-neutral-500">{formatCustomerNumber(player.customer.customerNumber)}</span>
             </Row>
             <Row label="Player type">{player.playerType.name}</Row>
             <Row label="Friendly name">
@@ -143,6 +145,13 @@ export default async function AdminPlayerPage({ params }: { params: Promise<{ id
             <Row label="Registration identifier">
               <span className="font-mono">{groupCode(player.registrationIdentifier)}</span>
             </Row>
+            {player.licensePlayerId && (
+              <Row label="Licence v1 player (.decapreq)">
+                <span className="block break-all font-mono text-xs">ID {player.licensePlayerId}</span>
+                <span className="block break-all font-mono text-xs">Key {player.licensePublicKey}</span>
+                {player.licenseRequestAt && <span className="block text-xs text-neutral-500">Request uploaded {formatDateTime(player.licenseRequestAt)}</span>}
+              </Row>
+            )}
             <Row label="Serial number">{player.serialNumber ?? none}</Row>
             <Row label="Status"><StatusBadge status={player.status} /></Row>
             <Row label="Registered">{player.registeredAt ? formatDate(player.registeredAt) : none}</Row>

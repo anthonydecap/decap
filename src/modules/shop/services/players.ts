@@ -3,6 +3,7 @@ import type { PlayerStatus, Prisma, RegisteredPlayer } from "@/generated/shop-pr
 import { shopDb } from "../db";
 import { ShopError, notFound } from "../errors";
 import { encryptActivationKey, decryptActivationKey } from "./activation-key";
+import { parseDecapRequest } from "./decap-request";
 import { audit } from "./audit";
 import { recordActivity } from "./crm";
 import { onPlayerActivated } from "./music-licenses";
@@ -31,6 +32,9 @@ export const PLAYER_PUBLIC_SELECT = {
   playerTypeId: true,
   registrationCode: true,
   registrationIdentifier: true,
+  licensePlayerId: true,
+  licensePublicKey: true,
+  licenseRequestAt: true,
   friendlyName: true,
   serialNumber: true,
   adminLabel: true,
@@ -161,6 +165,98 @@ export async function createPlayer(input: PlayerInput & { actorStaffId: string; 
   });
   if (status === "ACTIVE") await onPlayerActivated(player.id, input.actorStaffId);
   return player;
+}
+
+// ─── Licence v1: the customer registers a player with its `.decapreq` ─────────
+
+/** Player type for players that register with a `.decapreq`. Made on first use. */
+export const DECAP_PLAYER_TYPE_CODE = "DECAP_PLAYER";
+
+async function decapPlayerTypeId(): Promise<string> {
+  const type = await shopDb().playerType.upsert({
+    where: { code: DECAP_PLAYER_TYPE_CODE },
+    create: { code: DECAP_PLAYER_TYPE_CODE, name: "Decap Player", description: "Registered with a licence v1 activation request (.decapreq)." },
+    update: {},
+    select: { id: true },
+  });
+  return type.id;
+}
+
+const PLAYER_TAKEN =
+  "This player is already registered to another account. If you bought it second-hand or changed accounts, please contact us.";
+
+/**
+ * Contract C7 §1/§5.1. The customer uploads the activation request of their player; the
+ * check that ID and key belong together lives in `parseDecapRequest`. Only public data is
+ * stored. The player starts PENDING: its licence is made offline (licence queue, step 3).
+ *
+ * Uploading the same request again is harmless (it only refreshes `licenseRequestAt`).
+ * A player that belongs to another customer is refused without saying whose it is; moving a
+ * player stays a staff action (`transferPlayer`).
+ */
+export async function registerPlayerFromRequest(input: {
+  customerId: string;
+  requestText: string;
+  friendlyName?: string | null;
+}): Promise<{ player: RegisteredPlayer; created: boolean; customerNumber: number }> {
+  const req = parseDecapRequest(input.requestText);
+  const db = shopDb();
+  const customer = await db.customer.findUnique({ where: { id: input.customerId }, select: { id: true, customerNumber: true } });
+  if (!customer) throw notFound("Customer");
+  const actor = { type: "CUSTOMER" as const, customerId: customer.id };
+  const code = normaliseCode(req.playerId);
+
+  const existing = await db.registeredPlayer.findFirst({
+    where: { OR: [{ licensePlayerId: req.playerId }, { registrationCode: code }, { registrationIdentifier: code }] },
+    select: { id: true, customerId: true, licensePublicKey: true },
+  });
+  if (existing) {
+    if (existing.customerId !== customer.id || (existing.licensePublicKey && existing.licensePublicKey !== req.publicKey)) {
+      await audit(actor, "player.request_refused", { type: "RegisteredPlayer", id: existing.id }, { licensePlayerId: req.playerId });
+      throw new ShopError("CONFLICT", PLAYER_TAKEN);
+    }
+    const player = await db.registeredPlayer.update({
+      where: { id: existing.id },
+      data: { licensePlayerId: req.playerId, licensePublicKey: req.publicKey, licenseRequestAt: new Date() },
+    });
+    await audit(actor, "player.request_uploaded", { type: "RegisteredPlayer", id: player.id }, { licensePlayerId: req.playerId, again: true });
+    return { player, created: false, customerNumber: customer.customerNumber };
+  }
+
+  const now = new Date();
+  let player: RegisteredPlayer;
+  try {
+    player = await db.registeredPlayer.create({
+      data: {
+        customerId: customer.id,
+        playerTypeId: await decapPlayerTypeId(),
+        registrationCode: code,
+        registrationIdentifier: code,
+        licensePlayerId: req.playerId,
+        licensePublicKey: req.publicKey,
+        licenseRequestAt: now,
+        friendlyName: input.friendlyName?.trim() || null,
+        status: "PENDING",
+        registeredAt: now,
+      },
+    });
+  } catch (err) {
+    // Two uploads of the same player at the same moment: the unique index decides.
+    if ((err as { code?: string }).code === "P2002") throw new ShopError("CONFLICT", PLAYER_TAKEN);
+    throw err;
+  }
+
+  await audit(actor, "player.registered_by_request", { type: "RegisteredPlayer", id: player.id }, {
+    licensePlayerId: req.playerId,
+    app: req.app,
+  });
+  await recordActivity({
+    customerId: customer.id,
+    type: "player.created",
+    summary: `Player ${formatRegistrationCode(code)} registered by the customer (activation request)`,
+    metadata: { playerId: player.id, status: "PENDING" },
+  });
+  return { player, created: true, customerNumber: customer.customerNumber };
 }
 
 export async function updatePlayer(input: {

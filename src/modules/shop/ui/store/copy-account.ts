@@ -89,6 +89,17 @@ const en = {
   playersTitle: "Your players",
   playersBody: "Each registered Virtual Orchestrion has its own music library. Open a player to see its music, software and support.",
 
+  // Register a player with its activation request (.decapreq, licence v1)
+  registerTitle: "Register a Decap Player",
+  registerBody: "In the Decap Player choose Help > Create Activation Request. It saves a small .decapreq file; upload that file here. It holds no password or secret.",
+  registerFileLabel: "Activation request (.decapreq)",
+  registerNameLabel: "Name for this player (optional)",
+  registerSubmit: "Register player",
+  registerBusy: "Registering",
+  registerNoFile: "Choose the .decapreq file first.",
+  registerDone: (customerNumber: string) => `Player registered. Your customer number is ${customerNumber}. We will prepare its licence and email you when it is ready.`,
+  registerAgain: "This player was already registered to your account. We have the latest request.",
+
   // Player detail
   backToMyDmi: "My DMI",
   backToPlayer: (name: string) => name,
@@ -328,6 +339,16 @@ const fr: AccountCopy = {
 
   playersTitle: "Vos lecteurs",
   playersBody: "Chaque lecteur DMI enregistré a sa propre bibliothèque musicale. Ouvrez un lecteur pour voir sa musique, ses logiciels et l'assistance.",
+
+  registerTitle: "Enregistrer un Decap Player",
+  registerBody: "Dans le Decap Player, choisissez Help > Create Activation Request. Il enregistre un petit fichier .decapreq ; envoyez ce fichier ici. Il ne contient ni mot de passe ni secret.",
+  registerFileLabel: "Demande d'activation (.decapreq)",
+  registerNameLabel: "Nom de ce lecteur (facultatif)",
+  registerSubmit: "Enregistrer le lecteur",
+  registerBusy: "Enregistrement",
+  registerNoFile: "Choisissez d'abord le fichier .decapreq.",
+  registerDone: (customerNumber) => `Lecteur enregistré. Votre numéro de client est ${customerNumber}. Nous préparons sa licence et vous écrivons dès qu'elle est prête.`,
+  registerAgain: "Ce lecteur était déjà enregistré sur votre compte. Nous avons la dernière demande.",
 
   backToMyDmi: "Mon DMI",
   backToPlayer: (name) => name,

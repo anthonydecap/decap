@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^4.31.1",
+    "@noble/hashes": "^1.8.0",
     "@phosphor-icons/react": "^2.1.10",
     "@prisma/adapter-pg": "^7.10.0",
     "@prisma/client": "^7.10.0",

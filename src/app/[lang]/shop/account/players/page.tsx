@@ -6,6 +6,7 @@ import { resolveUrlLang } from "@/i18n";
 import { customerMusicPlayers, licenseCountsByPlayer } from "@/modules/shop/services/music-licenses";
 import { requireAccountCustomer } from "@/modules/shop/ui/store/account-server";
 import { BackLink, helpLicensingPath, NoPlayersState, PlayerCard, textLink } from "@/modules/shop/ui/store/account-ui";
+import { RegisterPlayerForm } from "@/modules/shop/ui/store/RegisterPlayerForm";
 import { shopPath } from "@/modules/shop/ui/store/copy";
 import { accountCopy } from "@/modules/shop/ui/store/copy-account";
 
@@ -14,7 +15,8 @@ export const metadata: Metadata = { title: "Players", robots: { index: false } }
 
 /**
  * Every player registered to the customer, retired ones last. Customers can open a player
- * and rename it; registering, moving or retiring a player is done by DMI. Registration codes
+ * and rename it, and register a Decap Player with its activation request (.decapreq);
+ * moving or retiring a player is done by DMI. Registration codes
  * are masked and activation keys are never shown.
  */
 export default async function AccountPlayersPage({ params }: { params: Promise<{ lang: string }> }) {
@@ -44,6 +46,14 @@ export default async function AccountPlayersPage({ params }: { params: Promise<{
             ))}
           </FadeInStagger>
         )}
+
+        <FadeIn className="mt-16 max-w-2xl">
+          <h2 className="font-display text-2xl font-bold tracking-tight text-neutral-950">{t.registerTitle}</h2>
+          <p className="mt-3 text-neutral-600">{t.registerBody}</p>
+          <div className="mt-6">
+            <RegisterPlayerForm lang={urlLang} />
+          </div>
+        </FadeIn>
 
         <p className="mt-12">
           <Link href={helpLicensingPath(urlLang)} className={textLink}>{t.learnHowItWorks}</Link>

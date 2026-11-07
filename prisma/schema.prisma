@@ -93,6 +93,10 @@ model Customer {
   preferredCurrency String  @default("EUR") @db.Char(3)
   preferredLanguage String? @db.VarChar(5)
   stripeCustomerId  String? @unique
+  /// Decap customer number, shown as `K<number>` (contract C7: required field in every
+  /// player licence). Unique and never reused; numbers from 1001 on (K0001..K1000 were
+  /// handed out by hand before the shop existed).
+  customerNumber    Int     @unique @default(autoincrement())
 
   /// CRM state. Operational only — see the CrmStatus comment.
   crmStatus      CrmStatus       @default(PROSPECT)
@@ -300,6 +304,15 @@ model RegisteredPlayer {
   /// Authenticated-encryption blob, never a hash: support has to be able to read the
   /// key back out for a customer. Never selected by default, never logged.
   activationKeyEncrypted String?
+
+  /// Licence v1 (contract C7): the player ID from the uploaded `.decapreq`, 32 lowercase hex
+  /// = hex(BLAKE2b-128(licensePublicKey)). Null for players registered the old way.
+  licensePlayerId  String?   @unique @db.Char(32)
+  /// The player's X25519 public key, 64 lowercase hex. Public by design: licences are sealed
+  /// for it offline. No secret is ever stored for a licence v1 player.
+  licensePublicKey String?   @db.Char(64)
+  /// When the customer last uploaded the `.decapreq` for this player.
+  licenseRequestAt DateTime?
 
   serialNumber String?
   adminLabel   String?
