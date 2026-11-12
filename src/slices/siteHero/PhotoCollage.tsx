@@ -1,137 +1,164 @@
 "use client";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useRef } from "react";
-import clsx from "clsx";
 import { isFilled } from "@prismicio/client";
-import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Container } from "@/components/Container";
 import { MediaSlot } from "@/components/MediaSlot";
 import { Eyebrow, SiteButton, SiteRichText } from "@/lib/site-ui";
 
 /*
- * "Photo collage" hero: the copy, then 3 to 7 photos in one mosaic that is seen all at once
- * (no slideshow). The first photo is the biggest. The photos come in together with a short
- * stagger, and drift at slightly different speeds while the visitor scrolls away.
- * Reduced motion: the same mosaic, still.
+ * "Photo collage" hero: a moving wall of photos. The whole window is filled with columns of
+ * photos that drift endlessly, up and down at different speeds, tilted a little in perspective.
+ * The heading and buttons sit large in the middle, over a dark veil. It moves from the first
+ * moment, without scrolling. Reduced motion: the same wall, standing still.
  */
 
-const MAX = 7;
+const MAX = 12;
+/** Seconds per loop, per column: neighbours move at different speeds and in opposite directions. */
+const SPEED = [70, 55, 80, 60, 75];
+/** Photo shapes along a column, so the wall has rhythm instead of a grid. */
+const SHAPES = [
+  "aspect-[4/5]",
+  "aspect-square",
+  "aspect-[3/4]",
+  "aspect-[4/3]",
+  "aspect-[4/5]",
+  "aspect-[1/1]",
+  "aspect-[3/4]",
+];
 
-/** Desktop mosaics on a 12-column grid, one per number of photos. Letters = photo order. */
-const AREAS: Record<number, string[]> = {
-  3: ["a a a a a a a b b b b b", "a a a a a a a c c c c c"],
-  4: ["a a a a a a b b b c c c", "a a a a a a d d d d d d"],
-  5: ["a a a a a b b b b c c c", "a a a a a d d d d c c c", "a a a a a e e e e e e e"],
-  6: ["a a a a a b b b b c c c", "a a a a a d d d d c c c", "e e e e e e f f f f f f"],
-  7: ["a a a a a b b b b c c c", "a a a a a d d d d c c c", "e e e f f f f f f g g g"],
-};
-const LETTERS = "abcdefg";
+/** Each column starts at a different photo, so no row repeats across the wall. */
+function column(photos: any[], c: number) {
+  const start = (c * 3) % photos.length;
+  const order = [...photos.slice(start), ...photos.slice(0, start)];
+  // Long enough to cover the tilted, enlarged window several times over.
+  const run = order.length < 6 ? [...order, ...order] : order;
+  return run;
+}
 
-/** How far each photo drifts (px) once the mosaic scrolls up: neighbours move differently, so the mosaic feels deep. At rest (page top) everything lines up. */
-const DRIFT = [-40, 30, -70, 50, -20, 60, -50];
-
-/** Desktop: the heading on the left, intro and buttons on the right, so the mosaic fits on the first screen. */
-function Copy({ p }: { p: any }) {
+function Column({ photos, c }: { photos: any[]; c: number }) {
+  const run = column(photos, c);
+  const up = c % 2 === 0;
   return (
-    <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-12">
-      <div className="lg:col-span-7">
-        {p.eyebrow && <Eyebrow>{p.eyebrow}</Eyebrow>}
-        {p.title && (
-          <h1 className={clsx("site-heading text-[2.5rem] leading-[1.03] text-ink sm:text-6xl xl:text-7xl", p.eyebrow && "mt-5")}>
-            {p.title}
-          </h1>
+    <div
+      className={
+        c >= 3 ? "hidden lg:block" : c === 2 ? "hidden sm:block" : undefined
+      }
+    >
+      <div
+        // No gap: the space sits under each photo, so both copies are exactly the same height and the loop is seamless.
+        // Reduced motion is handled in CSS (same HTML on server and client): the wall stands still.
+        className="flex flex-col motion-reduce:[animation:none!important]"
+        style={{
+          animation: `${up ? "wall-up" : "wall-down"} ${SPEED[c % SPEED.length]}s linear infinite`,
+        }}
+      >
+        {/* Twice the same run: when the first has scrolled out, the second is exactly in its place. */}
+        {[0, 1].map((copy) =>
+          run.map((item, i) => (
+            <div
+              key={`${copy}-${i}`}
+              aria-hidden={copy === 1 || undefined}
+              className="pb-3 sm:pb-4 lg:pb-5"
+            >
+              <div
+                className={`relative w-full overflow-hidden rounded-xl lg:rounded-2xl ${SHAPES[(i + c) % SHAPES.length]}`}
+              >
+                <MediaSlot
+                  field={item.photo}
+                  brief={item.photo_brief || "Photo for the wall"}
+                  aspect=""
+                  rounded=""
+                  className="absolute inset-0 h-full w-full"
+                  fit="cover"
+                  tone="dark"
+                  sizes="(min-width: 1024px) 22vw, (min-width: 640px) 36vw, 55vw"
+                  priority={copy === 0 && i < 3}
+                />
+              </div>
+            </div>
+          )),
         )}
-      </div>
-      <div className="lg:col-span-5">
-        <SiteRichText field={p.intro} className="hidden text-lg leading-relaxed text-ink-muted sm:block lg:text-base xl:text-lg" />
-        <div className="flex flex-wrap items-center gap-4 sm:mt-8">
-          <SiteButton field={p.primary_cta_link} label={p.primary_cta_label} />
-          <SiteButton field={p.secondary_cta_link} label={p.secondary_cta_label} variant="secondary" />
-        </div>
-        {p.note && <p className="mt-6 text-sm text-ink-muted">{p.note}</p>}
       </div>
     </div>
   );
 }
 
-function Photo({
-  item,
-  index,
-  area,
-  progress,
-  reduce,
-}: {
-  item: any;
-  index: number;
-  area: string;
-  progress: MotionValue<number>;
-  reduce: boolean;
-}) {
-  const y = useTransform(progress, [0, 1], [0, reduce ? 0 : DRIFT[index % DRIFT.length]]);
-  return (
-    <motion.div
-      style={{ "--area": area, y } as any}
-      // Mobile: the first photo spans both columns, the rest sit two by two.
-      className={clsx("relative min-h-0 lg:[grid-area:var(--area)]", index === 0 ? "col-span-2 aspect-[4/3] lg:aspect-auto" : "aspect-square lg:aspect-auto")}
-      initial={reduce ? false : { opacity: 0, scale: 0.92 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.8, delay: reduce ? 0 : 0.15 + index * 0.07, ease: [0.22, 1, 0.36, 1] }}
-    >
-      <div className="group h-full w-full overflow-hidden rounded-2xl lg:rounded-3xl">
-        <MediaSlot
-          field={item.photo}
-          brief={item.photo_brief || `Collage photo ${index + 1}`}
-          aspect=""
-          rounded=""
-          className="h-full w-full"
-          imgClassName="transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-          fit="cover"
-          sizes={index === 0 ? "(min-width: 1024px) 42vw, 100vw" : "(min-width: 1024px) 34vw, 50vw"}
-          priority={index < 3}
-        />
-      </div>
-    </motion.div>
-  );
-}
-
 export function PhotoCollage({ p, items }: { p: any; items: any[] }) {
   const reduce = !!useReducedMotion();
-  const mosaic = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: mosaic, offset: ["start start", "end start"] });
-
-  // Filled photos first; empty slots with a brief still show as placeholders (the shot list).
-  const photos = items.filter((it) => isFilled.image(it.photo) || it.photo_brief).slice(0, MAX);
-  const n = Math.max(3, photos.length);
-  const areas = AREAS[Math.min(n, MAX)];
+  const photos = items
+    .filter((it) => isFilled.image(it.photo) || it.photo_brief)
+    .slice(0, MAX);
   while (photos.length < 3) photos.push({ photo_brief: "" });
 
   return (
-    <section className="overflow-hidden bg-page pt-12 pb-16 text-ink sm:pt-16 sm:pb-24 lg:pb-32">
-      <Container>
-        <motion.div
-          initial={reduce ? false : { opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <Copy p={p} />
-        </motion.div>
-
-        <div
-          ref={mosaic}
-          className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 lg:mt-12 lg:grid-cols-12 lg:gap-4 lg:[grid-template-areas:var(--collage-areas)] lg:[grid-template-rows:var(--collage-rows)]"
-          style={
-            {
-              "--collage-areas": areas.map((r) => `"${r}"`).join(" "),
-              // Sized to the window, so the whole mosaic shows on the first screen of a laptop.
-              "--collage-rows": `repeat(${areas.length}, clamp(8.5rem, calc((100svh - 26rem) / ${areas.length}), 17rem))`,
-            } as React.CSSProperties
-          }
-        >
-          {photos.map((item, i) => (
-            <Photo key={i} item={item} index={i} area={LETTERS[i]} progress={scrollYProgress} reduce={reduce} />
+    <section
+      data-tone="inverse"
+      className="relative isolate flex min-h-[640px] items-center overflow-hidden bg-neutral-950 text-ink h-svh"
+    >
+      {/* The wall: tilted and enlarged so its edges never show. */}
+      <motion.div
+        aria-hidden="true"
+        className="absolute inset-0 -z-20 [perspective:1600px]"
+        // Same starting point on server and client (no hydration mismatch); reduced motion: no transition.
+        initial={{ opacity: 0, scale: 1.08 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={
+          reduce ? { duration: 0 } : { duration: 1.6, ease: [0.22, 1, 0.36, 1] }
+        }
+      >
+        <div className="absolute left-1/2 top-1/2 grid w-[150%] grid-cols-2 gap-3 [transform:translate(-50%,-50%)_rotateX(18deg)_rotateZ(-8deg)] sm:w-[130%] sm:grid-cols-3 sm:gap-4 lg:w-[118%] lg:grid-cols-5 lg:gap-5">
+          {[0, 1, 2, 3, 4].map((c) => (
+            <Column key={c} photos={photos} c={c} />
           ))}
         </div>
+      </motion.div>
+
+      {/* Veil: dark in the middle where the text is, and at the edges; the photos glow in between. */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_55%_50%_at_50%_52%,rgba(0,0,0,0.86),rgba(0,0,0,0.5)_70%,rgba(0,0,0,0.72))]"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t from-neutral-950 to-transparent"
+      />
+
+      <Container className="w-full">
+        <motion.div
+          className="mx-auto max-w-4xl text-center"
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={
+            reduce
+              ? { duration: 0 }
+              : { duration: 1, delay: 0.35, ease: [0.22, 1, 0.36, 1] }
+          }
+        >
+          {p.eyebrow && <Eyebrow>{p.eyebrow}</Eyebrow>}
+          {p.title && (
+            <h1 className="site-heading mt-5 text-[2.75rem] leading-[1.02] text-ink [text-wrap:balance] sm:text-7xl lg:text-8xl">
+              {p.title}
+            </h1>
+          )}
+          <SiteRichText
+            field={p.intro}
+            className="mx-auto mt-7 hidden max-w-2xl text-lg leading-relaxed text-ink-muted sm:block sm:text-xl"
+          />
+          <div className="mt-9 flex flex-wrap items-center justify-center gap-4 lg:mt-11">
+            <SiteButton
+              field={p.primary_cta_link}
+              label={p.primary_cta_label}
+            />
+            <SiteButton
+              field={p.secondary_cta_link}
+              label={p.secondary_cta_label}
+              variant="secondary"
+            />
+          </div>
+          {p.note && <p className="mt-6 text-sm text-ink-muted">{p.note}</p>}
+        </motion.div>
       </Container>
     </section>
   );
