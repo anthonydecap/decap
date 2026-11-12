@@ -9,6 +9,7 @@ import { FadeIn, FadeInStagger } from "@/components/FadeIn";
 import { resolveMuxHlsUrl } from "@/lib/mux-video";
 import { HeroMedia } from "./HeroMedia";
 import { VideoShowcase } from "./VideoShowcase";
+import { PhotoCollage } from "./PhotoCollage";
 import { Eyebrow, SiteButton, SiteRichText, toneFromSelect } from "@/lib/site-ui";
 
 const SHAPE: Record<string, string> = {
@@ -24,7 +25,7 @@ const OVERLAY: Record<string, string> = {
   Strong: "from-black/90 via-black/65 to-black/45",
 };
 
-/** Page hero with the page's H1. Layouts: Split (text + image), Centered, Full-bleed image, Video showcase. */
+/** Page hero with the page's H1. Layouts: Split (text + image), Centered, Full-bleed image, Video showcase, Photo collage. */
 const SiteHero: FC<SliceComponentProps<any>> = ({ slice }) => {
   const p = slice.primary;
   const layout = p.layout || "Split";
@@ -32,6 +33,7 @@ const SiteHero: FC<SliceComponentProps<any>> = ({ slice }) => {
   const video = resolveMuxHlsUrl(p.mux_video);
 
   if (layout === "Video showcase") return <VideoShowcase p={p} video={video} brief={brief} />;
+  if (layout === "Photo collage") return <PhotoCollage p={p} items={slice.items ?? []} />;
 
   const buttons = (
     <div className={clsx("mt-10 flex flex-wrap items-center gap-4", layout !== "Split" && "justify-center")}>

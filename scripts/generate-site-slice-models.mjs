@@ -24,9 +24,9 @@ export const SITE_SLICES = {
   siteHero: sliceModel({
     id: "site_hero",
     name: "SiteHero",
-    description: "Page hero (H1) with intro, two buttons and an image. Split, centered or full-bleed.",
+    description: "Page hero (H1) with intro, two buttons and an image. Split, centered, full-bleed, video showcase or photo collage.",
     primary: {
-      layout: select("Layout", ["Split", "Centered", "Full-bleed image", "Video showcase"]),
+      layout: select("Layout", ["Split", "Centered", "Full-bleed image", "Video showcase", "Photo collage"]),
       eyebrow: text("Eyebrow"),
       title: text("Title (H1)"),
       intro: rich("Intro"),
@@ -49,6 +49,10 @@ export const SITE_SLICES = {
       vignette: bool("Effect: vignette (darker edges)"),
       slow_zoom: bool("Effect: slow zoom (Ken Burns)"),
       tone: TONE(),
+    },
+    items: {
+      photo: image("Collage photo (Photo collage layout: 3 to 7 photos, first = the biggest)"),
+      photo_brief: BRIEF("photo"),
     },
   }),
 

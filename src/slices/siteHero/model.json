@@ -2,7 +2,7 @@
   "id": "site_hero",
   "type": "SharedSlice",
   "name": "SiteHero",
-  "description": "Page hero (H1) with intro, two buttons and an image. Split, centered or full-bleed.",
+  "description": "Page hero (H1) with intro, two buttons and an image. Split, centered, full-bleed, video showcase or photo collage.",
   "variations": [
     {
       "id": "default",
@@ -20,7 +20,8 @@
               "Split",
               "Centered",
               "Full-bleed image",
-              "Video showcase"
+              "Video showcase",
+              "Photo collage"
             ],
             "default_value": "Split"
           }
@@ -246,7 +247,23 @@
           }
         }
       },
-      "items": {}
+      "items": {
+        "photo": {
+          "type": "Image",
+          "config": {
+            "label": "Collage photo (Photo collage layout: 3 to 7 photos, first = the biggest)",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "photo_brief": {
+          "type": "Text",
+          "config": {
+            "label": "Photo brief (shown while the photo is empty)",
+            "placeholder": "e.g. Accordion Pedestal, front view, black backdrop, 4:3"
+          }
+        }
+      }
     }
   ]
 }
