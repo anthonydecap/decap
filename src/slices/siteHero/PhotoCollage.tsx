@@ -7,6 +7,7 @@ import {
   motion,
   useReducedMotion,
   useScroll,
+  useSpring,
   useTransform,
 } from "framer-motion";
 import { Container } from "@/components/Container";
@@ -184,12 +185,18 @@ export function PhotoCollage({ p, items }: { p: any; items: any[] }) {
     target: section,
     offset: ["start start", "end end"],
   });
-  const copyOpacity = useTransform(scrollYProgress, [0.38, 0.8], [0, 1]);
-  const copyY = useTransform(scrollYProgress, [0.38, 0.8], [36, 0]);
+  // Smoothed like the logo, so text and logo glide together instead of stepping with the wheel.
+  const smooth = useSpring(scrollYProgress, {
+    stiffness: 160,
+    damping: 32,
+    mass: 0.7,
+  });
+  const copyOpacity = useTransform(smooth, [0.38, 0.8], [0, 1]);
+  const copyY = useTransform(smooth, [0.38, 0.8], [36, 0]);
   const copyEvents = useTransform(copyOpacity, (o) =>
     o > 0.5 ? "auto" : "none",
   );
-  const cueOpacity = useTransform(scrollYProgress, [0, 0.12], [1, 0]);
+  const cueOpacity = useTransform(smooth, [0, 0.12], [1, 0]);
   const videos = useWallVideos();
   const photos = items
     .filter((it) => isFilled.image(it.photo) || it.photo_brief || it.mux_video)
@@ -256,37 +263,54 @@ export function PhotoCollage({ p, items }: { p: any; items: any[] }) {
         </motion.div>
 
         <Container className="w-full">
-          <motion.div
-            className="mx-auto max-w-4xl text-center motion-reduce:!transform-none motion-reduce:!opacity-100"
-            style={{
-              opacity: copyOpacity,
-              y: copyY,
-              pointerEvents: copyEvents,
-            }}
-          >
-            {p.eyebrow && <Eyebrow>{p.eyebrow}</Eyebrow>}
-            {p.title && (
-              <h1 className="site-heading mt-5 text-[2.75rem] leading-[1.02] text-white [text-shadow:0_2px_40px_rgba(0,0,0,0.6)] [text-wrap:balance] sm:text-7xl lg:text-8xl">
-                {p.title}
-              </h1>
+          <div className="mx-auto max-w-4xl text-center">
+            {/* The eyebrow stays the whole time: above the big logo on arrival, above the heading after. */}
+            {p.eyebrow && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={
+                  reduce
+                    ? { duration: 0 }
+                    : { duration: 0.8, delay: 0.9, ease: [0.22, 1, 0.36, 1] }
+                }
+              >
+                <Eyebrow>{p.eyebrow}</Eyebrow>
+              </motion.div>
             )}
-            <SiteRichText
-              field={p.intro}
-              className="mx-auto mt-7 hidden max-w-2xl text-lg leading-relaxed text-white/85 [text-shadow:0_1px_20px_rgba(0,0,0,0.8)] sm:block sm:text-xl"
-            />
-            <div className="mt-9 flex flex-wrap items-center justify-center gap-4 lg:mt-11">
-              <SiteButton
-                field={p.primary_cta_link}
-                label={p.primary_cta_label}
+            <motion.div
+              className="motion-reduce:!transform-none motion-reduce:!opacity-100"
+              style={{
+                opacity: copyOpacity,
+                y: copyY,
+                pointerEvents: copyEvents,
+              }}
+            >
+              {p.title && (
+                <h1 className="site-heading mt-5 text-[2.75rem] leading-[1.02] text-white [text-shadow:0_2px_40px_rgba(0,0,0,0.6)] [text-wrap:balance] sm:text-7xl lg:text-8xl">
+                  {p.title}
+                </h1>
+              )}
+              <SiteRichText
+                field={p.intro}
+                className="mx-auto mt-7 hidden max-w-2xl text-lg leading-relaxed text-white/85 [text-shadow:0_1px_20px_rgba(0,0,0,0.8)] sm:block sm:text-xl"
               />
-              <SiteButton
-                field={p.secondary_cta_link}
-                label={p.secondary_cta_label}
-                variant="secondary"
-              />
-            </div>
-            {p.note && <p className="mt-6 text-sm text-ink-muted">{p.note}</p>}
-          </motion.div>
+              <div className="mt-9 flex flex-wrap items-center justify-center gap-4 lg:mt-11">
+                <SiteButton
+                  field={p.primary_cta_link}
+                  label={p.primary_cta_label}
+                />
+                <SiteButton
+                  field={p.secondary_cta_link}
+                  label={p.secondary_cta_label}
+                  variant="secondary"
+                />
+              </div>
+              {p.note && (
+                <p className="mt-6 text-sm text-ink-muted">{p.note}</p>
+              )}
+            </motion.div>
+          </div>
         </Container>
       </div>
     </section>

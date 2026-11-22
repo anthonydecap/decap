@@ -52,7 +52,10 @@ export function LogoDock({
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     let raf = 0;
-    const update = () => {
+    let last = 0;
+    let shown = -1; // the progress the logo shows; eases towards the real scroll progress
+
+    const frame = (now: number) => {
       raf = 0;
       const sec = section.current;
       const box = slot.current;
@@ -65,13 +68,26 @@ export function LogoDock({
       const progress = clamp01(-r.top / range);
 
       // Hold the header while the stage is pinned, then let it scroll away with the hero.
+      // Follows the real scroll exactly (a lagging header would wobble against the page).
       root.style.setProperty(
         "--header-pin",
         `${Math.max(0, window.scrollY + Math.min(0, r.top + range))}px`,
       );
 
+      // The logo glides after the scroll instead of jumping with each wheel step: it closes
+      // the gap with a ~110 ms time constant, independent of the frame rate.
+      const dt = last ? Math.min(64, now - last) : 16;
+      last = now;
+      shown =
+        shown < 0
+          ? progress
+          : shown + (progress - shown) * (1 - Math.exp(-dt / 110));
+      if (Math.abs(progress - shown) < 0.0004) shown = progress;
+      else raf = requestAnimationFrame(frame);
+      if (shown === progress) last = 0;
+
       const t = easeInOut(
-        clamp01((progress - DOCK_START) / (DOCK_END - DOCK_START)),
+        clamp01((shown - DOCK_START) / (DOCK_END - DOCK_START)),
       );
       const target = headerLogo();
       const docked = t >= 1 || !target;
@@ -95,17 +111,18 @@ export function LogoDock({
         oy = tr.top - vb.y * unit;
         mark = vb.width < 50; // phones: only the D
       }
-      const scale = 1 + (unit / bigUnit - 1) * t;
-      move.style.transform = `translate(${(ox - s.left) * t}px, ${(oy - s.top) * t}px) scale(${scale})`;
+      // Scale geometrically (equal steps feel equal), position along a straight line.
+      const scale = Math.pow(unit / bigUnit, t);
+      move.style.transform = `translate3d(${(ox - s.left) * t}px, ${(oy - s.top) * t}px, 0) scale(${scale})`;
       if (rest.current)
         rest.current.style.opacity = mark
           ? String(1 - clamp01((t - 0.45) / 0.4))
           : "1";
     };
     const schedule = () => {
-      if (!raf) raf = requestAnimationFrame(update);
+      if (!raf) raf = requestAnimationFrame(frame);
     };
-    update();
+    frame(performance.now());
     window.addEventListener("scroll", schedule, { passive: true });
     window.addEventListener("resize", schedule);
     return () => {
@@ -131,7 +148,10 @@ export function LogoDock({
         className="pointer-events-none absolute inset-0 z-30 flex items-center justify-center px-6 motion-reduce:hidden"
       >
         <div ref={slot}>
-          <div ref={mover} style={{ transformOrigin: "0 0" }}>
+          <div
+            ref={mover}
+            style={{ transformOrigin: "0 0", willChange: "transform" }}
+          >
             <svg
               viewBox="0 0 129 22"
               className="block h-auto w-[min(84vw,64rem)] fill-white drop-shadow-[0_4px_40px_rgba(0,0,0,0.5)]"
