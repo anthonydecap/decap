@@ -1,12 +1,13 @@
 "use client";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { type FC, useRef } from "react";
+import { type FC, useRef, useState } from "react";
 import { isFilled } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { type SliceComponentProps } from "@prismicio/react";
 import {
   motion,
+  useMotionValueEvent,
   useScroll,
   useTransform,
   type MotionValue,
@@ -14,15 +15,17 @@ import {
 import clsx from "clsx";
 import { Container } from "@/components/Container";
 import { MediaPlaceholder } from "@/components/MediaSlot";
-import { SectionHeader, SiteLink, toneFromSelect } from "@/lib/site-ui";
+import { Eyebrow, SiteLink, SiteRichText, toneFromSelect } from "@/lib/site-ui";
 
 /*
- * Photo cards that stack while you scroll ("Where they play"). Each card is as wide as the home
- * page tiles and nearly a window tall, the photo full-bleed with the label and a big line over
- * it. Each card sticks near the top; the next one slides over it, and the cards underneath
- * shrink a little and darken, like leafing through a pile of photos. The photo in a card eases
- * from a slight zoom to rest as it comes in. A card with a link is clickable as a whole (as the
- * tiles). Reduced motion: the same stack, no scaling, dimming or zoom.
+ * "Where they play": a list of places next to one big photo, in the same text-left / image-right
+ * build as the text-and-media sections around it.
+ *
+ * Desktop: the split is pinned while you scroll through the places. The active place lights up
+ * with its line and a thin progress bar; the photo on the right changes with it in a soft
+ * crossfade. Clicking a place scrolls to it. Phones and reduced motion: no pin, the places one
+ * under the other, each with its photo. A place with a link opens it (desktop: its photo,
+ * phones: the whole card).
  */
 
 const POSITION: Record<string, string> = {
@@ -33,120 +36,105 @@ const POSITION: Record<string, string> = {
   Right: "object-right",
 };
 
-/** How far each card sits below the one before it once stacked, so the pile's edges show. */
-const STEP = 16;
-/** Scroll per card, in svh. The stack ends with a run-out of (100 - WINDOW)svh so the last card
- *  also reaches its place; card i is then in place at progress i/(n-1). */
-const WINDOW = 70;
+/** Scroll per place while pinned, in svh. */
+const PER_PLACE = 55;
 
-function Card({
-  item,
-  i,
-  n,
-  progress,
-}: {
-  item: any;
-  i: number;
-  n: number;
-  progress: MotionValue<number>;
-}) {
-  // The stack scrolls n-1 windows: card i is in place at progress i/(n-1), sliding in over the
-  // window before that. Its photo eases from a slight zoom to rest as it slides in.
-  const m = Math.max(1, n - 1);
-  const photoScale = useTransform(
-    progress,
-    [Math.max(0, (i - 1) / m), i / m],
-    [i === 0 ? 1 : 1.12, 1],
-  );
-  // Once later cards slide over it: shrink towards the back of the pile and darken.
-  const covered = [Math.min(i / m, 0.999), 1];
-  const scale = useTransform(progress, covered, [1, 1 - (n - 1 - i) * 0.04]);
-  const dim = useTransform(progress, covered, [0, i === n - 1 ? 0 : 0.55]);
-
-  const linked = isFilled.link(item.link);
-  const card = (
-    <>
-      {isFilled.image(item.image) ? (
-        <motion.div
-          style={{ scale: photoScale }}
-          className="absolute inset-0 motion-reduce:!transform-none"
-        >
-          <PrismicNextImage
-            field={item.image}
-            fill
-            sizes="(min-width: 1280px) 1216px, 100vw"
-            className={clsx(
-              "object-cover",
-              POSITION[item.image_position] ?? "object-center",
-            )}
-            fallbackAlt=""
-          />
-        </motion.div>
-      ) : (
-        <MediaPlaceholder
-          tone="dark"
-          brief={item.image_brief || item.title || item.eyebrow || "Photo"}
-        />
+function Photo({ item, sizes }: { item: any; sizes: string }) {
+  return isFilled.image(item.image) ? (
+    <PrismicNextImage
+      field={item.image}
+      fill
+      sizes={sizes}
+      className={clsx(
+        "object-cover",
+        POSITION[item.image_position] ?? "object-center",
       )}
-      {/* Legibility: dark at the bottom where the text sits, a touch at the top for the counter. */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/20" />
-      <div className="absolute inset-x-0 top-0 flex justify-between p-5 text-xs font-semibold tracking-[0.2em] text-white/80 sm:p-7">
-        <span>{String(i + 1).padStart(2, "0")}</span>
-        <span className="text-white/45">{String(n).padStart(2, "0")}</span>
-      </div>
-      <div className="absolute inset-x-0 bottom-0 p-6 text-left sm:p-8 lg:p-10">
-        {item.eyebrow && (
-          <p className="text-sm font-semibold text-white/85 sm:text-base">
-            {item.eyebrow}
-          </p>
-        )}
-        {item.title && (
-          <p className="site-heading mt-1.5 max-w-3xl text-3xl leading-tight text-white [text-wrap:balance] sm:text-4xl lg:text-5xl">
-            {item.title}
-          </p>
-        )}
-      </div>
-      {/* Darkens as the next cards cover it. */}
-      <motion.div
-        style={{ opacity: dim }}
-        className="pointer-events-none absolute inset-0 bg-black motion-reduce:hidden"
+      fallbackAlt=""
+    />
+  ) : (
+    <MediaPlaceholder
+      tone="dark"
+      brief={item.image_brief || item.title || item.eyebrow || "Photo"}
+    />
+  );
+}
+
+function Header({ p }: { p: any }) {
+  return (
+    <>
+      {p.eyebrow && <Eyebrow>{p.eyebrow}</Eyebrow>}
+      {p.title && (
+        <h2
+          className={clsx(
+            "site-heading text-3xl leading-tight text-ink sm:text-4xl lg:text-5xl",
+            p.eyebrow && "mt-4",
+          )}
+        >
+          {p.title}
+        </h2>
+      )}
+      <SiteRichText
+        field={p.intro}
+        className="mt-6 text-lg leading-relaxed text-ink-muted"
       />
     </>
   );
+}
 
-  const shell =
-    "group relative block h-full w-full overflow-hidden rounded-3xl bg-neutral-900 text-white";
+/** One place in the pinned list: its label always, its line and progress bar only while active. */
+function Place({
+  item,
+  active,
+  bar,
+  onSelect,
+}: {
+  item: any;
+  active: boolean;
+  bar: MotionValue<number>;
+  onSelect: () => void;
+}) {
   return (
-    // Each card gets WINDOW svh of scroll and sticks inside the stack, a little lower than the one
-    // before it, so the next card slides over it and the pile's edges show.
-    <div
-      className="sticky top-0 flex items-start"
-      style={{
-        height: `${WINDOW}svh`,
-        paddingTop: `calc(12svh + ${i * STEP}px)`,
-      }}
-    >
-      <div className="h-[min(60svh,620px)] w-full">
-        <motion.div
-          style={{ scale }}
-          className="h-full w-full origin-top motion-reduce:!transform-none"
-        >
-          {linked ? (
-            <SiteLink
-              field={item.link}
-              className={clsx(
-                shell,
-                "focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent",
-              )}
-            >
-              {card}
-            </SiteLink>
-          ) : (
-            <div className={shell}>{card}</div>
+    <li className="border-t border-line">
+      <button
+        type="button"
+        onClick={onSelect}
+        aria-current={active || undefined}
+        className={clsx(
+          "w-full py-5 text-left transition-colors duration-300",
+          active ? "text-ink" : "text-ink-muted hover:text-ink",
+        )}
+      >
+        <span className="text-lg font-semibold">
+          {item.eyebrow || item.title}
+        </span>
+        {/* The line opens smoothly under the active place. */}
+        <span
+          className={clsx(
+            "grid transition-[grid-template-rows,opacity] duration-500 ease-out",
+            active
+              ? "grid-rows-[1fr] opacity-100"
+              : "grid-rows-[0fr] opacity-0",
           )}
-        </motion.div>
-      </div>
-    </div>
+        >
+          <span className="overflow-hidden">
+            {item.eyebrow && item.title && (
+              <span className="block pt-2 text-lg leading-relaxed text-ink-muted">
+                {item.title}
+              </span>
+            )}
+          </span>
+        </span>
+      </button>
+      {/* How far the scroll is through this place. */}
+      <span className="relative block h-px">
+        {active && (
+          <motion.span
+            style={{ scaleX: bar }}
+            className="absolute inset-0 origin-left bg-ink"
+          />
+        )}
+      </span>
+    </li>
   );
 }
 
@@ -155,11 +143,32 @@ const SiteCarousel: FC<SliceComponentProps<any>> = ({ slice }) => {
   const items: any[] = (slice.items || []).filter(
     (i: any) => i?.title || i?.eyebrow || isFilled.image(i?.image),
   );
-  const stack = useRef<HTMLDivElement>(null);
+  const n = Math.max(1, items.length);
+  const pin = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(0);
+
   const { scrollYProgress } = useScroll({
-    target: stack,
+    target: pin,
     offset: ["start start", "end end"],
   });
+  const indexAt = (v: number) => Math.min(n - 1, Math.floor(v * n));
+  useMotionValueEvent(scrollYProgress, "change", (v) => setActive(indexAt(v)));
+  // Progress within the active place, for its bar.
+  const bar = useTransform(scrollYProgress, (v) =>
+    Math.min(1, v * n - indexAt(v)),
+  );
+
+  /** Scroll so that place i becomes the active one. */
+  const select = (i: number) => {
+    const el = pin.current;
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.scrollY;
+    const range = el.offsetHeight - window.innerHeight;
+    window.scrollTo({
+      top: top + range * ((i + 0.05) / n),
+      behavior: "smooth",
+    });
+  };
 
   if (!items.length) return null;
   const tone = toneFromSelect(p.tone);
@@ -167,23 +176,112 @@ const SiteCarousel: FC<SliceComponentProps<any>> = ({ slice }) => {
   return (
     <section
       data-tone={tone === "page" ? undefined : tone}
-      className="bg-page pt-16 text-ink sm:pt-24 lg:pt-28"
+      className="bg-page text-ink"
     >
-      <Container>
-        <SectionHeader eyebrow={p.eyebrow} title={p.title} intro={p.intro} />
-        <div ref={stack} className="relative mt-10 lg:mt-14">
-          {items.map((item, i) => (
-            <Card
-              key={i}
-              item={item}
-              i={i}
-              n={items.length}
-              progress={scrollYProgress}
-            />
-          ))}
-          {/* Run-out: lets the last card reach its place before the pile scrolls away. */}
-          <div aria-hidden="true" style={{ height: `${100 - WINDOW}svh` }} />
+      {/* Desktop with motion: the pinned split. */}
+      <div
+        ref={pin}
+        className="relative hidden lg:block motion-reduce:lg:hidden"
+        style={{ height: `calc(100svh + ${(n - 1) * PER_PLACE}svh)` }}
+      >
+        <div className="sticky top-0 flex h-svh items-center">
+          <Container className="w-full">
+            <div className="grid items-center gap-20 lg:grid-cols-2">
+              <div>
+                <Header p={p} />
+                <ul className="mt-10">
+                  {items.map((item, i) => (
+                    <Place
+                      key={i}
+                      item={item}
+                      active={i === active}
+                      bar={bar}
+                      onSelect={() => select(i)}
+                    />
+                  ))}
+                </ul>
+              </div>
+              {/* All photos stacked; the active one fades in over the others. */}
+              <div className="group relative mx-auto aspect-[4/5] max-h-[78svh] w-full overflow-hidden rounded-2xl bg-surface lg:rounded-3xl">
+                {items.map((item, i) => (
+                  <div
+                    key={i}
+                    aria-hidden={i !== active}
+                    className={clsx(
+                      "absolute inset-0 transition-[opacity,transform] duration-700 ease-out",
+                      i === active
+                        ? "scale-100 opacity-100 group-hover:scale-[1.03]"
+                        : "pointer-events-none scale-[1.04] opacity-0",
+                    )}
+                  >
+                    <Photo
+                      item={item}
+                      sizes="(min-width: 1024px) 50vw, 100vw"
+                    />
+                    {/* The active photo opens the place's page (as the tiles: hover zoom, hand cursor). */}
+                    {isFilled.link(item.link) && (
+                      <SiteLink
+                        field={item.link}
+                        tabIndex={i === active ? undefined : -1}
+                        aria-label={item.eyebrow || item.title}
+                        className={clsx(
+                          "absolute inset-0 focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-white",
+                          i !== active && "pointer-events-none",
+                        )}
+                      >
+                        <span className="sr-only">
+                          {item.eyebrow || item.title}
+                        </span>
+                      </SiteLink>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Container>
         </div>
+      </div>
+
+      {/* Phones, tablets and reduced motion: the places one under the other. */}
+      <Container className="py-16 sm:py-24 lg:hidden lg:py-32 motion-reduce:lg:block">
+        <div className="max-w-3xl">
+          <Header p={p} />
+        </div>
+        <ul className="mt-10 grid gap-10 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 lg:grid-cols-4">
+          {items.map((item, i) => {
+            const body = (
+              <>
+                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-surface">
+                  <Photo item={item} sizes="(min-width: 640px) 50vw, 100vw" />
+                </div>
+                {item.eyebrow && (
+                  <p className="mt-5 text-lg font-semibold text-ink">
+                    {item.eyebrow}
+                  </p>
+                )}
+                {item.title && (
+                  <p className="mt-1 text-lg leading-relaxed text-ink-muted">
+                    {item.title}
+                  </p>
+                )}
+              </>
+            );
+            return (
+              <li key={i}>
+                {isFilled.link(item.link) ? (
+                  <SiteLink
+                    field={item.link}
+                    className="block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                  >
+                    {body}
+                  </SiteLink>
+                ) : (
+                  body
+                )}
+              </li>
+            );
+          })}
+        </ul>
       </Container>
     </section>
   );
