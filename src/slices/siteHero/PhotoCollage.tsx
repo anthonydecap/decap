@@ -15,6 +15,7 @@ import { MediaSlot } from "@/components/MediaSlot";
 import { MuxVideoLayer, resolveMuxHlsUrl } from "@/lib/mux-video";
 import { Eyebrow, SiteButton, SiteRichText } from "@/lib/site-ui";
 import { LogoDock } from "./LogoDock";
+import { useUiCopy } from "@/lib/ui-copy";
 
 /*
  * "Photo collage" hero: a moving wall of photos. The whole window is filled with columns of
@@ -197,6 +198,20 @@ export function PhotoCollage({ p, items }: { p: any; items: any[] }) {
     o > 0.5 ? "auto" : "none",
   );
   const cueOpacity = useTransform(smooth, [0, 0.12], [1, 0]);
+  const cueEvents = useTransform(cueOpacity, (o) =>
+    o > 0.5 ? "auto" : "none",
+  );
+  const t = useUiCopy();
+  /** The scroll hint's click: glide to the point where the logo sits in the header. */
+  const scrollToDocked = () => {
+    const sec = section.current;
+    if (!sec) return;
+    const top = sec.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({
+      top: top + (sec.offsetHeight - window.innerHeight) * 0.8,
+      behavior: "smooth",
+    });
+  };
   const videos = useWallVideos();
   const photos = items
     .filter((it) => isFilled.image(it.photo) || it.photo_brief || it.mux_video)
@@ -251,16 +266,35 @@ export function PhotoCollage({ p, items }: { p: any; items: any[] }) {
 
         <LogoDock section={section} />
 
-        {/* Scroll hint on arrival, gone as soon as the logo starts to move. */}
-        <motion.div
-          aria-hidden="true"
-          style={{ opacity: cueOpacity }}
-          className="pointer-events-none absolute inset-x-0 bottom-8 flex flex-col items-center motion-reduce:hidden"
+        {/* Scroll hint on arrival, gone as soon as the logo starts to move. A button: clicking
+            scrolls to where the logo has landed. Mouse on desktop, a bouncing arrow on touch. */}
+        <motion.button
+          type="button"
+          onClick={scrollToDocked}
+          style={{ opacity: cueOpacity, pointerEvents: cueEvents }}
+          className="group absolute inset-x-0 bottom-6 mx-auto flex w-max flex-col items-center gap-3 rounded-2xl px-4 py-2 text-white/80 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-white sm:bottom-8 motion-reduce:hidden"
         >
-          <span className="relative h-10 w-px overflow-hidden bg-white/20">
-            <span className="absolute inset-x-0 top-0 h-1/2 animate-[scroll-cue_1.8s_ease-in-out_infinite] bg-white" />
+          <span
+            aria-hidden="true"
+            className="relative hidden h-10 w-6 rounded-full border-2 border-current sm:block"
+          >
+            <span className="absolute left-1/2 top-2 h-2 w-1 animate-[scroll-wheel_1.6s_ease-in-out_infinite] rounded-full bg-current" />
           </span>
-        </motion.div>
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            className="h-7 w-7 animate-bounce fill-none stroke-current stroke-2 sm:hidden"
+          >
+            <path
+              d="m6 9 6 6 6-6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <span className="text-[0.7rem] font-semibold uppercase tracking-[0.25em]">
+            {t.scrollHint}
+          </span>
+        </motion.button>
 
         <Container className="w-full">
           <div className="mx-auto max-w-4xl text-center">

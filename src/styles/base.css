@@ -39,8 +39,10 @@
   to { transform: translateY(0); }
 }
 
-/* Scroll hint under the big logo of the photo wall: a light running down a thin line. */
-@keyframes scroll-cue {
-  from { transform: translateY(-100%); }
-  to { transform: translateY(200%); }
+/* Scroll hint under the big logo of the photo wall: the wheel of the mouse icon rolls down. */
+@keyframes scroll-wheel {
+  0% { transform: translate(-50%, 0); opacity: 0; }
+  20% { opacity: 1; }
+  80% { transform: translate(-50%, 12px); opacity: 0; }
+  100% { transform: translate(-50%, 12px); opacity: 0; }
 }
