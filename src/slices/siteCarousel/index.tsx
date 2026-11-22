@@ -34,7 +34,10 @@ const POSITION: Record<string, string> = {
 };
 
 /** How far each card sits below the one before it once stacked, so the pile's edges show. */
-const STEP = 22;
+const STEP = 16;
+/** Scroll per card, in svh. The stack ends with a run-out of (100 - WINDOW)svh so the last card
+ *  also reaches its place; card i is then in place at progress i/(n-1). */
+const WINDOW = 70;
 
 function Card({
   item,
@@ -53,11 +56,11 @@ function Card({
   const photoScale = useTransform(
     progress,
     [Math.max(0, (i - 1) / m), i / m],
-    [i === 0 ? 1 : 1.18, 1],
+    [i === 0 ? 1 : 1.12, 1],
   );
   // Once later cards slide over it: shrink towards the back of the pile and darken.
   const covered = [Math.min(i / m, 0.999), 1];
-  const scale = useTransform(progress, covered, [1, 1 - (n - 1 - i) * 0.045]);
+  const scale = useTransform(progress, covered, [1, 1 - (n - 1 - i) * 0.04]);
   const dim = useTransform(progress, covered, [0, i === n - 1 ? 0 : 0.55]);
 
   const linked = isFilled.link(item.link);
@@ -87,18 +90,18 @@ function Card({
       )}
       {/* Legibility: dark at the bottom where the text sits, a touch at the top for the counter. */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/20" />
-      <div className="absolute inset-x-0 top-0 flex justify-between p-6 text-sm font-semibold tracking-[0.2em] text-white/80 sm:p-10">
+      <div className="absolute inset-x-0 top-0 flex justify-between p-5 text-xs font-semibold tracking-[0.2em] text-white/80 sm:p-7">
         <span>{String(i + 1).padStart(2, "0")}</span>
         <span className="text-white/45">{String(n).padStart(2, "0")}</span>
       </div>
-      <div className="absolute inset-x-0 bottom-0 p-6 text-left sm:p-10 lg:p-14">
+      <div className="absolute inset-x-0 bottom-0 p-6 text-left sm:p-8 lg:p-10">
         {item.eyebrow && (
-          <p className="text-base font-semibold text-white/85 sm:text-lg">
+          <p className="text-sm font-semibold text-white/85 sm:text-base">
             {item.eyebrow}
           </p>
         )}
         {item.title && (
-          <p className="site-heading mt-2 max-w-4xl text-4xl leading-[1.05] text-white [text-wrap:balance] sm:text-6xl lg:text-7xl">
+          <p className="site-heading mt-1.5 max-w-3xl text-3xl leading-tight text-white [text-wrap:balance] sm:text-4xl lg:text-5xl">
             {item.title}
           </p>
         )}
@@ -114,13 +117,16 @@ function Card({
   const shell =
     "group relative block h-full w-full overflow-hidden rounded-3xl bg-neutral-900 text-white";
   return (
-    // Each card is one window of scroll and sticks inside the stack, a little lower than the one
+    // Each card gets WINDOW svh of scroll and sticks inside the stack, a little lower than the one
     // before it, so the next card slides over it and the pile's edges show.
     <div
-      className="sticky top-0 flex h-svh items-start"
-      style={{ paddingTop: `calc(6svh + ${i * STEP}px)` }}
+      className="sticky top-0 flex items-start"
+      style={{
+        height: `${WINDOW}svh`,
+        paddingTop: `calc(12svh + ${i * STEP}px)`,
+      }}
     >
-      <div className="h-[78svh] w-full sm:h-[84svh]">
+      <div className="h-[min(60svh,620px)] w-full">
         <motion.div
           style={{ scale }}
           className="h-full w-full origin-top motion-reduce:!transform-none"
@@ -175,6 +181,8 @@ const SiteCarousel: FC<SliceComponentProps<any>> = ({ slice }) => {
               progress={scrollYProgress}
             />
           ))}
+          {/* Run-out: lets the last card reach its place before the pile scrolls away. */}
+          <div aria-hidden="true" style={{ height: `${100 - WINDOW}svh` }} />
         </div>
       </Container>
     </section>
