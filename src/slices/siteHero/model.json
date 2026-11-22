@@ -262,6 +262,13 @@
             "label": "Photo brief (shown while the photo is empty)",
             "placeholder": "e.g. Accordion Pedestal, front view, black backdrop, 4:3"
           }
+        },
+        "mux_video": {
+          "type": "Text",
+          "config": {
+            "label": "Mux video instead of the photo (optional, short silent loop; the photo stays as poster)",
+            "placeholder": "https://stream.mux.com/….m3u8 or playback ID"
+          }
         }
       }
     }

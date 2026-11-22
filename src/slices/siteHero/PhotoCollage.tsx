@@ -1,10 +1,12 @@
 "use client";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { useEffect, useRef, useState } from "react";
 import { isFilled } from "@prismicio/client";
 import { motion, useReducedMotion } from "framer-motion";
 import { Container } from "@/components/Container";
 import { MediaSlot } from "@/components/MediaSlot";
+import { MuxVideoLayer, resolveMuxHlsUrl } from "@/lib/mux-video";
 import { Eyebrow, SiteButton, SiteRichText } from "@/lib/site-ui";
 
 /*
@@ -12,7 +14,59 @@ import { Eyebrow, SiteButton, SiteRichText } from "@/lib/site-ui";
  * photos that drift endlessly, up and down at different speeds, tilted a little in perspective.
  * The heading and buttons sit large in the middle, over a dark veil. It moves from the first
  * moment, without scrolling. Reduced motion: the same wall, standing still.
+ *
+ * A photo can carry a Mux video: on desktop (and without reduced motion) that tile plays a short
+ * silent loop, the photo staying as poster. Phones and reduced motion only get the photo.
  */
+
+/** Videos only where they help and don't cost too much: wide screens, motion allowed. */
+const VIDEO_QUERY =
+  "(min-width: 1024px) and (prefers-reduced-motion: no-preference)";
+
+/** False on the server and the first render (same HTML everywhere), then follows the media query. */
+function useWallVideos() {
+  const [on, setOn] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia(VIDEO_QUERY);
+    const update = () => setOn(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+  return on;
+}
+
+/**
+ * A video tile: loads the stream the first time it comes near the window, then plays only while
+ * it is on screen (the wall keeps every tile twice, and most of them are off screen at any time).
+ */
+function WallVideo({ src }: { src: string }) {
+  const box = useRef<HTMLDivElement>(null);
+  const [near, setNear] = useState(false);
+  useEffect(() => {
+    const el = box.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setNear(true);
+        const v = el.querySelector("video");
+        if (!v) return;
+        if (entry.isIntersecting) v.play().catch(() => {});
+        else v.pause();
+      },
+      { rootMargin: "25% 0px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  return (
+    <div ref={box} className="absolute inset-0">
+      {near && (
+        <MuxVideoLayer src={src} className="absolute inset-0 h-full w-full" />
+      )}
+    </div>
+  );
+}
 
 const MAX = 12;
 /** Seconds per loop, per column: neighbours move at different speeds and in opposite directions. */
@@ -37,7 +91,15 @@ function column(photos: any[], c: number) {
   return run;
 }
 
-function Column({ photos, c }: { photos: any[]; c: number }) {
+function Column({
+  photos,
+  c,
+  videos,
+}: {
+  photos: any[];
+  c: number;
+  videos: boolean;
+}) {
   const run = column(photos, c);
   const up = c % 2 === 0;
   return (
@@ -76,6 +138,9 @@ function Column({ photos, c }: { photos: any[]; c: number }) {
                   sizes="(min-width: 1024px) 22vw, (min-width: 640px) 36vw, 55vw"
                   priority={copy === 0 && i < 3}
                 />
+                {videos && resolveMuxHlsUrl(item.mux_video) && (
+                  <WallVideo src={resolveMuxHlsUrl(item.mux_video)!} />
+                )}
               </div>
             </div>
           )),
@@ -87,8 +152,9 @@ function Column({ photos, c }: { photos: any[]; c: number }) {
 
 export function PhotoCollage({ p, items }: { p: any; items: any[] }) {
   const reduce = !!useReducedMotion();
+  const videos = useWallVideos();
   const photos = items
-    .filter((it) => isFilled.image(it.photo) || it.photo_brief)
+    .filter((it) => isFilled.image(it.photo) || it.photo_brief || it.mux_video)
     .slice(0, MAX);
   while (photos.length < 3) photos.push({ photo_brief: "" });
 
@@ -113,7 +179,7 @@ export function PhotoCollage({ p, items }: { p: any; items: any[] }) {
       >
         <div className="absolute left-1/2 top-1/2 grid w-[150%] grid-cols-2 gap-3 [transform:translate(-50%,-50%)_rotateX(18deg)_rotateZ(-8deg)] sm:w-[130%] sm:grid-cols-3 sm:gap-4 lg:w-[118%] lg:grid-cols-5 lg:gap-5">
           {[0, 1, 2, 3, 4].map((c) => (
-            <Column key={c} photos={photos} c={c} />
+            <Column key={c} photos={photos} c={c} videos={videos} />
           ))}
         </div>
       </motion.div>

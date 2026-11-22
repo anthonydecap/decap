@@ -53,6 +53,7 @@ export const SITE_SLICES = {
     items: {
       photo: image("Collage photo (Photo collage layout: 3 to 7 photos, first = the biggest)"),
       photo_brief: BRIEF("photo"),
+      mux_video: text("Mux video instead of the photo (optional, short silent loop; the photo stays as poster)", "https://stream.mux.com/….m3u8 or playback ID"),
     },
   }),
 
