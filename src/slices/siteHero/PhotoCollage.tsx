@@ -1,13 +1,14 @@
 "use client";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { isFilled } from "@prismicio/client";
 import { motion, useReducedMotion } from "framer-motion";
 import { Container } from "@/components/Container";
 import { MediaSlot } from "@/components/MediaSlot";
 import { MuxVideoLayer, resolveMuxHlsUrl } from "@/lib/mux-video";
 import { Eyebrow, SiteButton, SiteRichText } from "@/lib/site-ui";
+import { LogoIntro } from "./LogoIntro";
 
 /*
  * "Photo collage" hero: a moving wall of photos. The whole window is filled with columns of
@@ -18,6 +19,14 @@ import { Eyebrow, SiteButton, SiteRichText } from "@/lib/site-ui";
  * A photo can carry a Mux video: on desktop (and without reduced motion) that tile plays a short
  * silent loop, the photo staying as poster. Phones and reduced motion only get the photo.
  */
+
+/** Mux's still of a video (its playback ID from a stream URL or the bare ID), or null. */
+function muxPoster(raw: string | null | undefined) {
+  const id = resolveMuxHlsUrl(raw)?.match(/stream\.mux\.com\/([^/.?]+)/)?.[1];
+  return id
+    ? `https://image.mux.com/${id}/thumbnail.webp?width=800&fit_mode=smartcrop`
+    : null;
+}
 
 /** Videos only where they help and don't cost too much: wide screens, motion allowed. */
 const VIDEO_QUERY =
@@ -127,17 +136,29 @@ function Column({
               <div
                 className={`relative w-full overflow-hidden rounded-xl lg:rounded-2xl ${SHAPES[(i + c) % SHAPES.length]}`}
               >
-                <MediaSlot
-                  field={item.photo}
-                  brief={item.photo_brief || "Photo for the wall"}
-                  aspect=""
-                  rounded=""
-                  className="absolute inset-0 h-full w-full"
-                  fit="cover"
-                  tone="dark"
-                  sizes="(min-width: 1024px) 22vw, (min-width: 640px) 36vw, 55vw"
-                  priority={copy === 0 && i < 3}
-                />
+                {!isFilled.image(item.photo) && muxPoster(item.mux_video) ? (
+                  // A video without a photo: Mux's own still of the video as poster (phones,
+                  // reduced motion and while the stream loads).
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={muxPoster(item.mux_video)!}
+                    alt=""
+                    loading={copy === 0 && i < 3 ? "eager" : "lazy"}
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                ) : (
+                  <MediaSlot
+                    field={item.photo}
+                    brief={item.photo_brief || "Photo for the wall"}
+                    aspect=""
+                    rounded=""
+                    className="absolute inset-0 h-full w-full"
+                    fit="cover"
+                    tone="dark"
+                    sizes="(min-width: 1024px) 22vw, (min-width: 640px) 36vw, 55vw"
+                    priority={copy === 0 && i < 3}
+                  />
+                )}
                 {videos && resolveMuxHlsUrl(item.mux_video) && (
                   <WallVideo src={resolveMuxHlsUrl(item.mux_video)!} />
                 )}
@@ -152,6 +173,9 @@ function Column({
 
 export function PhotoCollage({ p, items }: { p: any; items: any[] }) {
   const reduce = !!useReducedMotion();
+  // The copy waits until the big logo flies off to the header (see LogoIntro).
+  const [copyIn, setCopyIn] = useState(false);
+  const showCopy = useCallback(() => setCopyIn(true), []);
   const videos = useWallVideos();
   const photos = items
     .filter((it) => isFilled.image(it.photo) || it.photo_brief || it.mux_video)
@@ -199,15 +223,17 @@ export function PhotoCollage({ p, items }: { p: any; items: any[] }) {
         className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t from-neutral-950 to-transparent"
       />
 
+      <LogoIntro onLeave={showCopy} />
+
       <Container className="w-full">
         <motion.div
           className="mx-auto max-w-4xl text-center"
           initial={{ opacity: 0, y: 28 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={copyIn ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
           transition={
             reduce
               ? { duration: 0 }
-              : { duration: 1, delay: 0.35, ease: [0.22, 1, 0.36, 1] }
+              : { duration: 1, delay: 0.45, ease: [0.22, 1, 0.36, 1] }
           }
         >
           {p.eyebrow && <Eyebrow>{p.eyebrow}</Eyebrow>}

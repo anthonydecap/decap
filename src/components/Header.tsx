@@ -81,6 +81,8 @@ function HeaderContent({
         <Link
           href={pathForHome(urlLang)}
           aria-label="Home"
+          // Landing spot for the home hero's logo intro (src/slices/siteHero/LogoIntro.tsx).
+          data-site-logo=""
           onMouseEnter={() => setLogoHovered(true)}
           onMouseLeave={() => setLogoHovered(false)}
         >
