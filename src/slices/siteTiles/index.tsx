@@ -14,7 +14,10 @@ import { BLUR, COLOR, DIM, POSITION } from "@/lib/image-look";
 import { SiteLink, toneFromSelect } from "@/lib/site-ui";
 
 /*
- * Apple-style product tiles: one product per tile, one headline, one line, two links, a big image.
+ * Apple-style product tiles: one product per tile, one headline, one line, a big image. The whole
+ * tile is one link (the primary link; the button labels and the second link are kept in Prismic
+ * but no longer shown). It feels clickable without a button: hand cursor, the photo zooms in and
+ * the tile lifts on hover, a small press on click or tap.
  * Full tiles stack; half tiles sit side by side. Each tile carries its own style, so a page can
  * move from the light Decap style to the SmartValve rainbow and the Orchestrionix brass.
  */
@@ -89,11 +92,14 @@ function TileBackground({
   tone,
   brief,
   half,
+  zoom,
 }: {
   item: any;
   tone: "light" | "dark";
   brief: string;
   half: boolean;
+  /** Zoom the photo in on hover (always for a linked tile). */
+  zoom?: boolean;
 }) {
   if (!isFilled.image(item.image)) {
     return (
@@ -130,7 +136,7 @@ function TileBackground({
         <div
           className={clsx(
             "absolute inset-0 transition-transform duration-700 ease-out",
-            item.hover_zoom && "group-hover:scale-105",
+            zoom && "group-hover:scale-105 motion-reduce:group-hover:scale-100",
           )}
         >
           <div
@@ -188,20 +194,20 @@ function TileBackground({
 
 function Tile({ item, half }: { item: any; half: boolean }) {
   const s = STYLES[item.style] ?? STYLES.Light;
+  const linked = isFilled.link(item.primary_link);
   const brief =
     item.image_brief ||
     `Image for “${item.title || item.eyebrow || "this tile"}”`;
-  return (
-    <FadeIn
-      className={clsx(
-        "group relative isolate flex flex-col overflow-hidden rounded-3xl text-center",
-        s.tile,
-        half
-          ? "min-h-[520px] lg:min-h-[600px]"
-          : "min-h-[560px] lg:min-h-[680px]",
-      )}
-    >
-      <TileBackground item={item} tone={s.tone} brief={brief} half={half} />
+
+  const body = (
+    <>
+      <TileBackground
+        item={item}
+        tone={s.tone}
+        brief={brief}
+        half={half}
+        zoom={linked || item.hover_zoom}
+      />
       <div
         className={clsx(
           "relative z-10 px-6",
@@ -241,36 +247,38 @@ function Tile({ item, half }: { item: any; half: boolean }) {
             {item.tagline}
           </p>
         )}
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
-          {item.primary_label && isFilled.link(item.primary_link) && (
-            <SiteLink
-              field={item.primary_link}
-              className={clsx(
-                "rounded-full px-5 py-2 text-sm font-semibold transition",
-                s.button,
-              )}
-            >
-              {item.primary_label}
-            </SiteLink>
-          )}
-          {item.secondary_label && isFilled.link(item.secondary_link) && (
-            <SiteLink
-              field={item.secondary_link}
-              className={clsx(
-                "text-sm font-semibold underline-offset-4 hover:underline",
-                s.link,
-              )}
-            >
-              {item.secondary_label} <span aria-hidden="true">›</span>
-            </SiteLink>
-          )}
-        </div>
         {item.note && (
           <p className={clsx("mt-4 text-sm", s.muted)}>{item.note}</p>
         )}
       </div>
       {/* Spacer: keeps the tile's height when the image is a background. */}
       <div className="flex-1" />
+    </>
+  );
+
+  const tile = clsx(
+    "group relative isolate flex h-full flex-col overflow-hidden rounded-3xl text-center",
+    s.tile,
+    half ? "min-h-[520px] lg:min-h-[600px]" : "min-h-[560px] lg:min-h-[680px]",
+  );
+
+  return (
+    <FadeIn className="h-full">
+      {linked ? (
+        // The whole tile is the link. It shows it the way people expect: the hand cursor, the
+        // photo zooming in and the tile lifting on hover, a small press on click or tap.
+        <SiteLink
+          field={item.primary_link}
+          className={clsx(
+            tile,
+            "transition duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_28px_60px_-24px_rgba(0,0,0,0.45)] active:translate-y-0 active:scale-[0.985] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current motion-reduce:transform-none",
+          )}
+        >
+          {body}
+        </SiteLink>
+      ) : (
+        <div className={tile}>{body}</div>
+      )}
     </FadeIn>
   );
 }
