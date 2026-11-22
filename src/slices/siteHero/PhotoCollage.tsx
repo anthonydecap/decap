@@ -95,12 +95,15 @@ export function PhotoCollage({ p, items }: { p: any; items: any[] }) {
   return (
     <section
       data-tone="inverse"
-      className="relative isolate flex min-h-[640px] items-center overflow-hidden bg-neutral-950 text-ink h-svh"
+      // Pulled up under the header (the page sheet's pt-14 + pt-9), so the wall fills the rounded
+      // sheet to the top and the navigation floats over the photos instead of a black band.
+      className="relative isolate -mt-[5.75rem] flex h-svh min-h-[680px] items-center overflow-hidden bg-neutral-950 pt-24 text-ink"
     >
       {/* The wall: tilted and enlarged so its edges never show. */}
       <motion.div
         aria-hidden="true"
-        className="absolute inset-0 -z-20 [perspective:1600px]"
+        // Dimmed as a whole, so the photos read as a backdrop and the text stays in front.
+        className="absolute inset-0 -z-20 [filter:brightness(0.62)_saturate(0.9)] [perspective:1600px]"
         // Same starting point on server and client (no hydration mismatch); reduced motion: no transition.
         initial={{ opacity: 0, scale: 1.08 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -115,10 +118,15 @@ export function PhotoCollage({ p, items }: { p: any; items: any[] }) {
         </div>
       </motion.div>
 
-      {/* Veil: dark in the middle where the text is, and at the edges; the photos glow in between. */}
+      {/* Veil: darkest behind the text, lighter towards the edges where the photos glow; dark at the
+          top under the navigation and at the bottom into the next section. */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_55%_50%_at_50%_52%,rgba(0,0,0,0.86),rgba(0,0,0,0.5)_70%,rgba(0,0,0,0.72))]"
+        className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_48%_42%_at_50%_56%,rgba(0,0,0,0.88),rgba(0,0,0,0.55)_60%,rgba(0,0,0,0.25))]"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 -z-10 h-44 bg-gradient-to-b from-neutral-950/80 to-transparent"
       />
       <div
         aria-hidden="true"
@@ -138,13 +146,13 @@ export function PhotoCollage({ p, items }: { p: any; items: any[] }) {
         >
           {p.eyebrow && <Eyebrow>{p.eyebrow}</Eyebrow>}
           {p.title && (
-            <h1 className="site-heading mt-5 text-[2.75rem] leading-[1.02] text-ink [text-wrap:balance] sm:text-7xl lg:text-8xl">
+            <h1 className="site-heading mt-5 text-[2.75rem] leading-[1.02] text-white [text-shadow:0_2px_40px_rgba(0,0,0,0.6)] [text-wrap:balance] sm:text-7xl lg:text-8xl">
               {p.title}
             </h1>
           )}
           <SiteRichText
             field={p.intro}
-            className="mx-auto mt-7 hidden max-w-2xl text-lg leading-relaxed text-ink-muted sm:block sm:text-xl"
+            className="mx-auto mt-7 hidden max-w-2xl text-lg leading-relaxed text-white/85 [text-shadow:0_1px_20px_rgba(0,0,0,0.8)] sm:block sm:text-xl"
           />
           <div className="mt-9 flex flex-wrap items-center justify-center gap-4 lg:mt-11">
             <SiteButton
