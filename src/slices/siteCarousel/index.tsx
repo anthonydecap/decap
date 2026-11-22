@@ -1,31 +1,20 @@
 "use client";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { type FC, useRef, useState } from "react";
+import { type FC, useState } from "react";
 import { isFilled } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { type SliceComponentProps } from "@prismicio/react";
-import {
-  motion,
-  useMotionValueEvent,
-  useScroll,
-  useTransform,
-  type MotionValue,
-} from "framer-motion";
 import clsx from "clsx";
-import { Container } from "@/components/Container";
 import { MediaPlaceholder } from "@/components/MediaSlot";
-import { Eyebrow, SiteLink, SiteRichText, toneFromSelect } from "@/lib/site-ui";
+import { ShowcaseBlock, ShowcaseHeader } from "@/components/Showcase";
+import { SiteLink } from "@/lib/site-ui";
 
 /*
- * "Where they play": a list of places next to one big photo, in the same text-left / image-right
- * build as the text-and-media sections around it.
- *
- * Desktop: the split is pinned while you scroll through the places. The active place lights up
- * with its line and a thin progress bar; the photo on the right changes with it in a soft
- * crossfade. Clicking a place scrolls to it. Phones and reduced motion: no pin, the places one
- * under the other, each with its photo. A place with a link opens it (desktop: its photo,
- * phones: the whole card).
+ * "Where they play", in the home page's Showcase style: a dark rounded block with a centered
+ * header and the places as tall photo panels side by side. Desktop: the panel under the mouse
+ * (or keyboard focus) widens and shows its line; the others narrow to a strip with their label.
+ * Phones and tablets: the places one under the other. A place with a link opens it as a whole.
  */
 
 const POSITION: Record<string, string> = {
@@ -36,9 +25,6 @@ const POSITION: Record<string, string> = {
   Right: "object-right",
 };
 
-/** Scroll per place while pinned, in svh. */
-const PER_PLACE = 55;
-
 function Photo({ item, sizes }: { item: any; sizes: string }) {
   return isFilled.image(item.image) ? (
     <PrismicNextImage
@@ -46,7 +32,7 @@ function Photo({ item, sizes }: { item: any; sizes: string }) {
       fill
       sizes={sizes}
       className={clsx(
-        "object-cover",
+        "object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03] motion-reduce:transition-none",
         POSITION[item.image_position] ?? "object-center",
       )}
       fallbackAlt=""
@@ -59,82 +45,32 @@ function Photo({ item, sizes }: { item: any; sizes: string }) {
   );
 }
 
-function Header({ p }: { p: any }) {
-  return (
-    <>
-      {p.eyebrow && <Eyebrow>{p.eyebrow}</Eyebrow>}
-      {p.title && (
-        <h2
-          className={clsx(
-            "site-heading text-3xl leading-tight text-ink sm:text-4xl lg:text-5xl",
-            p.eyebrow && "mt-4",
-          )}
-        >
-          {p.title}
-        </h2>
-      )}
-      <SiteRichText
-        field={p.intro}
-        className="mt-6 text-lg leading-relaxed text-ink-muted"
-      />
-    </>
-  );
-}
-
-/** One place in the pinned list: its label always, its line and progress bar only while active. */
-function Place({
+/** A place as a link when it has one, else a plain box; same look either way. */
+function Shell({
   item,
-  active,
-  bar,
-  onSelect,
+  className,
+  children,
+  ...rest
 }: {
   item: any;
-  active: boolean;
-  bar: MotionValue<number>;
-  onSelect: () => void;
-}) {
-  return (
-    <li className="border-t border-line">
-      <button
-        type="button"
-        onClick={onSelect}
-        aria-current={active || undefined}
-        className={clsx(
-          "w-full py-5 text-left transition-colors duration-300",
-          active ? "text-ink" : "text-ink-muted hover:text-ink",
-        )}
-      >
-        <span className="text-lg font-semibold">
-          {item.eyebrow || item.title}
-        </span>
-        {/* The line opens smoothly under the active place. */}
-        <span
-          className={clsx(
-            "grid transition-[grid-template-rows,opacity] duration-500 ease-out",
-            active
-              ? "grid-rows-[1fr] opacity-100"
-              : "grid-rows-[0fr] opacity-0",
-          )}
-        >
-          <span className="overflow-hidden">
-            {item.eyebrow && item.title && (
-              <span className="block pt-2 text-lg leading-relaxed text-ink-muted">
-                {item.title}
-              </span>
-            )}
-          </span>
-        </span>
-      </button>
-      {/* How far the scroll is through this place. */}
-      <span className="relative block h-px">
-        {active && (
-          <motion.span
-            style={{ scaleX: bar }}
-            className="absolute inset-0 origin-left bg-ink"
-          />
-        )}
-      </span>
-    </li>
+  className: string;
+  children: React.ReactNode;
+} & React.HTMLAttributes<HTMLElement>) {
+  return isFilled.link(item.link) ? (
+    <SiteLink
+      field={item.link}
+      className={clsx(
+        className,
+        "focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white",
+      )}
+      {...(rest as any)}
+    >
+      {children}
+    </SiteLink>
+  ) : (
+    <div className={className} {...rest}>
+      {children}
+    </div>
   );
 }
 
@@ -143,147 +79,91 @@ const SiteCarousel: FC<SliceComponentProps<any>> = ({ slice }) => {
   const items: any[] = (slice.items || []).filter(
     (i: any) => i?.title || i?.eyebrow || isFilled.image(i?.image),
   );
-  const n = Math.max(1, items.length);
-  const pin = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState(0);
-
-  const { scrollYProgress } = useScroll({
-    target: pin,
-    offset: ["start start", "end end"],
-  });
-  const indexAt = (v: number) => Math.min(n - 1, Math.floor(v * n));
-  useMotionValueEvent(scrollYProgress, "change", (v) => setActive(indexAt(v)));
-  // Progress within the active place, for its bar.
-  const bar = useTransform(scrollYProgress, (v) =>
-    Math.min(1, v * n - indexAt(v)),
-  );
-
-  /** Scroll so that place i becomes the active one. */
-  const select = (i: number) => {
-    const el = pin.current;
-    if (!el) return;
-    const top = el.getBoundingClientRect().top + window.scrollY;
-    const range = el.offsetHeight - window.innerHeight;
-    window.scrollTo({
-      top: top + range * ((i + 0.05) / n),
-      behavior: "smooth",
-    });
-  };
-
+  const [open, setOpen] = useState(0);
   if (!items.length) return null;
-  const tone = toneFromSelect(p.tone);
 
   return (
-    <section
-      data-tone={tone === "page" ? undefined : tone}
-      className="bg-page text-ink"
-    >
-      {/* Desktop with motion: the pinned split. */}
-      <div
-        ref={pin}
-        className="relative hidden lg:block motion-reduce:lg:hidden"
-        style={{ height: `calc(100svh + ${(n - 1) * PER_PLACE}svh)` }}
-      >
-        <div className="sticky top-0 flex h-svh items-center">
-          <Container className="w-full">
-            <div className="grid items-center gap-20 lg:grid-cols-2">
-              <div>
-                <Header p={p} />
-                <ul className="mt-10">
-                  {items.map((item, i) => (
-                    <Place
-                      key={i}
-                      item={item}
-                      active={i === active}
-                      bar={bar}
-                      onSelect={() => select(i)}
-                    />
-                  ))}
-                </ul>
-              </div>
-              {/* All photos stacked; the active one fades in over the others. */}
-              <div className="group relative mx-auto aspect-[4/5] max-h-[78svh] w-full overflow-hidden rounded-2xl bg-surface lg:rounded-3xl">
-                {items.map((item, i) => (
-                  <div
-                    key={i}
-                    aria-hidden={i !== active}
-                    className={clsx(
-                      "absolute inset-0 transition-[opacity,transform] duration-700 ease-out",
-                      i === active
-                        ? "scale-100 opacity-100 group-hover:scale-[1.03]"
-                        : "pointer-events-none scale-[1.04] opacity-0",
-                    )}
-                  >
-                    <Photo
-                      item={item}
-                      sizes="(min-width: 1024px) 50vw, 100vw"
-                    />
-                    {/* The active photo opens the place's page (as the tiles: hover zoom, hand cursor). */}
-                    {isFilled.link(item.link) && (
-                      <SiteLink
-                        field={item.link}
-                        tabIndex={i === active ? undefined : -1}
-                        aria-label={item.eyebrow || item.title}
-                        className={clsx(
-                          "absolute inset-0 focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-white",
-                          i !== active && "pointer-events-none",
-                        )}
-                      >
-                        <span className="sr-only">
-                          {item.eyebrow || item.title}
-                        </span>
-                      </SiteLink>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Container>
-        </div>
-      </div>
+    <ShowcaseBlock tone="dark">
+      <ShowcaseHeader eyebrow={p.eyebrow} title={p.title} intro={p.intro} />
 
-      {/* Phones, tablets and reduced motion: the places one under the other. */}
-      <Container className="py-16 sm:py-24 lg:hidden lg:py-32 motion-reduce:lg:block">
-        <div className="max-w-3xl">
-          <Header p={p} />
-        </div>
-        <ul className="mt-10 grid gap-10 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 lg:grid-cols-4">
-          {items.map((item, i) => {
-            const body = (
-              <>
-                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-surface">
-                  <Photo item={item} sizes="(min-width: 640px) 50vw, 100vw" />
-                </div>
+      {/* Desktop: panels that widen on hover or focus. */}
+      <div className="mt-14 hidden h-[34rem] gap-3 lg:flex">
+        {items.map((item, i) => {
+          const isOpen = i === open;
+          return (
+            <Shell
+              key={i}
+              item={item}
+              onMouseEnter={() => setOpen(i)}
+              onFocus={() => setOpen(i)}
+              className={clsx(
+                "group relative min-w-0 basis-0 overflow-hidden rounded-2xl bg-neutral-900 transition-[flex-grow] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
+                isOpen ? "grow-[4]" : "grow",
+              )}
+            >
+              <Photo item={item} sizes="(min-width: 1280px) 700px, 60vw" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+              {/* Closed: the label, upright along the strip. */}
+              <p
+                aria-hidden={isOpen || undefined}
+                className={clsx(
+                  "absolute bottom-6 left-5 rotate-180 whitespace-nowrap text-lg font-semibold text-white transition-opacity duration-300 [writing-mode:vertical-rl]",
+                  isOpen ? "opacity-0" : "opacity-100 delay-200",
+                )}
+              >
+                {item.eyebrow || item.title}
+              </p>
+              {/* Open: label and line. A fixed width, so the text doesn't reflow while the panel grows. */}
+              <div
+                className={clsx(
+                  "absolute bottom-0 left-0 w-[30rem] max-w-full p-8 text-left transition-[opacity,transform] duration-500",
+                  isOpen
+                    ? "translate-y-0 opacity-100 delay-200"
+                    : "translate-y-3 opacity-0",
+                )}
+              >
                 {item.eyebrow && (
-                  <p className="mt-5 text-lg font-semibold text-ink">
+                  <p className="text-lg font-semibold text-white/85">
                     {item.eyebrow}
                   </p>
                 )}
                 {item.title && (
-                  <p className="mt-1 text-lg leading-relaxed text-ink-muted">
+                  <p className="site-heading mt-1.5 text-3xl leading-tight text-white [text-wrap:balance]">
                     {item.title}
                   </p>
                 )}
-              </>
-            );
-            return (
-              <li key={i}>
-                {isFilled.link(item.link) ? (
-                  <SiteLink
-                    field={item.link}
-                    className="block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
-                  >
-                    {body}
-                  </SiteLink>
-                ) : (
-                  body
-                )}
-              </li>
-            );
-          })}
-        </ul>
-      </Container>
-    </section>
+              </div>
+            </Shell>
+          );
+        })}
+      </div>
+
+      {/* Phones and tablets: one under the other. */}
+      <div className="mt-12 grid gap-3 sm:grid-cols-2 sm:gap-4 lg:hidden">
+        {items.map((item, i) => (
+          <Shell
+            key={i}
+            item={item}
+            className="group relative block aspect-[4/3] overflow-hidden rounded-2xl bg-neutral-900"
+          >
+            <Photo item={item} sizes="(min-width: 640px) 50vw, 100vw" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 p-5 text-left sm:p-6">
+              {item.eyebrow && (
+                <p className="text-base font-semibold text-white/85">
+                  {item.eyebrow}
+                </p>
+              )}
+              {item.title && (
+                <p className="site-heading mt-1 text-2xl leading-tight text-white">
+                  {item.title}
+                </p>
+              )}
+            </div>
+          </Shell>
+        ))}
+      </div>
+    </ShowcaseBlock>
   );
 };
 

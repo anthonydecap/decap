@@ -62,6 +62,7 @@ export const SITE_SLICES = {
     name: "SiteTextMedia",
     description: "Text next to an image or a short looping video clip, with optional bullet points and a link.",
     primary: {
+      style: select("Style", ["Standard", "Showcase"]),
       eyebrow: text("Eyebrow"),
       title: text("Title"),
       body: rich("Body", RICH_BODY),
@@ -113,7 +114,7 @@ export const SITE_SLICES = {
     id: "site_timeline",
     name: "SiteTimeline",
     description: "History timeline: year, title, text and optional photo. Highlighted entries stand out.",
-    primary: { ...header(), tone: TONE() },
+    primary: { style: select("Style", ["Standard", "Showcase"]), ...header(), tone: TONE() },
     items: {
       year: text("Year", "1933"),
       title: text("Title"),
@@ -158,6 +159,7 @@ export const SITE_SLICES = {
     name: "SiteCta",
     description: "Closing call to action with optional price, two buttons and an image.",
     primary: {
+      style: select("Style", ["Standard", "Showcase"]),
       eyebrow: text("Eyebrow"),
       title: text("Title"),
       body: rich("Text"),

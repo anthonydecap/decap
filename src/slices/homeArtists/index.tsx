@@ -6,6 +6,7 @@ import { Container } from "@/components/Container";
 import { FadeIn } from "@/components/FadeIn";
 import { MediaPlaceholder } from "@/components/MediaSlot";
 import { isFilled } from "@prismicio/client";
+import { ShowcaseBlock, ShowcaseHeader } from "@/components/Showcase";
 
 const components: JSXMapSerializer = {
   hyperlink: ({ node, children }) => (
@@ -18,6 +19,7 @@ interface HomeArtistsProps {
     primary: {
       title?: string;
       description?: any;
+      style?: string;
     };
     items: any[];
   };
@@ -32,6 +34,61 @@ const HomeArtists: FC<HomeArtistsProps> = ({ slice }) => {
   }
 
   const reelItems = [...artists, ...artists];
+
+  if (
+    slice.primary.style ===
+    "Showcase" /* not isShowcase(): that lives in a client module */
+  ) {
+    // Showcase (home page): a dark rounded block, centered header, bigger portraits in the reel.
+    return (
+      <ShowcaseBlock tone="dark" className="!px-0">
+        <ShowcaseHeader
+          title={title}
+          intro={description}
+          className="px-6 sm:px-12"
+        />
+        <div className="mt-14 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
+          <div className="home-artists-reel flex w-max gap-6 pr-6 hover:[animation-play-state:paused]">
+            {reelItems.map((artist: any, index: number) => (
+              <article
+                key={`${artist.artist_name || "artist"}-${index}`}
+                aria-hidden={index >= artists.length || undefined}
+                className="w-[240px] shrink-0 lg:w-[280px]"
+              >
+                <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-neutral-900">
+                  {isFilled.image(artist.artist_portrait) ? (
+                    <PrismicNextImage
+                      field={artist.artist_portrait}
+                      className="h-full w-full object-cover"
+                      alt=""
+                    />
+                  ) : (
+                    <MediaPlaceholder
+                      tone="dark"
+                      brief={`Portrait of ${artist.artist_name || "the artist"}, ideally with the Decap instrument, 4:5`}
+                    />
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-5 text-left">
+                    {artist.artist_name && (
+                      <h3 className="site-heading text-xl text-white">
+                        {artist.artist_name}
+                      </h3>
+                    )}
+                    {artist.artist_role && (
+                      <p className="mt-0.5 text-sm text-white/70">
+                        {artist.artist_role}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </ShowcaseBlock>
+    );
+  }
 
   return (
     <Container className="mt-8 sm:mt-12 lg:mt-16">
@@ -68,7 +125,10 @@ const HomeArtists: FC<HomeArtistsProps> = ({ slice }) => {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
                       </>
                     ) : (
-                      <MediaPlaceholder tone="dark" brief={`Portrait of ${artist.artist_name || "the artist"}, ideally with the Decap instrument, 4:5`} />
+                      <MediaPlaceholder
+                        tone="dark"
+                        brief={`Portrait of ${artist.artist_name || "the artist"}, ideally with the Decap instrument, 4:5`}
+                      />
                     )}
                   </div>
 
@@ -79,7 +139,9 @@ const HomeArtists: FC<HomeArtistsProps> = ({ slice }) => {
                       </h3>
                     ) : null}
                     {artist.artist_role ? (
-                      <p className="mt-1 text-sm text-neutral-400">{artist.artist_role}</p>
+                      <p className="mt-1 text-sm text-neutral-400">
+                        {artist.artist_role}
+                      </p>
                     ) : null}
                   </div>
                 </article>

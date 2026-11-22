@@ -12,6 +12,17 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "style": {
+          "type": "Select",
+          "config": {
+            "label": "Style",
+            "options": [
+              "Standard",
+              "Showcase"
+            ],
+            "default_value": "Standard"
+          }
+        },
         "eyebrow": {
           "type": "Text",
           "config": {
