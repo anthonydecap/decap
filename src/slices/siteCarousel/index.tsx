@@ -1,20 +1,28 @@
 "use client";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { type FC, useCallback, useEffect, useRef, useState } from "react";
+import { type FC, useRef } from "react";
 import { isFilled } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { type SliceComponentProps } from "@prismicio/react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  type MotionValue,
+} from "framer-motion";
 import clsx from "clsx";
 import { Container } from "@/components/Container";
 import { MediaPlaceholder } from "@/components/MediaSlot";
 import { SectionHeader, SiteLink, toneFromSelect } from "@/lib/site-ui";
-import { useUiCopy } from "@/lib/ui-copy";
 
 /*
- * Apple-style photo cards with a label and one line over the photo. Up to four cards form one row
- * inside the site container on desktop (same gaps and corners as the homepage tiles); below
- * desktop, or with more cards, they swipe in a snapping row with arrow buttons.
+ * Photo cards that stack while you scroll ("Where they play"). Each card is as wide as the home
+ * page tiles and nearly a window tall, the photo full-bleed with the label and a big line over
+ * it. Each card sticks near the top; the next one slides over it, and the cards underneath
+ * shrink a little and darken, like leafing through a pile of photos. The photo in a card eases
+ * from a slight zoom to rest as it comes in. A card with a link is clickable as a whole (as the
+ * tiles). Reduced motion: the same stack, no scaling, dimming or zoom.
  */
 
 const POSITION: Record<string, string> = {
@@ -25,112 +33,149 @@ const POSITION: Record<string, string> = {
   Right: "object-right",
 };
 
-function Arrow({ dir, disabled, onClick }: { dir: "prev" | "next"; disabled: boolean; onClick: () => void }) {
-  const t = useUiCopy();
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      disabled={disabled}
-      aria-label={dir === "prev" ? t.previous : t.next}
-      className="flex h-11 w-11 items-center justify-center rounded-full bg-surface text-ink transition hover:bg-line disabled:opacity-35"
-    >
-      <svg viewBox="0 0 24 24" aria-hidden="true" className={clsx("h-5 w-5", dir === "prev" && "rotate-180")}>
-        <path d="m9 6 6 6-6 6" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    </button>
-  );
-}
+/** How far each card sits below the one before it once stacked, so the pile's edges show. */
+const STEP = 22;
 
-function Card({ item }: { item: any }) {
-  const inner = (
-    <div className="relative aspect-[3/4] w-full overflow-hidden rounded-3xl bg-neutral-900">
+function Card({
+  item,
+  i,
+  n,
+  progress,
+}: {
+  item: any;
+  i: number;
+  n: number;
+  progress: MotionValue<number>;
+}) {
+  // The stack scrolls n-1 windows: card i is in place at progress i/(n-1), sliding in over the
+  // window before that. Its photo eases from a slight zoom to rest as it slides in.
+  const m = Math.max(1, n - 1);
+  const photoScale = useTransform(
+    progress,
+    [Math.max(0, (i - 1) / m), i / m],
+    [i === 0 ? 1 : 1.18, 1],
+  );
+  // Once later cards slide over it: shrink towards the back of the pile and darken.
+  const covered = [Math.min(i / m, 0.999), 1];
+  const scale = useTransform(progress, covered, [1, 1 - (n - 1 - i) * 0.045]);
+  const dim = useTransform(progress, covered, [0, i === n - 1 ? 0 : 0.55]);
+
+  const linked = isFilled.link(item.link);
+  const card = (
+    <>
       {isFilled.image(item.image) ? (
-        <>
+        <motion.div
+          style={{ scale: photoScale }}
+          className="absolute inset-0 motion-reduce:!transform-none"
+        >
           <PrismicNextImage
             field={item.image}
             fill
-            sizes="(min-width: 1024px) 25vw, 80vw"
-            className={clsx("object-cover transition-transform duration-700 ease-out group-hover:scale-105", POSITION[item.image_position] ?? "object-center")}
+            sizes="(min-width: 1280px) 1216px, 100vw"
+            className={clsx(
+              "object-cover",
+              POSITION[item.image_position] ?? "object-center",
+            )}
             fallbackAlt=""
           />
-          <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-black/65 via-black/25 to-transparent" />
-        </>
+        </motion.div>
       ) : (
-        <MediaPlaceholder tone="dark" brief={item.image_brief || item.title || item.eyebrow || "Photo"} />
+        <MediaPlaceholder
+          tone="dark"
+          brief={item.image_brief || item.title || item.eyebrow || "Photo"}
+        />
       )}
-      <div className="absolute inset-x-0 top-0 p-6 text-left sm:p-7">
-        {item.eyebrow && <p className="text-sm font-semibold text-white/85">{item.eyebrow}</p>}
-        {item.title && <p className="site-heading mt-1.5 text-xl leading-snug text-white sm:text-2xl lg:text-xl xl:text-2xl">{item.title}</p>}
+      {/* Legibility: dark at the bottom where the text sits, a touch at the top for the counter. */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/20" />
+      <div className="absolute inset-x-0 top-0 flex justify-between p-6 text-sm font-semibold tracking-[0.2em] text-white/80 sm:p-10">
+        <span>{String(i + 1).padStart(2, "0")}</span>
+        <span className="text-white/45">{String(n).padStart(2, "0")}</span>
+      </div>
+      <div className="absolute inset-x-0 bottom-0 p-6 text-left sm:p-10 lg:p-14">
+        {item.eyebrow && (
+          <p className="text-base font-semibold text-white/85 sm:text-lg">
+            {item.eyebrow}
+          </p>
+        )}
+        {item.title && (
+          <p className="site-heading mt-2 max-w-4xl text-4xl leading-[1.05] text-white [text-wrap:balance] sm:text-6xl lg:text-7xl">
+            {item.title}
+          </p>
+        )}
+      </div>
+      {/* Darkens as the next cards cover it. */}
+      <motion.div
+        style={{ opacity: dim }}
+        className="pointer-events-none absolute inset-0 bg-black motion-reduce:hidden"
+      />
+    </>
+  );
+
+  const shell =
+    "group relative block h-full w-full overflow-hidden rounded-3xl bg-neutral-900 text-white";
+  return (
+    // Each card is one window of scroll and sticks inside the stack, a little lower than the one
+    // before it, so the next card slides over it and the pile's edges show.
+    <div
+      className="sticky top-0 flex h-svh items-start"
+      style={{ paddingTop: `calc(6svh + ${i * STEP}px)` }}
+    >
+      <div className="h-[78svh] w-full sm:h-[84svh]">
+        <motion.div
+          style={{ scale }}
+          className="h-full w-full origin-top motion-reduce:!transform-none"
+        >
+          {linked ? (
+            <SiteLink
+              field={item.link}
+              className={clsx(
+                shell,
+                "focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent",
+              )}
+            >
+              {card}
+            </SiteLink>
+          ) : (
+            <div className={shell}>{card}</div>
+          )}
+        </motion.div>
       </div>
     </div>
-  );
-  return isFilled.link(item.link) ? (
-    <SiteLink field={item.link} className="group block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
-      {inner}
-    </SiteLink>
-  ) : (
-    <div className="group">{inner}</div>
   );
 }
 
 const SiteCarousel: FC<SliceComponentProps<any>> = ({ slice }) => {
   const p = slice.primary;
-  const items: any[] = (slice.items || []).filter((i: any) => i?.title || i?.eyebrow || isFilled.image(i?.image));
-  const track = useRef<HTMLUListElement>(null);
-  const [edge, setEdge] = useState({ start: true, end: false });
-
-  const update = useCallback(() => {
-    const el = track.current;
-    if (!el) return;
-    setEdge({ start: el.scrollLeft < 8, end: el.scrollLeft + el.clientWidth > el.scrollWidth - 8 });
-  }, []);
-
-  useEffect(() => {
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, [update]);
-
-  const scroll = (dir: 1 | -1) => {
-    const el = track.current;
-    const card = el?.querySelector("li");
-    if (!el || !card) return;
-    el.scrollBy({ left: dir * (card.getBoundingClientRect().width + 16), behavior: "smooth" });
-  };
+  const items: any[] = (slice.items || []).filter(
+    (i: any) => i?.title || i?.eyebrow || isFilled.image(i?.image),
+  );
+  const stack = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: stack,
+    offset: ["start start", "end end"],
+  });
 
   if (!items.length) return null;
   const tone = toneFromSelect(p.tone);
 
-  // Up to four cards: one neat row inside the container on desktop. More: a scrolling row.
-  const fits = items.length <= 4;
-  const cols = ["", "lg:grid-cols-1", "lg:grid-cols-2", "lg:grid-cols-3", "lg:grid-cols-4"][Math.min(items.length, 4)];
-
   return (
-    <section data-tone={tone === "page" ? undefined : tone} className="bg-page py-16 text-ink sm:py-24 lg:py-28">
+    <section
+      data-tone={tone === "page" ? undefined : tone}
+      className="bg-page pt-16 text-ink sm:pt-24 lg:pt-28"
+    >
       <Container>
         <SectionHeader eyebrow={p.eyebrow} title={p.title} intro={p.intro} />
-
-        <div className={clsx("mt-12 flex justify-end gap-3 lg:mt-16", fits ? "lg:hidden" : "hidden sm:flex")}>
-          <Arrow dir="prev" disabled={edge.start} onClick={() => scroll(-1)} />
-          <Arrow dir="next" disabled={edge.end} onClick={() => scroll(1)} />
-        </div>
-
-        {/* Same container, gaps and corners as the homepage tiles; swipes below desktop. */}
-        <ul
-          ref={track}
-          onScroll={update}
-          className={clsx(
-            "mt-4 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth [scrollbar-width:none] sm:gap-4 [&::-webkit-scrollbar]:hidden",
-            fits && clsx("lg:mt-16 lg:grid lg:overflow-visible", cols),
-          )}
-        >
+        <div ref={stack} className="relative mt-10 lg:mt-14">
           {items.map((item, i) => (
-            <li key={i} className={clsx("w-[78%] flex-none snap-start sm:w-[44%]", fits ? "lg:w-auto" : "lg:w-[31%]")}>
-              <Card item={item} />
-            </li>
+            <Card
+              key={i}
+              item={item}
+              i={i}
+              n={items.length}
+              progress={scrollYProgress}
+            />
           ))}
-        </ul>
+        </div>
       </Container>
     </section>
   );
