@@ -38,3 +38,9 @@
   from { transform: translateY(-50%); }
   to { transform: translateY(0); }
 }
+
+/* Scroll hint under the big logo of the photo wall: a light running down a thin line. */
+@keyframes scroll-cue {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(200%); }
+}

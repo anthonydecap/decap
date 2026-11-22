@@ -1,14 +1,19 @@
 "use client";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { isFilled } from "@prismicio/client";
-import { motion, useReducedMotion } from "framer-motion";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import { Container } from "@/components/Container";
 import { MediaSlot } from "@/components/MediaSlot";
 import { MuxVideoLayer, resolveMuxHlsUrl } from "@/lib/mux-video";
 import { Eyebrow, SiteButton, SiteRichText } from "@/lib/site-ui";
-import { LogoIntro } from "./LogoIntro";
+import { LogoDock } from "./LogoDock";
 
 /*
  * "Photo collage" hero: a moving wall of photos. The whole window is filled with columns of
@@ -173,9 +178,18 @@ function Column({
 
 export function PhotoCollage({ p, items }: { p: any; items: any[] }) {
   const reduce = !!useReducedMotion();
-  // The copy waits until the big logo flies off to the header (see LogoIntro).
-  const [copyIn, setCopyIn] = useState(false);
-  const showCopy = useCallback(() => setCopyIn(true), []);
+  const section = useRef<HTMLElement>(null);
+  // Over the pin: the big logo docks into the header (LogoDock), the copy comes in after it.
+  const { scrollYProgress } = useScroll({
+    target: section,
+    offset: ["start start", "end end"],
+  });
+  const copyOpacity = useTransform(scrollYProgress, [0.38, 0.8], [0, 1]);
+  const copyY = useTransform(scrollYProgress, [0.38, 0.8], [36, 0]);
+  const copyEvents = useTransform(copyOpacity, (o) =>
+    o > 0.5 ? "auto" : "none",
+  );
+  const cueOpacity = useTransform(scrollYProgress, [0, 0.12], [1, 0]);
   const videos = useWallVideos();
   const photos = items
     .filter((it) => isFilled.image(it.photo) || it.photo_brief || it.mux_video)
@@ -184,82 +198,97 @@ export function PhotoCollage({ p, items }: { p: any; items: any[] }) {
 
   return (
     <section
+      ref={section}
       data-tone="inverse"
       // Pulled up under the header (the page sheet's pt-14 + pt-9), so the wall fills the rounded
-      // sheet to the top and the navigation floats over the photos instead of a black band.
-      className="relative isolate -mt-[5.75rem] flex h-svh min-h-[680px] items-center overflow-hidden bg-neutral-950 pt-24 text-ink"
+      // sheet to the top and the navigation floats over the photos. Taller than the window: the
+      // stage is pinned while the logo docks. Reduced motion: no pin, one window high.
+      className="relative -mt-[5.75rem] h-[175svh] bg-neutral-950 text-ink motion-reduce:h-svh"
     >
-      {/* The wall: tilted and enlarged so its edges never show. */}
-      <motion.div
-        aria-hidden="true"
-        // Dimmed as a whole, so the photos read as a backdrop and the text stays in front.
-        className="absolute inset-0 -z-20 [filter:brightness(0.62)_saturate(0.9)] [perspective:1600px]"
-        // Same starting point on server and client (no hydration mismatch); reduced motion: no transition.
-        initial={{ opacity: 0, scale: 1.08 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={
-          reduce ? { duration: 0 } : { duration: 1.6, ease: [0.22, 1, 0.36, 1] }
-        }
-      >
-        <div className="absolute left-1/2 top-1/2 grid w-[150%] grid-cols-2 gap-3 [transform:translate(-50%,-50%)_rotateX(18deg)_rotateZ(-8deg)] sm:w-[130%] sm:grid-cols-3 sm:gap-4 lg:w-[118%] lg:grid-cols-5 lg:gap-5">
-          {[0, 1, 2, 3, 4].map((c) => (
-            <Column key={c} photos={photos} c={c} videos={videos} />
-          ))}
-        </div>
-      </motion.div>
-
-      {/* Veil: darkest behind the text, lighter towards the edges where the photos glow; dark at the
-          top under the navigation and at the bottom into the next section. */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_48%_42%_at_50%_56%,rgba(0,0,0,0.88),rgba(0,0,0,0.55)_60%,rgba(0,0,0,0.25))]"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-0 top-0 -z-10 h-44 bg-gradient-to-b from-neutral-950/80 to-transparent"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t from-neutral-950 to-transparent"
-      />
-
-      <LogoIntro onLeave={showCopy} />
-
-      <Container className="w-full">
+      <div className="sticky top-0 isolate flex h-svh min-h-[680px] items-center overflow-hidden pt-24">
+        {/* The wall: tilted and enlarged so its edges never show. */}
         <motion.div
-          className="mx-auto max-w-4xl text-center"
-          initial={{ opacity: 0, y: 28 }}
-          animate={copyIn ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
+          aria-hidden="true"
+          // Dimmed as a whole, so the photos read as a backdrop and the text stays in front.
+          className="absolute inset-0 -z-20 [filter:brightness(0.62)_saturate(0.9)] [perspective:1600px]"
+          // Same starting point on server and client (no hydration mismatch); reduced motion: no transition.
+          initial={{ opacity: 0, scale: 1.08 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={
             reduce
               ? { duration: 0 }
-              : { duration: 1, delay: 0.45, ease: [0.22, 1, 0.36, 1] }
+              : { duration: 1.6, ease: [0.22, 1, 0.36, 1] }
           }
         >
-          {p.eyebrow && <Eyebrow>{p.eyebrow}</Eyebrow>}
-          {p.title && (
-            <h1 className="site-heading mt-5 text-[2.75rem] leading-[1.02] text-white [text-shadow:0_2px_40px_rgba(0,0,0,0.6)] [text-wrap:balance] sm:text-7xl lg:text-8xl">
-              {p.title}
-            </h1>
-          )}
-          <SiteRichText
-            field={p.intro}
-            className="mx-auto mt-7 hidden max-w-2xl text-lg leading-relaxed text-white/85 [text-shadow:0_1px_20px_rgba(0,0,0,0.8)] sm:block sm:text-xl"
-          />
-          <div className="mt-9 flex flex-wrap items-center justify-center gap-4 lg:mt-11">
-            <SiteButton
-              field={p.primary_cta_link}
-              label={p.primary_cta_label}
-            />
-            <SiteButton
-              field={p.secondary_cta_link}
-              label={p.secondary_cta_label}
-              variant="secondary"
-            />
+          <div className="absolute left-1/2 top-1/2 grid w-[150%] grid-cols-2 gap-3 [transform:translate(-50%,-50%)_rotateX(18deg)_rotateZ(-8deg)] sm:w-[130%] sm:grid-cols-3 sm:gap-4 lg:w-[118%] lg:grid-cols-5 lg:gap-5">
+            {[0, 1, 2, 3, 4].map((c) => (
+              <Column key={c} photos={photos} c={c} videos={videos} />
+            ))}
           </div>
-          {p.note && <p className="mt-6 text-sm text-ink-muted">{p.note}</p>}
         </motion.div>
-      </Container>
+
+        {/* Veil: darkest behind the text, lighter towards the edges where the photos glow; dark at the
+          top under the navigation and at the bottom into the next section. */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_48%_42%_at_50%_56%,rgba(0,0,0,0.88),rgba(0,0,0,0.55)_60%,rgba(0,0,0,0.25))]"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 top-0 -z-10 h-44 bg-gradient-to-b from-neutral-950/80 to-transparent"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t from-neutral-950 to-transparent"
+        />
+
+        <LogoDock section={section} />
+
+        {/* Scroll hint on arrival, gone as soon as the logo starts to move. */}
+        <motion.div
+          aria-hidden="true"
+          style={{ opacity: cueOpacity }}
+          className="pointer-events-none absolute inset-x-0 bottom-8 flex flex-col items-center motion-reduce:hidden"
+        >
+          <span className="relative h-10 w-px overflow-hidden bg-white/20">
+            <span className="absolute inset-x-0 top-0 h-1/2 animate-[scroll-cue_1.8s_ease-in-out_infinite] bg-white" />
+          </span>
+        </motion.div>
+
+        <Container className="w-full">
+          <motion.div
+            className="mx-auto max-w-4xl text-center motion-reduce:!transform-none motion-reduce:!opacity-100"
+            style={{
+              opacity: copyOpacity,
+              y: copyY,
+              pointerEvents: copyEvents,
+            }}
+          >
+            {p.eyebrow && <Eyebrow>{p.eyebrow}</Eyebrow>}
+            {p.title && (
+              <h1 className="site-heading mt-5 text-[2.75rem] leading-[1.02] text-white [text-shadow:0_2px_40px_rgba(0,0,0,0.6)] [text-wrap:balance] sm:text-7xl lg:text-8xl">
+                {p.title}
+              </h1>
+            )}
+            <SiteRichText
+              field={p.intro}
+              className="mx-auto mt-7 hidden max-w-2xl text-lg leading-relaxed text-white/85 [text-shadow:0_1px_20px_rgba(0,0,0,0.8)] sm:block sm:text-xl"
+            />
+            <div className="mt-9 flex flex-wrap items-center justify-center gap-4 lg:mt-11">
+              <SiteButton
+                field={p.primary_cta_link}
+                label={p.primary_cta_label}
+              />
+              <SiteButton
+                field={p.secondary_cta_link}
+                label={p.secondary_cta_label}
+                variant="secondary"
+              />
+            </div>
+            {p.note && <p className="mt-6 text-sm text-ink-muted">{p.note}</p>}
+          </motion.div>
+        </Container>
+      </div>
     </section>
   );
 }

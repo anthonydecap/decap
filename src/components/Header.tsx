@@ -81,7 +81,7 @@ function HeaderContent({
         <Link
           href={pathForHome(urlLang)}
           aria-label="Home"
-          // Landing spot for the home hero's logo intro (src/slices/siteHero/LogoIntro.tsx).
+          // Landing spot for the home hero logo (src/slices/siteHero/LogoDock.tsx).
           data-site-logo=""
           onMouseEnter={() => setLogoHovered(true)}
           onMouseLeave={() => setLogoHovered(false)}
@@ -271,6 +271,9 @@ function HeaderInner({
       <header>
         <div
           className="absolute top-2 right-0 left-0 z-40 pt-14"
+          // --header-pin: set by the home hero (src/slices/siteHero/LogoDock.tsx) so the header
+          // stays put while the hero is pinned and its logo docks; 0 everywhere else.
+          style={{ translate: '0 var(--header-pin, 0px)' }}
           aria-hidden={expanded ? 'true' : undefined}
           inert={expanded ? true : undefined}
         >
